@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 set -e
 
-# Use docker-compose.prod.yaml for production/staging
+# Use docker-compose.prod.    echo ""
+    echo "🎉 Production environment started successfully!"
+    echo "🌐 Storybook: http://localhost:8081"
+    echo "📊 To check logs: ./scripts/prod.sh logs"
+    echo "🔍 To check health: ./scripts/prod.sh check"for production/staging
 COMPOSE_FILE="docker-compose.prod.yaml"
 ENV_FILE=".env.prod"
 
@@ -33,28 +37,13 @@ fi
 
 case "$1" in
   up)
-    # Generate nginx configuration
-    echo "🔧 Generating nginx configuration..."
-    if ! ./scripts/generate-nginx-config.sh; then
-      echo "❌ Failed to generate nginx configuration!"
-      exit 1
-    fi
-    
-    # Verify nginx configuration file exists and is readable
-    if [ ! -f "nginx/nginx.prod.conf" ]; then
-      echo "❌ Error: nginx/nginx.prod.conf was not generated!"
-      exit 1
-    fi
-    
-    echo "✅ Nginx configuration verified"
-    
     # Build and start services
     echo "🚀 Building and starting services..."
     docker compose -f $COMPOSE_FILE --env-file $ENV_FILE up -d --build
     
     echo ""
     echo "🎉 Production environment started successfully!"
-    echo "🌐 Storybook: http://localhost:8080"
+    echo "🌐 Storybook: http://localhost:8081"
     echo "📊 To check logs: ./scripts/prod.sh logs"
     echo "🔍 To check health: ./scripts/prod.sh check"
     ;;

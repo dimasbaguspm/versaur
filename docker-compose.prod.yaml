@@ -1,42 +1,29 @@
 services:
-  nginx:
-    image: nginx:alpine
-    container_name: versaur-nginx
-    ports:
-      - "8080:80"
-      - "8443:443"
-    volumes:
-      - ./nginx/nginx.prod.conf:/etc/nginx/nginx.conf:ro
-      - ./nginx/ssl:/etc/nginx/ssl:ro
-      - storybook-static:/usr/share/nginx/html:ro
-    depends_on:
-      - storybook
-    networks:
-      - versaur-network
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
-
   storybook:
     build:
       context: .
       dockerfile: Dockerfile.prod
+      args:
+        NODE_ENV: production
+        STORYBOOK_PORT: 8081
     container_name: versaur-storybook-prod
-    volumes:
-      - storybook-static:/usr/share/nginx/html
     environment:
       - NODE_ENV=production
+      - STORYBOOK_PORT=8081
+    ports:
+      - "8081:8081"
     networks:
       - versaur-network
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 150M
+          cpus: "0.2"
+        reservations:
+          memory: 75M
+          cpus: "0.1"
 
 networks:
   versaur-network:
     driver: bridge
-
-volumes:
-  storybook-static:
