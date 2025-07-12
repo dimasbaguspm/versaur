@@ -38,7 +38,7 @@ http {
 
     # HTTP server
     server {
-        listen 80;
+        listen 8080;
         server_name ${DOMAIN_APP_SUBDOMAIN}.${DOMAIN_BASE};
         
         root /usr/share/nginx/html;
