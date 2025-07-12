@@ -18,7 +18,7 @@
 - Example structure:
   ```
   button/
-    __tests__/button.tsx
+    __tests__/button.test.tsx
     button.tsx
     index.ts
     button.stories.tsx
@@ -148,6 +148,7 @@ All colors are available as CSS custom properties with light, base, and dark var
 - Provide clear, realistic examples in stories (describe user, useful for generating tests).
 - Add JSDoc code comments at the top of each story for automatic documentation in Storybook.
 - Use Storybook for interactive documentation and testing.
+- Prioritize to documenting the "group" of components, not individual ones
 
 ## Path Aliases
 
