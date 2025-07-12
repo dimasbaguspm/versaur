@@ -65,3 +65,5 @@ nginx/nginx.prod.conf
 # Database backups
 backups/
 backup.sql
+
+storybook-static/
