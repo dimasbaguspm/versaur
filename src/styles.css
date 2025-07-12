@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
+@import 'tailwindcss';
+
+/* Font Face Definitions */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: format('ttf');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Versaur Design System - Harmonious Warm Color Palette */
+@theme {
+  /* Font Families */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  
+  /* Primary Colors - Atomic Tangerine */
+  --color-primary-light: #F4C4A6;
+  --color-primary: #E58F65;
+  --color-primary-dark: #C66B3D;
+  
+  /* Secondary Colors - Earth Yellow */
+  --color-secondary-light: #F5D7B5;
+  --color-secondary: #EFBB75;
+  --color-secondary-dark: #E09A47;
+  
+  /* Tertiary Colors - Flax */
+  --color-tertiary-light: #FCF2C4;
+  --color-tertiary: #F9E784;
+  --color-tertiary-dark: #F3D93E;
+  
+  /* Success Colors - Sage Green */
+  --color-success-light: #D4E6D4;
+  --color-success: #A8C8A8;
+  --color-success-dark: #7BA77B;
+  
+  /* Info Colors - Warm Blue */
+  --color-info-light: #D6E5F0;
+  --color-info: #8BB5D9;
+  --color-info-dark: #5A8DB3;
+  
+  /* Warning Colors - Flax (same as tertiary) */
+  --color-warning-light: #FCF2C4;
+  --color-warning: #F9E784;
+  --color-warning-dark: #F3D93E;
+  
+  /* Danger Colors - Indian Red */
+  --color-danger-light: #E8A8A8;
+  --color-danger: #D05353;
+  --color-danger-dark: #B63636;
+  
+  /* Neutral Colors - Warm Gray */
+  --color-neutral-light: #F1E8B8;
+  --color-neutral: #753636;
+  --color-neutral-dark: #191919;
+  
+  /* Background and Foreground */
+  --color-background: #F1E8B8;
+  --color-foreground: #191919;
+  
+  /* Utility Colors */
+  --color-border: #753636;
+  --color-input: #FFFFFF;
+  --color-ring: #E58F65;
+  --color-muted: #753636;
+  --color-accent: #F9E784;
+  
+  /* Card Colors */
+  --color-card: #FFFFFF;
+  --color-card-foreground: #191919;
+  
+  /* Popover Colors */
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #191919;
+  
+  /* Legacy support for existing components */
+  --color-destructive: #D05353;
+  --color-destructive-foreground: #FFFFFF;
+  --color-muted-foreground: #753636;
+  --color-accent-foreground: #191919;
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary-foreground: #191919;
+  --color-tertiary-foreground: #191919;
+  --color-success-foreground: #191919;
+  --color-info-foreground: #191919;
+  --color-warning-foreground: #191919;
+  --color-danger-foreground: #FFFFFF;
+  --color-neutral-foreground: #191919;
+  
+  /* Border radius */
+  --radius-lg: 0.5rem;
+  --radius-md: 0.375rem;
+  --radius-sm: 0.25rem;
+  
+  /* Custom spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+}
+
+/* Apply Inter font to body */
+body {
+  font-family: var(--font-sans);
+}
+
+/* Color harmony principles documentation */
+/*
+Our palette follows these harmonious relationships:
+1. Analogous Harmony: Colors are adjacent on the color wheel (yellows, oranges, reds)
+2. Warm Temperature: All colors have warm undertones for cohesion
+3. Natural Progression: Colors flow naturally from light to dark
+4. Complementary Accents: Sage green and warm blue provide gentle contrast without breaking harmony
+*/
