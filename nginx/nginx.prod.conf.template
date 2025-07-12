@@ -3,8 +3,10 @@ events {
 }
 
 http {
-    include /etc/nginx/mime.types;
-    default_type application/octet-stream;
+    include /etc/nginx/mime.typ    # HTTPS server (for production with SSL)
+    # server {
+    #     listen 443 ssl http2;
+    #     server_name ${DOMAIN_APP_SUBDOMAIN}.${DOMAIN_BASE} localhost _ *;    default_type application/octet-stream;
 
     # Logging
     access_log /var/log/nginx/access.log;
@@ -38,8 +40,8 @@ http {
 
     # HTTP server
     server {
-        listen 8080;
-        server_name ${DOMAIN_APP_SUBDOMAIN}.${DOMAIN_BASE};
+        listen 80;
+        server_name ${DOMAIN_APP_SUBDOMAIN}.${DOMAIN_BASE} localhost _ *;
         
         root /usr/share/nginx/html;
         index index.html;
