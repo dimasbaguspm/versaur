@@ -8,7 +8,7 @@ services:
     volumes:
       - ./nginx/nginx.prod.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/ssl:/etc/nginx/ssl:ro
-      - ./storybook-static:/usr/share/nginx/html:ro
+      - storybook-static:/usr/share/nginx/html:ro
     depends_on:
       - storybook
     networks:
@@ -26,6 +26,8 @@ services:
       context: .
       dockerfile: Dockerfile.prod
     container_name: versaur-storybook-prod
+    volumes:
+      - storybook-static:/shared
     environment:
       - NODE_ENV=production
     networks:
@@ -35,3 +37,6 @@ services:
 networks:
   versaur-network:
     driver: bridge
+
+volumes:
+  storybook-static:

@@ -1,4 +1,4 @@
-# Production Dockerfile for Storybook - builds static files only
+# Production Dockerfile for Storybook - builds static files and serves them
 FROM node:22.14-alpine AS builder
 
 # Set working directory
@@ -18,6 +18,21 @@ COPY . .
 # Build Storybook for production
 RUN yarn build-storybook
 
-# Output stage - just the built files
-FROM scratch AS output
-COPY --from=builder /app/storybook-static /
+# Final stage - minimal alpine with built files
+FROM alpine:latest
+
+# Install curl for health checks
+RUN apk --no-cache add curl
+
+# Copy built files from builder stage
+COPY --from=builder /app/storybook-static /usr/share/nginx/html
+
+# Create a simple script to copy files and sleep
+RUN echo '#!/bin/sh' > /entrypoint.sh && \
+    echo 'cp -r /usr/share/nginx/html/* /shared/' >> /entrypoint.sh && \
+    echo 'echo "Storybook files copied to shared volume"' >> /entrypoint.sh && \
+    echo 'sleep infinity' >> /entrypoint.sh && \
+    chmod +x /entrypoint.sh
+
+# Use the entrypoint script
+CMD ["/entrypoint.sh"]
