@@ -1,0 +1,23 @@
+# Production Dockerfile for Storybook - builds static files only
+FROM node:22.14-alpine AS builder
+
+# Set working directory
+WORKDIR /app
+
+RUN corepack enable
+
+# Copy package files
+COPY package.json yarn.lock .yarnrc.yml ./
+
+# Install dependencies
+RUN yarn install
+
+# Copy source code
+COPY . .
+
+# Build Storybook for production
+RUN yarn build-storybook
+
+# Output stage - just the built files
+FROM scratch AS output
+COPY --from=builder /app/storybook-static /
