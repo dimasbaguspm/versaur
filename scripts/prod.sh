@@ -54,7 +54,7 @@ case "$1" in
     
     echo ""
     echo "🎉 Production environment started successfully!"
-    echo "🌐 Storybook: http://localhost:80"
+    echo "🌐 Storybook: http://localhost:8080"
     echo "📊 To check logs: ./scripts/prod.sh logs"
     echo "🔍 To check health: ./scripts/prod.sh check"
     ;;
