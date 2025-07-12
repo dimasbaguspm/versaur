@@ -66,7 +66,7 @@ http {
 
     # HTTP server
     server {
-        listen 8080;
+        listen 8081;
         server_name ${DOMAIN_APP_SUBDOMAIN}.${DOMAIN_BASE};
         
         root /usr/share/nginx/html;
