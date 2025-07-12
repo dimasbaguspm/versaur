@@ -139,7 +139,7 @@ All colors are available as CSS custom properties with light, base, and dark var
 
 - Colocate tests with components/hooks (e.g., `button/__tests__/button.tsx`).
 - Use Vitest and React Testing Library for unit/component tests.
-- Always use `composeStories` from `@storybook/react-vite` to render stories in tests.
+- Always use `composeStories` from `@storybook/react` to render stories in tests.
 - DOM environment is provided by jsdom.
 
 ## Storybook
