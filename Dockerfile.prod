@@ -29,8 +29,8 @@ COPY --from=builder /app/storybook-static /usr/share/nginx/html
 
 # Create a simple script to copy files and sleep
 RUN echo '#!/bin/sh' > /entrypoint.sh && \
-    echo 'cp -r /usr/share/nginx/html/* /shared/' >> /entrypoint.sh && \
-    echo 'echo "Storybook files copied to shared volume"' >> /entrypoint.sh && \
+    echo 'cp -r /usr/share/nginx/html/* /usr/share/nginx/html/' >> /entrypoint.sh && \
+    echo 'echo "Storybook files are ready in shared volume"' >> /entrypoint.sh && \
     echo 'sleep infinity' >> /entrypoint.sh && \
     chmod +x /entrypoint.sh
 

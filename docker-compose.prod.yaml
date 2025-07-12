@@ -27,7 +27,7 @@ services:
       dockerfile: Dockerfile.prod
     container_name: versaur-storybook-prod
     volumes:
-      - storybook-static:/shared
+      - storybook-static:/usr/share/nginx/html
     environment:
       - NODE_ENV=production
     networks:
