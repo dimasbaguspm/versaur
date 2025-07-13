@@ -26,7 +26,6 @@ COPY . .
 # Build Storybook for production
 RUN yarn build-storybook
 
-# Production stage - Serve static files with nginx
 FROM nginx:1.25-alpine AS runner
 
 # Accept the port argument for runtime
