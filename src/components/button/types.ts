@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes } from 'react'
 
 /**
  * ButtonProps defines the props for the Button component
- * @property variant - Visual style variant (primary, secondary, etc)
+ * @property variant - Visual style variant based on Spenicle color system
  * @property size - Size of the button (sm, md, lg)
  * @property disabled - Whether the button is disabled
  * @property type - Button type attribute
@@ -10,8 +10,10 @@ import type { ButtonHTMLAttributes } from 'react'
  */
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
-   * Visual style variant (semantic, outline, ghost, destructive)
-   * Supports semantic variants and their outline/ghost forms
+   * Visual style variant supporting Spenicle color system
+   * Core variants: primary (coral), secondary (sage), tertiary (mist), ghost (slate), neutral (cream)
+   * Semantic variants: success, info, warning, danger
+   * Each variant supports outline and ghost forms
    */
   variant?:
     | 'primary'
@@ -23,6 +25,11 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     | 'tertiary'
     | 'tertiary-outline'
     | 'tertiary-ghost'
+    | 'ghost'
+    | 'ghost-outline'
+    | 'neutral'
+    | 'neutral-outline'
+    | 'neutral-ghost'
     | 'success'
     | 'success-outline'
     | 'success-ghost'
@@ -36,7 +43,6 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     | 'danger-outline'
     | 'danger-ghost'
     | 'outline'
-    | 'ghost'
     | 'destructive'
   size?: 'sm' | 'md' | 'lg'
   disabled?: boolean

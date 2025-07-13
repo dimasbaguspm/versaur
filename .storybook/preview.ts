@@ -10,6 +10,31 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
+    backgrounds: {
+      default: 'background',
+      values: [
+        {
+          name: 'background',
+          value: '#ffffff',
+        },
+        {
+          name: 'cream',
+          value: 'var(--color-cream)',
+        },
+        {
+          name: 'primary',
+          value: 'var(--color-primary)',
+        },
+        {
+          name: 'secondary',
+          value: 'var(--color-secondary)',
+        },
+        {
+          name: 'foreground',
+          value: 'var(--color-foreground)',
+        },
+      ],
+    },
   },
 }
 

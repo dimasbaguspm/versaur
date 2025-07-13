@@ -40,43 +40,40 @@
 
 ## Design System & Theme
 
-Versaur follows modern design system principles with a **warm, earthy color palette** that creates
-natural harmony and excellent accessibility. Our color system uses analogous warm tones that feel
-connected and organic.
+Versaur follows modern design system principles with a **clean, focused color palette** perfect for professional applications with clear hierarchy and accessibility. Our color system uses harmonious tones that feel natural and trustworthy.
 
 ### Color Palette & Semantic Roles
 
-Our harmonious color system defines clear semantic roles with light, base, and dark variations:
+Our harmonious color system defines clear semantic roles based on the Spenicle palette:
 
-| Role          | Color Name       | Light     | Base      | Dark      | Usage                             |
-| ------------- | ---------------- | --------- | --------- | --------- | --------------------------------- |
-| **Primary**   | Atomic Tangerine | `#F4C4A6` | `#E58F65` | `#C66B3D` | Main actions, brand identity      |
-| **Secondary** | Earth Yellow     | `#F5D7B5` | `#EFBB75` | `#E09A47` | Secondary actions, accents        |
-| **Tertiary**  | Flax             | `#FCF2C4` | `#F9E784` | `#F3D93E` | Subtle highlights, backgrounds    |
-| **Success**   | Sage Green       | `#D4E6D4` | `#A8C8A8` | `#7BA77B` | Success states, positive feedback |
-| **Info**      | Warm Blue        | `#D6E5F0` | `#8BB5D9` | `#5A8DB3` | Information, neutral alerts       |
-| **Warning**   | Flax             | `#FCF2C4` | `#F9E784` | `#F3D93E` | Warning states, caution           |
-| **Danger**    | Indian Red       | `#E8A8A8` | `#D05353` | `#B63636` | Error states, destructive actions |
-| **Neutral**   | Warm Gray        | `#F1E8B8` | `#753636` | `#191919` | Text, borders, backgrounds        |
+| Role          | Color Name | Color     | Usage                             |
+| ------------- | ---------- | --------- | --------------------------------- |
+| **Primary**   | Coral      | `#e07a5f` | Main actions, CTAs, brand identity |
+| **Secondary** | Sage       | `#81b29a` | Secondary actions, balance states |
+| **Tertiary**  | Mist       | `#84a5c0` | Subtle backgrounds, professional elements |
+| **Ghost**     | Slate      | `#3d405b` | Text, minimal actions, borders    |
+| **Neutral**   | Light Gray | `#f8f9fa` | Neutral surfaces, cards, secondary backgrounds |
+| **Success**   | Success    | `#6db285` | Success states, positive feedback |
+| **Info**      | Info       | `#6b8fad` | Information, neutral alerts       |
+| **Warning**   | Warning    | `#e08a47` | Warning states, caution           |
+| **Danger**    | Danger     | `#e06650` | Error states, destructive actions |
 
 ### Color Harmony Principles
 
 Our palette follows these harmonious relationships:
 
-1. **Analogous Harmony**: Colors are adjacent on the color wheel (yellows, oranges, reds)
-2. **Warm Temperature**: All colors have warm undertones for cohesion
-3. **Natural Progression**: Colors flow naturally from light to dark
-4. **Complementary Accents**: Sage green and warm blue provide gentle contrast without breaking harmony
+1. **Professional Harmony**: Colors work together for business applications
+2. **Natural Temperature**: Warm coral balanced with cool sage and mist
+3. **Clear Hierarchy**: Each color has a distinct purpose and usage
+4. **Complementary Balance**: Coral (warm) balanced with sage/mist (cool)
 
 ### Color Psychology
 
-- **Primary (Atomic Tangerine)**: Confident, energetic, approachable
-- **Secondary (Earth Yellow)**: Warm, stable, optimistic
-- **Tertiary (Flax)**: Gentle, subtle, sophisticated
-- **Success (Sage Green)**: Natural, growth, positive
-- **Info (Warm Blue)**: Trustworthy, calm, informative
-- **Warning (Flax)**: Cautious but not alarming
-- **Danger (Indian Red)**: Attention-grabbing, urgent, clear
+- **Coral (Primary)**: Energetic, friendly, action-oriented
+- **Sage (Secondary)**: Calming, natural, trustworthy
+- **Mist (Tertiary)**: Professional, subtle, supportive
+- **Slate (Ghost)**: Serious, reliable, minimal
+- **Light Gray (Neutral)**: Clean, subtle, unobtrusive
 
 ### Accessibility & Contrast
 
@@ -92,46 +89,30 @@ All colors are available as CSS custom properties with light, base, and dark var
 
 ```css
 :root {
-  /* Primary Colors */
-  --color-primary-light: #f4c4a6;
-  --color-primary: #e58f65;
-  --color-primary-dark: #c66b3d;
+  /* Core Colors */
+  --color-coral: #e07a5f;
+  --color-sage: #81b29a;
+  --color-mist: #84a5c0;
+  --color-slate: #3d405b;
+  --color-cream: #f4f1de;
+  --color-light-gray: #f8f9fa;
 
-  /* Secondary Colors */
-  --color-secondary-light: #f5d7b5;
-  --color-secondary: #efbb75;
-  --color-secondary-dark: #e09a47;
+  /* Semantic Colors */
+  --color-success: #6db285;
+  --color-info: #6b8fad;
+  --color-warning: #e08a47;
+  --color-danger: #e06650;
 
-  /* Tertiary Colors */
-  --color-tertiary-light: #fcf2c4;
-  --color-tertiary: #f9e784;
-  --color-tertiary-dark: #f3d93e;
+  /* Background and Foreground */
+  --color-background: #ffffff; /* White */
+  --color-foreground: #2d3748; /* Darker Slate */
 
-  /* Success Colors */
-  --color-success-light: #d4e6d4;
-  --color-success: #a8c8a8;
-  --color-success-dark: #7ba77b;
-
-  /* Info Colors */
-  --color-info-light: #d6e5f0;
-  --color-info: #8bb5d9;
-  --color-info-dark: #5a8db3;
-
-  /* Warning Colors */
-  --color-warning-light: #fcf2c4;
-  --color-warning: #f9e784;
-  --color-warning-dark: #f3d93e;
-
-  /* Danger Colors */
-  --color-danger-light: #e8a8a8;
-  --color-danger: #d05353;
-  --color-danger-dark: #b63636;
-
-  /* Neutral Colors */
-  --color-background: #f1e8b8;
-  --color-foreground: #191919;
-  --color-muted: #753636;
-  --color-border: #753636;
+  /* Button/Component Variants */
+  --color-primary: #e07a5f; /* Coral */
+  --color-secondary: #81b29a; /* Sage */
+  --color-tertiary: #84a5c0; /* Mist */
+  --color-ghost: #3d405b; /* Slate */
+  --color-neutral: #f8f9fa; /* Light Gray */
 }
 ```
 
