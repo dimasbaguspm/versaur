@@ -18,7 +18,7 @@ describe('Button', () => {
   it('applies variant classes correctly', () => {
     render(<Button variant='secondary'>Secondary</Button>)
     const button = screen.getByRole('button')
-    expect(button).toHaveClass('bg-secondary')
+    expect(button).toHaveClass('bg-sage')
   })
 
   it('applies size classes correctly', () => {
@@ -32,6 +32,7 @@ describe('Button', () => {
     const button = screen.getByRole('button')
     expect(button).toBeDisabled()
     expect(button).toHaveClass('disabled:opacity-50')
+    expect(button).toHaveAttribute('aria-disabled', 'true')
   })
 
   it('accepts custom className', () => {
@@ -42,19 +43,19 @@ describe('Button', () => {
 
   it('renders all semantic variants correctly', () => {
     const variants = [
-      'primary',
-      'secondary',
-      'tertiary',
-      'success',
-      'info',
-      'warning',
-      'danger',
+      { variant: 'primary', expectedClass: 'bg-coral' },
+      { variant: 'secondary', expectedClass: 'bg-sage' },
+      { variant: 'tertiary', expectedClass: 'bg-mist' },
+      { variant: 'success', expectedClass: 'bg-success' },
+      { variant: 'info', expectedClass: 'bg-info' },
+      { variant: 'warning', expectedClass: 'bg-warning' },
+      { variant: 'danger', expectedClass: 'bg-danger' },
     ] as const
 
-    variants.forEach(variant => {
+    variants.forEach(({ variant, expectedClass }) => {
       const { unmount } = render(<Button variant={variant}>{variant}</Button>)
       const button = screen.getByRole('button')
-      expect(button).toHaveClass(`bg-${variant}`)
+      expect(button).toHaveClass(expectedClass)
       unmount()
     })
   })
@@ -116,7 +117,7 @@ describe('Button', () => {
   it('renders story components correctly', () => {
     const { unmount: unmountSemantic } = render(<SemanticColors />)
     const buttons = screen.getAllByRole('button')
-    expect(buttons).toHaveLength(7) // 7 semantic colors
+    expect(buttons).toHaveLength(4) // 4 semantic colors (success, info, warning, danger)
     unmountSemantic()
 
     const { unmount: unmountSizeComparison } = render(<SizeComparison />)

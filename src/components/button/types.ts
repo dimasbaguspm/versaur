@@ -2,7 +2,7 @@ import type { ButtonHTMLAttributes } from 'react'
 
 /**
  * ButtonProps defines the props for the Button component
- * @property variant - Visual style variant based on Spenicle color system
+ * @property variant - Visual style variant based on Versaur color system
  * @property size - Size of the button (sm, md, lg)
  * @property disabled - Whether the button is disabled
  * @property type - Button type attribute
@@ -10,10 +10,10 @@ import type { ButtonHTMLAttributes } from 'react'
  */
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /**
-   * Visual style variant supporting Spenicle color system
-   * Core variants: primary (coral), secondary (sage), tertiary (mist), ghost (slate), neutral (cream)
+   * Visual style variant supporting Versaur color system
+   * Core variants: primary (coral), secondary (sage), tertiary (mist), ghost (slate), neutral (light gray)
    * Semantic variants: success, info, warning, danger
-   * Each variant supports outline and ghost forms
+   * Each variant supports outline and ghost forms for flexible design expression
    */
   variant?:
     | 'primary'
@@ -44,6 +44,16 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     | 'danger-ghost'
     | 'outline'
     | 'destructive'
+  /**
+   * Size of the button
+   * sm: 36px height, compact for space-constrained interfaces
+   * md: 40px height, standard for most use cases
+   * lg: 44px height, prominent for primary actions
+   */
   size?: 'sm' | 'md' | 'lg'
+  /**
+   * Whether the button is disabled
+   * When true, the button becomes non-interactive and visually dimmed
+   */
   disabled?: boolean
 }

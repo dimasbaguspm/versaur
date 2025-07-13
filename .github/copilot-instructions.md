@@ -2,10 +2,10 @@
 
 ## Project Overview
 
-- **Versaur** is a modern React UI library using TypeScript and Tailwind CSS.
+- **Versaur** is a modern React UI library using TypeScript and Tailwind v4 CSS.
 - Components are tree-shakable and organized under `src/components/` (one directory per component,
   kebab-case).
-- Utilities are in `src/utils/`, hooks in `src/hooks/`, and styles in `src/styles/`.
+- Utilities are in `src/utils/`, hooks in `src/hooks/`, and styles in `src/styles.css`.
 - Subpath exports are supported for optimal bundle size.
 
 ## Naming & Structure
