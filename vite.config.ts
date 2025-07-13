@@ -24,16 +24,18 @@ export default defineConfig({
       entry: {
         index: resolve(__dirname, 'src/index.ts'),
         components: resolve(__dirname, 'src/components/index.ts'),
+        hooks: resolve(__dirname, 'src/hooks/index.ts'),
         utils: resolve(__dirname, 'src/utils/index.ts'),
       },
       formats: ['es'],
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: ['react', 'react-dom', 'lucide-react'],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
+          'lucide-react': 'LucideReact',
         },
       },
     },
