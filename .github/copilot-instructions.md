@@ -302,6 +302,7 @@ All colors are available as CSS custom properties with light, base, and dark var
 - Add JSDoc code comments at the top of each story for automatic documentation in Storybook.
 - Use Storybook for interactive documentation and testing.
 - Prioritize to documenting the "group" of components, not individual ones
+- When dealing with icon, we could use from `lucide-react` it's only deliberately used in storybook and marked as dev dependency.
 
 ## Path Aliases
 
