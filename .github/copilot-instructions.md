@@ -19,12 +19,15 @@
   ```
   button/
     __tests__/button.test.tsx
-    button.tsx
-    index.ts
-    button.stories.tsx
-    types.ts
-    readme.md
-    button.atoms.tsx
+    __tests__/button.atoms.test.tsx // tests for the main component and atoms
+    button.tsx // main component/place where we assign the compound part
+    context.ts // context for the compound pattern component (if needed)
+    helpers.ts // utility functions for the component (such as cva declaration variants, sizes, etc.)
+    index.ts // barrel file
+    button.stories.tsx // storybook stories
+    types.ts // types for props and state
+    readme.md // optional straightforward documentation 
+    button.atoms.tsx // place where the sub-components are defined
   ```
 
 ## Component Conventions
@@ -37,6 +40,175 @@
 - Use the latest widely supported HTML attributes (e.g., `command`).
 - Ensure components have versiliate variations (cva): size, variant, color, etc.
 - Standard accessibility is a priority; align with browser DOM and avoid hacks.
+
+## Component Patterns
+
+Versaur uses two primary component patterns based on complexity and browser alignment:
+
+### Compound Pattern
+
+Use the **Compound Pattern** for complex components that require multiple related sub-components and sophisticated state management. This pattern provides flexible composition while maintaining clear relationships between parts.
+
+**Use for:**
+- `Card` (Card.Header, Card.Body, Card.Footer)
+- `Drawer` (Drawer.Root, Drawer.Trigger, Drawer.Content)
+- `Modal` (Modal.Root, Modal.Trigger, Modal.Content, Modal.Header, Modal.Footer)
+- `Accordion` (Accordion.Root, Accordion.Item, Accordion.Trigger, Accordion.Content)
+- `Tabs` (Tabs.Root, Tabs.List, Tabs.Trigger, Tabs.Content)
+- `Dropdown` (Dropdown.Root, Dropdown.Trigger, Dropdown.Content, Dropdown.Item)
+
+**Benefits:**
+- Flexible composition and customization
+- Clear semantic relationships between components
+- Shared state management across sub-components
+- Better tree-shaking with named exports
+
+#### Context Pattern Integration
+
+For compound components that need shared state or communication between parent and sub-components, combine with the **Context Pattern**:
+
+**Use Context when:**
+- Sub-components need access to shared state (open/closed, active tab, etc.)
+- Parent component manages complex interactions between children
+- Sub-components need to communicate with each other
+- ARIA relationships require coordinated IDs and attributes
+
+**Example with Context:**
+```typescript
+// tabs/tabs.tsx
+interface TabsContextValue {
+  activeTab: string
+  setActiveTab: (tab: string) => void
+  orientation: 'horizontal' | 'vertical'
+}
+
+const TabsContext = createContext<TabsContextValue | null>(null)
+
+const TabsRoot = ({ defaultValue, orientation = 'horizontal', children }) => {
+  const [activeTab, setActiveTab] = useState(defaultValue)
+  
+  return (
+    <TabsContext.Provider value={{ activeTab, setActiveTab, orientation }}>
+      <div role="tablist" aria-orientation={orientation}>
+        {children}
+      </div>
+    </TabsContext.Provider>
+  )
+}
+
+const TabsTrigger = ({ value, children }) => {
+  const context = useContext(TabsContext)
+  if (!context) throw new Error('TabsTrigger must be used within Tabs')
+  
+  const { activeTab, setActiveTab } = context
+  
+  return (
+    <button
+      role="tab"
+      aria-selected={activeTab === value}
+      onClick={() => setActiveTab(value)}
+    >
+      {children}
+    </button>
+  )
+}
+
+export const Tabs = Object.assign(TabsRoot, {
+  List: TabsList,
+  Trigger: TabsTrigger,
+  Content: TabsContent,
+})
+
+// Usage
+<Tabs defaultValue="tab1">
+  <Tabs.List>
+    <Tabs.Trigger value="tab1">Tab 1</Tabs.Trigger>
+    <Tabs.Trigger value="tab2">Tab 2</Tabs.Trigger>
+  </Tabs.List>
+  <Tabs.Content value="tab1">Content 1</Tabs.Content>
+  <Tabs.Content value="tab2">Content 2</Tabs.Content>
+</Tabs>
+```
+
+**Simple Compound (No Context):**
+```typescript
+// card/card.tsx
+export const Card = Object.assign(CardRoot, {
+  Header: CardHeader,
+  Body: CardBody,
+  Footer: CardFooter,
+})
+
+// Usage
+<Card>
+  <Card.Header>Title</Card.Header>
+  <Card.Body>Content</Card.Body>
+  <Card.Footer>Actions</Card.Footer>
+</Card>
+```
+
+### Regular Pattern
+
+Use the **Regular Pattern** for simple components that directly align with standard HTML browser elements. These components should feel familiar and behave consistently with native browser behavior.
+
+**Use for:**
+- `Button` (aligns with `<button>`)
+- `Link` (aligns with `<a>`)
+- `Input` (aligns with `<input>`)
+- `Checkbox` (aligns with `<input type="checkbox">`)
+- `Radio` (aligns with `<input type="radio">`)
+
+**Benefits:**
+- Familiar developer experience
+- Direct alignment with browser standards
+- Simpler API and mental model
+- Better accessibility through native behavior
+- Easier testing and form integration
+
+**Example structure:**
+```typescript
+// button/button.tsx
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ variant = 'primary', size = 'md', ...props }, ref) => {
+    return <button ref={ref} {...props} />
+  }
+)
+
+// Usage
+<Button variant="primary" size="lg">Click me</Button>
+```
+
+### Pattern Selection Guidelines
+
+**Choose Compound Pattern when:**
+- Component has multiple related sub-components
+- Complex state needs to be shared between parts
+- Users need flexible composition and customization
+- Component doesn't directly map to a single HTML element
+
+**Choose Compound + Context Pattern when:**
+- Sub-components need shared state management
+- Parent coordinates interactions between children
+- ARIA relationships require synchronized IDs/attributes
+- Components need to communicate with each other
+- Examples: Tabs, Accordion, Dropdown, Modal with complex interactions
+
+**Choose Simple Compound Pattern when:**
+- Sub-components are independent
+- No shared state required
+- Pure composition without coordination
+- Examples: Card, Layout components
+
+**Choose Regular Pattern when:**
+- Component directly enhances a single HTML element
+- Behavior should match browser standards
+- Simple props-based API is sufficient
+- Component is primarily a styled wrapper
+
+**Accessibility Considerations:**
+- Compound Pattern: Implement ARIA relationships between sub-components
+- Regular Pattern: Leverage native browser accessibility features
+- Both patterns must meet WCAG 2.1 AA standards
 
 ## Design System & Theme
 
