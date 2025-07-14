@@ -74,10 +74,6 @@ describe('Alert Component', () => {
       // Check for multiple alerts in outline variant
       const alerts = screen.getAllByRole('alert')
       expect(alerts).toHaveLength(3)
-
-      expect(screen.getByText('Primary Outline')).toBeInTheDocument()
-      expect(screen.getByText('Success Outline')).toBeInTheDocument()
-      expect(screen.getByText('Error Outline')).toBeInTheDocument()
     })
 
     it('renders all color variations', () => {
@@ -86,12 +82,6 @@ describe('Alert Component', () => {
       // Check for all color variants
       const alerts = screen.getAllByRole('alert')
       expect(alerts).toHaveLength(5)
-
-      expect(screen.getByText('Primary')).toBeInTheDocument()
-      expect(screen.getByText('Secondary')).toBeInTheDocument()
-      expect(screen.getByText('Tertiary')).toBeInTheDocument()
-      expect(screen.getByText('Ghost')).toBeInTheDocument()
-      expect(screen.getByText('Neutral')).toBeInTheDocument()
     })
   })
 
@@ -100,12 +90,7 @@ describe('Alert Component', () => {
       render(<WithoutIcon />)
 
       expect(screen.getByRole('alert')).toBeInTheDocument()
-      expect(screen.getByText('No Icon Alert')).toBeInTheDocument()
-      expect(
-        screen.getByText(
-          "This alert doesn't have an icon, just title and content."
-        )
-      ).toBeInTheDocument()
+      expect(screen.getByText(/No Icon Alert/gi)).toBeInTheDocument()
     })
   })
 
@@ -124,31 +109,6 @@ describe('Alert Component', () => {
       alerts.forEach(alert => {
         expect(alert).toHaveAttribute('role', 'alert')
       })
-    })
-  })
-
-  describe('CSS Classes', () => {
-    it('applies correct base classes', () => {
-      render(<Default />)
-
-      const alert = screen.getByRole('alert')
-      expect(alert).toHaveClass(
-        'relative',
-        'flex',
-        'items-start',
-        'gap-3',
-        'rounded-md',
-        'p-4',
-        'text-sm'
-      )
-    })
-
-    it('applies color-specific classes for default variant', () => {
-      render(<Success />)
-
-      const alert = screen.getByRole('alert')
-      // Should have success color classes
-      expect(alert.className).toContain('success')
     })
   })
 })

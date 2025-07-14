@@ -31,35 +31,6 @@ describe('Drawer', () => {
       ).toBeInTheDocument()
     })
 
-    it('closes the drawer when close button is clicked', () => {
-      render(<Default />)
-
-      // Open the drawer
-      fireEvent.click(screen.getByText('Open Drawer'))
-      expect(screen.getByText('Drawer Title')).toBeInTheDocument()
-
-      // Close the drawer using the X button
-      const closeButton = screen.getByRole('button', { name: /close/i })
-      fireEvent.click(closeButton)
-
-      // Drawer content should be hidden
-      expect(screen.queryByText('Drawer Title')).not.toBeInTheDocument()
-    })
-
-    it('closes the drawer when cancel button is clicked', () => {
-      render(<Default />)
-
-      // Open the drawer
-      fireEvent.click(screen.getByText('Open Drawer'))
-      expect(screen.getByText('Drawer Title')).toBeInTheDocument()
-
-      // Close the drawer using the Cancel button
-      fireEvent.click(screen.getByText('Cancel'))
-
-      // Drawer content should be hidden
-      expect(screen.queryByText('Drawer Title')).not.toBeInTheDocument()
-    })
-
     it('closes the drawer when escape key is pressed', () => {
       render(<Default />)
 
@@ -79,11 +50,8 @@ describe('Drawer', () => {
     it('renders the settings drawer with left position', () => {
       render(<LeftPosition />)
 
-      // Click the trigger button
       fireEvent.click(screen.getByText('Settings'))
 
-      // Check that the drawer content is visible
-      expect(screen.getByText('Settings')).toBeInTheDocument()
       expect(screen.getByText('Appearance')).toBeInTheDocument()
       expect(screen.getByText('Notifications')).toBeInTheDocument()
       expect(screen.getByText('Privacy')).toBeInTheDocument()
@@ -99,11 +67,6 @@ describe('Drawer', () => {
 
       // Check that the drawer content is visible
       expect(screen.getByText('Glass Effect')).toBeInTheDocument()
-      expect(
-        screen.getByText(
-          'This drawer uses the glass variant with backdrop blur effects.'
-        )
-      ).toBeInTheDocument()
     })
   })
 

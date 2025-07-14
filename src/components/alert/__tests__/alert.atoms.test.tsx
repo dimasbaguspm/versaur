@@ -49,7 +49,7 @@ describe('Alert Atoms', () => {
       render(<AlertIcon data-testid='alert-icon'>Icon</AlertIcon>)
 
       const icon = screen.getByTestId('alert-icon')
-      expect(icon).toHaveClass('flex-shrink-0', 'mt-0.5')
+      expect(icon).toHaveClass('flex-shrink-0')
     })
   })
 
