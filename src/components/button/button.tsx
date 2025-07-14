@@ -77,9 +77,9 @@ const buttonVariants = cva(
           'bg-danger text-white hover:bg-danger/90 focus-visible:ring-danger/20 focus-visible:ring-offset-white shadow-sm hover:shadow-md',
       },
       size: {
-        sm: 'h-9 px-3 text-sm min-w-[2.25rem]',
-        md: 'h-10 px-4 text-base min-w-[2.5rem]',
-        lg: 'h-11 px-8 text-lg min-w-[2.75rem]',
+        sm: 'h-8 px-3 text-sm min-w-[2.25rem]',
+        md: 'h-10 px-4 text-sm min-w-[2.5rem]',
+        lg: 'h-12 px-8 text-lg min-w-[2.75rem]',
       },
     },
     defaultVariants: {
