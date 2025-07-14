@@ -294,6 +294,8 @@ All colors are available as CSS custom properties with light, base, and dark var
 - Use Vitest and React Testing Library for unit/component tests.
 - Always use `composeStories` from `@storybook/react` to render stories in tests.
 - DOM environment is provided by jsdom.
+- Prioritize asserting the accessibility of components and interactions
+- There should be 1 test case that asserting the html output, `expect(render().asFragment()).toMatchSnapshot()` to ensure the component is rendered correctly
 
 ## Storybook
 
