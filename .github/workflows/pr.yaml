@@ -1,0 +1,39 @@
+
+name: PR Checks
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js 22.14
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.14.0
+
+      - name: Enable Corepack (Yarn Berry)
+        run: |
+          corepack enable
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run type check
+        run: yarn typecheck
+
+      - name: Run lint
+        run: yarn lint
+
+      - name: Run build
+        run: yarn build
+
+      - name: Run tests
+        run: yarn test
