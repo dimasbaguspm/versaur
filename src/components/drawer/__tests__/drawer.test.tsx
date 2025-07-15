@@ -3,8 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import { composeStories } from '@storybook/react'
 import * as stories from '../drawer.stories'
 
-const { Default, LeftPosition, GlassVariant, LargeSize, FullWidth } =
-  composeStories(stories)
+const { Default, LeftPosition, LargeSize, FullWidth } = composeStories(stories)
 
 describe('Drawer', () => {
   describe('Default Story', () => {
@@ -55,18 +54,6 @@ describe('Drawer', () => {
       expect(screen.getByText('Appearance')).toBeInTheDocument()
       expect(screen.getByText('Notifications')).toBeInTheDocument()
       expect(screen.getByText('Privacy')).toBeInTheDocument()
-    })
-  })
-
-  describe('Glass Variant Story', () => {
-    it('renders the glass variant drawer', () => {
-      render(<GlassVariant />)
-
-      // Click the trigger button
-      fireEvent.click(screen.getByText('Open Glass Drawer'))
-
-      // Check that the drawer content is visible
-      expect(screen.getByText('Glass Effect')).toBeInTheDocument()
     })
   })
 

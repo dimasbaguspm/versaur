@@ -153,43 +153,23 @@ export const LeftPosition: Story = {
  */
 export const GlassVariant: Story = {
   render: args => (
-    <div
-      className='min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8'
-      style={{
-        backgroundImage:
-          'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
-      }}
-    >
-      <DrawerWrapper {...args} triggerLabel='Open Glass Drawer'>
-        <Drawer.Header>
-          <div className='flex items-center justify-between'>
-            <h3 className='text-lg font-semibold'>Glass Effect</h3>
-            <Button variant='ghost' size='sm'>
-              <X size={16} />
-            </Button>
-          </div>
-        </Drawer.Header>
-        <Drawer.Body>
-          <p className='text-gray-700 mb-4'>
-            This drawer uses the glass variant where the drawer content itself
-            becomes transparent with backdrop blur effects.
-          </p>
-          <p className='text-gray-700 mb-4'>
-            The overlay remains dark to help you focus on the drawer content,
-            while the drawer background creates a frosted glass appearance.
-          </p>
-          <p className='text-gray-700'>
-            Perfect for modern interfaces that need subtle, elegant overlay
-            effects while maintaining visual connection with the underlying
-            content.
-          </p>
-        </Drawer.Body>
-        <Drawer.Footer>
-          <Button variant='ghost'>Close</Button>
-          <Button>Confirm</Button>
-        </Drawer.Footer>
-      </DrawerWrapper>
-    </div>
+    <DrawerWrapper {...args} triggerLabel='Open Glass Drawer' size='full'>
+      <Drawer.Body>
+        <p className='text-white mb-4'>
+          This drawer uses the glass variant where the drawer content itself
+          becomes transparent with backdrop blur effects.
+        </p>
+        <p className='text-white mb-4'>
+          The overlay remains dark to help you focus on the drawer content,
+          while the drawer background creates a frosted glass appearance.
+        </p>
+        <p className='text-white'>
+          Perfect for modern interfaces that need subtle, elegant overlay
+          effects while maintaining visual connection with the underlying
+          content.
+        </p>
+      </Drawer.Body>
+    </DrawerWrapper>
   ),
   args: {
     position: 'right',
