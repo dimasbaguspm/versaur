@@ -1,5 +1,11 @@
 # Copilot Instructions for Versaur UI Library
 
+- Code consistency across the codebase for style, pattern, and structure is our priority
+- Keep it simple, readable, and maintainable
+- Use the provided guidelines to ensure code quality and maintainability
+- Follow the component patterns and conventions outlined below
+- Use the latest React and TypeScript features
+
 ## Project Overview
 
 - **Versaur** is a modern React UI library using TypeScript and Tailwind v4 CSS.
@@ -26,7 +32,7 @@
     index.ts // barrel file
     button.stories.tsx // storybook stories
     types.ts // types for props and state
-    readme.md // optional straightforward documentation 
+    readme.md // optional straightforward documentation
     button.atoms.tsx // place where the sub-components are defined
   ```
 
@@ -47,9 +53,12 @@ Versaur uses two primary component patterns based on complexity and browser alig
 
 ### Compound Pattern
 
-Use the **Compound Pattern** for complex components that require multiple related sub-components and sophisticated state management. This pattern provides flexible composition while maintaining clear relationships between parts.
+Use the **Compound Pattern** for complex components that require multiple related sub-components and
+sophisticated state management. This pattern provides flexible composition while maintaining clear
+relationships between parts.
 
 **Use for:**
+
 - `Card` (Card.Header, Card.Body, Card.Footer)
 - `Drawer` (Drawer.Root, Drawer.Trigger, Drawer.Content)
 - `Modal` (Modal.Root, Modal.Trigger, Modal.Content, Modal.Header, Modal.Footer)
@@ -58,6 +67,7 @@ Use the **Compound Pattern** for complex components that require multiple relate
 - `Dropdown` (Dropdown.Root, Dropdown.Trigger, Dropdown.Content, Dropdown.Item)
 
 **Benefits:**
+
 - Flexible composition and customization
 - Clear semantic relationships between components
 - Shared state management across sub-components
@@ -65,15 +75,18 @@ Use the **Compound Pattern** for complex components that require multiple relate
 
 #### Context Pattern Integration
 
-For compound components that need shared state or communication between parent and sub-components, combine with the **Context Pattern**:
+For compound components that need shared state or communication between parent and sub-components,
+combine with the **Context Pattern**:
 
 **Use Context when:**
+
 - Sub-components need access to shared state (open/closed, active tab, etc.)
 - Parent component manages complex interactions between children
 - Sub-components need to communicate with each other
 - ARIA relationships require coordinated IDs and attributes
 
 **Example with Context:**
+
 ```typescript
 // tabs/tabs.tsx
 interface TabsContextValue {
@@ -86,7 +99,7 @@ const TabsContext = createContext<TabsContextValue | null>(null)
 
 const TabsRoot = ({ defaultValue, orientation = 'horizontal', children }) => {
   const [activeTab, setActiveTab] = useState(defaultValue)
-  
+
   return (
     <TabsContext.Provider value={{ activeTab, setActiveTab, orientation }}>
       <div role="tablist" aria-orientation={orientation}>
@@ -99,9 +112,9 @@ const TabsRoot = ({ defaultValue, orientation = 'horizontal', children }) => {
 const TabsTrigger = ({ value, children }) => {
   const context = useContext(TabsContext)
   if (!context) throw new Error('TabsTrigger must be used within Tabs')
-  
+
   const { activeTab, setActiveTab } = context
-  
+
   return (
     <button
       role="tab"
@@ -131,6 +144,7 @@ export const Tabs = Object.assign(TabsRoot, {
 ```
 
 **Simple Compound (No Context):**
+
 ```typescript
 // card/card.tsx
 export const Card = Object.assign(CardRoot, {
@@ -149,9 +163,12 @@ export const Card = Object.assign(CardRoot, {
 
 ### Regular Pattern
 
-Use the **Regular Pattern** for simple components that directly align with standard HTML browser elements. These components should feel familiar and behave consistently with native browser behavior.
+Use the **Regular Pattern** for simple components that directly align with standard HTML browser
+elements. These components should feel familiar and behave consistently with native browser
+behavior.
 
 **Use for:**
+
 - `Button` (aligns with `<button>`)
 - `Link` (aligns with `<a>`)
 - `Input` (aligns with `<input>`)
@@ -159,6 +176,7 @@ Use the **Regular Pattern** for simple components that directly align with stand
 - `Radio` (aligns with `<input type="radio">`)
 
 **Benefits:**
+
 - Familiar developer experience
 - Direct alignment with browser standards
 - Simpler API and mental model
@@ -166,6 +184,7 @@ Use the **Regular Pattern** for simple components that directly align with stand
 - Easier testing and form integration
 
 **Example structure:**
+
 ```typescript
 // button/button.tsx
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -181,12 +200,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 ### Pattern Selection Guidelines
 
 **Choose Compound Pattern when:**
+
 - Component has multiple related sub-components
 - Complex state needs to be shared between parts
 - Users need flexible composition and customization
 - Component doesn't directly map to a single HTML element
 
 **Choose Compound + Context Pattern when:**
+
 - Sub-components need shared state management
 - Parent coordinates interactions between children
 - ARIA relationships require synchronized IDs/attributes
@@ -194,41 +215,46 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 - Examples: Tabs, Accordion, Dropdown, Modal with complex interactions
 
 **Choose Simple Compound Pattern when:**
+
 - Sub-components are independent
 - No shared state required
 - Pure composition without coordination
 - Examples: Card, Layout components
 
 **Choose Regular Pattern when:**
+
 - Component directly enhances a single HTML element
 - Behavior should match browser standards
 - Simple props-based API is sufficient
 - Component is primarily a styled wrapper
 
 **Accessibility Considerations:**
+
 - Compound Pattern: Implement ARIA relationships between sub-components
 - Regular Pattern: Leverage native browser accessibility features
 - Both patterns must meet WCAG 2.1 AA standards
 
 ## Design System & Theme
 
-Versaur follows modern design system principles with a **clean, focused color palette** perfect for professional applications with clear hierarchy and accessibility. Our color system uses harmonious tones that feel natural and trustworthy.
+Versaur follows modern design system principles with a **clean, focused color palette** perfect for
+professional applications with clear hierarchy and accessibility. Our color system uses harmonious
+tones that feel natural and trustworthy.
 
 ### Color Palette & Semantic Roles
 
 Our harmonious color system defines clear semantic roles based on the Spenicle palette:
 
-| Role          | Color Name | Color     | Usage                             |
-| ------------- | ---------- | --------- | --------------------------------- |
-| **Primary**   | Coral      | `#e07a5f` | Main actions, CTAs, brand identity |
-| **Secondary** | Sage       | `#81b29a` | Secondary actions, balance states |
-| **Tertiary**  | Mist       | `#84a5c0` | Subtle backgrounds, professional elements |
-| **Ghost**     | Slate      | `#3d405b` | Text, minimal actions, borders    |
+| Role          | Color Name | Color     | Usage                                          |
+| ------------- | ---------- | --------- | ---------------------------------------------- |
+| **Primary**   | Coral      | `#e07a5f` | Main actions, CTAs, brand identity             |
+| **Secondary** | Sage       | `#81b29a` | Secondary actions, balance states              |
+| **Tertiary**  | Mist       | `#84a5c0` | Subtle backgrounds, professional elements      |
+| **Ghost**     | Slate      | `#3d405b` | Text, minimal actions, borders                 |
 | **Neutral**   | Light Gray | `#f8f9fa` | Neutral surfaces, cards, secondary backgrounds |
-| **Success**   | Success    | `#6db285` | Success states, positive feedback |
-| **Info**      | Info       | `#6b8fad` | Information, neutral alerts       |
-| **Warning**   | Warning    | `#e08a47` | Warning states, caution           |
-| **Danger**    | Danger     | `#e06650` | Error states, destructive actions |
+| **Success**   | Success    | `#6db285` | Success states, positive feedback              |
+| **Info**      | Info       | `#6b8fad` | Information, neutral alerts                    |
+| **Warning**   | Warning    | `#e08a47` | Warning states, caution                        |
+| **Danger**    | Danger     | `#e06650` | Error states, destructive actions              |
 
 ### Color Harmony Principles
 
@@ -295,7 +321,8 @@ All colors are available as CSS custom properties with light, base, and dark var
 - Always use `composeStories` from `@storybook/react` to render stories in tests.
 - DOM environment is provided by jsdom.
 - Prioritize asserting the accessibility of components and interactions
-- There should be 1 test case that asserting the html output, `expect(render().asFragment()).toMatchSnapshot()` to ensure the component is rendered correctly
+- There should be 1 test case that asserting the html output,
+  `expect(render().asFragment()).toMatchSnapshot()` to ensure the component is rendered correctly
 
 ## Storybook
 
@@ -304,7 +331,8 @@ All colors are available as CSS custom properties with light, base, and dark var
 - Add JSDoc code comments at the top of each story for automatic documentation in Storybook.
 - Use Storybook for interactive documentation and testing.
 - Prioritize to documenting the "group" of components, not individual ones
-- When dealing with icon, we could use from `lucide-react` it's only deliberately used in storybook and marked as dev dependency.
+- When dealing with icon, we could use from `lucide-react` it's only deliberately used in storybook
+  and marked as dev dependency.
 
 ## Path Aliases
 
@@ -323,4 +351,3 @@ All colors are available as CSS custom properties with light, base, and dark var
 - See `README.md` for more usage and workflow details.
 - Key files: `src/components/`, `src/hooks/`, `src/utils/`, `src/styles/`, `tsconfig.json`,
   `README.md`
-
