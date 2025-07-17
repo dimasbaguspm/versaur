@@ -1,0 +1,39 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Tabs > matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-row w-full border-b border-neutral overflow-x-auto whitespace-nowrap"
+    role="tablist"
+    style="position: relative;"
+  >
+    <button
+      aria-controls="tabs-content-tab1"
+      aria-selected="true"
+      class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-base bg-transparent relative border-b-2 font-medium text-coral border-coral"
+      id="tabs-trigger-tab1"
+      role="tab"
+      tabindex="0"
+      type="button"
+    >
+      Tab 1
+    </button>
+    <button
+      aria-controls="tabs-content-tab2"
+      aria-selected="false"
+      class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-base bg-transparent relative border-b-2 border-transparent font-normal text-foreground hover:text-coral"
+      id="tabs-trigger-tab2"
+      role="tab"
+      tabindex="-1"
+      type="button"
+    >
+      Tab 2
+    </button>
+    <div
+      aria-hidden="true"
+      class="absolute bottom-0 h-0.5 rounded transition-all duration-300 bg-coral"
+      style="left: 0px; width: 0px; pointer-events: none;"
+    />
+  </div>
+</DocumentFragment>
+`;
