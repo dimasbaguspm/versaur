@@ -25,10 +25,6 @@ export interface ChipInputProps
     | 'warning'
     | 'danger'
   /**
-   * Size variant for the chip inputs
-   */
-  size?: 'sm' | 'md' | 'lg'
-  /**
    * Label text to display above the chip group
    */
   label?: ReactNode

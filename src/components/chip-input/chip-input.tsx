@@ -14,7 +14,6 @@ const ChipInputRoot = React.forwardRef<HTMLDivElement, ChipInputProps>(
   (
     {
       variant = 'primary',
-      size = 'md',
       label,
       helperText,
       error,
@@ -32,7 +31,6 @@ const ChipInputRoot = React.forwardRef<HTMLDivElement, ChipInputProps>(
 
     const contextValue = {
       variant,
-      size,
       disabled,
       error: hasError,
       name,

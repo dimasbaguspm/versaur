@@ -3,13 +3,14 @@ import { cn } from '@/utils/cn'
 import { chipOptionVariants } from './helpers'
 import { useChipInputContext } from './context'
 import type { ChipInputOptionProps } from './types'
-import { X } from 'lucide-react'
+import { Check } from 'lucide-react'
 
 /**
  * ChipInput.Option atom component
  *
  * Individual chip option for ChipInput
  * Uses checkbox input pattern for multiple selection
+ * Supports leading icon and animated tick/check
  */
 export const ChipOption = React.forwardRef<
   HTMLInputElement,
@@ -59,6 +60,7 @@ export const ChipOption = React.forwardRef<
       />
       <label
         htmlFor={inputId}
+        data-selected={isChecked}
         className={cn(
           chipOptionVariants({
             variant,
@@ -68,22 +70,43 @@ export const ChipOption = React.forwardRef<
           className
         )}
       >
-        <span className='flex items-center gap-1'>
+        <span className='flex items-center'>
+          {/* Check icon color matches variant */}
+          <span
+            className={cn(
+              'flex items-center',
+              'transition-transform transition-opacity duration-200',
+              isChecked ? 'opacity-100 scale-100 mr-1' : 'opacity-0 scale-75'
+            )}
+            aria-hidden='true'
+          >
+            {isChecked && (
+              <Check
+                size={16}
+                className={
+                  variant === 'primary'
+                    ? 'text-coral'
+                    : variant === 'secondary'
+                      ? 'text-sage'
+                      : variant === 'tertiary'
+                        ? 'text-mist'
+                        : variant === 'ghost'
+                          ? 'text-slate'
+                          : variant === 'success'
+                            ? 'text-success'
+                            : variant === 'info'
+                              ? 'text-info'
+                              : variant === 'warning'
+                                ? 'text-warning'
+                                : variant === 'danger'
+                                  ? 'text-danger'
+                                  : 'text-coral'
+                }
+              />
+            )}
+          </span>
+
           {children}
-          {isChecked && (
-            <button
-              type='button'
-              aria-label={`Remove ${children}`}
-              tabIndex={isDisabled ? -1 : 0}
-              className={cn(
-                'ml-1 p-0.5 rounded-full hover:bg-slate-100',
-                isDisabled && 'opacity-50 pointer-events-none'
-              )}
-              disabled={isDisabled}
-            >
-              <X size={16} aria-hidden='true' />
-            </button>
-          )}
         </span>
       </label>
     </>

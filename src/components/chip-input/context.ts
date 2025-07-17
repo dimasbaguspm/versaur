@@ -3,7 +3,6 @@ import type { ChipInputProps } from './types'
 
 export interface ChipInputContextValue {
   variant: ChipInputProps['variant']
-  size: ChipInputProps['size']
   disabled?: boolean
   error?: boolean
   name: string

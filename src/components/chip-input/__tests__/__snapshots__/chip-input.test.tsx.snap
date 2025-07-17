@@ -1,0 +1,81 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ChipInput > matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    aria-label="Select fruits"
+    class="w-full"
+  >
+    <div
+      class="flex flex-wrap gap-2"
+    >
+      <input
+        class="sr-only"
+        id="«rf»"
+        name="fruits[]"
+        type="checkbox"
+        value="apple"
+      />
+      <label
+        class="inline-flex items-center px-2 py-1 text-xs bg-neutral rounded-full font-medium transition-colors duration-200 cursor-pointer border border-slate-100 hover:bg-coral/10 hover:border-coral/30 focus:border-coral/30 data-[selected=true]:bg-coral/10 data-[selected=true]:border-coral"
+        data-selected="false"
+        for="«rf»"
+      >
+        <span
+          class="flex items-center"
+        >
+          <span
+            aria-hidden="true"
+            class="flex items-center transition-opacity duration-200 opacity-0 scale-75"
+          />
+          Apple
+        </span>
+      </label>
+      <input
+        class="sr-only"
+        id="«rg»"
+        name="fruits[]"
+        type="checkbox"
+        value="banana"
+      />
+      <label
+        class="inline-flex items-center px-2 py-1 text-xs bg-neutral rounded-full font-medium transition-colors duration-200 cursor-pointer border border-slate-100 hover:bg-coral/10 hover:border-coral/30 focus:border-coral/30 data-[selected=true]:bg-coral/10 data-[selected=true]:border-coral"
+        data-selected="false"
+        for="«rg»"
+      >
+        <span
+          class="flex items-center"
+        >
+          <span
+            aria-hidden="true"
+            class="flex items-center transition-opacity duration-200 opacity-0 scale-75"
+          />
+          Banana
+        </span>
+      </label>
+      <input
+        class="sr-only"
+        id="«rh»"
+        name="fruits[]"
+        type="checkbox"
+        value="cherry"
+      />
+      <label
+        class="inline-flex items-center px-2 py-1 text-xs bg-neutral rounded-full font-medium transition-colors duration-200 cursor-pointer border border-slate-100 hover:bg-coral/10 hover:border-coral/30 focus:border-coral/30 data-[selected=true]:bg-coral/10 data-[selected=true]:border-coral"
+        data-selected="false"
+        for="«rh»"
+      >
+        <span
+          class="flex items-center"
+        >
+          <span
+            aria-hidden="true"
+            class="flex items-center transition-opacity duration-200 opacity-0 scale-75"
+          />
+          Cherry
+        </span>
+      </label>
+    </div>
+  </div>
+</DocumentFragment>
+`;
