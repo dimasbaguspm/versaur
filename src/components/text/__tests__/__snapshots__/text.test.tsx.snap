@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Text > matches snapshot 1`] = `
+<DocumentFragment>
+  <h1
+    class="text-primary underline capitalize text-center italic line-clamp-1 truncate font-bold text-4xl leading-loose"
+  >
+    Heading: Primary, Underline, Capitalize, Center, Italic, Clamp 1, Ellipsis
+  </h1>
+</DocumentFragment>
+`;
