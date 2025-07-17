@@ -1,9 +1,9 @@
 import { forwardRef } from 'react'
 import type { SnackbarProps } from './types'
 import { cn } from '@/utils/cn'
-import { snackbarVariants } from './helpers'
+import { getSnackbarButtonIconVariant, snackbarVariants } from './helpers'
 import { SnackbarText, SnackbarAction } from './snackbar.atoms'
-import { ButtonIcon } from '@/components/button-icon/button-icon'
+import { ButtonIcon } from '@/components/button-icon'
 import { X } from 'lucide-react'
 
 /**
@@ -23,7 +23,7 @@ export const Snackbar = forwardRef<HTMLDivElement, SnackbarProps>(
         <SnackbarText>{children}</SnackbarText>
         {action && <SnackbarAction>{action}</SnackbarAction>}
         <ButtonIcon
-          variant='ghost'
+          variant={getSnackbarButtonIconVariant(color)}
           size='sm'
           shape='rounded'
           aria-label='Close'

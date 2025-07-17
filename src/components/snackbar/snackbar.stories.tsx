@@ -12,9 +12,6 @@ const meta: Meta<typeof Snackbar> = {
   title: 'Components/Snackbar',
   component: Snackbar,
   tags: ['autodocs'],
-  parameters: {
-    layout: 'centered',
-  },
 }
 export default meta
 
