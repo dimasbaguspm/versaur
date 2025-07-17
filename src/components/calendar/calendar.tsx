@@ -168,10 +168,7 @@ export const CalendarRoot: React.FC<CalendarProps> = ({
   }
 
   return (
-    <div
-      className={cn('bg-white rounded-lg shadow-sm select-none', className)}
-      {...props}
-    >
+    <div className={cn('select-none', className)} {...props}>
       {renderHeader()}
       {renderWeekdays()}
       {renderDays()}

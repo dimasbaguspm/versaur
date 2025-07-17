@@ -3,7 +3,7 @@
 exports[`Calendar > renders correctly 1`] = `
 <DocumentFragment>
   <div
-    class="bg-white rounded-lg shadow-sm select-none"
+    class="select-none"
   >
     <div
       class="flex items-center justify-between px-4 pt-4 pb-2"
