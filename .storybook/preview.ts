@@ -1,5 +1,5 @@
 import type { Preview } from '@storybook/react'
-import '../src/styles.css'
+import '../assets/styles.css'
 
 const preview: Preview = {
   tags: ['autodocs'],

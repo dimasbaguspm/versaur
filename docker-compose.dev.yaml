@@ -9,14 +9,13 @@ services:
     volumes:
       # Mount source code for hot reload
       - ./src:/app/src:ro
-      - ./public:/app/public:ro
+      - ./assets:/app/assets:ro
       - ./.storybook:/app/.storybook:ro
       - ./package.json:/app/package.json:ro
       - ./yarn.lock:/app/yarn.lock:ro
       - ./tsconfig.json:/app/tsconfig.json:ro
       - ./tailwind.config.ts:/app/tailwind.config.ts:ro
       - ./vite.config.ts:/app/vite.config.ts:ro
-      # Exclude node_modules from host to prevent conflicts
       - /app/node_modules
     environment:
       - NODE_ENV=development

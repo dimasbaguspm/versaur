@@ -1,7 +1,7 @@
 {
-  "name": "versaur",
+  "name": "@dimasbaguspm/versaur",
   "version": "0.0.1",
-  "description": "A modern React UI library with Tailwind CSS",
+  "description": "React UI library with Tailwind CSS",
   "author": "Dimas Bagus Prayogo Mukti<dimas.bagus.pm@gmail.com>",
   "license": "MIT",
   "type": "module",
@@ -14,23 +14,18 @@
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./components": {
-      "import": "./dist/components/index.js",
-      "types": "./dist/components/index.d.ts"
+    "./components/*": {
+      "import": "./dist/components/*.js",
+      "types": "./dist/components/*/index.d.ts"
     },
-    "./hooks": {
-      "import": "./dist/hooks/index.js",
-      "types": "./dist/hooks/index.d.ts"
-    },
-    "./utils": {
-      "import": "./dist/utils/index.js",
-      "types": "./dist/utils/index.d.ts"
+    "./hooks/*": {
+      "import": "./dist/hooks/*.js",
+      "types": "./dist/hooks/*/index.d.ts"
     },
     "./styles": "./dist/styles.css"
   },
   "files": [
-    "dist",
-    "README.md"
+    "dist"
   ],
   "scripts": {
     "build": "tsc && vite build",
@@ -40,8 +35,6 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest",
-    "test:ui": "vitest --ui",
-    "test:coverage": "vitest --coverage",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -49,8 +42,7 @@
     "react",
     "ui",
     "components",
-    "tailwind",
-    "library"
+    "tailwind"
   ],
   "peerDependencies": {
     "lucide-react": ">=0.525.0",
