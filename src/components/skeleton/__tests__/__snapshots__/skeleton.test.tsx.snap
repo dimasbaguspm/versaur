@@ -1,0 +1,16 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Skeleton > renders default skeleton and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    aria-hidden="true"
+    class="relative w-full overflow-hidden bg-neutral-200 rounded-md h-6"
+    role="presentation"
+  >
+    <span
+      aria-hidden="true"
+      class="absolute inset-0 block w-full h-full animate-loading-bar bg-gradient-to-r from-transparent via-white/60 to-transparent pointer-events-none"
+    />
+  </div>
+</DocumentFragment>
+`;
