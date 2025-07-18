@@ -1,0 +1,73 @@
+name: Release
+
+on:
+  release:
+    types: [released]
+
+env:
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  CI: true
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22.14
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.14.0
+      
+      - name: Enable Corepack (Yarn Berry)
+        run: corepack enable
+
+      - name: Get Tag
+        uses: olegtarasov/get-tag@v2.1
+        id: tagName
+        with:
+          tagRegex: "(?<package>.*)_(?<version>.*)"
+
+      - name: Check Tag Format
+        if: steps.tagName.outputs.package == '' || steps.tagName.outputs.version == ''
+        run: |
+          echo "::error::Tag format invalid. Expected <package>_<version>"
+          exit 1
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run type check
+        run: yarn typecheck
+
+      - name: Run lint
+        run: yarn lint
+
+      - name: Run test
+        run: yarn test --passWithNoTests --run
+
+      - name: Update Version
+        run: yarn version patch
+
+      - name: Push Changes
+        uses: peter-evans/create-pull-request@v7
+        with:
+          title: |
+            release: package ${{ steps.tagName.outputs.package }} version
+          branch: releases/${{ steps.tagName.outputs.package }}
+          base: main
+
+      - name: Run build
+        run: yarn build
+
+      - name: Publish Standalone
+        env:
+          NPM_CONFIG_ACCESS: public
+        run: yarn npm publish --access public --tag latest
+        
