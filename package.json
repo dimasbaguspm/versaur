@@ -14,15 +14,7 @@
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./components/*": {
-      "import": "./dist/components/*.js",
-      "types": "./dist/components/*/index.d.ts"
-    },
-    "./hooks/*": {
-      "import": "./dist/hooks/*.js",
-      "types": "./dist/hooks/*/index.d.ts"
-    },
-    "./styles": "./dist/styles.css"
+    "./styles.css": "./dist/styles.css"
   },
   "files": [
     "dist"

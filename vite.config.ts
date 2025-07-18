@@ -1,26 +1,12 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { resolve, dirname, join, basename } from 'node:path'
+import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import dts from 'vite-plugin-dts'
 import tailwindcss from '@tailwindcss/vite'
-import { globSync } from 'node:fs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-const components = Object.fromEntries(
-  globSync('src/components/*/index.ts', { withFileTypes: true }).map(file => [
-    join('components', basename(file.parentPath, '.ts')),
-    join(file.parentPath, file.name),
-  ])
-)
-
-const hooks = Object.fromEntries(
-  globSync('src/hooks/*.ts', { withFileTypes: true }).map(file => [
-    join('hooks', basename(file.name, '.ts')),
-    join(file.parentPath, file.name),
-  ])
-)
 export default defineConfig({
   plugins: [
     react(),
@@ -44,8 +30,6 @@ export default defineConfig({
     lib: {
       entry: {
         index: 'src/index.ts',
-        ...components,
-        ...hooks,
       },
       formats: ['es'],
     },
