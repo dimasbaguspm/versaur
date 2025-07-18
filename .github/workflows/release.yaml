@@ -62,8 +62,8 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           title: |
-            release: package ${{ steps.tagName.outputs.package }} version
-          branch: releases/${{ steps.tagName.outputs.package }}
+            release: package ${{ steps.tagName.outputs.version }} version
+          branch: releases/${{ steps.tagName.outputs.version }}
           base: main
 
       - name: Run build
