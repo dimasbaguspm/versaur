@@ -7,6 +7,10 @@ on:
   push:
     branches: [main]
 
+env:
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  CI: true
+
 jobs:
   validate:
     runs-on: ubuntu-latest
