@@ -33,7 +33,7 @@ export interface TextInputProps
   /**
    * Label text to display above the input
    */
-  label: ReactNode
+  label?: ReactNode
   /**
    * Optional content to display inside the input (left)
    */

@@ -10,17 +10,17 @@ export const avatarVariants = cva(
     variants: {
       variant: {
         // Core variants using Versaur color system
-        primary: 'bg-coral/10 text-coral',
-        secondary: 'bg-sage/10 text-sage',
-        tertiary: 'bg-mist/10 text-mist',
-        ghost: 'bg-slate/10 text-slate',
-        neutral: 'bg-neutral/10 text-foreground border border-border',
+        primary: 'bg-coral-soft text-coral',
+        secondary: 'bg-sage-soft text-sage',
+        tertiary: 'bg-mist-soft text-mist',
+        ghost: 'bg-slate-soft text-slate',
+        neutral: 'bg-neutral-soft text-foreground border border-border',
 
         // Semantic variants
-        success: 'bg-success/10 text-success',
-        info: 'bg-info/10 text-info',
-        warning: 'bg-warning/10 text-warning',
-        danger: 'bg-danger/10 text-danger',
+        success: 'bg-success-soft text-success',
+        info: 'bg-info-soft text-info',
+        warning: 'bg-warning-soft text-warning',
+        danger: 'bg-danger-soft text-danger',
       },
       size: {
         xs: 'h-6 w-6 text-xs',

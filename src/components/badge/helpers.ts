@@ -31,7 +31,7 @@ export const badgeVariants = cva(
       },
       size: {
         sm: 'text-xs px-1 py-0.25 h-3',
-        md: 'text-sm px-1.5 py-0.5 h-4',
+        md: 'text-xs px-1.5 py-0.5 h-4',
         lg: 'text-sm px-2 py-1 h-6',
       },
       iconOnly: {
@@ -44,22 +44,22 @@ export const badgeVariants = cva(
       {
         variant: 'default',
         color: 'primary',
-        className: 'bg-coral/15 text-coral',
+        className: 'bg-coral-soft text-coral',
       },
       {
         variant: 'default',
         color: 'secondary',
-        className: 'bg-sage/15 text-sage',
+        className: 'bg-sage-soft text-sage',
       },
       {
         variant: 'default',
         color: 'tertiary',
-        className: 'bg-mist/15 text-mist',
+        className: 'bg-mist-soft text-mist',
       },
       {
         variant: 'default',
         color: 'ghost',
-        className: 'bg-slate/15 text-slate',
+        className: 'bg-slate-soft text-slate',
       },
       {
         variant: 'default',
@@ -69,22 +69,22 @@ export const badgeVariants = cva(
       {
         variant: 'default',
         color: 'success',
-        className: 'bg-success/15 text-success',
+        className: 'bg-success-soft text-success',
       },
       {
         variant: 'default',
         color: 'info',
-        className: 'bg-info/15 text-info',
+        className: 'bg-info-soft text-info',
       },
       {
         variant: 'default',
         color: 'warning',
-        className: 'bg-warning/15 text-warning',
+        className: 'bg-warning-soft text-warning',
       },
       {
         variant: 'default',
         color: 'danger',
-        className: 'bg-danger/15 text-danger',
+        className: 'bg-danger-soft text-danger',
       },
 
       // Outline variant color combinations

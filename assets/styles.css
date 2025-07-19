@@ -21,17 +21,27 @@
 
   /* Core Colors */
   --color-coral: #e07a5f;
+  --color-coral-soft: #fbe7e1;
   --color-sage: #81b29a;
+  --color-sage-soft: #e6f3ec;
   --color-mist: #84a5c0;
+  --color-mist-soft: #e7eef4;
   --color-slate: #3d405b;
+  --color-slate-soft: #e3e4ea;
   --color-cream: #f4f1de;
+  --color-cream-soft: #fdfcf7;
   --color-light-gray: #f8f9fa;
+  --color-light-gray-soft: #fcfcfd;
 
   /* Semantic Colors */
   --color-success: #6db285;
+  --color-success-soft: #e3f4ea;
   --color-info: #6b8fad;
+  --color-info-soft: #e6eef5;
   --color-warning: #e08a47;
+  --color-warning-soft: #fbeede;
   --color-danger: #e06650;
+  --color-danger-soft: #fbe4e1;
 
   /* Background and Foreground */
   --color-background: #ffffff; /* White */
@@ -39,10 +49,15 @@
 
   /* Button/Component Variants */
   --color-primary: #e07a5f; /* Coral */
+  --color-primary-soft: #fbe7e1; /* Soft Coral */
   --color-secondary: #81b29a; /* Sage */
+  --color-secondary-soft: #e6f3ec; /* Soft Sage */
   --color-tertiary: #84a5c0; /* Mist */
+  --color-tertiary-soft: #e7eef4; /* Soft Mist */
   --color-ghost: #3d405b; /* Slate */
-  --color-neutral: #f8f9fa; /* Light Gray */
+  --color-ghost-soft: #e3e4ea; /* Soft Slate */
+  --color-neutral: #e9ecef; /* Light Gray */
+  --color-neutral-soft: #f8f9fa; /* Soft Light Gray */
 
   /* Utility Colors */
   --color-border: #e0e0e0;

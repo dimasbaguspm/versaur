@@ -5,7 +5,7 @@ import { cva } from '@/utils/variants'
  * Supports both default (soft) and outline variants for all colors
  */
 export const alertVariants = cva(
-  'relative flex items-center gap-1 rounded-md p-2 text-sm transition-all duration-200',
+  'relative flex items-center gap-2 rounded-md p-2 text-sm transition-all duration-200',
   {
     variants: {
       variant: {
@@ -31,47 +31,47 @@ export const alertVariants = cva(
       {
         variant: 'default',
         color: 'primary',
-        class: 'bg-coral/10 text-coral border border-coral/20',
+        class: 'bg-coral-soft text-coral border border-coral',
       },
       {
         variant: 'default',
         color: 'secondary',
-        class: 'bg-sage/10 text-sage border border-sage/20',
+        class: 'bg-sage-soft text-sage border border-sage',
       },
       {
         variant: 'default',
         color: 'tertiary',
-        class: 'bg-mist/10 text-mist border border-mist/20',
+        class: 'bg-mist-soft text-mist border border-mist',
       },
       {
         variant: 'default',
         color: 'ghost',
-        class: 'bg-slate/10 text-slate border border-slate/20',
+        class: 'bg-slate-soft text-slate border border-slate',
       },
       {
         variant: 'default',
         color: 'neutral',
-        class: 'bg-neutral/50 text-foreground border border-border',
+        class: 'bg-border/50 text-foreground border border-border',
       },
       {
         variant: 'default',
         color: 'success',
-        class: 'bg-success/10 text-success border border-success/20',
+        class: 'bg-success-soft text-success border border-success',
       },
       {
         variant: 'default',
         color: 'info',
-        class: 'bg-info/10 text-info border border-info/20',
+        class: 'bg-info-soft text-info border border-info',
       },
       {
         variant: 'default',
         color: 'warning',
-        class: 'bg-warning/10 text-warning border border-warning/20',
+        class: 'bg-warning-soft text-warning border border-warning',
       },
       {
         variant: 'default',
         color: 'danger',
-        class: 'bg-danger/10 text-danger border border-danger/20',
+        class: 'bg-danger-soft text-danger border border-danger',
       },
 
       // Outline variant styles

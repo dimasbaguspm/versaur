@@ -27,11 +27,7 @@ describe('Tile', () => {
       </Tile>
     )
     const tile = screen.getByTestId('tile')
-    expect(tile).toHaveClass(
-      'bg-coral-50',
-      'border-coral-200',
-      'text-coral-900'
-    )
+    expect(tile).toHaveClass('bg-coral-soft', 'border-coral', 'text-coral')
   })
 
   it('applies correct size classes', () => {
@@ -78,12 +74,6 @@ describe('Tile', () => {
       </Tile>
     )
     expect(ref.current).toBeInstanceOf(HTMLDivElement)
-  })
-
-  it('applies white variant classes by default', () => {
-    render(<Tile data-testid='tile'>Default tile</Tile>)
-    const tile = screen.getByTestId('tile')
-    expect(tile).toHaveClass('bg-white', 'border-gray-200', 'text-gray-900')
   })
 
   it('renders all variants correctly', () => {

@@ -31,12 +31,14 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
 
     return (
       <div>
-        <label
-          htmlFor={inputId}
-          className='block text-sm font-medium text-foreground mb-2'
-        >
-          {label}
-        </label>
+        {label && (
+          <label
+            htmlFor={inputId}
+            className='block text-sm font-medium text-foreground mb-2'
+          >
+            {label}
+          </label>
+        )}
         <div className={cn('relative w-full', className)}>
           {leftContent && (
             <span

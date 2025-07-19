@@ -9,16 +9,16 @@ export const tileVariants = cva(
   {
     variants: {
       variant: {
-        white: 'bg-white border border-gray-200 text-gray-900',
-        neutral: 'bg-gray-50 border border-gray-200 text-gray-900',
-        primary: 'bg-coral-50 border border-coral-200 text-coral-900',
-        secondary: 'bg-sage-50 border border-sage-200 text-sage-900',
-        tertiary: 'bg-mist-50 border border-mist-200 text-mist-900',
-        ghost: 'bg-transparent border border-slate-200 text-slate-900',
-        success: 'bg-green-50 border border-green-200 text-green-900',
-        info: 'bg-blue-50 border border-blue-200 text-blue-900',
-        warning: 'bg-orange-50 border border-orange-200 text-orange-900',
-        danger: 'bg-red-50 border border-red-200 text-red-900',
+        white: 'bg-white border border-border text-border',
+        neutral: 'bg-neutral border border-gray-200 text-gray',
+        primary: 'bg-coral-soft border border-coral text-coral',
+        secondary: 'bg-sage-soft border border-sage text-sage',
+        tertiary: 'bg-mist-soft border border-mist text-mist',
+        ghost: 'bg-transparent border border-slate text-slate',
+        success: 'bg-success-soft border border-success text-success',
+        info: 'bg-info-soft border border-info text-info',
+        warning: 'bg-warning-soft border border-warning text-warning',
+        danger: 'bg-danger-soft border border-danger text-danger',
       },
       size: {
         xs: 'p-2',
