@@ -1,3 +1,35 @@
+describe('Sizes', () => {
+  it('applies small size styles', () => {
+    render(<Badge size='sm'>Small</Badge>)
+    const badge = screen.getByText('Small')
+    expect(badge).toHaveClass('text-xs', 'px-1', 'py-0.25', 'h-3')
+  })
+  it('applies medium size styles (default)', () => {
+    render(<Badge size='md'>Medium</Badge>)
+    const badge = screen.getByText('Medium')
+    expect(badge).toHaveClass('text-sm', 'px-1.5', 'py-0.5', 'h-4')
+  })
+  it('applies large size styles', () => {
+    render(<Badge size='lg'>Large</Badge>)
+    const badge = screen.getByText('Large')
+    expect(badge).toHaveClass('text-sm', 'px-2', 'py-1', 'h-6')
+  })
+  it('applies icon-only size for small', () => {
+    render(<Badge size='sm' iconLeft={<span data-testid='icon-sm'>👍</span>} />)
+    const badge = screen.getByTestId('icon-sm').parentElement
+    expect(badge).toHaveClass('w-5', 'h-5')
+  })
+  it('applies icon-only size for medium', () => {
+    render(<Badge size='md' iconLeft={<span data-testid='icon-md'>👍</span>} />)
+    const badge = screen.getByTestId('icon-md').parentElement
+    expect(badge).toHaveClass('w-6', 'h-6')
+  })
+  it('applies icon-only size for large', () => {
+    render(<Badge size='lg' iconLeft={<span data-testid='icon-lg'>👍</span>} />)
+    const badge = screen.getByTestId('icon-lg').parentElement
+    expect(badge).toHaveClass('w-7', 'h-7')
+  })
+})
 import { render, screen } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
 import { Badge } from '../badge'
@@ -121,7 +153,7 @@ describe('Badge Component', () => {
     it('applies icon-only size adjustments', () => {
       render(<Badge iconLeft={<span data-testid='icon'>👍</span>} />)
       const badge = screen.getByTestId('icon').parentElement
-      expect(badge).toHaveClass('w-5', 'h-5')
+      expect(badge).toHaveClass('w-6', 'h-6')
     })
 
     it('uses iconRight when iconLeft is not provided in icon only mode', () => {

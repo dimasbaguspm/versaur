@@ -1,3 +1,27 @@
+/**
+ * Size variants for the Badge component.
+ */
+export const Sizes: Story = {
+  render: () => (
+    <div className='flex flex-wrap gap-2 items-end'>
+      <Badge size='sm'>Small</Badge>
+      <Badge size='md'>Medium</Badge>
+      <Badge size='lg'>Large</Badge>
+      <Badge size='sm' iconLeft={<CheckIcon className='h-3 w-3' />}>
+        Small Icon
+      </Badge>
+      <Badge size='md' iconLeft={<CheckIcon className='h-4 w-4' />}>
+        Medium Icon
+      </Badge>
+      <Badge size='lg' iconLeft={<CheckIcon className='h-5 w-5' />}>
+        Large Icon
+      </Badge>
+      <Badge size='sm' iconLeft={<CheckIcon className='h-3 w-3' />} />
+      <Badge size='md' iconLeft={<CheckIcon className='h-4 w-4' />} />
+      <Badge size='lg' iconLeft={<CheckIcon className='h-5 w-5' />} />
+    </div>
+  ),
+}
 import type { Meta, StoryObj } from '@storybook/react'
 import { Badge } from './badge'
 import {

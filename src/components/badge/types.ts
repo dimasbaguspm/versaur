@@ -10,6 +10,13 @@ import type { HTMLAttributes, ReactNode } from 'react'
  */
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   /**
+   * Size of the badge
+   * - sm: Small (compact)
+   * - md: Medium (default)
+   * - lg: Large
+   */
+  size?: 'sm' | 'md' | 'lg'
+  /**
    * Visual style variant
    * - default: Solid background with text
    * - outline: Border with transparent background

@@ -31,6 +31,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
       variant = 'default',
       shape = 'square',
       color = 'primary',
+      size = 'md',
       iconLeft,
       iconRight,
       className,
@@ -53,6 +54,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
             variant,
             color,
             shape,
+            size,
             iconOnly: isIconOnly,
           }),
           className

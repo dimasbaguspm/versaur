@@ -51,8 +51,22 @@ import { CheckIcon, StarIcon } from 'lucide-react'
 | `color` | `'primary' \| 'secondary' \| 'tertiary' \| 'ghost' \| 'neutral' \| 'success' \| 'info' \| 'warning' \| 'danger'` | `'primary'` | Color variant |
 | `shape` | `'rounded' \| 'square'` | `'square'` | Shape of the badge |
 | `iconLeft` | `ReactNode` | - | Icon to display on the left |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size of the badge |
 | `iconRight` | `ReactNode` | - | Icon to display on the right |
 | `children` | `ReactNode` | - | Content to display (when empty + icon present = icon-only) |
+### Different Sizes
+
+```tsx
+<Badge size="sm">Small</Badge>
+<Badge size="md">Medium</Badge>
+<Badge size="lg">Large</Badge>
+<Badge size="sm" iconLeft={<CheckIcon />}>Small Icon</Badge>
+<Badge size="md" iconLeft={<CheckIcon />}>Medium Icon</Badge>
+<Badge size="lg" iconLeft={<CheckIcon />}>Large Icon</Badge>
+<Badge size="sm" iconLeft={<CheckIcon />} />
+<Badge size="md" iconLeft={<CheckIcon />} />
+<Badge size="lg" iconLeft={<CheckIcon />} />
+```
 
 ## Icon-Only Mode
 
