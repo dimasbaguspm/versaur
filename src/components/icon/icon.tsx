@@ -4,22 +4,19 @@ import { iconVariants } from './helpers'
 
 /**
  * Icon component for Versaur UI
- * Wraps Lucide icons and enforces consistent size and color
- * @example <Icon color="primary" size="md"><LucideIcon /></Icon>
+ * Renders a single icon component (e.g., from lucide-react) with enforced size and color
+ * @example <Icon as={Circle} color="primary" size="md" />
  */
-export const Icon: React.FC<IconProps> = ({
-  color = 'primary',
-  size = 'md',
-  children,
-  ...rest
-}) => {
+export const Icon = React.forwardRef<SVGSVGElement, IconProps>(function Icon(
+  { as: IconComponent, color = 'primary', size = 'md', className, ...rest },
+  ref
+) {
   return (
-    <span
-      className={iconVariants({ color, size, className: rest.className })}
-      aria-hidden={'true'}
+    <IconComponent
+      // @ts-expect-error - Lucide icons don't have className prop, but we use it for styling
+      ref={ref}
+      className={iconVariants({ color, size, className })}
       {...rest}
-    >
-      {children}
-    </span>
+    />
   )
-}
+})

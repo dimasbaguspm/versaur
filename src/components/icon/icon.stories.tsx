@@ -14,16 +14,14 @@ export default {
 
 export const Basic = {
   render: () => (
-    <Icon color='primary' size='md' title='Primary Icon'>
-      <Circle />
-    </Icon>
+    <Icon as={Circle} color='primary' size='md' aria-label='Primary Icon' />
   ),
   name: 'Basic usage',
   parameters: {
     docs: {
       description: {
         story:
-          'A basic Icon wrapping a Lucide icon with primary color and medium size.',
+          'A basic Icon rendering a Lucide icon with primary color and medium size.',
       },
     },
   },
@@ -32,21 +30,11 @@ export const Basic = {
 export const AllSizes = {
   render: () => (
     <div className='flex gap-2 items-center'>
-      <Icon size='xs'>
-        <Circle />
-      </Icon>
-      <Icon size='sm'>
-        <Circle />
-      </Icon>
-      <Icon size='md'>
-        <Circle />
-      </Icon>
-      <Icon size='lg'>
-        <Circle />
-      </Icon>
-      <Icon size='xl'>
-        <Circle />
-      </Icon>
+      <Icon size='xs' as={Circle} />
+      <Icon size='sm' as={Circle} />
+      <Icon size='md' as={Circle} />
+      <Icon size='lg' as={Circle} />
+      <Icon size='xl' as={Circle} />
     </div>
   ),
   name: 'All sizes',
@@ -62,33 +50,15 @@ export const AllSizes = {
 export const AllColors = {
   render: () => (
     <div className='flex gap-2 items-center'>
-      <Icon color='primary'>
-        <Star />
-      </Icon>
-      <Icon color='secondary'>
-        <Star />
-      </Icon>
-      <Icon color='tertiary'>
-        <Star />
-      </Icon>
-      <Icon color='ghost'>
-        <Star />
-      </Icon>
-      <Icon color='neutral'>
-        <Star />
-      </Icon>
-      <Icon color='success'>
-        <Star />
-      </Icon>
-      <Icon color='info'>
-        <Star />
-      </Icon>
-      <Icon color='warning'>
-        <Star />
-      </Icon>
-      <Icon color='danger'>
-        <Star />
-      </Icon>
+      <Icon as={Star} color='primary' />
+      <Icon as={Star} color='secondary' />
+      <Icon as={Star} color='tertiary' />
+      <Icon as={Star} color='ghost' />
+      <Icon as={Star} color='neutral' />
+      <Icon as={Star} color='success' />
+      <Icon as={Star} color='info' />
+      <Icon as={Star} color='warning' />
+      <Icon as={Star} color='danger' />
     </div>
   ),
   name: 'All colors',
