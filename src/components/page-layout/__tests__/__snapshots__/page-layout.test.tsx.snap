@@ -1,0 +1,31 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`PageLayout > renders desktop layout and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="w-full bg-white mx-auto max-w-7xl px-6 py-10"
+  >
+    Desktop layout (max-w-7xl)
+  </div>
+</DocumentFragment>
+`;
+
+exports[`PageLayout > renders mobile layout and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="bg-white mx-auto w-full px-2 py-4"
+  >
+    Mobile layout (full width)
+  </div>
+</DocumentFragment>
+`;
+
+exports[`PageLayout > renders tablet layout and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="w-full bg-white mx-auto max-w-3xl px-4 py-8"
+  >
+    Tablet layout (max-w-3xl)
+  </div>
+</DocumentFragment>
+`;
