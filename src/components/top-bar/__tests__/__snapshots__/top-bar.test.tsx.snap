@@ -59,7 +59,7 @@ exports[`TopBar > renders correctly (snapshot) 1`] = `
         <button
           aria-disabled="false"
           aria-label="Notifications"
-          class="inline-flex items-center justify-center font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none border border-border text-foreground bg-transparent hover:bg-accent-soft focus-visible:ring-accent-soft focus-visible:ring-offset-white transition-all h-8 w-8 rounded-md"
+          class="inline-flex items-center justify-center font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none border border-border text-foreground bg-white hover:bg-accent-soft focus-visible:ring-accent-soft focus-visible:ring-offset-white transition-all h-8 w-8 rounded-md"
           type="button"
         >
           <svg
@@ -86,7 +86,7 @@ exports[`TopBar > renders correctly (snapshot) 1`] = `
         <button
           aria-disabled="false"
           aria-label="Settings"
-          class="inline-flex items-center justify-center font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none border border-border text-foreground bg-transparent hover:bg-accent-soft focus-visible:ring-accent-soft focus-visible:ring-offset-white transition-all h-8 w-8 rounded-md"
+          class="inline-flex items-center justify-center font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none border border-border text-foreground bg-white hover:bg-accent-soft focus-visible:ring-accent-soft focus-visible:ring-offset-white transition-all h-8 w-8 rounded-md"
           type="button"
         >
           <svg

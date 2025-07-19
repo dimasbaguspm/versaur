@@ -12,7 +12,7 @@ exports[`AppBar > renders correctly (snapshot) 1`] = `
       <button
         aria-disabled="false"
         aria-label="Open navigation"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none text-foreground bg-transparent hover:bg-neutral/70 focus-visible:ring-foreground-soft focus-visible:ring-offset-white h-12 w-12 rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none text-foreground bg-white hover:bg-neutral/70 focus-visible:ring-foreground-soft focus-visible:ring-offset-white h-12 w-12 rounded-md"
         type="button"
       >
         <svg

@@ -38,7 +38,7 @@ exports[`Modal > renders correctly (snapshot) 1`] = `
       >
         <button
           aria-disabled="false"
-          class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-10 px-4 text-sm min-w-[2.5rem]"
+          class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-10 px-4 text-sm min-w-[2.5rem]"
           type="button"
         >
           Cancel

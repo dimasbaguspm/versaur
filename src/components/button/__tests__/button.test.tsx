@@ -75,7 +75,7 @@ describe('Button', () => {
       const { unmount } = render(<Button variant={variant}>{variant}</Button>)
       const button = screen.getByRole('button')
       expect(button).toHaveClass('border')
-      expect(button).toHaveClass('bg-transparent')
+      expect(button).toHaveClass('bg-white')
       unmount()
     })
   })
@@ -94,7 +94,7 @@ describe('Button', () => {
     ghostVariants.forEach(variant => {
       const { unmount } = render(<Button variant={variant}>{variant}</Button>)
       const button = screen.getByRole('button')
-      expect(button).toHaveClass('bg-transparent')
+      expect(button).toHaveClass('bg-white')
       unmount()
     })
   })

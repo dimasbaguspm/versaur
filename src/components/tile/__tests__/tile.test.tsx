@@ -27,7 +27,7 @@ describe('Tile', () => {
       </Tile>
     )
     const tile = screen.getByTestId('tile')
-    expect(tile).toHaveClass('bg-coral-soft', 'border-coral', 'text-coral')
+    expect(tile).toHaveClass('bg-coral-soft', 'border-coral')
   })
 
   it('applies correct size classes', () => {
