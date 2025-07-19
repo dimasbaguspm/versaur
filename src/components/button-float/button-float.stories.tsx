@@ -96,11 +96,7 @@ type Story = StoryObj<typeof ButtonFloat>
  */
 export const Default: Story = {
   args: {
-    children: (
-      <Icon color='neutral'>
-        <MessageCircle />
-      </Icon>
-    ), // Use Icon wrapper
+    children: <Icon as={MessageCircle} color='neutral' />, // Use Icon wrapper
     side: 'right',
     variant: 'primary',
     size: 'md',
@@ -113,11 +109,7 @@ export const Default: Story = {
  */
 export const LeftSide: Story = {
   args: {
-    children: (
-      <Icon color='neutral'>
-        <HelpCircle />
-      </Icon>
-    ), // Use Icon wrapper
+    children: <Icon as={HelpCircle} color='neutral' />, // Use Icon wrapper
     side: 'left',
     variant: 'secondary',
     size: 'md',
@@ -137,9 +129,7 @@ export const AllVariants: Story = {
         aria-label='Add'
         offset='5rem'
       >
-        <Icon color='neutral'>
-          <Plus />
-        </Icon>
+        <Icon as={Plus} color='neutral' />
       </ButtonFloat>
       <ButtonFloat
         variant='secondary'
@@ -148,18 +138,14 @@ export const AllVariants: Story = {
         aria-label='Help'
         offset='5rem'
       >
-        <Icon color='neutral'>
-          <HelpCircle />
-        </Icon>
+        <Icon as={HelpCircle} color='neutral' />
       </ButtonFloat>
       <ButtonFloat
         variant='success'
         style={{ bottom: '9rem' }}
         aria-label='Success'
       >
-        <Icon color='neutral'>
-          <Check />
-        </Icon>
+        <Icon as={Check} color='neutral' />
       </ButtonFloat>
       <ButtonFloat
         variant='danger'
@@ -167,9 +153,7 @@ export const AllVariants: Story = {
         style={{ bottom: '9rem' }}
         aria-label='Close'
       >
-        <Icon color='neutral'>
-          <X />
-        </Icon>
+        <Icon as={X} color='neutral' />
       </ButtonFloat>
     </div>
   ),
@@ -182,19 +166,13 @@ export const SizeComparison: Story = {
   render: () => (
     <>
       <ButtonFloat size='sm' offset='10rem' aria-label='Small'>
-        <Icon color='neutral'>
-          <Plus />
-        </Icon>
+        <Icon color='neutral' as={Plus} />
       </ButtonFloat>
       <ButtonFloat size='md' offset='5rem' aria-label='Medium'>
-        <Icon color='neutral'>
-          <Plus />
-        </Icon>
+        <Icon color='neutral' as={Plus} />
       </ButtonFloat>
       <ButtonFloat size='lg' aria-label='Large'>
-        <Icon color='neutral'>
-          <Plus />
-        </Icon>
+        <Icon color='neutral' as={Plus} />
       </ButtonFloat>
     </>
   ),

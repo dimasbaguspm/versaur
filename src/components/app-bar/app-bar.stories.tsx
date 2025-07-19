@@ -33,13 +33,12 @@ export const Home: Story = {
       </AppBar.Center>
       <AppBar.Trailing>
         <ButtonIcon
+          as={EllipsisVerticalIcon}
           variant='neutral-ghost'
           size='sm'
           shape='circle'
           aria-label='More'
-        >
-          <EllipsisVerticalIcon />
-        </ButtonIcon>
+        />
       </AppBar.Trailing>
     </AppBar>
   ),
@@ -49,9 +48,12 @@ export const Detail: Story = {
   render: () => (
     <AppBar>
       <AppBar.Leading>
-        <ButtonIcon variant='neutral-ghost' aria-label='Open navigation'>
-          <ArrowLeft className='h-6 w-6' />
-        </ButtonIcon>
+        <ButtonIcon
+          as={ArrowLeft}
+          variant='neutral-ghost'
+          aria-label='Open navigation'
+          size='lg'
+        />
       </AppBar.Leading>
       <AppBar.Center>
         <AppBar.Headline>Transaction</AppBar.Headline>
@@ -63,9 +65,8 @@ export const Detail: Story = {
           size='sm'
           shape='circle'
           aria-label='Print'
-        >
-          <PrinterIcon className='h-4 w-4' />
-        </ButtonIcon>
+          as={PrinterIcon}
+        />
       </AppBar.Trailing>
     </AppBar>
   ),

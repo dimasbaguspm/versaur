@@ -19,12 +19,12 @@ exports[`Calendar > renders correctly 1`] = `
         <button
           aria-disabled="false"
           aria-label="Previous month"
-          class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+          class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
           type="button"
         >
           <svg
             aria-hidden="true"
-            class="lucide lucide-chevron-left h-4 w-4"
+            class="lucide lucide-chevron-left inline-flex items-center justify-center w-4 h-4 text-ghost"
             fill="none"
             height="24"
             stroke="currentColor"
@@ -43,12 +43,12 @@ exports[`Calendar > renders correctly 1`] = `
         <button
           aria-disabled="false"
           aria-label="Next month"
-          class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+          class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
           type="button"
         >
           <svg
             aria-hidden="true"
-            class="lucide lucide-chevron-right h-4 w-4"
+            class="lucide lucide-chevron-right inline-flex items-center justify-center w-4 h-4 text-ghost"
             fill="none"
             height="24"
             stroke="currentColor"
@@ -111,7 +111,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Previous month day"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md text-slate-300"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md text-slate-300"
         type="button"
       >
         29
@@ -119,7 +119,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Previous month day"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md text-slate-300"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md text-slate-300"
         type="button"
       >
         30
@@ -127,7 +127,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-1"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         1
@@ -135,7 +135,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-2"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         2
@@ -143,7 +143,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-3"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         3
@@ -151,7 +151,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-4"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         4
@@ -159,7 +159,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-5"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         5
@@ -167,7 +167,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-6"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         6
@@ -175,7 +175,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-7"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         7
@@ -183,7 +183,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-8"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         8
@@ -191,7 +191,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-9"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         9
@@ -199,7 +199,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-10"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         10
@@ -207,7 +207,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-11"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         11
@@ -215,7 +215,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-12"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         12
@@ -223,7 +223,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-13"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         13
@@ -231,7 +231,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-14"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         14
@@ -239,7 +239,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-15"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         15
@@ -247,7 +247,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-16"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         16
@@ -256,7 +256,7 @@ exports[`Calendar > renders correctly 1`] = `
         aria-current="date"
         aria-disabled="false"
         aria-label="Select 2025-7-17"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-coral text-white hover:bg-coral/90 focus-visible:ring-coral/20 focus-visible:ring-offset-white shadow-sm hover:shadow-md h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-coral text-white hover:bg-coral/90 focus-visible:ring-coral/20 focus-visible:ring-offset-white shadow-sm hover:shadow-md h-8 w-8 rounded-md"
         type="button"
       >
         17
@@ -264,7 +264,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-18"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         18
@@ -272,7 +272,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-19"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         19
@@ -280,7 +280,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-20"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         20
@@ -288,7 +288,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-21"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         21
@@ -296,7 +296,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-22"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         22
@@ -304,7 +304,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-23"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         23
@@ -312,7 +312,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-24"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         24
@@ -320,7 +320,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-25"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         25
@@ -328,7 +328,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-26"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         26
@@ -336,7 +336,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-27"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         27
@@ -344,7 +344,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-28"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         28
@@ -352,7 +352,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-29"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         29
@@ -360,7 +360,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-30"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         30
@@ -368,7 +368,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Select 2025-7-31"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent text-foreground hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md"
         type="button"
       >
         31
@@ -376,7 +376,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Next month day"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md text-slate-300"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md text-slate-300"
         type="button"
       >
         1
@@ -384,7 +384,7 @@ exports[`Calendar > renders correctly 1`] = `
       <button
         aria-disabled="false"
         aria-label="Next month day"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md text-slate-300"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-transparent hover:bg-slate/10 focus-visible:ring-slate/20 focus-visible:ring-offset-white h-8 w-8 rounded-md text-slate-300"
         type="button"
       >
         2

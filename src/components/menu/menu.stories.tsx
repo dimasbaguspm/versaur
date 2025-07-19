@@ -25,9 +25,7 @@ export const Basic = () => {
   return (
     <Menu isOpen={isOpen} onOutsideClick={() => setIsOpen(false)}>
       <Menu.Trigger onClick={() => setIsOpen(o => !o)}>
-        <ButtonIcon aria-label='Open menu'>
-          <EllipsisVertical />
-        </ButtonIcon>
+        <ButtonIcon as={EllipsisVertical} aria-label='Open menu' />
       </Menu.Trigger>
       <Menu.Content>
         <Menu.Item>Profile</Menu.Item>
@@ -46,9 +44,7 @@ export const Sizes = () => {
     <div className='flex gap-4'>
       <Menu isOpen={openSm} onOutsideClick={() => setOpenSm(false)} size='sm'>
         <Menu.Trigger onClick={() => setOpenSm(o => !o)}>
-          <ButtonIcon aria-label='Open small menu'>
-            <EllipsisVertical />
-          </ButtonIcon>
+          <ButtonIcon as={EllipsisVertical} aria-label='Open small menu' />
         </Menu.Trigger>
         <Menu.Content>
           <Menu.Item>Item 1</Menu.Item>
@@ -57,9 +53,7 @@ export const Sizes = () => {
       </Menu>
       <Menu isOpen={openMd} onOutsideClick={() => setOpenMd(false)} size='md'>
         <Menu.Trigger onClick={() => setOpenMd(o => !o)}>
-          <ButtonIcon aria-label='Open medium menu'>
-            <Ellipsis />
-          </ButtonIcon>
+          <ButtonIcon as={Ellipsis} aria-label='Open medium menu' />
         </Menu.Trigger>
         <Menu.Content>
           <Menu.Item>Item 1</Menu.Item>

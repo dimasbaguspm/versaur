@@ -16,20 +16,20 @@ exports[`Snackbar > renders correctly (snapshot) 1`] = `
     <button
       aria-disabled="false"
       aria-label="Close"
-      class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none text-success bg-transparent hover:bg-success/10 focus-visible:ring-success/20 focus-visible:ring-offset-white h-8 w-8 text-sm rounded-md ml-2"
+      class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none text-success bg-transparent hover:bg-success/10 focus-visible:ring-success/20 focus-visible:ring-offset-white h-8 w-8 rounded-md ml-2"
       type="button"
     >
       <svg
         aria-hidden="true"
-        class="lucide lucide-x"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4 text-success"
         fill="none"
-        height="16"
+        height="24"
         stroke="currentColor"
         stroke-linecap="round"
         stroke-linejoin="round"
         stroke-width="2"
         viewBox="0 0 24 24"
-        width="16"
+        width="24"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path

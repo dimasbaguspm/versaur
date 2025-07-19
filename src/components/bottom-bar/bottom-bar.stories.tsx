@@ -54,12 +54,11 @@ export const FiveItems: StoryObj<typeof BottomBar> = {
       <BottomBar.Item
         icon={
           <ButtonIcon
+            as={PlusIcon}
             variant='primary'
             shape='circle'
             aria-label='Add Transaction'
-          >
-            <PlusIcon />
-          </ButtonIcon>
+          />
         }
       />
       <BottomBar.Item icon={<Settings size={20} />} label='Settings' />

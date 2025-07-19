@@ -184,12 +184,12 @@ exports[`BottomBar > renders 5 items and matches snapshot 1`] = `
         <button
           aria-disabled="false"
           aria-label="Add Transaction"
-          class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-coral text-white hover:bg-coral/90 focus-visible:ring-coral/20 focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 w-10 text-base rounded-full"
+          class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-coral text-white hover:bg-coral/90 focus-visible:ring-coral/20 focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 w-10 rounded-full"
           type="button"
         >
           <svg
             aria-hidden="true"
-            class="lucide lucide-plus"
+            class="lucide lucide-plus inline-flex items-center justify-center w-5 h-5 text-neutral"
             fill="none"
             height="24"
             stroke="currentColor"

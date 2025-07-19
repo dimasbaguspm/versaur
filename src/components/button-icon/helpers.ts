@@ -14,7 +14,9 @@ export function getIconColorFromVariant(
     switch (base[0]) {
       case 'ghost':
       case 'neutral':
+      case 'outline':
         return 'ghost'
+
       default:
         return 'neutral'
     }
@@ -32,7 +34,7 @@ export function getIconColorFromVariant(
     case 'ghost':
       return 'ghost'
     case 'neutral':
-      return 'neutral'
+      return 'ghost'
     case 'success':
       return 'success'
     case 'info':

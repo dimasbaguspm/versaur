@@ -23,15 +23,14 @@ export const Snackbar = forwardRef<HTMLDivElement, SnackbarProps>(
         <SnackbarText>{children}</SnackbarText>
         {action && <SnackbarAction>{action}</SnackbarAction>}
         <ButtonIcon
+          as={X}
           variant={getSnackbarButtonIconVariant(color)}
           size='sm'
           shape='rounded'
           aria-label='Close'
           onClick={onClose}
           className='ml-2'
-        >
-          <X size={16} />
-        </ButtonIcon>
+        />
       </div>
     )
   }

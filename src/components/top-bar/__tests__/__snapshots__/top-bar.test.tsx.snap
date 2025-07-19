@@ -59,12 +59,12 @@ exports[`TopBar > renders correctly (snapshot) 1`] = `
         <button
           aria-disabled="false"
           aria-label="Notifications"
-          class="inline-flex items-center justify-center font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none border border-border text-foreground bg-transparent hover:bg-accent/10 focus-visible:ring-accent/20 focus-visible:ring-offset-white transition-all h-8 w-8 text-sm rounded-md"
+          class="inline-flex items-center justify-center font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none border border-border text-foreground bg-transparent hover:bg-accent/10 focus-visible:ring-accent/20 focus-visible:ring-offset-white transition-all h-8 w-8 rounded-md"
           type="button"
         >
           <svg
             aria-hidden="true"
-            class="lucide lucide-bell h-4 w-4"
+            class="lucide lucide-bell inline-flex items-center justify-center w-4 h-4 text-ghost"
             fill="none"
             height="24"
             stroke="currentColor"
@@ -86,12 +86,12 @@ exports[`TopBar > renders correctly (snapshot) 1`] = `
         <button
           aria-disabled="false"
           aria-label="Settings"
-          class="inline-flex items-center justify-center font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none border border-border text-foreground bg-transparent hover:bg-accent/10 focus-visible:ring-accent/20 focus-visible:ring-offset-white transition-all h-8 w-8 text-sm rounded-md"
+          class="inline-flex items-center justify-center font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none border border-border text-foreground bg-transparent hover:bg-accent/10 focus-visible:ring-accent/20 focus-visible:ring-offset-white transition-all h-8 w-8 rounded-md"
           type="button"
         >
           <svg
             aria-hidden="true"
-            class="lucide lucide-between-horizontal-start h-4 w-4"
+            class="lucide lucide-between-horizontal-start inline-flex items-center justify-center w-4 h-4 text-ghost"
             fill="none"
             height="24"
             stroke="currentColor"

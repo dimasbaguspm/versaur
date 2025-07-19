@@ -43,6 +43,7 @@ export const CalendarRoot: React.FC<CalendarProps> = ({
       </span>
       <div className='flex gap-2'>
         <ButtonIcon
+          as={ChevronLeft}
           variant='ghost'
           size='sm'
           aria-label='Previous month'
@@ -53,10 +54,10 @@ export const CalendarRoot: React.FC<CalendarProps> = ({
             setYear(newYear)
             onChange?.(new Date(newYear, newMonth, 1))
           }}
-        >
-          <ChevronLeft className='h-4 w-4' />
-        </ButtonIcon>
+        />
+
         <ButtonIcon
+          as={ChevronRight}
           variant='ghost'
           size='sm'
           aria-label='Next month'
@@ -67,9 +68,7 @@ export const CalendarRoot: React.FC<CalendarProps> = ({
             setYear(newYear)
             onChange?.(new Date(newYear, newMonth, 1))
           }}
-        >
-          <ChevronRight className='h-4 w-4' />
-        </ButtonIcon>
+        />
       </div>
     </div>
   )
@@ -96,6 +95,7 @@ export const CalendarRoot: React.FC<CalendarProps> = ({
     for (let i = 0; i < firstDay; i++) {
       days.push(
         <ButtonIcon
+          as={() => prevMonthDays - firstDay + i + 1}
           size='sm'
           aria-label='Previous month day'
           variant='ghost'
@@ -110,9 +110,7 @@ export const CalendarRoot: React.FC<CalendarProps> = ({
             setMonth(prevMonth)
             setYear(prevYear)
           }}
-        >
-          {prevMonthDays - firstDay + i + 1}
-        </ButtonIcon>
+        />
       )
     }
     // Current month days
@@ -125,15 +123,14 @@ export const CalendarRoot: React.FC<CalendarProps> = ({
 
       days.push(
         <ButtonIcon
+          as={() => d}
           key={d}
           variant={isSelected ? 'primary' : 'ghost'}
           size='sm'
           aria-label={`Select ${year}-${month + 1}-${d}`}
           aria-current={isSelected ? 'date' : undefined}
           onClick={() => onChange?.(new Date(year, month, d))}
-        >
-          {d}
-        </ButtonIcon>
+        />
       )
     }
     // Next month's leading days
@@ -145,6 +142,7 @@ export const CalendarRoot: React.FC<CalendarProps> = ({
     ) {
       days.push(
         <ButtonIcon
+          as={() => i + 1}
           size='sm'
           aria-label='Next month day'
           variant='ghost'
@@ -159,9 +157,7 @@ export const CalendarRoot: React.FC<CalendarProps> = ({
             setMonth(nextMonth)
             setYear(nextYear)
           }}
-        >
-          {i + 1}
-        </ButtonIcon>
+        />
       )
     }
     return <div className='grid grid-cols-7 gap-2 px-4 pb-4'>{days}</div>

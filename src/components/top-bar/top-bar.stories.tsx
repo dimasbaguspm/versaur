@@ -31,12 +31,18 @@ export const Default = () => (
     </TopBar.Leading>
     <TopBar.Trailing>
       <TopBar.Actions>
-        <ButtonIcon size='sm' aria-label='Notifications' variant='outline'>
-          <BellIcon className='h-4 w-4' />
-        </ButtonIcon>
-        <ButtonIcon size='sm' aria-label='Settings' variant='outline'>
-          <BetweenHorizonalStartIcon className='h-4 w-4' />
-        </ButtonIcon>
+        <ButtonIcon
+          as={BellIcon}
+          size='sm'
+          aria-label='Notifications'
+          variant='outline'
+        />
+        <ButtonIcon
+          as={BetweenHorizonalStartIcon}
+          size='sm'
+          aria-label='Settings'
+          variant='outline'
+        />
       </TopBar.Actions>
       <Avatar size='sm'>DM</Avatar>
     </TopBar.Trailing>
