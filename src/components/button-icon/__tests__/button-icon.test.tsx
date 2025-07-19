@@ -17,7 +17,7 @@ const {
 } = composeStories(stories)
 
 // Simple test icon component using Lucide React
-const TestIcon = () => <Plus size={16} />
+const TestIcon = Plus
 
 describe('ButtonIcon', () => {
   it('renders with default props', () => {
@@ -28,40 +28,26 @@ describe('ButtonIcon', () => {
   })
 
   it('renders with custom aria-label', () => {
-    render(
-      <ButtonIcon aria-label='Custom action'>
-        <TestIcon />
-      </ButtonIcon>
-    )
+    render(<ButtonIcon as={TestIcon} aria-label='Custom action' />)
     const button = screen.getByRole('button')
     expect(button).toHaveAttribute('aria-label', 'Custom action')
   })
 
   it('renders with primary variant by default', () => {
-    render(
-      <ButtonIcon aria-label='Test'>
-        <TestIcon />
-      </ButtonIcon>
-    )
+    render(<ButtonIcon as={TestIcon} aria-label='Test' />)
     const button = screen.getByRole('button')
     expect(button).toHaveClass('bg-coral')
   })
 
   it('renders with custom variant', () => {
-    render(
-      <ButtonIcon variant='secondary' aria-label='Test'>
-        <TestIcon />
-      </ButtonIcon>
-    )
+    render(<ButtonIcon as={TestIcon} variant='secondary' aria-label='Test' />)
     const button = screen.getByRole('button')
     expect(button).toHaveClass('bg-sage')
   })
 
   it('renders with outline variant', () => {
     render(
-      <ButtonIcon variant='primary-outline' aria-label='Test'>
-        <TestIcon />
-      </ButtonIcon>
+      <ButtonIcon as={TestIcon} variant='primary-outline' aria-label='Test' />
     )
     const button = screen.getByRole('button')
     expect(button).toHaveClass('border-coral')
@@ -69,9 +55,7 @@ describe('ButtonIcon', () => {
 
   it('renders with ghost variant', () => {
     render(
-      <ButtonIcon variant='primary-ghost' aria-label='Test'>
-        <TestIcon />
-      </ButtonIcon>
+      <ButtonIcon as={TestIcon} variant='primary-ghost' aria-label='Test' />
     )
     const button = screen.getByRole('button')
     expect(button).toHaveClass('text-coral')
@@ -79,56 +63,32 @@ describe('ButtonIcon', () => {
 
   it('renders with different sizes', () => {
     const { rerender } = render(
-      <ButtonIcon size='sm' aria-label='Test'>
-        <TestIcon />
-      </ButtonIcon>
+      <ButtonIcon as={TestIcon} size='sm' aria-label='Test' />
     )
     expect(screen.getByRole('button')).toHaveClass('h-8', 'w-8')
 
-    rerender(
-      <ButtonIcon size='md' aria-label='Test'>
-        <TestIcon />
-      </ButtonIcon>
-    )
+    rerender(<ButtonIcon as={TestIcon} size='md' aria-label='Test' />)
     expect(screen.getByRole('button')).toHaveClass('h-10', 'w-10')
 
-    rerender(
-      <ButtonIcon size='lg' aria-label='Test'>
-        <TestIcon />
-      </ButtonIcon>
-    )
+    rerender(<ButtonIcon as={TestIcon} size='lg' aria-label='Test' />)
     expect(screen.getByRole('button')).toHaveClass('h-12', 'w-12')
   })
 
   it('renders with different shapes', () => {
     const { rerender } = render(
-      <ButtonIcon shape='rounded' aria-label='Test'>
-        <TestIcon />
-      </ButtonIcon>
+      <ButtonIcon as={TestIcon} shape='rounded' aria-label='Test' />
     )
     expect(screen.getByRole('button')).toHaveClass('rounded-md')
 
-    rerender(
-      <ButtonIcon shape='square' aria-label='Test'>
-        <TestIcon />
-      </ButtonIcon>
-    )
+    rerender(<ButtonIcon as={TestIcon} shape='square' aria-label='Test' />)
     expect(screen.getByRole('button')).toHaveClass('rounded-sm')
 
-    rerender(
-      <ButtonIcon shape='circle' aria-label='Test'>
-        <TestIcon />
-      </ButtonIcon>
-    )
+    rerender(<ButtonIcon as={TestIcon} shape='circle' aria-label='Test' />)
     expect(screen.getByRole('button')).toHaveClass('rounded-full')
   })
 
   it('renders disabled state correctly', () => {
-    render(
-      <ButtonIcon disabled aria-label='Test'>
-        <TestIcon />
-      </ButtonIcon>
-    )
+    render(<ButtonIcon as={TestIcon} disabled aria-label='Test' />)
     const button = screen.getByRole('button')
     expect(button).toBeDisabled()
     expect(button).toHaveAttribute('aria-disabled', 'true')
@@ -138,39 +98,27 @@ describe('ButtonIcon', () => {
     )
   })
 
-  it('renders children correctly', () => {
-    render(
-      <ButtonIcon aria-label='Test'>
-        <span data-testid='test-icon'>Test Icon</span>
-      </ButtonIcon>
-    )
-    expect(screen.getByTestId('test-icon')).toBeInTheDocument()
+  it('renders icon via as prop', () => {
+    render(<ButtonIcon as={TestIcon} aria-label='Test' />)
+    expect(screen.getByRole('button').querySelector('svg')).toBeInTheDocument()
   })
 
   it('applies custom className', () => {
     render(
-      <ButtonIcon className='custom-class' aria-label='Test'>
-        <TestIcon />
-      </ButtonIcon>
+      <ButtonIcon as={TestIcon} className='custom-class' aria-label='Test' />
     )
     expect(screen.getByRole('button')).toHaveClass('custom-class')
   })
 
   it('forwards ref correctly', () => {
     const ref = { current: null }
-    render(
-      <ButtonIcon ref={ref} aria-label='Test'>
-        <TestIcon />
-      </ButtonIcon>
-    )
+    render(<ButtonIcon as={TestIcon} ref={ref} aria-label='Test' />)
     expect(ref.current).toBeInstanceOf(HTMLButtonElement)
   })
 
   it('passes through additional props', () => {
     render(
-      <ButtonIcon data-testid='custom-button' aria-label='Test'>
-        <TestIcon />
-      </ButtonIcon>
+      <ButtonIcon as={TestIcon} data-testid='custom-button' aria-label='Test' />
     )
     expect(screen.getByTestId('custom-button')).toBeInTheDocument()
   })
@@ -198,7 +146,7 @@ describe('ButtonIcon', () => {
     it('renders AllSizes story', () => {
       render(<AllSizes />)
       const buttons = screen.getAllByRole('button')
-      expect(buttons).toHaveLength(3) // 3 sizes
+      expect(buttons).toHaveLength(5) // 5 sizes
     })
 
     it('renders AllShapes story', () => {
@@ -220,11 +168,7 @@ describe('ButtonIcon', () => {
   describe('Accessibility', () => {
     it('requires aria-label prop', () => {
       // TypeScript should enforce this, but we can test the runtime behavior
-      render(
-        <ButtonIcon aria-label='Required label'>
-          <TestIcon />
-        </ButtonIcon>
-      )
+      render(<ButtonIcon as={TestIcon} aria-label='Required label' />)
       expect(screen.getByRole('button')).toHaveAttribute(
         'aria-label',
         'Required label'
@@ -232,22 +176,14 @@ describe('ButtonIcon', () => {
     })
 
     it('supports keyboard interaction', () => {
-      render(
-        <ButtonIcon aria-label='Test'>
-          <TestIcon />
-        </ButtonIcon>
-      )
+      render(<ButtonIcon as={TestIcon} aria-label='Test' />)
       const button = screen.getByRole('button')
       button.focus()
       expect(button).toHaveFocus()
     })
 
     it('has proper focus-visible styles', () => {
-      render(
-        <ButtonIcon aria-label='Test'>
-          <TestIcon />
-        </ButtonIcon>
-      )
+      render(<ButtonIcon as={TestIcon} aria-label='Test' />)
       const button = screen.getByRole('button')
       expect(button).toHaveClass(
         'focus-visible:outline-none',
@@ -258,38 +194,22 @@ describe('ButtonIcon', () => {
 
   describe('Semantic variants', () => {
     it('renders success variant', () => {
-      render(
-        <ButtonIcon variant='success' aria-label='Test'>
-          <TestIcon />
-        </ButtonIcon>
-      )
+      render(<ButtonIcon as={TestIcon} variant='success' aria-label='Test' />)
       expect(screen.getByRole('button')).toHaveClass('bg-success')
     })
 
     it('renders info variant', () => {
-      render(
-        <ButtonIcon variant='info' aria-label='Test'>
-          <TestIcon />
-        </ButtonIcon>
-      )
+      render(<ButtonIcon as={TestIcon} variant='info' aria-label='Test' />)
       expect(screen.getByRole('button')).toHaveClass('bg-info')
     })
 
     it('renders warning variant', () => {
-      render(
-        <ButtonIcon variant='warning' aria-label='Test'>
-          <TestIcon />
-        </ButtonIcon>
-      )
+      render(<ButtonIcon as={TestIcon} variant='warning' aria-label='Test' />)
       expect(screen.getByRole('button')).toHaveClass('bg-warning')
     })
 
     it('renders danger variant', () => {
-      render(
-        <ButtonIcon variant='danger' aria-label='Test'>
-          <TestIcon />
-        </ButtonIcon>
-      )
+      render(<ButtonIcon as={TestIcon} variant='danger' aria-label='Test' />)
       expect(screen.getByRole('button')).toHaveClass('bg-danger')
     })
   })

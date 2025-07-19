@@ -88,7 +88,8 @@ type Story = StoryObj<typeof ButtonIcon>
  */
 export const Default: Story = {
   args: {
-    children: <Plus size={16} />,
+    as: Plus,
+    size: 'md',
   },
 }
 
@@ -100,57 +101,51 @@ export const AllVariants: Story = {
   render: () => (
     <div className='flex flex-wrap gap-4'>
       <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon variant='primary' aria-label='Primary action'>
-          <Plus size={16} />
-        </ButtonIcon>
+        <ButtonIcon as={Plus} variant='primary' aria-label='Primary action' />
         <span className='text-sm text-gray-600'>Primary</span>
       </div>
       <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon variant='secondary' aria-label='Secondary action'>
-          <Heart size={16} />
-        </ButtonIcon>
+        <ButtonIcon
+          as={Heart}
+          variant='secondary'
+          aria-label='Secondary action'
+        />
         <span className='text-sm text-gray-600'>Secondary</span>
       </div>
       <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon variant='tertiary' aria-label='Tertiary action'>
-          <Settings size={16} />
-        </ButtonIcon>
+        <ButtonIcon
+          as={Settings}
+          variant='tertiary'
+          aria-label='Tertiary action'
+        />
         <span className='text-sm text-gray-600'>Tertiary</span>
       </div>
       <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon variant='ghost' aria-label='Ghost action'>
-          <Plus size={16} />
-        </ButtonIcon>
+        <ButtonIcon as={Plus} variant='ghost' aria-label='Ghost action' />
         <span className='text-sm text-gray-600'>Ghost</span>
       </div>
       <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon variant='neutral' aria-label='Neutral action'>
-          <Settings size={16} />
-        </ButtonIcon>
+        <ButtonIcon
+          as={Settings}
+          variant='neutral'
+          aria-label='Neutral action'
+        />
         <span className='text-sm text-gray-600'>Neutral</span>
       </div>
       <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon variant='success' aria-label='Success action'>
-          <Heart size={16} />
-        </ButtonIcon>
+        <ButtonIcon as={Heart} variant='success' aria-label='Success action' />
         <span className='text-sm text-gray-600'>Success</span>
       </div>
       <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon variant='info' aria-label='Info action'>
-          <Settings size={16} />
-        </ButtonIcon>
+        <ButtonIcon as={Settings} variant='info' aria-label='Info action' />
         <span className='text-sm text-gray-600'>Info</span>
       </div>
       <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon variant='warning' aria-label='Warning action'>
-          <Plus size={16} />
-        </ButtonIcon>
+        <ButtonIcon as={Plus} variant='warning' aria-label='Warning action' />
         <span className='text-sm text-gray-600'>Warning</span>
       </div>
       <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon variant='danger' aria-label='Danger action'>
-          <Trash2 size={16} />
-        </ButtonIcon>
+        <ButtonIcon as={Trash2} variant='danger' aria-label='Danger action' />
         <span className='text-sm text-gray-600'>Danger</span>
       </div>
     </div>
@@ -164,21 +159,31 @@ export const AllVariants: Story = {
 export const OutlineVariants: Story = {
   render: () => (
     <div className='flex flex-wrap gap-4'>
-      <ButtonIcon variant='primary-outline' aria-label='Primary outline'>
-        <Plus size={16} />
-      </ButtonIcon>
-      <ButtonIcon variant='secondary-outline' aria-label='Secondary outline'>
-        <Heart size={16} />
-      </ButtonIcon>
-      <ButtonIcon variant='tertiary-outline' aria-label='Tertiary outline'>
-        <Settings size={16} />
-      </ButtonIcon>
-      <ButtonIcon variant='success-outline' aria-label='Success outline'>
-        <Heart size={16} />
-      </ButtonIcon>
-      <ButtonIcon variant='danger-outline' aria-label='Danger outline'>
-        <Trash2 size={16} />
-      </ButtonIcon>
+      <ButtonIcon
+        as={Plus}
+        variant='primary-outline'
+        aria-label='Primary outline'
+      />
+      <ButtonIcon
+        as={Heart}
+        variant='secondary-outline'
+        aria-label='Secondary outline'
+      />
+      <ButtonIcon
+        as={Settings}
+        variant='tertiary-outline'
+        aria-label='Tertiary outline'
+      />
+      <ButtonIcon
+        as={Heart}
+        variant='success-outline'
+        aria-label='Success outline'
+      />
+      <ButtonIcon
+        as={Trash2}
+        variant='danger-outline'
+        aria-label='Danger outline'
+      />
     </div>
   ),
 }
@@ -190,21 +195,31 @@ export const OutlineVariants: Story = {
 export const GhostVariants: Story = {
   render: () => (
     <div className='flex flex-wrap gap-4'>
-      <ButtonIcon variant='primary-ghost' aria-label='Primary ghost'>
-        <Plus size={16} />
-      </ButtonIcon>
-      <ButtonIcon variant='secondary-ghost' aria-label='Secondary ghost'>
-        <Heart size={16} />
-      </ButtonIcon>
-      <ButtonIcon variant='tertiary-ghost' aria-label='Tertiary ghost'>
-        <Settings size={16} />
-      </ButtonIcon>
-      <ButtonIcon variant='success-ghost' aria-label='Success ghost'>
-        <Heart size={16} />
-      </ButtonIcon>
-      <ButtonIcon variant='danger-ghost' aria-label='Danger ghost'>
-        <Trash2 size={16} />
-      </ButtonIcon>
+      <ButtonIcon
+        as={Plus}
+        variant='primary-ghost'
+        aria-label='Primary ghost'
+      />
+      <ButtonIcon
+        as={Heart}
+        variant='secondary-ghost'
+        aria-label='Secondary ghost'
+      />
+      <ButtonIcon
+        as={Settings}
+        variant='tertiary-ghost'
+        aria-label='Tertiary ghost'
+      />
+      <ButtonIcon
+        as={Heart}
+        variant='success-ghost'
+        aria-label='Success ghost'
+      />
+      <ButtonIcon
+        as={Trash2}
+        variant='danger-ghost'
+        aria-label='Danger ghost'
+      />
     </div>
   ),
 }
@@ -217,21 +232,23 @@ export const AllSizes: Story = {
   render: () => (
     <div className='flex items-center gap-4'>
       <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon size='sm' aria-label='Small size'>
-          <Plus size={14} />
-        </ButtonIcon>
+        <ButtonIcon as={Plus} size='xs' aria-label='Small size' />
+        <span className='text-sm text-gray-600'>XS (32px)</span>
+      </div>
+      <div className='flex flex-col items-center gap-2'>
+        <ButtonIcon as={Plus} size='sm' aria-label='Small size' />
         <span className='text-sm text-gray-600'>Small (32px)</span>
       </div>
       <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon size='md' aria-label='Medium size'>
-          <Plus size={16} />
-        </ButtonIcon>
+        <ButtonIcon as={Plus} size='md' aria-label='Medium size' />
         <span className='text-sm text-gray-600'>Medium (40px)</span>
       </div>
       <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon size='lg' aria-label='Large size'>
-          <Plus size={18} />
-        </ButtonIcon>
+        <ButtonIcon as={Plus} size='lg' aria-label='Large size' />
+        <span className='text-sm text-gray-600'>Large (48px)</span>
+      </div>
+      <div className='flex flex-col items-center gap-2'>
+        <ButtonIcon as={Plus} size='xl' aria-label='Large size' />
         <span className='text-sm text-gray-600'>Large (48px)</span>
       </div>
     </div>
@@ -246,21 +263,15 @@ export const AllShapes: Story = {
   render: () => (
     <div className='flex items-center gap-4'>
       <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon shape='rounded' aria-label='Rounded shape'>
-          <Plus size={16} />
-        </ButtonIcon>
+        <ButtonIcon as={Plus} shape='rounded' aria-label='Rounded shape' />
         <span className='text-sm text-gray-600'>Rounded</span>
       </div>
       <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon shape='square' aria-label='Square shape'>
-          <Plus size={16} />
-        </ButtonIcon>
+        <ButtonIcon as={Plus} shape='square' aria-label='Square shape' />
         <span className='text-sm text-gray-600'>Square</span>
       </div>
       <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon shape='circle' aria-label='Circle shape'>
-          <Plus size={16} />
-        </ButtonIcon>
+        <ButtonIcon as={Plus} shape='circle' aria-label='Circle shape' />
         <span className='text-sm text-gray-600'>Circle</span>
       </div>
     </div>
@@ -274,22 +285,25 @@ export const AllShapes: Story = {
 export const DisabledStates: Story = {
   render: () => (
     <div className='flex flex-wrap gap-4'>
-      <ButtonIcon disabled aria-label='Disabled primary'>
-        <Plus size={16} />
-      </ButtonIcon>
-      <ButtonIcon disabled variant='secondary' aria-label='Disabled secondary'>
-        <Heart size={16} />
-      </ButtonIcon>
+      <ButtonIcon as={Plus} disabled aria-label='Disabled primary' />
       <ButtonIcon
+        as={Heart}
+        disabled
+        variant='secondary'
+        aria-label='Disabled secondary'
+      />
+      <ButtonIcon
+        as={Settings}
         disabled
         variant='primary-outline'
         aria-label='Disabled outline'
-      >
-        <Settings size={16} />
-      </ButtonIcon>
-      <ButtonIcon disabled variant='danger-ghost' aria-label='Disabled ghost'>
-        <Trash2 size={16} />
-      </ButtonIcon>
+      />
+      <ButtonIcon
+        as={Trash2}
+        disabled
+        variant='danger-ghost'
+        aria-label='Disabled ghost'
+      />
     </div>
   ),
 }
@@ -301,19 +315,21 @@ export const DisabledStates: Story = {
 export const ToolbarExample: Story = {
   render: () => (
     <div className='flex items-center gap-1 p-2 bg-gray-50 rounded-md'>
-      <ButtonIcon variant='ghost' size='sm' aria-label='Add item'>
-        <Plus size={14} />
-      </ButtonIcon>
-      <ButtonIcon variant='ghost' size='sm' aria-label='Like'>
-        <Heart size={14} />
-      </ButtonIcon>
-      <ButtonIcon variant='ghost' size='sm' aria-label='Settings'>
-        <Settings size={14} />
-      </ButtonIcon>
+      <ButtonIcon as={Plus} variant='ghost' size='sm' aria-label='Add item' />
+      <ButtonIcon as={Heart} variant='ghost' size='sm' aria-label='Like' />
+      <ButtonIcon
+        as={Settings}
+        variant='ghost'
+        size='sm'
+        aria-label='Settings'
+      />
       <div className='w-px h-4 bg-gray-300 mx-1' />
-      <ButtonIcon variant='danger-ghost' size='sm' aria-label='Delete'>
-        <Trash2 size={14} />
-      </ButtonIcon>
+      <ButtonIcon
+        as={Trash2}
+        variant='danger-ghost'
+        size='sm'
+        aria-label='Delete'
+      />
     </div>
   ),
 }
