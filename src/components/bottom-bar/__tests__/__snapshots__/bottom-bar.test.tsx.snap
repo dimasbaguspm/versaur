@@ -7,12 +7,12 @@ exports[`BottomBar > renders 3 items and matches snapshot 1`] = `
   >
     <nav
       aria-label="Bottom navigation"
-      class="sticky bottom-0 left-0 w-full flex justify-between items-center bg-white border-t border-coral z-40 safe-bottom px-8 py-1 h-16 text-base"
+      class="sticky bottom-0 left-0 w-full flex justify-between items-center bg-white border-t border-border shadow-xs z-40 safe-bottom px-8 py-1 h-16 text-base"
       role="navigation"
     >
       <div
         aria-current="page"
-        class="flex flex-col items-center justify-center gap-1 px-2 py-1 rounded transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary font-semibold text-coral"
+        class="flex flex-col items-center justify-center gap-1 px-2 py-1 font-semibold text-coral"
       >
         <svg
           aria-hidden="true"
@@ -41,7 +41,7 @@ exports[`BottomBar > renders 3 items and matches snapshot 1`] = `
         </span>
       </div>
       <div
-        class="flex flex-col items-center justify-center gap-1 px-2 py-1 rounded transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary text-slate"
+        class="flex flex-col items-center justify-center gap-1 px-2 py-1 text-slate"
       >
         <svg
           aria-hidden="true"
@@ -72,7 +72,7 @@ exports[`BottomBar > renders 3 items and matches snapshot 1`] = `
         </span>
       </div>
       <div
-        class="flex flex-col items-center justify-center gap-1 px-2 py-1 rounded transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary text-slate"
+        class="flex flex-col items-center justify-center gap-1 px-2 py-1 text-slate"
       >
         <svg
           aria-hidden="true"
@@ -114,12 +114,12 @@ exports[`BottomBar > renders 5 items and matches snapshot 1`] = `
   >
     <nav
       aria-label="Bottom navigation"
-      class="sticky bottom-0 left-0 w-full flex justify-between items-center bg-white border-t border-coral z-40 safe-bottom px-8 py-1 h-16 text-base"
+      class="sticky bottom-0 left-0 w-full flex justify-between items-center bg-white border-t border-border shadow-xs z-40 safe-bottom px-8 py-1 h-16 text-base"
       role="navigation"
     >
       <div
         aria-current="page"
-        class="flex flex-col items-center justify-center gap-1 px-2 py-1 rounded transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary font-semibold text-coral"
+        class="flex flex-col items-center justify-center gap-1 px-2 py-1 font-semibold text-coral"
       >
         <svg
           aria-hidden="true"
@@ -148,7 +148,7 @@ exports[`BottomBar > renders 5 items and matches snapshot 1`] = `
         </span>
       </div>
       <div
-        class="flex flex-col items-center justify-center gap-1 px-2 py-1 rounded transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary text-slate"
+        class="flex flex-col items-center justify-center gap-1 px-2 py-1 text-slate"
       >
         <svg
           aria-hidden="true"
@@ -179,12 +179,12 @@ exports[`BottomBar > renders 5 items and matches snapshot 1`] = `
         </span>
       </div>
       <div
-        class="flex flex-col items-center justify-center gap-1 px-2 py-1 rounded transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary text-slate"
+        class="flex flex-col items-center justify-center gap-1 px-2 py-1 text-slate"
       >
         <button
           aria-disabled="false"
           aria-label="Add Transaction"
-          class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-coral text-white hover:bg-coral/90 focus-visible:ring-coral/20 focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 w-10 rounded-full"
+          class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-coral text-white hover:bg-coral/90 focus-visible:ring-coral-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 w-10 rounded-full"
           type="button"
         >
           <svg
@@ -210,7 +210,7 @@ exports[`BottomBar > renders 5 items and matches snapshot 1`] = `
         </button>
       </div>
       <div
-        class="flex flex-col items-center justify-center gap-1 px-2 py-1 rounded transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary text-slate"
+        class="flex flex-col items-center justify-center gap-1 px-2 py-1 text-slate"
       >
         <svg
           aria-hidden="true"
@@ -241,7 +241,7 @@ exports[`BottomBar > renders 5 items and matches snapshot 1`] = `
         </span>
       </div>
       <div
-        class="flex flex-col items-center justify-center gap-1 px-2 py-1 rounded transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary text-slate"
+        class="flex flex-col items-center justify-center gap-1 px-2 py-1 text-slate"
       >
         <svg
           aria-hidden="true"

@@ -3,6 +3,7 @@ import { ButtonIcon } from '@/components/button-icon'
 import type { CalendarProps } from './types'
 import { cn } from '@/utils/cn'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { Text } from '../text'
 
 /**
  * Calendar component (Compound Pattern)
@@ -32,15 +33,14 @@ export const CalendarRoot: React.FC<CalendarProps> = ({
   // Render header
   const renderHeader = () => (
     <div className='flex items-center justify-between px-4 pt-4 pb-2'>
-      <span className='font-semibold text-lg'>
+      <Text fontSize='base' fontWeight='semibold'>
         {value
           ? value.toLocaleDateString(undefined, {
               year: 'numeric',
               month: 'long',
-              day: 'numeric',
             })
           : `${year} ${new Date(year, month).toLocaleString(undefined, { month: 'long' })}`}
-      </span>
+      </Text>
       <div className='flex gap-2'>
         <ButtonIcon
           as={ChevronLeft}
@@ -75,11 +75,11 @@ export const CalendarRoot: React.FC<CalendarProps> = ({
 
   // Render weekday labels
   const renderWeekdays = () => (
-    <div className='grid grid-cols-7 px-4 text-xs text-slate-500 mb-1'>
+    <div className='grid grid-cols-7 px-4 text-slate-500 mb-1'>
       {['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map(d => (
-        <div key={d} className='flex items-center justify-center h-6'>
+        <Text fontSize='xs' key={d} color='ghost' align='center'>
           {d}
-        </div>
+        </Text>
       ))}
     </div>
   )
@@ -93,9 +93,10 @@ export const CalendarRoot: React.FC<CalendarProps> = ({
 
     // Previous month's trailing days
     for (let i = 0; i < firstDay; i++) {
+      const day = prevMonthDays - firstDay + i + 1
       days.push(
         <ButtonIcon
-          as={() => prevMonthDays - firstDay + i + 1}
+          as={() => day}
           size='sm'
           aria-label='Previous month day'
           variant='ghost'

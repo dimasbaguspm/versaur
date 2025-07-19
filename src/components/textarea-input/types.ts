@@ -33,7 +33,7 @@ export interface TextAreaInputProps
   /**
    * Label text to display above the textarea
    */
-  label: ReactNode
+  label?: ReactNode
   /**
    * Helper text to display below the textarea
    */

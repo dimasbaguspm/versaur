@@ -4,7 +4,7 @@ import { cva } from 'class-variance-authority'
  * TopBarRoot styles
  */
 export const topBarRootStyles = cva(
-  'w-full flex items-center px-6 py-2 border-b border-neutral bg-white',
+  'w-full flex items-center px-6 py-2 mb-6 border-b border-border shadow-xs bg-white',
   {
     variants: {},
     defaultVariants: {},
@@ -30,7 +30,7 @@ export const topBarNavItemStyles = cva(
     variants: {
       active: {
         true: 'bg-coral/10 text-coral',
-        false: 'hover:bg-coral/10',
+        false: 'bg-neutral hover:bg-coral/10 text-ghost',
       },
     },
     defaultVariants: {

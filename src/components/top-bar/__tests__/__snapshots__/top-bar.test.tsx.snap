@@ -3,13 +3,13 @@
 exports[`TopBar > renders correctly (snapshot) 1`] = `
 <DocumentFragment>
   <header
-    class="w-full flex items-center px-6 py-2 border-b border-neutral bg-white"
+    class="w-full flex items-center px-6 py-2 mb-6 border-b border-border shadow-xs bg-white"
   >
     <div
       class="flex items-center gap-3 min-w-0 flex-1"
     >
       <div
-        class="inline-flex items-center justify-center font-medium overflow-hidden transition-all duration-200 select-none relative bg-coral/10 text-coral h-8 w-8 text-sm rounded-md"
+        class="inline-flex items-center justify-center font-medium overflow-hidden transition-all duration-200 select-none relative bg-coral-soft text-coral h-8 w-8 text-xs rounded-md"
       >
         <svg
           aria-hidden="true"
@@ -39,12 +39,12 @@ exports[`TopBar > renders correctly (snapshot) 1`] = `
           Home
         </div>
         <div
-          class="px-2.5 py-1.5 rounded-md text-xs font-sm cursor-pointer transition-colors hover:bg-coral/10"
+          class="px-2.5 py-1.5 rounded-md text-xs font-sm cursor-pointer transition-colors bg-neutral hover:bg-coral/10 text-ghost"
         >
           Docs
         </div>
         <div
-          class="px-2.5 py-1.5 rounded-md text-xs font-sm cursor-pointer transition-colors hover:bg-coral/10"
+          class="px-2.5 py-1.5 rounded-md text-xs font-sm cursor-pointer transition-colors bg-neutral hover:bg-coral/10 text-ghost"
         >
           Pricing
         </div>
@@ -59,7 +59,7 @@ exports[`TopBar > renders correctly (snapshot) 1`] = `
         <button
           aria-disabled="false"
           aria-label="Notifications"
-          class="inline-flex items-center justify-center font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none border border-border text-foreground bg-transparent hover:bg-accent/10 focus-visible:ring-accent/20 focus-visible:ring-offset-white transition-all h-8 w-8 rounded-md"
+          class="inline-flex items-center justify-center font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none border border-border text-foreground bg-transparent hover:bg-accent-soft focus-visible:ring-accent-soft focus-visible:ring-offset-white transition-all h-8 w-8 rounded-md"
           type="button"
         >
           <svg
@@ -86,7 +86,7 @@ exports[`TopBar > renders correctly (snapshot) 1`] = `
         <button
           aria-disabled="false"
           aria-label="Settings"
-          class="inline-flex items-center justify-center font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none border border-border text-foreground bg-transparent hover:bg-accent/10 focus-visible:ring-accent/20 focus-visible:ring-offset-white transition-all h-8 w-8 rounded-md"
+          class="inline-flex items-center justify-center font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none border border-border text-foreground bg-transparent hover:bg-accent-soft focus-visible:ring-accent-soft focus-visible:ring-offset-white transition-all h-8 w-8 rounded-md"
           type="button"
         >
           <svg
@@ -123,7 +123,7 @@ exports[`TopBar > renders correctly (snapshot) 1`] = `
         </button>
       </div>
       <div
-        class="inline-flex items-center justify-center font-medium overflow-hidden transition-all duration-200 select-none relative bg-coral/10 text-coral h-8 w-8 text-sm rounded-full"
+        class="inline-flex items-center justify-center font-medium overflow-hidden transition-all duration-200 select-none relative bg-coral-soft text-coral h-8 w-8 text-xs rounded-full"
       >
         DM
       </div>

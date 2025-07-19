@@ -7,7 +7,7 @@ describe('Sizes', () => {
   it('applies medium size styles (default)', () => {
     render(<Badge size='md'>Medium</Badge>)
     const badge = screen.getByText('Medium')
-    expect(badge).toHaveClass('text-sm', 'px-1.5', 'py-0.5', 'h-4')
+    expect(badge).toHaveClass('text-xs', 'px-1.5', 'py-0.5', 'h-4')
   })
   it('applies large size styles', () => {
     render(<Badge size='lg'>Large</Badge>)
@@ -73,19 +73,19 @@ describe('Badge Component', () => {
     it('applies primary color by default', () => {
       render(<Badge>Primary</Badge>)
       const badge = screen.getByText('Primary')
-      expect(badge).toHaveClass('bg-coral/15', 'text-coral')
+      expect(badge).toHaveClass('bg-coral-soft', 'text-coral')
     })
 
     it('applies secondary color correctly', () => {
       render(<Badge color='secondary'>Secondary</Badge>)
       const badge = screen.getByText('Secondary')
-      expect(badge).toHaveClass('bg-sage/15', 'text-sage')
+      expect(badge).toHaveClass('bg-sage-soft', 'text-sage')
     })
 
     it('applies success color correctly', () => {
       render(<Badge color='success'>Success</Badge>)
       const badge = screen.getByText('Success')
-      expect(badge).toHaveClass('bg-success/15', 'text-success')
+      expect(badge).toHaveClass('bg-success-soft', 'text-success')
     })
 
     it('applies outline color correctly', () => {
