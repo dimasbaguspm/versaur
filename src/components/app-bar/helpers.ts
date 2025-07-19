@@ -2,7 +2,7 @@
 import { cva } from 'class-variance-authority'
 
 export const appBarVariants = cva(
-  'w-full flex items-center px-4 py-3 gap-2 bg-white',
+  'w-full flex flex-wrap items-center px-4 py-3 gap-2 bg-white [&>[data-versaur-appbar-bottom]]:basis-full [&>[data-versaur-appbar-bottom]]:w-full',
   {
     variants: {
       variant: {
@@ -20,7 +20,7 @@ export const appBarVariants = cva(
 )
 
 export const appBarCenterVariants = cva(
-  'flex flex-col justify-center w-full min-w-0 ',
+  'flex flex-col justify-center min-w-0 flex-grow',
   {
     variants: {
       placement: {

@@ -7,20 +7,23 @@ import {
   AppBarSubtitle,
   AppBarTrailing,
   AppBarCenter,
+  AppBarBottom,
 } from './app-bar.atoms'
 
 const AppBarRoot = ({
   children,
   className,
   variant = 'primary',
-}: AppBarProps) => (
-  <header
-    className={cn(appBarVariants({ variant }), className)}
-    role={'banner'}
-  >
-    {children}
-  </header>
-)
+}: AppBarProps) => {
+  return (
+    <header
+      className={cn(appBarVariants({ variant }), className)}
+      role={'banner'}
+    >
+      {children}
+    </header>
+  )
+}
 
 export const AppBar = Object.assign(AppBarRoot, {
   Leading: AppBarLeading,
@@ -28,4 +31,5 @@ export const AppBar = Object.assign(AppBarRoot, {
   Subtitle: AppBarSubtitle,
   Trailing: AppBarTrailing,
   Center: AppBarCenter,
+  Bottom: AppBarBottom,
 })

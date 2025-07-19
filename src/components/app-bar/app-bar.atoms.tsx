@@ -6,8 +6,24 @@ import type {
   AppBarSubtitleProps,
   AppBarTrailingProps,
   AppBarCenterProps,
+  AppBarBottomProps,
 } from './types'
 import { appBarCenterVariants } from './helpers'
+
+/**
+ * Bottom section (flexible area for additional content, e.g. tabs)
+ */
+export const AppBarBottom = forwardRef<HTMLDivElement, AppBarBottomProps>(
+  ({ children, className }, ref) => (
+    <div
+      ref={ref}
+      data-versaur-appbar-bottom
+      className={cn('w-full flex items-center min-h-[2.5rem] mt-2', className)}
+    >
+      {children}
+    </div>
+  )
+)
 
 /**
  * Leading section (logo, nav icon)
@@ -55,7 +71,7 @@ export const AppBarTrailing = forwardRef<HTMLDivElement, AppBarTrailingProps>(
   ({ children, className }, ref) => (
     <div
       ref={ref}
-      className={cn('flex items-center flex-grow justify-end gap-2', className)}
+      className={cn('flex items-center justify-end gap-2', className)}
     >
       {children}
     </div>

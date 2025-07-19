@@ -43,3 +43,10 @@ export interface AppBarProps extends HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
   variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'neutral'
 }
+
+/**
+ * Props for AppBarBottom (bottom area for additional content)
+ */
+export interface AppBarBottomProps extends HTMLAttributes<HTMLDivElement> {
+  children: ReactNode
+}
