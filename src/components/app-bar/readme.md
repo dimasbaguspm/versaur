@@ -16,6 +16,26 @@ Compound layout header/navigation bar for Versaur UI
   <AppBar.Trailing>
     {/* Actions, avatar, etc. */}
   </AppBar.Trailing>
+  <AppBar.Bottom>
+    {/* Tabs, filters, etc. Always renders on a new line */}
+  </AppBar.Bottom>
+</AppBar>
+```
+
+### AppBar.Bottom Layout
+
+- `AppBar.Bottom` can be placed anywhere among children.
+- It will always render on a new line (full width) due to a data attribute and Tailwind CSS selector.
+- No extra JavaScript logic is used; layout is enforced by CSS.
+- You can have multiple `AppBar.Bottom` if needed; all will render as new lines.
+
+#### Example: Bottom in the middle
+```tsx
+<AppBar>
+  <AppBar.Leading>...</AppBar.Leading>
+  <AppBar.Bottom>Tabs</AppBar.Bottom>
+  <AppBar.Center>...</AppBar.Center>
+  <AppBar.Trailing>...</AppBar.Trailing>
 </AppBar>
 ```
 
@@ -43,6 +63,7 @@ Compound layout header/navigation bar for Versaur UI
 - `AppBar.Headline`: main title, truncates text
 - `AppBar.Subtitle`: subtitle, truncates text
 - `AppBar.Trailing`: right section (actions, avatar, etc.)
+- `AppBar.Bottom`: bottom section (tabs, filters, etc.), always new line
 
 ## Props
 - `variant`: color variant (primary, secondary, tertiary, ghost, neutral)
@@ -59,6 +80,7 @@ Compound layout header/navigation bar for Versaur UI
 - Mobile-first responsive layout
 - Follows Versaur color system and spacing
 - All atoms are tree-shakable and strictly typed
+- `AppBar.Bottom` layout is enforced by `[data-versaur-appbar-bottom]` and Tailwind CSS
 
 ## Testing
 - See `__tests__/app-bar.test.tsx` for unit and snapshot tests

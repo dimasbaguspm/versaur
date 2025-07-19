@@ -3,12 +3,14 @@
  *
  * - Demonstrates layout, variants, and composition
  * - Icons from lucide-react (dev only)
+ * - AppBar.Bottom always renders on a new line, regardless of order, via data attribute and CSS
  */
 import type { Meta, StoryObj } from '@storybook/react'
 import { ArrowLeft, EllipsisVerticalIcon, PrinterIcon } from 'lucide-react'
 import { AppBar } from './app-bar'
 import { ButtonIcon } from '../button-icon'
 import { Avatar } from '../avatar'
+import { Tabs } from '../tabs'
 
 const meta = {
   title: 'Layout/AppBar',
@@ -68,6 +70,41 @@ export const Detail: Story = {
           as={PrinterIcon}
         />
       </AppBar.Trailing>
+    </AppBar>
+  ),
+}
+
+export const WithBottom: Story = {
+  render: () => (
+    <AppBar>
+      <AppBar.Leading>
+        <ButtonIcon
+          as={ArrowLeft}
+          variant='neutral-ghost'
+          aria-label='Back'
+          size='lg'
+        />
+      </AppBar.Leading>
+
+      <AppBar.Center>
+        <AppBar.Headline>Anywhere Demo</AppBar.Headline>
+        <AppBar.Subtitle>AppBar.Bottom can be anywhere</AppBar.Subtitle>
+      </AppBar.Center>
+      <AppBar.Trailing>
+        <ButtonIcon
+          variant='primary'
+          size='sm'
+          shape='circle'
+          aria-label='Print'
+          as={PrinterIcon}
+        />
+      </AppBar.Trailing>
+      <AppBar.Bottom>
+        <Tabs value='entries' onValueChange={() => {}}>
+          <Tabs.Trigger value='detail'>Details</Tabs.Trigger>
+          <Tabs.Trigger value='entries'>Entries</Tabs.Trigger>
+        </Tabs>
+      </AppBar.Bottom>
     </AppBar>
   ),
 }
