@@ -12,6 +12,9 @@ describe('Text', () => {
     ClampEllipsis,
     ColorVariants,
     AsVariants,
+    FontSizeVariants,
+    FontWeightVariants,
+    CustomFontSizeWeight,
   } = composeStories(stories)
 
   it('renders heading with all features', () => {
@@ -130,5 +133,58 @@ describe('Text', () => {
   it('matches snapshot', () => {
     const { asFragment } = render(<Heading />)
     expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('renders all font size variants', () => {
+    const { getByText } = render(<FontSizeVariants />)
+    const sizes = [
+      'xs',
+      'sm',
+      'base',
+      'lg',
+      'xl',
+      '2xl',
+      '3xl',
+      '4xl',
+      '5xl',
+      '6xl',
+      '7xl',
+      '8xl',
+      '9xl',
+    ]
+    sizes.forEach(size => {
+      const el = getByText(`Font size: text-${size}`)
+      expect(el.className).toContain(`text-${size}`)
+    })
+  })
+
+  it('renders all font weight variants', () => {
+    const { getByText } = render(<FontWeightVariants />)
+    const weights = [
+      'thin',
+      'extralight',
+      'light',
+      'normal',
+      'medium',
+      'semibold',
+      'bold',
+      'extrabold',
+      'black',
+    ]
+    weights.forEach(weight => {
+      const el = getByText(`Font weight: font-${weight}`)
+      expect(el.className).toContain(`font-${weight}`)
+    })
+  })
+
+  it('renders custom font size and weight', () => {
+    const { getByText } = render(<CustomFontSizeWeight />)
+    const el = getByText(
+      'Custom fontSize="4xl" fontWeight="bold" color="primary" as="h2"'
+    )
+    expect(el.className).toContain('text-4xl')
+    expect(el.className).toContain('font-bold')
+    expect(el.className).toContain('text-primary')
+    expect(el.tagName).toBe('H2')
   })
 })

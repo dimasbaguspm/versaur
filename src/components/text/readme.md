@@ -1,5 +1,3 @@
-
-
 # Text Component
 
 The `Text` component provides semantic, accessible typography for Versaur UI, wrapping Tailwind v4 font utilities and the Versaur design system. It supports all design system color, underline, capitalization, alignment, italic, line clamp, ellipsis, and semantic HTML tags. All props are strictly typed and mobile-first.
@@ -63,6 +61,41 @@ import { Text } from '@/components/text'
 {['h1','h2','h3','h4','h5','h6','p','span','label'].map(tag => (
   <Text key={tag} as={tag}>
     {`As: <${tag}>`}
+  </Text>
+))}
+```
+
+## Font Size & Font Weight
+
+The `Text` component allows you to override the default font size and font weight (which are determined by the `as` prop and design system) using the strictly typed `fontSize` and `fontWeight` props. These map directly to Tailwind v4 utilities.
+
+- `fontSize`: `'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl' | '9xl'`
+- `fontWeight`: `'thin' | 'extralight' | 'light' | 'normal' | 'medium' | 'semibold' | 'bold' | 'extrabold' | 'black'`
+
+If set, these props override the defaults from the `as` prop and design system.
+
+### Examples
+
+```tsx
+<Text fontSize="4xl" fontWeight="bold" color="primary" as="h2">
+  Custom fontSize="4xl" fontWeight="bold" color="primary" as="h2"
+</Text>
+
+// Font size variants
+{[
+  'xs', 'sm', 'base', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl', '7xl', '8xl', '9xl',
+].map(size => (
+  <Text key={size} fontSize={size}>
+    {`Font size: text-${size}`}
+  </Text>
+))}
+
+// Font weight variants
+{[
+  'thin', 'extralight', 'light', 'normal', 'medium', 'semibold', 'bold', 'extrabold', 'black',
+].map(weight => (
+  <Text key={weight} fontWeight={weight}>
+    {`Font weight: font-${weight}`}
   </Text>
 ))}
 ```

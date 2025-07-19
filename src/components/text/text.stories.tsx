@@ -75,9 +75,12 @@ const meta: Meta<typeof Text> = {
     italic: false,
     clamp: 'none',
     ellipsis: false,
+    fontSize: undefined,
+    fontWeight: undefined,
     children: 'Text content',
   },
 }
+
 export default meta
 
 type Story = StoryObj<typeof Text>
@@ -187,5 +190,61 @@ export const AsVariants: Story = {
         </Text>
       ))}
     </div>
+  ),
+}
+
+export const FontSizeVariants: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      {[
+        'xs',
+        'sm',
+        'base',
+        'lg',
+        'xl',
+        '2xl',
+        '3xl',
+        '4xl',
+        '5xl',
+        '6xl',
+        '7xl',
+        '8xl',
+        '9xl',
+      ].map(size => (
+        <Text key={size} fontSize={size as TextProps['fontSize']}>
+          {`Font size: text-${size}`}
+        </Text>
+      ))}
+    </div>
+  ),
+}
+
+export const FontWeightVariants: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      {[
+        'thin',
+        'extralight',
+        'light',
+        'normal',
+        'medium',
+        'semibold',
+        'bold',
+        'extrabold',
+        'black',
+      ].map(weight => (
+        <Text key={weight} fontWeight={weight as TextProps['fontWeight']}>
+          {`Font weight: font-${weight}`}
+        </Text>
+      ))}
+    </div>
+  ),
+}
+
+export const CustomFontSizeWeight: Story = {
+  render: () => (
+    <Text fontSize='4xl' fontWeight='bold' color='primary' as='h2'>
+      Custom fontSize="4xl" fontWeight="bold" color="primary" as="h2"
+    </Text>
   ),
 }

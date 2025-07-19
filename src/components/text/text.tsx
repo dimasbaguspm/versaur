@@ -19,6 +19,8 @@ export const Text = forwardRef<HTMLElement, TextProps>(
       italic = false,
       clamp = 'none',
       ellipsis = false,
+      fontSize,
+      fontWeight,
       className,
       children,
       ...props
@@ -39,6 +41,9 @@ export const Text = forwardRef<HTMLElement, TextProps>(
     const tag = allowedTags.includes(Component)
       ? (Component as (typeof allowedTags)[number])
       : 'span'
+    // Compose font size and weight classes if provided
+    const fontSizeClass = fontSize ? `text-${fontSize}` : ''
+    const fontWeightClass = fontWeight ? `font-${fontWeight}` : ''
     return (
       <Component
         ref={ref}
@@ -54,6 +59,8 @@ export const Text = forwardRef<HTMLElement, TextProps>(
             // @ts-expect-error - `as` is not a valid variant
             as: tag,
           }),
+          fontSizeClass,
+          fontWeightClass,
           className
         )}
         {...props}
