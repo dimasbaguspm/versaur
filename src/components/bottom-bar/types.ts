@@ -1,7 +1,9 @@
+import type { HTMLAttributes } from 'react'
+
 /**
  * Props for the BottomBar container
  */
-export interface BottomBarProps extends React.HTMLAttributes<HTMLElement> {
+export interface BottomBarProps extends HTMLAttributes<HTMLElement> {
   /**
    * Visual variant for the BottomBar
    * @default 'primary'
@@ -17,8 +19,7 @@ export interface BottomBarProps extends React.HTMLAttributes<HTMLElement> {
 /**
  * Props for each BottomBar.Item
  */
-export interface BottomBarItemProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface BottomBarItemProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Icon element for the item
    */
