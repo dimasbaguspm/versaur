@@ -17,6 +17,7 @@ const mockContextValue: DrawerContextValue = {
   position: 'right',
   size: 'md',
   variant: 'default',
+  transitionType: 'slide',
 }
 
 // Helper component to provide context
