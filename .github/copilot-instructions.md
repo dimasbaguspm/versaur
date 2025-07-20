@@ -234,85 +234,96 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 - Regular Pattern: Leverage native browser accessibility features
 - Both patterns must meet WCAG 2.1 AA standards
 
+tones that feel natural and trustworthy.
+
 ## Design System & Theme
 
-Versaur follows modern design system principles with a **clean, focused color palette** perfect for
-professional applications with clear hierarchy and accessibility. Our color system uses harmonious
-tones that feel natural and trustworthy.
+Versaur’s design system is built for clarity, accessibility, and modern professional UI. The color palette and semantic roles are defined in `src/styles.css` and are available as CSS custom properties for easy theming and consistent usage across components.
 
 ### Color Palette & Semantic Roles
 
-Our harmonious color system defines clear semantic roles based on the Spenicle palette:
 
-| Role          | Color Name | Color     | Usage                                          |
-| ------------- | ---------- | --------- | ---------------------------------------------- |
-| **Primary**   | Coral      | `#e07a5f` | Main actions, CTAs, brand identity             |
-| **Secondary** | Sage       | `#81b29a` | Secondary actions, balance states              |
-| **Tertiary**  | Mist       | `#84a5c0` | Subtle backgrounds, professional elements      |
-| **Ghost**     | Slate      | `#3d405b` | Text, minimal actions, borders                 |
-| **Neutral**   | Light Gray | `#f8f9fa` | Neutral surfaces, cards, secondary backgrounds |
-| **Success**   | Success    | `#6db285` | Success states, positive feedback              |
-| **Info**      | Info       | `#6b8fad` | Information, neutral alerts                    |
-| **Warning**   | Warning    | `#e08a47` | Warning states, caution                        |
-| **Danger**    | Danger     | `#e06650` | Error states, destructive actions              |
+The color system is based on a harmonious, accessible palette with clear semantic roles, including soft variants for subtle backgrounds and states:
 
-### Color Harmony Principles
+| Role            | CSS Variable                | Color      | Usage                                              |
+| --------------- | -------------------------- | ---------- | -------------------------------------------------- |
+| **Primary**     | `--color-primary`           | #e07a5f    | Main actions, CTAs, brand identity                 |
+| **Primary Soft**| `--color-primary-soft`      | #fff8f6    | Soft backgrounds, hover/focus for primary          |
+| **Secondary**   | `--color-secondary`         | #81b29a    | Secondary actions, balance states                  |
+| **Secondary Soft**| `--color-secondary-soft`  | #f6fffa    | Soft backgrounds, hover/focus for secondary        |
+| **Tertiary**    | `--color-tertiary`          | #84a5c0    | Subtle backgrounds, professional elements          |
+| **Tertiary Soft**| `--color-tertiary-soft`    | #f5faff    | Soft backgrounds, hover/focus for tertiary         |
+| **Ghost**       | `--color-ghost`             | #3d405b    | Text, minimal actions, borders                     |
+| **Ghost Soft**  | `--color-ghost-soft`        | #e3e4ea    | Soft backgrounds, hover/focus for ghost            |
+| **Neutral**     | `--color-neutral`           | #e9ecef    | Neutral surfaces, cards, backgrounds               |
+| **Neutral Soft**| `--color-neutral-soft`      | #f8f9fa    | Soft backgrounds, hover/focus for neutral          |
+| **Success**     | `--color-success`           | #6db285    | Success states, positive feedback                  |
+| **Success Soft**| `--color-success-soft`      | #f4fff9    | Soft backgrounds, hover/focus for success          |
+| **Info**        | `--color-info`              | #6b8fad    | Information, neutral alerts                        |
+| **Info Soft**   | `--color-info-soft`         | #f0f8ff    | Soft backgrounds, hover/focus for info             |
+| **Warning**     | `--color-warning`           | #e08a47    | Warning states, caution                            |
+| **Warning Soft**| `--color-warning-soft`      | #fff9f2    | Soft backgrounds, hover/focus for warning          |
+| **Danger**      | `--color-danger`            | #e06650    | Error states, destructive actions                  |
+| **Danger Soft** | `--color-danger-soft`       | #fff5f4    | Soft backgrounds, hover/focus for danger           |
+| **Background**  | `--color-background`        | #ffffff    | App background                                     |
+| **Foreground**  | `--color-foreground`        | #2d3748    | Main text, foreground                              |
+| **Cream**       | `--color-cream`             | #f4f1de    | Subtle backgrounds, highlights                     |
+| **Cream Soft**  | `--color-cream-soft`        | #fefdfb    | Soft backgrounds, highlights                       |
 
-Our palette follows these harmonious relationships:
+All colors, including soft variants, are defined as CSS custom properties in `:root` for light mode, and can be extended for dark mode as needed.
 
-1. **Professional Harmony**: Colors work together for business applications
-2. **Natural Temperature**: Warm coral balanced with cool sage and mist
-3. **Clear Hierarchy**: Each color has a distinct purpose and usage
-4. **Complementary Balance**: Coral (warm) balanced with sage/mist (cool)
-
-### Color Psychology
-
-- **Coral (Primary)**: Energetic, friendly, action-oriented
-- **Sage (Secondary)**: Calming, natural, trustworthy
-- **Mist (Tertiary)**: Professional, subtle, supportive
-- **Slate (Ghost)**: Serious, reliable, minimal
-- **Light Gray (Neutral)**: Clean, subtle, unobtrusive
-
-### Accessibility & Contrast
-
-All color combinations meet WCAG 2.1 AA standards:
-
-- **Text on backgrounds**: Minimum 4.5:1 contrast ratio
-- **Interactive elements**: Minimum 3:1 contrast ratio
-- **Focus indicators**: Clear visual distinction
-
-### CSS Custom Properties
-
-All colors are available as CSS custom properties with light, base, and dark variations:
+#### Example CSS Custom Properties
 
 ```css
 :root {
-  /* Core Colors */
-  --color-coral: #e07a5f;
-  --color-sage: #81b29a;
-  --color-mist: #84a5c0;
-  --color-slate: #3d405b;
-  --color-cream: #f4f1de;
-  --color-light-gray: #f8f9fa;
-
-  /* Semantic Colors */
+  --color-primary: #e07a5f;
+  --color-secondary: #81b29a;
+  --color-tertiary: #84a5c0;
+  --color-ghost: #3d405b;
+  --color-neutral: #f8f9fa;
   --color-success: #6db285;
   --color-info: #6b8fad;
   --color-warning: #e08a47;
   --color-danger: #e06650;
-
-  /* Background and Foreground */
-  --color-background: #ffffff; /* White */
-  --color-foreground: #2d3748; /* Darker Slate */
-
-  /* Button/Component Variants */
-  --color-primary: #e07a5f; /* Coral */
-  --color-secondary: #81b29a; /* Sage */
-  --color-tertiary: #84a5c0; /* Mist */
-  --color-ghost: #3d405b; /* Slate */
-  --color-neutral: #f8f9fa; /* Light Gray */
+  --color-background: #ffffff;
+  --color-foreground: #2d3748;
+  --color-cream: #f4f1de;
 }
 ```
+
+### Color Harmony Principles
+
+- **Professional Harmony**: All palette colors are designed to work together for business and product UIs
+- **Natural Temperature**: Warm primary (coral) is balanced by cool secondary/tertiary (sage, mist)
+- **Clear Hierarchy**: Each color variable has a distinct, documented purpose
+- **Complementary Balance**: Warm and cool tones are used for visual balance and clarity
+
+### Color Psychology
+
+- **Primary (Coral)**: Energetic, action-oriented, friendly
+- **Secondary (Sage)**: Calming, natural, trustworthy
+- **Tertiary (Mist)**: Professional, subtle, supportive
+- **Ghost (Slate)**: Minimal, reliable, for text and outlines
+- **Neutral (Light Gray)**: Clean, subtle, unobtrusive
+- **Success**: Positive, affirming
+- **Info**: Informative, neutral
+- **Warning**: Caution, alert
+- **Danger**: Destructive, error
+
+### Accessibility & Contrast
+
+All color combinations are chosen to meet or exceed WCAG 2.1 AA standards:
+
+- **Text on backgrounds**: Minimum 4.5:1 contrast ratio
+- **Interactive elements**: Minimum 3:1 contrast ratio
+- **Focus indicators**: Always visible and clear
+
+### Usage in Components
+
+- Use the CSS variables (e.g., `var(--color-primary)`) in Tailwind config and component styles for consistency
+- All variants, states, and backgrounds should use these variables for easy theming
+
+Refer to `assets/styles.css` for the full palette and to add or update color roles as the design system evolves.
 
 ## Testing
 
