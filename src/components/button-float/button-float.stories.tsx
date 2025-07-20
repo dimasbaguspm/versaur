@@ -81,7 +81,15 @@ ButtonFloat is a floating action button that stays fixed to the bottom right or 
   },
   decorators: [
     Story => (
-      <div style={{ position: 'relative', height: '200px', padding: '2rem' }}>
+      <div
+        style={{
+          position: 'relative',
+          height: '600px',
+          background: '#f8f9fa',
+          border: '1px dashed #e07a5f',
+          margin: '2rem',
+        }}
+      >
         <Story />
       </div>
     ),
@@ -95,8 +103,14 @@ type Story = StoryObj<typeof ButtonFloat>
  * Default floating button (bottom right, with icon)
  */
 export const Default: Story = {
+  render(args) {
+    return (
+      <ButtonFloat {...args}>
+        <Icon as={MessageCircle} color='neutral' />
+      </ButtonFloat>
+    )
+  },
   args: {
-    children: <Icon as={MessageCircle} color='neutral' />, // Use Icon wrapper
     side: 'right',
     variant: 'primary',
     size: 'md',
@@ -122,7 +136,7 @@ export const LeftSide: Story = {
  */
 export const AllVariants: Story = {
   render: () => (
-    <div>
+    <>
       <ButtonFloat
         variant='primary'
         style={{ bottom: '5rem' }}
@@ -155,7 +169,7 @@ export const AllVariants: Story = {
       >
         <Icon as={X} color='neutral' />
       </ButtonFloat>
-    </div>
+    </>
   ),
 }
 
@@ -168,7 +182,7 @@ export const SizeComparison: Story = {
       <ButtonFloat size='sm' offset='10rem' aria-label='Small'>
         <Icon color='neutral' as={Plus} />
       </ButtonFloat>
-      <ButtonFloat size='md' offset='5rem' aria-label='Medium'>
+      <ButtonFloat size='md' offset='5.75rem' aria-label='Medium'>
         <Icon color='neutral' as={Plus} />
       </ButtonFloat>
       <ButtonFloat size='lg' aria-label='Large'>
