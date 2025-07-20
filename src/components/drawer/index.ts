@@ -26,4 +26,5 @@ export type {
   DrawerSize,
   DrawerVariant,
   DrawerVariantProps,
+  DrawerTransitionType,
 } from './types'

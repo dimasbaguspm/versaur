@@ -1,3 +1,7 @@
+/**
+ * Drawer transition type options
+ */
+export type DrawerTransitionType = 'slide' | 'fade'
 import type { ComponentPropsWithoutRef, ReactNode } from 'react'
 import type { VariantProps } from '@/utils/variants'
 import type { drawerVariants } from './helpers'
@@ -36,6 +40,8 @@ export interface DrawerContextValue {
   size: DrawerSize
   /** Drawer variant */
   variant: DrawerVariant
+  /** Drawer transition type */
+  transitionType: DrawerTransitionType
 }
 
 /**
@@ -52,6 +58,8 @@ export interface DrawerProps extends ComponentPropsWithoutRef<'div'> {
   size?: DrawerSize
   /** Drawer variant */
   variant?: DrawerVariant
+  /** Drawer transition type */
+  transitionType?: DrawerTransitionType
   /** Children components */
   children: ReactNode
   /** Additional CSS classes */

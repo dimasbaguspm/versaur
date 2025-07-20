@@ -21,6 +21,7 @@ export const DrawerRoot: React.FC<DrawerProps> = ({
   position = 'right',
   size = 'md',
   variant = 'default',
+  transitionType = 'slide',
   className,
   ...props
 }) => {
@@ -34,6 +35,7 @@ export const DrawerRoot: React.FC<DrawerProps> = ({
     position,
     size,
     variant,
+    transitionType,
   }
 
   // Handle escape key to close drawer
@@ -72,10 +74,17 @@ export const DrawerRoot: React.FC<DrawerProps> = ({
               position,
               size,
               variant,
+              transitionType,
             }),
-            // Apply closed transform when not open
-            !isOpen && position === 'left' && '-translate-x-full',
-            !isOpen && position === 'right' && 'translate-x-full',
+            transitionType === 'slide'
+              ? [
+                  !isOpen && position === 'left' && '-translate-x-full',
+                  !isOpen && position === 'right' && 'translate-x-full',
+                ]
+              : [
+                  'left-0 right-0 top-0 bottom-0',
+                  isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none',
+                ],
             className
           )}
           {...props}
