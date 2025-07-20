@@ -1,0 +1,165 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Table > renders table structure and content correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="w-full overflow-x-auto rounded-lg border border-border"
+    role="table"
+  >
+    <div
+      class="bg-neutral-soft"
+      role="rowgroup"
+    >
+      <div
+        class="grid gap-4 grid-cols-12"
+        role="row"
+      >
+        <div
+          class="px-4 py-2 [&:not(:last-child)]:border-r [&:not(:last-child)]:border-border col-span-4 text-left"
+          role="columnheader"
+        >
+          Date
+        </div>
+        <div
+          class="px-4 py-2 [&:not(:last-child)]:border-r [&:not(:last-child)]:border-border col-span-4 text-left"
+          role="columnheader"
+        >
+          Type
+        </div>
+        <div
+          class="px-4 py-2 [&:not(:last-child)]:border-r [&:not(:last-child)]:border-border col-span-2 text-left"
+          role="columnheader"
+        >
+          Amount
+        </div>
+        <div
+          class="px-4 py-2 [&:not(:last-child)]:border-r [&:not(:last-child)]:border-border col-span-2 text-left"
+          role="columnheader"
+        >
+          Action
+        </div>
+      </div>
+    </div>
+    <div
+      class=""
+      role="rowgroup"
+    >
+      <div
+        class="grid gap-4 grid-cols-12 border-b border-border last:border-0"
+        role="row"
+      >
+        <div
+          class="px-4 py-2 [&:not(:last-child)]:border-r [&:not(:last-child)]:border-border col-span-4 text-left"
+          role="cell"
+        >
+          2025-07-01
+        </div>
+        <div
+          class="px-4 py-2 [&:not(:last-child)]:border-r [&:not(:last-child)]:border-border col-span-4 text-left"
+          role="cell"
+        >
+          Income
+        </div>
+        <div
+          class="px-4 py-2 [&:not(:last-child)]:border-r [&:not(:last-child)]:border-border col-span-2 text-left"
+          role="cell"
+        >
+          $2,000
+        </div>
+        <div
+          class="px-4 py-2 [&:not(:last-child)]:border-r [&:not(:last-child)]:border-border col-span-2 text-left"
+          role="cell"
+        >
+          <button>
+            Edit
+          </button>
+        </div>
+      </div>
+      <div
+        class="grid gap-4 grid-cols-12 border-b border-border last:border-0"
+        role="row"
+      >
+        <div
+          class="px-4 py-2 [&:not(:last-child)]:border-r [&:not(:last-child)]:border-border col-span-4 text-left"
+          role="cell"
+        >
+          2025-07-02
+        </div>
+        <div
+          class="px-4 py-2 [&:not(:last-child)]:border-r [&:not(:last-child)]:border-border col-span-4 text-left"
+          role="cell"
+        >
+          Expense
+        </div>
+        <div
+          class="px-4 py-2 [&:not(:last-child)]:border-r [&:not(:last-child)]:border-border col-span-2 text-left"
+          role="cell"
+        >
+          -$500
+        </div>
+        <div
+          class="px-4 py-2 [&:not(:last-child)]:border-r [&:not(:last-child)]:border-border col-span-2 text-left"
+          role="cell"
+        >
+          <button>
+            Edit
+          </button>
+        </div>
+      </div>
+      <div
+        class="grid gap-4 grid-cols-12 border-b border-border last:border-0"
+        role="row"
+      >
+        <div
+          class="px-4 py-2 [&:not(:last-child)]:border-r [&:not(:last-child)]:border-border col-span-4 text-left"
+          role="cell"
+        >
+          2025-07-03
+        </div>
+        <div
+          class="px-4 py-2 [&:not(:last-child)]:border-r [&:not(:last-child)]:border-border col-span-4 text-left"
+          role="cell"
+        >
+          Income
+        </div>
+        <div
+          class="px-4 py-2 [&:not(:last-child)]:border-r [&:not(:last-child)]:border-border col-span-2 text-left"
+          role="cell"
+        >
+          $1,200
+        </div>
+        <div
+          class="px-4 py-2 [&:not(:last-child)]:border-r [&:not(:last-child)]:border-border col-span-2 text-left"
+          role="cell"
+        >
+          <button>
+            Edit
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="bg-neutral-soft"
+      role="rowgroup"
+    >
+      <div
+        class="grid gap-4 grid-cols-12"
+        role="row"
+      >
+        <div
+          class="px-4 py-2 [&:not(:last-child)]:border-r [&:not(:last-child)]:border-border col-span-8 text-left"
+          role="cell"
+        >
+          Total
+        </div>
+        <div
+          class="px-4 py-2 [&:not(:last-child)]:border-r [&:not(:last-child)]:border-border col-span-4 text-left"
+          role="cell"
+        >
+          $2,700
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
