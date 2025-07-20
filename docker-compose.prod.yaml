@@ -10,6 +10,7 @@ services:
     environment:
       - NODE_ENV=production
       - STORYBOOK_PORT=8081
+      - NPM_TOKEN=
     ports:
       - "8081:8081"
     networks:

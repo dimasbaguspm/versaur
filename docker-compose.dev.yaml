@@ -22,6 +22,7 @@ services:
       - STORYBOOK_PORT=6006
       - BROWSER=none
       - CI=true
+      - NPM_TOKEN=
     networks:
       - versaur-network
     restart: unless-stopped
