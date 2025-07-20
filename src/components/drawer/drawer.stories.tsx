@@ -391,3 +391,26 @@ export const CustomFooterLayout: Story = {
     },
   },
 }
+
+export const Fade: Story = {
+  render: args => (
+    <DrawerWrapper
+      {...args}
+      transitionType='fade'
+      triggerLabel='Open Fade Drawer'
+    >
+      <Drawer.Header>
+        <h3 className='text-lg font-semibold'>Fade Transition</h3>
+      </Drawer.Header>
+      <Drawer.Body>
+        <p>This drawer uses a fade transition instead of sliding in/out.</p>
+      </Drawer.Body>
+    </DrawerWrapper>
+  ),
+  args: {
+    position: 'right',
+    size: 'full',
+    variant: 'default',
+    transitionType: 'fade',
+  },
+}

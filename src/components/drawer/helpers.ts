@@ -24,34 +24,36 @@ export const drawerOverlayVariants = cva(
  * Provides different sizes, positions, and visual styles for the drawer content
  * Glass variant creates a transparent glass-like appearance with backdrop blur
  */
-export const drawerVariants = cva(
-  'fixed z-50 shadow-xl transition-transform duration-300 ease-in-out flex flex-col',
-  {
-    variants: {
-      position: {
-        left: 'left-0 top-0 bottom-0 border-r',
-        right: 'right-0 top-0 bottom-0 border-l',
-      },
-      size: {
-        sm: 'w-80',
-        md: 'w-96',
-        lg: 'w-[28rem]',
-        xl: 'w-[32rem]',
-        '3/4': 'w-[75vw]',
-        full: 'w-full',
-      },
-      variant: {
-        default: 'bg-white border-gray-200',
-        glass: 'bg-white/10 backdrop-blur-lg border-white/20',
-      },
+export const drawerVariants = cva('fixed z-50 shadow-xl flex flex-col', {
+  variants: {
+    position: {
+      left: 'left-0 top-0 bottom-0 border-r',
+      right: 'right-0 top-0 bottom-0 border-l',
     },
-    defaultVariants: {
-      position: 'right',
-      size: 'md',
-      variant: 'default',
+    size: {
+      sm: 'w-80',
+      md: 'w-96',
+      lg: 'w-[28rem]',
+      xl: 'w-[32rem]',
+      '3/4': 'w-[75vw]',
+      full: 'w-full',
     },
-  }
-)
+    variant: {
+      default: 'bg-white border-gray-200',
+      glass: 'bg-white/10 backdrop-blur-lg border-white/20',
+    },
+    transitionType: {
+      slide: 'transition-transform duration-300 ease-in-out',
+      fade: 'transition-opacity duration-300 ease-in-out',
+    },
+  },
+  defaultVariants: {
+    position: 'right',
+    size: 'md',
+    variant: 'default',
+    transitionType: 'slide',
+  },
+})
 
 /**
  * Drawer header variants

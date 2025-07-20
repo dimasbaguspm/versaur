@@ -3,7 +3,8 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import { composeStories } from '@storybook/react'
 import * as stories from '../drawer.stories'
 
-const { Default, LeftPosition, LargeSize, FullWidth } = composeStories(stories)
+const { Default, LeftPosition, LargeSize, FullWidth, Fade } =
+  composeStories(stories)
 
 describe('Drawer', () => {
   describe('Default Story', () => {
@@ -123,6 +124,23 @@ describe('Drawer', () => {
         // Drawer should close
         expect(screen.queryByText('Drawer Title')).not.toBeInTheDocument()
       }
+    })
+  })
+
+  describe('Fade Transition Story', () => {
+    it('renders the fade transition drawer', () => {
+      render(<Fade />)
+
+      // Click the trigger button
+      fireEvent.click(screen.getByText('Open Fade Drawer'))
+
+      // Check that the drawer content is visible
+      expect(screen.getByText('Fade Transition')).toBeInTheDocument()
+      expect(
+        screen.getByText(
+          'This drawer uses a fade transition instead of sliding in/out.'
+        )
+      ).toBeInTheDocument()
     })
   })
 })
