@@ -32,7 +32,8 @@ import { Plus } from 'lucide-react'
 | `variant`   | string   | 'primary' | Visual style variant (see Button variants)        |
 | `size`      | string   | 'md'      | Size of the button: 'sm', 'md', 'lg'             |
 | `side`      | string   | 'right'   | Which side to float: 'right' or 'left'           |
-| `offset`    | string   | '1rem'    | Offset from edge of viewport                     |
+| `offset`    | string   | '1rem'    | Offset from edge of viewport or parent container |
+| —           | —        | —         | ButtonFloat will always float at the bottom right/left of its parent container. If the container is taller than the viewport, the button will remain visible at the bottom right/left of the container's visible area as you scroll. |
 | `children`  | ReactNode| —         | Icon (wrapped in Versaur `Icon` component)       |
 | `aria-label`| string   | —         | Required for icon-only buttons                   |
 

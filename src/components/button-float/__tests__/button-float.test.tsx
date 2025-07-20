@@ -12,7 +12,7 @@ describe('ButtonFloat', () => {
     expect(btn).toBeInTheDocument()
     expect(btn).toHaveStyle({
       bottom: '1rem',
-      position: 'fixed',
+      position: 'absolute',
     })
     expect(btn).toHaveClass('rounded-lg')
     expect(btn).toHaveAttribute('aria-label', 'Chat')
@@ -23,7 +23,7 @@ describe('ButtonFloat', () => {
     const btn = screen.getByRole('button')
     expect(btn).toHaveStyle({
       bottom: '1rem',
-      position: 'fixed',
+      position: 'absolute',
     })
     expect(btn).toHaveClass('rounded-lg')
     expect(btn).toHaveAttribute('aria-label', 'Help')
