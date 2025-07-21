@@ -94,14 +94,14 @@ exports[`AppBar > renders WithBottom story and AppBar.Bottom is always on a new 
       data-versaur-appbar-bottom="true"
     >
       <div
-        class="flex flex-row w-full border-b border-neutral overflow-x-auto whitespace-nowrap"
+        class="flex flex-row w-full overflow-x-auto whitespace-nowrap border-b border-border"
         role="tablist"
         style="position: relative;"
       >
         <button
           aria-controls="tabs-content-detail"
           aria-selected="false"
-          class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-base bg-transparent relative border-b-2 border-transparent font-normal text-foreground hover:text-coral"
+          class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-base relative font-normal bg-transparent border-b-2 border-transparent text-foreground hover:text-coral"
           id="tabs-trigger-detail"
           role="tab"
           tabindex="-1"
@@ -112,7 +112,7 @@ exports[`AppBar > renders WithBottom story and AppBar.Bottom is always on a new 
         <button
           aria-controls="tabs-content-entries"
           aria-selected="true"
-          class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-base bg-transparent relative border-b-2 font-medium text-coral border-coral"
+          class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-base relative font-medium bg-transparent border-b-2 text-coral border-coral"
           id="tabs-trigger-entries"
           role="tab"
           tabindex="0"

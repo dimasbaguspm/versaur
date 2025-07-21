@@ -111,3 +111,31 @@ function ScrollBehaviorExample() {
 export const ScrollBehavior: Story = {
   render: () => <ScrollBehaviorExample />,
 }
+
+/**
+ * Example: Tabs with filled variant
+ */
+function FilledVariantExample() {
+  const [tab, setTab] = useState('tab1')
+  return (
+    <>
+      <Tabs value={tab} onValueChange={setTab} variant='filled'>
+        <Tabs.Trigger value='tab1'>Tab 1</Tabs.Trigger>
+        <Tabs.Trigger value='tab2'>Tab 2</Tabs.Trigger>
+        <Tabs.Trigger value='tab3'>Tab 3</Tabs.Trigger>
+      </Tabs>
+      <div className='mt-4'>
+        {tab === 'tab1' && <div>Content for Tab 1</div>}
+        {tab === 'tab2' && <div>Content for Tab 2</div>}
+        {tab === 'tab3' && <div>Content for Tab 3</div>}
+      </div>
+    </>
+  )
+}
+
+/**
+ * Tabs with filled variant
+ */
+export const FilledVariant: Story = {
+  render: () => <FilledVariantExample />,
+}

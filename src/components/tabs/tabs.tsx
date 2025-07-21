@@ -18,12 +18,14 @@ const TabsRoot: React.FC<TabsRootProps> = ({
   children,
   className,
   color = 'primary',
+  variant = 'underline',
   ...props
 }) => {
   const contextValue = {
     activeTab: value,
     setActiveTab: onValueChange,
     color,
+    variant,
   }
 
   const containerRef = useRef<HTMLDivElement>(null)
@@ -33,16 +35,23 @@ const TabsRoot: React.FC<TabsRootProps> = ({
     <TabsContext.Provider value={contextValue}>
       <div
         role='tablist'
-        className={cn(tabsContainerVariants(), className)}
+        className={cn(
+          tabsContainerVariants({
+            variant,
+          }),
+          className
+        )}
         ref={containerRef}
         style={{ position: 'relative' }}
         {...props}
       >
         {children}
-        <TabsIndicator
-          left={indicatorStyle.left}
-          width={indicatorStyle.width}
-        />
+        {variant === 'underline' && (
+          <TabsIndicator
+            left={indicatorStyle.left}
+            width={indicatorStyle.width}
+          />
+        )}
       </div>
     </TabsContext.Provider>
   )
