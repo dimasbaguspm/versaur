@@ -32,6 +32,7 @@ const SegmentMultipleInputRoot = React.forwardRef<
       value = [],
       onChange,
       children,
+      fullWidth = false,
       ...props
     },
     ref
@@ -53,7 +54,6 @@ const SegmentMultipleInputRoot = React.forwardRef<
     const childrenWithPositions = childrenArray.map((child, index) => {
       if (React.isValidElement(child)) {
         let position: 'first' | 'middle' | 'last' | 'single'
-
         if (childrenArray.length === 1) {
           position = 'single'
         } else if (index === 0) {
@@ -63,10 +63,12 @@ const SegmentMultipleInputRoot = React.forwardRef<
         } else {
           position = 'middle'
         }
-
         return React.cloneElement(
-          child as React.ReactElement<{ position?: string }>,
-          { position }
+          child as React.ReactElement<{
+            position?: string
+            fullWidth?: boolean
+          }>,
+          { position, fullWidth }
         )
       }
       return child
@@ -74,18 +76,28 @@ const SegmentMultipleInputRoot = React.forwardRef<
 
     return (
       <SegmentMultipleInputContext.Provider value={contextValue}>
-        <div ref={ref} className={cn('w-full', className)} {...props}>
+        <div
+          ref={ref}
+          className={cn(
+            fullWidth ? 'flex w-full flex-col' : 'w-full',
+            className
+          )}
+          {...props}
+        >
           {label && (
             <div className='block text-sm font-medium text-foreground mb-3'>
               {label}
             </div>
           )}
           <div
-            className={segmentGroupVariants({
-              variant: hasError ? 'danger' : variant,
-              size,
-              error: hasError,
-            })}
+            className={cn(
+              segmentGroupVariants({
+                variant: hasError ? 'danger' : variant,
+                size,
+                error: hasError,
+              }),
+              fullWidth && 'flex w-full'
+            )}
           >
             {childrenWithPositions}
           </div>

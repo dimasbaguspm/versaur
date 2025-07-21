@@ -16,9 +16,6 @@ import { SegmentMultipleInput } from './segment-multiple-input'
 const meta: Meta<typeof SegmentMultipleInput> = {
   title: 'Form/SegmentMultipleInput',
   component: SegmentMultipleInput,
-  parameters: {
-    layout: 'centered',
-  },
   tags: ['autodocs'],
   argTypes: {
     variant: {
@@ -481,6 +478,41 @@ export const SingleOption: Story = {
           I agree to the terms
         </SegmentMultipleInput.Option>
       </SegmentMultipleInput>
+    )
+  },
+}
+
+/**
+ * Segment multiple input with fullWidth prop.
+ * All options fill parent width equally.
+ */
+export const FullWidth: Story = {
+  args: {
+    label: 'Transaction Type',
+    helperText: 'Choose one or more types',
+    fullWidth: true,
+  },
+  render: function FullWidthStory(args) {
+    const [value, setValue] = useState<string[]>(['expense'])
+    return (
+      <div className='w-full'>
+        <SegmentMultipleInput
+          {...args}
+          name='transaction-type'
+          value={value}
+          onChange={setValue}
+        >
+          <SegmentMultipleInput.Option value='expense'>
+            Expense
+          </SegmentMultipleInput.Option>
+          <SegmentMultipleInput.Option value='income'>
+            Income
+          </SegmentMultipleInput.Option>
+          <SegmentMultipleInput.Option value='transfer'>
+            Transfer
+          </SegmentMultipleInput.Option>
+        </SegmentMultipleInput>
+      </div>
     )
   },
 }

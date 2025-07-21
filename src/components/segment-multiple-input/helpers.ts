@@ -48,7 +48,7 @@ export const segmentGroupVariants = cva(
 )
 
 export const segmentOptionVariants = cva(
-  'relative flex flex-row items-center px-3 py-2 text-center font-medium transition-all duration-200 cursor-pointer border-0 bg-transparent outline-none focus:ring-2 focus:ring-offset-1',
+  'relative flex flex-row items-center px-3 py-2 text-center font-medium transition-all duration-200 cursor-pointer border-0 bg-transparent outline-none focus:ring-2 focus:ring-offset-1 flex-1',
   {
     variants: {
       variant: {

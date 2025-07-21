@@ -1,0 +1,66 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SegmentMultipleInput > SegmentMultipleInput - FullWidth > renders all options and fills parent width 1`] = `
+<div
+  class="w-full"
+>
+  <div
+    class="flex w-full flex-col"
+  >
+    <div
+      class="block text-sm font-medium text-foreground mb-3"
+    >
+      Transaction Type
+    </div>
+    <div
+      class="rounded-lg border overflow-hidden bg-neutral/50 p-1 border-coral/20 text-sm flex w-full"
+    >
+      <input
+        checked=""
+        class="sr-only"
+        id="«r1p»"
+        name="transaction-type[]"
+        type="checkbox"
+        value="expense"
+      />
+      <label
+        class="flex flex-row items-center text-center font-medium transition-all duration-200 cursor-pointer border-0 outline-none focus:ring-2 focus:ring-offset-1 flex-1 focus:ring-coral/30 px-3 py-2 text-sm rounded-l-md bg-coral text-white shadow-sm hover:text-white relative z-10"
+        for="«r1p»"
+      >
+        Expense
+      </label>
+      <input
+        class="sr-only"
+        id="«r1q»"
+        name="transaction-type[]"
+        type="checkbox"
+        value="income"
+      />
+      <label
+        class="relative flex flex-row items-center text-center font-medium transition-all duration-200 cursor-pointer border-0 bg-transparent outline-none focus:ring-2 focus:ring-offset-1 flex-1 text-slate hover:text-coral focus:ring-coral/30 px-3 py-2 text-sm"
+        for="«r1q»"
+      >
+        Income
+      </label>
+      <input
+        class="sr-only"
+        id="«r1r»"
+        name="transaction-type[]"
+        type="checkbox"
+        value="transfer"
+      />
+      <label
+        class="relative flex flex-row items-center text-center font-medium transition-all duration-200 cursor-pointer border-0 bg-transparent outline-none focus:ring-2 focus:ring-offset-1 flex-1 text-slate hover:text-coral focus:ring-coral/30 px-3 py-2 text-sm rounded-r-md"
+        for="«r1r»"
+      >
+        Transfer
+      </label>
+    </div>
+    <div
+      class="mt-2 text-sm text-gray-600"
+    >
+      Choose one or more types
+    </div>
+  </div>
+</div>
+`;
