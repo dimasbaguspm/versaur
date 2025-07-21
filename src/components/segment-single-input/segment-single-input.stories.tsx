@@ -677,3 +677,43 @@ export const MixedContent: Story = {
     return <MixedContentComponent />
   },
 }
+
+/**
+ * Full width segment input demonstration
+ * Shows how the segment group and options fill the parent width
+ */
+export const FullWidth: Story = {
+  render: () => {
+    const FullWidthComponent = () => {
+      const [value, setValue] = useState<string | null>('income')
+      return (
+        <div className='w-full '>
+          <SegmentSingleInput
+            label='Transaction Type (Full Width)'
+            name='full-width-story'
+            value={value}
+            onChange={setValue}
+            fullWidth
+          >
+            <SegmentSingleInput.Option value='expense'>
+              <TrendingDown className='w-4 h-4 mr-2' />
+              Expense
+            </SegmentSingleInput.Option>
+            <SegmentSingleInput.Option value='income'>
+              <TrendingUp className='w-4 h-4 mr-2' />
+              Income
+            </SegmentSingleInput.Option>
+            <SegmentSingleInput.Option value='transfer'>
+              <ArrowLeftRight className='w-4 h-4 mr-2' />
+              Transfer
+            </SegmentSingleInput.Option>
+          </SegmentSingleInput>
+          <p className='text-sm text-gray-600 mt-2'>
+            Current value: {value || 'null (unselected)'}
+          </p>
+        </div>
+      )
+    }
+    return <FullWidthComponent />
+  },
+}
