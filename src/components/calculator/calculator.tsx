@@ -3,7 +3,6 @@ import { CalculatorButton } from './calculator.atoms'
 import { calculatorRootVariants } from './helpers'
 import type { CalculatorProps } from './types'
 import { cn } from '@/utils/cn'
-import { Button } from '@/components/button/button'
 import { ButtonIcon } from '@/components/button-icon/button-icon'
 import { X as BackspaceIcon } from 'lucide-react'
 import { useCalculator } from './use-calculator'
@@ -32,11 +31,6 @@ export const Calculator = forwardRef<HTMLDivElement, CalculatorProps>(
       disabled,
       onChange,
     })
-
-    const handleDone = () => {
-      if (disabled) return
-      onChange?.(input)
-    }
 
     return (
       <div
@@ -94,16 +88,6 @@ export const Calculator = forwardRef<HTMLDivElement, CalculatorProps>(
             </div>
           ))}
         </div>
-        <Button
-          variant='primary'
-          size='md'
-          className='w-full mt-2'
-          onClick={handleDone}
-          disabled={disabled}
-          aria-label='Done'
-        >
-          Done
-        </Button>
       </div>
     )
   }

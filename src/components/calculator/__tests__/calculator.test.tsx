@@ -21,18 +21,6 @@ describe('Calculator', () => {
 
   // No C or ⌫ in keypad layout, so these tests are removed
 
-  it('submits value when Done is pressed', () => {
-    const onChange = vi.fn()
-    const { getByText, getByLabelText } = render(
-      <Default onChange={onChange} />
-    )
-    fireEvent.change(getByLabelText('Calculator input'), {
-      target: { value: '42' },
-    })
-    fireEvent.click(getByText('Done'))
-    expect(onChange).toHaveBeenCalledWith('42')
-  })
-
   it('supports keyboard interaction for numbers and operators', () => {
     const { getByLabelText } = render(<Default />)
     const input = getByLabelText('Calculator input')
@@ -49,6 +37,5 @@ describe('Calculator', () => {
     expect(getByLabelText('Calculator input')).toBeDisabled()
     expect(getByText('1')).toBeDisabled()
     expect(getByText('=')).toBeDisabled()
-    expect(getByText('Done')).toBeDisabled()
   })
 })

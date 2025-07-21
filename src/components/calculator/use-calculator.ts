@@ -36,19 +36,27 @@ export function useCalculator({
         setInput('')
         onChange?.('')
       } else if (val === '⌫') {
-        setInput(prev => prev.slice(0, -1))
+        setInput(prev => {
+          const next = prev.slice(0, -1)
+          onChange?.(next)
+          return next
+        })
       } else if (val === '=') {
         const result = evaluate(input)
         setInput(result)
         onChange?.(result)
       } else {
-        setInput(prev => prev + val)
+        setInput(prev => {
+          const next = prev + val
+          onChange?.(next)
+          return next
+        })
       }
     },
     [disabled, input, onChange, evaluate]
   )
 
-  // Keyboard interaction for all keypads except 'Done'
+  // Keyboard interaction for all keypads
   useEffect(() => {
     if (disabled) return
     const handleKeyDown = (e: KeyboardEvent) => {

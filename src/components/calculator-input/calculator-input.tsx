@@ -6,6 +6,7 @@ import { Calculator } from '@/components/calculator'
 import { Modal } from '@/components/modal'
 import { Icon } from '../icon'
 import { CalculatorIcon } from 'lucide-react'
+import { Button } from '../button'
 
 /**
  * Default label for the modal header
@@ -31,17 +32,59 @@ export const CalculatorInput: FC<
 }) => {
   const [open, setOpen] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
+  const [calculatorValue, setCalculatorValue] = useState('')
+  const [lastValidValue, setLastValidValue] = useState(value ?? '')
 
-  // Helper to handle calculator done
-  const handleCalculatorDone = (v: string) => {
-    // If empty or invalid, treat as ''
-    const trimmed = v.trim()
-    if (trimmed === '' || isNaN(Number(trimmed))) {
-      onChange('')
+  // Helper to handle calculator value change
+  const handleCalculatorChange = (v: string) => {
+    setCalculatorValue(v)
+    // Try to evaluate the value
+    let result: number | null = null
+    try {
+      // Only eval if it contains operators or is a number
+      if (/^[\d+\-*/.\s]+$/.test(v)) {
+        // using eval for arithmetic expression parsing
+        const evalResult = eval(v)
+        if (typeof evalResult === 'number' && !isNaN(evalResult)) {
+          result = evalResult
+        }
+      }
+    } catch {
+      // ignore invalid expressions
+    }
+    if (result !== null) {
+      setLastValidValue(result)
+    }
+  }
+
+  // Helper to handle OK button click
+  const handleOk = () => {
+    const trimmed = calculatorValue.trim()
+    let result: number | null = null
+    try {
+      if (/^[\d+\-*/.\s]+$/.test(trimmed)) {
+        // using eval for arithmetic expression parsing
+        const evalResult = eval(trimmed)
+        if (typeof evalResult === 'number' && !isNaN(evalResult)) {
+          result = evalResult
+        }
+      }
+    } catch {
+      // ignore invalid expressions
+    }
+    if (result !== null) {
+      onChange(result)
+      setLastValidValue(result)
     } else {
-      onChange(Number(trimmed))
+      onChange(lastValidValue)
     }
     setOpen(false)
+  }
+
+  const handleClear = () => {
+    setCalculatorValue('')
+    onChange('')
+    setLastValidValue('')
   }
 
   return (
@@ -75,13 +118,29 @@ export const CalculatorInput: FC<
         {...modalProps}
       >
         <Modal.Header>{headerLabel ?? DEFAULT_HEADER}</Modal.Header>
-        <Modal.Body className='flex flex-col items-center justify-center p-0'>
+        <Modal.Body className='flex flex-col items-center justify-center pb-0'>
           <Calculator
             initialValue={typeof value === 'number' ? value : ''}
-            onChange={handleCalculatorDone}
+            onChange={handleCalculatorChange}
             disabled={disabled}
           />
         </Modal.Body>
+        <Modal.Footer className='pb-4 pt-0'>
+          <Button
+            variant='neutral-ghost'
+            onClick={handleClear}
+            disabled={disabled}
+          >
+            Clear
+          </Button>
+          <Button
+            variant='primary-ghost'
+            onClick={handleOk}
+            disabled={disabled}
+          >
+            OK
+          </Button>
+        </Modal.Footer>
       </Modal>
     </>
   )
