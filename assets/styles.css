@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
 @import 'tailwindcss';
 
@@ -102,9 +103,11 @@ Our palette follows these harmonious relationships:
     width: 30%;
   }
 }
+
 .animate-loading-bar {
   animation: loading-bar 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
+
 
 @keyframes spin-perfect {
   100% {
@@ -128,3 +131,4 @@ Our palette follows these harmonious relationships:
 .animate-fab-in {
   animation: fab-in 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
+

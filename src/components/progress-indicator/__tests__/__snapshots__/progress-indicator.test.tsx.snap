@@ -1,0 +1,82 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ProgressIndicator (stories) > matches snapshot for color variants 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col gap-6"
+  >
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="60"
+      class="relative h-0.5 w-full overflow-hidden bg-neutral-soft"
+      role="progressbar"
+    >
+      <div
+        class="absolute left-0 top-0 h-full rounded transition-all duration-500 bg-primary"
+        style="width: 60%; transition: width 0.4s cubic-bezier(0.4,0,0.2,1);"
+      />
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="60"
+      class="relative h-0.5 w-full overflow-hidden bg-neutral-soft"
+      role="progressbar"
+    >
+      <div
+        class="absolute left-0 top-0 h-full rounded transition-all duration-500 bg-secondary"
+        style="width: 60%; transition: width 0.4s cubic-bezier(0.4,0,0.2,1);"
+      />
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="60"
+      class="relative h-0.5 w-full overflow-hidden bg-neutral-soft"
+      role="progressbar"
+    >
+      <div
+        class="absolute left-0 top-0 h-full rounded transition-all duration-500 bg-tertiary"
+        style="width: 60%; transition: width 0.4s cubic-bezier(0.4,0,0.2,1);"
+      />
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="60"
+      class="relative h-0.5 w-full overflow-hidden bg-neutral-soft"
+      role="progressbar"
+    >
+      <div
+        class="absolute left-0 top-0 h-full rounded transition-all duration-500 bg-success"
+        style="width: 60%; transition: width 0.4s cubic-bezier(0.4,0,0.2,1);"
+      />
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="60"
+      class="relative h-0.5 w-full overflow-hidden bg-neutral-soft"
+      role="progressbar"
+    >
+      <div
+        class="absolute left-0 top-0 h-full rounded transition-all duration-500 bg-info"
+        style="width: 60%; transition: width 0.4s cubic-bezier(0.4,0,0.2,1);"
+      />
+    </div>
+    <div
+      aria-valuemax="100"
+      aria-valuemin="0"
+      aria-valuenow="60"
+      class="relative h-0.5 w-full overflow-hidden bg-neutral-soft"
+      role="progressbar"
+    >
+      <div
+        class="absolute left-0 top-0 h-full rounded transition-all duration-500 bg-danger"
+        style="width: 60%; transition: width 0.4s cubic-bezier(0.4,0,0.2,1);"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
