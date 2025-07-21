@@ -1,7 +1,7 @@
 import { cva } from '@/utils/variants'
 
 export const calculatorRootVariants = cva(
-  'flex flex-col w-full max-w-xs rounded-lg bg-background p-4',
+  'flex flex-col w-full max-w-xs rounded-lg bg-background',
   {
     variants: {
       disabled: {

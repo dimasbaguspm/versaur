@@ -6,6 +6,7 @@
  */
 import { Calculator } from './calculator'
 import type { Meta, StoryObj } from '@storybook/react'
+import { action } from '@storybook/addon-actions'
 
 const meta: Meta<typeof Calculator> = {
   title: 'Components/Calculator',
@@ -27,9 +28,7 @@ type Story = StoryObj<typeof Calculator>
 export const Default: Story = {
   args: {
     initialValue: '',
-    onChange: (val: string) => {
-      console.log('Calculator value:', val)
-    },
+    onChange: action('onChange'),
   },
 }
 
