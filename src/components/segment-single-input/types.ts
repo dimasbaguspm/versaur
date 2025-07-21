@@ -38,6 +38,10 @@ export interface SegmentSingleInputProps
    */
   size?: 'sm' | 'md' | 'lg'
   /**
+   * If true, the segment group and its options will fill the parent width
+   */
+  fullWidth?: boolean
+  /**
    * Label text to display above the segment group
    */
   label?: ReactNode

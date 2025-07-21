@@ -32,6 +32,7 @@ const SegmentSingleInputRoot = React.forwardRef<
       value,
       onChange,
       children,
+      fullWidth = false,
       ...props
     },
     ref
@@ -46,6 +47,7 @@ const SegmentSingleInputRoot = React.forwardRef<
       name,
       value,
       onChange,
+      fullWidth,
     } satisfies SegmentSingleInputContextValue
 
     // Count children to determine positions
@@ -74,18 +76,25 @@ const SegmentSingleInputRoot = React.forwardRef<
 
     return (
       <SegmentSingleInputContext.Provider value={contextValue}>
-        <div ref={ref} className={cn('w-full', className)} {...props}>
+        <div
+          ref={ref}
+          className={cn(fullWidth ? 'w-full' : '', className)}
+          {...props}
+        >
           {label && (
             <div className='block text-sm font-medium text-foreground mb-3'>
               {label}
             </div>
           )}
           <div
-            className={segmentGroupVariants({
-              variant: hasError ? 'danger' : variant,
-              size,
-              error: hasError,
-            })}
+            className={cn(
+              segmentGroupVariants({
+                variant: hasError ? 'danger' : variant,
+                size,
+                error: hasError,
+              }),
+              fullWidth ? 'flex w-full' : ''
+            )}
           >
             {childrenWithPositions}
           </div>

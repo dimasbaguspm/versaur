@@ -2,10 +2,9 @@ import { describe, expect, it, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { composeStories } from '@storybook/react'
-import { SegmentMultipleInput } from '../segment-multiple-input'
 import * as stories from '../segment-multiple-input.stories'
-
-const { Default, MultipleSelected, WithError, Disabled } =
+import { SegmentMultipleInput } from '../segment-multiple-input'
+const { Default, MultipleSelected, WithError, Disabled, FullWidth } =
   composeStories(stories)
 
 describe('SegmentMultipleInput', () => {
@@ -236,6 +235,26 @@ describe('SegmentMultipleInput', () => {
       const designCheckbox = screen.getByRole('checkbox', { name: 'Design' })
       expect(designCheckbox).toHaveAttribute('value', 'design')
       expect(designCheckbox).not.toBeChecked()
+    })
+  })
+
+  describe('SegmentMultipleInput - FullWidth', () => {
+    it('renders all options and fills parent width', () => {
+      const { container } = render(<FullWidth />)
+      // Should render all three options
+      expect(screen.getByText('Expense')).toBeInTheDocument()
+      expect(screen.getByText('Income')).toBeInTheDocument()
+      expect(screen.getByText('Transfer')).toBeInTheDocument()
+      // Should match snapshot for full width layout
+      expect(container.firstChild).toMatchSnapshot()
+    })
+
+    it('each option is flexed to fill parent', () => {
+      render(<FullWidth />)
+      const labels = screen.getAllByText(/Expense|Income|Transfer/)
+      labels.forEach(label => {
+        expect(label).toHaveClass('flex-1')
+      })
     })
   })
 })
