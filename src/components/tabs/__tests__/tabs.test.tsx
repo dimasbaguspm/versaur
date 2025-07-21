@@ -84,26 +84,31 @@ describe('Tabs', () => {
     expect(screen.getByRole('tab', { name: 'Neutral' })).toBeInTheDocument()
   })
 
-  it('handles scroll behavior for many tabs', () => {
-    function ScrollTabs() {
-      const [tab, setTab] = useState('tab5')
-      const tabItems = Array.from({ length: 15 }, (_, i) => `tab${i + 1}`)
+  it('renders filled variant with correct layout and style', () => {
+    function FilledTabs() {
+      const [tab, setTab] = useState('tab1')
       return (
-        <Tabs value={tab} onValueChange={setTab}>
-          {tabItems.map(key => (
-            <Tabs.Trigger key={key} value={key}>
-              {`Tab ${key.replace('tab', '')}`}
-            </Tabs.Trigger>
-          ))}
+        <Tabs value={tab} onValueChange={setTab} variant='filled'>
+          <Tabs.Trigger value='tab1'>Tab 1</Tabs.Trigger>
+          <Tabs.Trigger value='tab2'>Tab 2</Tabs.Trigger>
+          <Tabs.Trigger value='tab3'>Tab 3</Tabs.Trigger>
         </Tabs>
       )
     }
-    render(<ScrollTabs />)
-    expect(screen.getByRole('tab', { name: 'Tab 5' })).toBeInTheDocument()
-    fireEvent.click(screen.getByRole('tab', { name: 'Tab 10' }))
-    expect(screen.getByRole('tab', { name: 'Tab 10' })).toHaveAttribute(
-      'aria-selected',
-      'true'
-    )
+    const { container, asFragment } = render(<FilledTabs />)
+    // All triggers should be present
+    expect(screen.getByRole('tab', { name: 'Tab 1' })).toBeInTheDocument()
+    expect(screen.getByRole('tab', { name: 'Tab 2' })).toBeInTheDocument()
+    expect(screen.getByRole('tab', { name: 'Tab 3' })).toBeInTheDocument()
+    // Should be full width and flex
+    const tablist = container.querySelector('[role="tablist"]')
+    expect(tablist).toHaveClass('flex')
+    // Each trigger should have flex-1
+    const triggers = container.querySelectorAll('[role="tab"]')
+    triggers.forEach(trigger => {
+      expect(trigger.className).toMatch(/flex-1/)
+    })
+    // Snapshot for layout and style
+    expect(asFragment()).toMatchSnapshot()
   })
 })

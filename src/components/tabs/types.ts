@@ -13,6 +13,8 @@ export interface TabsContextValue {
   setActiveTab: (tab: string) => void
   /** Default color for triggers */
   color?: 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'neutral'
+  /** Variant for tab style */
+  variant?: 'underline' | 'filled'
 }
 
 /**
@@ -25,6 +27,8 @@ export interface TabsRootProps extends HTMLAttributes<HTMLDivElement> {
   onValueChange: (tab: string) => void
   /** Color for triggers */
   color?: 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'neutral'
+  /** Variant for tab style */
+  variant?: 'underline' | 'filled'
   /** Children: Tabs.Trigger */
   children: ReactNode
 }

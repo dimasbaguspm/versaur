@@ -14,7 +14,12 @@ export const TabsTrigger: React.FC<TabsTriggerProps> = ({
   className,
   ...props
 }) => {
-  const { activeTab, setActiveTab, color } = useTabsContext()
+  const {
+    activeTab,
+    setActiveTab,
+    color,
+    variant = 'underline',
+  } = useTabsContext()
   const isActive = activeTab === value
 
   return (
@@ -28,6 +33,7 @@ export const TabsTrigger: React.FC<TabsTriggerProps> = ({
         tabsTriggerVariants({
           active: isActive,
           color,
+          variant,
         }),
         className
       )}
