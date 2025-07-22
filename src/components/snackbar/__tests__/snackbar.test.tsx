@@ -30,9 +30,13 @@ describe('Snackbar', () => {
   })
 
   it('renders action button and triggers action', () => {
+    // Mock window.alert to avoid jsdom error
+    const alertMock = vi.fn()
+    window.alert = alertMock
     render(<WithAction />)
     const actionBtn = screen.getByRole('button', { name: /undo/i })
     expect(actionBtn).toBeInTheDocument()
     fireEvent.click(actionBtn)
+    expect(alertMock).toHaveBeenCalled()
   })
 })

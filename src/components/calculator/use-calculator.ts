@@ -34,27 +34,31 @@ export function useCalculator({
       if (disabled) return
       if (val === 'C') {
         setInput('')
-        onChange?.('')
       } else if (val === '⌫') {
         setInput(prev => {
           const next = prev.slice(0, -1)
-          onChange?.(next)
+
           return next
         })
       } else if (val === '=') {
         const result = evaluate(input)
         setInput(result)
-        onChange?.(result)
       } else {
         setInput(prev => {
           const next = prev + val
-          onChange?.(next)
           return next
         })
       }
     },
-    [disabled, input, onChange, evaluate]
+    [disabled, input, evaluate]
   )
+
+  useEffect(() => {
+    if (onChange) {
+      const result = evaluate(input)
+      onChange(result)
+    }
+  }, [evaluate, input, onChange])
 
   // Keyboard interaction for all keypads
   useEffect(() => {

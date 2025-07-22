@@ -32,18 +32,18 @@ export const CalculatorInput: FC<
 }) => {
   const [open, setOpen] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
-  const [calculatorValue, setCalculatorValue] = useState('')
+  const [calculatorValue, setCalculatorValue] = useState(
+    value === '' ? '' : String(value)
+  )
   const [lastValidValue, setLastValidValue] = useState(value ?? '')
 
-  // Helper to handle calculator value change
+  // Only update local state, not parent, during calculator input
   const handleCalculatorChange = (v: string) => {
     setCalculatorValue(v)
-    // Try to evaluate the value
+    // Try to evaluate the value for local lastValidValue
     let result: number | null = null
     try {
-      // Only eval if it contains operators or is a number
       if (/^[\d+\-*/.\s]+$/.test(v)) {
-        // using eval for arithmetic expression parsing
         const evalResult = eval(v)
         if (typeof evalResult === 'number' && !isNaN(evalResult)) {
           result = evalResult
@@ -57,13 +57,18 @@ export const CalculatorInput: FC<
     }
   }
 
-  // Helper to handle OK button click
+  // Sync calculatorValue with value when modal opens
+  const handleOpen = () => {
+    setCalculatorValue(value === '' ? '' : String(value))
+    setOpen(true)
+  }
+
+  // Only call parent onChange when OK is pressed
   const handleOk = () => {
     const trimmed = calculatorValue.trim()
     let result: number | null = null
     try {
       if (/^[\d+\-*/.\s]+$/.test(trimmed)) {
-        // using eval for arithmetic expression parsing
         const evalResult = eval(trimmed)
         if (typeof evalResult === 'number' && !isNaN(evalResult)) {
           result = evalResult
@@ -83,8 +88,8 @@ export const CalculatorInput: FC<
 
   const handleClear = () => {
     setCalculatorValue('')
-    onChange('')
     setLastValidValue('')
+    onChange('')
   }
 
   return (
@@ -94,7 +99,7 @@ export const CalculatorInput: FC<
         type='text'
         label={label}
         value={value === '' ? '' : value}
-        onClick={!disabled ? () => setOpen(true) : undefined}
+        onClick={!disabled ? handleOpen : undefined}
         readOnly
         disabled={disabled}
         error={error}

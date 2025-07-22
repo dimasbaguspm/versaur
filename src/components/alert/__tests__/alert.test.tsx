@@ -90,7 +90,7 @@ describe('Alert Component', () => {
       render(<WithoutIcon />)
 
       expect(screen.getByRole('alert')).toBeInTheDocument()
-      expect(screen.getByText(/No Icon Alert/gi)).toBeInTheDocument()
+      expect(screen.getByText(/No Icon Alert/i)).toBeInTheDocument()
     })
   })
 
