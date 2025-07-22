@@ -1,0 +1,52 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FormLayout > renders a 12-column grid and columns with correct span 1`] = `
+<DocumentFragment>
+  <div
+    class="grid w-full gap-4 grid-cols-12"
+  >
+    <div
+      class="col-span-3"
+    >
+      <div>
+        <label
+          class="block text-sm font-medium text-foreground mb-2"
+          for="«r0»"
+        >
+          A
+        </label>
+        <div
+          class="relative w-full"
+        >
+          <input
+            aria-invalid="false"
+            class="block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 border-coral/30 text-foreground focus:border-coral focus:ring-coral/20 pl-3 pr-3 h-10"
+            id="«r0»"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="col-span-9"
+    >
+      <div>
+        <label
+          class="block text-sm font-medium text-foreground mb-2"
+          for="«r1»"
+        >
+          B
+        </label>
+        <div
+          class="relative w-full"
+        >
+          <input
+            aria-invalid="false"
+            class="block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 border-coral/30 text-foreground focus:border-coral focus:ring-coral/20 pl-3 pr-3 h-10"
+            id="«r1»"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
