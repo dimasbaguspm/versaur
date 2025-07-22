@@ -35,13 +35,13 @@ export const Default = () => (
           as={BellIcon}
           size='sm'
           aria-label='Notifications'
-          variant='outline'
+          variant='ghost'
         />
         <ButtonIcon
           as={BetweenHorizonalStartIcon}
           size='sm'
           aria-label='Settings'
-          variant='outline'
+          variant='ghost'
         />
       </TopBar.Actions>
       <Avatar size='sm'>DM</Avatar>
