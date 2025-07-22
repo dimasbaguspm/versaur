@@ -1,6 +1,7 @@
 import type { StorybookConfig } from '@storybook/react-vite'
 import { resolve } from 'path'
 import { mergeConfig } from 'vite'
+import svgr from 'vite-plugin-svgr'
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
@@ -19,7 +20,7 @@ const config: StorybookConfig = {
     const { default: tailwindcss } = await import('@tailwindcss/vite')
 
     return mergeConfig(config, {
-      plugins: [tailwindcss()],
+      plugins: [tailwindcss(), svgr()],
       resolve: {
         alias: {
           '@': resolve(__dirname, '../src'),

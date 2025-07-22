@@ -4,6 +4,7 @@ import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import dts from 'vite-plugin-dts'
 import tailwindcss from '@tailwindcss/vite'
+import svgr from 'vite-plugin-svgr'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
@@ -15,6 +16,7 @@ export default defineConfig({
       include: ['src'],
       exclude: ['src/test', 'src/utils', '**/__tests__/**'],
     }),
+    svgr(),
   ],
   resolve: {
     alias: {
