@@ -4,7 +4,7 @@ import { cva } from 'class-variance-authority'
  * TopBarRoot styles
  */
 export const topBarRootStyles = cva(
-  'w-full flex items-center px-6 py-2 mb-6 border-b border-border shadow-xs bg-white',
+  'w-full flex items-center px-6 py-4 mb-6 border-b border-border shadow-xs bg-white',
   {
     variants: {},
     defaultVariants: {},
@@ -25,12 +25,12 @@ export const topBarTrailingStyles = cva('flex items-center gap-2 ml-auto')
  * TopBarNavItem styles
  */
 export const topBarNavItemStyles = cva(
-  'px-2.5 py-1.5 rounded-md text-xs font-sm cursor-pointer transition-colors',
+  'px-2.5 py-1.5 rounded-md text-sm cursor-pointer transition-colors',
   {
     variants: {
       active: {
         true: 'bg-coral/10 text-coral',
-        false: 'bg-neutral hover:bg-coral/10 text-ghost',
+        false: 'hover:text-coral text-ghost',
       },
     },
     defaultVariants: {
