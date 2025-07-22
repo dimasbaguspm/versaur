@@ -36,17 +36,16 @@ exports[`DateSinglePickerInput Docked Stories > renders default docked story and
         Pick your birth date
       </div>
     </div>
-    <button
+    <span
       aria-controls="menu-content"
       aria-expanded="false"
       aria-haspopup="menu"
       class="absolute top-[90%] left-0"
-      type="button"
     >
       <span
         aria-hidden="true"
       />
-    </button>
+    </span>
     <div
       aria-hidden="true"
       class="min-w-40 text-black shadow-md py-2.5 absolute z-50 transition-opacity duration-150 ease-out opacity-0 drop-shadow-lg rounded-lg bg-white border border-neutral"
