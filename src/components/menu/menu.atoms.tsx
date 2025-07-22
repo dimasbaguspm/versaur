@@ -11,26 +11,25 @@ import { menuVariants, menuItemVariants } from './helpers'
 /**
  * MenuTrigger: Button to open/close menu
  */
-export const MenuTrigger = forwardRef<HTMLButtonElement, MenuTriggerProps>(
+export const MenuTrigger = forwardRef<HTMLSpanElement, MenuTriggerProps>(
   ({ children, ...props }, ref) => {
     const { open, triggerRef } = useMenuContext()
     return (
-      <button
+      <span
         ref={node => {
-          triggerRef.current = node as HTMLButtonElement | null
+          triggerRef.current = node as HTMLSpanElement | null
           if (typeof ref === 'function') ref(node)
           else if (ref)
-            (ref as React.MutableRefObject<HTMLButtonElement | null>).current =
+            (ref as React.MutableRefObject<HTMLSpanElement | null>).current =
               node
         }}
         aria-haspopup='menu'
         aria-expanded={open}
         aria-controls='menu-content'
-        type='button'
         {...props}
       >
         {children}
-      </button>
+      </span>
     )
   }
 )

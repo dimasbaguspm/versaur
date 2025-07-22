@@ -21,8 +21,7 @@ export interface MenuRootProps {
 /**
  * Props for MenuTrigger
  */
-export interface MenuTriggerProps
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface MenuTriggerProps extends HTMLAttributes<HTMLSpanElement> {
   /** Trigger content */
   children: ReactNode
 }

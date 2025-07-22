@@ -5,7 +5,7 @@ export interface MenuContextValue {
   /** Whether the menu is open (controlled externally) */
   open: boolean
   /** Ref to the trigger button */
-  triggerRef: React.RefObject<HTMLButtonElement | null>
+  triggerRef: React.RefObject<HTMLSpanElement | null>
   /** Ref to the menu content */
   contentRef: React.RefObject<HTMLDivElement | null>
   /** Menu size variant */

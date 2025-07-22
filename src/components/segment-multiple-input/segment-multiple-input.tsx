@@ -63,12 +63,10 @@ const SegmentMultipleInputRoot = React.forwardRef<
         } else {
           position = 'middle'
         }
+        // Only pass position, not fullWidth
         return React.cloneElement(
-          child as React.ReactElement<{
-            position?: string
-            fullWidth?: boolean
-          }>,
-          { position, fullWidth }
+          child as React.ReactElement<{ position?: string }>,
+          { position }
         )
       }
       return child
