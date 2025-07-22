@@ -84,6 +84,7 @@
     "typescript-eslint": "8.36.0",
     "vite": "7.0.4",
     "vite-plugin-dts": "4.5.4",
+    "vite-plugin-svgr": "4.3.0",
     "vitest": "3.2.4"
   }
 }

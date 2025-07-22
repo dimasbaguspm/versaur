@@ -1,6 +1,8 @@
 # Development Dockerfile for Storybook
 FROM node:22-alpine
 
+ARG NPM_TOKEN=
+
 # Set working directory
 WORKDIR /app
 
