@@ -1,6 +1,6 @@
 {
   "name": "@dimasbaguspm/versaur",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "React UI library with Tailwind CSS",
   "author": "Dimas Bagus Prayogo Mukti<dimas.bagus.pm@gmail.com>",
   "license": "MIT",
@@ -39,7 +39,7 @@
       "types": "./dist/overlays/index.d.ts"
     },
     "./styles.css": "./dist/styles.css",
-    "./eslint-subpath-import":  "./dist/enforce-subpath-import.js"
+    "./eslint-subpath-import": "./dist/enforce-subpath-import.js"
   },
   "files": [
     "dist"
