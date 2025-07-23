@@ -35,7 +35,7 @@
       "types": "./dist/overlays/index.d.ts"
     },
     "./styles.css": "./dist/styles.css",
-    "./eslint-subpath-import":  "./enforce-subpath-import.js"
+    "./eslint-subpath-import":  "./dist/enforce-subpath-import.js"
   },
   "files": [
     "dist"
