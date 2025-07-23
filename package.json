@@ -14,6 +14,26 @@
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
+    "./feedbacks": {
+      "import": "./dist/feedbacks/index.js",
+      "types": "./dist/feedbacks/index.d.ts"
+    },
+    "./forms": {
+      "import": "./dist/forms/index.js",
+      "types": "./dist/forms/index.d.ts"
+    },
+    "./layouts": {
+      "import": "./dist/layouts/index.js",
+      "types": "./dist/layouts/index.d.ts"
+    },
+    "./navigation": {
+      "import": "./dist/navigation/index.js",
+      "types": "./dist/navigation/index.d.ts"
+    },
+    "./overlays": {
+      "import": "./dist/overlays/index.js",
+      "types": "./dist/overlays/index.d.ts"
+    },
     "./styles.css": "./dist/styles.css"
   },
   "files": [

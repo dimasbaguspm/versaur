@@ -9,18 +9,18 @@
 ## Project Overview
 
 - **Versaur** is a modern React UI library using TypeScript and Tailwind v4 CSS.
-- Components are tree-shakable and organized under `src/components/` (one directory per component,
+- Components are tree-shakable and organized under `src/{primitive,feedbacks,forms,navigation,layouts,overlays}/` (one directory per component,
   kebab-case).
-- Utilities are in `src/utils/`, hooks in `src/hooks/`, and styles in `src/styles.css`.
+- Utilities are in `src/utils/`, and styles in `src/styles.css`.
 - Subpath exports are supported for optimal bundle size.
 
 ## Naming & Structure
 
 - Use kebab-case for all files and directories (e.g., `button/button.tsx`).
 - Use PascalCase for component names (e.g., `IamComponent`).
-- Place each component in its own directory under `src/components/*`.
-- Place each hook in its own directory under `src/hooks/*`.
-- Each component/hook directory must have a barrel file (`index.ts`) to expose its public API.
+- Place each component in its own directory under `src/{primitive,feedbacks,forms,navigation,layouts,overlays}/*`.
+- If a component need a hook, we should put the hook under the component directory and have a proper naming.
+- Each component/hook directory must have a barrel file (`index.ts`) to expose its public API (only expose the main component and all types).
 - Example structure:
   ```
   button/
@@ -34,6 +34,7 @@
     types.ts // types for props and state
     readme.md // optional straightforward documentation
     button.atoms.tsx // place where the sub-components are defined
+    use-button.ts // custom hook for the component (if needed)
   ```
 
 ## Component Conventions
@@ -320,7 +321,7 @@ All color combinations are chosen to meet or exceed WCAG 2.1 AA standards:
 
 ### Usage in Components
 
-- Use the CSS variables (e.g., `var(--color-primary)`) in Tailwind config and component styles for consistency
+- Use the transpiled CSS variables (e.g., from `var(--color-primary)` to be `bg-primary`) in Tailwind config and component styles for consistency
 - All variants, states, and backgrounds should use these variables for easy theming
 
 Refer to `assets/styles.css` for the full palette and to add or update color roles as the design system evolves.
@@ -347,7 +348,7 @@ Refer to `assets/styles.css` for the full palette and to add or update color rol
 
 ## Path Aliases
 
-- Use `@/components/*`, `@/utils/*`, `@/hooks/*`, etc. for imports (see `tsconfig.json`).
+- Use `@/utils/*`, etc. for imports (see `tsconfig.json`).
 
 ## Contribution
 
@@ -360,5 +361,5 @@ Refer to `assets/styles.css` for the full palette and to add or update color rol
 ## References
 
 - See `README.md` for more usage and workflow details.
-- Key files: `src/components/`, `src/hooks/`, `src/utils/`, `src/styles/`, `tsconfig.json`,
+- Key files: `src/primitive/`, `src/feedbacks/`, `src/forms/`, `src/layouts/`, `src/navigation`, `src/overlays`, `tsconfig.json`,
   `README.md`
