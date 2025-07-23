@@ -3,6 +3,7 @@
 A modern React UI library built with TypeScript and Tailwind CSS, featuring tree-shakable
 components
 
+
 ## Features
 
 - 🎨 **Tailwind CSS 4** - Modern styling with CSS-in-JS
@@ -33,9 +34,31 @@ import { Button, Input, Card } from '@dimasbaguspm/versaur'
 
 ```tsx
 // Import only what you need
-import { Button } from 'versaur/primitive'
+import { Button } from '@dimasbaguspm/versaur/primitive'
 ```
 
+
+## ESLint: Enforce Sub-path Imports (FlatConfig)
+
+Versaur provides an ESLint rule to enforce sub-path imports for optimal tree-shaking
+
+**Setup:**
+
+1. In your FlatConfig file (e.g., `eslint.config.js`), import and spread the rule:
+
+```js
+// eslint.config.js
+import { versaurEnforceSubpathImport } from '@dimasbaguspm/versaur/enforce-subpath-import'
+
+export default [
+  ...versaurEnforceSubpathImport,
+  // ...other config
+]
+```
+
+**What it does:**
+
+Warns when importing from `@dimasbaguspm/versaur` directly, and suggests using sub-path imports (e.g., `@dimasbaguspm/versaur/primitive`) for better tree-shaking
 
 ## License
 
