@@ -14,16 +14,27 @@ export default defineConfig({
     tailwindcss(),
     dts({
       include: ['src'],
-      exclude: ['src/test', 'src/utils', '**/__tests__/**'],
+      exclude: [
+        'src/test',
+        'src/utils',
+        '**/__tests__/**',
+        'src/**/*.stories.tsx',
+        'src/**/helpers.ts',
+        'src/**/context.ts',
+      ],
     }),
     svgr(),
   ],
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
-      '@/components': resolve(__dirname, 'src/components'),
+      '@/primitive': resolve(__dirname, 'src/primitive'),
+      '@/forms': resolve(__dirname, 'src/forms'),
+      '@/overlays': resolve(__dirname, 'src/overlays'),
+      '@/navigation': resolve(__dirname, 'src/navigation'),
+      '@/feedbacks': resolve(__dirname, 'src/feedbacks'),
+      '@/layouts': resolve(__dirname, 'src/layouts'),
       '@/utils': resolve(__dirname, 'src/utils'),
-      '@/hooks': resolve(__dirname, 'src/hooks'),
     },
   },
   publicDir: 'assets',
@@ -31,9 +42,19 @@ export default defineConfig({
     outDir: 'dist',
     lib: {
       entry: {
-        index: 'src/index.ts',
+        index: resolve(__dirname, 'src/index.ts'),
+        primitive: resolve(__dirname, 'src/primitive/index.ts'),
+        forms: resolve(__dirname, 'src/forms/index.ts'),
+        overlays: resolve(__dirname, 'src/overlays/index.ts'),
+        navigation: resolve(__dirname, 'src/navigation/index.ts'),
+        feedbacks: resolve(__dirname, 'src/feedbacks/index.ts'),
+        layouts: resolve(__dirname, 'src/layouts/index.ts'),
       },
       formats: ['es'],
+      fileName: (_, entryName) => {
+        if (entryName === 'index') return `index.js`
+        return `${entryName}/index.js`
+      },
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'lucide-react'],

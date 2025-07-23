@@ -27,11 +27,13 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@/components/*": ["src/components/*"],
-      "@/hooks/*": ["src/hooks/*"],
+      "@/primitive/*": ["src/primitive/*"],
+      "@/overlays/*": ["src/overlays/*"],
+      "@/forms/*": ["src/forms/*"],
+      "@/feedbacks/*": ["src/feedbacks/*"],
+      "@/layouts/*": ["src/layouts/*"],
+      "@/navigation/*": ["src/navigation/*"],
       "@/utils/*": ["src/utils/*"],
-      "@/types/*": ["src/types/*"],
-      "@/styles/*": ["src/styles/*"]
     }
   },
   "include": [
@@ -39,7 +41,8 @@
     "vite.config.ts",
     "vitest.config.ts",
     "tailwind.config.ts",
-    ".storybook/**/*"
+    ".storybook/**/*",
+    "vitest.setup.ts",
   ],
   "exclude": ["node_modules", "dist", "coverage", "storybook-static"]
 }

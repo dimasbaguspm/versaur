@@ -1,7 +1,7 @@
-# Versaur UI Library
+# Versaur UI
 
 A modern React UI library built with TypeScript and Tailwind CSS, featuring tree-shakable
-components, comprehensive testing, and Storybook documentation.
+components
 
 ## Features
 
@@ -18,7 +18,7 @@ components, comprehensive testing, and Storybook documentation.
 ## Installation
 
 ```bash
-yarn install versaur
+yarn install @dimasbaguspm/versaur
 ```
 
 ## Usage
@@ -26,55 +26,16 @@ yarn install versaur
 ### Import all components
 
 ```tsx
-import { Button, Input, Card } from 'versaur'
+import { Button, Input, Card } from '@dimasbaguspm/versaur'
 ```
 
 ### Tree-shakable imports
 
 ```tsx
 // Import only what you need
-import { Button } from 'versaur/components'
-import Button from 'versaur/components/button'
+import { Button } from 'versaur/primitive'
 ```
 
-## Testing
-
-The library includes comprehensive testing setup:
-
-- **Vitest** - Fast unit testing
-- **React Testing Library** - Component testing utilities
-- **jsdom** - DOM environment for testing
-
-```bash
-# Run all tests
-yarn test
-
-# Run tests with coverage
-yarn test:coverage
-
-# Run tests with UI
-yarn test:ui
-```
-
-## Storybook
-
-Interactive component documentation and testing:
-
-```bash
-# Start Storybook development server
-yarn storybook
-
-# Build Storybook for production
-yarn build-storybook
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
 ## License
 
