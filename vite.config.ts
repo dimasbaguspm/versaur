@@ -13,6 +13,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
     dts({
+      outDir: 'dist/types',
       include: ['src'],
       exclude: [
         'src/test',
@@ -39,7 +40,7 @@ export default defineConfig({
   },
   publicDir: 'assets',
   build: {
-    outDir: 'dist',
+    outDir: 'dist/js',
     lib: {
       entry: {
         index: resolve(__dirname, 'src/index.ts'),

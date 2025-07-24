@@ -11,35 +11,35 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/js/index.js",
+      "types": "./dist/types/index.d.ts"
     },
     "./primitive": {
-      "import": "./dist/primitive/index.js",
-      "types": "./dist/primitive/index.d.ts"
+      "import": "./dist/js/primitive/index.js",
+      "types": "./dist/types/primitive/index.d.ts"
     },
     "./feedbacks": {
-      "import": "./dist/feedbacks/index.js",
-      "types": "./dist/feedbacks/index.d.ts"
+      "import": "./dist/js/feedbacks/index.js",
+      "types": "./dist/types/feedbacks/index.d.ts"
     },
     "./forms": {
-      "import": "./dist/forms/index.js",
-      "types": "./dist/forms/index.d.ts"
+      "import": "./dist/js/forms/index.js",
+      "types": "./dist/types/forms/index.d.ts"
     },
     "./layouts": {
-      "import": "./dist/layouts/index.js",
-      "types": "./dist/layouts/index.d.ts"
+      "import": "./dist/js/layouts/index.js",
+      "types": "./dist/types/layouts/index.d.ts"
     },
     "./navigation": {
-      "import": "./dist/navigation/index.js",
-      "types": "./dist/navigation/index.d.ts"
+      "import": "./dist/js/navigation/index.js",
+      "types": "./dist/types/navigation/index.d.ts"
     },
     "./overlays": {
-      "import": "./dist/overlays/index.js",
-      "types": "./dist/overlays/index.d.ts"
+      "import": "./dist/js/overlays/index.js",
+      "types": "./dist/types/overlays/index.d.ts"
     },
-    "./styles.css": "./dist/styles.css",
-    "./eslint-subpath-import": "./dist/enforce-subpath-import.js"
+    "./styles.css": "./dist/js/styles.css",
+    "./eslint-subpath-import": "./dist/js/enforce-subpath-import.js"
   },
   "files": [
     "dist"
