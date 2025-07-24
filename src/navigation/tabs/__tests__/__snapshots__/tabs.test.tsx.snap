@@ -10,7 +10,7 @@ exports[`Tabs > matches snapshot 1`] = `
     <button
       aria-controls="tabs-content-tab1"
       aria-selected="true"
-      class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-base relative font-medium bg-transparent border-b-2 text-coral border-coral"
+      class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-base relative font-medium bg-transparent border-b-2 text-primary border-primary"
       id="tabs-trigger-tab1"
       role="tab"
       tabindex="0"
@@ -21,7 +21,7 @@ exports[`Tabs > matches snapshot 1`] = `
     <button
       aria-controls="tabs-content-tab2"
       aria-selected="false"
-      class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-base relative font-normal bg-transparent border-b-2 border-transparent text-foreground hover:text-coral"
+      class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-base relative font-normal bg-transparent border-b-2 border-transparent text-foreground hover:text-primary"
       id="tabs-trigger-tab2"
       role="tab"
       tabindex="-1"
@@ -31,7 +31,7 @@ exports[`Tabs > matches snapshot 1`] = `
     </button>
     <div
       aria-hidden="true"
-      class="absolute bottom-0 h-0.5 rounded transition-all duration-300 bg-coral"
+      class="absolute bottom-0 h-0.5 rounded transition-all duration-300 bg-primary"
       style="left: 0px; width: 0px; pointer-events: none;"
     />
   </div>

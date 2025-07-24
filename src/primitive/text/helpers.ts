@@ -21,6 +21,10 @@ export const textVariants = cva('', {
       info: 'text-info',
       warning: 'text-warning',
       danger: 'text-danger',
+      inherit: '',
+      gray: 'text-gray-500',
+      black: 'text-black',
+      white: 'text-white',
     },
     hasUnderline: {
       true: 'underline',

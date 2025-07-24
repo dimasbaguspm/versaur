@@ -23,6 +23,10 @@ export interface TextProps extends HTMLAttributes<HTMLElement> {
     | 'info'
     | 'warning'
     | 'danger'
+    | 'inherit'
+    | 'white'
+    | 'black'
+    | 'gray'
   /** Underline text */
   hasUnderline?: boolean
   /** Capitalize text */

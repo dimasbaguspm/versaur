@@ -85,13 +85,13 @@ export const ChipOption = React.forwardRef<
                 size={16}
                 className={
                   variant === 'primary'
-                    ? 'text-coral'
+                    ? 'text-primary'
                     : variant === 'secondary'
-                      ? 'text-sage'
+                      ? 'text-secondary'
                       : variant === 'tertiary'
-                        ? 'text-mist'
+                        ? 'text-tertiary'
                         : variant === 'ghost'
-                          ? 'text-slate'
+                          ? 'text-ghost'
                           : variant === 'success'
                             ? 'text-success'
                             : variant === 'info'
@@ -100,7 +100,7 @@ export const ChipOption = React.forwardRef<
                                 ? 'text-warning'
                                 : variant === 'danger'
                                   ? 'text-danger'
-                                  : 'text-coral'
+                                  : 'text-primary'
                 }
               />
             )}

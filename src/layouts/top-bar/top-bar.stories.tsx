@@ -4,10 +4,11 @@
  * Demonstrates TopBar compound usage, variants, and navigation items
  * Icons from lucide-react (dev only)
  */
-import { BellIcon, BetweenHorizonalStartIcon, ZapIcon } from 'lucide-react'
+import { BellIcon, BetweenHorizonalStartIcon } from 'lucide-react'
 import { Avatar } from '@/primitive/avatar'
 import { ButtonIcon } from '@/primitive/button-icon'
 import { TopBar } from './index'
+import { Brand } from '@/primitive'
 
 export default {
   title: 'Layouts/TopBar',
@@ -20,9 +21,7 @@ export default {
 export const Default = () => (
   <TopBar>
     <TopBar.Leading>
-      <Avatar size='sm' shape='rounded' variant='primary'>
-        <ZapIcon />
-      </Avatar>
+      <Brand name='spenicle' size='lg' shape='rounded' />
       <TopBar.Nav>
         <TopBar.NavItem active>Home</TopBar.NavItem>
         <TopBar.NavItem>Docs</TopBar.NavItem>

@@ -15,75 +15,79 @@
 }
 
 /* Versaur Design System - Spenicle Color Palette */
+
 @theme {
-  /* Font Families */
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
 
-  /* Core Colors */
-  --color-coral: #e07a5f;
-  --color-coral-light: #f2b8a3;
-  --color-coral-bold: #b85c3c;
-  --color-coral-soft: #fff8f6;
-  --color-sage: #81b29a;
-  --color-sage-light: #b6d3c0;
-  --color-sage-bold: #56806b;
-  --color-sage-soft: #f6fffa;
-  --color-mist: #84a5c0;
-  --color-mist-light: #b6cbe0;
-  --color-mist-bold: #5a7a99;
-  --color-mist-soft: #f5faff;
-  --color-slate: #3d405b;
-  --color-slate-light: #7a7c99;
-  --color-slate-bold: #23243a;
-  --color-slate-soft: #e3e4ea;
-  --color-cream: #f4f1de;
-  --color-cream-light: #fefdfb;
-  --color-cream-bold: #e2d9b8;
-  --color-cream-soft: #fefdfb;
-  --color-light-gray: #e9ecef;
-  --color-light-gray-light: #f4f6f8;
-  --color-light-gray-bold: #b0b3b8;
-  --color-light-gray-soft: #fcfcfd;
+  /* Primary (Coral) */
+  --color-primary: #e07a5f;
+  --color-primary-light: #ffd9cb;
+  --color-primary-bold: #a95a3a;
+  --color-primary-soft: #fff8f6;
 
-  /* Semantic Colors */
+  /* Secondary (Sage) */
+  --color-secondary: #81b29a;
+  --color-secondary-light: #d9ffe6;
+  --color-secondary-bold: #56806b;
+  --color-secondary-soft: #f6fffa;
+
+  /* Tertiary (Mist) */
+  --color-tertiary: #84a5c0;
+  --color-tertiary-light: #d8ebff;
+  --color-tertiary-bold: #5a7a99;
+  --color-tertiary-soft: #f5faff;
+
+  /* Ghost (Slate) */
+  --color-ghost: #3d405b;
+  --color-ghost-light: #b6b8db;
+  --color-ghost-bold: #23243a;
+  --color-ghost-soft: #e3e4ea;
+
+  /* Neutral (Light Gray) */
+  --color-neutral: #e9ecef;
+  --color-neutral-light: #f4f6f8;
+  --color-neutral-bold: #b0b3b8;
+  --color-neutral-soft: #f8f9fa;
+
+  /* Success */
   --color-success: #6db285;
-  --color-success-light: #a7d3b8;
+  --color-success-light: #c8ffdd;
   --color-success-bold: #417a5a;
   --color-success-soft: #f4fff9;
+
+  /* Info */
   --color-info: #6b8fad;
-  --color-info-light: #a3c0d6;
+  --color-info-light: #b9e1ff;
   --color-info-bold: #3c5a7a;
   --color-info-soft: #f0f8ff;
+
+  /* Warning */
   --color-warning: #e08a47;
-  --color-warning-light: #f2c89e;
+  --color-warning-light: #ffdab5;
   --color-warning-bold: #b86a2c;
-  --color-warning-soft: #fff9f2;
+  --color-warning-soft: #fff1e4;
+
+  /* Danger */
   --color-danger: #e06650;
-  --color-danger-light: #f2a89a;
+  --color-danger-light: #ffbfb3;
   --color-danger-bold: #b83c2a;
-  --color-danger-soft: #fff5f4;
+  --color-danger-soft: #ffeeeb;
 
   /* Background and Foreground */
-  --color-background: #ffffff; /* White */
+  --color-background: #ffffff;
   --color-background-light: #f8f9fa;
   --color-background-bold: #e9ecef;
-  --color-foreground: #2d3748; /* Darker Slate */
+  --color-foreground: #2d3748;
   --color-foreground-light: #6b7280;
   --color-foreground-bold: #1a202c;
 
-  /* Button/Component Variants */
-  --color-primary: #e07a5f; /* Coral */
-  --color-primary-soft: #fff8f6; /* Soft Coral */
-  --color-secondary: #81b29a; /* Sage */
-  --color-secondary-soft: #f6fffa; /* Soft Sage */
-  --color-tertiary: #84a5c0; /* Mist */
-  --color-tertiary-soft: #f5faff; /* Soft Mist */
-  --color-ghost: #3d405b; /* Slate */
-  --color-ghost-soft: #e3e4ea; /* Soft Slate */
-  --color-neutral: #e9ecef; /* Light Gray */
-  --color-neutral-soft: #f8f9fa; /* Soft Light Gray */
+  /* Cream */
+  --color-cream: #f4f1de;
+  --color-cream-light: #f9f7f3;
+  --color-cream-bold: #e2d9b8;
+  --color-cream-soft: #f9f7f3;
 
-  /* Utility Colors */
+  /* Border and Accent */
   --color-border: #e0e0e0;
   --color-accent: #84a5c0;
 }

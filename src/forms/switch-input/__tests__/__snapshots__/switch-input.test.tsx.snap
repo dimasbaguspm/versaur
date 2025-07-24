@@ -22,11 +22,11 @@ exports[`SwitchInput > renders correctly (snapshot) 1`] = `
       />
       <span
         aria-hidden="true"
-        class="relative inline-flex items-center transition-colors duration-200 h-5 w-10 bg-white border border-slate-300 rounded-full pointer-events-none"
+        class="relative inline-flex items-center transition-colors duration-200 border h-5 w-10 bg-white border-border rounded-full pointer-events-none"
       />
       <span
         aria-hidden="true"
-        class="absolute rounded-full transition-transform duration-200 h-4 w-4 bg-slate-300 left-0.5"
+        class="absolute rounded-full transition-transform duration-200 h-4 w-4 bg-neutral left-0.5"
       />
     </span>
   </div>

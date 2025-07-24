@@ -65,7 +65,7 @@ describe('Badge Component', () => {
     it('applies outline variant styles', () => {
       render(<Badge variant='outline'>Outline</Badge>)
       const badge = screen.getByText('Outline')
-      expect(badge).toHaveClass('border', 'bg-transparent')
+      expect(badge).toHaveClass('border', 'bg-background')
     })
   })
 
@@ -73,19 +73,19 @@ describe('Badge Component', () => {
     it('applies primary color by default', () => {
       render(<Badge>Primary</Badge>)
       const badge = screen.getByText('Primary')
-      expect(badge).toHaveClass('bg-coral-soft', 'text-coral')
+      expect(badge).toHaveClass('bg-primary-light', 'text-primary')
     })
 
     it('applies secondary color correctly', () => {
       render(<Badge color='secondary'>Secondary</Badge>)
       const badge = screen.getByText('Secondary')
-      expect(badge).toHaveClass('bg-sage-soft', 'text-sage')
+      expect(badge).toHaveClass('bg-secondary-light', 'text-secondary')
     })
 
     it('applies success color correctly', () => {
       render(<Badge color='success'>Success</Badge>)
       const badge = screen.getByText('Success')
-      expect(badge).toHaveClass('bg-success-soft', 'text-success')
+      expect(badge).toHaveClass('bg-success-light', 'text-success')
     })
 
     it('applies outline color correctly', () => {

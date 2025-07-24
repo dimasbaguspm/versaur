@@ -28,7 +28,7 @@ export const menuVariants = cva(
 )
 
 export const menuItemVariants = cva(
-  'w-full text-left px-4 rounded-md cursor-pointer transition-colors duration-150 font-medium select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral/70 hover:bg-slate-100 active:bg-slate-200 disabled:opacity-50 disabled:cursor-not-allowed',
+  'w-full text-left px-4 rounded-md cursor-pointer transition-colors duration-150 font-medium select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 hover:bg-ghost-100 active:bg-ghost-200 disabled:opacity-50 disabled:cursor-not-allowed',
   {
     variants: {
       variant: {

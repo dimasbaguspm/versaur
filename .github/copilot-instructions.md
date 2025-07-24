@@ -255,19 +255,19 @@ soft variants for subtle backgrounds and states:
 | Role                 | CSS Variable               | Color   | Usage                                       |
 | -------------------- | -------------------------- | ------- | ------------------------------------------- |
 | **Primary**          | `--color-primary`          | #e07a5f | Main actions, CTAs, brand identity          |
-| **Primary Light**    | `--color-primary-light`    | #f2b8a3 | Lighter backgrounds, subtle highlights      |
-| **Primary Bold**     | `--color-primary-bold`     | #b85c3c | Strong emphasis, active states              |
+| **Primary Light**    | `--color-primary-light`    | #ffd9cb | Lighter backgrounds, subtle highlights      |
+| **Primary Bold**     | `--color-primary-bold`     | #a95a3a | Strong emphasis, active states              |
 | **Primary Soft**     | `--color-primary-soft`     | #fff8f6 | Soft backgrounds, hover/focus for primary   |
 | **Secondary**        | `--color-secondary`        | #81b29a | Secondary actions, balance states           |
-| **Secondary Light**  | `--color-secondary-light`  | #b6d3c0 | Lighter backgrounds, subtle highlights      |
+| **Secondary Light**  | `--color-secondary-light`  | #d9ffe6 | Lighter backgrounds, subtle highlights      |
 | **Secondary Bold**   | `--color-secondary-bold`   | #56806b | Strong emphasis, active states              |
 | **Secondary Soft**   | `--color-secondary-soft`   | #f6fffa | Soft backgrounds, hover/focus for secondary |
 | **Tertiary**         | `--color-tertiary`         | #84a5c0 | Subtle backgrounds, professional elements   |
-| **Tertiary Light**   | `--color-tertiary-light`   | #b6cbe0 | Lighter backgrounds, subtle highlights      |
+| **Tertiary Light**   | `--color-tertiary-light`   | #d8ebff | Lighter backgrounds, subtle highlights      |
 | **Tertiary Bold**    | `--color-tertiary-bold`    | #5a7a99 | Strong emphasis, active states              |
 | **Tertiary Soft**    | `--color-tertiary-soft`    | #f5faff | Soft backgrounds, hover/focus for tertiary  |
 | **Ghost**            | `--color-ghost`            | #3d405b | Text, minimal actions, borders              |
-| **Ghost Light**      | `--color-ghost-light`      | #7a7c99 | Lighter text, subtle borders                |
+| **Ghost Light**      | `--color-ghost-light`      | #b6b8db | Lighter text, subtle borders                |
 | **Ghost Bold**       | `--color-ghost-bold`       | #23243a | Strong emphasis, active states              |
 | **Ghost Soft**       | `--color-ghost-soft`       | #e3e4ea | Soft backgrounds, hover/focus for ghost     |
 | **Neutral**          | `--color-neutral`          | #e9ecef | Neutral surfaces, cards, backgrounds        |
@@ -275,21 +275,21 @@ soft variants for subtle backgrounds and states:
 | **Neutral Bold**     | `--color-neutral-bold`     | #b0b3b8 | Strong emphasis, active states              |
 | **Neutral Soft**     | `--color-neutral-soft`     | #f8f9fa | Soft backgrounds, hover/focus for neutral   |
 | **Success**          | `--color-success`          | #6db285 | Success states, positive feedback           |
-| **Success Light**    | `--color-success-light`    | #a7d3b8 | Lighter backgrounds, subtle highlights      |
+| **Success Light**    | `--color-success-light`    | #c8ffdd | Lighter backgrounds, subtle highlights      |
 | **Success Bold**     | `--color-success-bold`     | #417a5a | Strong emphasis, active states              |
 | **Success Soft**     | `--color-success-soft`     | #f4fff9 | Soft backgrounds, hover/focus for success   |
 | **Info**             | `--color-info`             | #6b8fad | Information, neutral alerts                 |
-| **Info Light**       | `--color-info-light`       | #a3c0d6 | Lighter backgrounds, subtle highlights      |
+| **Info Light**       | `--color-info-light`       | #b9e1ff | Lighter backgrounds, subtle highlights      |
 | **Info Bold**        | `--color-info-bold`        | #3c5a7a | Strong emphasis, active states              |
 | **Info Soft**        | `--color-info-soft`        | #f0f8ff | Soft backgrounds, hover/focus for info      |
 | **Warning**          | `--color-warning`          | #e08a47 | Warning states, caution                     |
-| **Warning Light**    | `--color-warning-light`    | #f2c89e | Lighter backgrounds, subtle highlights      |
+| **Warning Light**    | `--color-warning-light`    | #ffdab5 | Lighter backgrounds, subtle highlights      |
 | **Warning Bold**     | `--color-warning-bold`     | #b86a2c | Strong emphasis, active states              |
-| **Warning Soft**     | `--color-warning-soft`     | #fff9f2 | Soft backgrounds, hover/focus for warning   |
+| **Warning Soft**     | `--color-warning-soft`     | #fff1e4 | Soft backgrounds, hover/focus for warning   |
 | **Danger**           | `--color-danger`           | #e06650 | Error states, destructive actions           |
-| **Danger Light**     | `--color-danger-light`     | #f2a89a | Lighter backgrounds, subtle highlights      |
+| **Danger Light**     | `--color-danger-light`     | #ffbfb3 | Lighter backgrounds, subtle highlights      |
 | **Danger Bold**      | `--color-danger-bold`      | #b83c2a | Strong emphasis, active states              |
-| **Danger Soft**      | `--color-danger-soft`      | #fff5f4 | Soft backgrounds, hover/focus for danger    |
+| **Danger Soft**      | `--color-danger-soft`      | #ffeeeb | Soft backgrounds, hover/focus for danger    |
 | **Background**       | `--color-background`       | #ffffff | App background                              |
 | **Background Light** | `--color-background-light` | #f8f9fa | Lighter backgrounds, subtle highlights      |
 | **Background Bold**  | `--color-background-bold`  | #e9ecef | Strong emphasis, active states              |
@@ -297,65 +297,13 @@ soft variants for subtle backgrounds and states:
 | **Foreground Light** | `--color-foreground-light` | #6b7280 | Lighter text, subtle highlights             |
 | **Foreground Bold**  | `--color-foreground-bold`  | #1a202c | Strong emphasis, active states              |
 | **Cream**            | `--color-cream`            | #f4f1de | Subtle backgrounds, highlights              |
-| **Cream Light**      | `--color-cream-light`      | #fefdfb | Lighter backgrounds, subtle highlights      |
+| **Cream Light**      | `--color-cream-light`      | #f9f7f3 | Lighter backgrounds, subtle highlights      |
 | **Cream Bold**       | `--color-cream-bold`       | #e2d9b8 | Strong emphasis, active states              |
-| **Cream Soft**       | `--color-cream-soft`       | #fefdfb | Soft backgrounds, highlights                |
+| **Cream Soft**       | `--color-cream-soft`       | #f9f7f3 | Soft backgrounds, highlights                |
+| **Border**           | `--color-border`           | #e0e0e0 | Standard border color                       |
+| **Accent**           | `--color-accent`           | #84a5c0 | Accent color for highlights, focus, etc.    |
 
-All colors, including soft variants, are defined as CSS custom properties in `:root` for light mode,
-and can be extended for dark mode as needed.
-
-#### Example CSS Custom Properties
-
-```css
-:root {
-  --color-primary: #e07a5f;
-  --color-primary-light: #f2b8a3;
-  --color-primary-bold: #b85c3c;
-  --color-primary-soft: #fff8f6;
-  --color-secondary: #81b29a;
-  --color-secondary-light: #b6d3c0;
-  --color-secondary-bold: #56806b;
-  --color-secondary-soft: #f6fffa;
-  --color-tertiary: #84a5c0;
-  --color-tertiary-light: #b6cbe0;
-  --color-tertiary-bold: #5a7a99;
-  --color-tertiary-soft: #f5faff;
-  --color-ghost: #3d405b;
-  --color-ghost-light: #7a7c99;
-  --color-ghost-bold: #23243a;
-  --color-ghost-soft: #e3e4ea;
-  --color-neutral: #e9ecef;
-  --color-neutral-light: #f4f6f8;
-  --color-neutral-bold: #b0b3b8;
-  --color-neutral-soft: #f8f9fa;
-  --color-success: #6db285;
-  --color-success-light: #a7d3b8;
-  --color-success-bold: #417a5a;
-  --color-success-soft: #f4fff9;
-  --color-info: #6b8fad;
-  --color-info-light: #a3c0d6;
-  --color-info-bold: #3c5a7a;
-  --color-info-soft: #f0f8ff;
-  --color-warning: #e08a47;
-  --color-warning-light: #f2c89e;
-  --color-warning-bold: #b86a2c;
-  --color-warning-soft: #fff9f2;
-  --color-danger: #e06650;
-  --color-danger-light: #f2a89a;
-  --color-danger-bold: #b83c2a;
-  --color-danger-soft: #fff5f4;
-  --color-background: #ffffff;
-  --color-background-light: #f8f9fa;
-  --color-background-bold: #e9ecef;
-  --color-foreground: #2d3748;
-  --color-foreground-light: #6b7280;
-  --color-foreground-bold: #1a202c;
-  --color-cream: #f4f1de;
-  --color-cream-light: #fefdfb;
-  --color-cream-bold: #e2d9b8;
-  --color-cream-soft: #fefdfb;
-}
-```
+All colors, including soft variants, are defined as CSS custom properties in `:root`
 
 ### Color Harmony Principles
 

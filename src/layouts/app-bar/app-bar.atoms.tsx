@@ -57,7 +57,7 @@ export const AppBarSubtitle = forwardRef<HTMLDivElement, AppBarSubtitleProps>(
   ({ children, className }, ref) => (
     <div
       ref={ref}
-      className={cn('text-xs text-slate-400 truncate min-w-0', className)}
+      className={cn('text-xs text-ghost-400 truncate min-w-0', className)}
     >
       {children}
     </div>

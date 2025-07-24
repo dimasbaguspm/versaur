@@ -33,7 +33,7 @@ export const CalendarRoot: React.FC<CalendarProps> = ({
   // Render header
   const renderHeader = () => (
     <div className='flex items-center justify-between px-4 pt-4 pb-2'>
-      <Text fontSize='base' fontWeight='semibold'>
+      <Text fontSize='base' fontWeight='semibold' className='ml-2'>
         {value
           ? value.toLocaleDateString(undefined, {
               year: 'numeric',
@@ -75,7 +75,7 @@ export const CalendarRoot: React.FC<CalendarProps> = ({
 
   // Render weekday labels
   const renderWeekdays = () => (
-    <div className='grid grid-cols-7 px-4 text-slate-500 mb-1'>
+    <div className='grid grid-cols-7 px-4 text-ghost-500 mb-3'>
       {['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map(d => (
         <Text fontSize='xs' key={d} color='ghost' align='center'>
           {d}
@@ -96,12 +96,15 @@ export const CalendarRoot: React.FC<CalendarProps> = ({
       const day = prevMonthDays - firstDay + i + 1
       days.push(
         <ButtonIcon
-          as={() => day}
+          as={() => (
+            <Text as='span' fontSize='sm' color='tertiary'>
+              {day}
+            </Text>
+          )}
           size='sm'
           aria-label='Previous month day'
           variant='ghost'
           key={'prev-' + i}
-          className='text-slate-300'
           onClick={() => {
             // Calculate previous month/year
             const prevMonth = month === 0 ? 11 : month - 1
@@ -124,7 +127,15 @@ export const CalendarRoot: React.FC<CalendarProps> = ({
 
       days.push(
         <ButtonIcon
-          as={() => d}
+          as={() => (
+            <Text
+              as='span'
+              fontSize='sm'
+              color={isSelected ? 'inherit' : 'ghost'}
+            >
+              {d}
+            </Text>
+          )}
           key={d}
           variant={isSelected ? 'primary' : 'ghost'}
           size='sm'
@@ -143,12 +154,15 @@ export const CalendarRoot: React.FC<CalendarProps> = ({
     ) {
       days.push(
         <ButtonIcon
-          as={() => i + 1}
+          as={() => (
+            <Text as='span' fontSize='sm' color='tertiary'>
+              {i + 1}
+            </Text>
+          )}
           size='sm'
           aria-label='Next month day'
           variant='ghost'
           key={'next-' + i}
-          className='text-slate-300'
           onClick={() => {
             // Calculate next month/year
             const nextMonth = month === 11 ? 0 : month + 1

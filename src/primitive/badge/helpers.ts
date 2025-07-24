@@ -10,7 +10,7 @@ export const badgeVariants = cva(
     variants: {
       variant: {
         default: '',
-        outline: 'border bg-transparent',
+        outline: 'border bg-background',
       },
       color: {
         // Core colors
@@ -44,22 +44,22 @@ export const badgeVariants = cva(
       {
         variant: 'default',
         color: 'primary',
-        className: 'bg-coral-soft text-coral',
+        className: 'bg-primary-light text-primary',
       },
       {
         variant: 'default',
         color: 'secondary',
-        className: 'bg-sage-soft text-sage',
+        className: 'bg-secondary-light text-secondary',
       },
       {
         variant: 'default',
         color: 'tertiary',
-        className: 'bg-mist-soft text-mist',
+        className: 'bg-tertiary-light text-tertiary',
       },
       {
         variant: 'default',
         color: 'ghost',
-        className: 'bg-slate-soft text-slate',
+        className: 'bg-ghost-light text-ghost',
       },
       {
         variant: 'default',
@@ -69,44 +69,44 @@ export const badgeVariants = cva(
       {
         variant: 'default',
         color: 'success',
-        className: 'bg-success-soft text-success',
+        className: 'bg-success-light text-success',
       },
       {
         variant: 'default',
         color: 'info',
-        className: 'bg-info-soft text-info',
+        className: 'bg-info-light text-info',
       },
       {
         variant: 'default',
         color: 'warning',
-        className: 'bg-warning-soft text-warning',
+        className: 'bg-warning-light text-warning',
       },
       {
         variant: 'default',
         color: 'danger',
-        className: 'bg-danger-soft text-danger',
+        className: 'bg-danger-light text-danger',
       },
 
       // Outline variant color combinations
       {
         variant: 'outline',
         color: 'primary',
-        className: 'border-coral text-coral',
+        className: 'border-primary text-primary',
       },
       {
         variant: 'outline',
         color: 'secondary',
-        className: 'border-sage text-sage',
+        className: 'border-secondary text-secondary',
       },
       {
         variant: 'outline',
         color: 'tertiary',
-        className: 'border-mist text-mist',
+        className: 'border-tertiary text-tertiary',
       },
       {
         variant: 'outline',
         color: 'ghost',
-        className: 'border-slate text-slate',
+        className: 'border-ghost text-ghost',
       },
       {
         variant: 'outline',

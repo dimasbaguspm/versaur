@@ -19,7 +19,7 @@ exports[`DateSinglePickerInput Modal Stories > renders default modal story and m
         aria-expanded="false"
         aria-haspopup="dialog"
         aria-invalid="false"
-        class="rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 border-coral/30 text-foreground focus:border-coral focus:ring-coral/20 pl-3 pr-3 h-10 flex items-center justify-between cursor-pointer w-full relative text-left"
+        class="rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 border-primary/30 text-foreground focus:border-primary focus:ring-primary/20 pl-3 pr-3 h-10 flex items-center justify-between cursor-pointer w-full relative text-left"
         id="«r0»"
         tabindex="0"
         type="button"
@@ -60,7 +60,7 @@ exports[`DateSinglePickerInput Modal Stories > renders default modal story and m
               class="flex items-center justify-between px-4 pt-4 pb-2"
             >
               <span
-                class="text-ghost text-left text-base font-semibold"
+                class="text-ghost text-left text-base font-semibold ml-2"
               >
                 July 2025
               </span>
@@ -70,7 +70,7 @@ exports[`DateSinglePickerInput Modal Stories > renders default modal story and m
                 <button
                   aria-disabled="false"
                   aria-label="Previous month"
-                  class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                  class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                   type="button"
                 >
                   <svg
@@ -94,7 +94,7 @@ exports[`DateSinglePickerInput Modal Stories > renders default modal story and m
                 <button
                   aria-disabled="false"
                   aria-label="Next month"
-                  class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                  class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                   type="button"
                 >
                   <svg
@@ -118,7 +118,7 @@ exports[`DateSinglePickerInput Modal Stories > renders default modal story and m
               </div>
             </div>
             <div
-              class="grid grid-cols-7 px-4 text-slate-500 mb-1"
+              class="grid grid-cols-7 px-4 text-ghost-500 mb-3"
             >
               <span
                 class="text-ghost text-center font-normal text-xs"
@@ -162,283 +162,423 @@ exports[`DateSinglePickerInput Modal Stories > renders default modal story and m
               <button
                 aria-disabled="false"
                 aria-label="Previous month day"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md text-slate-300"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                29
+                <span
+                  class="text-tertiary text-left font-normal text-sm"
+                >
+                  29
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Previous month day"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md text-slate-300"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                30
+                <span
+                  class="text-tertiary text-left font-normal text-sm"
+                >
+                  30
+                </span>
               </button>
               <button
                 aria-current="date"
                 aria-disabled="false"
                 aria-label="Select 2025-7-1"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-coral text-white hover:bg-coral/90 focus-visible:ring-coral-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-8 w-8 rounded-md"
                 type="button"
               >
-                1
+                <span
+                  class="text-left font-normal text-sm"
+                >
+                  1
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-2"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                2
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  2
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-3"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                3
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  3
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-4"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                4
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  4
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-5"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                5
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  5
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-6"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                6
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  6
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-7"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                7
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  7
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-8"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                8
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  8
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-9"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                9
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  9
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-10"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                10
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  10
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-11"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                11
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  11
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-12"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                12
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  12
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-13"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                13
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  13
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-14"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                14
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  14
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-15"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                15
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  15
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-16"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                16
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  16
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-17"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                17
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  17
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-18"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                18
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  18
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-19"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                19
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  19
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-20"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                20
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  20
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-21"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                21
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  21
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-22"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                22
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  22
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-23"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                23
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  23
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-24"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                24
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  24
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-25"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                25
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  25
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-26"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                26
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  26
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-27"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                27
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  27
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-28"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                28
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  28
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-29"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                29
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  29
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-30"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                30
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  30
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Select 2025-7-31"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                31
+                <span
+                  class="text-ghost text-left font-normal text-sm"
+                >
+                  31
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Next month day"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md text-slate-300"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                1
+                <span
+                  class="text-tertiary text-left font-normal text-sm"
+                >
+                  1
+                </span>
               </button>
               <button
                 aria-disabled="false"
                 aria-label="Next month day"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 w-8 rounded-md text-slate-300"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
                 type="button"
               >
-                2
+                <span
+                  class="text-tertiary text-left font-normal text-sm"
+                >
+                  2
+                </span>
               </button>
             </div>
           </div>
@@ -448,14 +588,14 @@ exports[`DateSinglePickerInput Modal Stories > renders default modal story and m
         >
           <button
             aria-disabled="false"
-            class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white h-8 px-3 text-sm min-w-[2.25rem]"
+            class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 px-3 text-sm min-w-[2.25rem]"
             type="button"
           >
             Cancel
           </button>
           <button
             aria-disabled="false"
-            class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-coral text-white hover:bg-coral/90 focus-visible:ring-coral-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-8 px-3 text-sm min-w-[2.25rem]"
+            class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-8 px-3 text-sm min-w-[2.25rem]"
             type="button"
           >
             Confirm

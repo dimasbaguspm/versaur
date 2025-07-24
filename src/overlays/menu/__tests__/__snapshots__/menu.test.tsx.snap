@@ -10,7 +10,7 @@ exports[`Menu (compound/context) > renders basic menu correctly 1`] = `
     <button
       aria-disabled="false"
       aria-label="Open menu"
-      class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-coral text-white hover:bg-coral/90 focus-visible:ring-coral-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 w-10 rounded-md"
+      class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 w-10 rounded-md"
       type="button"
     >
       <svg
@@ -68,7 +68,7 @@ exports[`Menu (compound/context) > renders menu with different sizes 1`] = `
       <button
         aria-disabled="false"
         aria-label="Open small menu"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-coral text-white hover:bg-coral/90 focus-visible:ring-coral-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 w-10 rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 w-10 rounded-md"
         type="button"
       >
         <svg
@@ -118,7 +118,7 @@ exports[`Menu (compound/context) > renders menu with different sizes 1`] = `
       <button
         aria-disabled="false"
         aria-label="Open medium menu"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-coral text-white hover:bg-coral/90 focus-visible:ring-coral-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 w-10 rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 w-10 rounded-md"
         type="button"
       >
         <svg

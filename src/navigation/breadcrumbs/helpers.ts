@@ -1,7 +1,7 @@
 import { cva } from '@/utils/variants'
 
 export const breadcrumbsRootClass = cva(
-  'flex items-center gap-2 text-sm text-slate-700 dark:text-slate-200',
+  'flex items-center gap-2 text-sm text-tertiary',
   {
     variants: {
       separator: {
@@ -20,9 +20,8 @@ export const breadcrumbsItemClass = cva(
   {
     variants: {
       isCurrent: {
-        true: 'font-semibold text-slate-900 dark:text-white cursor-default',
-        false:
-          'hover:text-primary focus:text-primary text-slate-700 dark:text-slate-200',
+        true: 'font-semibold text-black cursor-default',
+        false: '',
       },
     },
     defaultVariants: {
@@ -31,5 +30,4 @@ export const breadcrumbsItemClass = cva(
   }
 )
 
-export const breadcrumbsSeparatorClass =
-  'mx-1 text-slate-400 dark:text-slate-500 select-none'
+export const breadcrumbsSeparatorClass = 'mx-1 text-ghost-400 select-none'

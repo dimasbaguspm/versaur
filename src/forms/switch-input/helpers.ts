@@ -5,7 +5,7 @@ import { cva } from '@/utils/variants'
  * Controls color, size, checked, and disabled state
  */
 export const switchVariants = cva(
-  'relative inline-flex items-center transition-colors duration-200',
+  'relative inline-flex items-center transition-colors duration-200 border border-transparent',
   {
     variants: {
       color: {
@@ -40,20 +40,24 @@ export const switchVariants = cva(
       checked: false,
     },
     compoundVariants: [
-      { checked: true, color: 'primary', class: 'bg-[var(--color-primary)]' },
+      {
+        checked: true,
+        color: 'primary',
+        class: 'bg-primary',
+      },
       {
         checked: true,
         color: 'secondary',
-        class: 'bg-[var(--color-secondary)]',
+        class: 'bg-secondary',
       },
-      { checked: true, color: 'tertiary', class: 'bg-[var(--color-tertiary)]' },
-      { checked: true, color: 'ghost', class: 'bg-[var(--color-ghost)]' },
-      { checked: true, color: 'neutral', class: 'bg-[var(--color-neutral)]' },
-      { checked: true, color: 'success', class: 'bg-[var(--color-success)]' },
-      { checked: true, color: 'info', class: 'bg-[var(--color-info)]' },
-      { checked: true, color: 'warning', class: 'bg-[var(--color-warning)]' },
-      { checked: true, color: 'danger', class: 'bg-[var(--color-danger)]' },
-      { checked: false, class: 'bg-white border border-slate-300' },
+      { checked: true, color: 'tertiary', class: 'bg-tertiary' },
+      { checked: true, color: 'ghost', class: 'bg-ghost' },
+      { checked: true, color: 'neutral', class: 'bg-neutral' },
+      { checked: true, color: 'success', class: 'bg-success' },
+      { checked: true, color: 'info', class: 'bg-info' },
+      { checked: true, color: 'warning', class: 'bg-warning' },
+      { checked: true, color: 'danger', class: 'bg-danger' },
+      { checked: false, class: 'bg-white border-border' },
     ],
   }
 )
@@ -73,7 +77,7 @@ export const thumbVariants = cva(
       },
       checked: {
         true: 'translate-x-full bg-white left-1.5',
-        false: 'bg-slate-300 left-0.5',
+        false: 'bg-neutral left-0.5',
       },
     },
     defaultVariants: {

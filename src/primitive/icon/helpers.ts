@@ -19,6 +19,7 @@ export const iconVariants = cva('inline-flex items-center justify-center', {
       info: 'text-info',
       warning: 'text-warning',
       danger: 'text-danger',
+      inherit: '',
     },
   },
   defaultVariants: {

@@ -36,13 +36,13 @@ describe('ButtonIcon', () => {
   it('renders with primary variant by default', () => {
     render(<ButtonIcon as={TestIcon} aria-label='Test' />)
     const button = screen.getByRole('button')
-    expect(button).toHaveClass('bg-coral')
+    expect(button).toHaveClass('bg-primary')
   })
 
   it('renders with custom variant', () => {
     render(<ButtonIcon as={TestIcon} variant='secondary' aria-label='Test' />)
     const button = screen.getByRole('button')
-    expect(button).toHaveClass('bg-sage')
+    expect(button).toHaveClass('bg-secondary')
   })
 
   it('renders with outline variant', () => {
@@ -50,7 +50,7 @@ describe('ButtonIcon', () => {
       <ButtonIcon as={TestIcon} variant='primary-outline' aria-label='Test' />
     )
     const button = screen.getByRole('button')
-    expect(button).toHaveClass('border-coral')
+    expect(button).toHaveClass('border-primary')
   })
 
   it('renders with ghost variant', () => {
@@ -58,7 +58,7 @@ describe('ButtonIcon', () => {
       <ButtonIcon as={TestIcon} variant='primary-ghost' aria-label='Test' />
     )
     const button = screen.getByRole('button')
-    expect(button).toHaveClass('text-coral')
+    expect(button).toHaveClass('text-primary')
   })
 
   it('renders with different sizes', () => {

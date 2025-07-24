@@ -18,7 +18,7 @@ describe('Button', () => {
   it('applies variant classes correctly', () => {
     render(<Button variant='secondary'>Secondary</Button>)
     const button = screen.getByRole('button')
-    expect(button).toHaveClass('bg-sage')
+    expect(button).toHaveClass('bg-secondary')
   })
 
   it('applies size classes correctly', () => {
@@ -43,9 +43,9 @@ describe('Button', () => {
 
   it('renders all semantic variants correctly', () => {
     const variants = [
-      { variant: 'primary', expectedClass: 'bg-coral' },
-      { variant: 'secondary', expectedClass: 'bg-sage' },
-      { variant: 'tertiary', expectedClass: 'bg-mist' },
+      { variant: 'primary', expectedClass: 'bg-primary' },
+      { variant: 'secondary', expectedClass: 'bg-secondary' },
+      { variant: 'tertiary', expectedClass: 'bg-tertiary' },
       { variant: 'success', expectedClass: 'bg-success' },
       { variant: 'info', expectedClass: 'bg-info' },
       { variant: 'warning', expectedClass: 'bg-warning' },
