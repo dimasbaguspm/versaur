@@ -3,12 +3,12 @@ import { cva } from 'class-variance-authority'
  * Tailwind variants for PageLayout
  */
 
-export const pageLayoutVariants = cva('w-full bg-white mx-aut relative', {
+export const pageLayoutVariants = cva('w-full bg-white mx-auto relative', {
   variants: {
     type: {
       desktop: 'max-w-7xl px-6 py-10',
-      tablet: 'max-w-3xl px-4 py-8',
-      mobile: 'w-full px-2 py-4',
+      tablet: 'max-w-3xl',
+      mobile: 'w-full',
     },
   },
   defaultVariants: {
