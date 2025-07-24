@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
 @import 'tailwindcss';
 
@@ -22,31 +21,55 @@
 
   /* Core Colors */
   --color-coral: #e07a5f;
+  --color-coral-light: #f2b8a3;
+  --color-coral-bold: #b85c3c;
   --color-coral-soft: #fff8f6;
   --color-sage: #81b29a;
+  --color-sage-light: #b6d3c0;
+  --color-sage-bold: #56806b;
   --color-sage-soft: #f6fffa;
   --color-mist: #84a5c0;
+  --color-mist-light: #b6cbe0;
+  --color-mist-bold: #5a7a99;
   --color-mist-soft: #f5faff;
   --color-slate: #3d405b;
+  --color-slate-light: #7a7c99;
+  --color-slate-bold: #23243a;
   --color-slate-soft: #e3e4ea;
   --color-cream: #f4f1de;
+  --color-cream-light: #fefdfb;
+  --color-cream-bold: #e2d9b8;
   --color-cream-soft: #fefdfb;
-  --color-light-gray: #f8f9fa;
+  --color-light-gray: #e9ecef;
+  --color-light-gray-light: #f4f6f8;
+  --color-light-gray-bold: #b0b3b8;
   --color-light-gray-soft: #fcfcfd;
 
   /* Semantic Colors */
   --color-success: #6db285;
+  --color-success-light: #a7d3b8;
+  --color-success-bold: #417a5a;
   --color-success-soft: #f4fff9;
   --color-info: #6b8fad;
+  --color-info-light: #a3c0d6;
+  --color-info-bold: #3c5a7a;
   --color-info-soft: #f0f8ff;
   --color-warning: #e08a47;
+  --color-warning-light: #f2c89e;
+  --color-warning-bold: #b86a2c;
   --color-warning-soft: #fff9f2;
   --color-danger: #e06650;
+  --color-danger-light: #f2a89a;
+  --color-danger-bold: #b83c2a;
   --color-danger-soft: #fff5f4;
 
   /* Background and Foreground */
   --color-background: #ffffff; /* White */
+  --color-background-light: #f8f9fa;
+  --color-background-bold: #e9ecef;
   --color-foreground: #2d3748; /* Darker Slate */
+  --color-foreground-light: #6b7280;
+  --color-foreground-bold: #1a202c;
 
   /* Button/Component Variants */
   --color-primary: #e07a5f; /* Coral */
@@ -108,7 +131,6 @@ Our palette follows these harmonious relationships:
   animation: loading-bar 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
-
 @keyframes spin-perfect {
   100% {
     transform: rotate(360deg);
@@ -131,4 +153,3 @@ Our palette follows these harmonious relationships:
 .animate-fab-in {
   animation: fab-in 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
