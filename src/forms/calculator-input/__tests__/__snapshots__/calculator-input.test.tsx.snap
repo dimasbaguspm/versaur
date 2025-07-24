@@ -14,7 +14,7 @@ exports[`CalculatorInput > renders correctly 1`] = `
     >
       <input
         aria-invalid="false"
-        class="block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 border-coral/30 text-foreground focus:border-coral focus:ring-coral/20 pl-3 pr-9 h-10"
+        class="block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 border-primary/30 text-foreground focus:border-primary focus:ring-primary/20 pl-3 pr-9 h-10"
         id="«r0»"
         readonly=""
         type="text"
@@ -264,7 +264,7 @@ exports[`CalculatorInput > renders correctly 1`] = `
         </button>
         <button
           aria-disabled="false"
-          class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none text-coral bg-white hover:bg-coral-soft focus-visible:ring-coral-soft focus-visible:ring-offset-white h-10 px-4 text-sm min-w-[2.5rem]"
+          class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none text-primary bg-white hover:bg-primary-light focus-visible:ring-primary-light focus-visible:ring-offset-white h-10 px-4 text-sm min-w-[2.5rem]"
           type="button"
         >
           OK

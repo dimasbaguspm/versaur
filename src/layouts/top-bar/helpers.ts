@@ -29,8 +29,8 @@ export const topBarNavItemStyles = cva(
   {
     variants: {
       active: {
-        true: 'bg-coral/10 text-coral',
-        false: 'hover:text-coral text-ghost',
+        true: 'bg-primary/10 text-primary',
+        false: 'hover:text-primary text-ghost',
       },
     },
     defaultVariants: {

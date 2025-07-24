@@ -19,7 +19,7 @@ exports[`DateSinglePickerInput Docked Stories > renders default docked story and
         aria-expanded="false"
         aria-haspopup="dialog"
         aria-invalid="false"
-        class="rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 border-coral/30 text-foreground focus:border-coral focus:ring-coral/20 pl-3 pr-3 h-10 flex items-center justify-between cursor-pointer w-full relative text-left"
+        class="rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 border-primary/30 text-foreground focus:border-primary focus:ring-primary/20 pl-3 pr-3 h-10 flex items-center justify-between cursor-pointer w-full relative text-left"
         id="«r0»"
         tabindex="0"
         type="button"

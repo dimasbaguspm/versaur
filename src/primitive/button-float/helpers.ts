@@ -28,31 +28,31 @@ export const buttonFloatVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-coral text-white hover:bg-coral/90 focus-visible:ring-coral-soft focus-visible:ring-offset-white',
+          'bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-soft focus-visible:ring-offset-white',
         secondary:
-          'bg-sage text-white hover:bg-sage/90 focus-visible:ring-sage-soft focus-visible:ring-offset-white',
+          'bg-secondary text-white hover:bg-secondary/90 focus-visible:ring-secondary-soft focus-visible:ring-offset-white',
         tertiary:
-          'bg-mist text-white hover:bg-mist/90 focus-visible:ring-mist-soft focus-visible:ring-offset-white',
+          'bg-tertiary text-white hover:bg-tertiary/90 focus-visible:ring-tertiary-soft focus-visible:ring-offset-white',
         ghost:
-          'bg-white text-foreground hover:bg-slate-soft focus-visible:ring-slate-soft focus-visible:ring-offset-white',
+          'bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white',
         neutral:
           'bg-neutral text-foreground border border-border hover:bg-neutral/80 focus-visible:ring-foreground-soft focus-visible:ring-offset-white',
         'primary-outline':
-          'border border-coral text-coral bg-white hover:bg-coral hover:text-white focus-visible:ring-coral-soft focus-visible:ring-offset-white',
+          'border border-primary text-primary bg-white hover:bg-primary hover:text-white focus-visible:ring-primary-soft focus-visible:ring-offset-white',
         'secondary-outline':
-          'border border-sage text-sage bg-white hover:bg-sage hover:text-white focus-visible:ring-sage-soft focus-visible:ring-offset-white',
+          'border border-secondary text-secondary bg-white hover:bg-secondary hover:text-white focus-visible:ring-secondary-soft focus-visible:ring-offset-white',
         'tertiary-outline':
-          'border border-mist text-mist bg-white hover:bg-mist hover:text-white focus-visible:ring-mist-soft focus-visible:ring-offset-white',
+          'border border-tertiary text-tertiary bg-white hover:bg-tertiary hover:text-white focus-visible:ring-tertiary-soft focus-visible:ring-offset-white',
         'ghost-outline':
-          'border border-slate text-slate bg-white hover:bg-slate hover:text-white focus-visible:ring-slate-soft focus-visible:ring-offset-white',
+          'border border-ghost text-ghost bg-white hover:bg-ghost hover:text-white focus-visible:ring-ghost-soft focus-visible:ring-offset-white',
         'neutral-outline':
           'border border-neutral text-foreground bg-white hover:bg-neutral hover:text-foreground focus-visible:ring-foreground-soft focus-visible:ring-offset-white',
         'primary-ghost':
-          'text-coral bg-white hover:bg-coral-soft focus-visible:ring-coral-soft focus-visible:ring-offset-white',
+          'text-primary bg-white hover:bg-primary-soft focus-visible:ring-primary-soft focus-visible:ring-offset-white',
         'secondary-ghost':
-          'text-sage bg-white hover:bg-sage-soft focus-visible:ring-sage-soft focus-visible:ring-offset-white',
+          'text-secondary bg-white hover:bg-secondary-soft focus-visible:ring-secondary-soft focus-visible:ring-offset-white',
         'tertiary-ghost':
-          'text-mist bg-white hover:bg-mist-soft focus-visible:ring-mist-soft focus-visible:ring-offset-white',
+          'text-tertiary bg-white hover:bg-tertiary-soft focus-visible:ring-tertiary-soft focus-visible:ring-offset-white',
         'neutral-ghost':
           'text-foreground bg-white hover:bg-neutral/70 focus-visible:ring-foreground-soft focus-visible:ring-offset-white',
         success:

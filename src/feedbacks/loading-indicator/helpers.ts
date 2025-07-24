@@ -10,10 +10,10 @@ export const spinnerVariants = cva(
         lg: 'w-8 h-8 border-4',
       },
       color: {
-        primary: 'border-coral border-t-transparent ',
-        secondary: 'border-sage border-t-transparent',
-        tertiary: 'border-mist border-t-transparent',
-        ghost: 'border-slate border-t-transparent',
+        primary: 'border-primary border-t-transparent ',
+        secondary: 'border-secondary border-t-transparent',
+        tertiary: 'border-tertiary border-t-transparent',
+        ghost: 'border-ghost border-t-transparent',
         neutral: 'border-neutral border-t-transparent',
         success: 'border-success border-t-transparent',
         info: 'border-info border-t-transparent',
@@ -31,10 +31,10 @@ export const spinnerVariants = cva(
 export const barVariants = cva('relative w-full h-1 overflow-hidden rounded', {
   variants: {
     color: {
-      primary: 'bg-coral',
-      secondary: 'bg-sage',
-      tertiary: 'bg-mist',
-      ghost: 'bg-slate',
+      primary: 'bg-primary',
+      secondary: 'bg-secondary',
+      tertiary: 'bg-tertiary',
+      ghost: 'bg-ghost',
       neutral: 'bg-neutral',
       success: 'bg-success',
       info: 'bg-info',
@@ -56,13 +56,13 @@ export const barVariants = cva('relative w-full h-1 overflow-hidden rounded', {
 export const getBarBgClass = (color: string) => {
   switch (color) {
     case 'primary':
-      return 'bg-coral'
+      return 'bg-primary'
     case 'secondary':
-      return 'bg-sage'
+      return 'bg-secondary'
     case 'tertiary':
-      return 'bg-mist'
+      return 'bg-tertiary'
     case 'ghost':
-      return 'bg-slate'
+      return 'bg-ghost'
     case 'neutral':
       return 'bg-neutral'
     case 'success':
@@ -74,6 +74,6 @@ export const getBarBgClass = (color: string) => {
     case 'danger':
       return 'bg-danger'
     default:
-      return 'bg-coral'
+      return 'bg-primary'
   }
 }

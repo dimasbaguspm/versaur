@@ -27,61 +27,61 @@ export const tabsTriggerVariants = cva(
         variant: 'underline',
         color: 'primary',
         active: true,
-        class: 'text-coral border-coral',
+        class: 'text-primary border-primary',
       },
       {
         variant: 'underline',
         color: 'primary',
         active: false,
-        class: 'text-foreground hover:text-coral',
+        class: 'text-foreground hover:text-primary',
       },
       {
         variant: 'underline',
         color: 'secondary',
         active: true,
-        class: 'text-sage border-sage',
+        class: 'text-secondary border-secondary',
       },
       {
         variant: 'underline',
         color: 'secondary',
         active: false,
-        class: 'text-foreground hover:text-sage',
+        class: 'text-foreground hover:text-secondary',
       },
       {
         variant: 'underline',
         color: 'tertiary',
         active: true,
-        class: 'text-mist border-mist',
+        class: 'text-tertiary border-tertiary',
       },
       {
         variant: 'underline',
         color: 'tertiary',
         active: false,
-        class: 'text-foreground hover:text-mist',
+        class: 'text-foreground hover:text-tertiary',
       },
       {
         variant: 'underline',
         color: 'ghost',
         active: true,
-        class: 'text-slate border-slate',
+        class: 'text-ghost border-ghost',
       },
       {
         variant: 'underline',
         color: 'ghost',
         active: false,
-        class: 'text-foreground hover:text-slate',
+        class: 'text-foreground hover:text-ghost',
       },
       {
         variant: 'underline',
         color: 'neutral',
         active: true,
-        class: 'text-foreground border-light-gray',
+        class: 'text-foreground border-neutral',
       },
       {
         variant: 'underline',
         color: 'neutral',
         active: false,
-        class: 'text-foreground hover:text-light-gray',
+        class: 'text-foreground hover:text-neutral',
       },
       // Filled variant (no color, only white/transparent)
       {
@@ -123,11 +123,11 @@ export const tabsIndicatorVariants = cva(
   {
     variants: {
       color: {
-        primary: 'bg-coral',
-        secondary: 'bg-sage',
-        tertiary: 'bg-mist',
-        ghost: 'bg-slate',
-        neutral: 'bg-light-gray',
+        primary: 'bg-primary',
+        secondary: 'bg-secondary',
+        tertiary: 'bg-tertiary',
+        ghost: 'bg-ghost',
+        neutral: 'bg-neutral',
       },
     },
     defaultVariants: {

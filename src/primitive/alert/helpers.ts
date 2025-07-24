@@ -31,22 +31,22 @@ export const alertVariants = cva(
       {
         variant: 'default',
         color: 'primary',
-        class: 'bg-coral-soft text-coral border border-coral',
+        class: 'bg-primary-soft text-primary border border-primary',
       },
       {
         variant: 'default',
         color: 'secondary',
-        class: 'bg-sage-soft text-sage border border-sage',
+        class: 'bg-secondary-soft text-secondary border border-secondary',
       },
       {
         variant: 'default',
         color: 'tertiary',
-        class: 'bg-mist-soft text-mist border border-mist',
+        class: 'bg-tertiary-soft text-tertiary border border-tertiary',
       },
       {
         variant: 'default',
         color: 'ghost',
-        class: 'bg-slate-soft text-slate border border-slate',
+        class: 'bg-ghost-soft text-ghost border border-ghost',
       },
       {
         variant: 'default',
@@ -78,22 +78,22 @@ export const alertVariants = cva(
       {
         variant: 'outline',
         color: 'primary',
-        class: 'bg-transparent text-coral border-coral',
+        class: 'bg-transparent text-primary border-primary',
       },
       {
         variant: 'outline',
         color: 'secondary',
-        class: 'bg-transparent text-sage border-sage',
+        class: 'bg-transparent text-secondary border-secondary',
       },
       {
         variant: 'outline',
         color: 'tertiary',
-        class: 'bg-transparent text-mist border-mist',
+        class: 'bg-transparent text-tertiary border-tertiary',
       },
       {
         variant: 'outline',
         color: 'ghost',
-        class: 'bg-transparent text-slate border-slate',
+        class: 'bg-transparent text-ghost border-ghost',
       },
       {
         variant: 'outline',

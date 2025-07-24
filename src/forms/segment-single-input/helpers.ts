@@ -6,17 +6,17 @@ export const segmentGroupVariants = cva(
     variants: {
       variant: {
         // Core variants using Versaur color system
-        primary: 'border-coral/20',
-        secondary: 'border-sage/20',
-        tertiary: 'border-mist/20',
-        ghost: 'border-slate/20',
+        primary: 'border-primary/20',
+        secondary: 'border-secondary/20',
+        tertiary: 'border-tertiary/20',
+        ghost: 'border-ghost/20',
         neutral: 'border-gray-200',
 
         // Outline variants
-        'primary-outline': 'border-coral',
-        'secondary-outline': 'border-sage',
-        'tertiary-outline': 'border-mist',
-        'ghost-outline': 'border-slate',
+        'primary-outline': 'border-primary',
+        'secondary-outline': 'border-secondary',
+        'tertiary-outline': 'border-tertiary',
+        'ghost-outline': 'border-ghost',
         'neutral-outline': 'border-gray-400',
 
         // Semantic variants
@@ -53,30 +53,33 @@ export const segmentOptionVariants = cva(
     variants: {
       variant: {
         // Core variants using Versaur color system
-        primary: 'text-slate hover:text-coral focus:ring-coral/30',
-        secondary: 'text-slate hover:text-sage focus:ring-sage/30',
-        tertiary: 'text-slate hover:text-mist focus:ring-mist/30',
-        ghost: 'text-slate hover:text-slate focus:ring-slate/30',
-        neutral: 'text-slate hover:text-gray-700 focus:ring-gray-400/30',
+        primary: 'text-ghost hover:text-primary focus:ring-primary/30',
+        secondary: 'text-ghost hover:text-secondary focus:ring-secondary/30',
+        tertiary: 'text-ghost hover:text-tertiary focus:ring-tertiary/30',
+        ghost: 'text-ghost hover:text-ghost focus:ring-ghost/30',
+        neutral: 'text-ghost hover:text-gray-700 focus:ring-gray-400/30',
 
         // Outline variants
-        'primary-outline': 'text-coral hover:bg-coral/10 focus:ring-coral/30',
-        'secondary-outline': 'text-sage hover:bg-sage/10 focus:ring-sage/30',
-        'tertiary-outline': 'text-mist hover:bg-mist/10 focus:ring-mist/30',
-        'ghost-outline': 'text-slate hover:bg-slate/10 focus:ring-slate/30',
+        'primary-outline':
+          'text-primary hover:bg-primary/10 focus:ring-primary/30',
+        'secondary-outline':
+          'text-secondary hover:bg-secondary/10 focus:ring-secondary/30',
+        'tertiary-outline':
+          'text-tertiary hover:bg-tertiary/10 focus:ring-tertiary/30',
+        'ghost-outline': 'text-ghost hover:bg-ghost/10 focus:ring-ghost/30',
         'neutral-outline':
           'text-gray-600 hover:bg-gray-100 focus:ring-gray-500/30',
 
         // Semantic variants
-        success: 'text-slate hover:text-success focus:ring-success/30',
+        success: 'text-ghost hover:text-success focus:ring-success/30',
         'success-outline':
           'text-success hover:bg-success/10 focus:ring-success/30',
-        info: 'text-slate hover:text-info focus:ring-info/30',
+        info: 'text-ghost hover:text-info focus:ring-info/30',
         'info-outline': 'text-info hover:bg-info/10 focus:ring-info/30',
-        warning: 'text-slate hover:text-warning focus:ring-warning/30',
+        warning: 'text-ghost hover:text-warning focus:ring-warning/30',
         'warning-outline':
           'text-warning hover:bg-warning/10 focus:ring-warning/30',
-        danger: 'text-slate hover:text-danger focus:ring-danger/30',
+        danger: 'text-ghost hover:text-danger focus:ring-danger/30',
         'danger-outline': 'text-danger hover:bg-danger/10 focus:ring-danger/30',
       },
       size: {
@@ -108,17 +111,17 @@ export const getSegmentSelectedClasses = (
 ): string => {
   const variantMap: Record<string, string> = {
     // Core variants - override hover text color changes
-    primary: 'bg-coral text-white shadow-sm hover:text-white',
-    secondary: 'bg-sage text-white shadow-sm hover:text-white',
-    tertiary: 'bg-mist text-white shadow-sm hover:text-white',
-    ghost: 'bg-slate text-white shadow-sm hover:text-white',
+    primary: 'bg-primary text-white shadow-sm hover:text-white',
+    secondary: 'bg-secondary text-white shadow-sm hover:text-white',
+    tertiary: 'bg-tertiary text-white shadow-sm hover:text-white',
+    ghost: 'bg-ghost text-white shadow-sm hover:text-white',
     neutral: 'bg-gray-500 text-white shadow-sm hover:text-white',
 
     // Outline variants - override hover text color changes
-    'primary-outline': 'bg-coral text-white shadow-sm hover:text-white',
-    'secondary-outline': 'bg-sage text-white shadow-sm hover:text-white',
-    'tertiary-outline': 'bg-mist text-white shadow-sm hover:text-white',
-    'ghost-outline': 'bg-slate text-white shadow-sm hover:text-white',
+    'primary-outline': 'bg-primary text-white shadow-sm hover:text-white',
+    'secondary-outline': 'bg-secondary text-white shadow-sm hover:text-white',
+    'tertiary-outline': 'bg-tertiary text-white shadow-sm hover:text-white',
+    'ghost-outline': 'bg-ghost text-white shadow-sm hover:text-white',
     'neutral-outline': 'bg-gray-500 text-white shadow-sm hover:text-white',
 
     // Semantic variants - override hover text color changes

@@ -13,7 +13,7 @@ exports[`SegmentMultipleInput > SegmentMultipleInput - FullWidth > renders all o
       Transaction Type
     </div>
     <div
-      class="rounded-lg border overflow-hidden bg-neutral/50 p-1 border-coral/20 text-sm flex w-full"
+      class="rounded-lg border overflow-hidden bg-neutral/50 p-1 border-primary/20 text-sm flex w-full"
     >
       <input
         checked=""
@@ -24,7 +24,7 @@ exports[`SegmentMultipleInput > SegmentMultipleInput - FullWidth > renders all o
         value="expense"
       />
       <label
-        class="flex flex-row items-center text-center font-medium transition-all duration-200 cursor-pointer border-0 outline-none focus:ring-2 focus:ring-offset-1 flex-1 focus:ring-coral/30 px-3 py-2 text-sm rounded-l-md bg-coral text-white shadow-sm hover:text-white relative z-10"
+        class="flex flex-row items-center text-center font-medium transition-all duration-200 cursor-pointer border-0 outline-none focus:ring-2 focus:ring-offset-1 flex-1 focus:ring-primary/30 px-3 py-2 text-sm rounded-l-md bg-primary text-white shadow-sm hover:text-white relative z-10"
         for="«r1p»"
       >
         Expense
@@ -37,7 +37,7 @@ exports[`SegmentMultipleInput > SegmentMultipleInput - FullWidth > renders all o
         value="income"
       />
       <label
-        class="relative flex flex-row items-center text-center font-medium transition-all duration-200 cursor-pointer border-0 bg-transparent outline-none focus:ring-2 focus:ring-offset-1 flex-1 text-slate hover:text-coral focus:ring-coral/30 px-3 py-2 text-sm"
+        class="relative flex flex-row items-center text-center font-medium transition-all duration-200 cursor-pointer border-0 bg-transparent outline-none focus:ring-2 focus:ring-offset-1 flex-1 text-ghost hover:text-primary focus:ring-primary/30 px-3 py-2 text-sm"
         for="«r1q»"
       >
         Income
@@ -50,7 +50,7 @@ exports[`SegmentMultipleInput > SegmentMultipleInput - FullWidth > renders all o
         value="transfer"
       />
       <label
-        class="relative flex flex-row items-center text-center font-medium transition-all duration-200 cursor-pointer border-0 bg-transparent outline-none focus:ring-2 focus:ring-offset-1 flex-1 text-slate hover:text-coral focus:ring-coral/30 px-3 py-2 text-sm rounded-r-md"
+        class="relative flex flex-row items-center text-center font-medium transition-all duration-200 cursor-pointer border-0 bg-transparent outline-none focus:ring-2 focus:ring-offset-1 flex-1 text-ghost hover:text-primary focus:ring-primary/30 px-3 py-2 text-sm rounded-r-md"
         for="«r1r»"
       >
         Transfer

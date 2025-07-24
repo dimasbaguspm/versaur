@@ -29,8 +29,8 @@ export const bottomBarItemVariants = cva(
   {
     variants: {
       active: {
-        true: 'font-semibold text-coral',
-        false: 'text-slate',
+        true: 'font-semibold text-primary',
+        false: 'text-ghost',
       },
     },
     defaultVariants: {

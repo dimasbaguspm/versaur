@@ -19,25 +19,25 @@ export const checkboxVariants = cva(
       variant: {
         // Core variants using Versaur color system
         primary:
-          'border-coral/40 checked:bg-coral checked:border-coral focus:ring-coral/20',
+          'border-primary/40 checked:bg-primary checked:border-primary focus:ring-primary/20',
         secondary:
-          'border-sage/40 checked:bg-sage checked:border-sage focus:ring-sage/20',
+          'border-secondary/40 checked:bg-secondary checked:border-secondary focus:ring-secondary/20',
         tertiary:
-          'border-mist/40 checked:bg-mist checked:border-mist focus:ring-mist/20',
+          'border-tertiary/40 checked:bg-tertiary checked:border-tertiary focus:ring-tertiary/20',
         ghost:
-          'border-slate/40 checked:bg-slate checked:border-slate focus:ring-slate/20',
+          'border-ghost/40 checked:bg-ghost checked:border-ghost focus:ring-ghost/20',
         neutral:
           'border-gray-300 checked:bg-gray-500 checked:border-gray-500 focus:ring-gray-400/20',
 
         // Outline variants
         'primary-outline':
-          'border-coral checked:bg-white checked:border-coral focus:ring-coral/20',
+          'border-primary checked:bg-white checked:border-primary focus:ring-primary/20',
         'secondary-outline':
-          'border-sage checked:bg-white checked:border-sage focus:ring-sage/20',
+          'border-secondary checked:bg-white checked:border-secondary focus:ring-secondary/20',
         'tertiary-outline':
-          'border-mist checked:bg-white checked:border-mist focus:ring-mist/20',
+          'border-tertiary checked:bg-white checked:border-tertiary focus:ring-tertiary/20',
         'ghost-outline':
-          'border-slate checked:bg-white checked:border-slate focus:ring-slate/20',
+          'border-ghost checked:bg-white checked:border-ghost focus:ring-ghost/20',
         'neutral-outline':
           'border-gray-400 checked:bg-white checked:border-gray-400 focus:ring-gray-500/20',
 

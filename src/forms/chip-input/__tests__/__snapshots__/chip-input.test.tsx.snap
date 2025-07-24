@@ -17,7 +17,7 @@ exports[`ChipInput > matches snapshot 1`] = `
         value="apple"
       />
       <label
-        class="inline-flex items-center px-2 py-1 text-xs bg-neutral rounded-full font-medium transition-colors duration-200 cursor-pointer border border-slate-100 hover:bg-coral/10 hover:border-coral/30 focus:border-coral/30 data-[selected=true]:bg-coral/10 data-[selected=true]:border-coral"
+        class="inline-flex items-center px-2 py-1 text-xs bg-white rounded-full font-sm transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-light focus:border-primary-light data-[selected=true]:bg-primary-soft data-[selected=true]:border-primary"
         data-selected="false"
         for="«rf»"
       >
@@ -39,7 +39,7 @@ exports[`ChipInput > matches snapshot 1`] = `
         value="banana"
       />
       <label
-        class="inline-flex items-center px-2 py-1 text-xs bg-neutral rounded-full font-medium transition-colors duration-200 cursor-pointer border border-slate-100 hover:bg-coral/10 hover:border-coral/30 focus:border-coral/30 data-[selected=true]:bg-coral/10 data-[selected=true]:border-coral"
+        class="inline-flex items-center px-2 py-1 text-xs bg-white rounded-full font-sm transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-light focus:border-primary-light data-[selected=true]:bg-primary-soft data-[selected=true]:border-primary"
         data-selected="false"
         for="«rg»"
       >
@@ -61,7 +61,7 @@ exports[`ChipInput > matches snapshot 1`] = `
         value="cherry"
       />
       <label
-        class="inline-flex items-center px-2 py-1 text-xs bg-neutral rounded-full font-medium transition-colors duration-200 cursor-pointer border border-slate-100 hover:bg-coral/10 hover:border-coral/30 focus:border-coral/30 data-[selected=true]:bg-coral/10 data-[selected=true]:border-coral"
+        class="inline-flex items-center px-2 py-1 text-xs bg-white rounded-full font-sm transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-light focus:border-primary-light data-[selected=true]:bg-primary-soft data-[selected=true]:border-primary"
         data-selected="false"
         for="«rh»"
       >

@@ -13,7 +13,7 @@ exports[`SegmentSingleInput > SegmentSingleInput - FullWidth > renders all optio
       Transaction Type (Full Width)
     </div>
     <div
-      class="rounded-lg border overflow-hidden bg-neutral/50 p-1 border-coral/20 text-sm flex w-full"
+      class="rounded-lg border overflow-hidden bg-neutral/50 p-1 border-primary/20 text-sm flex w-full"
     >
       <input
         class="sr-only"
@@ -23,7 +23,7 @@ exports[`SegmentSingleInput > SegmentSingleInput - FullWidth > renders all optio
         value="expense"
       />
       <label
-        class="relative flex flex-row items-center text-center font-medium transition-all duration-200 cursor-pointer border-0 bg-transparent outline-none focus:ring-2 focus:ring-offset-1 text-slate hover:text-coral focus:ring-coral/30 px-3 py-2 text-sm rounded-l-md flex-1 min-w-0"
+        class="relative flex flex-row items-center text-center font-medium transition-all duration-200 cursor-pointer border-0 bg-transparent outline-none focus:ring-2 focus:ring-offset-1 text-ghost hover:text-primary focus:ring-primary/30 px-3 py-2 text-sm rounded-l-md flex-1 min-w-0"
         for="«r12»"
       >
         <svg
@@ -57,7 +57,7 @@ exports[`SegmentSingleInput > SegmentSingleInput - FullWidth > renders all optio
         value="income"
       />
       <label
-        class="flex flex-row items-center text-center font-medium transition-all duration-200 cursor-pointer border-0 outline-none focus:ring-2 focus:ring-offset-1 focus:ring-coral/30 px-3 py-2 text-sm bg-coral text-white shadow-sm hover:text-white relative z-10 flex-1 min-w-0"
+        class="flex flex-row items-center text-center font-medium transition-all duration-200 cursor-pointer border-0 outline-none focus:ring-2 focus:ring-offset-1 focus:ring-primary/30 px-3 py-2 text-sm bg-primary text-white shadow-sm hover:text-white relative z-10 flex-1 min-w-0"
         for="«r13»"
       >
         <svg
@@ -90,7 +90,7 @@ exports[`SegmentSingleInput > SegmentSingleInput - FullWidth > renders all optio
         value="transfer"
       />
       <label
-        class="relative flex flex-row items-center text-center font-medium transition-all duration-200 cursor-pointer border-0 bg-transparent outline-none focus:ring-2 focus:ring-offset-1 text-slate hover:text-coral focus:ring-coral/30 px-3 py-2 text-sm rounded-r-md flex-1 min-w-0"
+        class="relative flex flex-row items-center text-center font-medium transition-all duration-200 cursor-pointer border-0 bg-transparent outline-none focus:ring-2 focus:ring-offset-1 text-ghost hover:text-primary focus:ring-primary/30 px-3 py-2 text-sm rounded-r-md flex-1 min-w-0"
         for="«r14»"
       >
         <svg

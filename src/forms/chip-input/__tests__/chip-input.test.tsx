@@ -53,7 +53,7 @@ describe('ChipInput', () => {
     fireEvent.click(coralInput)
     expect(coralInput).toBeChecked()
     const coralLabel = screen.getByText('Coral').closest('label')
-    expect(coralLabel?.className).toMatch(/bg-coral\/10/)
+    expect(coralLabel?.className).toMatch('bg-primary-soft')
   })
 
   it('matches snapshot', () => {

@@ -7,25 +7,25 @@ export const textAreaInputVariants = cva(
       variant: {
         // Core variants using Versaur color system
         primary:
-          'border-coral/30 text-foreground focus:border-coral focus:ring-coral/20',
+          'border-primary/30 text-foreground focus:border-primary focus:ring-primary/20',
         secondary:
-          'border-sage/30 text-foreground focus:border-sage focus:ring-sage/20',
+          'border-secondary/30 text-foreground focus:border-secondary focus:ring-secondary/20',
         tertiary:
-          'border-mist/30 text-foreground focus:border-mist focus:ring-mist/20',
+          'border-tertiary/30 text-foreground focus:border-tertiary focus:ring-tertiary/20',
         ghost:
-          'border-slate/30 text-foreground focus:border-slate focus:ring-slate/20',
+          'border-ghost/30 text-foreground focus:border-ghost focus:ring-ghost/20',
         neutral:
           'border-gray-300 text-foreground focus:border-gray-400 focus:ring-gray-400/20',
 
         // Outline variants
         'primary-outline':
-          'border-coral text-foreground focus:border-coral focus:ring-coral/20',
+          'border-primary text-foreground focus:border-primary focus:ring-primary/20',
         'secondary-outline':
-          'border-sage text-foreground focus:border-sage focus:ring-sage/20',
+          'border-secondary text-foreground focus:border-secondary focus:ring-secondary/20',
         'tertiary-outline':
-          'border-mist text-foreground focus:border-mist focus:ring-mist/20',
+          'border-tertiary text-foreground focus:border-tertiary focus:ring-tertiary/20',
         'ghost-outline':
-          'border-slate text-foreground focus:border-slate focus:ring-slate/20',
+          'border-ghost text-foreground focus:border-ghost focus:ring-ghost/20',
         'neutral-outline':
           'border-gray-400 text-foreground focus:border-gray-500 focus:ring-gray-500/20',
 
