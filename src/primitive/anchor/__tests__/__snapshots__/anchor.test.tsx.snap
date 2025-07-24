@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Anchor > renders correctly (snapshot) 1`] = `
+<DocumentFragment>
+  <a
+    class="inline-flex items-center transition-colors underline underline-offset-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 hover:no-underline text-primary text-base font-medium"
+    href="#"
+  >
+    Primary Anchor
+  </a>
+</DocumentFragment>
+`;
