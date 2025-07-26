@@ -8,8 +8,8 @@ exports[`ButtonFloat > matches snapshot 1`] = `
     <div>
       <button
         aria-label="Chat"
-        class="inline-flex items-center justify-center gap-2 rounded-lg font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none shadow-lg transition-shadow will-change-transform,opacity,box-shadow hover:scale-105 active:scale-95 focus-visible:shadow-xl hover:shadow-xl active:shadow-md bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-soft focus-visible:ring-offset-white h-14 w-14 min-w-14 min-h-14 text-lg absolute bottom-4 right-4 animate-fab-in"
-        style="position: absolute; bottom: 1rem; z-index: 50;"
+        class="inline-flex items-center justify-center gap-2 rounded-lg font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none shadow-lg transition-shadow will-change-transform,opacity,box-shadow hover:scale-105 active:scale-95 focus-visible:shadow-xl hover:shadow-xl active:shadow-md bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-soft focus-visible:ring-offset-white h-14 w-14 min-w-14 min-h-14 text-lg fixed bottom-4 right-4 animate-fab-in"
+        style="position: fixed; bottom: 1rem; z-index: 50;"
         type="button"
       >
         <svg

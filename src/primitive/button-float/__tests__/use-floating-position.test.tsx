@@ -18,7 +18,7 @@ function createContainer({
 }
 
 describe('useFloatingPosition', () => {
-  it('returns absolute position when container fits viewport', async () => {
+  it('returns fixed position when container fits viewport', async () => {
     const { result } = renderHook(() => useFloatingPosition('right', '2rem'))
     const [containerRef] = result.current
     const el = createContainer({ height: 400 })
@@ -28,13 +28,13 @@ describe('useFloatingPosition', () => {
     })
     await waitFor(() => {
       const [, style, positionClass] = result.current
-      expect(style.position).toBe('absolute')
+      expect(style.position).toBe('fixed')
       expect(style.bottom).toBe('2rem')
       expect(positionClass).toContain('right-4')
     })
   })
 
-  it('returns absolute with translateY when container is taller than viewport', async () => {
+  it('returns fixed with translateY when container is taller than viewport', async () => {
     const { result } = renderHook(() => useFloatingPosition('right', '2rem'))
     const [containerRef] = result.current
     const el = createContainer({ height: 2000, scrollTop: 100 })
@@ -44,7 +44,7 @@ describe('useFloatingPosition', () => {
     })
     await waitFor(() => {
       const [, style, positionClass] = result.current
-      expect(style.position).toBe('absolute')
+      expect(style.position).toBe('fixed')
       expect(style.transform).toContain('translateY')
       expect(positionClass).toContain('right-4')
     })
