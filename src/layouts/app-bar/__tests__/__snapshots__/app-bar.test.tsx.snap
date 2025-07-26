@@ -3,7 +3,7 @@
 exports[`AppBar > renders WithBottom story and AppBar.Bottom is always on a new line 1`] = `
 <div>
   <header
-    class="w-full flex flex-wrap items-center px-4 py-3 gap-2 bg-white [&>[data-versaur-appbar-bottom]]:basis-full [&>[data-versaur-appbar-bottom]]:w-full"
+    class="w-full flex flex-wrap items-center px-4 pt-3 mb-3 gap-2 bg-white [&>[data-versaur-appbar-bottom]]:basis-full [&>[data-versaur-appbar-bottom]]:w-full"
     role="banner"
   >
     <div
@@ -134,7 +134,7 @@ exports[`AppBar > renders WithBottom story and AppBar.Bottom is always on a new 
 exports[`AppBar > renders correctly (snapshot) 1`] = `
 <DocumentFragment>
   <header
-    class="w-full flex flex-wrap items-center px-4 py-3 gap-2 bg-white [&>[data-versaur-appbar-bottom]]:basis-full [&>[data-versaur-appbar-bottom]]:w-full"
+    class="w-full flex flex-wrap items-center px-4 pt-3 mb-3 gap-2 bg-white [&>[data-versaur-appbar-bottom]]:basis-full [&>[data-versaur-appbar-bottom]]:w-full"
     role="banner"
   >
     <div
