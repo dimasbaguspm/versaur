@@ -25,7 +25,12 @@ export const DateSinglePickerDocked: React.FC<DateSinglePickerDockedProps> = ({
       <span aria-hidden='true' />
     </Menu.Trigger>
     <Menu.Content className='drop-shadow-lg rounded-lg bg-white border border-neutral'>
-      <Calendar value={value} onChange={onChange} />
+      <Calendar
+        value={value}
+        onChange={val => {
+          if (val instanceof Date) onChange(val)
+        }}
+      />
     </Menu.Content>
   </Menu>
 )

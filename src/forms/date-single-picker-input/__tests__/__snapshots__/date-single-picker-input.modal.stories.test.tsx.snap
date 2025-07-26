@@ -191,7 +191,7 @@ exports[`DateSinglePickerInput Modal Stories > renders default modal story and m
                 type="button"
               >
                 <span
-                  class="text-left font-normal text-sm"
+                  class="text-left font-normal text-sm bg-primary text-white rounded-full"
                 >
                   1
                 </span>
