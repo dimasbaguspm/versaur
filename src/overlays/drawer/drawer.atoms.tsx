@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 import { useDrawerContext } from './context'
 import {
@@ -12,6 +12,7 @@ import type {
   DrawerBodyProps,
   DrawerFooterProps,
   DrawerOverlayProps,
+  DrawerHeaderTabProps,
 } from './types'
 
 /**
@@ -48,15 +49,28 @@ export const DrawerOverlay = React.forwardRef<
  * Typically contains the title and close button
  */
 export const DrawerHeader = React.forwardRef<HTMLDivElement, DrawerHeaderProps>(
-  ({ children, className, ...props }, ref) => {
+  ({ children, className, hasTab, ...props }, ref) => {
     const { variant } = useDrawerContext()
 
     return (
       <div
         ref={ref}
-        className={cn(drawerHeaderVariants({ variant }), className)}
+        className={cn(
+          drawerHeaderVariants({ variant, tab: Boolean(hasTab) }),
+          className
+        )}
         {...props}
       >
+        {children}
+      </div>
+    )
+  }
+)
+
+export const DrawerTab = forwardRef<HTMLDivElement, DrawerHeaderTabProps>(
+  ({ children, className, ...props }, ref) => {
+    return (
+      <div ref={ref} className={cn('[&>div]:px-6', className)} {...props}>
         {children}
       </div>
     )

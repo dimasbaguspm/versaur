@@ -49,6 +49,45 @@ function App() {
 }
 ```
 
+
+### Tabbed Content (Recommended)
+
+For tabbed content inside a drawer, use the `Drawer.Tab` slot and the `Tabs` component for best accessibility and composition:
+
+```tsx
+import { useState } from 'react'
+import { Drawer } from '@/components/drawer'
+import { Tabs } from '@/navigation/tabs'
+
+function TabbedDrawer() {
+  const [isOpen, setIsOpen] = useState(false)
+  const [tab, setTab] = useState('details')
+
+  return (
+    <>
+      <button onClick={() => setIsOpen(true)}>Open Tab Drawer</button>
+      <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <Drawer.Header hasTab>
+          <h2>Tabbed Drawer</h2>
+        </Drawer.Header>
+        <Drawer.Tab>
+          <Tabs value={tab} onValueChange={setTab}>
+            <Tabs.Trigger value="details">Details</Tabs.Trigger>
+            <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
+          </Tabs>
+        </Drawer.Tab>
+        <Drawer.Body>
+          {tab === 'details' && <div>Details content...</div>}
+          {tab === 'settings' && <div>Settings content...</div>}
+        </Drawer.Body>
+      </Drawer>
+    </>
+  )
+}
+```
+
+**Recommendation:** Always use the `Tabs` component inside `Drawer.Tab` for tabbed navigation. This ensures accessibility, keyboard navigation, and consistent styling.
+
 ### Glass Variant
 
 ```tsx

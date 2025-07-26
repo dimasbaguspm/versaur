@@ -2,7 +2,7 @@
  * Drawer transition type options
  */
 export type DrawerTransitionType = 'slide' | 'fade'
-import type { ComponentPropsWithoutRef, ReactNode } from 'react'
+import type { ComponentPropsWithoutRef, HTMLAttributes, ReactNode } from 'react'
 import type { VariantProps } from '@/utils/variants'
 import type { drawerVariants } from './helpers'
 
@@ -72,8 +72,12 @@ export interface DrawerProps extends ComponentPropsWithoutRef<'div'> {
 export interface DrawerHeaderProps extends ComponentPropsWithoutRef<'div'> {
   /** Children components */
   children: ReactNode
-  /** Additional CSS classes */
-  className?: string
+  hasTab?: boolean
+}
+
+export interface DrawerHeaderTabProps extends HTMLAttributes<HTMLDivElement> {
+  /** Children components */
+  children: ReactNode
 }
 
 /**
