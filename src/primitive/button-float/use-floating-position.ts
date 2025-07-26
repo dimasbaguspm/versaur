@@ -17,9 +17,7 @@ export function useFloatingPosition(
 ): [RefCallback<HTMLDivElement>, CSSProperties, string] {
   const nodeRef = useRef<HTMLDivElement | null>(null)
   const [style, setStyle] = useState<CSSProperties>({})
-  const [positionClass, setPositionClass] = useState(
-    'absolute bottom-4 right-4'
-  )
+  const [positionClass, setPositionClass] = useState('fixed bottom-4 right-4')
 
   // Core position calculation
   const updatePosition = useCallback(() => {
@@ -31,19 +29,19 @@ export function useFloatingPosition(
     let cls = ''
     if (isTallerThanViewport) {
       pos = {
-        position: 'absolute',
+        position: 'fixed',
         bottom: offset,
         zIndex: 50,
         transform: `translateY(${container.scrollTop}px)`,
       }
-      cls = `absolute bottom-4 ${side}-4`
+      cls = `fixed bottom-4 ${side}-4`
     } else {
       pos = {
-        position: 'absolute',
+        position: 'fixed',
         bottom: offset,
         zIndex: 50,
       }
-      cls = `absolute bottom-4 ${side}-4`
+      cls = `fixed bottom-4 ${side}-4`
     }
     setStyle(pos)
     setPositionClass(cls)
