@@ -6,7 +6,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Snackbar } from './snackbar'
 import type { SnackbarProps } from './types'
-import { Button } from '@/primitive/button'
+import { ButtonIcon } from '../button-icon'
+import { CopyIcon } from 'lucide-react'
 
 const meta: Meta<typeof Snackbar> = {
   title: 'Primitive/Snackbar',
@@ -44,13 +45,7 @@ export const WithAction: Story = {
   args: {
     children: 'Snackbar with action',
     action: (
-      <Button
-        size='sm'
-        variant='neutral'
-        onClick={() => alert('Action clicked')}
-      >
-        Undo
-      </Button>
+      <ButtonIcon as={CopyIcon} aria-label='Copy' size='xs' variant='success' />
     ),
     onClose: () => alert('Closed'),
     color: 'success',

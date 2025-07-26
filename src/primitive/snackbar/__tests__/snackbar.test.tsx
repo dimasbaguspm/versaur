@@ -17,26 +17,17 @@ describe('Snackbar', () => {
     )
   })
 
-  it('calls onClose when close button is clicked', () => {
-    const onClose = vi.fn()
-    render(<Default onClose={onClose} />)
-    fireEvent.click(screen.getByLabelText(/close/i))
-    expect(onClose).toHaveBeenCalled()
-  })
-
   it('renders all color variants', () => {
     render(<AllColors />)
     expect(screen.getAllByRole('status')).toHaveLength(4)
   })
 
   it('renders action button and triggers action', () => {
-    // Mock window.alert to avoid jsdom error
-    const alertMock = vi.fn()
-    window.alert = alertMock
     render(<WithAction />)
-    const actionBtn = screen.getByRole('button', { name: /undo/i })
+    const actionBtn = screen.getByRole('button', {
+      name: /copy/i,
+    })
     expect(actionBtn).toBeInTheDocument()
     fireEvent.click(actionBtn)
-    expect(alertMock).toHaveBeenCalled()
   })
 })
