@@ -6,6 +6,7 @@ import {
   DrawerHeader,
   DrawerBody,
   DrawerFooter,
+  DrawerTab,
 } from './drawer.atoms'
 import { drawerVariants } from './helpers'
 import type { DrawerProps, DrawerContextValue } from './types'
@@ -102,6 +103,7 @@ export const DrawerRoot: React.FC<DrawerProps> = ({
  */
 export const Drawer = Object.assign(DrawerRoot, {
   Header: DrawerHeader,
+  Tab: DrawerTab,
   Body: DrawerBody,
   Footer: DrawerFooter,
 })

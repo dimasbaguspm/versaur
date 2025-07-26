@@ -31,6 +31,13 @@ describe('Drawer', () => {
       ).toBeInTheDocument()
     })
 
+    it('matches snapshot when open', () => {
+      const { asFragment } = render(<Default />)
+      fireEvent.click(screen.getByText('Open Drawer'))
+      expect(screen.getByRole('dialog')).toBeInTheDocument()
+      expect(asFragment()).toMatchSnapshot()
+    })
+
     it('closes the drawer when escape key is pressed', () => {
       render(<Default />)
 
@@ -125,6 +132,18 @@ describe('Drawer', () => {
         expect(screen.queryByText('Drawer Title')).not.toBeInTheDocument()
       }
     })
+
+    // Skipped: closeOnOverlayClick is not implemented in Drawer
+    // it('does not close drawer if overlay is clicked and closeOnOverlayClick is false', () => {
+    //   // Use a custom story with closeOnOverlayClick false
+    //   render(<Default closeOnOverlayClick={false} />)
+    //   fireEvent.click(screen.getByText('Open Drawer'))
+    //   const overlay = document.querySelector('[class*="drawerOverlayVariants"]')
+    //   if (overlay) {
+    //     fireEvent.click(overlay)
+    //     expect(screen.getByText('Drawer Title')).toBeInTheDocument()
+    //   }
+    // })
   })
 
   describe('Fade Transition Story', () => {
@@ -141,6 +160,54 @@ describe('Drawer', () => {
           'This drawer uses a fade transition instead of sliding in/out.'
         )
       ).toBeInTheDocument()
+    })
+  })
+
+  describe('Glass Variant', () => {
+    const { GlassVariant } = composeStories(stories)
+    it('renders the glass variant drawer', () => {
+      render(<GlassVariant />)
+      fireEvent.click(screen.getByText('Open Glass Drawer'))
+      expect(screen.getByText(/glass variant/i)).toBeInTheDocument()
+      // Check for glass style class
+      const dialog = screen.getByRole('dialog')
+      expect(dialog.className).toMatch('backdrop-blur-lg')
+    })
+  })
+
+  describe('Custom Footer Layout', () => {
+    const { CustomFooterLayout } = composeStories(stories)
+    it('renders custom footer layout with responsiveFlex false', () => {
+      render(<CustomFooterLayout />)
+      fireEvent.click(screen.getByText('Custom Footer'))
+      expect(screen.getByText('Custom Layout')).toBeInTheDocument()
+      // Footer should have custom layout
+      expect(screen.getByText('Notify')).toBeInTheDocument()
+      expect(screen.getByText('Apply')).toBeInTheDocument()
+    })
+  })
+
+  describe('Tab Usage', () => {
+    const { HeaderTab } = composeStories(stories)
+    it('renders drawer with tabs in header', () => {
+      render(<HeaderTab />)
+      fireEvent.click(screen.getByText('Open Tab Drawer'))
+      expect(screen.getByText('Tab Drawer')).toBeInTheDocument()
+      expect(screen.getByRole('tab', { name: 'Details' })).toBeInTheDocument()
+      expect(screen.getByRole('tab', { name: 'Settings' })).toBeInTheDocument()
+    })
+  })
+
+  describe('Edge Cases', () => {
+    it('handles double open/close gracefully', () => {
+      render(<Default />)
+      const trigger = screen.getByText('Open Drawer')
+      fireEvent.click(trigger)
+      fireEvent.click(trigger) // open again
+      expect(screen.getByText('Drawer Title')).toBeInTheDocument()
+      fireEvent.keyDown(document, { key: 'Escape', code: 'Escape' })
+      fireEvent.keyDown(document, { key: 'Escape', code: 'Escape' })
+      expect(screen.queryByText('Drawer Title')).not.toBeInTheDocument()
     })
   })
 })

@@ -4,27 +4,8 @@ import { Button } from '@/primitive/button'
 import { Drawer } from './drawer'
 import type { DrawerProps } from './types'
 import { X, Bell } from 'lucide-react'
-
-// Wrapper component to handle state in stories
-const DrawerWrapper = ({
-  children,
-  triggerLabel = 'Open Drawer',
-  ...drawerProps
-}: Partial<DrawerProps> & {
-  children: React.ReactNode
-  triggerLabel?: string
-}) => {
-  const [isOpen, setIsOpen] = useState(false)
-
-  return (
-    <>
-      <Button onClick={() => setIsOpen(true)}>{triggerLabel}</Button>
-      <Drawer {...drawerProps} isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        {children}
-      </Drawer>
-    </>
-  )
-}
+import { ButtonIcon } from '@/primitive'
+import { Tabs } from '@/navigation'
 
 const meta: Meta<typeof Drawer> = {
   title: 'Overlays/Drawer',
@@ -64,6 +45,27 @@ const meta: Meta<typeof Drawer> = {
 export default meta
 type Story = StoryObj<typeof Drawer>
 
+// Wrapper component to handle state in stories
+const DrawerWrapper = ({
+  children,
+  triggerLabel = 'Open Drawer',
+  ...drawerProps
+}: Partial<DrawerProps> & {
+  children: React.ReactNode
+  triggerLabel?: string
+}) => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>{triggerLabel}</Button>
+      <Drawer {...drawerProps} isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        {children}
+      </Drawer>
+    </>
+  )
+}
+
 /**
  * Default drawer with standard settings
  * Shows a basic controlled drawer with header, body, and footer sections
@@ -74,9 +76,13 @@ export const Default: Story = {
       <Drawer.Header>
         <div className='flex items-center justify-between'>
           <h3 className='text-lg font-semibold'>Drawer Title</h3>
-          <Button variant='ghost' size='sm'>
-            <X size={16} />
-          </Button>
+          <ButtonIcon
+            as={X}
+            variant='ghost'
+            size='sm'
+            onClick={() => args.onClose(true)}
+            aria-label='Close drawer'
+          />
         </div>
       </Drawer.Header>
       <Drawer.Body>
@@ -112,9 +118,13 @@ export const LeftPosition: Story = {
       <Drawer.Header>
         <div className='flex items-center justify-between'>
           <h3 className='text-lg font-semibold'>Settings</h3>
-          <Button variant='ghost' size='sm'>
-            <X size={16} />
-          </Button>
+          <ButtonIcon
+            as={X}
+            variant='ghost'
+            size='sm'
+            onClick={() => args.onClose(true)}
+            aria-label='Close drawer'
+          />
         </div>
       </Drawer.Header>
       <Drawer.Body>
@@ -188,9 +198,13 @@ export const LargeSize: Story = {
       <Drawer.Header>
         <div className='flex items-center justify-between'>
           <h3 className='text-lg font-semibold'>Notifications</h3>
-          <Button variant='ghost' size='sm'>
-            <X size={16} />
-          </Button>
+          <ButtonIcon
+            as={X}
+            variant='ghost'
+            size='sm'
+            onClick={() => args.onClose(true)}
+            aria-label='Close drawer'
+          />
         </div>
       </Drawer.Header>
       <Drawer.Body>
@@ -237,9 +251,13 @@ export const ThreeQuartersWidth: Story = {
       <Drawer.Header>
         <div className='flex items-center justify-between'>
           <h3 className='text-lg font-semibold'>Dashboard View</h3>
-          <Button variant='ghost' size='sm'>
-            <X size={16} />
-          </Button>
+          <ButtonIcon
+            as={X}
+            variant='ghost'
+            size='sm'
+            onClick={() => args.onClose(true)}
+            aria-label='Close drawer'
+          />
         </div>
       </Drawer.Header>
       <Drawer.Body>
@@ -307,9 +325,13 @@ export const FullWidth: Story = {
       <Drawer.Header>
         <div className='flex items-center justify-between'>
           <h3 className='text-lg font-semibold'>Full Width Drawer</h3>
-          <Button variant='ghost' size='sm'>
-            <X size={16} />
-          </Button>
+          <ButtonIcon
+            as={X}
+            variant='ghost'
+            size='sm'
+            onClick={() => args.onClose(true)}
+            aria-label='Close drawer'
+          />
         </div>
       </Drawer.Header>
       <Drawer.Body>
@@ -347,9 +369,13 @@ export const CustomFooterLayout: Story = {
       <Drawer.Header>
         <div className='flex items-center justify-between'>
           <h3 className='text-lg font-semibold'>Custom Layout</h3>
-          <Button variant='ghost' size='sm'>
-            <X size={16} />
-          </Button>
+          <ButtonIcon
+            as={X}
+            variant='ghost'
+            size='sm'
+            onClick={() => args.onClose(true)}
+            aria-label='Close drawer'
+          />
         </div>
       </Drawer.Header>
       <Drawer.Body>
@@ -412,5 +438,44 @@ export const Fade: Story = {
     size: 'full',
     variant: 'default',
     transitionType: 'fade',
+  },
+}
+
+export const HeaderTab: Story = {
+  render: args => (
+    <DrawerWrapper {...args} triggerLabel='Open Tab Drawer'>
+      <Drawer.Header hasTab>
+        <div className='flex items-center justify-between'>
+          <h3 className='text-lg font-semibold'>Tab Drawer</h3>
+          <ButtonIcon
+            as={X}
+            variant='ghost'
+            size='sm'
+            onClick={() => args.onClose(true)}
+            aria-label='Close drawer'
+          />
+        </div>
+      </Drawer.Header>
+      <Drawer.Tab>
+        <Tabs value='details' onValueChange={console.log}>
+          <Tabs.Trigger value='details'>Details</Tabs.Trigger>
+          <Tabs.Trigger value='settings'>Settings</Tabs.Trigger>
+        </Tabs>
+      </Drawer.Tab>
+      <Drawer.Body>
+        <p className='text-gray-600 mb-4'>
+          This drawer can be used to display tabbed content or navigation.
+        </p>
+        <p className='text-gray-600'>
+          You can implement tabs inside the drawer body for better organization
+          of content.
+        </p>
+      </Drawer.Body>
+    </DrawerWrapper>
+  ),
+  args: {
+    position: 'right',
+    size: 'md',
+    variant: 'default',
   },
 }

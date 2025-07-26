@@ -59,15 +59,20 @@ export const drawerVariants = cva('fixed z-50 shadow-xl flex flex-col', {
  * Drawer header variants
  * Glass variant creates a transparent header that maintains layout structure
  */
-export const drawerHeaderVariants = cva('flex-shrink-0 px-6 py-4 border-b', {
+export const drawerHeaderVariants = cva('flex-shrink-0 px-6', {
   variants: {
     variant: {
-      default: 'bg-white border-gray-200',
-      glass: 'bg-transparent border-white/10',
+      default: 'bg-white',
+      glass: 'bg-transparent ',
+    },
+    tab: {
+      true: 'pt-4 pb-2',
+      false: 'border-b border-border py-4 ',
     },
   },
   defaultVariants: {
     variant: 'default',
+    tab: false,
   },
 })
 
