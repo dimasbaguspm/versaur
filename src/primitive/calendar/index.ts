@@ -1,2 +1,2 @@
 export { Calendar } from './calendar'
-export type { CalendarProps } from './types'
+export type * from './types'
