@@ -46,7 +46,7 @@ exports[`Menu (compound/context) > renders basic menu correctly 1`] = `
   </span>
   <div
     aria-hidden="true"
-    class="min-w-40 bg-neutral-50 text-black rounded-lg shadow-md border border-transparent py-2.5 absolute z-50 transition-opacity duration-150 ease-out opacity-0"
+    class="min-w-40 bg-background text-black rounded-lg border border-border py-2 px-1 absolute z-50 transition-opacity duration-150 ease-out opacity-0"
     id="menu-content-«r0»"
     role="menu"
     style="top: 0px; left: 0px;"
@@ -104,7 +104,7 @@ exports[`Menu (compound/context) > renders menu with different sizes 1`] = `
     </span>
     <div
       aria-hidden="true"
-      class="min-w-40 bg-neutral-50 text-black rounded-lg shadow-md border border-transparent py-2 absolute z-50 transition-opacity duration-150 ease-out opacity-0"
+      class="min-w-40 bg-background text-black rounded-lg border border-border py-1.5 px-1 absolute z-50 transition-opacity duration-150 ease-out opacity-0"
       id="menu-content-«r1»"
       role="menu"
       style="top: 0px; left: 0px;"
@@ -154,7 +154,7 @@ exports[`Menu (compound/context) > renders menu with different sizes 1`] = `
     </span>
     <div
       aria-hidden="true"
-      class="min-w-40 bg-neutral-50 text-black rounded-lg shadow-md border border-transparent py-2.5 absolute z-50 transition-opacity duration-150 ease-out opacity-0"
+      class="min-w-40 bg-background text-black rounded-lg border border-border py-2 px-1 absolute z-50 transition-opacity duration-150 ease-out opacity-0"
       id="menu-content-«r2»"
       role="menu"
       style="top: 0px; left: 0px;"
