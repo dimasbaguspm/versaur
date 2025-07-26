@@ -11,67 +11,55 @@ exports[`ChipInput > matches snapshot 1`] = `
     >
       <input
         class="sr-only"
-        id="«rf»"
+        id="«r11»"
         name="fruits[]"
         type="checkbox"
         value="apple"
       />
       <label
-        class="inline-flex items-center px-2 py-1 text-xs bg-white rounded-full font-sm transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-light focus:border-primary-light data-[selected=true]:bg-primary-soft data-[selected=true]:border-primary"
+        class="inline-flex items-center bg-white font-regular transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-light focus:border-primary-light data-[selected=true]:bg-primary-soft data-[selected=true]:border-primary rounded-full px-2 py-1 text-xs gap-1"
         data-selected="false"
-        for="«rf»"
+        for="«r11»"
       >
         <span
           class="flex items-center"
         >
-          <span
-            aria-hidden="true"
-            class="flex items-center transition-opacity duration-200 opacity-0 scale-75"
-          />
           Apple
         </span>
       </label>
       <input
         class="sr-only"
-        id="«rg»"
+        id="«r12»"
         name="fruits[]"
         type="checkbox"
         value="banana"
       />
       <label
-        class="inline-flex items-center px-2 py-1 text-xs bg-white rounded-full font-sm transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-light focus:border-primary-light data-[selected=true]:bg-primary-soft data-[selected=true]:border-primary"
+        class="inline-flex items-center bg-white font-regular transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-light focus:border-primary-light data-[selected=true]:bg-primary-soft data-[selected=true]:border-primary rounded-full px-2 py-1 text-xs gap-1"
         data-selected="false"
-        for="«rg»"
+        for="«r12»"
       >
         <span
           class="flex items-center"
         >
-          <span
-            aria-hidden="true"
-            class="flex items-center transition-opacity duration-200 opacity-0 scale-75"
-          />
           Banana
         </span>
       </label>
       <input
         class="sr-only"
-        id="«rh»"
+        id="«r13»"
         name="fruits[]"
         type="checkbox"
         value="cherry"
       />
       <label
-        class="inline-flex items-center px-2 py-1 text-xs bg-white rounded-full font-sm transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-light focus:border-primary-light data-[selected=true]:bg-primary-soft data-[selected=true]:border-primary"
+        class="inline-flex items-center bg-white font-regular transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-light focus:border-primary-light data-[selected=true]:bg-primary-soft data-[selected=true]:border-primary rounded-full px-2 py-1 text-xs gap-1"
         data-selected="false"
-        for="«rh»"
+        for="«r13»"
       >
         <span
           class="flex items-center"
         >
-          <span
-            aria-hidden="true"
-            class="flex items-center transition-opacity duration-200 opacity-0 scale-75"
-          />
           Cherry
         </span>
       </label>

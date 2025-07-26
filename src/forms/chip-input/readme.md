@@ -1,84 +1,80 @@
 # ChipInput
 
-A compound, controlled input component for selecting multiple options using a checkbox pattern.
-Follows Versaur's design system and accessibility standards.
+A flexible, accessible multi-select chip input component for Versaur UI, supporting custom check icons, shape, and size variants.
 
 ## Features
-
-- Multiple selection using checkboxes
-- Compound pattern: `<ChipInput>` with `<ChipInput.Option>`
-- Strictly typed props
-- Mobile-first, responsive, and accessible
-- Supports variants, sizes, error, and disabled states
-- Tree-shakable subpath exports
+- Multiple selection (checkbox pattern)
+- Customizable color variants (primary, secondary, etc.)
+- Shape and size control at the group level (circle/rounded, sm/md/lg)
+- Optional and customizable check icon per option
+- Fully accessible and keyboard navigable
+- Mobile-first, responsive design
 
 ## Usage
 
 ```tsx
-import { ChipInput } from '@/components/chip-input'
+import { ChipInput } from 'versaur/forms/chip-input'
 
-const [value, setValue] = useState<string[]>([])
+function Example() {
+  const [value, setValue] = useState<string[]>([])
+  return (
+    <ChipInput
+      name="fruits"
+      value={value}
+      onChange={setValue}
+      variant="primary" // color variant
+      shape="circle"    // 'circle' (default) or 'rounded'
+      size="sm"         // 'sm' (default), 'md', or 'lg'
+      label="Select fruits"
+      helperText="Choose your favorite fruits"
+    >
+      <ChipInput.Option value="apple">Apple</ChipInput.Option>
+      <ChipInput.Option value="banana">Banana</ChipInput.Option>
+      <ChipInput.Option value="cherry">Cherry</ChipInput.Option>
+    </ChipInput>
+  )
+}
+```
 
-<ChipInput
-  name='fruits'
-  value={value}
-  onChange={setValue}
-  aria-label='Select fruits'
->
-  <ChipInput.Option value='apple'>Apple</ChipInput.Option>
-  <ChipInput.Option value='banana'>Banana</ChipInput.Option>
-  <ChipInput.Option value='cherry'>Cherry</ChipInput.Option>
+### Custom Check Icon
+
+```tsx
+import { Star } from 'lucide-react'
+
+<ChipInput name="custom" value={value} onChange={setValue}>
+  <ChipInput.Option value="star" check={<Star size={16} className="text-warning" />}>Star</ChipInput.Option>
+  <ChipInput.Option value="circle" defaultCheck>Circle</ChipInput.Option>
+  <ChipInput.Option value="none">No Check</ChipInput.Option>
 </ChipInput>
 ```
 
 ## Props
 
-### ChipInput
+### `<ChipInput />`
+- `name` (string, required): Name for the input group
+- `value` (string[], required): Selected values
+- `onChange` (function, required): Callback for value changes
+- `variant` (string): Color variant (primary, secondary, etc.)
+- `shape` ('circle' | 'rounded'): Chip shape (default: 'circle')
+- `size` ('sm' | 'md' | 'lg'): Chip size (default: 'sm')
+- `label` (ReactNode): Optional label above the group
+- `helperText` (ReactNode): Optional helper text below the group
+- `error` (ReactNode): Error message for invalid state
 
-- `name: string` — Form field name
-- `value: string[]` — Controlled selected values
-- `onChange: (value: string[]) => void` — Change handler
-- `variant?: string` — Visual variant (primary, secondary, tertiary, ghost, neutral, success, info,
-  warning, danger)
-- `size?: string` — Size (xs, sm, md, lg, xl)
-- `disabled?: boolean` — Disable all options
-- `error?: boolean` — Error state
-- `children: ReactNode` — Option atoms
-
-### ChipInput.Option
-
-- `value: string` — Option value
-- `children: ReactNode` — Option label
-- `disabled?: boolean` — Disable this option
-- `id?: string` — Custom id
-- `className?: string` — Custom classes
+### `<ChipInput.Option />`
+- `value` (string, required): Value for this option
+- `children` (ReactNode, required): Option label
+- `check` (ReactNode): Custom check icon (overrides default)
+- `defaultCheck` (boolean): Show default check icon if true
 
 ## Accessibility
-
-- Uses native `<input type='checkbox'>` for each option
+- Uses native checkbox semantics for group and options
 - Keyboard and screen reader accessible
-- Follows WCAG 2.1 AA standards
-
-## Variants & Sizes
-
-- Supports all Versaur color and size variants via `variant` and `size` props
-- Not selected: always has a subtle slate background
-- Selected: check icon color matches the variant
-- See all supported variants in the Storybook `Variants` story
+- Meets WCAG 2.1 AA color and interaction standards
 
 ## Testing
+- See `__tests__/chip-input.test.tsx` for full test coverage and usage with Storybook stories
 
-- See `__tests__/chip-input.test.tsx` for React Testing Library tests
-- Stories in `chip-input.stories.tsx` for interactive docs
-- Snapshot test included for rendered output
-- Tests check all color variants and selection logic
+---
+For more details, see the Versaur UI documentation.
 
-## Storybook
-
-- Stories show basic, disabled, and all color variant usage
-
-## Contribution
-
-- Add new variants in `helpers.ts`
-- Extend option props in `types.ts`
-- Follow compound/context pattern for consistency

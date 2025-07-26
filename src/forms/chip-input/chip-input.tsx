@@ -14,6 +14,8 @@ const ChipInputRoot = React.forwardRef<HTMLDivElement, ChipInputProps>(
   (
     {
       variant = 'primary',
+      shape = 'circle',
+      size = 'sm',
       label,
       helperText,
       error,
@@ -31,6 +33,8 @@ const ChipInputRoot = React.forwardRef<HTMLDivElement, ChipInputProps>(
 
     const contextValue = {
       variant,
+      shape,
+      size,
       disabled,
       error: hasError,
       name,
