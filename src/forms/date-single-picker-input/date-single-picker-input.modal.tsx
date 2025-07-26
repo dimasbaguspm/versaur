@@ -57,7 +57,12 @@ export const DateSinglePickerModal: React.FC<DateSinglePickerModalProps> = ({
       disableEscClose={false}
     >
       <Modal.Body className='px-2'>
-        <Calendar value={modalSelectedDate} onChange={setModalSelectedDate} />
+        <Calendar
+          value={modalSelectedDate}
+          onChange={val => {
+            if (val instanceof Date) setModalSelectedDate(val)
+          }}
+        />
       </Modal.Body>
       <Modal.Footer className='px-6'>
         <Button
