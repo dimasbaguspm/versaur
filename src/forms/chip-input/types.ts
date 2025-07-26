@@ -9,6 +9,14 @@ export interface ChipInputProps
     'type' | 'size' | 'onChange' | 'value'
   > {
   /**
+   * The shape of the chip: 'circle' (default) or 'rounded'
+   */
+  shape?: 'circle' | 'rounded'
+  /**
+   * The size of the chip: 'sm' (default), 'md', or 'lg'
+   */
+  size?: 'sm' | 'md' | 'lg'
+  /**
    * Visual style variant supporting Versaur color system
    * Core variants: primary (coral), secondary (sage), tertiary (mist), ghost (slate), neutral (light gray)
    * Semantic variants: success, info, warning, danger
@@ -64,4 +72,12 @@ export interface ChipInputOptionProps
    * The value for this chip option
    */
   value: string
+  /**
+   * Custom check icon or element. If not provided, no check is rendered unless defaultCheck is true
+   */
+  check?: React.ReactNode
+  /**
+   * Show the default check icon if true (default: false). If both check and defaultCheck are provided, check takes precedence
+   */
+  defaultCheck?: boolean
 }
