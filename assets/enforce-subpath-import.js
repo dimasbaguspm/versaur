@@ -23,6 +23,7 @@ const symbolToSubpath = {
   Drawer: 'overlays',
   Modal: 'overlays',
   Menu: 'overlays',
+  BottomSheet: 'overlays',
   // navigation
   Tabs: 'navigation',
   Breadcrumbs: 'navigation',
