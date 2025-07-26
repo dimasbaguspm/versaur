@@ -9,7 +9,7 @@ export const SnackbarText: React.FC<SnackbarTextProps> = ({
   ...props
 }) => (
   <span
-    className='flex-1 truncate text-base font-medium'
+    className='flex-1 truncate text-sm'
     data-testid='snackbar-text'
     {...props}
   >

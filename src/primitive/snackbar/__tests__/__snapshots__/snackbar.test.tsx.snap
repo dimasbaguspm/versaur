@@ -4,42 +4,15 @@ exports[`Snackbar > renders correctly (snapshot) 1`] = `
 <DocumentFragment>
   <div
     aria-live="polite"
-    class="flex items-center gap-2 px-4 py-2 rounded-sm w-fit max-w-sm relative shadow-sm text-success bg-success/5 border-l-4 border-success"
+    class="flex items-center gap-2 px-4 py-2 rounded-sm w-fit relative shadow-sm text-success-bold bg-success-soft border-l-4 border-success"
     role="status"
   >
     <span
-      class="flex-1 truncate text-base font-medium"
+      class="flex-1 truncate text-sm"
       data-testid="snackbar-text"
     >
       Single line snackbar with close
     </span>
-    <button
-      aria-disabled="false"
-      aria-label="Close"
-      class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none text-success bg-white hover:bg-success-light focus-visible:ring-success-light focus-visible:ring-offset-white h-8 w-8 rounded-md ml-2"
-      type="button"
-    >
-      <svg
-        aria-hidden="true"
-        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4 text-success"
-        fill="none"
-        height="24"
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        viewBox="0 0 24 24"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M18 6 6 18"
-        />
-        <path
-          d="m6 6 12 12"
-        />
-      </svg>
-    </button>
   </div>
 </DocumentFragment>
 `;
