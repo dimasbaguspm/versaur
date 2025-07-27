@@ -5,6 +5,7 @@ import {
   BottomSheetHeader,
   BottomSheetBody,
   BottomSheetFooter,
+  BottomSheetTitle,
 } from './bottom-sheet.atoms'
 import { cn } from '@/utils'
 
@@ -68,7 +69,7 @@ const BottomSheetRoot = forwardRef<HTMLDivElement, BottomSheetProps>(
 
 export const BottomSheet = Object.assign(BottomSheetRoot, {
   Header: BottomSheetHeader,
-  Title: (await import('./bottom-sheet.atoms')).BottomSheetTitle,
+  Title: BottomSheetTitle,
   Body: BottomSheetBody,
   Footer: BottomSheetFooter,
 })
