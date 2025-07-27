@@ -1,2 +1,2 @@
-export * from './bottom-sheet'
+export { BottomSheet } from './bottom-sheet'
 export * from './types'
