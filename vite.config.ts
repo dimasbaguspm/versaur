@@ -39,8 +39,12 @@ export default defineConfig({
     },
   },
   publicDir: 'assets',
+  optimizeDeps: {
+    esbuildOptions: { target: 'es2022', treeShaking: true },
+  },
   build: {
     outDir: 'dist/js',
+    target: 'es2022',
     lib: {
       entry: {
         index: resolve(__dirname, 'src/index.ts'),
