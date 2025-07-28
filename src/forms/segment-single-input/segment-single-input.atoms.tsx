@@ -56,17 +56,14 @@ export const SegmentOption = React.forwardRef<
         <label
           htmlFor={inputId}
           className={cn(
+            'flex flex-row items-center justify-center',
             segmentOptionVariants({
               variant,
               size: context.size,
               rounded: position,
             }),
-            // Apply selected state styling
             isChecked && getSegmentSelectedClasses(variant),
-            isChecked && 'relative z-10',
-            // Apply disabled styling directly since labels don't support disabled attribute
             isDisabled && 'opacity-50 cursor-not-allowed pointer-events-none',
-            context.fullWidth && 'flex-1 min-w-0',
             className
           )}
         >

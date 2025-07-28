@@ -26,13 +26,11 @@ const SegmentMultipleInputRoot = React.forwardRef<
       label,
       helperText,
       error,
-      className,
       disabled,
       name,
       value = [],
       onChange,
       children,
-      fullWidth = false,
       ...props
     },
     ref
@@ -74,14 +72,7 @@ const SegmentMultipleInputRoot = React.forwardRef<
 
     return (
       <SegmentMultipleInputContext.Provider value={contextValue}>
-        <div
-          ref={ref}
-          className={cn(
-            fullWidth ? 'flex w-full flex-col' : 'w-full',
-            className
-          )}
-          {...props}
-        >
+        <div ref={ref} {...props}>
           {label && (
             <div className='block text-sm font-medium text-foreground mb-3'>
               {label}
@@ -93,8 +84,7 @@ const SegmentMultipleInputRoot = React.forwardRef<
                 variant: hasError ? 'danger' : variant,
                 size,
                 error: hasError,
-              }),
-              fullWidth && 'flex w-full'
+              })
             )}
           >
             {childrenWithPositions}

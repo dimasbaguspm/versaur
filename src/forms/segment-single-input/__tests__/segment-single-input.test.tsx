@@ -6,7 +6,7 @@ import { vi } from 'vitest'
 import * as stories from '../segment-single-input.stories'
 import { SegmentSingleInput } from '../segment-single-input'
 
-const { Default, WithError, FullWidth } = composeStories(stories)
+const { Default, WithError } = composeStories(stories)
 
 // Test wrapper component for controlled usage
 const TestWrapper = ({
@@ -228,26 +228,6 @@ describe('SegmentSingleInput', () => {
       // onChange should not be called
       expect(onChange).not.toHaveBeenCalled()
       expect(option1).not.toBeChecked()
-    })
-  })
-
-  describe('SegmentSingleInput - FullWidth', () => {
-    it('renders all options and fills parent width', () => {
-      const { container } = render(<FullWidth />)
-      // Should render all three options
-      expect(screen.getByText('Expense')).toBeInTheDocument()
-      expect(screen.getByText('Income')).toBeInTheDocument()
-      expect(screen.getByText('Transfer')).toBeInTheDocument()
-      // Should match snapshot for full width layout
-      expect(container.firstChild).toMatchSnapshot()
-    })
-
-    it('each option is flexed to fill parent', () => {
-      render(<FullWidth />)
-      const labels = screen.getAllByText(/Expense|Income|Transfer/)
-      labels.forEach(label => {
-        expect(label).toHaveClass('flex-1')
-      })
     })
   })
 })
