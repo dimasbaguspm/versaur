@@ -1,157 +1,81 @@
-import React from 'react'
-
-import type { DateSinglePickerInputProps } from './types'
-import { DateSinglePickerTrigger } from './date-single-picker-input.atoms'
-import { DateSinglePickerDocked } from './date-single-picker-input.docked'
-import { DateSinglePickerModal } from './date-single-picker-input.modal'
-import { useDateSinglePicker } from './use-date-single-picker'
-
 /**
- * DateSinglePickerInput component for Versaur UI
- *
- * Styled like TextInput, but acts as a button to pick a single date
- * Clicking opens a docked Calendar below the input
- * Strictly typed, accessible, and visually consistent with TextInput
+ * DateSinglePickerInput renders a visually accessible text input and a hidden date input
+ * Clicking the visible input triggers the browser date picker
+ * The forwarded ref is attached to the hidden date input
  */
+import React, { useRef } from 'react'
+import type { DateSinglePickerInputProps } from './types'
+import { TextInput } from '../text-input'
+import { Icon } from '@/primitive/icon'
+import { Calendar } from 'lucide-react'
+import { defaultDateFormatter } from './helpers'
+
 export const DateSinglePickerInput = React.forwardRef<
-  HTMLButtonElement,
+  HTMLInputElement,
   DateSinglePickerInputProps
->(
-  (
-    {
-      value,
-      onChange,
-      label,
-      leftContent,
-      rightContent,
-      helperText,
-      error,
-      variant = 'primary',
-      disabled,
-      placeholder = 'Select date',
-      id,
-      type = 'docked',
-      ...props
-    },
-    ref
-  ) => {
-    // Controlled: value and onChange are required
-    if (value === undefined || typeof onChange !== 'function') {
-      throw new Error(
-        'DateSinglePickerInput is a controlled component: value and onChange are required.'
-      )
+>(function DateSinglePickerInput(
+  { value = '', onChange, label, formatter, ...rest },
+  ref
+) {
+  const dateInputRef = useRef<HTMLInputElement>(null)
+
+  // Combine forwardedRef and dateInputRef
+  const setRef = (el: HTMLInputElement | null) => {
+    dateInputRef.current = el
+    if (typeof ref === 'function') {
+      ref(el)
+    } else if (ref && typeof ref === 'object') {
+      ;(ref as React.MutableRefObject<HTMLInputElement | null>).current = el
     }
-    const {
-      open,
-      setOpen,
-      inputId,
-      buttonRef,
-      handleKeyDown,
-      handleMenuClose,
-    } = useDateSinglePicker({ id })
-
-    const hasError = Boolean(error)
-
-    // Use consumer's formatDate or fallback
-    const defaultFormatDate = (date?: Date) =>
-      date
-        ? date.toLocaleDateString(undefined, {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-          })
-        : typeof placeholder === 'string'
-          ? placeholder
-          : 'Select date'
-
-    const getFormattedDate = (date?: Date) => {
-      if (typeof props.formatDate === 'function') {
-        return props.formatDate(date)
-      }
-      return defaultFormatDate(date)
-    }
-
-    // Event emitters
-    const handleTriggerClick = () => setOpen(v => !v)
-    const handleTriggerKeyDown = handleKeyDown
-    const handleDateChange = (date: Date) => {
-      onChange?.(date)
-      buttonRef.current?.focus()
-    }
-
-    return (
-      <div className='relative w-full'>
-        <div className='relative'>
-          {label && (
-            <label
-              htmlFor={inputId}
-              className='block text-sm font-medium text-foreground mb-2'
-            >
-              {label}
-            </label>
-          )}
-          <DateSinglePickerTrigger
-            ref={el => {
-              buttonRef.current = el
-              if (typeof ref === 'function') ref(el)
-              else if (ref) {
-                ;(
-                  ref as React.MutableRefObject<HTMLButtonElement | null>
-                ).current = el
-              }
-            }}
-            id={inputId}
-            aria-haspopup='dialog'
-            aria-expanded={open}
-            aria-controls={open ? `${inputId}-calendar` : undefined}
-            aria-invalid={hasError}
-            aria-disabled={disabled}
-            disabled={disabled}
-            leftContent={leftContent}
-            rightContent={rightContent}
-            hasError={hasError}
-            variant={variant}
-            value={value}
-            placeholder={
-              typeof placeholder === 'string' ? placeholder : 'Select date'
-            }
-            formatDate={getFormattedDate}
-            onClick={handleTriggerClick}
-            onKeyDown={handleTriggerKeyDown}
-            tabIndex={0}
-            {...props}
-          />
-          {hasError && (
-            <div className='mt-1 text-sm text-danger' role='alert'>
-              {error}
-            </div>
-          )}
-          {helperText && (
-            <div className='mt-1 text-sm text-muted-foreground'>
-              {helperText}
-            </div>
-          )}
-        </div>
-
-        {type === 'docked' ? (
-          <DateSinglePickerDocked
-            open={open}
-            value={value}
-            onChange={handleDateChange}
-            inputId={inputId}
-            handleMenuClose={handleMenuClose}
-          />
-        ) : (
-          <DateSinglePickerModal
-            open={open}
-            setOpen={setOpen}
-            value={value}
-            onChange={handleDateChange}
-            label={typeof label === 'string' ? label : undefined}
-            buttonRef={buttonRef as React.RefObject<HTMLButtonElement>}
-          />
-        )}
-      </div>
-    )
   }
-)
+
+  // Show the browser date picker when the visible input is clicked
+  const handleTextClick = () => {
+    if (dateInputRef.current) {
+      if (typeof dateInputRef.current.showPicker === 'function') {
+        dateInputRef.current.showPicker()
+      } else {
+        dateInputRef.current.focus()
+      }
+    }
+  }
+
+  // Sync value changes from the hidden date input
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(e.target.value)
+  }
+
+  const displayValue = (formatter ?? defaultDateFormatter)(value)
+
+  return (
+    <>
+      <TextInput
+        type='text'
+        value={displayValue}
+        label={label}
+        readOnly
+        tabIndex={0}
+        aria-hidden='true'
+        onClick={handleTextClick}
+        rightContent={<Icon as={Calendar} color='inherit' size='sm' />}
+        data-testid='date-single-picker-visible-input'
+        {...rest}
+      />
+      <input
+        ref={setRef}
+        type='date'
+        value={value}
+        onChange={handleDateChange}
+        style={{
+          position: 'absolute',
+          opacity: 0,
+          pointerEvents: 'none',
+          width: 0,
+          height: 0,
+        }}
+        tabIndex={-1}
+        aria-label={typeof label === 'string' ? label : undefined}
+      />
+    </>
+  )
+})
