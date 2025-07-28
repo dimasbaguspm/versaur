@@ -1,7 +1,7 @@
 import { cva } from '@/utils/variants'
 
 export const modalOverlayVariants = cva(
-  'fixed inset-0 z-51 transition-opacity duration-300 bg-black/30 backdrop-blur-md flex items-center justify-center transition-opacity duration-200 ease-in-out',
+  'fixed inset-0 z-60 transition-opacity duration-300 bg-foreground/30 backdrop-blur-md flex items-center justify-center transition-opacity duration-200 ease-in-out',
   {
     variants: {
       placement: {

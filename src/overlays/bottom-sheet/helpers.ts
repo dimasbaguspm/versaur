@@ -9,7 +9,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
  */
 export const bottomSheetRootVariants = cva(
   [
-    'fixed left-0 bottom-0 z-50 w-full max-h-[90dvh] bg-background rounded-t-xl shadow-lg border-t border-border rounded-lg',
+    'fixed left-0 bottom-0 z-40 w-full max-h-[90dvh] bg-background rounded-t-xl shadow-lg border-t border-border rounded-lg',
     'transition-transform duration-300 ease-in-out will-change-transform',
   ],
   {

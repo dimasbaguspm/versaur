@@ -6,8 +6,7 @@
 import { cva } from '@/utils/variants'
 
 export const menuVariants = cva(
-  // Modern, clean, accessible base style
-  'z-50 min-w-40 bg-background text-black rounded-lg border border-border',
+  'z-30 min-w-40 bg-background text-black rounded-lg border border-border',
   {
     variants: {
       variant: {

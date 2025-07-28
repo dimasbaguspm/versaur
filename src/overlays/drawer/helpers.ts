@@ -5,7 +5,7 @@ import { cva } from '@/utils/variants'
  * Always provides a dark blurred background to help users focus on the drawer content
  */
 export const drawerOverlayVariants = cva(
-  'fixed inset-0 z-50 transition-opacity duration-300 bg-black/30 backdrop-blur-md',
+  'fixed inset-0 z-50 transition-opacity duration-300 bg-foreground/30 backdrop-blur-md',
   {
     variants: {
       state: {
@@ -39,7 +39,7 @@ export const drawerVariants = cva('fixed z-50 shadow-xl flex flex-col', {
       full: 'w-full',
     },
     variant: {
-      default: 'bg-white border-gray-200',
+      default: 'bg-white border-border',
       glass: 'bg-white/10 backdrop-blur-lg border-white/20',
     },
     transitionType: {
@@ -99,7 +99,7 @@ export const drawerBodyVariants = cva('flex-1 overflow-y-auto px-6 py-4', {
 export const drawerFooterVariants = cva('flex-shrink-0 px-6 py-4 border-t', {
   variants: {
     variant: {
-      default: 'bg-white border-gray-200',
+      default: 'bg-white border-border',
       glass: 'bg-transparent border-white/10',
     },
     responsiveFlex: {
