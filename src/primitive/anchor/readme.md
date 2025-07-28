@@ -8,12 +8,25 @@ font utilities, and pseudo selector support.
 ```tsx
 import { Anchor } from '@/primitive/anchor'
 
-;<Anchor
+// Default anchor (with underline)
+<Anchor
   href='https://versaur.com'
   target='_blank'
   color='primary'
   fontSize='base'
   fontWeight='medium'
+>
+  Versaur Docs
+</Anchor>
+
+// Quiet anchor (no underline)
+<Anchor
+  href='https://versaur.com'
+  target='_blank'
+  color='primary'
+  fontSize='base'
+  fontWeight='medium'
+  quiet
 >
   Versaur Docs
 </Anchor>
@@ -24,11 +37,13 @@ import { Anchor } from '@/primitive/anchor'
 - `color`: 'primary' | 'secondary' | 'ghost' | 'danger' | 'neutral' (default: 'primary')
 - `fontSize`: Tailwind font size utility (default: 'base')
 - `fontWeight`: Tailwind font weight utility (default: 'medium')
+- `quiet`: boolean — removes underline style when true (default: false)
 - All standard anchor (`<a>`) props
 
-## Pseudo Selectors
+## Pseudo Selectors & Variants
 
 - `:hover` and `:visited` states are styled according to color and web standards
+- `quiet` disables underline and hover underline
 
 ## Accessibility
 
@@ -43,7 +58,7 @@ import { Anchor } from '@/primitive/anchor'
 
 ## Storybook
 
-- Stories demonstrate all color roles, font utilities, and pseudo selectors
+- Stories demonstrate all color roles, font utilities, pseudo selectors, and quiet variant
 
 ---
 

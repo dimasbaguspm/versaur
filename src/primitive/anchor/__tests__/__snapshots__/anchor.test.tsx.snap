@@ -3,10 +3,109 @@
 exports[`Anchor > renders correctly (snapshot) 1`] = `
 <DocumentFragment>
   <a
-    class="inline-flex items-center transition-colors underline underline-offset-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 hover:no-underline text-primary text-base font-medium"
+    class="inline-flex items-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 hover:no-underline text-primary text-base font-medium underline underline-offset-2"
     href="#"
   >
     Primary Anchor
+  </a>
+</DocumentFragment>
+`;
+
+exports[`Anchor > renders correctly (snapshot) 2`] = `
+<DocumentFragment>
+  <a
+    class="inline-flex items-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 hover:no-underline text-primary text-base font-medium"
+    href="#"
+  >
+    Primary Quiet Anchor
+  </a>
+</DocumentFragment>
+`;
+
+exports[`Anchor > renders correctly (snapshot) 3`] = `
+<DocumentFragment>
+  <a
+    class="inline-flex items-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 hover:no-underline text-secondary text-lg font-bold underline underline-offset-2"
+    href="#"
+  >
+    Secondary Anchor
+  </a>
+</DocumentFragment>
+`;
+
+exports[`Anchor > renders correctly (snapshot) 4`] = `
+<DocumentFragment>
+  <a
+    class="inline-flex items-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 hover:no-underline text-secondary text-lg font-bold"
+    href="#"
+  >
+    Secondary Quiet Anchor
+  </a>
+</DocumentFragment>
+`;
+
+exports[`Anchor > renders correctly (snapshot) 5`] = `
+<DocumentFragment>
+  <a
+    class="inline-flex items-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 hover:no-underline text-ghost text-sm font-normal underline underline-offset-2"
+    href="#"
+  >
+    Ghost Anchor
+  </a>
+</DocumentFragment>
+`;
+
+exports[`Anchor > renders correctly (snapshot) 6`] = `
+<DocumentFragment>
+  <a
+    class="inline-flex items-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 hover:no-underline text-ghost text-sm font-normal"
+    href="#"
+  >
+    Ghost Quiet Anchor
+  </a>
+</DocumentFragment>
+`;
+
+exports[`Anchor > renders correctly (snapshot) 7`] = `
+<DocumentFragment>
+  <a
+    class="inline-flex items-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 hover:no-underline text-danger text-xl font-bold underline underline-offset-2"
+    href="#"
+  >
+    Danger Anchor
+  </a>
+</DocumentFragment>
+`;
+
+exports[`Anchor > renders correctly (snapshot) 8`] = `
+<DocumentFragment>
+  <a
+    class="inline-flex items-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 hover:no-underline text-danger text-xl font-bold"
+    href="#"
+  >
+    Danger Quiet Anchor
+  </a>
+</DocumentFragment>
+`;
+
+exports[`Anchor > renders correctly (snapshot) 9`] = `
+<DocumentFragment>
+  <a
+    class="inline-flex items-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 hover:no-underline text-neutral text-base font-normal underline underline-offset-2"
+    href="#"
+  >
+    Neutral Anchor
+  </a>
+</DocumentFragment>
+`;
+
+exports[`Anchor > renders correctly (snapshot) 10`] = `
+<DocumentFragment>
+  <a
+    class="inline-flex items-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 hover:no-underline text-neutral text-base font-normal"
+    href="#"
+  >
+    Neutral Quiet Anchor
   </a>
 </DocumentFragment>
 `;
