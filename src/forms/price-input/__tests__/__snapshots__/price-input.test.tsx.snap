@@ -12,9 +12,19 @@ exports[`PriceInput > renders correctly (snapshot) 1`] = `
     <div
       class="relative w-full"
     >
+      <input
+        aria-invalid="false"
+        autocomplete="off"
+        class="block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 border-primary/30 text-foreground focus:border-primary focus:ring-primary/20 pl-3 pr-9 h-10"
+        id="«r0»"
+        inputmode="numeric"
+        pattern="^[\\d,.]*$"
+        type="text"
+        value=""
+      />
       <span
-        class="absolute left-2.5 top-0 bottom-0 pointer-events-none text-gray-500 flex items-center justify-center w-5"
-        data-testid="left-content"
+        class="absolute right-2.5 top-0 bottom-0 pointer-events-none text-gray-500 flex items-center justify-center w-5"
+        data-testid="right-content"
       >
         <svg
           aria-hidden="true"
@@ -46,16 +56,6 @@ exports[`PriceInput > renders correctly (snapshot) 1`] = `
           />
         </svg>
       </span>
-      <input
-        aria-invalid="false"
-        autocomplete="off"
-        class="block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 border-primary/30 text-foreground focus:border-primary focus:ring-primary/20 pl-9 pr-3 h-10"
-        id="«r0»"
-        inputmode="numeric"
-        pattern="^[\\d,.]*$"
-        type="text"
-        value=""
-      />
     </div>
     <div
       class="mt-1 text-sm text-gray-600"
