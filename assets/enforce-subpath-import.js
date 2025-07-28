@@ -51,6 +51,7 @@ const symbolToSubpath = {
   TextInput: 'forms',
   TextareaInput: 'forms',
   TimePickerInput: 'forms',
+  PriceInput: 'forms',
 }
 
 const rules = {
