@@ -1,0 +1,67 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`PriceInput > renders correctly (snapshot) 1`] = `
+<DocumentFragment>
+  <div>
+    <label
+      class="block text-sm font-medium text-foreground mb-2"
+      for="«r0»"
+    >
+      Amount
+    </label>
+    <div
+      class="relative w-full"
+    >
+      <input
+        aria-invalid="false"
+        autocomplete="off"
+        class="block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 border-primary/30 text-foreground focus:border-primary focus:ring-primary/20 pl-3 pr-9 h-10"
+        id="«r0»"
+        inputmode="numeric"
+        pattern="^[\\d,.]*$"
+        type="text"
+        value=""
+      />
+      <span
+        class="absolute right-2.5 top-0 bottom-0 pointer-events-none text-gray-500 flex items-center justify-center w-5"
+        data-testid="right-content"
+      >
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-banknote inline-flex items-center justify-center w-4 h-4"
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            height="12"
+            rx="2"
+            width="20"
+            x="2"
+            y="6"
+          />
+          <circle
+            cx="12"
+            cy="12"
+            r="2"
+          />
+          <path
+            d="M6 12h.01M18 12h.01"
+          />
+        </svg>
+      </span>
+    </div>
+    <div
+      class="mt-1 text-sm text-gray-600"
+    >
+      Enter price in IDR (accepts digits, comma, dot, minus)
+    </div>
+  </div>
+</DocumentFragment>
+`;
