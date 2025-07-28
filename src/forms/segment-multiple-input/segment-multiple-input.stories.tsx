@@ -16,29 +16,19 @@ import { SegmentMultipleInput } from './segment-multiple-input'
 const meta: Meta<typeof SegmentMultipleInput> = {
   title: 'Forms/SegmentMultipleInput',
   component: SegmentMultipleInput,
-  tags: ['autodocs'],
   argTypes: {
     variant: {
       control: 'select',
       options: [
         'primary',
-        'primary-outline',
         'secondary',
-        'secondary-outline',
         'tertiary',
-        'tertiary-outline',
         'ghost',
-        'ghost-outline',
         'neutral',
-        'neutral-outline',
         'success',
-        'success-outline',
         'info',
-        'info-outline',
         'warning',
-        'warning-outline',
         'danger',
-        'danger-outline',
       ],
     },
     size: {
@@ -247,44 +237,6 @@ export const CoreVariants: Story = {
         name='ghost'
         variant='ghost'
         label='Ghost (Slate)'
-        value={['option1']}
-      >
-        <SegmentMultipleInput.Option value='option1'>
-          Selected
-        </SegmentMultipleInput.Option>
-        <SegmentMultipleInput.Option value='option2'>
-          Available
-        </SegmentMultipleInput.Option>
-      </SegmentMultipleInput>
-    </div>
-  ),
-}
-
-/**
- * Segment multiple input showing outline variants.
- * Demonstrates the outline style options.
- */
-export const OutlineVariants: Story = {
-  render: () => (
-    <div className='space-y-6'>
-      <SegmentMultipleInput
-        name='primary-outline'
-        variant='primary-outline'
-        label='Primary Outline'
-        value={['option1']}
-      >
-        <SegmentMultipleInput.Option value='option1'>
-          Selected
-        </SegmentMultipleInput.Option>
-        <SegmentMultipleInput.Option value='option2'>
-          Available
-        </SegmentMultipleInput.Option>
-      </SegmentMultipleInput>
-
-      <SegmentMultipleInput
-        name='secondary-outline'
-        variant='secondary-outline'
-        label='Secondary Outline'
         value={['option1']}
       >
         <SegmentMultipleInput.Option value='option1'>

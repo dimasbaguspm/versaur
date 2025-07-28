@@ -9,7 +9,6 @@ export interface SegmentSingleInputContextValue {
   name: string
   value?: string | null
   onChange?: (value: string | null) => void
-  fullWidth?: boolean
 }
 
 export const SegmentSingleInputContext =

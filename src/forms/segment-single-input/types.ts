@@ -16,31 +16,18 @@ export interface SegmentSingleInputProps
    */
   variant?:
     | 'primary'
-    | 'primary-outline'
     | 'secondary'
-    | 'secondary-outline'
     | 'tertiary'
-    | 'tertiary-outline'
     | 'ghost'
-    | 'ghost-outline'
     | 'neutral'
-    | 'neutral-outline'
     | 'success'
-    | 'success-outline'
     | 'info'
-    | 'info-outline'
     | 'warning'
-    | 'warning-outline'
     | 'danger'
-    | 'danger-outline'
   /**
    * Size variant for the segment inputs
    */
   size?: 'sm' | 'md' | 'lg'
-  /**
-   * If true, the segment group and its options will fill the parent width
-   */
-  fullWidth?: boolean
   /**
    * Label text to display above the segment group
    */
