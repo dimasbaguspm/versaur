@@ -16,20 +16,16 @@ export const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
       color = 'primary',
       fontSize = 'base',
       fontWeight = 'medium',
+      quiet = false,
       ...props
     },
     ref
   ) => {
-    // Compose font size and weight classes if provided
-    const fontSizeClass = fontSize ? `text-${fontSize}` : 'text-base'
-    const fontWeightClass = fontWeight ? `font-${fontWeight}` : 'font-medium'
     return (
       <a
         ref={ref}
         className={cn(
-          anchorVariants({ color }),
-          fontSizeClass,
-          fontWeightClass,
+          anchorVariants({ color, fontSize, fontWeight, quiet }),
           className
         )}
         {...props}
@@ -39,4 +35,3 @@ export const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
     )
   }
 )
-Anchor.displayName = 'Anchor'
