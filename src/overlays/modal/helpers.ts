@@ -29,6 +29,7 @@ export const modalContentVariants = cva(
         sm: 'w-[20rem] max-w-sm', // 20rem, 320px
         md: 'w-[28rem] max-w-md', // 28rem, 448px
         lg: 'w-[36rem] max-w-lg', // 36rem, 576px
+        'fit-content': 'w-fit max-w-full', // Fit content, no max width
       },
       placement: {
         top: 'mt-4',

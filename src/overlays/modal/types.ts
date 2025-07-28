@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'react'
 /**
  * Modal component prop types
  */
-export type ModalSize = 'sm' | 'md' | 'lg'
+export type ModalSize = 'sm' | 'md' | 'lg' | 'fit-content'
 export type ModalPlacement = 'top' | 'center'
 
 /**
