@@ -47,6 +47,7 @@ const symbolToSubpath = {
   RadioInput: 'forms',
   SegmentMultipleInput: 'forms',
   SegmentSingleInput: 'forms',
+  SearchInput: 'forms',
   SelectInput: 'forms',
   SwitchInput: 'forms',
   TextInput: 'forms',

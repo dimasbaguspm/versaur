@@ -1,0 +1,53 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SearchInput > renders correctly (snapshot) 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="relative w-full"
+    >
+      <span
+        class="absolute left-2.5 top-0 bottom-0 pointer-events-none text-gray-500 flex items-center justify-center w-5"
+        data-testid="left-content"
+      >
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-search inline-flex items-center justify-center w-4 h-4"
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m21 21-4.34-4.34"
+          />
+          <circle
+            cx="11"
+            cy="11"
+            r="8"
+          />
+        </svg>
+      </span>
+      <input
+        aria-invalid="false"
+        aria-label="Search"
+        autocomplete="on"
+        class="block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 border-primary/30 text-foreground focus:border-primary focus:ring-primary/20 pl-9 pr-3 h-10"
+        enterkeyhint="search"
+        id="«r0»"
+        inputmode="search"
+        maxlength="256"
+        placeholder="Search..."
+        spellcheck="true"
+        type="search"
+        value=""
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
