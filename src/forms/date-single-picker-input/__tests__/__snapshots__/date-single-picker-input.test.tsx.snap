@@ -1,0 +1,76 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`DateSinglePickerInput > renders correctly (snapshot) 1`] = `
+<DocumentFragment>
+  <div>
+    <label
+      class="block text-sm font-medium text-foreground mb-2"
+      for="«r0»"
+    >
+      Date of Birth
+    </label>
+    <div
+      class="relative w-full"
+    >
+      <input
+        aria-hidden="true"
+        aria-invalid="false"
+        class="block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 border-primary/30 text-foreground focus:border-primary focus:ring-primary/20 pl-3 pr-9 h-10"
+        data-testid="date-single-picker-visible-input"
+        id="«r0»"
+        readonly=""
+        tabindex="0"
+        type="text"
+        value="Jul 29, 2025"
+      />
+      <span
+        class="absolute right-2.5 top-0 bottom-0 pointer-events-none text-gray-500 flex items-center justify-center w-5"
+        data-testid="right-content"
+      >
+        <svg
+          aria-hidden="true"
+          class="lucide lucide-calendar inline-flex items-center justify-center w-4 h-4"
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M8 2v4"
+          />
+          <path
+            d="M16 2v4"
+          />
+          <rect
+            height="18"
+            rx="2"
+            width="18"
+            x="3"
+            y="4"
+          />
+          <path
+            d="M3 10h18"
+          />
+        </svg>
+      </span>
+    </div>
+    <div
+      class="mt-1 text-sm text-gray-600"
+    >
+      Select your birth date.
+    </div>
+  </div>
+  <input
+    aria-label="Date of Birth"
+    style="position: absolute; opacity: 0; pointer-events: none; width: 0px; height: 0px;"
+    tabindex="-1"
+    type="date"
+    value="2025-07-29"
+  />
+</DocumentFragment>
+`;

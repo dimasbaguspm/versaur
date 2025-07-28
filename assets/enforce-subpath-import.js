@@ -43,7 +43,6 @@ const symbolToSubpath = {
   ChipSingleInput: 'forms',
   ChipMultipleInput: 'forms',
   DateSinglePickerInput: 'forms',
-  DateRangePickerInput: 'forms',
   EmailInput: 'forms',
   RadioInput: 'forms',
   SegmentMultipleInput: 'forms',

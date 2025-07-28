@@ -1,97 +1,27 @@
-import type { ReactNode } from 'react'
+/**
+ * Props for DateSinglePickerInput
+ */
+
+import type { TextInputProps } from '../text-input/types'
 
 /**
- * Props for the DateSinglePickerInput component
+ * Props for DateSinglePickerInput
+ * Extends TextInputProps, but restricts type to 'date' and value to string
  */
-/**
- * Props for the DateSinglePickerInput component
- */
-export interface DateSinglePickerInputProps {
+export interface DateSinglePickerInputProps
+  extends Omit<TextInputProps, 'type' | 'value' | 'onChange'> {
   /**
-   * Picker display type: 'docked' (default) or 'modal'.
-   * 'docked' shows calendar below input, 'modal' opens a modal at top.
+   * The value of the input (ISO date string: YYYY-MM-DD)
    */
-  type?: 'docked' | 'modal'
+  value: string
   /**
-   * The selected date value
+   * Called when the value changes
    */
-  value?: Date
+  onChange: (value: string) => void
   /**
-   * Callback when a date is selected
+   * Optional custom formatter for displaying the date value
+   * @param value ISO date string
+   * @returns formatted string for display
    */
-  onChange?: (date: Date) => void
-  /**
-   * Label text to display above the input
-   */
-  label?: ReactNode
-  /**
-   * Optional content to display inside the input (left)
-   */
-  leftContent?: ReactNode
-  /**
-   * Optional content to display inside the input (right)
-   */
-  rightContent?: ReactNode
-  /**
-   * Helper text to display below the input
-   */
-  helperText?: ReactNode
-  /**
-   * Error message for invalid state
-   */
-  error?: ReactNode
-  /**
-   * Visual style variant supporting Versaur color system
-   */
-  variant?:
-    | 'primary'
-    | 'primary-outline'
-    | 'secondary'
-    | 'secondary-outline'
-    | 'tertiary'
-    | 'tertiary-outline'
-    | 'ghost'
-    | 'ghost-outline'
-    | 'neutral'
-    | 'neutral-outline'
-    | 'success'
-    | 'success-outline'
-    | 'info'
-    | 'info-outline'
-    | 'warning'
-    | 'warning-outline'
-    | 'danger'
-    | 'danger-outline'
-  /**
-   * Disabled state
-   */
-  disabled?: boolean
-  /**
-   * Placeholder text when no date is selected
-   */
-  placeholder?: ReactNode
-  /**
-   * Optional id for the input element
-   */
-  id?: string
-
-  /**
-   * Optional custom date formatter. If not provided, uses default format.
-   * @param date Date to format
-   * @returns Formatted date string
-   */
-  formatDate?: (date?: Date) => string
-}
-
-/**
- * Atoms for DateSinglePickerInput modal type
- */
-export interface DateSinglePickerModalContentProps {
-  children: ReactNode
-}
-
-export interface DateSinglePickerModalFooterProps {
-  onCancel: () => void
-  onConfirm: () => void
-  confirmDisabled?: boolean
+  formatter?: (value: string) => string
 }
