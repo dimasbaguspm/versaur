@@ -15,7 +15,7 @@ exports[`BottomSheet > renders the basic bottom sheet and matches snapshot 1`] =
   />
   <div
     aria-modal="true"
-    class="fixed left-0 bottom-0 z-50 w-full max-h-[90dvh] bg-background shadow-lg border-t border-border rounded-lg transition-transform duration-300 ease-in-out will-change-transform translate-y-full"
+    class="fixed left-0 bottom-0 z-40 w-full max-h-[90dvh] bg-background shadow-lg border-t border-border rounded-lg transition-transform duration-300 ease-in-out will-change-transform translate-y-full"
     role="dialog"
     tabindex="-1"
   >

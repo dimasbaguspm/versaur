@@ -13,11 +13,11 @@ exports[`Drawer > Default Story > matches snapshot when open 1`] = `
     class="fixed z-50 inset-0 pointer-events-auto"
   >
     <div
-      class="fixed inset-0 z-50 transition-opacity duration-300 bg-black/30 backdrop-blur-md opacity-100"
+      class="fixed inset-0 z-50 transition-opacity duration-300 bg-foreground/30 backdrop-blur-md opacity-100"
     />
     <div
       aria-modal="true"
-      class="fixed z-50 shadow-xl flex flex-col right-0 top-0 bottom-0 border-l w-96 bg-white border-gray-200 transition-transform duration-300 ease-in-out"
+      class="fixed z-50 shadow-xl flex flex-col right-0 top-0 bottom-0 border-l w-96 bg-white border-border transition-transform duration-300 ease-in-out"
       role="dialog"
     >
       <div
@@ -75,7 +75,7 @@ exports[`Drawer > Default Story > matches snapshot when open 1`] = `
         </p>
       </div>
       <div
-        class="flex-shrink-0 px-6 py-4 border-t bg-white border-gray-200 flex flex-row gap-3 sm:justify-end [&>*]:sm:flex-grow-0 [&>*]:flex-grow"
+        class="flex-shrink-0 px-6 py-4 border-t bg-white border-border flex flex-row gap-3 sm:justify-end [&>*]:sm:flex-grow-0 [&>*]:flex-grow"
       >
         <button
           aria-disabled="false"

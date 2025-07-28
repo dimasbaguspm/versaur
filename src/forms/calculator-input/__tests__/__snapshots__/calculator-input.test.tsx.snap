@@ -88,7 +88,7 @@ exports[`CalculatorInput > renders correctly 1`] = `
   </div>
   <div
     aria-modal="true"
-    class="fixed inset-0 z-51 transition-opacity duration-300 bg-black/30 backdrop-blur-md flex items-center justify-center transition-opacity duration-200 ease-in-out items-center transition-opacity duration-200 ease-in-out opacity-0 pointer-events-none"
+    class="fixed inset-0 z-60 transition-opacity duration-300 bg-foreground/30 backdrop-blur-md flex items-center justify-center transition-opacity duration-200 ease-in-out items-center transition-opacity duration-200 ease-in-out opacity-0 pointer-events-none"
     placement="center"
     role="presentation"
     tabindex="-1"
