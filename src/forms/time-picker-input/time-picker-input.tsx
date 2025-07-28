@@ -21,7 +21,7 @@ export const TimePickerInput: React.FC<TimePickerInputProps> = ({
   helperText,
   disabled,
   error,
-  placement,
+  placement = 'top',
   'aria-label': ariaLabel,
   'aria-labelledby': ariaLabelledBy,
   'aria-describedby': ariaDescribedBy,
@@ -94,7 +94,7 @@ export const TimePickerInput: React.FC<TimePickerInputProps> = ({
         isOpen={modalOpen}
         onOpenChange={setModalOpen}
         placement={placement}
-        size='sm'
+        size='fit-content'
         aria-label={ariaLabel}
         aria-labelledby={ariaLabelledBy}
         aria-describedby={ariaDescribedBy}
@@ -131,10 +131,10 @@ export const TimePickerInput: React.FC<TimePickerInputProps> = ({
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='ghost' size='md' onClick={handleCancel}>
+          <Button variant='ghost' size='sm' onClick={handleCancel}>
             Cancel
           </Button>
-          <Button variant='primary' size='md' onClick={handleConfirm}>
+          <Button variant='primary-ghost' size='sm' onClick={handleConfirm}>
             Confirm
           </Button>
         </Modal.Footer>
