@@ -1,9 +1,9 @@
 import type { InputHTMLAttributes, ReactNode } from 'react'
 
 /**
- * Props for the ChipInput component
+ * Props for the ChipMultipleInput component
  */
-export interface ChipInputProps
+export interface ChipMultipleInputProps
   extends Omit<
     InputHTMLAttributes<HTMLInputElement>,
     'type' | 'size' | 'onChange' | 'value'
@@ -60,9 +60,9 @@ export interface ChipInputProps
 }
 
 /**
- * Props for the ChipInput.Option component
+ * Props for the ChipMultipleInput.Option component
  */
-export interface ChipInputOptionProps
+export interface ChipMultipleInputOptionProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'name'> {
   /**
    * The option label content
@@ -80,4 +80,16 @@ export interface ChipInputOptionProps
    * Show the default check icon if true (default: false). If both check and defaultCheck are provided, check takes precedence
    */
   defaultCheck?: boolean
+  /**
+   * Disabled state for this option
+   */
+  disabled?: boolean
+  /**
+   * Optional id for the input
+   */
+  id?: string
+  /**
+   * Additional className for styling
+   */
+  className?: string
 }

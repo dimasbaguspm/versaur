@@ -1,7 +1,8 @@
 // wild exports
 export * from './calculator-input'
 export * from './checkbox-input'
-export * from './chip-input'
+export * from './chip-single-input'
+export * from './chip-multiple-input'
 export * from './date-single-picker-input'
 export * from './radio-input'
 export * from './segment-single-input'

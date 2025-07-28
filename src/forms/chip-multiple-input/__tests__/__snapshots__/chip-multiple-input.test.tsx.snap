@@ -17,7 +17,7 @@ exports[`ChipInput > matches snapshot 1`] = `
         value="apple"
       />
       <label
-        class="inline-flex items-center bg-white font-regular transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-light focus:border-primary-light data-[selected=true]:bg-primary-soft data-[selected=true]:border-primary rounded-full px-2 py-1 text-xs gap-1"
+        class="inline-flex items-center bg-white font-regular transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-light focus:border-primary-light data-[selected=true]:bg-primary-soft data-[selected=true]:border-primary rounded-full px-3 py-1 text-xs min-h-[32px]"
         data-selected="false"
         for="«r11»"
       >
@@ -35,7 +35,7 @@ exports[`ChipInput > matches snapshot 1`] = `
         value="banana"
       />
       <label
-        class="inline-flex items-center bg-white font-regular transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-light focus:border-primary-light data-[selected=true]:bg-primary-soft data-[selected=true]:border-primary rounded-full px-2 py-1 text-xs gap-1"
+        class="inline-flex items-center bg-white font-regular transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-light focus:border-primary-light data-[selected=true]:bg-primary-soft data-[selected=true]:border-primary rounded-full px-3 py-1 text-xs min-h-[32px]"
         data-selected="false"
         for="«r12»"
       >
@@ -53,7 +53,7 @@ exports[`ChipInput > matches snapshot 1`] = `
         value="cherry"
       />
       <label
-        class="inline-flex items-center bg-white font-regular transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-light focus:border-primary-light data-[selected=true]:bg-primary-soft data-[selected=true]:border-primary rounded-full px-2 py-1 text-xs gap-1"
+        class="inline-flex items-center bg-white font-regular transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-light focus:border-primary-light data-[selected=true]:bg-primary-soft data-[selected=true]:border-primary rounded-full px-3 py-1 text-xs min-h-[32px]"
         data-selected="false"
         for="«r13»"
       >

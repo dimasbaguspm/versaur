@@ -1,16 +1,22 @@
 import React from 'react'
 import { cn } from '@/utils/cn'
-import { ChipInputContext, type ChipInputContextValue } from './context'
-import { ChipOption } from './chip-input.atoms'
-import type { ChipInputProps } from './types'
+import {
+  ChipMultipleInputContext,
+  type ChipMultipleInputContextValue,
+} from './context'
+import { ChipMultipleOption } from './chip-multiple-input.atoms'
+import type { ChipMultipleInputProps } from './types'
 
 /**
- * ChipInput component for Versaur UI
+ * ChipMultipleInput component for Versaur UI
  *
  * Provides a group of checkbox chips for multiple selection
  * Controlled component pattern for React forms
  */
-const ChipInputRoot = React.forwardRef<HTMLDivElement, ChipInputProps>(
+const ChipMultipleInputRoot = React.forwardRef<
+  HTMLDivElement,
+  ChipMultipleInputProps
+>(
   (
     {
       variant = 'primary',
@@ -40,10 +46,10 @@ const ChipInputRoot = React.forwardRef<HTMLDivElement, ChipInputProps>(
       name,
       value,
       onChange,
-    } satisfies ChipInputContextValue
+    } satisfies ChipMultipleInputContextValue
 
     return (
-      <ChipInputContext.Provider value={contextValue}>
+      <ChipMultipleInputContext.Provider value={contextValue}>
         <div ref={ref} className={cn('w-full', className)} {...props}>
           {label && (
             <div className='block text-sm font-medium text-foreground mb-3'>
@@ -60,11 +66,11 @@ const ChipInputRoot = React.forwardRef<HTMLDivElement, ChipInputProps>(
             <div className='mt-2 text-sm text-gray-600'>{helperText}</div>
           )}
         </div>
-      </ChipInputContext.Provider>
+      </ChipMultipleInputContext.Provider>
     )
   }
 )
 
-export const ChipInput = Object.assign(ChipInputRoot, {
-  Option: ChipOption,
+export const ChipMultipleInput = Object.assign(ChipMultipleInputRoot, {
+  Option: ChipMultipleOption,
 })
