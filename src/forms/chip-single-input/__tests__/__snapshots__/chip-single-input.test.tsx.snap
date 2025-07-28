@@ -1,0 +1,70 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ChipSingleInput > matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    aria-label="Select fruits"
+    class="w-full"
+  >
+    <div
+      class="flex flex-wrap gap-2"
+    >
+      <input
+        class="sr-only"
+        id="«r11»"
+        name="fruits"
+        type="radio"
+        value="apple"
+      />
+      <label
+        class="inline-flex items-center bg-white font-regular transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-light focus:border-primary-light data-[selected=true]:bg-primary-soft data-[selected=true]:border-primary rounded-full h-8 px-3 text-sm"
+        data-selected="false"
+        for="«r11»"
+      >
+        <span
+          class="flex items-center"
+        >
+          Apple
+        </span>
+      </label>
+      <input
+        class="sr-only"
+        id="«r12»"
+        name="fruits"
+        type="radio"
+        value="banana"
+      />
+      <label
+        class="inline-flex items-center bg-white font-regular transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-light focus:border-primary-light data-[selected=true]:bg-primary-soft data-[selected=true]:border-primary rounded-full h-8 px-3 text-sm"
+        data-selected="false"
+        for="«r12»"
+      >
+        <span
+          class="flex items-center"
+        >
+          Banana
+        </span>
+      </label>
+      <input
+        checked=""
+        class="sr-only"
+        id="«r13»"
+        name="fruits"
+        type="radio"
+        value="cherry"
+      />
+      <label
+        class="inline-flex items-center bg-white font-regular transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-light focus:border-primary-light data-[selected=true]:bg-primary-soft data-[selected=true]:border-primary rounded-full h-8 px-3 text-sm"
+        data-selected="true"
+        for="«r13»"
+      >
+        <span
+          class="flex items-center"
+        >
+          Cherry
+        </span>
+      </label>
+    </div>
+  </div>
+</DocumentFragment>
+`;

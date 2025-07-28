@@ -1,20 +1,20 @@
 import React from 'react'
 import { cn } from '@/utils/cn'
 import { chipOptionVariants } from './helpers'
-import { useChipInputContext } from './context'
-import type { ChipInputOptionProps } from './types'
+import { useChipMultipleInputContext } from './context'
+import type { ChipMultipleInputOptionProps } from './types'
 import { Check } from 'lucide-react'
 
 /**
- * ChipInput.Option atom component
+ * ChipMultipleInput.Option atom component
  *
- * Individual chip option for ChipInput
+ * Individual chip option for ChipMultipleInput
  * Uses checkbox input pattern for multiple selection
  * Supports leading icon and animated tick/check
  */
-export const ChipOption = React.forwardRef<
+export const ChipMultipleOption = React.forwardRef<
   HTMLInputElement,
-  ChipInputOptionProps
+  ChipMultipleInputOptionProps
 >(
   (
     {
@@ -29,7 +29,7 @@ export const ChipOption = React.forwardRef<
     },
     ref
   ) => {
-    const context = useChipInputContext()
+    const context = useChipMultipleInputContext()
     const generatedId = React.useId()
     const inputId = id || generatedId
     const isDisabled = disabled || context.disabled
@@ -140,4 +140,4 @@ export const ChipOption = React.forwardRef<
   }
 )
 
-ChipOption.displayName = 'ChipOption'
+ChipMultipleOption.displayName = 'ChipMultipleOption'

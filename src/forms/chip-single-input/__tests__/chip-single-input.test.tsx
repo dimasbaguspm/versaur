@@ -1,8 +1,8 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { composeStories } from '@storybook/react'
-import * as stories from '../chip-input.stories'
+import * as stories from '../chip-single-input.stories'
 
-describe('ChipInput', () => {
+describe('ChipSingleInput', () => {
   const { Basic, Disabled, Variants, Shape, Sizes, CheckIcon } =
     composeStories(stories)
 
@@ -21,7 +21,8 @@ describe('ChipInput', () => {
     fireEvent.click(banana)
     expect(banana).toBeChecked()
     fireEvent.click(apple)
-    expect(apple).not.toBeChecked()
+    expect(apple).toBeChecked()
+    expect(banana).not.toBeChecked()
   })
 
   it('renders shape variations and toggles selection', () => {
