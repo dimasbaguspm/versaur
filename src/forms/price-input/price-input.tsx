@@ -44,7 +44,7 @@ export const PriceInput: FC<PriceInputProps> = ({
       error={error}
       helperText={helperText}
       placeholder={rest.placeholder}
-      rightContent={<Icon as={Banknote} color='inherit' size='sm' />}
+      leftContent={<Icon as={Banknote} color='inherit' size='sm' />}
       variant={variant}
       inputMode='numeric'
       autoComplete='off'

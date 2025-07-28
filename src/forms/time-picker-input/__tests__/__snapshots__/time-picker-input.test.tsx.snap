@@ -12,20 +12,13 @@ exports[`TimePickerModalInput > renders correctly (snapshot) 1`] = `
     <div
       class="relative w-full cursor-pointer bg-white"
     >
-      <input
-        aria-invalid="false"
-        class="block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 border-primary/30 text-foreground focus:border-primary focus:ring-primary/20 pl-3 pr-9 h-10"
-        id="«r0»"
-        readonly=""
-        value="02:30 PM"
-      />
       <span
-        class="absolute right-2.5 top-0 bottom-0 pointer-events-none text-gray-500 flex items-center justify-center w-5"
-        data-testid="right-content"
+        class="absolute left-2.5 top-0 bottom-0 pointer-events-none text-gray-500 flex items-center justify-center w-5"
+        data-testid="left-content"
       >
         <svg
           aria-hidden="true"
-          class="lucide lucide-clock inline-flex items-center justify-center w-4 h-4 text-ghost"
+          class="lucide lucide-clock inline-flex items-center justify-center w-4 h-4"
           fill="none"
           height="24"
           stroke="currentColor"
@@ -46,6 +39,13 @@ exports[`TimePickerModalInput > renders correctly (snapshot) 1`] = `
           />
         </svg>
       </span>
+      <input
+        aria-invalid="false"
+        class="block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 border-primary/30 text-foreground focus:border-primary focus:ring-primary/20 pl-9 pr-3 h-10"
+        id="«r0»"
+        readonly=""
+        value="02:30 PM"
+      />
     </div>
     <div
       class="mt-1 text-sm text-gray-600"

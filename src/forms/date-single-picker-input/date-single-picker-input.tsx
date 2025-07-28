@@ -57,7 +57,7 @@ export const DateSinglePickerInput = React.forwardRef<
         tabIndex={0}
         aria-hidden='true'
         onClick={handleTextClick}
-        rightContent={<Icon as={Calendar} color='inherit' size='sm' />}
+        leftContent={<Icon as={Calendar} color='inherit' size='sm' />}
         data-testid='date-single-picker-visible-input'
         {...rest}
       />

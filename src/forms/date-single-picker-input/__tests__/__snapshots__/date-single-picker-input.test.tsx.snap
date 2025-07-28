@@ -12,20 +12,9 @@ exports[`DateSinglePickerInput > renders correctly (snapshot) 1`] = `
     <div
       class="relative w-full"
     >
-      <input
-        aria-hidden="true"
-        aria-invalid="false"
-        class="block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 border-primary/30 text-foreground focus:border-primary focus:ring-primary/20 pl-3 pr-9 h-10"
-        data-testid="date-single-picker-visible-input"
-        id="«r0»"
-        readonly=""
-        tabindex="0"
-        type="text"
-        value="Jul 29, 2025"
-      />
       <span
-        class="absolute right-2.5 top-0 bottom-0 pointer-events-none text-gray-500 flex items-center justify-center w-5"
-        data-testid="right-content"
+        class="absolute left-2.5 top-0 bottom-0 pointer-events-none text-gray-500 flex items-center justify-center w-5"
+        data-testid="left-content"
       >
         <svg
           aria-hidden="true"
@@ -58,6 +47,17 @@ exports[`DateSinglePickerInput > renders correctly (snapshot) 1`] = `
           />
         </svg>
       </span>
+      <input
+        aria-hidden="true"
+        aria-invalid="false"
+        class="block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 border-primary/30 text-foreground focus:border-primary focus:ring-primary/20 pl-9 pr-3 h-10"
+        data-testid="date-single-picker-visible-input"
+        id="«r0»"
+        readonly=""
+        tabindex="0"
+        type="text"
+        value="Jul 29, 2025"
+      />
     </div>
     <div
       class="mt-1 text-sm text-gray-600"
