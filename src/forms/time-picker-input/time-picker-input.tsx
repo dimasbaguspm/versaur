@@ -88,7 +88,7 @@ export const TimePickerInput: React.FC<TimePickerInputProps> = ({
         aria-labelledby={ariaLabelledBy}
         aria-describedby={ariaDescribedBy}
         className={'cursor-pointer bg-white'}
-        rightContent={<Icon as={Clock} size='sm' color='ghost' />}
+        leftContent={<Icon as={Clock} size='sm' color='inherit' />}
       />
       <Modal
         isOpen={modalOpen}

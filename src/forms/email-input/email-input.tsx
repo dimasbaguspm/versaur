@@ -19,7 +19,7 @@ export const EmailInput = forwardRef<HTMLInputElement, EmailInputProps>(
         type='email'
         autoComplete='email'
         inputMode='email'
-        rightContent={<Icon as={MailIcon} color='inherit' size='sm' />}
+        leftContent={<Icon as={MailIcon} color='inherit' size='sm' />}
       />
     )
   }
