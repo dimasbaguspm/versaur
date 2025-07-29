@@ -38,7 +38,6 @@ const symbolToSubpath = {
   ProgressIndicator: 'feedbacks',
   Skeleton: 'feedbacks',
   // forms
-  CalculatorInput: 'forms',
   CheckboxInput: 'forms',
   ChipSingleInput: 'forms',
   ChipMultipleInput: 'forms',
