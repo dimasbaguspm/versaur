@@ -48,7 +48,7 @@ export const DateSinglePickerInput = React.forwardRef<
   const displayValue = (formatter ?? defaultDateFormatter)(value)
 
   return (
-    <>
+    <div className='relative'>
       <TextInput
         type='text'
         value={displayValue}
@@ -66,16 +66,10 @@ export const DateSinglePickerInput = React.forwardRef<
         type='date'
         value={value}
         onChange={handleDateChange}
-        style={{
-          position: 'absolute',
-          opacity: 0,
-          pointerEvents: 'none',
-          width: 0,
-          height: 0,
-        }}
+        className='sr-only absolute opacity-0 h-0 w-0 pointer-events-none'
         tabIndex={-1}
         aria-label={typeof label === 'string' ? label : undefined}
       />
-    </>
+    </div>
   )
 })

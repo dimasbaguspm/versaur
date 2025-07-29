@@ -18,7 +18,7 @@ type Story = StoryObj<typeof TimePickerInput>
 
 export const Basic: Story = {
   render: function BasicStory() {
-    const [value, setValue] = useState('02:30 PM')
+    const [value, setValue] = useState('02:30')
     return (
       <TimePickerInput
         value={value}
