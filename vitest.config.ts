@@ -17,6 +17,7 @@ export default defineConfig({
       '@/navigation': resolve(__dirname, 'src/navigation'),
       '@/feedbacks': resolve(__dirname, 'src/feedbacks'),
       '@/layouts': resolve(__dirname, 'src/layouts'),
+      '@/providers': resolve(__dirname, 'src/providers'),
       '@/utils': resolve(__dirname, 'src/utils'),
     },
   },

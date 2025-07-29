@@ -4,7 +4,7 @@ exports[`Snackbar > renders correctly (snapshot) 1`] = `
 <DocumentFragment>
   <div
     aria-live="polite"
-    class="flex items-center gap-2 px-4 py-2 rounded-sm w-fit relative shadow-sm text-success-bold bg-success-soft border-l-4 border-success"
+    class="flex items-center gap-2 px-4 py-2 rounded-sm w-auto mx-4 sm:mx-0 sm:w-fit relative shadow-sm text-success-bold bg-success-soft border-l-4 border-success"
     role="status"
   >
     <span
