@@ -2,7 +2,7 @@ import * as stories from '../time-picker-input.stories'
 import { composeStories } from '@storybook/react'
 import { render, screen, fireEvent } from '@testing-library/react'
 
-describe('TimePickerModalInput', () => {
+describe('TimePickerInput', () => {
   const { Basic, WithError } = composeStories(stories)
 
   it('renders correctly (snapshot)', () => {
@@ -10,23 +10,13 @@ describe('TimePickerModalInput', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('opens modal on input click and allows time selection', () => {
+  it('renders as a native time input and updates value', () => {
     render(<Basic />)
     const input = screen.getByLabelText(/select time/i)
-    fireEvent.click(input)
-    expect(screen.getByRole('dialog')).toBeInTheDocument()
-    // Change hour
-    const hourInput = screen.getByLabelText(/hour/i)
-    fireEvent.change(hourInput, { target: { value: '11' } })
-    expect(hourInput).toHaveValue('11')
-    // Change minute
-    const minuteInput = screen.getByLabelText(/minute/i)
-    fireEvent.change(minuteInput, { target: { value: '45' } })
-    expect(minuteInput).toHaveValue('45')
-    // Select PM
-    const pmButton = screen.getByRole('button', { name: /pm/i })
-    fireEvent.click(pmButton)
-    expect(pmButton).toHaveAttribute('aria-pressed', 'true')
+    expect(input).toHaveAttribute('type', 'time')
+    expect(input).toHaveValue('02:30')
+    fireEvent.change(input, { target: { value: '13:45' } })
+    expect(input).toHaveValue('13:45')
   })
 
   it('shows error state', () => {

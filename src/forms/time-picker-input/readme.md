@@ -1,30 +1,41 @@
-# TimePickerModalInput
+# TimePickerInput
 
-A modal-based time picker input for Versaur UI, following Material 3 guidelines (no clock UI, just hour, minute, and AM/PM segment selection).
+A design-system-aligned time input for Versaur UI. It uses a styled `TextInput` with `type='time'` and an optional clock icon, providing a consistent UI and native browser picker support.
 
 ## Features
-- Modal dialog for time selection
-- Two numeric inputs (hour, minute)
-- AM/PM segment selection
-- Integrates with Versaur Modal, TextInput, and Button
-- Strictly typed props, accessible, and mobile-friendly
+- Styled `TextInput` for display, with optional icon
+- Native time picker support (mobile & desktop)
+- Fully controlled (accepts `value` and `onChange`)
+- Accessibility: all standard input props supported
 
 ## Usage
 ```tsx
-import { TimePickerModalInput } from '@/components/time-picker-modal-input'
+import { TimePickerInput } from '@/forms/time-picker-input'
 
 function Example() {
-  const [time, setTime] = useState('02:30 PM')
+  const [value, setValue] = useState('09:00')
   return (
-    <TimePickerModalInput
-      value={time}
-      onChange={setTime}
+    <TimePickerInput
       label="Select time"
-      helperText="Choose a time for your meeting"
+      value={value}
+      onChange={setValue}
     />
   )
 }
 ```
 
 ## Props
-See `types.ts` for full prop documentation.
+| Name        | Type                       | Description                                      |
+|-------------|----------------------------|--------------------------------------------------|
+| value       | `string`                   | Time value in `HH:MM` (24-hour) format           |
+| onChange    | `(value: string) => void`  | Called when the time value changes               |
+| label       | `ReactNode`                | Input label                                      |
+| ...rest     | `TextInputProps`           | All other TextInput props                        |
+
+## Accessibility
+- Uses native `<input type='time'>` for best browser and assistive tech support.
+- All ARIA and label props are passed through to the input.
+
+## Implementation Notes
+- No overlay or hidden input is used; the native input is styled directly.
+- The value is always in `HH:MM` (24-hour) format.
