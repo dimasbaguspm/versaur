@@ -154,6 +154,43 @@ Our palette follows these harmonious relationships:
     transform: scale(1) translateY(0);
   }
 }
+
 .animate-fab-in {
   animation: fab-in 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes snackbar-fade-in-out {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+.snackbar-animate-fade-in-out {
+  animation: snackbar-fade-in-out 4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes snackbar-slide-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.snackbar-animate-slide-in-left {
+  animation: snackbar-slide-in-left 0.32s cubic-bezier(0.4, 0, 0.2, 1);
 }

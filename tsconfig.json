@@ -33,6 +33,7 @@
       "@/feedbacks/*": ["src/feedbacks/*"],
       "@/layouts/*": ["src/layouts/*"],
       "@/navigation/*": ["src/navigation/*"],
+      "@/providers/*": ["src/providers/*"],
       "@/utils/*": ["src/utils/*"],
     }
   },

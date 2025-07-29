@@ -1,0 +1,57 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SnackbarsProvider > renders the provider and children 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col gap-4 p-8"
+  >
+    <button
+      aria-disabled="false"
+      class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 px-4 text-sm min-w-[2.5rem]"
+      type="button"
+    >
+      Show Success
+    </button>
+    <button
+      aria-disabled="false"
+      class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 px-4 text-sm min-w-[2.5rem]"
+      type="button"
+    >
+      Show Info
+    </button>
+    <button
+      aria-disabled="false"
+      class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 px-4 text-sm min-w-[2.5rem]"
+      type="button"
+    >
+      Show Warning
+    </button>
+    <button
+      aria-disabled="false"
+      class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 px-4 text-sm min-w-[2.5rem]"
+      type="button"
+    >
+      Show Danger
+    </button>
+    <button
+      aria-disabled="false"
+      class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 px-4 text-sm min-w-[2.5rem]"
+      type="button"
+    >
+      Show Stack
+    </button>
+    <button
+      aria-disabled="false"
+      class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 px-4 text-sm min-w-[2.5rem]"
+      type="button"
+    >
+      Show Custom Duration
+    </button>
+  </div>
+  <div
+    aria-atomic="true"
+    aria-live="polite"
+    class="fixed z-50 flex flex-col gap-2 px-0 pb-2 w-screen left-0 bottom-0 sm:w-auto sm:left-4 sm:bottom-4 sm:max-w-sm"
+  />
+</DocumentFragment>
+`;

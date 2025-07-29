@@ -38,6 +38,10 @@
       "import": "./dist/js/overlays/index.js",
       "types": "./dist/types/overlays/index.d.ts"
     },
+    "./providers": {
+      "import": "./dist/js/providers/index.js",
+      "types": "./dist/types/providers/index.d.ts"
+    },
     "./styles.css": "./dist/js/styles.css",
     "./eslint-subpath-import": "./dist/js/enforce-subpath-import.js"
   },

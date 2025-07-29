@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority'
 
 export const snackbarVariants = cva(
-  'flex items-center gap-2 px-4 py-2 rounded-sm w-fit relative shadow-sm',
+  'flex items-center gap-2 px-4 py-2 rounded-sm w-auto mx-4 sm:mx-0 sm:w-fit relative shadow-sm',
   {
     variants: {
       color: {
