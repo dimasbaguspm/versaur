@@ -42,7 +42,7 @@
       "import": "./dist/js/providers/index.js",
       "types": "./dist/types/providers/index.d.ts"
     },
-    "./styles.css": "./dist/js/styles.css",
+    "./styles.css": "./dist/assets/styles.css",
     "./eslint-subpath-import": "./dist/utils/enforce-subpath-import.js"
   },
   "files": [
