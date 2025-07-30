@@ -39,7 +39,7 @@ export default defineConfig({
       '@/utils': resolve(__dirname, 'src/utils'),
     },
   },
-  publicDir: 'assets',
+  publicDir: false,
   optimizeDeps: {
     esbuildOptions: { target: 'es2022', treeShaking: true },
   },
