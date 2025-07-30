@@ -1,2 +1,2 @@
-export * from './price-input'
+export { PriceInput } from './price-input'
 export type { PriceInputProps } from './types'

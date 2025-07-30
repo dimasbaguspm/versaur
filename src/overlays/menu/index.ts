@@ -1,2 +1,2 @@
-export * from './menu'
-export * from './types'
+export { Menu } from './menu'
+export type * from './types'

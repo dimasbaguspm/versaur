@@ -1,3 +1,2 @@
-export * from './switch-input'
-export * from './switch-input.atoms'
-export * from './types'
+export { SwitchInput } from './switch-input'
+export type * from './types'
