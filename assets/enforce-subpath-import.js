@@ -19,6 +19,7 @@ const symbolToSubpath = {
   Text: 'primitive',
   Tile: 'primitive',
   Alert: 'primitive',
+  DescriptionList: 'primitive',
   // overlays
   Drawer: 'overlays',
   Modal: 'overlays',
