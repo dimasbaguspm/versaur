@@ -1,62 +1,7 @@
 /**
  * ESLint rule for Versaur: enforce sub-path imports for optimal tree-shaking (Flat config compatible)
+ * This file expects a symbolToSubpath object to be defined in the scope before it is loaded.
  */
-
-const symbolToSubpath = {
-  // primitive
-  Button: 'primitive',
-  ButtonFloat: 'primitive',
-  ButtonIcon: 'primitive',
-  Anchor: 'primitive',
-  Avatar: 'primitive',
-  Badge: 'primitive',
-  Brand: 'primitive',
-  Calculator: 'primitive',
-  Calendar: 'primitive',
-  Icon: 'primitive',
-  Snackbar: 'primitive',
-  Table: 'primitive',
-  Text: 'primitive',
-  Tile: 'primitive',
-  Alert: 'primitive',
-  DescriptionList: 'primitive',
-  // overlays
-  Drawer: 'overlays',
-  Modal: 'overlays',
-  Menu: 'overlays',
-  BottomSheet: 'overlays',
-  // navigation
-  Tabs: 'navigation',
-  Breadcrumbs: 'navigation',
-  // layouts
-  AppBar: 'layouts',
-  BottomBar: 'layouts',
-  FormLayout: 'layouts',
-  PageLayout: 'layouts',
-  TopBar: 'layouts',
-  // feedbacks
-  LoadingIndicator: 'feedbacks',
-  ProgressIndicator: 'feedbacks',
-  Skeleton: 'feedbacks',
-  // forms
-  CheckboxInput: 'forms',
-  ChipSingleInput: 'forms',
-  ChipMultipleInput: 'forms',
-  DateSinglePickerInput: 'forms',
-  EmailInput: 'forms',
-  RadioInput: 'forms',
-  SegmentMultipleInput: 'forms',
-  SegmentSingleInput: 'forms',
-  SearchInput: 'forms',
-  SelectInput: 'forms',
-  SwitchInput: 'forms',
-  TextInput: 'forms',
-  TextareaInput: 'forms',
-  TimePickerInput: 'forms',
-  PriceInput: 'forms',
-  // providers
-  SnackbarsProvider: 'providers',
-}
 
 const rules = {
   meta: {
@@ -121,18 +66,4 @@ const rules = {
   },
 }
 
-// export array of config objects for flexible flat config usage
-export const versaurEnforceSubpathImport = [
-  {
-    plugins: {
-      dimasbaguspm: {
-        rules: {
-          'versaur-enforce-subpath-import': rules,
-        },
-      },
-    },
-    rules: {
-      'dimasbaguspm/versaur-enforce-subpath-import': 'warn',
-    },
-  },
-]
+module.exports = { rules }

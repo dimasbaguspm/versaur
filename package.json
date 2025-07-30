@@ -43,13 +43,13 @@
       "types": "./dist/types/providers/index.d.ts"
     },
     "./styles.css": "./dist/js/styles.css",
-    "./eslint-subpath-import": "./dist/js/enforce-subpath-import.js"
+    "./eslint-subpath-import": "./dist/utils/enforce-subpath-import.js"
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && node scripts/post-build.cjs",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
