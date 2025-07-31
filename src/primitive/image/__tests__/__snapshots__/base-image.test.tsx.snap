@@ -1,0 +1,49 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`BaseImage > renders a circle image 1`] = `
+<DocumentFragment>
+  <div
+    aria-hidden="true"
+    class="relative overflow-hidden flex items-center justify-center bg-neutral-soft text-ghost border border-border rounded-full aspect-square w-full h-full"
+    role="presentation"
+    style="height: 200px; width: 200px;"
+  >
+    <span
+      aria-hidden="true"
+      class="absolute inset-0 block w-full h-full animate-loading-bar bg-gradient-to-r from-transparent via-white/60 to-transparent pointer-events-none"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`BaseImage > renders a square image 1`] = `
+<DocumentFragment>
+  <div
+    aria-hidden="true"
+    class="relative overflow-hidden flex items-center justify-center bg-neutral-soft text-ghost border border-border aspect-square rounded w-full h-full"
+    role="presentation"
+    style="height: 200px; width: 200px;"
+  >
+    <span
+      aria-hidden="true"
+      class="absolute inset-0 block w-full h-full animate-loading-bar bg-gradient-to-r from-transparent via-white/60 to-transparent pointer-events-none"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`BaseImage > renders a standard image with skeleton and fallback 1`] = `
+<DocumentFragment>
+  <div
+    aria-hidden="true"
+    class="relative overflow-hidden flex items-center justify-center bg-neutral-soft text-ghost border border-border rounded w-full h-full"
+    role="presentation"
+    style="height: 200px; width: 200px;"
+  >
+    <span
+      aria-hidden="true"
+      class="absolute inset-0 block w-full h-full animate-loading-bar bg-gradient-to-r from-transparent via-white/60 to-transparent pointer-events-none"
+    />
+  </div>
+</DocumentFragment>
+`;
