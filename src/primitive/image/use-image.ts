@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 interface UseImageProps {
   src: string
@@ -10,10 +10,7 @@ interface UseImageProps {
 export function useImage({ src }: UseImageProps) {
   const [loaded, setLoaded] = useState(false)
   const [errored, setErrored] = useState(false)
-  const [naturalSize, setNaturalSize] = useState<{
-    width?: number
-    height?: number
-  }>({})
+  const isCancelled = useRef(false)
 
   const handleLoad = () => {
     setLoaded(true)
@@ -25,29 +22,27 @@ export function useImage({ src }: UseImageProps) {
 
   useEffect(() => {
     if (!src) return
-    let cancelled = false
     const img = new Image()
+
     img.src = src
     img.onload = () => {
-      if (!cancelled) {
-        setNaturalSize({ width: img.naturalWidth, height: img.naturalHeight })
+      if (!isCancelled.current) {
         setLoaded(true)
       }
     }
     img.onerror = () => {
-      if (!cancelled) {
+      if (!isCancelled.current) {
         setErrored(true)
       }
     }
     return () => {
-      cancelled = true
+      isCancelled.current = true
     }
   }, [src])
 
   return {
     loaded,
     errored,
-    naturalSize,
     handleLoad,
     handleError,
   }
