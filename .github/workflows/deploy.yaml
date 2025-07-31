@@ -1,0 +1,52 @@
+
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+env:
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  CI: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js 22.14
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.14.0
+
+      - name: Enable Corepack (Yarn Berry)
+        run: |
+          corepack enable
+
+      - name: Install dependencies
+        run: yarn install
+
+    #   - name: Run type check
+    #     run: yarn typecheck
+
+    #   - name: Run lint
+    #     run: yarn lint
+
+      - name: Build Storybook
+        run: yarn build-storybook
+
+    #   - name: Run tests
+    #     run: yarn test
+      - name: List Storybook output
+        run: ls -lR storybook-static
+
+      - name: Ship to VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          source: "storybook-static/**"
+          target: "/deployments/versaur"
