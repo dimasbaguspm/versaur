@@ -21,7 +21,7 @@ export const Basic: Story = {
   render: function Basic() {
     const [selected, setSelected] = useState('option1')
     return (
-      <div className='flex flex-col '>
+      <div className='flex flex-col'>
         <SelectableSingleInput
           value='option1'
           label={<span className='font-medium'>Option 1</span>}
