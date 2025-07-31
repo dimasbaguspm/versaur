@@ -1,6 +1,6 @@
 import { cva } from 'class-variance-authority'
 
-export const selectableSingleInputRootClass = cva(
+export const selectableMultipleInputRootClass = cva(
   'flex items-center gap-3 cursor-pointer border-b border-border select-none p-4 transition-colors hover:bg-neutral-light',
   {
     variants: {
@@ -20,10 +20,8 @@ export const selectableSingleInputRootClass = cva(
   }
 )
 
-// helpers.ts for SelectableSingleInput
-
 /**
- * Mobile-friendly box and focus/active/checked state classes for the radio box
+ * Mobile-friendly box and focus/active/checked state classes for the checkbox box
  */
 export const selectableBoxClass = cva(
   'flex h-6 w-6 items-center justify-center rounded-sm overflow-hidden border border-border transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2',
