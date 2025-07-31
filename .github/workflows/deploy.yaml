@@ -28,19 +28,14 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-    #   - name: Run type check
-    #     run: yarn typecheck
+      - name: Run type check
+        run: yarn typecheck
 
-    #   - name: Run lint
-    #     run: yarn lint
+      - name: Run lint
+        run: yarn lint
 
       - name: Build Storybook
         run: yarn build-storybook
-
-    #   - name: Run tests
-    #     run: yarn test
-      - name: List Storybook output
-        run: ls -lR storybook-static
 
       - name: Ship to VPS
         uses: appleboy/scp-action@v0.1.7
