@@ -3,6 +3,8 @@
  *
  * Demonstrates the Table compound component usage and variations
  */
+import { Pen, Trash } from 'lucide-react'
+import { ButtonIcon } from '../button-icon'
 import { Table } from './index'
 
 export default {
@@ -19,72 +21,60 @@ export default {
 }
 
 export const Basic = () => (
-  <Table>
+  <Table columns={12}>
     <Table.Header>
-      <Table.Column as='th' span={4}>
-        Date
-      </Table.Column>
-      <Table.Column as='th' span={4}>
-        Type
-      </Table.Column>
-      <Table.Column as='th' span={2}>
-        Amount
-      </Table.Column>
-      <Table.Column as='th' span={2}>
-        Action
-      </Table.Column>
+      <Table.HeaderItem span={4}>Date</Table.HeaderItem>
+      <Table.HeaderItem span={4}>Type</Table.HeaderItem>
+      <Table.HeaderItem span={2}>Amount</Table.HeaderItem>
+      <Table.HeaderItem span={2}>Action</Table.HeaderItem>
     </Table.Header>
     <Table.Body>
       <Table.Row>
-        <Table.Column as='td' span={4}>
-          2025-07-01
-        </Table.Column>
-        <Table.Column as='td' span={4}>
-          Income
-        </Table.Column>
-        <Table.Column as='td' span={2}>
-          $2,000
-        </Table.Column>
-        <Table.Column as='td' span={2}>
-          <button>Edit</button>
-        </Table.Column>
+        <Table.RowItem span={4}>2025-07-01</Table.RowItem>
+        <Table.RowItem span={4}>Income</Table.RowItem>
+        <Table.RowItem span={2}>$2,000</Table.RowItem>
+        <Table.RowItem span={2}>
+          <ButtonIcon as={Pen} variant='ghost' size='sm' aria-label='Edit' />
+          <ButtonIcon
+            as={Trash}
+            variant='danger-ghost'
+            size='sm'
+            aria-label='Delete'
+          />
+        </Table.RowItem>
       </Table.Row>
       <Table.Row>
-        <Table.Column as='td' span={4}>
-          2025-07-02
-        </Table.Column>
-        <Table.Column as='td' span={4}>
-          Expense
-        </Table.Column>
-        <Table.Column as='td' span={2}>
-          -$500
-        </Table.Column>
-        <Table.Column as='td' span={2}>
-          <button>Edit</button>
-        </Table.Column>
+        <Table.RowItem span={4}>2025-07-02</Table.RowItem>
+        <Table.RowItem span={4}>Expense</Table.RowItem>
+        <Table.RowItem span={2}>-$500</Table.RowItem>
+        <Table.RowItem span={2}>
+          <ButtonIcon as={Pen} variant='ghost' size='sm' aria-label='Edit' />
+          <ButtonIcon
+            as={Trash}
+            variant='danger-ghost'
+            size='sm'
+            aria-label='Delete'
+          />
+        </Table.RowItem>
       </Table.Row>
       <Table.Row>
-        <Table.Column as='td' span={4}>
-          2025-07-03
-        </Table.Column>
-        <Table.Column as='td' span={4}>
-          Income
-        </Table.Column>
-        <Table.Column as='td' span={2}>
-          $1,200
-        </Table.Column>
-        <Table.Column as='td' span={2}>
-          <button>Edit</button>
-        </Table.Column>
+        <Table.RowItem span={4}>2025-07-03</Table.RowItem>
+        <Table.RowItem span={4}>Income</Table.RowItem>
+        <Table.RowItem span={2}>$1,200</Table.RowItem>
+        <Table.RowItem span={2}>
+          <ButtonIcon as={Pen} variant='ghost' size='sm' aria-label='Edit' />
+          <ButtonIcon
+            as={Trash}
+            variant='danger-ghost'
+            size='sm'
+            aria-label='Delete'
+          />
+        </Table.RowItem>
       </Table.Row>
     </Table.Body>
     <Table.Footer>
-      <Table.Column as='td' span={8}>
-        Total
-      </Table.Column>
-      <Table.Column as='td' span={4}>
-        $2,700
-      </Table.Column>
+      <Table.RowItem span={8}>Total</Table.RowItem>
+      <Table.RowItem span={4}>$2,700</Table.RowItem>
     </Table.Footer>
   </Table>
 )
@@ -93,72 +83,43 @@ export const Basic = () => (
  * ColumnSpan story demonstrates various column span (1-12) and mixed widths
  */
 export const ColumnSpan = () => (
-  <Table>
+  <Table columns={12}>
     <Table.Header>
-      <Table.Column as='th' span={3}>
-        Date
-      </Table.Column>
-      <Table.Column as='th' span={3}>
-        Type
-      </Table.Column>
-      <Table.Column as='th' span={3}>
-        Amount
-      </Table.Column>
-      <Table.Column as='th' span={3}>
-        Action
-      </Table.Column>
+      <Table.HeaderItem span={3}>Date</Table.HeaderItem>
+      <Table.HeaderItem span={3}>Type</Table.HeaderItem>
+      <Table.HeaderItem span={3}>Amount</Table.HeaderItem>
+      <Table.HeaderItem span={3}>Action</Table.HeaderItem>
     </Table.Header>
     <Table.Body>
       <Table.Row>
-        <Table.Column as='td' span={6}>
-          2025-07-01
-        </Table.Column>
-        <Table.Column as='td' span={3}>
-          Income
-        </Table.Column>
-        <Table.Column as='td' span={2}>
-          $2,000
-        </Table.Column>
-        <Table.Column as='td' span={1}>
-          <button>Edit</button>
-        </Table.Column>
+        <Table.RowItem span={6}>2025-07-01</Table.RowItem>
+        <Table.RowItem span={3}>Income</Table.RowItem>
+        <Table.RowItem span={2}>$2,000</Table.RowItem>
+        <Table.RowItem span={1}>
+          <ButtonIcon as={Pen} variant='ghost' size='sm' aria-label='Edit' />
+        </Table.RowItem>
       </Table.Row>
       <Table.Row>
-        <Table.Column as='td' span={3}>
-          2025-07-02
-        </Table.Column>
-        <Table.Column as='td' span={6}>
-          Expense
-        </Table.Column>
-        <Table.Column as='td' span={2}>
-          -$500
-        </Table.Column>
-        <Table.Column as='td' span={1}>
-          <button>Edit</button>
-        </Table.Column>
+        <Table.RowItem span={3}>2025-07-02</Table.RowItem>
+        <Table.RowItem span={6}>Expense</Table.RowItem>
+        <Table.RowItem span={2}>-$500</Table.RowItem>
+        <Table.RowItem span={1}>
+          <ButtonIcon as={Pen} variant='ghost' size='sm' aria-label='Edit' />
+        </Table.RowItem>
       </Table.Row>
       <Table.Row>
-        <Table.Column
-          as='td'
+        <Table.RowItem
           span={12}
           className='text-center font-semibold bg-[var(--color-tertiary-soft)]'
         >
           Spans all 12 columns
-        </Table.Column>
+        </Table.RowItem>
       </Table.Row>
       <Table.Row>
-        <Table.Column as='td' span={2}>
-          A
-        </Table.Column>
-        <Table.Column as='td' span={2}>
-          B
-        </Table.Column>
-        <Table.Column as='td' span={3}>
-          C
-        </Table.Column>
-        <Table.Column as='td' span={5}>
-          D
-        </Table.Column>
+        <Table.RowItem span={2}>A</Table.RowItem>
+        <Table.RowItem span={2}>B</Table.RowItem>
+        <Table.RowItem span={3}>C</Table.RowItem>
+        <Table.RowItem span={5}>D</Table.RowItem>
       </Table.Row>
     </Table.Body>
   </Table>
@@ -168,40 +129,38 @@ export const ColumnSpan = () => (
  * Alignment story demonstrates left, center, and right alignment in TableColumn
  */
 export const Alignment = () => (
-  <Table>
+  <Table columns={12}>
     <Table.Header>
-      <Table.Column as='th' span={4} align='left'>
+      <Table.HeaderItem span={4} align='left'>
         Left
-      </Table.Column>
-      <Table.Column as='th' span={4} align='center'>
+      </Table.HeaderItem>
+      <Table.HeaderItem span={4} align='center'>
         Center
-      </Table.Column>
-      <Table.Column as='th' span={4} align='right'>
+      </Table.HeaderItem>
+      <Table.HeaderItem span={4} align='right'>
         Right
-      </Table.Column>
+      </Table.HeaderItem>
     </Table.Header>
     <Table.Body>
       <Table.Row>
-        <Table.Column as='td' span={4} align='left'>
+        <Table.RowItem span={4} align='left'>
           2025-07-01
-        </Table.Column>
-        <Table.Column as='td' span={4} align='center'>
+        </Table.RowItem>
+        <Table.RowItem span={4} align='center'>
           Centered
-        </Table.Column>
-        <Table.Column as='td' span={4} align='right'>
+        </Table.RowItem>
+        <Table.RowItem span={4} align='right'>
           $2,000
-        </Table.Column>
+        </Table.RowItem>
       </Table.Row>
       <Table.Row>
-        <Table.Column as='td' span={4}>
-          Default (left)
-        </Table.Column>
-        <Table.Column as='td' span={4} align='center'>
+        <Table.RowItem span={4}>Default (left)</Table.RowItem>
+        <Table.RowItem span={4} align='center'>
           Centered
-        </Table.Column>
-        <Table.Column as='td' span={4} align='right'>
+        </Table.RowItem>
+        <Table.RowItem span={4} align='right'>
           Right
-        </Table.Column>
+        </Table.RowItem>
       </Table.Row>
     </Table.Body>
   </Table>

@@ -6,21 +6,22 @@ import type { HTMLAttributes, ReactNode, TableHTMLAttributes } from 'react'
 export interface TableProps extends TableHTMLAttributes<HTMLTableElement> {
   /** Table children (Header, Body, Footer, etc) */
   children: ReactNode
-  maxColumns?: number // Maximum number of columns for grid layout
+  /** Maximum number of columns in the table */
+  columns: number
 }
 
 /**
  * Context value for Table
  */
 export interface TableContextValue {
-  maxColumns: number
+  columns: number
 }
 
 /**
  * TableHeaderProps for <Table.Header>
  */
-export interface TableHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode
+export interface TableHeaderProps extends HTMLAttributes<HTMLDivElement> {
+  children: ReactNode
 }
 
 /**
@@ -56,3 +57,6 @@ export interface TableColumnProps extends HTMLAttributes<HTMLDivElement> {
   /** Horizontal alignment of cell content (left, center, right). Default: left */
   align?: 'left' | 'center' | 'right'
 }
+
+export type TableHeaderItemProps = Omit<TableColumnProps, 'as'>
+export type TableRowItemProps = Omit<TableColumnProps, 'as'>

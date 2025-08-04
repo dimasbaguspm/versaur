@@ -5,6 +5,8 @@ import type {
   TableFooterProps,
   TableRowProps,
   TableColumnProps,
+  TableHeaderItemProps,
+  TableRowItemProps,
 } from './types'
 import { cn } from '@/utils/cn'
 import { useTableContext } from './context'
@@ -15,7 +17,7 @@ import { getRowSpanClass, getTableColumnClass } from './helpers'
  */
 const TableHeader = forwardRef<HTMLDivElement, TableHeaderProps>(
   ({ children, className, ...props }, ref) => {
-    const { maxColumns } = useTableContext()
+    const { columns } = useTableContext()
     return (
       <div
         role='rowgroup'
@@ -25,7 +27,7 @@ const TableHeader = forwardRef<HTMLDivElement, TableHeaderProps>(
       >
         <div
           role='row'
-          className={cn('grid gap-4', getTableColumnClass(maxColumns))}
+          className={cn('grid gap-4', getTableColumnClass(columns))}
         >
           {children}
         </div>
@@ -50,7 +52,7 @@ const TableBody = forwardRef<HTMLDivElement, TableBodyProps>(
  */
 const TableFooter = forwardRef<HTMLDivElement, TableFooterProps>(
   ({ children, className, ...props }, ref) => {
-    const { maxColumns } = useTableContext()
+    const { columns } = useTableContext()
     return (
       <div
         role='rowgroup'
@@ -60,7 +62,7 @@ const TableFooter = forwardRef<HTMLDivElement, TableFooterProps>(
       >
         <div
           role='row'
-          className={cn('grid gap-4', getTableColumnClass(maxColumns))}
+          className={cn('grid gap-4', getTableColumnClass(columns))}
         >
           {children}
         </div>
@@ -74,14 +76,14 @@ const TableFooter = forwardRef<HTMLDivElement, TableFooterProps>(
  */
 const TableRow = forwardRef<HTMLDivElement, TableRowProps>(
   ({ children, className, ...props }, ref) => {
-    const { maxColumns } = useTableContext()
+    const { columns } = useTableContext()
 
     return (
       <div
         role='row'
         className={cn(
           'grid gap-4',
-          getTableColumnClass(maxColumns),
+          getTableColumnClass(columns),
           'border-b border-border last:border-0',
           className
         )}
@@ -100,6 +102,7 @@ const TableRow = forwardRef<HTMLDivElement, TableRowProps>(
 const TableColumn = forwardRef<HTMLDivElement, TableColumnProps>(
   ({ as = 'td', span, align = 'left', children, className, ...props }, ref) => {
     const role = as === 'th' ? 'columnheader' : 'cell'
+
     let alignClass = 'text-left'
     if (align === 'center') alignClass = 'text-center'
     else if (align === 'right') alignClass = 'text-right'
@@ -113,6 +116,7 @@ const TableColumn = forwardRef<HTMLDivElement, TableColumnProps>(
           '[&:not(:last-child)]:border-r [&:not(:last-child)]:border-border',
           getRowSpanClass(span),
           alignClass,
+          'truncate overflow-hidden whitespace-nowrap',
           className
         )}
         {...props}
@@ -123,4 +127,39 @@ const TableColumn = forwardRef<HTMLDivElement, TableColumnProps>(
   }
 )
 
-export { TableHeader, TableBody, TableFooter, TableRow, TableColumn }
+const TableRowItem = forwardRef<HTMLDivElement, TableRowItemProps>(
+  (props, ref) => (
+    <TableColumn
+      {...props}
+      as='td'
+      ref={ref}
+      className={cn(
+        'truncate overflow-hidden whitespace-nowrap',
+        props.className
+      )}
+    />
+  )
+)
+
+const TableHeaderItem = forwardRef<HTMLDivElement, TableHeaderItemProps>(
+  (props, ref) => (
+    <TableColumn
+      {...props}
+      as='th'
+      ref={ref}
+      className={cn(
+        'truncate overflow-hidden whitespace-nowrap',
+        props.className
+      )}
+    />
+  )
+)
+
+export {
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableRow,
+  TableRowItem,
+  TableHeaderItem,
+}
