@@ -4,7 +4,7 @@ import { composeStories } from '@storybook/react'
 
 const { Basic, Sizes } = composeStories(stories)
 
-describe('Menu (compound/context)', () => {
+describe('Menu', () => {
   it('renders basic menu correctly', () => {
     const { asFragment } = render(<Basic />)
     expect(asFragment()).toMatchSnapshot()
@@ -19,6 +19,7 @@ describe('Menu (compound/context)', () => {
     render(<Basic />)
     const trigger = screen.getByLabelText('Open menu')
     fireEvent.click(trigger)
+    // Menu should be open and first item focused
     expect(screen.getByText('Profile')).toHaveFocus()
   })
 

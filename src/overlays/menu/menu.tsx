@@ -1,41 +1,56 @@
-/**
- * Menu component (Compound + Context Pattern)
- * Follows Material Design menu principles
- */
-import React, { useRef } from 'react'
-import { MenuContext } from './context'
-import type { MenuRootProps } from './types'
-import { MenuTrigger, MenuContent, MenuItem } from './menu.atoms'
-import {
-  useMenuOutsideClick,
-  useMenuFocusFirstItem,
-  useMenuKeyboardNavigation,
-} from './use-menu'
+import React, { useRef, useId, cloneElement } from 'react'
+import type { ReactNode } from 'react'
+import { cn } from '@/utils/cn'
+import { menuVariants } from './helpers'
+import type { MenuSize } from './types'
+import { useMenuFocusFirstItem, useMenuOutsideClick } from './use-menu'
 
-const MenuRoot: React.FC<MenuRootProps> = ({
-  children,
+export interface MenuProps {
+  /** Whether the menu is open (controlled externally) */
+  isOpen: boolean
+  /** Callback when clicking outside menu */
+  onOutsideClick: () => void
+  /** Menu size variant */
+  size?: MenuSize
+  /** Menu content (MenuContent/MenuItem) */
+  content: ReactNode
+  /** Trigger element */
+  children: ReactNode
+}
+
+export const Menu: React.FC<MenuProps> = ({
   isOpen,
   onOutsideClick,
   size = 'md',
+  content,
+  children,
 }) => {
-  const triggerRef = useRef<HTMLButtonElement>(null)
-  const contentRef = useRef<HTMLDivElement>(null)
+  const triggerRef = useRef<HTMLButtonElement | null>(null)
+  const contentRef = useRef<HTMLDivElement | null>(null)
+  const menuId = useId()
 
   useMenuOutsideClick(isOpen, contentRef, triggerRef, onOutsideClick)
   useMenuFocusFirstItem(isOpen, contentRef)
-  useMenuKeyboardNavigation(isOpen, contentRef, triggerRef, onOutsideClick)
 
   return (
-    <MenuContext.Provider
-      value={{ open: isOpen, triggerRef, contentRef, size }}
-    >
-      {children}
-    </MenuContext.Provider>
+    <div className='relative w-fit'>
+      {cloneElement(children as React.ReactElement, {
+        // @ts-expect-error: ref is valid for button or forwardRef components
+        ref: triggerRef,
+        'aria-haspopup': 'menu',
+        'aria-expanded': isOpen,
+        'aria-controls': menuId,
+        tabIndex: 0,
+      })}
+      <div
+        id={menuId}
+        ref={contentRef}
+        className={cn(menuVariants({ size, open: isOpen }))}
+        role='menu'
+        aria-hidden={!isOpen}
+      >
+        {content}
+      </div>
+    </div>
   )
 }
-
-export const Menu = Object.assign(MenuRoot, {
-  Trigger: MenuTrigger,
-  Content: MenuContent,
-  Item: MenuItem,
-})

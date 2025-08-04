@@ -1,35 +1,30 @@
 /**
- * Menu component types
+ * Menu types for Versaur
  */
-import type { ReactNode, ButtonHTMLAttributes, HTMLAttributes } from 'react'
+import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from 'react'
 
 export type MenuSize = 'sm' | 'md'
+
 /**
- * Props for MenuRoot
+ * Props for Menu
  */
-export interface MenuRootProps {
-  /** Menu children (Trigger, Content, etc) */
-  children: ReactNode
-  /** open state */
+export interface MenuProps {
+  /** Whether the menu is open (controlled externally) */
   isOpen: boolean
-  /** Callback when open state changes */
+  /** Callback when clicking outside menu */
   onOutsideClick: () => void
   /** Menu size variant */
   size?: MenuSize
-}
-
-/**
- * Props for MenuTrigger
- */
-export interface MenuTriggerProps extends HTMLAttributes<HTMLSpanElement> {
-  /** Trigger content */
+  /** Menu content (MenuContent/MenuItem) */
+  content: ReactNode
+  /** Trigger element */
   children: ReactNode
 }
 
 /**
  * Props for MenuContent
  */
-export interface MenuContentProps extends HTMLAttributes<HTMLDivElement> {
+export interface MenuContentProps extends HTMLAttributes<HTMLUListElement> {
   /** Menu items */
   children: ReactNode
 }

@@ -1,113 +1,38 @@
 /**
- * Menu compound atoms
- * Implements ARIA, context, and strict typing for Versaur Menu
+ * Menu atoms for Versaur
  */
-import React, { forwardRef, useId } from 'react'
-import { useMenuContext } from './context'
-import type { MenuTriggerProps, MenuContentProps, MenuItemProps } from './types'
+import { forwardRef } from 'react'
+import type { MenuContentProps, MenuItemProps } from './types'
 import { cn } from '@/utils/cn'
-import { menuVariants, menuItemVariants } from './helpers'
+import { menuItemVariants } from './helpers'
 
 /**
- * MenuTrigger: Button to open/close menu
+ * MenuContent: Wraps menu items
  */
-export const MenuTrigger = forwardRef<HTMLSpanElement, MenuTriggerProps>(
-  ({ children, ...props }, ref) => {
-    const { open, triggerRef } = useMenuContext()
+export const MenuContent = forwardRef<HTMLUListElement, MenuContentProps>(
+  ({ children }, ref) => {
     return (
-      <span
-        ref={node => {
-          triggerRef.current = node as HTMLSpanElement | null
-          if (typeof ref === 'function') ref(node)
-          else if (ref)
-            (ref as React.MutableRefObject<HTMLSpanElement | null>).current =
-              node
-        }}
-        aria-haspopup='menu'
-        aria-expanded={open}
-        aria-controls='menu-content'
-        {...props}
-      >
+      <ul ref={ref} className='flex flex-col gap-1'>
         {children}
-      </span>
+      </ul>
     )
   }
 )
 
 /**
- * MenuContent: Menu popup, positioned below trigger
+ * MenuItem: Single menu item
  */
-export const MenuContent = forwardRef<HTMLDivElement, MenuContentProps>(
-  ({ children, className, ...props }, ref) => {
-    const { open, contentRef, triggerRef, size } = useMenuContext()
-    const menuId = useId()
-
-    // Calculate position below trigger
-    let top = 0
-    let left = 0
-    if (triggerRef.current) {
-      const rect = triggerRef.current.getBoundingClientRect()
-      top = rect.bottom + window.scrollY + 4 // Add 4px gap from the top
-      left = rect.left + window.scrollX
-    }
-
+export const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
+  ({ className, ...props }, ref) => {
     return (
-      <div
-        ref={node => {
-          contentRef.current = node as HTMLDivElement | null
-          if (typeof ref === 'function') ref(node)
-          else if (ref)
-            (ref as React.MutableRefObject<HTMLDivElement | null>).current =
-              node
-        }}
-        id={`menu-content-${menuId}`}
-        role='menu'
-        tabIndex={-1}
-        aria-hidden={!open}
-        className={cn(
-          menuVariants({
-            size,
-          }),
-          'absolute z-50 transition-opacity duration-150 ease-out',
-          open ? 'opacity-100' : 'opacity-0',
-          className
-        )}
-        style={{
-          minWidth: triggerRef.current?.offsetWidth,
-          top,
-          left,
-        }}
-        {...props}
-      >
-        {open && children}
-      </div>
-    )
-  }
-)
-
-/**
- * MenuItem: Single menu option
- */
-export const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
-  ({ children, disabled, className, ...props }, ref) => {
-    const { size } = useMenuContext()
-    return (
-      <button
-        ref={ref}
-        role='menuitem'
-        tabIndex={0} // Make menu items tabbable for native Tab navigation
-        disabled={disabled}
-        aria-disabled={disabled}
-        className={cn(
-          menuItemVariants({
-            size,
-          }),
-          className
-        )}
-        {...props}
-      >
-        {children}
-      </button>
+      <li ref={ref}>
+        <button
+          className={cn(menuItemVariants(), className)}
+          tabIndex={-1}
+          role='menuitem'
+          {...props}
+        />
+      </li>
     )
   }
 )
