@@ -1,0 +1,29 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Tooltip > renders correctly (snapshot) 1`] = `
+<DocumentFragment>
+  <div
+    class="relative w-fit"
+  >
+    <button
+      aria-describedby="«r0»"
+      class="bg-primary text-white px-4 py-2 rounded"
+      tabindex="0"
+    >
+      Hover me
+    </button>
+    <div
+      aria-hidden="true"
+      class="absolute z-50 px-2 py-1 rounded bg-neutral transition-opacity duration-150 min-w-[max-content] max-w-sm whitespace-pre-line top-full left-1/2 -translate-x-1/2 mt-2 opacity-0 pointer-events-none"
+      id="«r0»"
+      role="tooltip"
+    >
+      <p
+        class="text-black text-left text-xs font-normal"
+      >
+        This is a tooltip
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
