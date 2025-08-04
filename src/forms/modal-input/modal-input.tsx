@@ -1,8 +1,7 @@
 import { useState, useMemo, forwardRef } from 'react'
 import { TextInput } from '../text-input/text-input'
 import { Modal } from '@/overlays/modal/modal'
-import { type ModalInputContextValue } from './context'
-import type { ModalInputProps } from './types'
+import type { ModalInputProps, ModalInputContextValue } from './types'
 
 /**
  * ModalInput is a readOnly TextInput that opens a Modal when clicked.

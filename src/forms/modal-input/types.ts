@@ -1,7 +1,13 @@
 import type { ModalRootProps } from '@/overlays'
 import type { TextInputProps } from '../text-input/types'
-import type { ModalInputContextValue } from './context'
-import type { ReactNode } from 'react'
+import type { ChangeEventHandler, InputHTMLAttributes, ReactNode } from 'react'
+
+export interface ModalInputContextValue {
+  isOpen: boolean
+  setIsOpen: (open: boolean) => void
+  onChange?: ChangeEventHandler<HTMLInputElement>
+  value: InputHTMLAttributes<HTMLInputElement>['value']
+}
 
 /**
  * ModalInputProps extends TextInputProps, but input is always readOnly
