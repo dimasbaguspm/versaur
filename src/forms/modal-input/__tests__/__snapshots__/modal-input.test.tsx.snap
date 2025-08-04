@@ -43,7 +43,7 @@ exports[`ModalInput > renders as readOnly TextInput and matches snapshot 1`] = `
           class="block text-sm font-medium text-foreground mb-2"
           for="«r1»"
         >
-          Hehe
+          Type something
         </label>
         <div
           class="relative w-full"
