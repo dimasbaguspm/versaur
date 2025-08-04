@@ -38,23 +38,47 @@ exports[`ModalInput > renders as readOnly TextInput and matches snapshot 1`] = `
       role="dialog"
       tabindex="0"
     >
-      <div>
-        <label
-          class="block text-sm font-medium text-foreground mb-2"
-          for="«r1»"
+      <div
+        class="px-6 pt-6 pb-2 text-lg font-semibold"
+      >
+        <span
+          class="text-ghost text-left text-lg font-bold"
         >
-          Type something
-        </label>
-        <div
-          class="relative w-full"
-        >
-          <input
-            aria-invalid="false"
-            class="block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 border-primary/30 text-foreground focus:border-primary focus:ring-primary/20 pl-3 pr-3 h-10"
-            id="«r1»"
-            value=""
-          />
+          Modal Input Example
+        </span>
+      </div>
+      <div
+        class="px-6 py-2"
+      >
+        <div>
+          <label
+            class="block text-sm font-medium text-foreground mb-2"
+            for="«r1»"
+          >
+            Type something
+          </label>
+          <div
+            class="relative w-full"
+          >
+            <input
+              aria-invalid="false"
+              class="block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 border-primary/30 text-foreground focus:border-primary focus:ring-primary/20 pl-3 pr-3 h-10"
+              id="«r1»"
+              value=""
+            />
+          </div>
         </div>
+      </div>
+      <div
+        class="px-6 py-4 flex justify-end gap-2"
+      >
+        <button
+          aria-disabled="false"
+          class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 px-4 text-sm min-w-[2.5rem] btn btn-primary"
+          type="button"
+        >
+          Confirm
+        </button>
       </div>
     </div>
   </div>

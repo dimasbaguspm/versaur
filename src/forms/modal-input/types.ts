@@ -1,6 +1,7 @@
 import type { ModalRootProps } from '@/overlays'
 import type { TextInputProps } from '../text-input/types'
 import type { ModalInputContextValue } from './context'
+import type { ReactNode } from 'react'
 
 /**
  * ModalInputProps extends TextInputProps, but input is always readOnly
@@ -9,11 +10,7 @@ import type { ModalInputContextValue } from './context'
  * @property {React.ReactNode} children - Modal content
  */
 export interface ModalInputProps
-  extends Omit<TextInputProps, 'readOnly'>,
+  extends Omit<TextInputProps, 'readOnly' | 'children'>,
     Pick<ModalRootProps, 'size' | 'placement'> {
-  children: React.ReactNode
-}
-
-export interface ModalInputModalProps {
-  children: (ctx: ModalInputContextValue) => React.ReactNode
+  children: (ctx: ModalInputContextValue) => ReactNode
 }

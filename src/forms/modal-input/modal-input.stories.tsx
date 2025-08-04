@@ -1,6 +1,7 @@
 import { ModalInput } from './modal-input'
 import { TextInput } from '../text-input'
 import { useState } from 'react'
+import { Button, Text } from '@/primitive'
 
 export default {
   title: 'Forms/ModalInput',
@@ -17,15 +18,30 @@ export const Basic = () => {
       value={value}
       onChange={e => setValue(e.target.value)}
     >
-      <ModalInput.Modal>
-        {ctx => (
-          <TextInput
-            onChange={ctx.onChange}
-            value={ctx.value}
-            label='Type something'
-          />
-        )}
-      </ModalInput.Modal>
+      {ctx => (
+        <>
+          <ModalInput.Header>
+            <Text fontSize='lg' fontWeight='bold'>
+              Modal Input Example
+            </Text>
+          </ModalInput.Header>
+          <ModalInput.Body>
+            <TextInput
+              onChange={ctx.onChange}
+              value={ctx.value}
+              label='Type something'
+            />
+          </ModalInput.Body>
+          <ModalInput.Footer>
+            <Button
+              onClick={() => ctx.setIsOpen(false)}
+              className='btn btn-primary'
+            >
+              Confirm
+            </Button>
+          </ModalInput.Footer>
+        </>
+      )}
     </ModalInput>
   )
 }
