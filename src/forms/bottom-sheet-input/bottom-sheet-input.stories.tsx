@@ -1,48 +1,44 @@
-import { ModalInput } from './modal-input'
+import { BottomSheetInput } from './bottom-sheet-input'
 import { useState } from 'react'
-import { Button, Text } from '@/primitive'
+import { Button } from '@/primitive'
 import { SearchInput } from '../search-input'
 
 export default {
-  title: 'Forms/ModalInput',
-  component: ModalInput,
+  title: 'Forms/BottomSheetInput',
+  component: BottomSheetInput,
 }
 
 export const Basic = () => {
   const [value, setValue] = useState('')
 
   return (
-    <ModalInput
+    <BottomSheetInput
       label='Pick a value'
-      placeholder='Click to open modal'
+      placeholder='Click to open bottom sheet'
       value={value}
       onChange={e => setValue(e.target.value)}
     >
       {ctx => (
         <>
-          <ModalInput.Header>
-            <Text fontSize='lg' fontWeight='bold'>
-              Modal Input Example
-            </Text>
-          </ModalInput.Header>
-          <ModalInput.Body>
+          <BottomSheetInput.Body>
             <SearchInput
+              autoFocus
               label='Search Transactions'
               value={value}
               onChange={ctx.onChange}
               placeholder='Type something...'
             />
-          </ModalInput.Body>
-          <ModalInput.Footer>
+          </BottomSheetInput.Body>
+          <BottomSheetInput.Footer>
             <Button
               onClick={() => ctx.setIsOpen(false)}
               className='btn btn-primary'
             >
               Confirm
             </Button>
-          </ModalInput.Footer>
+          </BottomSheetInput.Footer>
         </>
       )}
-    </ModalInput>
+    </BottomSheetInput>
   )
 }

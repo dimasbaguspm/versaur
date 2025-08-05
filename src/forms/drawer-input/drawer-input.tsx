@@ -26,6 +26,12 @@ const DrawerInputRoot = forwardRef<HTMLInputElement, DrawerInputProps>(
           readOnly
           tabIndex={0}
           onClick={() => setIsOpen(true)}
+          onKeyDown={e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault()
+              setIsOpen(true)
+            }
+          }}
           aria-haspopup='dialog'
           aria-expanded={isOpen}
         />
@@ -35,7 +41,7 @@ const DrawerInputRoot = forwardRef<HTMLInputElement, DrawerInputProps>(
           size={size}
           position={position}
         >
-          {children(contextValue)}
+          {isOpen && children(contextValue)}
         </Drawer>
       </>
     )

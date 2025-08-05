@@ -7,8 +7,7 @@ import { useState } from 'react'
 import { DrawerInput } from './drawer-input'
 import { Button } from '@/primitive/button/button'
 import type { Meta, StoryObj } from '@storybook/react'
-import { Text } from '@/primitive'
-import { TextInput } from '../text-input'
+import { SearchInput } from '../search-input'
 
 const meta: Meta<typeof DrawerInput> = {
   title: 'Forms/DrawerInput',
@@ -24,18 +23,16 @@ function BasicStory() {
     <DrawerInput
       label='Select value'
       value={value}
+      placeholder='Click to open modal'
       onChange={e => setValue(e.target.value)}
+      size='lg'
     >
       {ctx => (
         <>
-          <DrawerInput.Header>
-            <Text fontSize='lg' fontWeight='bold'>
-              Drawer Input Example
-            </Text>
-          </DrawerInput.Header>
-
           <DrawerInput.Body>
-            <TextInput
+            <SearchInput
+              autoFocus
+              label='Search Transactions'
               value={value}
               onChange={ctx.onChange}
               placeholder='Type something...'
