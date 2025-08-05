@@ -37,7 +37,7 @@ const ModalInputRoot = forwardRef<HTMLInputElement, ModalInputProps>(
         />
         <Modal
           isOpen={isOpen}
-          onOpenChange={setIsOpen}
+          onClose={() => setIsOpen(false)}
           size={size}
           placement={placement}
         >
