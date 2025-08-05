@@ -1,9 +1,12 @@
+import type { OverlayPortalProps } from '@/utils/overlay-portal'
 import type { HTMLAttributes } from 'react'
 
 /**
  * Props for BottomSheetRoot (main component)
  */
-export interface BottomSheetProps extends HTMLAttributes<HTMLDivElement> {
+export interface BottomSheetProps
+  extends HTMLAttributes<HTMLDivElement>,
+    OverlayPortalProps {
   /**
    * Controls open state (controlled only)
    */

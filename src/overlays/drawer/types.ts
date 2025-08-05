@@ -5,6 +5,7 @@ export type DrawerTransitionType = 'slide' | 'fade'
 import type { ComponentPropsWithoutRef, HTMLAttributes, ReactNode } from 'react'
 import type { VariantProps } from '@/utils/variants'
 import type { drawerVariants } from './helpers'
+import type { OverlayPortalProps } from '@/utils/overlay-portal'
 
 /**
  * Base drawer variant props derived from the drawer variants
@@ -47,7 +48,9 @@ export interface DrawerContextValue {
 /**
  * Props for the Drawer component (controlled component)
  */
-export interface DrawerProps extends ComponentPropsWithoutRef<'div'> {
+export interface DrawerProps
+  extends ComponentPropsWithoutRef<'div'>,
+    OverlayPortalProps {
   /** Whether the drawer is open (required - controlled component) */
   isOpen: boolean
   /** Callback when the drawer should close */

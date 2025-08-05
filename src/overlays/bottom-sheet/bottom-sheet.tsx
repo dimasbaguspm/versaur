@@ -10,6 +10,7 @@ import {
 import { cn } from '@/utils'
 import { useEscapeClose } from '@/utils/use-escape-close'
 import { combineRefs } from '@/utils/combine-ref'
+import { OverlayPortal } from '@/utils/overlay-portal'
 
 /**
  * BottomSheet component for mobile overlays
@@ -18,7 +19,7 @@ import { combineRefs } from '@/utils/combine-ref'
  */
 
 const BottomSheetRoot = forwardRef<HTMLDivElement, BottomSheetProps>(
-  ({ isOpen, children, className, onClose, ...props }, ref) => {
+  ({ isOpen, children, className, onClose, container, ...props }, ref) => {
     const sheetRef = useEscapeClose(isOpen, onClose)
 
     const handleBackdropClick = () => {
@@ -26,7 +27,7 @@ const BottomSheetRoot = forwardRef<HTMLDivElement, BottomSheetProps>(
     }
 
     return (
-      <>
+      <OverlayPortal container={container}>
         <div
           className={bottomSheetBackdropVariants({ open: isOpen })}
           aria-hidden='true'
@@ -47,7 +48,7 @@ const BottomSheetRoot = forwardRef<HTMLDivElement, BottomSheetProps>(
         >
           {children}
         </div>
-      </>
+      </OverlayPortal>
     )
   }
 )

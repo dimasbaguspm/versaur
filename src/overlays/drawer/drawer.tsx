@@ -11,12 +11,14 @@ import {
 import { drawerVariants } from './helpers'
 import { useEscapeClose } from '@/utils/use-escape-close'
 import type { DrawerProps, DrawerContextValue } from './types'
+import { OverlayPortal } from '@/utils/overlay-portal'
 
 /**
  * Drawer - A controlled sliding drawer overlay component
  * Provides additional space for content with positioning, sizing, and glass variant options
  */
 export const DrawerRoot: React.FC<DrawerProps> = ({
+  container,
   children,
   isOpen,
   onClose,
@@ -43,43 +45,45 @@ export const DrawerRoot: React.FC<DrawerProps> = ({
   const drawerRef = useEscapeClose(isOpen, handleClose)
 
   return (
-    <DrawerContext.Provider value={contextValue}>
-      <div
-        className={cn(
-          'fixed z-50 inset-0 pointer-events-none',
-          isOpen && 'pointer-events-auto'
-        )}
-      >
-        <DrawerOverlay />
+    <OverlayPortal container={container}>
+      <DrawerContext.Provider value={contextValue}>
         <div
-          ref={drawerRef}
-          tabIndex={-1}
-          role={isOpen ? 'dialog' : undefined}
-          aria-modal={isOpen ? 'true' : undefined}
           className={cn(
-            drawerVariants({
-              position,
-              size,
-              variant,
-              transitionType,
-            }),
-            transitionType === 'slide'
-              ? [
-                  !isOpen && position === 'left' && '-translate-x-full',
-                  !isOpen && position === 'right' && 'translate-x-full',
-                ]
-              : [
-                  'left-0 right-0 top-0 bottom-0',
-                  isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none',
-                ],
-            className
+            'fixed z-50 inset-0 pointer-events-none',
+            isOpen && 'pointer-events-auto'
           )}
-          {...props}
         >
-          {isOpen && children}
+          <DrawerOverlay />
+          <div
+            ref={drawerRef}
+            tabIndex={-1}
+            role={isOpen ? 'dialog' : undefined}
+            aria-modal={isOpen ? 'true' : undefined}
+            className={cn(
+              drawerVariants({
+                position,
+                size,
+                variant,
+                transitionType,
+              }),
+              transitionType === 'slide'
+                ? [
+                    !isOpen && position === 'left' && '-translate-x-full',
+                    !isOpen && position === 'right' && 'translate-x-full',
+                  ]
+                : [
+                    'left-0 right-0 top-0 bottom-0',
+                    isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none',
+                  ],
+              className
+            )}
+            {...props}
+          >
+            {isOpen && children}
+          </div>
         </div>
-      </div>
-    </DrawerContext.Provider>
+      </DrawerContext.Provider>
+    </OverlayPortal>
   )
 }
 
