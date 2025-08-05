@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import { cn } from '@/utils/cn'
 import { DrawerContext } from './context'
 import {
@@ -9,6 +9,7 @@ import {
   DrawerTab,
 } from './drawer.atoms'
 import { drawerVariants } from './helpers'
+import { useEscapeClose } from '@/utils/use-escape-close'
 import type { DrawerProps, DrawerContextValue } from './types'
 
 /**
@@ -39,24 +40,7 @@ export const DrawerRoot: React.FC<DrawerProps> = ({
     transitionType,
   }
 
-  // Handle escape key to close drawer
-  useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && isOpen) {
-        handleClose()
-      }
-    }
-
-    if (isOpen) {
-      document.addEventListener('keydown', handleEscape)
-      document.body.style.overflow = 'hidden'
-    }
-
-    return () => {
-      document.removeEventListener('keydown', handleEscape)
-      document.body.style.overflow = 'unset'
-    }
-  }, [isOpen, handleClose])
+  const drawerRef = useEscapeClose(isOpen, handleClose)
 
   return (
     <DrawerContext.Provider value={contextValue}>
@@ -68,6 +52,8 @@ export const DrawerRoot: React.FC<DrawerProps> = ({
       >
         <DrawerOverlay />
         <div
+          ref={drawerRef}
+          tabIndex={-1}
           role={isOpen ? 'dialog' : undefined}
           aria-modal={isOpen ? 'true' : undefined}
           className={cn(

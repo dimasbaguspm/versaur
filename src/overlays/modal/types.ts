@@ -13,8 +13,8 @@ export type ModalPlacement = 'top' | 'center'
 export interface ModalRootProps {
   /** Controls whether the modal is open */
   isOpen: boolean
-  /** Called when modal requests to close (ESC, overlay click) */
-  onOpenChange?: (open: boolean) => void
+  /** Function to close the modal */
+  onClose: () => void
   /** Modal size variant */
   size?: ModalSize
   /** Modal placement variant */
@@ -46,8 +46,8 @@ export interface ModalBodyProps extends HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
 }
 
-export interface ModalOverlayProps extends HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode
+export interface ModalOverlayProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
   placement?: string
   onOverlayClick?: (e: React.MouseEvent<HTMLDivElement>) => void
 }

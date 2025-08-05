@@ -17,7 +17,7 @@ export const modalOverlayVariants = cva(
 
 export const modalContentVariants = cva(
   [
-    'bg-white rounded-lg shadow-xl relative',
+    'z-61 bg-white rounded-lg shadow-xl fixed',
     'flex flex-col',
     'outline-none',
     'mx-4',
@@ -32,13 +32,18 @@ export const modalContentVariants = cva(
         'fit-content': 'w-fit max-w-full', // Fit content, no max width
       },
       placement: {
-        top: 'mt-4',
-        center: '',
+        top: 'top-8 left-1/2 -translate-x-1/2',
+        center: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
+      },
+      isOpen: {
+        true: 'opacity-100 scale-100',
+        false: 'opacity-0 scale-95 pointer-events-none',
       },
     },
     defaultVariants: {
       size: 'md',
       placement: 'center',
+      isOpen: false,
     },
   }
 )
