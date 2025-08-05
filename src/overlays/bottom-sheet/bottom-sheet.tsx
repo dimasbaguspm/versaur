@@ -1,4 +1,4 @@
-import { forwardRef, useEffect } from 'react'
+import { forwardRef } from 'react'
 import type { BottomSheetProps } from './types'
 import { bottomSheetRootVariants, bottomSheetBackdropVariants } from './helpers'
 import {
@@ -8,6 +8,8 @@ import {
   BottomSheetTitle,
 } from './bottom-sheet.atoms'
 import { cn } from '@/utils'
+import { useEscapeClose } from '@/utils/use-escape-close'
+import { combineRefs } from '@/utils/combine-ref'
 
 /**
  * BottomSheet component for mobile overlays
@@ -17,24 +19,7 @@ import { cn } from '@/utils'
 
 const BottomSheetRoot = forwardRef<HTMLDivElement, BottomSheetProps>(
   ({ isOpen, children, className, onClose, ...props }, ref) => {
-    // Handle escape key to close drawer
-    useEffect(() => {
-      const handleEscape = (event: KeyboardEvent) => {
-        if (event.key === 'Escape' && isOpen) {
-          onClose()
-        }
-      }
-
-      if (isOpen) {
-        document.addEventListener('keydown', handleEscape)
-        document.body.style.overflow = 'hidden'
-      }
-
-      return () => {
-        document.removeEventListener('keydown', handleEscape)
-        document.body.style.overflow = 'unset'
-      }
-    }, [isOpen, onClose])
+    const sheetRef = useEscapeClose(isOpen, onClose)
 
     const handleBackdropClick = () => {
       onClose?.()
@@ -48,7 +33,7 @@ const BottomSheetRoot = forwardRef<HTMLDivElement, BottomSheetProps>(
           onClick={handleBackdropClick}
         />
         <div
-          ref={ref}
+          ref={combineRefs(ref, sheetRef)}
           className={cn(
             bottomSheetRootVariants({
               open: isOpen,

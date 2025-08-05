@@ -1,94 +1,65 @@
-import { useRef, useState, useEffect, type FC } from 'react'
-
-import type { ModalRootProps } from './types'
+import React from 'react'
+import { cn } from '@/utils/cn'
+import { ModalContext, type ModalContextValue } from './context'
 import {
   ModalHeader,
   ModalFooter,
   ModalOverlay,
   ModalBody,
 } from './modal.atoms'
-import { modalContentVariants, modalOverlayVariants } from './helpers'
-import { useFocusTrap } from './use-focus-trap'
-import { useEscapeClose } from './use-escape-close'
+import { modalContentVariants } from './helpers'
+import { useEscapeClose } from '@/utils/use-escape-close'
+import type { ModalRootProps } from './types'
 
-const FADE_DURATION = 200 // ms
-
-const ModalRoot: FC<ModalRootProps> = ({
+/**
+ * ModalRoot - A controlled modal overlay component
+ * Provides shared state and context for modal compound parts
+ */
+export const ModalRoot: React.FC<ModalRootProps> = ({
   isOpen,
-  onOpenChange,
+  onClose,
   size = 'md',
   placement = 'center',
   children,
-  disableOverlayClose,
-  disableEscClose,
-  ...aria
+  ...props
 }) => {
-  const lastActiveRef = useRef<HTMLElement | null>(null)
-  const overlayRef = useRef<HTMLDivElement>(null)
-  const [isVisible, setIsVisible] = useState(isOpen)
-  const [exiting, setExiting] = useState(false)
+  const contextValue = {
+    isOpen,
+    onClose,
+    size,
+    placement,
+  } satisfies ModalContextValue
 
-  // Handle mounting for fade-out
-  useEffect(() => {
-    if (isOpen) {
-      setIsVisible(true)
-      setExiting(false)
-      lastActiveRef.current = document.activeElement as HTMLElement
-    } else if (isVisible) {
-      setExiting(true)
-      const timeout = setTimeout(() => {
-        setIsVisible(false)
-        setExiting(false)
-        if (lastActiveRef.current) lastActiveRef.current.focus()
-      }, FADE_DURATION)
-      return () => clearTimeout(timeout)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen])
-
-  useEscapeClose(isOpen && !disableEscClose, () => {
-    if (onOpenChange) onOpenChange(false)
-  })
-
-  useFocusTrap(overlayRef, isOpen)
+  const modalContentRef = useEscapeClose(isOpen, onClose)
 
   return (
-    <ModalOverlay
-      ref={overlayRef}
-      // Remove isOpen/exiting props if not used in ModalOverlay atom
-      className={
-        `${modalOverlayVariants({ placement })} transition-opacity duration-200 ease-in-out ` +
-        (isOpen && !exiting ? 'opacity-100' : 'opacity-0 pointer-events-none')
-      }
-      onOverlayClick={(e: React.MouseEvent<HTMLDivElement>) => {
-        if (
-          e.target === overlayRef.current &&
-          !disableOverlayClose &&
-          onOpenChange
-        ) {
-          onOpenChange(false)
-        }
-      }}
-      placement={placement}
-    >
+    <ModalContext.Provider value={contextValue}>
       <div
-        className={
-          `${modalContentVariants({ size, placement })} transition-all duration-200 ease-in-out ` +
-          (isOpen && !exiting
-            ? 'opacity-100 scale-100'
-            : 'opacity-0 scale-95 pointer-events-none')
-        }
-        role='dialog'
-        {...aria}
-        tabIndex={0}
-        aria-hidden={!isOpen}
+        className={cn(
+          'fixed z-50 inset-0 pointer-events-none',
+          isOpen && 'pointer-events-auto'
+        )}
       >
-        {children}
+        <ModalOverlay />
+        <div
+          ref={modalContentRef}
+          className={cn(modalContentVariants({ size, placement, isOpen }))}
+          role='dialog'
+          tabIndex={-1}
+          aria-hidden={!isOpen}
+          {...props}
+        >
+          {children}
+        </div>
       </div>
-    </ModalOverlay>
+    </ModalContext.Provider>
   )
 }
 
+/**
+ * Modal - Compound component with sub-components attached
+ * Provides a convenient API for using the modal with all its parts
+ */
 export const Modal = Object.assign(ModalRoot, {
   Header: ModalHeader,
   Body: ModalBody,

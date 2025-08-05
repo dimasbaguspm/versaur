@@ -26,7 +26,11 @@ export function Default() {
   return (
     <>
       <Button onClick={() => setIsOpen(true)}>Open Modal</Button>
-      <Modal isOpen={isOpen} onOpenChange={setIsOpen} aria-label='Dialog'>
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        aria-label='Dialog'
+      >
         <Modal.Header>Title</Modal.Header>
         <Modal.Body>Body</Modal.Body>
         <Modal.Footer>
@@ -49,7 +53,7 @@ function SizeModalExample({ size }: { size: 'sm' | 'md' | 'lg' }) {
       <Button onClick={() => setIsOpen(true)}>Open {size}</Button>
       <Modal
         isOpen={isOpen}
-        onOpenChange={setIsOpen}
+        onClose={() => setIsOpen(false)}
         size={size}
         aria-label='Dialog'
       >
@@ -83,7 +87,7 @@ function PlacementModalExample({ placement }: { placement: 'top' | 'center' }) {
       <Button onClick={() => setIsOpen(true)}>Open {placement}</Button>
       <Modal
         isOpen={isOpen}
-        onOpenChange={setIsOpen}
+        onClose={() => setIsOpen(false)}
         placement={placement}
         aria-label='Dialog'
       >

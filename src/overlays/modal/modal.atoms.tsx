@@ -6,6 +6,8 @@ import type {
   ModalBodyProps,
 } from './types'
 import { cn } from '@/utils'
+import { modalOverlayVariants } from './helpers'
+import { useModalContext } from './context'
 
 export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
   ({ className, ...rest }, ref) => (
@@ -37,14 +39,21 @@ export const ModalBody = forwardRef<HTMLDivElement, ModalBodyProps>(
  * ModalOverlay atom: handles overlay rendering, click-to-close, and transitions
  */
 export const ModalOverlay = forwardRef<HTMLDivElement, ModalOverlayProps>(
-  ({ onOverlayClick, ...rest }, ref) => (
-    <div
-      ref={ref}
-      role='presentation'
-      tabIndex={-1}
-      aria-modal='true'
-      onClick={onOverlayClick}
-      {...rest}
-    />
-  )
+  (props, ref) => {
+    const { isOpen, placement, onClose } = useModalContext()
+    return (
+      <div
+        ref={ref}
+        role='presentation'
+        tabIndex={-1}
+        aria-modal='true'
+        onClick={onClose}
+        className={cn(
+          modalOverlayVariants({ placement }),
+          isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        )}
+        {...props}
+      />
+    )
+  }
 )

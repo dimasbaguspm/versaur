@@ -19,6 +19,7 @@ exports[`Drawer > Default Story > matches snapshot when open 1`] = `
       aria-modal="true"
       class="fixed z-50 shadow-xl flex flex-col right-0 top-0 bottom-0 border-l w-96 bg-white border-border transition-transform duration-300 ease-in-out"
       role="dialog"
+      tabindex="-1"
     >
       <div
         class="flex-shrink-0 px-6 bg-white border-b border-border py-4"
