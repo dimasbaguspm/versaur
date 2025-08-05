@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ModalInput > renders as readOnly TextInput and matches snapshot 1`] = `
+exports[`BottomSheetInput > renders correctly (snapshot) 1`] = `
 <DocumentFragment>
   <div>
     <label
@@ -18,7 +18,7 @@ exports[`ModalInput > renders as readOnly TextInput and matches snapshot 1`] = `
         aria-invalid="false"
         class="block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 border-primary/30 text-foreground focus:border-primary focus:ring-primary/20 pl-3 pr-3 h-10"
         id="«r0»"
-        placeholder="Click to open modal"
+        placeholder="Click to open bottom sheet"
         readonly=""
         tabindex="0"
         value=""
@@ -26,18 +26,14 @@ exports[`ModalInput > renders as readOnly TextInput and matches snapshot 1`] = `
     </div>
   </div>
   <div
+    aria-hidden="true"
+    class="fixed inset-0 z-40 duration-300 pointer-events-none"
+  />
+  <div
     aria-modal="true"
-    class="fixed inset-0 z-60 transition-opacity duration-300 bg-foreground/30 backdrop-blur-md flex items-center justify-center transition-opacity duration-200 ease-in-out items-center transition-opacity duration-200 ease-in-out opacity-0 pointer-events-none"
-    placement="center"
-    role="presentation"
+    class="fixed left-0 bottom-0 z-40 w-full max-h-[90dvh] bg-background shadow-lg border-t border-border rounded-lg transition-transform duration-300 ease-in-out will-change-transform translate-y-full"
+    role="dialog"
     tabindex="-1"
-  >
-    <div
-      aria-hidden="true"
-      class="bg-white rounded-lg shadow-xl relative flex flex-col outline-none mx-4 transition-all duration-200 ease-in-out  w-[28rem] max-w-md transition-all duration-200 ease-in-out opacity-0 scale-95 pointer-events-none"
-      role="dialog"
-      tabindex="0"
-    />
-  </div>
+  />
 </DocumentFragment>
 `;

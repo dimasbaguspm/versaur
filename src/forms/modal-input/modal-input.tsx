@@ -28,6 +28,12 @@ const ModalInputRoot = forwardRef<HTMLInputElement, ModalInputProps>(
           onClick={() => setIsOpen(true)}
           aria-haspopup='dialog'
           aria-expanded={isOpen}
+          onKeyDown={e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault()
+              setIsOpen(true)
+            }
+          }}
         />
         <Modal
           isOpen={isOpen}
@@ -35,7 +41,7 @@ const ModalInputRoot = forwardRef<HTMLInputElement, ModalInputProps>(
           size={size}
           placement={placement}
         >
-          {children(contextValue)}
+          {isOpen && children(contextValue)}
         </Modal>
       </>
     )
