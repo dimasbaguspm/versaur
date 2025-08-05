@@ -25,16 +25,5 @@ exports[`DrawerInput > renders correctly and matches snapshot 1`] = `
       />
     </div>
   </div>
-  <div
-    class="fixed z-50 inset-0 pointer-events-none"
-  >
-    <div
-      class="fixed inset-0 z-50 transition-opacity duration-300 bg-foreground/30 backdrop-blur-md opacity-0 pointer-events-none"
-    />
-    <div
-      class="fixed z-50 shadow-xl flex flex-col right-0 top-0 bottom-0 border-l w-[28rem] bg-white border-border transition-transform duration-300 ease-in-out translate-x-full"
-      tabindex="-1"
-    />
-  </div>
 </DocumentFragment>
 `;

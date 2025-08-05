@@ -1,22 +1,9 @@
 import React, { useRef, useId, cloneElement } from 'react'
-import type { ReactNode } from 'react'
+
 import { cn } from '@/utils/cn'
 import { menuVariants } from './helpers'
-import type { MenuSize } from './types'
+import type { MenuProps } from './types'
 import { useMenuFocusFirstItem, useMenuOutsideClick } from './use-menu'
-
-export interface MenuProps {
-  /** Whether the menu is open (controlled externally) */
-  isOpen: boolean
-  /** Callback when clicking outside menu */
-  onOutsideClick: () => void
-  /** Menu size variant */
-  size?: MenuSize
-  /** Menu content (MenuContent/MenuItem) */
-  content: ReactNode
-  /** Trigger element */
-  children: ReactNode
-}
 
 export const Menu: React.FC<MenuProps> = ({
   isOpen,

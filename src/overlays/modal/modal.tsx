@@ -10,6 +10,7 @@ import {
 import { modalContentVariants } from './helpers'
 import { useEscapeClose } from '@/utils/use-escape-close'
 import type { ModalRootProps } from './types'
+import { OverlayPortal } from '@/utils/overlay-portal'
 
 /**
  * ModalRoot - A controlled modal overlay component
@@ -21,6 +22,7 @@ export const ModalRoot: React.FC<ModalRootProps> = ({
   size = 'md',
   placement = 'center',
   children,
+  container,
   ...props
 }) => {
   const contextValue = {
@@ -33,26 +35,28 @@ export const ModalRoot: React.FC<ModalRootProps> = ({
   const modalContentRef = useEscapeClose(isOpen, onClose)
 
   return (
-    <ModalContext.Provider value={contextValue}>
-      <div
-        className={cn(
-          'fixed z-50 inset-0 pointer-events-none',
-          isOpen && 'pointer-events-auto'
-        )}
-      >
-        <ModalOverlay />
+    <OverlayPortal container={container}>
+      <ModalContext.Provider value={contextValue}>
         <div
-          ref={modalContentRef}
-          className={cn(modalContentVariants({ size, placement, isOpen }))}
-          role='dialog'
-          tabIndex={-1}
-          aria-hidden={!isOpen}
-          {...props}
+          className={cn(
+            'fixed z-50 inset-0 pointer-events-none',
+            isOpen && 'pointer-events-auto'
+          )}
         >
-          {children}
+          <ModalOverlay />
+          <div
+            ref={modalContentRef}
+            className={cn(modalContentVariants({ size, placement, isOpen }))}
+            role='dialog'
+            tabIndex={-1}
+            aria-hidden={!isOpen}
+            {...props}
+          >
+            {children}
+          </div>
         </div>
-      </div>
-    </ModalContext.Provider>
+      </ModalContext.Provider>
+    </OverlayPortal>
   )
 }
 

@@ -1,4 +1,5 @@
-import type { HTMLAttributes } from 'react'
+import type { OverlayPortalProps } from '@/utils/overlay-portal'
+import type { HTMLAttributes, ReactNode } from 'react'
 
 /**
  * Modal component prop types
@@ -10,7 +11,9 @@ export type ModalPlacement = 'top' | 'center'
  * Modal compound root
  */
 
-export interface ModalRootProps {
+export interface ModalRootProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'children'>,
+    OverlayPortalProps {
   /** Controls whether the modal is open */
   isOpen: boolean
   /** Function to close the modal */
@@ -20,17 +23,7 @@ export interface ModalRootProps {
   /** Modal placement variant */
   placement?: ModalPlacement
   /** Children (Modal compound parts) */
-  children: React.ReactNode
-  /** Optional: disables closing on overlay click */
-  disableOverlayClose?: boolean
-  /** Optional: disables closing on ESC key */
-  disableEscClose?: boolean
-  /** Optional: ARIA label for dialog */
-  'aria-label'?: string
-  /** Optional: ARIA labelledby for dialog */
-  'aria-labelledby'?: string
-  /** Optional: ARIA describedby for dialog */
-  'aria-describedby'?: string
+  children: ReactNode
 }
 
 /**
@@ -46,8 +39,4 @@ export interface ModalBodyProps extends HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
 }
 
-export interface ModalOverlayProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
-  placement?: string
-  onOverlayClick?: (e: React.MouseEvent<HTMLDivElement>) => void
-}
+export type ModalOverlayProps = Omit<HTMLAttributes<HTMLDivElement>, 'children'>

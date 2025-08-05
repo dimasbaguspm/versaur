@@ -9,51 +9,5 @@ exports[`Modal > renders correctly (snapshot) 1`] = `
   >
     Open Modal
   </button>
-  <div
-    class="fixed z-50 inset-0 pointer-events-none"
-  >
-    <div
-      aria-modal="true"
-      class="fixed inset-0 z-60 bg-foreground/30 backdrop-blur-md flex justify-center transition-opacity duration-200 ease-in-out items-center opacity-0 pointer-events-none"
-      role="presentation"
-      tabindex="-1"
-    />
-    <div
-      aria-hidden="true"
-      aria-label="Dialog"
-      class="z-61 bg-white rounded-lg shadow-xl fixed flex flex-col outline-none mx-4 transition-all duration-200 ease-in-out w-[28rem] max-w-md top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 scale-95 pointer-events-none"
-      role="dialog"
-      tabindex="-1"
-    >
-      <div
-        class="px-6 pt-6 pb-2 text-lg font-semibold"
-      >
-        Title
-      </div>
-      <div
-        class="px-6 py-2"
-      >
-        Body
-      </div>
-      <div
-        class="px-6 py-4 flex justify-end gap-2"
-      >
-        <button
-          aria-disabled="false"
-          class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-10 px-4 text-sm min-w-[2.5rem]"
-          type="button"
-        >
-          Cancel
-        </button>
-        <button
-          aria-disabled="false"
-          class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 px-4 text-sm min-w-[2.5rem]"
-          type="button"
-        >
-          Confirm
-        </button>
-      </div>
-    </div>
-  </div>
 </DocumentFragment>
 `;
