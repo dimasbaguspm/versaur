@@ -69,7 +69,7 @@ exports[`TopBar > renders correctly (snapshot) 1`] = `
         <button
           aria-disabled="false"
           aria-label="Notifications"
-          class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+          class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-light focus-visible:ring-offset-white h-8 w-8 rounded-md"
           type="button"
         >
           <svg
@@ -96,7 +96,7 @@ exports[`TopBar > renders correctly (snapshot) 1`] = `
         <button
           aria-disabled="false"
           aria-label="Settings"
-          class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-soft focus-visible:ring-offset-white h-8 w-8 rounded-md"
+          class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-light focus-visible:ring-offset-white h-8 w-8 rounded-md"
           type="button"
         >
           <svg

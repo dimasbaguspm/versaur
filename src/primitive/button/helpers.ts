@@ -1,32 +1,11 @@
 import { cva } from 'class-variance-authority'
 
-// ButtonFloat uses the same variant/size system as Button
-export const buttonFloatVariants = cva(
-  [
-    'inline-flex items-center justify-center gap-2',
-    'rounded-lg',
-    'font-medium',
-    'transition-all',
-    'duration-200',
-    'focus-visible:outline-none',
-    'focus-visible:ring-2',
-    'focus-visible:ring-offset-2',
-    'disabled:opacity-50',
-    'disabled:pointer-events-none',
-    'select-none',
-    'shadow-lg',
-    'transition-transform',
-    'transition-shadow',
-    'will-change-transform,opacity,box-shadow',
-    'hover:scale-105',
-    'active:scale-95',
-    'focus-visible:shadow-xl',
-    'hover:shadow-xl',
-    'active:shadow-md',
-  ].join(' '),
+export const buttonVariants = cva(
+  'inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none',
   {
     variants: {
       variant: {
+        // Core variants using Versaur color system
         primary:
           'bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md',
         secondary:
@@ -38,6 +17,7 @@ export const buttonFloatVariants = cva(
         neutral:
           'bg-neutral text-foreground border border-border hover:bg-neutral/80 focus-visible:ring-foreground-light focus-visible:ring-offset-white shadow-sm',
 
+        // Outline variants
         'primary-outline':
           'border border-primary text-primary bg-white hover:bg-primary hover:text-white focus-visible:ring-primary-light focus-visible:ring-offset-white transition-all',
         'secondary-outline':
@@ -49,6 +29,7 @@ export const buttonFloatVariants = cva(
         'neutral-outline':
           'border border-neutral text-foreground bg-white hover:bg-neutral hover:text-foreground focus-visible:ring-foreground-light focus-visible:ring-offset-white transition-all',
 
+        // Ghost variants (subtle)
         'primary-ghost':
           'text-primary bg-white hover:bg-primary/20 focus-visible:ring-primary focus-visible:ring-offset-white',
         'secondary-ghost':
@@ -58,6 +39,7 @@ export const buttonFloatVariants = cva(
         'neutral-ghost':
           'text-foreground bg-white hover:bg-neutral/50 focus-visible:ring-foreground focus-visible:ring-offset-white',
 
+        // Semantic variants
         success:
           'bg-success text-white hover:bg-success/90 focus-visible:ring-success-light focus-visible:ring-offset-white shadow-sm hover:shadow-md',
         'success-outline':
@@ -85,15 +67,16 @@ export const buttonFloatVariants = cva(
         'danger-ghost':
           'text-danger bg-white hover:bg-danger/20 focus-visible:ring-danger-light focus-visible:ring-offset-white',
 
+        // Utility variants
         outline:
           'border border-border text-foreground bg-white hover:bg-accent-soft focus-visible:ring-accent-soft focus-visible:ring-offset-white transition-all',
         destructive:
           'bg-danger text-white hover:bg-danger/90 focus-visible:ring-danger-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md',
       },
       size: {
-        sm: 'h-12 w-12 min-w-12 min-h-12 text-base',
-        md: 'h-14 w-14 min-w-14 min-h-14 text-lg',
-        lg: 'h-16 w-16 min-w-16 min-h-16 text-xl',
+        sm: 'h-8 px-3 text-sm min-w-[2.25rem]',
+        md: 'h-10 px-4 text-sm min-w-[2.5rem]',
+        lg: 'h-12 px-8 text-lg min-w-[2.75rem]',
       },
     },
     defaultVariants: {
