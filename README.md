@@ -1,7 +1,21 @@
+
 # Versaur UI
 
-A modern React UI library built with TypeScript and Tailwind CSS, featuring tree-shakable
-components
+<p align="left">
+  <a href="https://www.npmjs.com/package/@dimasbaguspm/versaur" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/npm/v/%40dimasbaguspm%2Fversaur?style=flat-square&color=%23e07a5f" alt="NPM Version" />
+  </a>
+  <a href="https://www.npmjs.com/package/@dimasbaguspm/versaur" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/npm/dy/%40dimasbaguspm%2Fversaur?style=flat-square&color=%2381b29a" alt="NPM Downloads" />
+  </a>
+  <a href="https://www.npmjs.com/package/@dimasbaguspm/versaur" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/npm/last-update/%40dimasbaguspm%2Fversaur?style=flat-square&color=%2384a5c0" alt="NPM Last Update" />
+  </a>
+</p>
+
+A modern React UI library built with TypeScript and Tailwind CSS, featuring tree-shakable components
+
+Website: [versaur.dimasbaguspm.com](https://versaur.dimasbaguspm.com)
 
 
 ## Features
@@ -19,7 +33,9 @@ components
 ## Installation
 
 ```bash
-yarn install @dimasbaguspm/versaur
+npm install @dimasbaguspm/versaur
+yarn add @dimasbaguspm/versaur
+bun add @dimasbaguspm/versaur
 ```
 
 ## Usage
@@ -27,13 +43,13 @@ yarn install @dimasbaguspm/versaur
 ### Import all components
 
 ```tsx
-import { Button, Input, Card } from '@dimasbaguspm/versaur'
+import { Button, Input, Drawer } from '@dimasbaguspm/versaur'
 ```
 
 ### Tree-shakable imports
 
 ```tsx
-// Import only what you need
+// import only what you need
 import { Button } from '@dimasbaguspm/versaur/primitive'
 ```
 
@@ -47,7 +63,7 @@ Versaur provides an ESLint rule to enforce sub-path imports for optimal tree-sha
 1. In your FlatConfig file (e.g., `eslint.config.js`), import and spread the rule:
 
 ```js
-// eslint.config.js
+// eslint.config.{js|ts}
 import { versaurEnforceSubpathImport } from '@dimasbaguspm/versaur/enforce-subpath-import'
 
 export default [
