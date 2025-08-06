@@ -4,7 +4,7 @@ exports[`Modal > renders correctly (snapshot) 1`] = `
 <DocumentFragment>
   <button
     aria-disabled="false"
-    class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 px-4 text-sm min-w-[2.5rem]"
+    class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 px-4 text-sm min-w-[2.5rem]"
     type="button"
   >
     Open Modal
