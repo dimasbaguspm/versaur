@@ -31,6 +31,7 @@ export const Basic = () => {
               value={value}
               onChange={ctx.onChange}
               placeholder='Type something...'
+              autoFocus
             />
           </ModalInput.Body>
           <ModalInput.Footer>
