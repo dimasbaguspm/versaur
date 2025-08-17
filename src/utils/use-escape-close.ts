@@ -17,6 +17,12 @@ export function useEscapeClose(
   const overlayEl = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    if (overlayEl.current) {
+      overlayEl.current.focus()
+    }
+  }, [])
+
+  useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
       if (
         event.key === 'Escape' &&
@@ -31,7 +37,6 @@ export function useEscapeClose(
     if (isOpen) {
       document.addEventListener('keydown', handleEscape)
       document.body.style.overflow = 'hidden'
-      overlayEl.current?.focus()
     }
     return () => {
       document.removeEventListener('keydown', handleEscape)
