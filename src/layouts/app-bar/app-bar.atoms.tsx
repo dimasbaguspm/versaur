@@ -9,6 +9,7 @@ import type {
   AppBarBottomProps,
 } from './types'
 import { appBarCenterVariants } from './helpers'
+import { Text } from '@/primitive'
 
 /**
  * Bottom section (flexible area for additional content, e.g. tabs)
@@ -30,7 +31,11 @@ export const AppBarBottom = forwardRef<HTMLDivElement, AppBarBottomProps>(
  */
 export const AppBarLeading = forwardRef<HTMLDivElement, AppBarLeadingProps>(
   ({ children, className }, ref) => (
-    <div ref={ref} className={cn('flex items-center', className)}>
+    <div
+      ref={ref}
+      className={cn('flex items-center', className)}
+      data-versaur-appbar-leading
+    >
       {children}
     </div>
   )
@@ -39,30 +44,43 @@ export const AppBarLeading = forwardRef<HTMLDivElement, AppBarLeadingProps>(
 /**
  * Headline section (main title)
  */
-export const AppBarHeadline = forwardRef<HTMLDivElement, AppBarHeadlineProps>(
-  ({ children, className }, ref) => (
-    <div
-      ref={ref}
-      className={cn('font-semibold text-lg truncate min-w-0', className)}
-    >
-      {children}
-    </div>
-  )
-)
+export const AppBarHeadline = forwardRef<
+  HTMLParagraphElement,
+  AppBarHeadlineProps
+>(({ children, ...props }, ref) => (
+  <Text
+    {...props}
+    as='h1'
+    ref={ref}
+    fontSize='lg'
+    fontWeight='semibold'
+    ellipsis
+    clamp={1}
+  >
+    {children}
+  </Text>
+))
 
 /**
  * Subtitle section (secondary text)
  */
-export const AppBarSubtitle = forwardRef<HTMLDivElement, AppBarSubtitleProps>(
-  ({ children, className }, ref) => (
-    <div
-      ref={ref}
-      className={cn('text-xs text-ghost-400 truncate min-w-0', className)}
-    >
-      {children}
-    </div>
-  )
-)
+export const AppBarSubtitle = forwardRef<
+  HTMLParagraphElement,
+  AppBarSubtitleProps
+>(({ children, ...props }, ref) => (
+  <Text
+    {...props}
+    ref={ref}
+    as='p'
+    fontSize='xs'
+    fontWeight='normal'
+    ellipsis
+    clamp={1}
+    color='gray'
+  >
+    {children}
+  </Text>
+))
 
 /**
  * Trailing section (actions, avatar, etc.)
@@ -72,6 +90,7 @@ export const AppBarTrailing = forwardRef<HTMLDivElement, AppBarTrailingProps>(
     <div
       ref={ref}
       className={cn('flex items-center justify-end gap-2', className)}
+      data-versaur-appbar-trailing
     >
       {children}
     </div>

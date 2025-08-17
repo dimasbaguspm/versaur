@@ -1,3 +1,4 @@
+import type { TextProps } from '@/primitive'
 import type { ReactNode, HTMLAttributes } from 'react'
 
 /**
@@ -10,14 +11,14 @@ export interface AppBarLeadingProps extends HTMLAttributes<HTMLDivElement> {
 /**
  * Props for AppBarHeadline
  */
-export interface AppBarHeadlineProps extends HTMLAttributes<HTMLDivElement> {
+export interface AppBarHeadlineProps extends TextProps {
   children: ReactNode
 }
 
 /**
  * Props for AppBarSubtitle
  */
-export interface AppBarSubtitleProps extends HTMLAttributes<HTMLDivElement> {
+export interface AppBarSubtitleProps extends TextProps {
   children: ReactNode
 }
 

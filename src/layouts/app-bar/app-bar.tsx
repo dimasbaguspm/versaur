@@ -18,7 +18,7 @@ const AppBarRoot = ({
   return (
     <header
       className={cn(appBarVariants({ variant }), className)}
-      role={'banner'}
+      role='banner'
     >
       {children}
     </header>
