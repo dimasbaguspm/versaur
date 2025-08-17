@@ -1,0 +1,43 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`NoResults > should render correctly with default props 1`] = `
+<DocumentFragment>
+  <section
+    aria-label="No results found"
+    class="flex flex-col items-center justify-center text-center border border-border rounded-lg bg-background py-12"
+    role="status"
+  >
+    <header
+      class="flex flex-row items-center gap-3 mb-2"
+    >
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-search inline-flex items-center justify-center w-6 h-6 text-ghost"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="m21 21-4.34-4.34"
+        />
+        <circle
+          cx="11"
+          cy="11"
+          r="8"
+        />
+      </svg>
+      <h2
+        class="text-left text-lg font-semibold text-foreground"
+      >
+        No results found
+      </h2>
+    </header>
+  </section>
+</DocumentFragment>
+`;
