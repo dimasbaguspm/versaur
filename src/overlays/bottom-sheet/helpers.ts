@@ -11,6 +11,7 @@ export const bottomSheetRootVariants = cva(
   [
     'fixed left-0 bottom-0 z-40 w-full max-h-[90dvh] bg-background rounded-t-xl shadow-lg border-t border-border rounded-lg',
     'transition-transform duration-300 ease-in-out will-change-transform',
+    'overflow-hidden', // Ensure content doesn't overflow when keyboard adjusts height
   ],
   {
     variants: {
@@ -48,9 +49,12 @@ export const bottomSheetBackdropVariants = cva(
   }
 )
 
-export const bottomSheetHeaderVariants = cva('px-4 pt-4 pb-2')
-export const bottomSheetBodyVariants = cva('px-4 py-2')
-export const bottomSheetFooterVariants = cva('px-4 pt-2 pb-4')
+export const bottomSheetHeaderVariants = cva('px-4 pt-4 pb-2 flex-shrink-0')
+export const bottomSheetBodyVariants = cva([
+  'px-4 py-2 flex-1 overflow-y-auto',
+  'scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border',
+])
+export const bottomSheetFooterVariants = cva('px-4 pt-2 pb-4 flex-shrink-0')
 
 /**
  * Types for BottomSheet variants
