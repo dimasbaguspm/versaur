@@ -85,7 +85,6 @@ export const WithBottom: Story = {
           size='lg'
         />
       </AppBar.Leading>
-
       <AppBar.Center>
         <AppBar.Headline>Anywhere Demo</AppBar.Headline>
         <AppBar.Subtitle>AppBar.Bottom can be anywhere</AppBar.Subtitle>

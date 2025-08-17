@@ -13,7 +13,7 @@ exports[`PageLayout > renders desktop layout and matches snapshot 1`] = `
 exports[`PageLayout > renders mobile layout and matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="mx-auto relative w-full px-4"
+    class="mx-auto relative w-full"
   >
     Mobile layout (full width)
   </div>

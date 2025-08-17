@@ -3,11 +3,12 @@
 exports[`AppBar > renders WithBottom story and AppBar.Bottom is always on a new line 1`] = `
 <div>
   <header
-    class="w-full flex flex-wrap items-center px-4 pt-3 mb-3 gap-2 bg-white [&>[data-versaur-appbar-bottom]]:basis-full [&>[data-versaur-appbar-bottom]]:w-full"
+    class="w-full flex flex-wrap items-center pt-3 mb-3 gap-2 bg-white [&>[data-versaur-appbar-bottom]]:basis-full [&>[data-versaur-appbar-bottom]]:w-full [&:has([data-versaur-appbar-bottom])>[data-versaur-appbar-leading]]:pl-4 [&:has([data-versaur-appbar-bottom])>[data-versaur-appbar-trailing]]:pr-4 [&:not(:has([data-versaur-appbar-bottom]))]:px-4"
     role="banner"
   >
     <div
       class="flex items-center"
+      data-versaur-appbar-leading="true"
     >
       <button
         aria-disabled="false"
@@ -40,19 +41,20 @@ exports[`AppBar > renders WithBottom story and AppBar.Bottom is always on a new 
     <div
       class="flex flex-col justify-center min-w-0 flex-grow items-start"
     >
-      <div
-        class="font-semibold text-lg truncate min-w-0"
+      <h1
+        class="text-ghost text-left line-clamp-1 truncate text-lg font-semibold"
       >
         Anywhere Demo
-      </div>
-      <div
-        class="text-xs text-ghost-400 truncate min-w-0"
+      </h1>
+      <p
+        class="text-gray-500 text-left line-clamp-1 truncate text-xs font-normal"
       >
         AppBar.Bottom can be anywhere
-      </div>
+      </p>
     </div>
     <div
       class="flex items-center justify-end gap-2"
+      data-versaur-appbar-trailing="true"
     >
       <button
         aria-disabled="false"
@@ -134,11 +136,12 @@ exports[`AppBar > renders WithBottom story and AppBar.Bottom is always on a new 
 exports[`AppBar > renders correctly (snapshot) 1`] = `
 <DocumentFragment>
   <header
-    class="w-full flex flex-wrap items-center px-4 pt-3 mb-3 gap-2 bg-white [&>[data-versaur-appbar-bottom]]:basis-full [&>[data-versaur-appbar-bottom]]:w-full"
+    class="w-full flex flex-wrap items-center pt-3 mb-3 gap-2 bg-white [&>[data-versaur-appbar-bottom]]:basis-full [&>[data-versaur-appbar-bottom]]:w-full [&:has([data-versaur-appbar-bottom])>[data-versaur-appbar-leading]]:pl-4 [&:has([data-versaur-appbar-bottom])>[data-versaur-appbar-trailing]]:pr-4 [&:not(:has([data-versaur-appbar-bottom]))]:px-4"
     role="banner"
   >
     <div
       class="flex items-center"
+      data-versaur-appbar-leading="true"
     >
       <button
         aria-disabled="false"
@@ -171,19 +174,20 @@ exports[`AppBar > renders correctly (snapshot) 1`] = `
     <div
       class="flex flex-col justify-center min-w-0 flex-grow items-start"
     >
-      <div
-        class="font-semibold text-lg truncate min-w-0"
+      <h1
+        class="text-ghost text-left line-clamp-1 truncate text-lg font-semibold"
       >
         Transaction
-      </div>
-      <div
-        class="text-xs text-ghost-400 truncate min-w-0"
+      </h1>
+      <p
+        class="text-gray-500 text-left line-clamp-1 truncate text-xs font-normal"
       >
         Period 29 May - 3 July
-      </div>
+      </p>
     </div>
     <div
       class="flex items-center justify-end gap-2"
+      data-versaur-appbar-trailing="true"
     >
       <button
         aria-disabled="false"
