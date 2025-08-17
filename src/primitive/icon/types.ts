@@ -31,6 +31,9 @@ export type IconProps = Omit<React.SVGProps<SVGSVGElement>, 'children'> & {
     | 'info'
     | 'warning'
     | 'danger'
+    | 'black'
+    | 'gray'
+    | 'white'
     | 'inherit'
   /**
    * Size of the icon

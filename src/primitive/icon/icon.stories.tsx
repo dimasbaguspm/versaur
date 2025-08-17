@@ -59,6 +59,9 @@ export const AllColors = {
       <Icon as={Star} color='info' />
       <Icon as={Star} color='warning' />
       <Icon as={Star} color='danger' />
+      <Icon as={Star} color='black' />
+      <Icon as={Star} color='gray' />
+      <Icon as={Star} color='white' />
     </div>
   ),
   name: 'All colors',
