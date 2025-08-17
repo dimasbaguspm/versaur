@@ -1,4 +1,4 @@
-import { forwardRef } from 'react'
+import { forwardRef, useMemo } from 'react'
 import type { BottomSheetProps } from './types'
 import { bottomSheetRootVariants, bottomSheetBackdropVariants } from './helpers'
 import {
@@ -7,7 +7,7 @@ import {
   BottomSheetFooter,
   BottomSheetTitle,
 } from './bottom-sheet.atoms'
-import { cn } from '@/utils'
+import { cn, useKeyboardVirtual } from '@/utils'
 import { useEscapeClose } from '@/utils/use-escape-close'
 import { combineRefs } from '@/utils/combine-ref'
 import { OverlayPortal } from '@/utils/overlay-portal'
@@ -21,6 +21,25 @@ import { OverlayPortal } from '@/utils/overlay-portal'
 const BottomSheetRoot = forwardRef<HTMLDivElement, BottomSheetProps>(
   ({ isOpen, children, className, onClose, container, ...props }, ref) => {
     const sheetRef = useEscapeClose(isOpen, onClose)
+    const {
+      isOpen: keyboardOpen,
+      height: keyboardHeight,
+      isSupported,
+    } = useKeyboardVirtual()
+
+    // Calculate dynamic styles when virtual keyboard is open
+    const dynamicStyles = useMemo(() => {
+      if (!isOpen || !isSupported || !keyboardOpen) return {}
+
+      return {
+        // Adjust bottom position to sit above the virtual keyboard
+        bottom: `${keyboardHeight}px`,
+        // Reduce max height to account for keyboard
+        maxHeight: `calc(90dvh - ${keyboardHeight}px)`,
+        // Ensure smooth transition
+        transition: 'bottom 0.2s ease-in-out, max-height 0.2s ease-in-out',
+      }
+    }, [isOpen, isSupported, keyboardOpen, keyboardHeight])
 
     const handleBackdropClick = () => {
       onClose?.()
@@ -39,8 +58,10 @@ const BottomSheetRoot = forwardRef<HTMLDivElement, BottomSheetProps>(
             bottomSheetRootVariants({
               open: isOpen,
             }),
+            'flex flex-col', // Add flex layout for proper header/body/footer arrangement
             className
           )}
+          style={dynamicStyles}
           role='dialog'
           aria-modal='true'
           tabIndex={-1}

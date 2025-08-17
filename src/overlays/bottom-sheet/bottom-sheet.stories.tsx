@@ -12,7 +12,8 @@ import { BottomSheet } from './bottom-sheet'
 import { Button } from '@/primitive/button'
 import { ButtonIcon } from '@/primitive'
 import { X } from 'lucide-react'
-import { TextInput } from '@/forms'
+import { TextInput } from '@/forms/text-input'
+import { TextAreaInput } from '@/forms/textarea-input'
 
 const meta: Meta<typeof BottomSheet> = {
   title: 'Overlays/BottomSheet',
@@ -242,5 +243,116 @@ export const CustomContent: Story = {
       )
     }
     return <CustomContentSheet />
+  },
+}
+
+/**
+ * FormExample demonstrates how the BottomSheet adapts to virtual keyboard
+ * Test on mobile devices to see keyboard-aware positioning
+ */
+export const FormExample: Story = {
+  render: () => {
+    function FormSheet() {
+      const [open, setOpen] = useState(false)
+      const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: '',
+      })
+
+      const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault()
+        alert('Form submitted!')
+        setOpen(false)
+      }
+
+      return (
+        <>
+          <div className='p-4'>
+            <Button variant='primary' size='md' onClick={() => setOpen(true)}>
+              Contact Form
+            </Button>
+            <p className='mt-2 text-sm text-foreground-light'>
+              Open on mobile to test virtual keyboard adaptation
+            </p>
+          </div>
+
+          <BottomSheet isOpen={open} onClose={() => setOpen(false)}>
+            <BottomSheet.Header>
+              <div className='flex items-center justify-between'>
+                <BottomSheet.Title>Contact Us</BottomSheet.Title>
+                <ButtonIcon
+                  as={X}
+                  variant='ghost'
+                  size='sm'
+                  onClick={() => setOpen(false)}
+                  aria-label='Close'
+                />
+              </div>
+            </BottomSheet.Header>
+
+            <BottomSheet.Body>
+              <form onSubmit={handleSubmit} className='space-y-4'>
+                <TextInput
+                  label='Name'
+                  value={formData.name}
+                  onChange={e =>
+                    setFormData(prev => ({ ...prev, name: e.target.value }))
+                  }
+                  placeholder='Enter your name'
+                  required
+                />
+                <TextInput
+                  label='Email'
+                  type='email'
+                  value={formData.email}
+                  onChange={e =>
+                    setFormData(prev => ({ ...prev, email: e.target.value }))
+                  }
+                  placeholder='Enter your email'
+                  required
+                />
+                <TextAreaInput
+                  label='Message'
+                  value={formData.message}
+                  onChange={e =>
+                    setFormData(prev => ({ ...prev, message: e.target.value }))
+                  }
+                  placeholder='Enter your message'
+                  rows={4}
+                  required
+                />
+                <div className='text-xs text-foreground-light'>
+                  * The sheet automatically adjusts when virtual keyboard
+                  appears on mobile
+                </div>
+              </form>
+            </BottomSheet.Body>
+
+            <BottomSheet.Footer>
+              <div className='flex gap-3'>
+                <Button
+                  variant='ghost'
+                  size='md'
+                  onClick={() => setOpen(false)}
+                  className='flex-1'
+                >
+                  Cancel
+                </Button>
+                <Button
+                  variant='primary'
+                  size='md'
+                  onClick={handleSubmit}
+                  className='flex-1'
+                >
+                  Send Message
+                </Button>
+              </div>
+            </BottomSheet.Footer>
+          </BottomSheet>
+        </>
+      )
+    }
+    return <FormSheet />
   },
 }
