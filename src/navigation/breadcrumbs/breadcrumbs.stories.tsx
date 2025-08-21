@@ -6,6 +6,7 @@
 import { Breadcrumbs } from '.'
 import { Home, User } from 'lucide-react'
 import type { Meta, StoryObj } from '@storybook/react'
+import { Icon } from '@/primitive'
 
 const meta: Meta<typeof Breadcrumbs> = {
   title: 'Navigation/Breadcrumbs',
@@ -19,19 +20,27 @@ type Story = StoryObj<typeof Breadcrumbs>
 export const Basic: Story = {
   render: () => (
     <Breadcrumbs aria-label='Breadcrumb Navigation'>
-      <Breadcrumbs.Item href='/' icon={<Home size={16} />} color='primary'>
+      <Breadcrumbs.Item
+        href='/'
+        icon={<Icon as={Home} size='sm' color='inherit' />}
+        color='primary'
+      >
         Home
       </Breadcrumbs.Item>
       <Breadcrumbs.Separator />
       <Breadcrumbs.Item
         href='/applicant'
-        icon={<User size={16} />}
+        icon={<Icon as={User} size='sm' color='inherit' />}
         color='secondary'
       >
         Applicant
       </Breadcrumbs.Item>
       <Breadcrumbs.Separator />
-      <Breadcrumbs.Item href='/applicant/123' color='ghost'>
+      <Breadcrumbs.Item
+        href='/applicant/123'
+        color='ghost'
+        icon={<Icon as={User} size='sm' color='inherit' />}
+      >
         Details
       </Breadcrumbs.Item>
     </Breadcrumbs>

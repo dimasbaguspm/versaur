@@ -103,7 +103,7 @@ exports[`AppBar > renders WithBottom story and AppBar.Bottom is always on a new 
         <button
           aria-controls="tabs-content-detail"
           aria-selected="false"
-          class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-base relative font-normal bg-transparent border-b-2 border-transparent text-foreground hover:text-primary"
+          class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-sm relative font-normal bg-transparent border-b-2 border-transparent text-foreground hover:text-primary"
           id="tabs-trigger-detail"
           role="tab"
           tabindex="-1"
@@ -114,7 +114,7 @@ exports[`AppBar > renders WithBottom story and AppBar.Bottom is always on a new 
         <button
           aria-controls="tabs-content-entries"
           aria-selected="true"
-          class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-base relative font-medium bg-transparent border-b-2 text-primary border-primary"
+          class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-sm relative font-medium bg-transparent border-b-2 text-primary border-primary"
           id="tabs-trigger-entries"
           role="tab"
           tabindex="0"

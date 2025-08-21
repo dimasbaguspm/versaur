@@ -10,7 +10,7 @@ exports[`Tabs > matches snapshot 1`] = `
     <button
       aria-controls="tabs-content-tab1"
       aria-selected="true"
-      class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-base relative font-medium bg-transparent border-b-2 text-primary border-primary"
+      class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-sm relative font-medium bg-transparent border-b-2 text-primary border-primary"
       id="tabs-trigger-tab1"
       role="tab"
       tabindex="0"
@@ -21,7 +21,7 @@ exports[`Tabs > matches snapshot 1`] = `
     <button
       aria-controls="tabs-content-tab2"
       aria-selected="false"
-      class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-base relative font-normal bg-transparent border-b-2 border-transparent text-foreground hover:text-primary"
+      class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-sm relative font-normal bg-transparent border-b-2 border-transparent text-foreground hover:text-primary"
       id="tabs-trigger-tab2"
       role="tab"
       tabindex="-1"
@@ -48,7 +48,7 @@ exports[`Tabs > renders filled variant with correct layout and style 1`] = `
     <button
       aria-controls="tabs-content-tab1"
       aria-selected="true"
-      class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-base relative font-medium rounded-lg bg-none flex-1 min-w-0 bg-white text-foreground shadow-sm"
+      class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-sm relative font-medium rounded-lg bg-none flex-1 min-w-0 bg-white text-foreground shadow-sm"
       id="tabs-trigger-tab1"
       role="tab"
       tabindex="0"
@@ -59,7 +59,7 @@ exports[`Tabs > renders filled variant with correct layout and style 1`] = `
     <button
       aria-controls="tabs-content-tab2"
       aria-selected="false"
-      class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-base relative font-normal rounded-lg bg-none flex-1 min-w-0 bg-transparent text-foreground hover:bg-white/80"
+      class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-sm relative font-normal rounded-lg bg-none flex-1 min-w-0 bg-transparent text-foreground hover:bg-white/80"
       id="tabs-trigger-tab2"
       role="tab"
       tabindex="-1"
@@ -70,7 +70,7 @@ exports[`Tabs > renders filled variant with correct layout and style 1`] = `
     <button
       aria-controls="tabs-content-tab3"
       aria-selected="false"
-      class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-base relative font-normal rounded-lg bg-none flex-1 min-w-0 bg-transparent text-foreground hover:bg-white/80"
+      class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-sm relative font-normal rounded-lg bg-none flex-1 min-w-0 bg-transparent text-foreground hover:bg-white/80"
       id="tabs-trigger-tab3"
       role="tab"
       tabindex="-1"

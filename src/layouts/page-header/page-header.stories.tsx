@@ -5,7 +5,7 @@
  * Icons from lucide-react (dev only)
  */
 import { useState } from 'react'
-import { ArrowDownIcon, PlusIcon, UploadIcon } from 'lucide-react'
+import { ArrowDownIcon, HomeIcon, PlusIcon, UploadIcon } from 'lucide-react'
 import { PageHeader } from './index'
 import { Breadcrumbs } from '@/navigation/breadcrumbs'
 import { Tabs } from '@/navigation/tabs'
@@ -29,6 +29,20 @@ export const Simple = () => (
   <PageHeader
     title='Dashboard'
     subtitle='Welcome back, John'
+    breadcrumbs={
+      <Breadcrumbs>
+        <Breadcrumbs.Item
+          href='/'
+          icon={<Icon as={HomeIcon} color='inherit' size='sm' />}
+        >
+          Home
+        </Breadcrumbs.Item>
+        <Breadcrumbs.Separator />
+        <Breadcrumbs.Item href='/admin'>Admin</Breadcrumbs.Item>
+        <Breadcrumbs.Separator />
+        <Breadcrumbs.Item>Users</Breadcrumbs.Item>
+      </Breadcrumbs>
+    }
     actions={
       <ButtonGroup>
         <Button variant='primary'>New Project</Button>
@@ -49,7 +63,9 @@ export const Complete = () => {
       breadcrumbs={
         <Breadcrumbs>
           <Breadcrumbs.Item href='/'>Home</Breadcrumbs.Item>
+          <Breadcrumbs.Separator />
           <Breadcrumbs.Item href='/admin'>Admin</Breadcrumbs.Item>
+          <Breadcrumbs.Separator />
           <Breadcrumbs.Item>Users</Breadcrumbs.Item>
         </Breadcrumbs>
       }
@@ -90,4 +106,22 @@ export const Complete = () => {
 /**
  * Minimal header with only title
  */
-export const Minimal = () => <PageHeader title='Simple Page' />
+export const Minimal = () => (
+  <PageHeader
+    title='Simple Page'
+    breadcrumbs={
+      <Breadcrumbs>
+        <Breadcrumbs.Item
+          href='/'
+          icon={<Icon as={HomeIcon} color='inherit' size='sm' />}
+        >
+          Home
+        </Breadcrumbs.Item>
+        <Breadcrumbs.Separator />
+        <Breadcrumbs.Item href='/admin'>Admin</Breadcrumbs.Item>
+        <Breadcrumbs.Separator />
+        <Breadcrumbs.Item>Users</Breadcrumbs.Item>
+      </Breadcrumbs>
+    }
+  />
+)
