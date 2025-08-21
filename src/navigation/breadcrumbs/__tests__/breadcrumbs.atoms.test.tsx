@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import { BreadcrumbsItem, BreadcrumbsSeparator } from '../breadcrumbs.atoms'
+import { BreadcrumbsItem } from '../breadcrumbs.atoms'
 
 describe('BreadcrumbsItem', () => {
   it('renders with label and icon', () => {
@@ -19,12 +19,5 @@ describe('BreadcrumbsItem', () => {
       </BreadcrumbsItem>
     )
     expect(getByRole('link')).toHaveAttribute('aria-current', 'page')
-  })
-})
-
-describe('BreadcrumbsSeparator', () => {
-  it('renders separator', () => {
-    const { getByText } = render(<BreadcrumbsSeparator />)
-    expect(getByText('/')).toBeInTheDocument()
   })
 })

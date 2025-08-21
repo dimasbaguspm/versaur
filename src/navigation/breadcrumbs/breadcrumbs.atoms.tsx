@@ -1,7 +1,9 @@
 import type { BreadcrumbsItemProps } from './types'
-import { breadcrumbsItemClass, breadcrumbsSeparatorClass } from './helpers'
+import { breadcrumbsItemClass } from './helpers'
 import { forwardRef } from 'react'
 import { cn } from '@/utils'
+import { Icon } from '@/primitive'
+import { ChevronRight } from 'lucide-react'
 
 /**
  * Single breadcrumb item, used within <Breadcrumbs>
@@ -19,7 +21,7 @@ export const BreadcrumbsItem = forwardRef<
         ref={ref}
         aria-current={isCurrent ? 'page' : undefined}
         tabIndex={isCurrent ? -1 : 0}
-        className={cn(breadcrumbsItemClass({ isCurrent }) + className)}
+        className={cn(breadcrumbsItemClass(), className)}
         {...props}
       >
         {icon && <span className='mr-1 inline-flex'>{icon}</span>}
@@ -33,9 +35,5 @@ export const BreadcrumbsItem = forwardRef<
  * Separator between breadcrumb items
  */
 export function BreadcrumbsSeparator() {
-  return (
-    <span className={breadcrumbsSeparatorClass} aria-hidden='true'>
-      /
-    </span>
-  )
+  return <Icon as={ChevronRight} size='xs' color='inherit' />
 }

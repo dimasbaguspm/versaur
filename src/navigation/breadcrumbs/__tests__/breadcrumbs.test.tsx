@@ -17,12 +17,6 @@ describe('Breadcrumbs', () => {
     expect(screen.getByText('Details')).toBeInTheDocument()
   })
 
-  it('renders separators between items (manual)', () => {
-    render(<Basic />)
-    // There should be 2 separators for 3 items
-    expect(screen.getAllByText('/').length).toBe(2)
-  })
-
   it('renders correctly with impactful story', () => {
     const { asFragment } = render(<Impactful />)
     expect(asFragment()).toMatchSnapshot()
@@ -34,7 +28,5 @@ describe('Breadcrumbs', () => {
     expect(screen.getByText('Dashboard')).toBeInTheDocument()
     expect(screen.getByText('Settings')).toBeInTheDocument()
     expect(screen.getByText('Profile')).toBeInTheDocument()
-    // There should be 3 separators for 4 items
-    expect(screen.getAllByText('/').length).toBe(3)
   })
 })
