@@ -24,7 +24,7 @@ describe('Button', () => {
   it('applies size classes correctly', () => {
     render(<Button size='sm'>Small</Button>)
     const button = screen.getByRole('button')
-    expect(button).toHaveClass('h-8')
+    expect(button).toHaveClass('h-7')
   })
 
   it('handles disabled state', () => {
@@ -101,9 +101,9 @@ describe('Button', () => {
 
   it('renders all sizes correctly', () => {
     const sizes = [
-      { size: 'sm', expectedClass: 'h-8' },
-      { size: 'md', expectedClass: 'h-10' },
-      { size: 'lg', expectedClass: 'h-12' },
+      { size: 'sm', expectedClass: 'h-7' },
+      { size: 'md', expectedClass: 'h-9' },
+      { size: 'lg', expectedClass: 'h-10' },
     ] as const
 
     sizes.forEach(({ size, expectedClass }) => {

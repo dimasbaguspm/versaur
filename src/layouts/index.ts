@@ -1,5 +1,6 @@
 export * from './app-bar'
 export * from './bottom-bar'
+export * from './button-group'
 export * from './top-bar'
 export * from './page-layout'
 export * from './form-layout'
