@@ -3,7 +3,7 @@
 exports[`PageHeader > renders complete layout with all elements 1`] = `
 <div>
   <header
-    class="w-full"
+    class="w-full mt-4"
     role="banner"
   >
     <div
@@ -281,7 +281,7 @@ exports[`PageHeader > renders complete layout with all elements 1`] = `
 exports[`PageHeader > renders correctly with simple props 1`] = `
 <div>
   <header
-    class="w-full"
+    class="w-full mt-4"
     role="banner"
   >
     <div
@@ -431,7 +431,7 @@ exports[`PageHeader > renders correctly with simple props 1`] = `
 exports[`PageHeader > renders minimal layout 1`] = `
 <div>
   <header
-    class="w-full"
+    class="w-full mt-4"
     role="banner"
   >
     <div

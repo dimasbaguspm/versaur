@@ -3,7 +3,7 @@ import { cva } from 'class-variance-authority'
 /**
  * PageHeader root styles
  */
-export const pageHeaderVariants = cva('w-full')
+export const pageHeaderVariants = cva('w-full mt-4')
 
 /**
  * PageHeaderTop styles - main header area
