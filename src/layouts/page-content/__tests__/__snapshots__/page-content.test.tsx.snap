@@ -1,0 +1,69 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`PageContent > matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="w-full px-4 sm:px-6 py-6 sm:py-8"
+  >
+    <div
+      class="space-y-6"
+    >
+      <div
+        class="prose"
+      >
+        <p
+          class="text-ghost text-left font-normal text-base"
+        >
+          This is the main content area of your page. PageContent provides consistent horizontal spacing that matches the PageHeader component, ensuring a cohesive layout across your application.
+        </p>
+      </div>
+      <div
+        class="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
+      >
+        <div
+          class="p-4 bg-neutral rounded-lg"
+        >
+          <h3
+            class="text-ghost text-left text-lg font-semibold mb-2"
+          >
+            Card 1
+          </h3>
+          <p
+            class="text-gray-500 text-left font-normal text-base leading-normal"
+          >
+            Some content in the first card using Versaur Text component.
+          </p>
+        </div>
+        <div
+          class="p-4 bg-neutral rounded-lg"
+        >
+          <h3
+            class="text-ghost text-left text-lg font-semibold mb-2"
+          >
+            Card 2
+          </h3>
+          <p
+            class="text-gray-500 text-left font-normal text-base leading-normal"
+          >
+            Some content in the second card with semantic typography.
+          </p>
+        </div>
+        <div
+          class="p-4 bg-neutral rounded-lg"
+        >
+          <h3
+            class="text-ghost text-left text-lg font-semibold mb-2"
+          >
+            Card 3
+          </h3>
+          <p
+            class="text-gray-500 text-left font-normal text-base leading-normal"
+          >
+            Some content in the third card demonstrating consistency.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
