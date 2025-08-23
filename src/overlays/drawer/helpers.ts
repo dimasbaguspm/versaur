@@ -59,22 +59,25 @@ export const drawerVariants = cva('fixed z-50 shadow-xl flex flex-col', {
  * Drawer header variants
  * Glass variant creates a transparent header that maintains layout structure
  */
-export const drawerHeaderVariants = cva('flex-shrink-0 px-6', {
-  variants: {
-    variant: {
-      default: 'bg-white',
-      glass: 'bg-transparent ',
+export const drawerHeaderVariants = cva(
+  'flex justify-between items-center px-6',
+  {
+    variants: {
+      variant: {
+        default: 'bg-white',
+        glass: 'bg-transparent ',
+      },
+      tab: {
+        true: 'pt-4 pb-2',
+        false: 'border-b border-border py-4 ',
+      },
     },
-    tab: {
-      true: 'pt-4 pb-2',
-      false: 'border-b border-border py-4 ',
+    defaultVariants: {
+      variant: 'default',
+      tab: false,
     },
-  },
-  defaultVariants: {
-    variant: 'default',
-    tab: false,
-  },
-})
+  }
+)
 
 /**
  * Drawer body variants
@@ -96,19 +99,14 @@ export const drawerBodyVariants = cva('flex-1 overflow-y-auto px-6 py-4', {
  * Glass variant creates a transparent footer that maintains layout structure
  * Responsive flex behavior: on small screens children expand, on larger screens children are right-aligned and sized to content
  */
-export const drawerFooterVariants = cva('flex-shrink-0 px-6 py-4 border-t', {
+export const drawerFooterVariants = cva('px-6 py-4 border-t', {
   variants: {
     variant: {
       default: 'bg-white border-border',
       glass: 'bg-transparent border-white/10',
     },
-    responsiveFlex: {
-      true: 'flex flex-row gap-3 sm:justify-end [&>*]:sm:flex-grow-0 [&>*]:flex-grow',
-      false: 'flex gap-2',
-    },
   },
   defaultVariants: {
     variant: 'default',
-    responsiveFlex: true,
   },
 })

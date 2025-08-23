@@ -3,9 +3,10 @@ import { useState } from 'react'
 import { Button } from '@/primitive/button'
 import { Drawer } from './drawer'
 import type { DrawerProps } from './types'
-import { X, Bell } from 'lucide-react'
-import { ButtonIcon } from '@/primitive'
+import { Bell } from 'lucide-react'
+import { Text } from '@/primitive'
 import { Tabs } from '@/navigation'
+import { ButtonGroup } from '@/layouts'
 
 const meta: Meta<typeof Drawer> = {
   title: 'Overlays/Drawer',
@@ -74,30 +75,25 @@ export const Default: Story = {
   render: args => (
     <DrawerWrapper {...args}>
       <Drawer.Header>
-        <div className='flex items-center justify-between'>
-          <h3 className='text-lg font-semibold'>Drawer Title</h3>
-          <ButtonIcon
-            as={X}
-            variant='ghost'
-            size='sm'
-            onClick={() => args.onClose(true)}
-            aria-label='Close drawer'
-          />
-        </div>
+        <Drawer.Title>Drawer Title</Drawer.Title>
+        <Drawer.CloseButton />
       </Drawer.Header>
       <Drawer.Body>
-        <p className='text-gray-600 mb-4'>
+        <Text as='p' color='gray'>
           This is the main content area of the drawer. You can put any content
           here.
-        </p>
-        <p className='text-gray-600'>
+        </Text>
+        <br />
+        <Text as='p' color='gray'>
           The drawer supports different sizes, positions, and variants to match
           your design needs.
-        </p>
+        </Text>
       </Drawer.Body>
       <Drawer.Footer>
-        <Button variant='ghost'>Cancel</Button>
-        <Button>Save Changes</Button>
+        <ButtonGroup fluid>
+          <Button variant='ghost'>Cancel</Button>
+          <Button>Save Changes</Button>
+        </ButtonGroup>
       </Drawer.Footer>
     </DrawerWrapper>
   ),
@@ -116,16 +112,8 @@ export const LeftPosition: Story = {
   render: args => (
     <DrawerWrapper {...args} triggerLabel='Settings'>
       <Drawer.Header>
-        <div className='flex items-center justify-between'>
-          <h3 className='text-lg font-semibold'>Settings</h3>
-          <ButtonIcon
-            as={X}
-            variant='ghost'
-            size='sm'
-            onClick={() => args.onClose(true)}
-            aria-label='Close drawer'
-          />
-        </div>
+        <Drawer.Title>Settings</Drawer.Title>
+        <Drawer.CloseButton />
       </Drawer.Header>
       <Drawer.Body>
         <div className='space-y-4'>
@@ -196,16 +184,8 @@ export const LargeSize: Story = {
   render: args => (
     <DrawerWrapper {...args} triggerLabel='Open Large Drawer'>
       <Drawer.Header>
-        <div className='flex items-center justify-between'>
-          <h3 className='text-lg font-semibold'>Notifications</h3>
-          <ButtonIcon
-            as={X}
-            variant='ghost'
-            size='sm'
-            onClick={() => args.onClose(true)}
-            aria-label='Close drawer'
-          />
-        </div>
+        <Drawer.Title>Notifications</Drawer.Title>
+        <Drawer.CloseButton />
       </Drawer.Header>
       <Drawer.Body>
         <div className='space-y-4'>
@@ -229,8 +209,10 @@ export const LargeSize: Story = {
         </div>
       </Drawer.Body>
       <Drawer.Footer>
-        <Button variant='ghost'>Mark all as read</Button>
-        <Button>Close</Button>
+        <ButtonGroup alignment='end'>
+          <Button variant='ghost'>Mark all as read</Button>
+          <Button>Close</Button>
+        </ButtonGroup>
       </Drawer.Footer>
     </DrawerWrapper>
   ),
@@ -249,16 +231,8 @@ export const ThreeQuartersWidth: Story = {
   render: args => (
     <DrawerWrapper {...args} triggerLabel='Open 3/4 Width'>
       <Drawer.Header>
-        <div className='flex items-center justify-between'>
-          <h3 className='text-lg font-semibold'>Dashboard View</h3>
-          <ButtonIcon
-            as={X}
-            variant='ghost'
-            size='sm'
-            onClick={() => args.onClose(true)}
-            aria-label='Close drawer'
-          />
-        </div>
+        <Drawer.Title>Dashboard View</Drawer.Title>
+        <Drawer.CloseButton />
       </Drawer.Header>
       <Drawer.Body>
         <div className='space-y-6'>
@@ -303,8 +277,10 @@ export const ThreeQuartersWidth: Story = {
         </div>
       </Drawer.Body>
       <Drawer.Footer>
-        <Button variant='ghost'>Reset</Button>
-        <Button>Apply Changes</Button>
+        <ButtonGroup alignment='end'>
+          <Button variant='ghost'>Reset</Button>
+          <Button>Apply Changes</Button>
+        </ButtonGroup>
       </Drawer.Footer>
     </DrawerWrapper>
   ),
@@ -323,16 +299,8 @@ export const FullWidth: Story = {
   render: args => (
     <DrawerWrapper {...args} triggerLabel='Open Full Width'>
       <Drawer.Header>
-        <div className='flex items-center justify-between'>
-          <h3 className='text-lg font-semibold'>Full Width Drawer</h3>
-          <ButtonIcon
-            as={X}
-            variant='ghost'
-            size='sm'
-            onClick={() => args.onClose(true)}
-            aria-label='Close drawer'
-          />
-        </div>
+        <Drawer.Title>Full Width Drawer</Drawer.Title>
+        <Drawer.CloseButton />
       </Drawer.Header>
       <Drawer.Body>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
@@ -347,8 +315,10 @@ export const FullWidth: Story = {
         </div>
       </Drawer.Body>
       <Drawer.Footer>
-        <Button variant='ghost'>Cancel</Button>
-        <Button>Save All</Button>
+        <ButtonGroup alignment='end'>
+          <Button variant='ghost'>Cancel</Button>
+          <Button>Save All</Button>
+        </ButtonGroup>
       </Drawer.Footer>
     </DrawerWrapper>
   ),
@@ -356,65 +326,6 @@ export const FullWidth: Story = {
     position: 'right',
     size: 'full',
     variant: 'default',
-  },
-}
-
-/**
- * Custom footer layout (non-responsive)
- * Shows how to disable the responsive behavior for custom button arrangements
- */
-export const CustomFooterLayout: Story = {
-  render: args => (
-    <DrawerWrapper {...args} triggerLabel='Custom Footer'>
-      <Drawer.Header>
-        <div className='flex items-center justify-between'>
-          <h3 className='text-lg font-semibold'>Custom Layout</h3>
-          <ButtonIcon
-            as={X}
-            variant='ghost'
-            size='sm'
-            onClick={() => args.onClose(true)}
-            aria-label='Close drawer'
-          />
-        </div>
-      </Drawer.Header>
-      <Drawer.Body>
-        <p className='text-gray-600 mb-4'>
-          This drawer footer has custom styling with responsive behavior
-          disabled. The buttons maintain their custom layout across all screen
-          sizes.
-        </p>
-        <p className='text-gray-600'>
-          Use `responsiveFlex={false}` when you need complete control over
-          footer layout.
-        </p>
-      </Drawer.Body>
-      <Drawer.Footer responsiveFlex={false}>
-        <div className='flex items-center justify-between w-full'>
-          <Button variant='ghost' size='sm'>
-            <Bell size={16} className='mr-2' />
-            Notify
-          </Button>
-          <div className='flex gap-2'>
-            <Button variant='ghost'>Cancel</Button>
-            <Button>Apply</Button>
-          </div>
-        </div>
-      </Drawer.Footer>
-    </DrawerWrapper>
-  ),
-  args: {
-    position: 'right',
-    size: 'md',
-    variant: 'default',
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'When `responsiveFlex={false}`, the footer does not apply responsive behavior. You have full control over the layout and can implement custom arrangements that remain consistent across all screen sizes.',
-      },
-    },
   },
 }
 
@@ -426,7 +337,8 @@ export const Fade: Story = {
       triggerLabel='Open Fade Drawer'
     >
       <Drawer.Header>
-        <h3 className='text-lg font-semibold'>Fade Transition</h3>
+        <Drawer.Title>Fade Transition</Drawer.Title>
+        <Drawer.CloseButton />
       </Drawer.Header>
       <Drawer.Body>
         <p>This drawer uses a fade transition instead of sliding in/out.</p>
@@ -445,16 +357,8 @@ export const HeaderTab: Story = {
   render: args => (
     <DrawerWrapper {...args} triggerLabel='Open Tab Drawer'>
       <Drawer.Header hasTab>
-        <div className='flex items-center justify-between'>
-          <h3 className='text-lg font-semibold'>Tab Drawer</h3>
-          <ButtonIcon
-            as={X}
-            variant='ghost'
-            size='sm'
-            onClick={() => args.onClose(true)}
-            aria-label='Close drawer'
-          />
-        </div>
+        <Drawer.Title>Tab Drawer</Drawer.Title>
+        <Drawer.CloseButton />
       </Drawer.Header>
       <Drawer.Tab>
         <Tabs value='details' onValueChange={console.log}>
@@ -463,13 +367,14 @@ export const HeaderTab: Story = {
         </Tabs>
       </Drawer.Tab>
       <Drawer.Body>
-        <p className='text-gray-600 mb-4'>
+        <Text as='p' color='gray'>
           This drawer can be used to display tabbed content or navigation.
-        </p>
-        <p className='text-gray-600'>
+        </Text>
+        <br />
+        <Text as='p' color='gray'>
           You can implement tabs inside the drawer body for better organization
           of content.
-        </p>
+        </Text>
       </Drawer.Body>
     </DrawerWrapper>
   ),

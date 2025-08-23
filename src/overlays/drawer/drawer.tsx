@@ -7,6 +7,8 @@ import {
   DrawerBody,
   DrawerFooter,
   DrawerTab,
+  DrawerCloseButton,
+  DrawerTitle,
 } from './drawer.atoms'
 import { drawerVariants } from './helpers'
 import { useEscapeClose } from '@/utils/use-escape-close'
@@ -93,6 +95,8 @@ export const DrawerRoot: React.FC<DrawerProps> = ({
  */
 export const Drawer = Object.assign(DrawerRoot, {
   Header: DrawerHeader,
+  Title: DrawerTitle,
+  CloseButton: DrawerCloseButton,
   Tab: DrawerTab,
   Body: DrawerBody,
   Footer: DrawerFooter,
