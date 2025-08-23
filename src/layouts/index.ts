@@ -1,5 +1,6 @@
 export * from './app-bar'
 export * from './bottom-bar'
+export * from './badge-group'
 export * from './button-group'
 export * from './page-content'
 export * from './page-header'
