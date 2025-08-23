@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`BadgeGroup > should render HTML correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-row justify-start gap-3"
+    role="group"
+  >
+    <button
+      aria-disabled="false"
+      class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md h-9 px-4 text-sm min-w-[2.5rem]"
+      type="button"
+    >
+      Save
+    </button>
+    <button
+      aria-disabled="false"
+      class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-light focus-visible:ring-offset-white h-9 px-4 text-sm min-w-[2.5rem]"
+      type="button"
+    >
+      Cancel
+    </button>
+  </div>
+</DocumentFragment>
+`;
