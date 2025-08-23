@@ -175,18 +175,6 @@ describe('Drawer', () => {
     })
   })
 
-  describe('Custom Footer Layout', () => {
-    const { CustomFooterLayout } = composeStories(stories)
-    it('renders custom footer layout with responsiveFlex false', () => {
-      render(<CustomFooterLayout />)
-      fireEvent.click(screen.getByText('Custom Footer'))
-      expect(screen.getByText('Custom Layout')).toBeInTheDocument()
-      // Footer should have custom layout
-      expect(screen.getByText('Notify')).toBeInTheDocument()
-      expect(screen.getByText('Apply')).toBeInTheDocument()
-    })
-  })
-
   describe('Tab Usage', () => {
     const { HeaderTab } = composeStories(stories)
     it('renders drawer with tabs in header', () => {

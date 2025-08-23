@@ -1,4 +1,5 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef, type MouseEventHandler } from 'react'
+import { XIcon } from 'lucide-react'
 import { cn } from '@/utils/cn'
 import { useDrawerContext } from './context'
 import {
@@ -14,6 +15,12 @@ import type {
   DrawerOverlayProps,
   DrawerHeaderTabProps,
 } from './types'
+import {
+  ButtonIcon,
+  Text,
+  type ButtonIconProps,
+  type TextProps,
+} from '@/primitive'
 
 /**
  * DrawerOverlay - Background overlay that appears behind the drawer
@@ -67,6 +74,34 @@ export const DrawerHeader = React.forwardRef<HTMLDivElement, DrawerHeaderProps>(
   }
 )
 
+export const DrawerTitle = forwardRef<HTMLElement, TextProps>((props, ref) => {
+  return <Text {...props} ref={ref} as='h3' fontSize='lg' />
+})
+
+export const DrawerCloseButton = forwardRef<
+  HTMLButtonElement,
+  Partial<ButtonIconProps>
+>(({ onClick, ...props }, ref) => {
+  const { onClose } = useDrawerContext()
+
+  const handleOnClick: MouseEventHandler<HTMLButtonElement> = ev => {
+    onClose()
+    onClick?.(ev)
+  }
+
+  return (
+    <ButtonIcon
+      aria-label='Close drawer'
+      {...props}
+      onClick={handleOnClick}
+      variant='ghost'
+      size='sm'
+      as={XIcon}
+      ref={ref}
+    />
+  )
+})
+
 export const DrawerTab = forwardRef<HTMLDivElement, DrawerHeaderTabProps>(
   ({ children, className, ...props }, ref) => {
     return (
@@ -103,16 +138,13 @@ export const DrawerBody = React.forwardRef<HTMLDivElement, DrawerBodyProps>(
  * Supports responsive flex behavior for optimal button layout across screen sizes
  */
 export const DrawerFooter = React.forwardRef<HTMLDivElement, DrawerFooterProps>(
-  ({ children, className, responsiveFlex = true, ...props }, ref) => {
+  ({ children, className, ...props }, ref) => {
     const { variant } = useDrawerContext()
 
     return (
       <div
         ref={ref}
-        className={cn(
-          drawerFooterVariants({ variant, responsiveFlex }),
-          className
-        )}
+        className={cn(drawerFooterVariants({ variant }), className)}
         {...props}
       >
         {children}

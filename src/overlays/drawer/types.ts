@@ -65,8 +65,6 @@ export interface DrawerProps
   transitionType?: DrawerTransitionType
   /** Children components */
   children: ReactNode
-  /** Additional CSS classes */
-  className?: string
 }
 
 /**
@@ -89,8 +87,6 @@ export interface DrawerHeaderTabProps extends HTMLAttributes<HTMLDivElement> {
 export interface DrawerBodyProps extends ComponentPropsWithoutRef<'div'> {
   /** Children components */
   children: ReactNode
-  /** Additional CSS classes */
-  className?: string
 }
 
 /**
@@ -99,20 +95,9 @@ export interface DrawerBodyProps extends ComponentPropsWithoutRef<'div'> {
 export interface DrawerFooterProps extends ComponentPropsWithoutRef<'div'> {
   /** Children components */
   children: ReactNode
-  /** Additional CSS classes */
-  className?: string
-  /**
-   * Enable responsive flex behavior
-   * When true (default): on small screens children expand (flex-grow), on larger screens children are right-aligned and sized to content
-   * When false: children behavior is not modified by responsive rules
-   */
-  responsiveFlex?: boolean
 }
 
 /**
  * Props for the DrawerOverlay component
  */
-export interface DrawerOverlayProps extends ComponentPropsWithoutRef<'div'> {
-  /** Additional CSS classes */
-  className?: string
-}
+export type DrawerOverlayProps = ComponentPropsWithoutRef<'div'>
