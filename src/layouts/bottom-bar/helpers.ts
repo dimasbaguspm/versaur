@@ -29,7 +29,7 @@ export const bottomBarItemVariants = cva(
   {
     variants: {
       active: {
-        true: 'font-semibold text-primary',
+        true: 'text-primary',
         false: 'text-ghost',
       },
     },
