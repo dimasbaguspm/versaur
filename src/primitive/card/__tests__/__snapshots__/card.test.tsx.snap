@@ -1,0 +1,51 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Card > matches snapshot for default card 1`] = `
+<DocumentFragment>
+  <div
+    class="bg-white border border-border block transition-colors duration-200 cursor-pointer p-4 rounded-lg"
+  >
+    <div
+      class="flex items-start gap-4"
+    >
+      <div
+        class="flex-shrink-0"
+      >
+        <div
+          class="inline-flex items-center justify-center font-medium overflow-hidden transition-all duration-200 select-none relative bg-primary-light text-primary h-10 w-10 text-sm rounded-full"
+        >
+          DC
+        </div>
+      </div>
+      <div
+        class="w-full"
+      >
+        <div
+          class="mb-4"
+        >
+          <h3
+            class="text-ghost text-left text-base font-semibold"
+          >
+            Default Card
+          </h3>
+          <p
+            class="text-gray-500 text-left font-normal text-xs"
+          >
+            This is a subtitle
+          </p>
+        </div>
+        <div
+          class="flex justify-between items-center"
+        >
+          <span
+            class="inline-flex items-center justify-center font-medium transition-all duration-200 select-none gap-1 min-h-[1.25rem] rounded-md text-xs px-1.5 py-0.5 h-4 bg-secondary-light text-secondary"
+          >
+            Status
+          </span>
+          Info
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
