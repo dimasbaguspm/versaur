@@ -25,7 +25,7 @@ export const bottomBarVariants = cva(
 )
 
 export const bottomBarItemVariants = cva(
-  'flex flex-col items-center justify-center gap-1 px-2 py-1',
+  'flex flex-col items-center justify-center gap-1 px-2 py-1 select-none',
   {
     variants: {
       active: {
