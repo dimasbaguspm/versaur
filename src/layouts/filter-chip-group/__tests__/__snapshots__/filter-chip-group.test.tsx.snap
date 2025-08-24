@@ -1,0 +1,82 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FilterChipGroup > should render HTML correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-wrap items-center flex-row justify-start gap-3"
+    role="group"
+  >
+    <button
+      aria-disabled="false"
+      aria-label="Active Filter 1, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-neutral text-foreground bg-white hover:bg-neutral/20 focus-visible:ring-foreground-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Active Filter 1
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Active Filter 2, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-neutral text-foreground bg-white hover:bg-neutral/20 focus-visible:ring-foreground-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Active Filter 2
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer text-foreground bg-white hover:bg-neutral/50 focus-visible:ring-foreground focus-visible:ring-offset-white h-9 px-4 text-sm min-w-[2.5rem]"
+      type="button"
+    >
+      Clear All
+    </button>
+  </div>
+</DocumentFragment>
+`;
