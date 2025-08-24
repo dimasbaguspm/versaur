@@ -8,7 +8,7 @@ exports[`FilterChip > renders all variants correctly 1`] = `
     <button
       aria-disabled="false"
       aria-label="Primary, removable"
-      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm h-8 px-4 text-sm"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-primary-light text-primary hover:bg-primary-soft focus-visible:ring-primary-light focus-visible:ring-offset-white h-8 px-4 text-sm"
       type="button"
     >
       <span
@@ -72,7 +72,7 @@ exports[`FilterChip > renders all variants correctly 1`] = `
     <button
       aria-disabled="false"
       aria-label="Secondary, removable"
-      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-secondary text-white hover:bg-secondary/90 focus-visible:ring-secondary-light focus-visible:ring-offset-white shadow-sm h-8 px-4 text-sm"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-secondary-light text-secondary hover:bg-secondary-soft focus-visible:ring-secondary-light focus-visible:ring-offset-white h-8 px-4 text-sm"
       type="button"
     >
       <span
@@ -136,7 +136,7 @@ exports[`FilterChip > renders all variants correctly 1`] = `
     <button
       aria-disabled="false"
       aria-label="Tertiary, removable"
-      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-tertiary text-white hover:bg-tertiary/90 focus-visible:ring-tertiary-light focus-visible:ring-offset-white shadow-sm h-8 px-4 text-sm"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-tertiary-light text-tertiary hover:bg-tertiary-soft focus-visible:ring-tertiary-light focus-visible:ring-offset-white h-8 px-4 text-sm"
       type="button"
     >
       <span
@@ -200,7 +200,7 @@ exports[`FilterChip > renders all variants correctly 1`] = `
     <button
       aria-disabled="false"
       aria-label="Ghost, removable"
-      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-ghost-soft text-foreground hover:bg-ghost-light focus-visible:ring-ghost-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-light focus-visible:ring-offset-white h-8 px-4 text-sm"
       type="button"
     >
       <span
@@ -296,7 +296,7 @@ exports[`FilterChip > renders all variants correctly 1`] = `
     <button
       aria-disabled="false"
       aria-label="Neutral Outline, removable"
-      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-neutral text-foreground bg-white hover:bg-neutral/20 focus-visible:ring-foreground-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-border text-foreground bg-white hover:bg-neutral focus-visible:ring-foreground-light focus-visible:ring-offset-white h-8 px-4 text-sm"
       type="button"
     >
       <span
@@ -334,7 +334,7 @@ exports[`FilterChip > renders correctly 1`] = `
   <button
     aria-disabled="false"
     aria-label="Test Chip, removable"
-    class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-neutral text-foreground bg-white hover:bg-neutral/20 focus-visible:ring-foreground-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+    class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-border text-foreground bg-white hover:bg-neutral focus-visible:ring-foreground-light focus-visible:ring-offset-white h-8 px-4 text-sm"
     type="button"
   >
     <span
@@ -371,7 +371,7 @@ exports[`FilterChip > renders default story correctly 1`] = `
   <button
     aria-disabled="false"
     aria-label="Category, removable"
-    class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-neutral text-foreground bg-white hover:bg-neutral/20 focus-visible:ring-foreground-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+    class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-border text-foreground bg-white hover:bg-neutral focus-visible:ring-foreground-light focus-visible:ring-offset-white h-8 px-4 text-sm"
     type="button"
   >
     <span
@@ -411,7 +411,7 @@ exports[`FilterChip > renders different sizes correctly 1`] = `
     <button
       aria-disabled="false"
       aria-label="Small, removable"
-      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-neutral text-foreground bg-white hover:bg-neutral/20 focus-visible:ring-foreground-light focus-visible:ring-offset-white h-7 px-3 text-xs"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-border text-foreground bg-white hover:bg-neutral focus-visible:ring-foreground-light focus-visible:ring-offset-white h-7 px-3 text-xs"
       type="button"
     >
       <span
@@ -443,7 +443,7 @@ exports[`FilterChip > renders different sizes correctly 1`] = `
     <button
       aria-disabled="false"
       aria-label="Medium, removable"
-      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-neutral text-foreground bg-white hover:bg-neutral/20 focus-visible:ring-foreground-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-border text-foreground bg-white hover:bg-neutral focus-visible:ring-foreground-light focus-visible:ring-offset-white h-8 px-4 text-sm"
       type="button"
     >
       <span
@@ -475,7 +475,7 @@ exports[`FilterChip > renders different sizes correctly 1`] = `
     <button
       aria-disabled="false"
       aria-label="Large, removable"
-      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-neutral text-foreground bg-white hover:bg-neutral/20 focus-visible:ring-foreground-light focus-visible:ring-offset-white h-9 px-5 text-sm"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-border text-foreground bg-white hover:bg-neutral focus-visible:ring-foreground-light focus-visible:ring-offset-white h-9 px-5 text-sm"
       type="button"
     >
       <span
@@ -516,7 +516,7 @@ exports[`FilterChip > renders disabled state correctly 1`] = `
     <button
       aria-disabled="true"
       aria-label="Disabled, removable"
-      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-neutral text-foreground bg-white hover:bg-neutral/20 focus-visible:ring-foreground-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-border text-foreground bg-white hover:bg-neutral focus-visible:ring-foreground-light focus-visible:ring-offset-white h-8 px-4 text-sm"
       disabled=""
       inert=""
       type="button"
@@ -550,7 +550,7 @@ exports[`FilterChip > renders disabled state correctly 1`] = `
     <button
       aria-disabled="true"
       aria-label="Disabled Removable, removable"
-      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-neutral text-foreground bg-white hover:bg-neutral/20 focus-visible:ring-foreground-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-border text-foreground bg-white hover:bg-neutral focus-visible:ring-foreground-light focus-visible:ring-offset-white h-8 px-4 text-sm"
       disabled=""
       inert=""
       type="button"
@@ -584,7 +584,7 @@ exports[`FilterChip > renders disabled state correctly 1`] = `
     <button
       aria-disabled="true"
       aria-label="Disabled Primary, removable"
-      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm h-8 px-4 text-sm"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-primary-light text-primary hover:bg-primary-soft focus-visible:ring-primary-light focus-visible:ring-offset-white h-8 px-4 text-sm"
       disabled=""
       inert=""
       type="button"
@@ -661,7 +661,7 @@ exports[`FilterChip > renders removable variants correctly 1`] = `
     <button
       aria-disabled="false"
       aria-label="Primary, removable"
-      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm h-8 px-4 text-sm"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-primary-light text-primary hover:bg-primary-soft focus-visible:ring-primary-light focus-visible:ring-offset-white h-8 px-4 text-sm"
       type="button"
     >
       <span
@@ -725,7 +725,7 @@ exports[`FilterChip > renders removable variants correctly 1`] = `
     <button
       aria-disabled="false"
       aria-label="Success, removable"
-      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-success text-white hover:bg-success/90 focus-visible:ring-success-light focus-visible:ring-offset-white shadow-sm h-8 px-4 text-sm"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-success text-white hover:bg-success/90 focus-visible:ring-success-light focus-visible:ring-offset-white h-8 px-4 text-sm"
       type="button"
     >
       <span
@@ -798,7 +798,7 @@ exports[`FilterChip > renders semantic color variants correctly 1`] = `
     <button
       aria-disabled="false"
       aria-label="Success, removable"
-      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-success text-white hover:bg-success/90 focus-visible:ring-success-light focus-visible:ring-offset-white shadow-sm h-8 px-4 text-sm"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-success text-white hover:bg-success/90 focus-visible:ring-success-light focus-visible:ring-offset-white h-8 px-4 text-sm"
       type="button"
     >
       <span
@@ -862,7 +862,7 @@ exports[`FilterChip > renders semantic color variants correctly 1`] = `
     <button
       aria-disabled="false"
       aria-label="Info, removable"
-      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-info text-white hover:bg-info/90 focus-visible:ring-info-light focus-visible:ring-offset-white shadow-sm h-8 px-4 text-sm"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-info text-white hover:bg-info/90 focus-visible:ring-info-light focus-visible:ring-offset-white h-8 px-4 text-sm"
       type="button"
     >
       <span
@@ -926,7 +926,7 @@ exports[`FilterChip > renders semantic color variants correctly 1`] = `
     <button
       aria-disabled="false"
       aria-label="Warning, removable"
-      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-warning text-white hover:bg-warning/90 focus-visible:ring-warning-light focus-visible:ring-offset-white shadow-sm h-8 px-4 text-sm"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-warning text-white hover:bg-warning/90 focus-visible:ring-warning-light focus-visible:ring-offset-white h-8 px-4 text-sm"
       type="button"
     >
       <span
@@ -990,7 +990,7 @@ exports[`FilterChip > renders semantic color variants correctly 1`] = `
     <button
       aria-disabled="false"
       aria-label="Danger, removable"
-      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-danger text-white hover:bg-danger/90 focus-visible:ring-danger-light focus-visible:ring-offset-white shadow-sm h-8 px-4 text-sm"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-danger text-white hover:bg-danger/90 focus-visible:ring-danger-light focus-visible:ring-offset-white h-8 px-4 text-sm"
       type="button"
     >
       <span
