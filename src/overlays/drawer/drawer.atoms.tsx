@@ -30,9 +30,10 @@ export const DrawerOverlay = React.forwardRef<
   HTMLDivElement,
   DrawerOverlayProps
 >(({ className, ...props }, ref) => {
-  const { isOpen, onClose } = useDrawerContext()
+  const { isOpen, disableOverlayClickToClose, onClose } = useDrawerContext()
 
   const handleClick = () => {
+    if (disableOverlayClickToClose) return
     onClose()
   }
 

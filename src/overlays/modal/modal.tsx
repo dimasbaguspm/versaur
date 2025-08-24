@@ -1,6 +1,6 @@
 import React from 'react'
 import { cn } from '@/utils/cn'
-import { ModalContext, type ModalContextValue } from './context'
+import { ModalContext } from './context'
 import {
   ModalHeader,
   ModalFooter,
@@ -9,7 +9,7 @@ import {
 } from './modal.atoms'
 import { modalContentVariants } from './helpers'
 import { useEscapeClose } from '@/utils/use-escape-close'
-import type { ModalRootProps } from './types'
+import type { ModalContextValue, ModalRootProps } from './types'
 import { OverlayPortal } from '@/utils/overlay-portal'
 
 /**
@@ -21,6 +21,8 @@ export const ModalRoot: React.FC<ModalRootProps> = ({
   onClose,
   size = 'md',
   placement = 'center',
+  disableOverlayClickToClose = false,
+  disableEscapeKeyDown = false,
   children,
   container,
   ...props
@@ -30,9 +32,11 @@ export const ModalRoot: React.FC<ModalRootProps> = ({
     onClose,
     size,
     placement,
+    disableOverlayClickToClose,
+    disableEscapeKeyDown,
   } satisfies ModalContextValue
 
-  const modalContentRef = useEscapeClose(isOpen, onClose)
+  const modalContentRef = useEscapeClose(isOpen, onClose, disableEscapeKeyDown)
 
   return (
     <OverlayPortal container={container}>

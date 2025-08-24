@@ -43,6 +43,10 @@ export interface DrawerContextValue {
   variant: DrawerVariant
   /** Drawer transition type */
   transitionType: DrawerTransitionType
+  /** Whether to disable overlay click to close */
+  disableOverlayClickToClose: boolean
+  /** Whether to disable escape key down */
+  disableEscapeKeyDown: boolean
 }
 
 /**
@@ -50,19 +54,9 @@ export interface DrawerContextValue {
  */
 export interface DrawerProps
   extends ComponentPropsWithoutRef<'div'>,
-    OverlayPortalProps {
-  /** Whether the drawer is open (required - controlled component) */
-  isOpen: boolean
-  /** Callback when the drawer should close */
-  onClose: (open: boolean) => void
-  /** Drawer position */
-  position?: DrawerPosition
-  /** Drawer size */
-  size?: DrawerSize
-  /** Drawer variant */
-  variant?: DrawerVariant
-  /** Drawer transition type */
-  transitionType?: DrawerTransitionType
+    OverlayPortalProps,
+    Partial<Omit<DrawerContextValue, 'isOpen' | 'onClose'>>,
+    Pick<DrawerContextValue, 'isOpen' | 'onClose'> {
   /** Children components */
   children: ReactNode
 }

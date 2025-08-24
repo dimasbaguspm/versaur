@@ -16,6 +16,10 @@ export interface BottomSheetProps
    */
   onClose: () => void
   /**
+   * Whether to disable overlay click to close
+   */
+  disableOverlayClickToClose?: boolean
+  /**
    * Content of the bottom sheet
    */
   children: React.ReactNode

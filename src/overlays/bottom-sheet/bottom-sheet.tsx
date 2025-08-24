@@ -19,7 +19,18 @@ import { OverlayPortal } from '@/utils/overlay-portal'
  */
 
 const BottomSheetRoot = forwardRef<HTMLDivElement, BottomSheetProps>(
-  ({ isOpen, children, className, onClose, container, ...props }, ref) => {
+  (
+    {
+      isOpen,
+      children,
+      className,
+      onClose,
+      container,
+      disableOverlayClickToClose = false,
+      ...props
+    },
+    ref
+  ) => {
     const sheetRef = useEscapeClose(isOpen, onClose)
     const {
       isOpen: keyboardOpen,
@@ -42,6 +53,7 @@ const BottomSheetRoot = forwardRef<HTMLDivElement, BottomSheetProps>(
     }, [isOpen, isSupported, keyboardOpen, keyboardHeight])
 
     const handleBackdropClick = () => {
+      if (disableOverlayClickToClose) return
       onClose?.()
     }
 

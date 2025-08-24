@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { cn } from '@/utils/cn'
 import { DrawerContext } from './context'
 import {
@@ -28,23 +28,23 @@ export const DrawerRoot: React.FC<DrawerProps> = ({
   size = 'md',
   variant = 'default',
   transitionType = 'slide',
+  disableOverlayClickToClose = false,
+  disableEscapeKeyDown = false,
   className,
   ...props
 }) => {
-  const handleClose = useCallback(() => {
-    onClose(false)
-  }, [onClose])
-
   const contextValue: DrawerContextValue = {
     isOpen,
-    onClose: handleClose,
+    onClose,
     position,
     size,
     variant,
     transitionType,
+    disableOverlayClickToClose,
+    disableEscapeKeyDown,
   }
 
-  const drawerRef = useEscapeClose(isOpen, handleClose)
+  const drawerRef = useEscapeClose(isOpen, onClose, disableEscapeKeyDown)
 
   return (
     <OverlayPortal container={container}>

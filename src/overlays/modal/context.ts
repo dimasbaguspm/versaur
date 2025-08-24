@@ -1,16 +1,5 @@
 import { createContext, useContext } from 'react'
-import type { ModalRootProps } from './types'
-
-/**
- * Context for the Modal compound component
- * Provides shared state and functions across all modal sub-components
- */
-export interface ModalContextValue {
-  isOpen: boolean
-  onClose: () => void
-  size?: ModalRootProps['size']
-  placement?: ModalRootProps['placement']
-}
+import type { ModalContextValue } from './types'
 
 export const ModalContext = createContext<ModalContextValue | null>(null)
 
