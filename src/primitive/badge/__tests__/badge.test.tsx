@@ -73,19 +73,19 @@ describe('Badge Component', () => {
     it('applies primary color by default', () => {
       render(<Badge>Primary</Badge>)
       const badge = screen.getByText('Primary')
-      expect(badge).toHaveClass('bg-primary-light', 'text-primary')
+      expect(badge).toHaveClass('bg-primary-light/60', 'text-primary')
     })
 
     it('applies secondary color correctly', () => {
       render(<Badge color='secondary'>Secondary</Badge>)
       const badge = screen.getByText('Secondary')
-      expect(badge).toHaveClass('bg-secondary-light', 'text-secondary')
+      expect(badge).toHaveClass('bg-secondary-light/70', 'text-secondary')
     })
 
     it('applies success color correctly', () => {
       render(<Badge color='success'>Success</Badge>)
       const badge = screen.getByText('Success')
-      expect(badge).toHaveClass('bg-success-light', 'text-success')
+      expect(badge).toHaveClass('bg-success-light/40', 'text-success')
     })
 
     it('applies outline color correctly', () => {
@@ -103,7 +103,7 @@ describe('Badge Component', () => {
     it('applies square shape by default', () => {
       render(<Badge>Square</Badge>)
       const badge = screen.getByText('Square')
-      expect(badge).toHaveClass('rounded-md')
+      expect(badge).toHaveClass('rounded-xs')
     })
 
     it('applies rounded shape correctly', () => {

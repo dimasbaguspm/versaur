@@ -38,7 +38,7 @@ exports[`Card > matches snapshot for default card 1`] = `
           class="flex justify-between items-center"
         >
           <span
-            class="inline-flex items-center justify-center font-medium transition-all duration-200 select-none gap-1 min-h-[1.25rem] rounded-md text-xs px-1.5 py-0.5 h-4 bg-secondary-light text-secondary"
+            class="inline-flex items-center justify-center font-medium transition-all duration-200 select-none gap-1 min-h-[1.25rem] rounded-xs text-xs px-1.5 py-0.5 h-4 bg-secondary-light/70 text-secondary"
           >
             Status
           </span>

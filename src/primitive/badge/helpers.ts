@@ -27,7 +27,7 @@ export const badgeVariants = cva(
       },
       shape: {
         rounded: 'rounded-full',
-        square: 'rounded-md',
+        square: 'rounded-xs',
       },
       size: {
         sm: 'text-xs px-1 py-0.25 h-3',
@@ -44,47 +44,47 @@ export const badgeVariants = cva(
       {
         variant: 'default',
         color: 'primary',
-        className: 'bg-primary-light text-primary',
+        className: 'bg-primary-light/60 text-primary',
       },
       {
         variant: 'default',
         color: 'secondary',
-        className: 'bg-secondary-light text-secondary',
+        className: 'bg-secondary-light/70 text-secondary',
       },
       {
         variant: 'default',
         color: 'tertiary',
-        className: 'bg-tertiary-light text-tertiary',
+        className: 'bg-tertiary-light/50 text-tertiary',
       },
       {
         variant: 'default',
         color: 'ghost',
-        className: 'bg-ghost-light text-ghost',
+        className: 'bg-ghost/05 text-ghost',
       },
       {
         variant: 'default',
         color: 'neutral',
-        className: 'bg-neutral text-foreground',
+        className: 'bg-neutral-light text-foreground',
       },
       {
         variant: 'default',
         color: 'success',
-        className: 'bg-success-light text-success',
+        className: 'bg-success-light/40 text-success',
       },
       {
         variant: 'default',
         color: 'info',
-        className: 'bg-info-light text-info',
+        className: 'bg-info-light/50 text-info',
       },
       {
         variant: 'default',
         color: 'warning',
-        className: 'bg-warning-light text-warning',
+        className: 'bg-warning-light/50 text-warning',
       },
       {
         variant: 'default',
         color: 'danger',
-        className: 'bg-danger-light text-danger',
+        className: 'bg-danger-light/40 text-danger',
       },
 
       // Outline variant color combinations
