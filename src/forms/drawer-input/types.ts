@@ -17,6 +17,12 @@ export interface DrawerInputContextValue {
  */
 export interface DrawerInputProps
   extends Omit<TextInputProps, 'readOnly' | 'children'>,
-    Pick<DrawerProps, 'size' | 'position'> {
+    Pick<
+      DrawerProps,
+      | 'size'
+      | 'position'
+      | 'disableEscapeKeyDown'
+      | 'disableOverlayClickToClose'
+    > {
   children: (ctx: DrawerInputContextValue) => ReactNode
 }

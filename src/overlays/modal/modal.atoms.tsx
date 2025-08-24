@@ -40,14 +40,21 @@ export const ModalBody = forwardRef<HTMLDivElement, ModalBodyProps>(
  */
 export const ModalOverlay = forwardRef<HTMLDivElement, ModalOverlayProps>(
   (props, ref) => {
-    const { isOpen, placement, onClose } = useModalContext()
+    const { isOpen, placement, onClose, disableOverlayClickToClose } =
+      useModalContext()
+
+    const handleClick = () => {
+      if (disableOverlayClickToClose) return
+      onClose()
+    }
+
     return (
       <div
         ref={ref}
         role='presentation'
         tabIndex={-1}
         aria-modal='true'
-        onClick={onClose}
+        onClick={handleClick}
         className={cn(
           modalOverlayVariants({ placement }),
           isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
