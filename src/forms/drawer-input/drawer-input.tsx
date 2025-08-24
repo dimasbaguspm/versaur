@@ -8,7 +8,19 @@ import type { DrawerInputProps, DrawerInputContextValue } from './types'
  * Drawer content is provided by consumer as children.
  */
 const DrawerInputRoot = forwardRef<HTMLInputElement, DrawerInputProps>(
-  ({ children, onChange, value, size, position, ...textInputProps }, ref) => {
+  (
+    {
+      children,
+      onChange,
+      value,
+      size,
+      position,
+      disableEscapeKeyDown,
+      disableOverlayClickToClose,
+      ...textInputProps
+    },
+    ref
+  ) => {
     const [isOpen, setIsOpen] = useState(false)
 
     const contextValue = useMemo(
@@ -37,9 +49,11 @@ const DrawerInputRoot = forwardRef<HTMLInputElement, DrawerInputProps>(
         />
         <Drawer
           isOpen={isOpen}
-          onClose={setIsOpen}
+          onClose={() => setIsOpen(false)}
           size={size}
           position={position}
+          disableEscapeKeyDown={disableEscapeKeyDown}
+          disableOverlayClickToClose={disableOverlayClickToClose}
         >
           {isOpen && children(contextValue)}
         </Drawer>

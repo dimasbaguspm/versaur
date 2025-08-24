@@ -18,6 +18,8 @@ const mockContextValue: DrawerContextValue = {
   size: 'md',
   variant: 'default',
   transitionType: 'slide',
+  disableEscapeKeyDown: false,
+  disableOverlayClickToClose: false,
 }
 
 // Helper component to provide context
