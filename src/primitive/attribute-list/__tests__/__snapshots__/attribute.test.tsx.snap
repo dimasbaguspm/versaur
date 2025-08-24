@@ -1,0 +1,82 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AttributeList > should render default AttributeList with correct HTML structure 1`] = `
+<DocumentFragment>
+  <ul
+    class="grid gap-4 grid-cols-4"
+  >
+    <li
+      class="col-span-1"
+    >
+      <div
+        class="space-y-1"
+      >
+        <h4
+          class="text-gray-500 text-left text-sm font-normal leading-none"
+        >
+          Name
+        </h4>
+        <p
+          class="text-ghost text-left text-base font-normal"
+        >
+          John Doe
+        </p>
+      </div>
+    </li>
+    <li
+      class="col-span-1"
+    >
+      <div
+        class="space-y-1"
+      >
+        <h4
+          class="text-gray-500 text-left text-sm font-normal leading-none"
+        >
+          Email
+        </h4>
+        <p
+          class="text-ghost text-left text-base font-normal"
+        >
+          john.doe@example.com
+        </p>
+      </div>
+    </li>
+    <li
+      class="col-span-1"
+    >
+      <div
+        class="space-y-1"
+      >
+        <h4
+          class="text-gray-500 text-left text-sm font-normal leading-none"
+        >
+          Phone
+        </h4>
+        <p
+          class="text-ghost text-left text-base font-normal"
+        >
+          +1 (555) 123-4567
+        </p>
+      </div>
+    </li>
+    <li
+      class="col-span-1"
+    >
+      <div
+        class="space-y-1"
+      >
+        <h4
+          class="text-gray-500 text-left text-sm font-normal leading-none"
+        >
+          Location
+        </h4>
+        <p
+          class="text-ghost text-left text-base font-normal"
+        >
+          New York, NY
+        </p>
+      </div>
+    </li>
+  </ul>
+</DocumentFragment>
+`;

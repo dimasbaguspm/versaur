@@ -1,5 +1,7 @@
 export * from './alert'
 export * from './anchor'
+export * from './attribute'
+export * from './attribute-list'
 export * from './avatar'
 export * from './badge'
 export * from './brand'

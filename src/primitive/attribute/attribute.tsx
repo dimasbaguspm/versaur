@@ -1,0 +1,33 @@
+import { forwardRef } from 'react'
+import { cn } from '@/utils/cn'
+import type { AttributeProps } from './types'
+import { Text } from '../text'
+
+/**
+ * Attribute component for Versaur UI
+ *
+ * A simple component that displays a title and content in a structured format.
+ *
+ * Usage:
+ * <Attribute title="Name">John Doe</Attribute>
+ */
+export const Attribute = forwardRef<HTMLDivElement, AttributeProps>(
+  function Attribute({ title, children, className, ...props }, ref) {
+    return (
+      <div ref={ref} className={cn('space-y-1', className)} {...props}>
+        <Text
+          as='h4'
+          fontSize='sm'
+          fontWeight='normal'
+          color='gray'
+          className='leading-none'
+        >
+          {title}
+        </Text>
+        <Text as='p' fontSize='base' fontWeight='normal'>
+          {children}
+        </Text>
+      </div>
+    )
+  }
+)
