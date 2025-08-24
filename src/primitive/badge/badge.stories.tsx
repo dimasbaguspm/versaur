@@ -34,6 +34,7 @@ import {
   UserIcon,
   ShieldCheckIcon,
 } from 'lucide-react'
+import { Icon } from '../icon'
 
 /**
  * The Badge component is used to present or highlight values with various styles and configurations.
@@ -172,16 +173,28 @@ export const Shapes: Story = {
 export const WithLeftIcon: Story = {
   render: () => (
     <div className='flex flex-wrap gap-2'>
-      <Badge iconLeft={<CheckIcon className='h-4 w-4' />} color='success'>
+      <Badge
+        iconLeft={<Icon as={CheckIcon} color='inherit' size='sm' />}
+        color='success'
+      >
         Verified
       </Badge>
-      <Badge iconLeft={<StarIcon className='h-4 w-4' />} color='warning'>
+      <Badge
+        iconLeft={<Icon as={StarIcon} color='inherit' size='sm' />}
+        color='warning'
+      >
         Featured
       </Badge>
-      <Badge iconLeft={<UserIcon className='h-4 w-4' />} color='tertiary'>
+      <Badge
+        iconLeft={<Icon as={UserIcon} color='inherit' size='sm' />}
+        color='tertiary'
+      >
         User
       </Badge>
-      <Badge iconLeft={<ShieldCheckIcon className='h-4 w-4' />} color='info'>
+      <Badge
+        iconLeft={<Icon as={ShieldCheckIcon} color='inherit' size='sm' />}
+        color='info'
+      >
         Secure
       </Badge>
     </div>
@@ -194,17 +207,26 @@ export const WithLeftIcon: Story = {
 export const WithRightIcon: Story = {
   render: () => (
     <div className='flex flex-wrap gap-2'>
-      <Badge iconRight={<ArrowRightIcon className='h-4 w-4' />} color='primary'>
+      <Badge
+        iconRight={<Icon as={ArrowRightIcon} color='inherit' size='sm' />}
+        color='primary'
+      >
         Continue
       </Badge>
-      <Badge iconRight={<XIcon className='h-4 w-4' />} color='danger'>
+      <Badge
+        iconRight={<Icon as={XIcon} color='inherit' size='sm' />}
+        color='danger'
+      >
         Remove
       </Badge>
-      <Badge iconRight={<InfoIcon className='h-4 w-4' />} color='info'>
+      <Badge
+        iconRight={<Icon as={InfoIcon} color='inherit' size='sm' />}
+        color='info'
+      >
         Learn More
       </Badge>
       <Badge
-        iconRight={<AlertCircleIcon className='h-4 w-4' />}
+        iconRight={<Icon as={AlertCircleIcon} color='inherit' size='sm' />}
         color='warning'
       >
         Alert
@@ -219,11 +241,26 @@ export const WithRightIcon: Story = {
 export const IconOnly: Story = {
   render: () => (
     <div className='flex flex-wrap gap-2'>
-      <Badge iconLeft={<CheckIcon className='h-4 w-4' />} color='success' />
-      <Badge iconLeft={<StarIcon className='h-4 w-4' />} color='warning' />
-      <Badge iconLeft={<XIcon className='h-4 w-4' />} color='danger' />
-      <Badge iconLeft={<InfoIcon className='h-4 w-4' />} color='info' />
-      <Badge iconLeft={<UserIcon className='h-4 w-4' />} color='tertiary' />
+      <Badge
+        iconLeft={<Icon as={CheckIcon} color='inherit' size='sm' />}
+        color='success'
+      />
+      <Badge
+        iconLeft={<Icon as={StarIcon} color='inherit' size='sm' />}
+        color='warning'
+      />
+      <Badge
+        iconLeft={<Icon as={XIcon} color='inherit' size='sm' />}
+        color='danger'
+      />
+      <Badge
+        iconLeft={<Icon as={InfoIcon} color='inherit' size='sm' />}
+        color='info'
+      />
+      <Badge
+        iconLeft={<Icon as={UserIcon} color='inherit' size='sm' />}
+        color='tertiary'
+      />
     </div>
   ),
 }
@@ -237,16 +274,22 @@ export const Examples: Story = {
       <div className='space-y-2'>
         <h4 className='text-sm font-medium text-gray-700'>Status Indicators</h4>
         <div className='flex flex-wrap gap-2'>
-          <Badge iconLeft={<CheckIcon className='h-4 w-4' />} color='success'>
+          <Badge
+            iconLeft={<Icon as={CheckIcon} color='inherit' size='sm' />}
+            color='success'
+          >
             Active
           </Badge>
           <Badge
-            iconLeft={<AlertCircleIcon className='h-4 w-4' />}
+            iconLeft={<Icon as={AlertCircleIcon} color='inherit' size='sm' />}
             color='warning'
           >
             Pending
           </Badge>
-          <Badge iconLeft={<XIcon className='h-4 w-4' />} color='danger'>
+          <Badge
+            iconLeft={<Icon as={XIcon} color='inherit' size='sm' />}
+            color='danger'
+          >
             Inactive
           </Badge>
         </div>
@@ -261,7 +304,7 @@ export const Examples: Story = {
             New
           </Badge>
           <Badge
-            iconLeft={<StarIcon className='h-4 w-4' />}
+            iconLeft={<Icon as={StarIcon} color='inherit' size='sm' />}
             color='warning'
             shape='rounded'
           >
@@ -277,7 +320,7 @@ export const Examples: Story = {
         <h4 className='text-sm font-medium text-gray-700'>Notifications</h4>
         <div className='flex flex-wrap gap-2'>
           <Badge
-            iconLeft={<CheckIcon className='h-4 w-4' />}
+            iconLeft={<Icon as={CheckIcon} color='inherit' size='sm' />}
             color='success'
             shape='rounded'
           />
