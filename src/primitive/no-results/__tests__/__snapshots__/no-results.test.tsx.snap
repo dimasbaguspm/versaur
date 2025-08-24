@@ -4,7 +4,7 @@ exports[`NoResults > should render correctly with default props 1`] = `
 <DocumentFragment>
   <section
     aria-label="No results found"
-    class="flex flex-col items-center justify-center text-center border border-border rounded-lg bg-background py-12"
+    class="flex flex-col items-center justify-center text-center border border-border rounded-lg bg-background py-12 px-6"
     role="status"
   >
     <header
@@ -33,7 +33,7 @@ exports[`NoResults > should render correctly with default props 1`] = `
         />
       </svg>
       <h2
-        class="text-left text-lg font-semibold text-foreground"
+        class="text-ghost text-left font-semibold text-lg"
       >
         No results found
       </h2>
