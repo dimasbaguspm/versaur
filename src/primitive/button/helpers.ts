@@ -27,7 +27,7 @@ export const buttonVariants = cva(
         'ghost-outline':
           'border border-ghost text-ghost bg-white hover:bg-ghost hover:text-white focus-visible:ring-ghost-light focus-visible:ring-offset-white transition-all',
         'neutral-outline':
-          'border border-neutral text-foreground bg-white hover:bg-neutral hover:text-foreground focus-visible:ring-foreground-light focus-visible:ring-offset-white transition-all',
+          'border border-border text-foreground bg-white hover:bg-neutral hover:text-foreground focus-visible:ring-foreground-light focus-visible:ring-offset-white transition-all',
 
         // Ghost variants (subtle)
         'primary-ghost':

@@ -26,7 +26,7 @@ describe('FilterChip', () => {
   it('applies variant classes correctly', () => {
     render(<FilterChip variant='primary'>Primary Chip</FilterChip>)
     const chip = screen.getByRole('button')
-    expect(chip).toHaveClass('bg-primary')
+    expect(chip).toHaveClass('bg-primary-light')
   })
 
   it('applies size classes correctly', () => {
