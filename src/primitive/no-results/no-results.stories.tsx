@@ -120,7 +120,7 @@ export const GreyBackground: Story = {
     icon: SearchIcon,
     title: 'No results found',
     subtitle: 'Try adjusting your filters or search terms.',
-    action: <Button variant='neutral'>Reset Filters</Button>,
+    action: <Button variant='primary'>Reset Filters</Button>,
     hasGrayBackground: true,
   },
 }

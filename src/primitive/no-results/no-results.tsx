@@ -3,12 +3,7 @@ import { cn } from '@/utils/cn'
 import { Icon } from '@/primitive/icon'
 import { Text } from '@/primitive/text'
 import type { NoResultsProps } from './types'
-import {
-  noResultsVariants,
-  noResultsHeaderVariants,
-  noResultsTitleVariants,
-  noResultsSubtitleVariants,
-} from './helpers'
+import { noResultsVariants, noResultsHeaderVariants } from './helpers'
 
 /**
  * NoResults component for Versaur UI
@@ -37,13 +32,13 @@ export const NoResults = React.forwardRef<HTMLElement, NoResultsProps>(
       >
         <header className={noResultsHeaderVariants()}>
           <Icon as={icon} size='lg' color='ghost' aria-hidden='true' />
-          <Text as='h2' className={noResultsTitleVariants()}>
+          <Text as='h2' fontSize='lg'>
             {title}
           </Text>
         </header>
 
         {subtitle && (
-          <Text as='p' className={noResultsSubtitleVariants()}>
+          <Text as='p' align='center' color='gray' className='mb-4'>
             {subtitle}
           </Text>
         )}

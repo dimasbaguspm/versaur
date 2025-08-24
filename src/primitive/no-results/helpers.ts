@@ -5,9 +5,9 @@ export const noResultsVariants = cva(
   {
     variants: {
       spacing: {
-        sm: 'py-8',
-        md: 'py-12',
-        lg: 'py-16',
+        sm: 'py-8 px-4',
+        md: 'py-12 px-6',
+        lg: 'py-16 px-8',
       },
       hasGrayBackground: {
         true: 'bg-neutral-soft',
