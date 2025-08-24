@@ -1,0 +1,1056 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FilterChip > renders all variants correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-wrap gap-2"
+  >
+    <button
+      aria-disabled="false"
+      aria-label="Primary, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Primary
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Primary Outline, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-primary text-primary bg-white hover:bg-primary-soft focus-visible:ring-primary-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Primary Outline
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Secondary, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-secondary text-white hover:bg-secondary/90 focus-visible:ring-secondary-light focus-visible:ring-offset-white shadow-sm h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Secondary
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Secondary Outline, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-secondary text-secondary bg-white hover:bg-secondary-soft focus-visible:ring-secondary-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Secondary Outline
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Tertiary, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-tertiary text-white hover:bg-tertiary/90 focus-visible:ring-tertiary-light focus-visible:ring-offset-white shadow-sm h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Tertiary
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Tertiary Outline, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-tertiary text-tertiary bg-white hover:bg-tertiary-soft focus-visible:ring-tertiary-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Tertiary Outline
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Ghost, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-ghost-soft text-foreground hover:bg-ghost-light focus-visible:ring-ghost-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Ghost
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Ghost Outline, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-ghost text-ghost bg-white hover:bg-ghost-soft focus-visible:ring-ghost-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Ghost Outline
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Neutral, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-neutral text-foreground hover:bg-neutral/80 focus-visible:ring-foreground-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Neutral
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Neutral Outline, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-neutral text-foreground bg-white hover:bg-neutral/20 focus-visible:ring-foreground-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Neutral Outline
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`FilterChip > renders correctly 1`] = `
+<DocumentFragment>
+  <button
+    aria-disabled="false"
+    aria-label="Test Chip, removable"
+    class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-neutral text-foreground bg-white hover:bg-neutral/20 focus-visible:ring-foreground-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+    type="button"
+  >
+    <span
+      class="flex-shrink-0"
+    >
+      Test Chip
+    </span>
+    <svg
+      aria-hidden="true"
+      class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+      fill="none"
+      height="24"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M18 6 6 18"
+      />
+      <path
+        d="m6 6 12 12"
+      />
+    </svg>
+  </button>
+</DocumentFragment>
+`;
+
+exports[`FilterChip > renders default story correctly 1`] = `
+<DocumentFragment>
+  <button
+    aria-disabled="false"
+    aria-label="Category, removable"
+    class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-neutral text-foreground bg-white hover:bg-neutral/20 focus-visible:ring-foreground-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+    type="button"
+  >
+    <span
+      class="flex-shrink-0"
+    >
+      Category
+    </span>
+    <svg
+      aria-hidden="true"
+      class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+      fill="none"
+      height="24"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M18 6 6 18"
+      />
+      <path
+        d="m6 6 12 12"
+      />
+    </svg>
+  </button>
+</DocumentFragment>
+`;
+
+exports[`FilterChip > renders different sizes correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="flex items-center gap-2"
+  >
+    <button
+      aria-disabled="false"
+      aria-label="Small, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-neutral text-foreground bg-white hover:bg-neutral/20 focus-visible:ring-foreground-light focus-visible:ring-offset-white h-7 px-3 text-xs"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Small
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Medium, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-neutral text-foreground bg-white hover:bg-neutral/20 focus-visible:ring-foreground-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Medium
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Large, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-neutral text-foreground bg-white hover:bg-neutral/20 focus-visible:ring-foreground-light focus-visible:ring-offset-white h-9 px-5 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Large
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-5 h-5"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`FilterChip > renders disabled state correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-wrap gap-2"
+  >
+    <button
+      aria-disabled="true"
+      aria-label="Disabled, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-neutral text-foreground bg-white hover:bg-neutral/20 focus-visible:ring-foreground-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      disabled=""
+      inert=""
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Disabled
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="true"
+      aria-label="Disabled Removable, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-neutral text-foreground bg-white hover:bg-neutral/20 focus-visible:ring-foreground-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      disabled=""
+      inert=""
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Disabled Removable
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="true"
+      aria-label="Disabled Primary, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm h-8 px-4 text-sm"
+      disabled=""
+      inert=""
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Disabled Primary
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="true"
+      aria-label="Disabled Outline, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-secondary text-secondary bg-white hover:bg-secondary-soft focus-visible:ring-secondary-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      disabled=""
+      inert=""
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Disabled Outline
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`FilterChip > renders removable variants correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-wrap gap-2"
+  >
+    <button
+      aria-disabled="false"
+      aria-label="Primary, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Primary
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Secondary, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-secondary text-secondary bg-white hover:bg-secondary-soft focus-visible:ring-secondary-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Secondary
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Success, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-success text-white hover:bg-success/90 focus-visible:ring-success-light focus-visible:ring-offset-white shadow-sm h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Success
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Danger, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-danger text-danger bg-white hover:bg-danger-soft focus-visible:ring-danger-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Danger
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`FilterChip > renders semantic color variants correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-wrap gap-2"
+  >
+    <button
+      aria-disabled="false"
+      aria-label="Success, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-success text-white hover:bg-success/90 focus-visible:ring-success-light focus-visible:ring-offset-white shadow-sm h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Success
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Success Outline, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-success text-success bg-white hover:bg-success-soft focus-visible:ring-success-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Success Outline
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Info, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-info text-white hover:bg-info/90 focus-visible:ring-info-light focus-visible:ring-offset-white shadow-sm h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Info
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Info Outline, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-info text-info bg-white hover:bg-info-soft focus-visible:ring-info-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Info Outline
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Warning, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-warning text-white hover:bg-warning/90 focus-visible:ring-warning-light focus-visible:ring-offset-white shadow-sm h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Warning
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Warning Outline, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-warning text-warning bg-white hover:bg-warning-soft focus-visible:ring-warning-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Warning Outline
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Danger, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer bg-danger text-white hover:bg-danger/90 focus-visible:ring-danger-light focus-visible:ring-offset-white shadow-sm h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Danger
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+    <button
+      aria-disabled="false"
+      aria-label="Danger Outline, removable"
+      class="inline-flex items-center gap-1.5 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none cursor-pointer border border-danger text-danger bg-white hover:bg-danger-soft focus-visible:ring-danger-light focus-visible:ring-offset-white h-8 px-4 text-sm"
+      type="button"
+    >
+      <span
+        class="flex-shrink-0"
+      >
+        Danger Outline
+      </span>
+      <svg
+        aria-hidden="true"
+        class="lucide lucide-x inline-flex items-center justify-center w-4 h-4"
+        fill="none"
+        height="24"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6 6 18"
+        />
+        <path
+          d="m6 6 12 12"
+        />
+      </svg>
+    </button>
+  </div>
+</DocumentFragment>
+`;
