@@ -7,8 +7,14 @@ import { Badge } from '../../badge'
 import * as stories from '../card.stories'
 import { composeStories } from '@storybook/react'
 
-const { Default, AccountCard, UserProfile, SimpleCard, AvatarCard } =
-  composeStories(stories)
+const {
+  Default,
+  AccountCard,
+  UserProfile,
+  SimpleCard,
+  AvatarCard,
+  BorderedCard,
+} = composeStories(stories)
 
 describe('Card', () => {
   it('renders with required title prop', () => {
@@ -169,6 +175,11 @@ describe('Card', () => {
     const { unmount: unmountAvatar } = render(<AvatarCard />)
     expect(screen.getByText('Alice Brown')).toBeInTheDocument()
     unmountAvatar()
+
+    // Test BorderedCard story
+    const { unmount: unmountBordered } = render(<BorderedCard />)
+    expect(screen.getByText('Bordered Card')).toBeInTheDocument()
+    unmountBordered()
   })
 
   it('matches snapshot for default card', () => {

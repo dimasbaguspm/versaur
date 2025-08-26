@@ -3,7 +3,6 @@ import { cn } from '@/utils'
 import { cardVariants } from './helpers'
 import type { CardProps } from './types'
 import { Text } from '../text'
-import { Tile } from '../tile'
 
 /**
  * Card component - A clickable container component for displaying structured information
@@ -27,7 +26,7 @@ import { Tile } from '../tile'
  * />
  * ```
  */
-export const Card = forwardRef<HTMLDivElement, CardProps>(
+export const Card = forwardRef<HTMLButtonElement, CardProps>(
   (
     {
       size = 'md',
@@ -37,15 +36,16 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       subtitle,
       badge,
       supplementaryInfo,
+      bordered = false,
       className,
       ...props
     },
     ref
   ) => {
     return (
-      <Tile
+      <button
         ref={ref}
-        className={cn(cardVariants({ size, shape }), className)}
+        className={cn(cardVariants({ size, shape, bordered }), className)}
         {...props}
       >
         <div className='flex items-start gap-4'>
@@ -73,7 +73,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
             )}
           </div>
         </div>
-      </Tile>
+      </button>
     )
   }
 )

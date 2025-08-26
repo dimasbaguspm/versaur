@@ -1,4 +1,4 @@
-import type { HTMLAttributes, ReactNode } from 'react'
+import type { ButtonHTMLAttributes, ReactNode } from 'react'
 import type { VariantProps } from 'class-variance-authority'
 import type { cardVariants } from './helpers'
 
@@ -6,7 +6,7 @@ import type { cardVariants } from './helpers'
  * Props for the Card component
  */
 export interface CardProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, 'title' | 'children'>,
+  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'title' | 'children'>,
     VariantProps<typeof cardVariants> {
   /**
    * Size variant affecting padding
@@ -45,4 +45,10 @@ export interface CardProps
    * Usually used for amounts, status, or additional info
    */
   supplementaryInfo?: ReactNode
+
+  /**
+   * Whether the card is bordered
+   * @default false
+   */
+  bordered?: boolean
 }
