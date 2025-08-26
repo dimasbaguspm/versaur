@@ -12,7 +12,7 @@ import { Tabs } from '@/navigation/tabs'
 import { Button } from '@/primitive/button'
 import { Badge } from '@/primitive/badge'
 import { ButtonGroup } from '@/layouts/button-group'
-import { Icon } from '@/primitive'
+import { ButtonIcon, Icon } from '@/primitive'
 
 export default {
   title: 'Layouts/PageHeader',
@@ -46,6 +46,11 @@ export const Simple = () => (
     actions={
       <ButtonGroup>
         <Button variant='primary'>New Project</Button>
+      </ButtonGroup>
+    }
+    mobileActions={
+      <ButtonGroup>
+        <ButtonIcon as={PlusIcon} variant='primary' aria-label='New Project' />
       </ButtonGroup>
     }
   />
@@ -89,6 +94,17 @@ export const Complete = () => {
             <Icon as={PlusIcon} color='inherit' />
             Add User
           </Button>
+        </ButtonGroup>
+      }
+      mobileActions={
+        <ButtonGroup>
+          <ButtonIcon as={UploadIcon} variant='ghost' aria-label='Import' />
+          <ButtonIcon
+            as={ArrowDownIcon}
+            variant='secondary'
+            aria-label='Export'
+          />
+          <ButtonIcon as={PlusIcon} variant='primary' aria-label='Add User' />
         </ButtonGroup>
       }
       tabs={

@@ -39,8 +39,15 @@ export const pageHeaderBadgesVariants = cva('flex items-center gap-2 flex-wrap')
  * Full width buttons on mobile
  */
 export const pageHeaderActionsVariants = cva(
-  'flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto sm:ml-auto sm:shrink-0 [&>*]:w-full sm:[&>*]:w-auto'
+  'hidden md:flex  flex-col sm:flex-row gap-2 sm:gap-3 w-full w-auto sm:ml-auto sm:shrink-0 [&>*]:w-full sm:[&>*]:w-auto'
 )
+
+/**
+ * PageHeaderMobileActions styles
+ * Stacks vertically on mobile, horizontal on desktop
+ * Full width buttons on mobile
+ */
+export const pageHeaderMobileActionsVariants = cva('md:hidden')
 
 /**
  * PageHeaderBottom styles - bottom section for tabs

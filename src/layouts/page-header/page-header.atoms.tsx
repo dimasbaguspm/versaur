@@ -9,6 +9,7 @@ import type {
   PageHeaderBadgesProps,
   PageHeaderActionsProps,
   PageHeaderBottomProps,
+  PageHeaderMobileActionsProps,
 } from './types'
 import {
   pageHeaderTopVariants,
@@ -17,6 +18,7 @@ import {
   pageHeaderBadgesVariants,
   pageHeaderActionsVariants,
   pageHeaderBottomVariants,
+  pageHeaderMobileActionsVariants,
 } from './helpers'
 import { Text } from '@/primitive'
 
@@ -135,6 +137,20 @@ export const PageHeaderActions = forwardRef<
     ref={ref}
     className={cn(pageHeaderActionsVariants(), className)}
     data-versaur-page-header-actions
+    {...props}
+  >
+    {children}
+  </div>
+))
+
+export const PageHeaderMobileActions = forwardRef<
+  HTMLDivElement,
+  PageHeaderMobileActionsProps
+>(({ children, className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(pageHeaderMobileActionsVariants(), className)}
+    data-versaur-page-header-mobile-actions
     {...props}
   >
     {children}

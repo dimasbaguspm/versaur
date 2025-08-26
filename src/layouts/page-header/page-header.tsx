@@ -11,6 +11,7 @@ import {
   PageHeaderBadges,
   PageHeaderActions,
   PageHeaderBottom,
+  PageHeaderMobileActions,
 } from './page-header.atoms'
 
 /**
@@ -45,6 +46,11 @@ interface PageHeaderRootProps extends Omit<PageHeaderProps, 'title'> {
    * Simplified API: Action buttons/button groups
    */
   actions?: ReactNode
+
+  /**
+   * Simplified API: Mobile action buttons/button groups
+   */
+  mobileActions?: ReactNode
   /**
    * Simplified API: Bottom content (tabs, filters)
    */
@@ -61,12 +67,12 @@ const PageHeaderRoot = forwardRef<HTMLElement, PageHeaderRootProps>(
       breadcrumbs,
       badges,
       actions,
+      mobileActions,
       tabs,
       ...props
     },
     ref
   ) => {
-    const hasTopContent = title || subtitle || breadcrumbs || badges || actions
     const hasBottomContent = tabs
 
     return (
@@ -79,16 +85,23 @@ const PageHeaderRoot = forwardRef<HTMLElement, PageHeaderRootProps>(
         {breadcrumbs && (
           <PageHeaderBreadcrumbs>{breadcrumbs}</PageHeaderBreadcrumbs>
         )}
-        {hasTopContent && (
-          <PageHeaderTop>
-            <PageHeaderContent>
-              {title && <PageHeaderTitle>{title}</PageHeaderTitle>}
-              {subtitle && <PageHeaderSubtitle>{subtitle}</PageHeaderSubtitle>}
-              {badges && <PageHeaderBadges>{badges}</PageHeaderBadges>}
-            </PageHeaderContent>
-            {actions && <PageHeaderActions>{actions}</PageHeaderActions>}
-          </PageHeaderTop>
-        )}
+
+        <PageHeaderTop>
+          <PageHeaderContent>
+            <div className='flex items-center justify-between'>
+              <PageHeaderTitle>{title}</PageHeaderTitle>
+              {mobileActions && (
+                <PageHeaderMobileActions>
+                  {mobileActions}
+                </PageHeaderMobileActions>
+              )}
+            </div>
+            {subtitle && <PageHeaderSubtitle>{subtitle}</PageHeaderSubtitle>}
+            {badges && <PageHeaderBadges>{badges}</PageHeaderBadges>}
+          </PageHeaderContent>
+          {actions && <PageHeaderActions>{actions}</PageHeaderActions>}
+        </PageHeaderTop>
+
         {hasBottomContent && <PageHeaderBottom>{tabs}</PageHeaderBottom>}
         {children}
       </header>

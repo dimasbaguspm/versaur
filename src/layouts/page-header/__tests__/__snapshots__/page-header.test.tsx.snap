@@ -93,11 +93,109 @@ exports[`PageHeader > renders complete layout with all elements 1`] = `
         class="flex-1 min-w-0 flex flex-col gap-2 w-full sm:w-auto"
         data-versaur-page-header-content="true"
       >
-        <h1
-          class="text-ghost text-left truncate text-xl font-semibold"
+        <div
+          class="flex items-center justify-between"
         >
-          User Management
-        </h1>
+          <h1
+            class="text-ghost text-left truncate text-xl font-semibold"
+          >
+            User Management
+          </h1>
+          <div
+            class="md:hidden"
+            data-versaur-page-header-mobile-actions="true"
+          >
+            <div
+              class="flex flex-row justify-start gap-3"
+              role="group"
+            >
+              <button
+                aria-disabled="false"
+                aria-label="Import"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-light focus-visible:ring-offset-white h-10 w-10 rounded-md"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-upload inline-flex items-center justify-center w-5 h-5 text-ghost"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 3v12"
+                  />
+                  <path
+                    d="m17 8-5-5-5 5"
+                  />
+                  <path
+                    d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+                  />
+                </svg>
+              </button>
+              <button
+                aria-disabled="false"
+                aria-label="Export"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-secondary text-white hover:bg-secondary/90 focus-visible:ring-secondary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 w-10 rounded-md"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-arrow-down inline-flex items-center justify-center w-5 h-5 text-neutral"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 5v14"
+                  />
+                  <path
+                    d="m19 12-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <button
+                aria-disabled="false"
+                aria-label="Add User"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 w-10 rounded-md"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-plus inline-flex items-center justify-center w-5 h-5 text-neutral"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5 12h14"
+                  />
+                  <path
+                    d="M12 5v14"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
         <p
           class="text-ghost text-left line-clamp-2 text-sm font-normal mb-2 sm:clamp-3"
         >
@@ -120,7 +218,7 @@ exports[`PageHeader > renders complete layout with all elements 1`] = `
         </div>
       </div>
       <div
-        class="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto sm:ml-auto sm:shrink-0 [&>*]:w-full sm:[&>*]:w-auto"
+        class="hidden md:flex flex-col sm:flex-row gap-2 sm:gap-3 w-auto sm:ml-auto sm:shrink-0 [&>*]:w-full sm:[&>*]:w-auto"
         data-versaur-page-header-actions="true"
       >
         <div
@@ -395,11 +493,52 @@ exports[`PageHeader > renders correctly with simple props 1`] = `
         class="flex-1 min-w-0 flex flex-col gap-2 w-full sm:w-auto"
         data-versaur-page-header-content="true"
       >
-        <h1
-          class="text-ghost text-left truncate text-xl font-semibold"
+        <div
+          class="flex items-center justify-between"
         >
-          Dashboard
-        </h1>
+          <h1
+            class="text-ghost text-left truncate text-xl font-semibold"
+          >
+            Dashboard
+          </h1>
+          <div
+            class="md:hidden"
+            data-versaur-page-header-mobile-actions="true"
+          >
+            <div
+              class="flex flex-row justify-start gap-3"
+              role="group"
+            >
+              <button
+                aria-disabled="false"
+                aria-label="New Project"
+                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md h-10 w-10 rounded-md"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="lucide lucide-plus inline-flex items-center justify-center w-5 h-5 text-neutral"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5 12h14"
+                  />
+                  <path
+                    d="M12 5v14"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
         <p
           class="text-ghost text-left line-clamp-2 text-sm font-normal mb-2 sm:clamp-3"
         >
@@ -407,7 +546,7 @@ exports[`PageHeader > renders correctly with simple props 1`] = `
         </p>
       </div>
       <div
-        class="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto sm:ml-auto sm:shrink-0 [&>*]:w-full sm:[&>*]:w-auto"
+        class="hidden md:flex flex-col sm:flex-row gap-2 sm:gap-3 w-auto sm:ml-auto sm:shrink-0 [&>*]:w-full sm:[&>*]:w-auto"
         data-versaur-page-header-actions="true"
       >
         <div
@@ -545,11 +684,15 @@ exports[`PageHeader > renders minimal layout 1`] = `
         class="flex-1 min-w-0 flex flex-col gap-2 w-full sm:w-auto"
         data-versaur-page-header-content="true"
       >
-        <h1
-          class="text-ghost text-left truncate text-xl font-semibold"
+        <div
+          class="flex items-center justify-between"
         >
-          Simple Page
-        </h1>
+          <h1
+            class="text-ghost text-left truncate text-xl font-semibold"
+          >
+            Simple Page
+          </h1>
+        </div>
       </div>
     </div>
   </header>
