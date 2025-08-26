@@ -55,6 +55,14 @@ export interface PageHeaderActionsProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 /**
+ * Props for PageHeaderMobileActions - mobile actions section
+ */
+export interface PageHeaderMobileActionsProps
+  extends HTMLAttributes<HTMLDivElement> {
+  children: ReactNode
+}
+
+/**
  * Props for PageHeaderBottom - bottom section (tabs, filters, etc.)
  */
 export interface PageHeaderBottomProps extends HTMLAttributes<HTMLDivElement> {
