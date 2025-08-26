@@ -1,5 +1,3 @@
-import { CheckCircle, Star } from 'lucide-react'
-
 /**
  * ChipMultipleInput group stories
  *
@@ -52,28 +50,8 @@ export const Disabled = () => {
 
 export const Variants = () => {
   const [value, setValue] = useState<string[]>([])
-  const variants = [
-    'primary',
-    'secondary',
-    'tertiary',
-    'ghost',
-    'neutral',
-    'success',
-    'info',
-    'warning',
-    'danger',
-  ]
-  const labels = [
-    'Coral',
-    'Sage',
-    'Mist',
-    'Slate',
-    'Gray',
-    'Success',
-    'Info',
-    'Warning',
-    'Danger',
-  ]
+  const variants = ['primary', 'secondary', 'tertiary', 'ghost']
+  const labels = ['Coral', 'Sage', 'Mist', 'Slate']
   return (
     <div className='flex flex-wrap gap-3'>
       {variants.map((variant, i) => (
@@ -177,62 +155,5 @@ export const Sizes = () => {
         <ChipMultipleInput.Option value='lg'>Large</ChipMultipleInput.Option>
       </ChipMultipleInput>
     </>
-  )
-}
-
-/**
- * Custom and default check icon variations for ChipMultipleInput.Option
- */
-export const CheckIcon = () => {
-  const [value, setValue] = useState<string[]>([])
-  return (
-    <div className='flex flex-col gap-4'>
-      <div>
-        <div className='mb-2 font-semibold'>Custom Check Icon</div>
-        <ChipMultipleInput
-          name='custom-check'
-          value={value}
-          onChange={setValue}
-        >
-          <ChipMultipleInput.Option
-            value='star'
-            check={<Star size={16} className='text-warning' />}
-          >
-            Star
-          </ChipMultipleInput.Option>
-          <ChipMultipleInput.Option
-            value='circle'
-            check={<CheckCircle size={16} className='text-success' />}
-          >
-            Circle
-          </ChipMultipleInput.Option>
-        </ChipMultipleInput>
-      </div>
-      <div>
-        <div className='mb-2 font-semibold'>No Check Icon</div>
-        <ChipMultipleInput name='no-check' value={value} onChange={setValue}>
-          <ChipMultipleInput.Option value='x'>
-            No Check A
-          </ChipMultipleInput.Option>
-          <ChipMultipleInput.Option value='y'>
-            No Check B
-          </ChipMultipleInput.Option>
-        </ChipMultipleInput>
-      </div>
-      <div>
-        <div className='mb-2 font-semibold'>
-          Default Check Icon (set defaultCheck)
-        </div>
-        <ChipMultipleInput
-          name='default-check'
-          value={value}
-          onChange={setValue}
-        >
-          <ChipMultipleInput.Option value='z' defaultCheck>
-            Default Check
-          </ChipMultipleInput.Option>
-        </ChipMultipleInput>
-      </div>
-    </div>
   )
 }

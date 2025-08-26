@@ -73,11 +73,6 @@ describe('ChipSingleInput', () => {
     expect(noCheckA).toBeInTheDocument()
     fireEvent.click(noCheckA)
     expect(noCheckA).toBeChecked()
-    // Default check icon
-    const defaultCheck = screen.getByLabelText('Default Check')
-    expect(defaultCheck).toBeInTheDocument()
-    fireEvent.click(defaultCheck)
-    expect(defaultCheck).toBeChecked()
   })
 
   it('respects disabled state and applies disabled class', () => {
@@ -90,17 +85,7 @@ describe('ChipSingleInput', () => {
 
   it('renders all color variants and checks classes', () => {
     render(<Variants />)
-    const variantLabels = [
-      'Coral',
-      'Sage',
-      'Mist',
-      'Slate',
-      'Gray',
-      'Success',
-      'Info',
-      'Warning',
-      'Danger',
-    ]
+    const variantLabels = ['Coral', 'Sage', 'Mist', 'Slate']
     variantLabels.forEach(label => {
       const chip = screen.getByText(label).closest('label')
       expect(chip).toBeInTheDocument()

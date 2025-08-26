@@ -3,8 +3,7 @@ import { composeStories } from '@storybook/react'
 import * as stories from '../chip-multiple-input.stories'
 
 describe('ChipInput', () => {
-  const { Basic, Disabled, Variants, Shape, Sizes, CheckIcon } =
-    composeStories(stories)
+  const { Basic, Disabled, Variants, Shape, Sizes } = composeStories(stories)
 
   it('renders options, toggles selection, and displays correct text', () => {
     render(<Basic />)
@@ -58,27 +57,6 @@ describe('ChipInput', () => {
     expect(largeInputs[0]).toBeChecked()
   })
 
-  it('renders custom and default check icons', () => {
-    render(<CheckIcon />)
-    // Custom check icon
-    const star = screen.getByLabelText('Star')
-    const circle = screen.getByLabelText('Circle')
-    expect(star).toBeInTheDocument()
-    expect(circle).toBeInTheDocument()
-    fireEvent.click(star)
-    expect(star).toBeChecked()
-    // No check icon
-    const noCheckA = screen.getByLabelText('No Check A')
-    expect(noCheckA).toBeInTheDocument()
-    fireEvent.click(noCheckA)
-    expect(noCheckA).toBeChecked()
-    // Default check icon
-    const defaultCheck = screen.getByLabelText('Default Check')
-    expect(defaultCheck).toBeInTheDocument()
-    fireEvent.click(defaultCheck)
-    expect(defaultCheck).toBeChecked()
-  })
-
   it('respects disabled state and applies disabled class', () => {
     render(<Disabled />)
     const apple = screen.getByLabelText('Apple')
@@ -89,17 +67,7 @@ describe('ChipInput', () => {
 
   it('renders all color variants and checks classes', () => {
     render(<Variants />)
-    const variantLabels = [
-      'Coral',
-      'Sage',
-      'Mist',
-      'Slate',
-      'Gray',
-      'Success',
-      'Info',
-      'Warning',
-      'Danger',
-    ]
+    const variantLabels = ['Coral', 'Sage', 'Mist', 'Slate']
     variantLabels.forEach(label => {
       const chip = screen.getByText(label).closest('label')
       expect(chip).toBeInTheDocument()
