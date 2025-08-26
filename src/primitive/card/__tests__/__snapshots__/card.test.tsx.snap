@@ -2,8 +2,8 @@
 
 exports[`Card > matches snapshot for default card 1`] = `
 <DocumentFragment>
-  <div
-    class="bg-white border border-border block transition-colors duration-200 cursor-pointer p-4 rounded-lg"
+  <button
+    class="block transition-colors duration-200 cursor-pointer w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light hover:bg-gray-50 p-4 rounded-lg"
   >
     <div
       class="flex items-start gap-4"
@@ -46,6 +46,6 @@ exports[`Card > matches snapshot for default card 1`] = `
         </div>
       </div>
     </div>
-  </div>
+  </button>
 </DocumentFragment>
 `;

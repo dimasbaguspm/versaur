@@ -139,3 +139,15 @@ export const AvatarCard: Story = {
     <Card {...args} onClick={() => alert('Avatar card clicked!')} />
   ),
 }
+
+export const BorderedCard: Story = {
+  args: {
+    avatar: <Avatar>BC</Avatar>,
+    title: 'Bordered Card',
+    subtitle: 'This card has a border',
+    bordered: true,
+  },
+  render: args => (
+    <Card {...args} onClick={() => alert('Bordered card clicked!')} bordered />
+  ),
+}
