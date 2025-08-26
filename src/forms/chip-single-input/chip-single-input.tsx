@@ -1,4 +1,4 @@
-import React from 'react'
+import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 import {
   ChipSingleInputContext,
@@ -13,10 +13,7 @@ import type { ChipSingleInputProps } from './types'
  * Provides a group of checkbox chips for multiple selection
  * Controlled component pattern for React forms
  */
-const ChipSingleInputRoot = React.forwardRef<
-  HTMLDivElement,
-  ChipSingleInputProps
->(
+const ChipSingleInputRoot = forwardRef<HTMLDivElement, ChipSingleInputProps>(
   (
     {
       variant = 'primary',

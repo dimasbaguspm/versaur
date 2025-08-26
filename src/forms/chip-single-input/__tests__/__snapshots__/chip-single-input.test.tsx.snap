@@ -11,36 +11,36 @@ exports[`ChipSingleInput > matches snapshot 1`] = `
     >
       <input
         class="sr-only"
-        id="«r11»"
+        id="«rr»"
         name="fruits"
         type="radio"
         value="apple"
       />
       <label
-        class="inline-flex items-center bg-white font-regular transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-light focus:border-primary-light data-[selected=true]:bg-primary-soft data-[selected=true]:border-primary rounded-full h-8 px-3 text-sm"
+        class="inline-flex items-center bg-white font-regular transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-bold focus:border-primary-light data-[selected=true]:bg-primary data-[selected=true]:border-primary data-[selected=true]:text-white rounded-full h-8 px-3 text-sm"
         data-selected="false"
-        for="«r11»"
+        for="«rr»"
       >
         <span
-          class="flex items-center"
+          class="flex items-center gap-2"
         >
           Apple
         </span>
       </label>
       <input
         class="sr-only"
-        id="«r12»"
+        id="«rs»"
         name="fruits"
         type="radio"
         value="banana"
       />
       <label
-        class="inline-flex items-center bg-white font-regular transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-light focus:border-primary-light data-[selected=true]:bg-primary-soft data-[selected=true]:border-primary rounded-full h-8 px-3 text-sm"
+        class="inline-flex items-center bg-white font-regular transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-bold focus:border-primary-light data-[selected=true]:bg-primary data-[selected=true]:border-primary data-[selected=true]:text-white rounded-full h-8 px-3 text-sm"
         data-selected="false"
-        for="«r12»"
+        for="«rs»"
       >
         <span
-          class="flex items-center"
+          class="flex items-center gap-2"
         >
           Banana
         </span>
@@ -48,18 +48,18 @@ exports[`ChipSingleInput > matches snapshot 1`] = `
       <input
         checked=""
         class="sr-only"
-        id="«r13»"
+        id="«rt»"
         name="fruits"
         type="radio"
         value="cherry"
       />
       <label
-        class="inline-flex items-center bg-white font-regular transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-light focus:border-primary-light data-[selected=true]:bg-primary-soft data-[selected=true]:border-primary rounded-full h-8 px-3 text-sm"
+        class="inline-flex items-center bg-white font-regular transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-bold focus:border-primary-light data-[selected=true]:bg-primary data-[selected=true]:border-primary data-[selected=true]:text-white rounded-full h-8 px-3 text-sm"
         data-selected="true"
-        for="«r13»"
+        for="«rt»"
       >
         <span
-          class="flex items-center"
+          class="flex items-center gap-2"
         >
           Cherry
         </span>

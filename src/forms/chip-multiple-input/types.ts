@@ -22,16 +22,7 @@ export interface ChipMultipleInputProps
    * Semantic variants: success, info, warning, danger
    * Each variant supports outline form for flexible design expression
    */
-  variant?:
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'ghost'
-    | 'neutral'
-    | 'success'
-    | 'info'
-    | 'warning'
-    | 'danger'
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost'
   /**
    * Label text to display above the chip group
    */
@@ -72,24 +63,4 @@ export interface ChipMultipleInputOptionProps
    * The value for this chip option
    */
   value: string
-  /**
-   * Custom check icon or element. If not provided, no check is rendered unless defaultCheck is true
-   */
-  check?: React.ReactNode
-  /**
-   * Show the default check icon if true (default: false). If both check and defaultCheck are provided, check takes precedence
-   */
-  defaultCheck?: boolean
-  /**
-   * Disabled state for this option
-   */
-  disabled?: boolean
-  /**
-   * Optional id for the input
-   */
-  id?: string
-  /**
-   * Additional className for styling
-   */
-  className?: string
 }

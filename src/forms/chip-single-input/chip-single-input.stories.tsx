@@ -15,6 +15,7 @@ import { CheckCircle, Star } from 'lucide-react'
 import { useState } from 'react'
 import { ChipSingleInput } from './chip-single-input'
 import type { ChipSingleInputProps } from './types'
+import { Icon } from '@/primitive'
 
 export default {
   title: 'Forms/ChipSingleInput',
@@ -58,28 +59,8 @@ export const Disabled = () => {
 
 export const Variants = () => {
   const [value, setValue] = useState<string>()
-  const variants = [
-    'primary',
-    'secondary',
-    'tertiary',
-    'ghost',
-    'neutral',
-    'success',
-    'info',
-    'warning',
-    'danger',
-  ]
-  const labels = [
-    'Coral',
-    'Sage',
-    'Mist',
-    'Slate',
-    'Gray',
-    'Success',
-    'Info',
-    'Warning',
-    'Danger',
-  ]
+  const variants = ['primary', 'secondary', 'tertiary', 'ghost']
+  const labels = ['Coral', 'Sage', 'Mist', 'Slate']
   return (
     <div className='flex flex-wrap gap-3'>
       {variants.map((variant, i) => (
@@ -187,17 +168,18 @@ export const CheckIcon = () => {
     <div className='flex flex-col gap-4'>
       <div>
         <div className='mb-2 font-semibold'>Custom Check Icon</div>
-        <ChipSingleInput name='custom-check' value={value} onChange={setValue}>
-          <ChipSingleInput.Option
-            value='star'
-            check={<Star size={16} className='text-warning' />}
-          >
+        <ChipSingleInput
+          name='custom-check'
+          value={value}
+          onChange={setValue}
+          variant={value === 'circle' ? 'primary' : 'secondary'}
+        >
+          <ChipSingleInput.Option value='star'>
+            <Icon as={Star} color='inherit' size='sm' />
             Star
           </ChipSingleInput.Option>
-          <ChipSingleInput.Option
-            value='circle'
-            check={<CheckCircle size={16} className='text-success' />}
-          >
+          <ChipSingleInput.Option value='circle'>
+            <Icon as={CheckCircle} color='inherit' size='sm' />
             Circle
           </ChipSingleInput.Option>
         </ChipSingleInput>
@@ -207,16 +189,6 @@ export const CheckIcon = () => {
         <ChipSingleInput name='no-check' value={value} onChange={setValue}>
           <ChipSingleInput.Option value='x'>No Check A</ChipSingleInput.Option>
           <ChipSingleInput.Option value='y'>No Check B</ChipSingleInput.Option>
-        </ChipSingleInput>
-      </div>
-      <div>
-        <div className='mb-2 font-semibold'>
-          Default Check Icon (set defaultCheck)
-        </div>
-        <ChipSingleInput name='default-check' value={value} onChange={setValue}>
-          <ChipSingleInput.Option value='z' defaultCheck>
-            Default Check
-          </ChipSingleInput.Option>
         </ChipSingleInput>
       </div>
     </div>
