@@ -50,7 +50,8 @@ describe('ButtonIcon', () => {
       <ButtonIcon as={TestIcon} variant='primary-outline' aria-label='Test' />
     )
     const button = screen.getByRole('button')
-    expect(button).toHaveClass('border-primary')
+    expect(button).toHaveClass('text-primary')
+    expect(button).toHaveClass('border-border')
   })
 
   it('renders with ghost variant', () => {
@@ -65,13 +66,13 @@ describe('ButtonIcon', () => {
     const { rerender } = render(
       <ButtonIcon as={TestIcon} size='sm' aria-label='Test' />
     )
-    expect(screen.getByRole('button')).toHaveClass('h-8', 'w-8')
+    expect(screen.getByRole('button')).toHaveClass('h-7', 'w-7')
 
     rerender(<ButtonIcon as={TestIcon} size='md' aria-label='Test' />)
-    expect(screen.getByRole('button')).toHaveClass('h-10', 'w-10')
+    expect(screen.getByRole('button')).toHaveClass('h-9', 'w-9')
 
     rerender(<ButtonIcon as={TestIcon} size='lg' aria-label='Test' />)
-    expect(screen.getByRole('button')).toHaveClass('h-12', 'w-12')
+    expect(screen.getByRole('button')).toHaveClass('h-10', 'w-10')
   })
 
   it('renders with different shapes', () => {
