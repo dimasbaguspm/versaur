@@ -53,7 +53,11 @@ type Story = StoryObj<typeof Card>
  */
 export const Default: Story = {
   args: {
-    avatar: <Avatar shape='rounded'>AC</Avatar>,
+    avatar: (
+      <Avatar shape='rounded' size='lg'>
+        AC
+      </Avatar>
+    ),
     title: 'Alice Cooper',
     subtitle: 'Product Manager • New York',
     supplementaryInfo: '$2,847.32',
@@ -73,7 +77,11 @@ export const Default: Story = {
  */
 export const AccountCard: Story = {
   args: {
-    avatar: <Avatar shape='square'>AC</Avatar>,
+    avatar: (
+      <Avatar shape='rounded' size='lg'>
+        AC
+      </Avatar>
+    ),
     title: 'Main Account',
     subtitle: 'Primary checking account',
     badge: (
@@ -95,7 +103,7 @@ export const AccountCard: Story = {
 export const UserProfile: Story = {
   args: {
     avatar: (
-      <Avatar shape='rounded' size='xl'>
+      <Avatar shape='rounded' size='lg'>
         <Avatar.Image
           src='https://this-person-does-not-exist.com/img/avatar-gen1d83cce06b8b962d11071e999b2dcbe0.jpg'
           alt='User Avatar'
@@ -131,7 +139,11 @@ export const SimpleCard: Story = {
  */
 export const AvatarCard: Story = {
   args: {
-    avatar: <Avatar>AB</Avatar>,
+    avatar: (
+      <Avatar shape='rounded' size='lg'>
+        AB
+      </Avatar>
+    ),
     title: 'Alice Brown',
     subtitle: 'Software Engineer • San Francisco',
   },
@@ -142,7 +154,11 @@ export const AvatarCard: Story = {
 
 export const BorderedCard: Story = {
   args: {
-    avatar: <Avatar>BC</Avatar>,
+    avatar: (
+      <Avatar shape='rounded' size='lg'>
+        BC
+      </Avatar>
+    ),
     title: 'Bordered Card',
     subtitle: 'This card has a border',
     bordered: true,

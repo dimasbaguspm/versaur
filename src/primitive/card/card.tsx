@@ -52,14 +52,14 @@ export const Card = forwardRef<HTMLButtonElement, CardProps>(
           {avatar && <div className='flex-shrink-0'>{avatar}</div>}
 
           <div className='w-full'>
-            <div className={cn('mb-4', !badge && !supplementaryInfo && 'mb-0')}>
+            <div className='mb-2'>
               {title && (
-                <Text as='h3' fontSize='base' fontWeight='semibold'>
+                <Text as='h3' fontSize='lg' fontWeight='semibold'>
                   {title}
                 </Text>
               )}
               {subtitle && (
-                <Text as='p' fontSize='xs' color='gray'>
+                <Text as='p' fontSize='sm' color='gray'>
                   {subtitle}
                 </Text>
               )}
@@ -68,7 +68,13 @@ export const Card = forwardRef<HTMLButtonElement, CardProps>(
             {(badge || supplementaryInfo) && (
               <div className='flex justify-between items-center'>
                 {badge}
-                {supplementaryInfo && supplementaryInfo}
+                {typeof supplementaryInfo === 'string' ? (
+                  <Text as='p' fontSize='sm' color='gray'>
+                    {supplementaryInfo}
+                  </Text>
+                ) : (
+                  supplementaryInfo
+                )}
               </div>
             )}
           </div>
