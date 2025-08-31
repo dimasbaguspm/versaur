@@ -3,8 +3,9 @@
  */
 import { forwardRef } from 'react'
 import type { MenuContentProps, MenuItemProps } from './types'
-import { cn } from '@/utils/cn'
-import { menuItemVariants } from './helpers'
+
+import { Button } from '@/primitive'
+import { cn } from '@/utils'
 
 /**
  * MenuContent: Wraps menu items
@@ -23,15 +24,16 @@ export const MenuContent = forwardRef<HTMLUListElement, MenuContentProps>(
  * MenuItem: Single menu item
  */
 export const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
-  ({ className, ...props }, ref) => {
+  ({ children, disabled, ...props }, ref) => {
     return (
-      <li ref={ref}>
-        <button
-          className={cn(menuItemVariants(), className)}
-          tabIndex={-1}
-          role='menuitem'
-          {...props}
-        />
+      <li ref={ref} {...props}>
+        <Button
+          variant='ghost'
+          className={cn('block text-left w-full')}
+          disabled={disabled}
+        >
+          {children}
+        </Button>
       </li>
     )
   }

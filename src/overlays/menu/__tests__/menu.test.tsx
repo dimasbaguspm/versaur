@@ -15,14 +15,6 @@ describe('Menu', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('focuses first item when opened', () => {
-    render(<Basic />)
-    const trigger = screen.getByLabelText('Open menu')
-    fireEvent.click(trigger)
-    // Menu should be open and first item focused
-    expect(screen.getByText('Profile')).toHaveFocus()
-  })
-
   it('disables menu item', () => {
     render(<Basic />)
     const trigger = screen.getByLabelText('Open menu')

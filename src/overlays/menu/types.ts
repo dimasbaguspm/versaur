@@ -1,7 +1,7 @@
 /**
  * Menu types for Versaur
  */
-import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from 'react'
+import type { HTMLAttributes, ReactNode } from 'react'
 
 export type MenuSize = 'sm' | 'md'
 
@@ -32,7 +32,9 @@ export interface MenuContentProps extends HTMLAttributes<HTMLUListElement> {
 /**
  * Props for MenuItem
  */
-export interface MenuItemProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface MenuItemProps extends HTMLAttributes<HTMLLIElement> {
   /** Item content */
   children: ReactNode
+  /** Whether the item is disabled */
+  disabled?: boolean
 }
