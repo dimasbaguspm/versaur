@@ -12,7 +12,6 @@ exports[`Menu > renders basic menu correctly 1`] = `
       aria-haspopup="menu"
       aria-label="Open menu"
       class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md h-9 w-9 rounded-md"
-      tabindex="0"
       type="button"
     >
       <svg
@@ -45,45 +44,6 @@ exports[`Menu > renders basic menu correctly 1`] = `
         />
       </svg>
     </button>
-    <div
-      aria-hidden="true"
-      class="absolute z-30 min-w-40 bg-background rounded-lg border border-border transition-all duration-200 ease-out will-change-transform py-2 px-1 opacity-0 pointer-events-none translate-y-3"
-      id="«r0»"
-      role="menu"
-    >
-      <ul
-        class="flex flex-col gap-1"
-      >
-        <li>
-          <button
-            class="w-full text-sm text-left px-2 py-1 rounded-md cursor-pointer duration-150 select-none hover:bg-background-bold outline-none border border-transparent focus-visible:border-primary-light disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-background active:bg-background-light"
-            role="menuitem"
-            tabindex="-1"
-          >
-            Profile
-          </button>
-        </li>
-        <li>
-          <button
-            class="w-full text-sm text-left px-2 py-1 rounded-md cursor-pointer duration-150 select-none hover:bg-background-bold outline-none border border-transparent focus-visible:border-primary-light disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-background active:bg-background-light"
-            role="menuitem"
-            tabindex="-1"
-          >
-            Settings
-          </button>
-        </li>
-        <li>
-          <button
-            class="w-full text-sm text-left px-2 py-1 rounded-md cursor-pointer duration-150 select-none hover:bg-background-bold outline-none border border-transparent focus-visible:border-primary-light disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-background active:bg-background-light"
-            disabled=""
-            role="menuitem"
-            tabindex="-1"
-          >
-            Logout
-          </button>
-        </li>
-      </ul>
-    </div>
   </div>
 </DocumentFragment>
 `;
@@ -103,7 +63,6 @@ exports[`Menu > renders menu with different sizes 1`] = `
         aria-haspopup="menu"
         aria-label="Open small menu"
         class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md h-9 w-9 rounded-md"
-        tabindex="0"
         type="button"
       >
         <svg
@@ -136,35 +95,6 @@ exports[`Menu > renders menu with different sizes 1`] = `
           />
         </svg>
       </button>
-      <div
-        aria-hidden="true"
-        class="absolute z-30 min-w-40 bg-background rounded-lg border border-border transition-all duration-200 ease-out will-change-transform py-1.5 px-1 opacity-0 pointer-events-none translate-y-3"
-        id="«r1»"
-        role="menu"
-      >
-        <ul
-          class="flex flex-col gap-1"
-        >
-          <li>
-            <button
-              class="w-full text-sm text-left px-2 py-1 rounded-md cursor-pointer duration-150 select-none hover:bg-background-bold outline-none border border-transparent focus-visible:border-primary-light disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-background active:bg-background-light"
-              role="menuitem"
-              tabindex="-1"
-            >
-              Item 1
-            </button>
-          </li>
-          <li>
-            <button
-              class="w-full text-sm text-left px-2 py-1 rounded-md cursor-pointer duration-150 select-none hover:bg-background-bold outline-none border border-transparent focus-visible:border-primary-light disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-background active:bg-background-light"
-              role="menuitem"
-              tabindex="-1"
-            >
-              Item 2
-            </button>
-          </li>
-        </ul>
-      </div>
     </div>
     <div
       class="relative w-fit"
@@ -176,7 +106,6 @@ exports[`Menu > renders menu with different sizes 1`] = `
         aria-haspopup="menu"
         aria-label="Open medium menu"
         class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md h-9 w-9 rounded-md"
-        tabindex="0"
         type="button"
       >
         <svg
@@ -209,35 +138,6 @@ exports[`Menu > renders menu with different sizes 1`] = `
           />
         </svg>
       </button>
-      <div
-        aria-hidden="true"
-        class="absolute z-30 min-w-40 bg-background rounded-lg border border-border transition-all duration-200 ease-out will-change-transform py-2 px-1 opacity-0 pointer-events-none translate-y-3"
-        id="«r2»"
-        role="menu"
-      >
-        <ul
-          class="flex flex-col gap-1"
-        >
-          <li>
-            <button
-              class="w-full text-sm text-left px-2 py-1 rounded-md cursor-pointer duration-150 select-none hover:bg-background-bold outline-none border border-transparent focus-visible:border-primary-light disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-background active:bg-background-light"
-              role="menuitem"
-              tabindex="-1"
-            >
-              Item 1
-            </button>
-          </li>
-          <li>
-            <button
-              class="w-full text-sm text-left px-2 py-1 rounded-md cursor-pointer duration-150 select-none hover:bg-background-bold outline-none border border-transparent focus-visible:border-primary-light disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-background active:bg-background-light"
-              role="menuitem"
-              tabindex="-1"
-            >
-              Item 2
-            </button>
-          </li>
-        </ul>
-      </div>
     </div>
   </div>
 </DocumentFragment>

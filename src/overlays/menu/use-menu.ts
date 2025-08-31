@@ -20,15 +20,3 @@ export function useMenuOutsideClick(
     return () => document.removeEventListener('mousedown', handleClick)
   }, [isOpen, onOutsideClick, contentRef, triggerRef])
 }
-
-export function useMenuFocusFirstItem(
-  isOpen: boolean,
-  contentRef: React.RefObject<HTMLDivElement | null>
-) {
-  useEffect(() => {
-    if (isOpen && contentRef.current) {
-      const items = contentRef.current.querySelectorAll('[role="menuitem"]')
-      if (items.length) (items[0] as HTMLElement).focus()
-    }
-  }, [isOpen, contentRef])
-}
