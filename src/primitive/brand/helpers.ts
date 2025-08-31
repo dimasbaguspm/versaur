@@ -8,8 +8,8 @@ export const brandSizeClass = cva('', {
   variants: {
     size: {
       xs: 'h-6 w-6',
-      sm: 'h-6 w-6',
-      md: 'h-8 w-8',
+      sm: 'h-7 w-7',
+      md: 'h-9 w-9',
       lg: 'h-10 w-10',
       xl: 'h-12 w-12',
     },

@@ -10,7 +10,7 @@ exports[`Brand > renders all shape variants in Name story 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="inline-block h-8 w-8"
+        class="inline-block h-9 w-9"
         fill="none"
         height="32"
         viewBox="0 0 32 32"
@@ -40,7 +40,7 @@ exports[`Brand > renders all shape variants in Name story 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="inline-block h-8 w-8"
+        class="inline-block h-9 w-9"
         fill="none"
         height="32"
         viewBox="0 0 32 32"
@@ -71,7 +71,7 @@ exports[`Brand > renders all shape variants in Name story 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="inline-block h-8 w-8"
+        class="inline-block h-9 w-9"
         fill="none"
         height="32"
         viewBox="0 0 32 32"
@@ -141,7 +141,7 @@ exports[`Brand > renders all size variants in Sizes story 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="inline-block h-6 w-6"
+        class="inline-block h-7 w-7"
         fill="none"
         height="32"
         viewBox="0 0 32 32"
@@ -171,7 +171,7 @@ exports[`Brand > renders all size variants in Sizes story 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="inline-block h-8 w-8"
+        class="inline-block h-9 w-9"
         fill="none"
         height="32"
         viewBox="0 0 32 32"
@@ -267,7 +267,7 @@ exports[`Brand > renders default brand (rounded) 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="inline-block h-8 w-8"
+      class="inline-block h-9 w-9"
       fill="none"
       height="32"
       viewBox="0 0 32 32"

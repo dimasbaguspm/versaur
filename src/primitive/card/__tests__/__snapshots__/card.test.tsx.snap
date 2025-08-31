@@ -12,7 +12,7 @@ exports[`Card > matches snapshot for default card 1`] = `
         class="flex-shrink-0"
       >
         <div
-          class="inline-flex items-center justify-center font-medium overflow-hidden transition-all duration-200 select-none relative bg-primary-light text-primary h-10 w-10 text-sm rounded-full"
+          class="inline-flex items-center justify-center font-medium overflow-hidden transition-all duration-200 select-none relative bg-primary-light text-primary h-9 w-9 text-sm rounded-full"
         >
           DC
         </div>
