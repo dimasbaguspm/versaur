@@ -21,15 +21,15 @@ exports[`Card > matches snapshot for default card 1`] = `
         class="w-full"
       >
         <div
-          class="mb-4"
+          class="mb-2"
         >
           <h3
-            class="text-ghost text-left text-base font-semibold"
+            class="text-ghost text-left text-lg font-semibold"
           >
             Default Card
           </h3>
           <p
-            class="text-gray-500 text-left font-normal text-xs"
+            class="text-gray-500 text-left font-normal text-sm"
           >
             This is a subtitle
           </p>
@@ -42,7 +42,11 @@ exports[`Card > matches snapshot for default card 1`] = `
           >
             Status
           </span>
-          Info
+          <p
+            class="text-gray-500 text-left font-normal text-sm"
+          >
+            Info
+          </p>
         </div>
       </div>
     </div>
