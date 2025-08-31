@@ -5,8 +5,9 @@ import { menuVariants } from './helpers'
 import type { MenuProps } from './types'
 import { useMenuOutsideClick } from './use-menu'
 import { useEscapeClose } from '@/utils/use-escape-close'
+import { MenuContent, MenuItem } from './menu.atoms'
 
-export const Menu: React.FC<MenuProps> = ({
+const MenuRoot: React.FC<MenuProps> = ({
   isOpen,
   onOutsideClick,
   size = 'md',
@@ -43,3 +44,8 @@ export const Menu: React.FC<MenuProps> = ({
     </div>
   )
 }
+
+export const Menu = Object.assign(MenuRoot, {
+  Content: MenuContent,
+  Item: MenuItem,
+})

@@ -38,7 +38,7 @@ export const ButtonIcon = React.forwardRef<HTMLButtonElement, ButtonIconProps>(
       >
         <Icon
           as={IconComponent}
-          size={size}
+          size='sm'
           color={getIconColorFromVariant(variant)}
         />
       </button>
