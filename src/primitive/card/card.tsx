@@ -3,6 +3,7 @@ import { cn } from '@/utils'
 import { cardVariants } from './helpers'
 import type { CardProps } from './types'
 import { Text } from '../text'
+import { CardList, CardListItem } from './card.atoms'
 
 /**
  * Card component - A clickable container component for displaying structured information
@@ -26,7 +27,7 @@ import { Text } from '../text'
  * />
  * ```
  */
-export const Card = forwardRef<HTMLButtonElement, CardProps>(
+const CardRoot = forwardRef<HTMLButtonElement, CardProps>(
   (
     {
       size = 'md',
@@ -83,3 +84,8 @@ export const Card = forwardRef<HTMLButtonElement, CardProps>(
     )
   }
 )
+
+export const Card = Object.assign(CardRoot, {
+  List: CardList,
+  ListItem: CardListItem,
+})
