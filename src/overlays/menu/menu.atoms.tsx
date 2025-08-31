@@ -4,7 +4,7 @@
 import { forwardRef } from 'react'
 import type { MenuContentProps, MenuItemProps } from './types'
 
-import { Button } from '@/primitive'
+import { Button } from '@/primitive/button'
 import { cn } from '@/utils'
 
 /**

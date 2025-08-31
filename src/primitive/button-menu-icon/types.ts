@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 import type { IconProps } from '../icon'
 import type { ButtonIconProps } from '../button-icon'
 
-export interface ButtonMenuProps
+export interface ButtonMenuIconProps
   extends Omit<ButtonIconProps, 'content'>,
     Pick<IconProps, 'as'> {
   /**
