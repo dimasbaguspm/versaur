@@ -150,7 +150,7 @@ describe('Card', () => {
     // Test Default story
     const { unmount: unmountDefault } = render(<Default />)
     expect(screen.getByText('Alice Cooper')).toBeInTheDocument()
-    expect(screen.getByText('Product Manager • New York')).toBeInTheDocument()
+    expect(screen.getByText('Software Engineer')).toBeInTheDocument()
     unmountDefault()
 
     // Test AccountCard story
@@ -161,9 +161,7 @@ describe('Card', () => {
     // Test UserProfile story
     const { unmount: unmountProfile } = render(<UserProfile />)
     expect(screen.getByText('John Doe')).toBeInTheDocument()
-    expect(
-      screen.getByText('Software Engineer • San Francisco')
-    ).toBeInTheDocument()
+    expect(screen.getByText('Software Engineer')).toBeInTheDocument()
     unmountProfile()
 
     // Test SimpleCard story

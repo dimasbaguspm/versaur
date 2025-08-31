@@ -59,7 +59,12 @@ export const Default: Story = {
       </Avatar>
     ),
     title: 'Alice Cooper',
-    subtitle: 'Product Manager • New York',
+    subtitle: (
+      <Card.List>
+        <Card.ListItem>Software Engineer</Card.ListItem>
+        <Card.ListItem>San Francisco</Card.ListItem>
+      </Card.List>
+    ),
     supplementaryInfo: '$2,847.32',
     badge: (
       <BadgeGroup>
@@ -112,7 +117,12 @@ export const UserProfile: Story = {
       </Avatar>
     ),
     title: 'John Doe',
-    subtitle: 'Software Engineer • San Francisco',
+    subtitle: (
+      <Card.List>
+        <Card.ListItem>Software Engineer</Card.ListItem>
+        <Card.ListItem>San Francisco</Card.ListItem>
+      </Card.List>
+    ),
     badge: <Badge color='success'>Available</Badge>,
     supplementaryInfo: 'Online',
   },
@@ -145,7 +155,12 @@ export const AvatarCard: Story = {
       </Avatar>
     ),
     title: 'Alice Brown',
-    subtitle: 'Software Engineer • San Francisco',
+    subtitle: (
+      <Card.List>
+        <Card.ListItem>Software Engineer</Card.ListItem>
+        <Card.ListItem>San Francisco</Card.ListItem>
+      </Card.List>
+    ),
   },
   render: args => (
     <Card {...args} onClick={() => alert('Avatar card clicked!')} />

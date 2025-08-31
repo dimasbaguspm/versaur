@@ -52,3 +52,11 @@ export interface CardProps
    */
   bordered?: boolean
 }
+
+export type CardListProps = {
+  children: ReactNode
+}
+
+export type CardListItemProps = {
+  children: ReactNode
+}
