@@ -44,9 +44,9 @@ export const chipSingleInputOptionVariants = cva(
         rounded: 'rounded-lg',
       },
       size: {
-        sm: 'h-8 px-3 text-sm',
-        md: 'h-10 px-4 text-base',
-        lg: 'h-12 px-5 text-lg',
+        sm: 'h-7 px-3 text-sm',
+        md: 'h-9 px-4 text-base',
+        lg: 'h-10 px-5 text-lg',
       },
     },
     defaultVariants: {

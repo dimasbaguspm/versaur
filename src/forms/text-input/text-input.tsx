@@ -60,7 +60,7 @@ export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
               }),
               leftContent ? 'pl-9' : 'pl-3',
               rightContent ? 'pr-9' : 'pr-3',
-              'h-10'
+              'h-9'
             )}
             {...props}
           />

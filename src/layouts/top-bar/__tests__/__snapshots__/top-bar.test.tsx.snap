@@ -133,7 +133,7 @@ exports[`TopBar > renders correctly (snapshot) 1`] = `
         </button>
       </div>
       <div
-        class="inline-flex items-center justify-center font-medium overflow-hidden transition-all duration-200 select-none relative bg-primary-light text-primary h-8 w-8 text-xs rounded-full"
+        class="inline-flex items-center justify-center font-medium overflow-hidden transition-all duration-200 select-none relative bg-primary-light text-primary h-7 w-7 text-xs rounded-full"
       >
         DM
       </div>

@@ -24,10 +24,10 @@ export const avatarVariants = cva(
       },
       size: {
         xs: 'h-6 w-6 text-xs',
-        sm: 'h-8 w-8 text-xs',
-        md: 'h-10 w-10 text-sm',
-        lg: 'h-12 w-12 text-base',
-        xl: 'h-16 w-16 text-xl',
+        sm: 'h-7 w-7 text-xs',
+        md: 'h-9 w-9 text-sm',
+        lg: 'h-10 w-10 text-base',
+        xl: 'h-12 w-12 text-xl',
       },
       shape: {
         circle: 'rounded-full',

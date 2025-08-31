@@ -51,7 +51,7 @@ export const SelectInput = React.forwardRef<
               selectInputVariants({
                 variant: hasError ? 'danger' : variant,
               }),
-              'h-10 pl-3'
+              'h-9 pl-3'
             )}
             {...props}
           >
