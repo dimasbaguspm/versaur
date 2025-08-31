@@ -189,7 +189,7 @@ exports[`BottomBar > renders 5 items and matches snapshot 1`] = `
         >
           <svg
             aria-hidden="true"
-            class="lucide lucide-plus inline-flex items-center justify-center w-5 h-5 text-neutral"
+            class="lucide lucide-plus inline-flex items-center justify-center w-4 h-4 text-neutral"
             fill="none"
             height="24"
             stroke="currentColor"
