@@ -16,7 +16,7 @@ exports[`Menu > renders basic menu correctly 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="lucide lucide-ellipsis-vertical inline-flex items-center justify-center w-4 h-4 text-neutral"
+        class="lucide lucide-ellipsis-vertical inline-flex items-center justify-center w-4 h-4 text-white"
         fill="none"
         height="24"
         stroke="currentColor"
@@ -67,7 +67,7 @@ exports[`Menu > renders menu with different sizes 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="lucide lucide-ellipsis-vertical inline-flex items-center justify-center w-4 h-4 text-neutral"
+          class="lucide lucide-ellipsis-vertical inline-flex items-center justify-center w-4 h-4 text-white"
           fill="none"
           height="24"
           stroke="currentColor"
@@ -110,7 +110,7 @@ exports[`Menu > renders menu with different sizes 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="lucide lucide-ellipsis inline-flex items-center justify-center w-4 h-4 text-neutral"
+          class="lucide lucide-ellipsis inline-flex items-center justify-center w-4 h-4 text-white"
           fill="none"
           height="24"
           stroke="currentColor"
@@ -249,7 +249,7 @@ exports[`Menu > renders scrollable container menu correctly 1`] = `
             >
               <svg
                 aria-hidden="true"
-                class="lucide lucide-ellipsis inline-flex items-center justify-center w-4 h-4 text-neutral"
+                class="lucide lucide-ellipsis inline-flex items-center justify-center w-4 h-4 text-white"
                 fill="none"
                 height="24"
                 stroke="currentColor"

@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'react'
+import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from 'react'
 
 /**
  * Props for the BottomBar container
@@ -19,11 +19,13 @@ export interface BottomBarProps extends HTMLAttributes<HTMLElement> {
 /**
  * Props for each BottomBar.Item
  */
-export interface BottomBarItemProps extends HTMLAttributes<HTMLDivElement> {
+export interface BottomBarItemProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
+  as?: 'div' | 'button'
   /**
    * Icon element for the item
    */
-  icon: React.ReactNode
+  icon?: ReactNode
   /**
    * Label for the item
    */

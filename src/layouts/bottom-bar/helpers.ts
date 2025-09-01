@@ -1,7 +1,7 @@
 import { cva } from '@/utils/variants'
 
 export const bottomBarVariants = cva(
-  'sticky bottom-0 left-0 w-full flex justify-between items-center bg-white border-t border-border shadow-xs z-40 safe-bottom px-8 py-1',
+  'sticky bottom-0 w-full flex justify-around items-center bg-white border-t border-border shadow-xs z-40 safe-bottom gap-4 select-none',
   {
     variants: {
       variant: {
@@ -25,16 +25,22 @@ export const bottomBarVariants = cva(
 )
 
 export const bottomBarItemVariants = cva(
-  'flex flex-col items-center justify-center gap-1 px-2 py-1 select-none',
+  'flex flex-col items-center justify-center gap-1',
   {
     variants: {
       active: {
         true: 'text-primary',
         false: 'text-ghost',
       },
+      as: {
+        button:
+          'transition-all duration-200 h-8 w-8 outline-none cursor-pointer active:scale-98 focus-visible:ring-2 focus-visible:ring-primary-light focus-visible:rounded-full',
+        div: '',
+      },
     },
     defaultVariants: {
       active: false,
+      as: 'button',
     },
   }
 )

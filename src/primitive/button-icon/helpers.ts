@@ -18,7 +18,7 @@ export function getIconColorFromVariant(
         return 'ghost'
 
       default:
-        return 'neutral'
+        return 'white'
     }
   }
 
