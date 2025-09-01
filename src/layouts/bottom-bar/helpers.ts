@@ -1,7 +1,7 @@
 import { cva } from '@/utils/variants'
 
 export const bottomBarVariants = cva(
-  'sticky bottom-0 w-full flex justify-around items-center bg-white border-t border-border shadow-xs z-40 safe-bottom gap-4 select-none',
+  'sticky bottom-0 w-full flex justify-around items-center bg-white border-t border-border shadow-xs z-40 safe-bottom gap-4 select-none px-8',
   {
     variants: {
       variant: {
