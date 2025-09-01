@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Hr > matches snapshot 1`] = `
+<DocumentFragment>
+  <hr
+    class="h-px w-full bg-border border-0"
+  />
+</DocumentFragment>
+`;
