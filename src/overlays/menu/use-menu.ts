@@ -22,24 +22,6 @@ export function useMenuOutsideClick(
   }, [isOpen, onOutsideClick, contentRef, triggerRef])
 }
 
-/**
- * Menu-specific escape close hook that doesn't disable body scrolling
- */
-export function useMenuEscapeClose(isOpen: boolean, onClose: () => void) {
-  useEffect(() => {
-    if (!isOpen) return
-
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        onClose()
-      }
-    }
-
-    document.addEventListener('keydown', handleEscape)
-    return () => document.removeEventListener('keydown', handleEscape)
-  }, [isOpen, onClose])
-}
-
 interface MenuPosition {
   top?: number
   bottom?: number
@@ -47,6 +29,8 @@ interface MenuPosition {
   right?: number
   maxHeight?: number
   maxWidth?: number
+  position?: 'absolute' | 'fixed'
+  isReady?: boolean
 }
 
 export function useMenuPosition(
@@ -56,12 +40,20 @@ export function useMenuPosition(
   placement: MenuPlacement = 'bottom-start',
   container?: HTMLElement | null
 ): MenuPosition {
-  const [position, setPosition] = useState<MenuPosition>({})
+  const [position, setPosition] = useState<MenuPosition>({ isReady: false })
 
   useEffect(() => {
-    if (!isOpen || !triggerRef.current || !contentRef.current) {
-      setPosition({})
+    if (!isOpen || !triggerRef.current) {
+      setPosition({ isReady: false })
       return
+    }
+
+    if (!contentRef.current) {
+      // Content not ready yet, wait for next render
+      const timer = setTimeout(() => {
+        setPosition({ isReady: false })
+      }, 0)
+      return () => clearTimeout(timer)
     }
 
     const trigger = triggerRef.current
@@ -72,14 +64,20 @@ export function useMenuPosition(
     const triggerRect = trigger.getBoundingClientRect()
     const containerRect = containerEl.getBoundingClientRect()
 
-    // Measure content size
+    // Measure content size by temporarily making it invisible but measurable
     const originalVisibility = content.style.visibility
     const originalPosition = content.style.position
+    const originalOpacity = content.style.opacity
+
     content.style.visibility = 'hidden'
     content.style.position = 'absolute'
+    content.style.opacity = '0'
+
     const contentRect = content.getBoundingClientRect()
+
     content.style.visibility = originalVisibility
     content.style.position = originalPosition
+    content.style.opacity = originalOpacity
 
     // Calculate available space in each direction
     const spaceBelow = containerRect.bottom - triggerRect.bottom - 8
@@ -115,23 +113,50 @@ export function useMenuPosition(
     // Simple positioning relative to trigger
     const newPosition: MenuPosition = {}
 
-    switch (finalPlacement) {
-      case 'bottom-start':
-        newPosition.top = triggerRect.height + 4
-        newPosition.left = 0
-        break
-      case 'bottom-end':
-        newPosition.top = triggerRect.height + 4
-        newPosition.right = 0
-        break
-      case 'top-start':
-        newPosition.bottom = triggerRect.height + 4
-        newPosition.left = 0
-        break
-      case 'top-end':
-        newPosition.bottom = triggerRect.height + 4
-        newPosition.right = 0
-        break
+    // Use fixed positioning when container constraints are provided
+    if (container) {
+      newPosition.position = 'fixed'
+
+      switch (finalPlacement) {
+        case 'bottom-start':
+          newPosition.top = triggerRect.bottom + 4
+          newPosition.left = triggerRect.left
+          break
+        case 'bottom-end':
+          newPosition.top = triggerRect.bottom + 4
+          newPosition.right = window.innerWidth - triggerRect.right
+          break
+        case 'top-start':
+          newPosition.bottom = window.innerHeight - triggerRect.top + 4
+          newPosition.left = triggerRect.left
+          break
+        case 'top-end':
+          newPosition.bottom = window.innerHeight - triggerRect.top + 4
+          newPosition.right = window.innerWidth - triggerRect.right
+          break
+      }
+    } else {
+      // Use absolute positioning relative to trigger (default behavior)
+      newPosition.position = 'absolute'
+
+      switch (finalPlacement) {
+        case 'bottom-start':
+          newPosition.top = triggerRect.height + 4
+          newPosition.left = 0
+          break
+        case 'bottom-end':
+          newPosition.top = triggerRect.height + 4
+          newPosition.right = 0
+          break
+        case 'top-start':
+          newPosition.bottom = triggerRect.height + 4
+          newPosition.left = 0
+          break
+        case 'top-end':
+          newPosition.bottom = triggerRect.height + 4
+          newPosition.right = 0
+          break
+      }
     }
 
     // Apply container constraints if provided
@@ -185,6 +210,8 @@ export function useMenuPosition(
       }
     }
 
+    // Mark position as ready
+    newPosition.isReady = true
     setPosition(newPosition)
   }, [isOpen, placement, container, triggerRef, contentRef])
 

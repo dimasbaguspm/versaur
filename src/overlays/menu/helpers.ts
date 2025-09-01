@@ -6,7 +6,7 @@
 import { cva } from '@/utils/variants'
 
 export const menuVariants = cva(
-  'absolute z-70 min-w-40 bg-background rounded-lg border border-border transition-all duration-200 ease-out will-change-transform shadow-lg',
+  'z-70 min-w-40 bg-background rounded-lg border border-border transition-all duration-200 ease-out will-change-transform shadow-lg',
   {
     variants: {
       size: {

@@ -1,14 +1,12 @@
 import React, { useRef, useId, cloneElement } from 'react'
 
 import { cn } from '@/utils/cn'
+import { OverlayPortal } from '@/utils/overlay-portal'
 import { menuVariants } from './helpers'
 import type { MenuProps } from './types'
-import {
-  useMenuOutsideClick,
-  useMenuPosition,
-  useMenuEscapeClose,
-} from './use-menu'
+import { useMenuOutsideClick, useMenuPosition } from './use-menu'
 import { MenuContent, MenuItem } from './menu.atoms'
+import { useEscapeClose } from '@/utils/use-escape-close'
 
 const MenuRoot: React.FC<MenuProps> = ({
   isOpen,
@@ -24,7 +22,7 @@ const MenuRoot: React.FC<MenuProps> = ({
   const menuId = useId()
 
   useMenuOutsideClick(isOpen, contentRef, triggerRef, onOutsideClick)
-  useMenuEscapeClose(isOpen, onOutsideClick)
+  useEscapeClose(isOpen, onOutsideClick)
 
   const position = useMenuPosition(
     isOpen,
@@ -36,9 +34,26 @@ const MenuRoot: React.FC<MenuProps> = ({
 
   const positionStyles: React.CSSProperties = {
     ...position,
+    position: position.position || 'absolute',
     overflowY: position.maxHeight ? 'auto' : undefined,
     overflowX: position.maxWidth ? 'auto' : undefined,
   }
+
+  // Only show menu when position is calculated and ready
+  const shouldShowMenu = isOpen && position.isReady
+
+  const menuContent = (
+    <div
+      id={menuId}
+      ref={contentRef}
+      className={cn(menuVariants({ size, open: shouldShowMenu }))}
+      style={positionStyles}
+      role='menu'
+      aria-hidden={!shouldShowMenu}
+    >
+      {content}
+    </div>
+  )
 
   return (
     <div className='relative w-fit'>
@@ -50,16 +65,36 @@ const MenuRoot: React.FC<MenuProps> = ({
         'aria-controls': menuId,
       })}
       {isOpen && (
-        <div
-          id={menuId}
-          ref={contentRef}
-          className={cn(menuVariants({ size, open: isOpen }))}
-          style={positionStyles}
-          role='menu'
-          aria-hidden={!isOpen}
-        >
-          {content}
-        </div>
+        <>
+          {/* Hidden menu for measurement when position is not ready */}
+          {!position.isReady && (
+            <div
+              ref={contentRef}
+              className={cn(menuVariants({ size, open: false }))}
+              style={{
+                position: 'absolute',
+                visibility: 'hidden',
+                opacity: 0,
+                pointerEvents: 'none',
+              }}
+              role='menu'
+              aria-hidden={true}
+            >
+              {content}
+            </div>
+          )}
+
+          {/* Visible menu when position is ready */}
+          {position.isReady && (
+            <>
+              {position.position === 'fixed' ? (
+                <OverlayPortal>{menuContent}</OverlayPortal>
+              ) : (
+                menuContent
+              )}
+            </>
+          )}
+        </>
       )}
     </div>
   )
