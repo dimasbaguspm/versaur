@@ -142,3 +142,213 @@ exports[`Menu > renders menu with different sizes 1`] = `
   </div>
 </DocumentFragment>
 `;
+
+exports[`Menu > renders scrollable container menu correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="h-96 border border-gray-300 rounded-lg p-4"
+  >
+    <h3
+      class="mb-4 font-semibold"
+    >
+      Scrollable Container Example
+    </h3>
+    <div
+      class="h-full overflow-y-auto bg-gray-50 p-4 rounded"
+    >
+      <div
+        class="space-y-4"
+      >
+        <div
+          class="p-3 bg-white rounded shadow-sm border flex justify-between items-center"
+        >
+          <span>
+            Item 1
+          </span>
+        </div>
+        <div
+          class="p-3 bg-white rounded shadow-sm border flex justify-between items-center"
+        >
+          <span>
+            Item 2
+          </span>
+        </div>
+        <div
+          class="p-3 bg-white rounded shadow-sm border flex justify-between items-center"
+        >
+          <span>
+            Item 3
+          </span>
+        </div>
+        <div
+          class="p-3 bg-white rounded shadow-sm border flex justify-between items-center"
+        >
+          <span>
+            Item 4
+          </span>
+        </div>
+        <div
+          class="p-3 bg-white rounded shadow-sm border flex justify-between items-center"
+        >
+          <span>
+            Item 5
+          </span>
+        </div>
+        <div
+          class="p-3 bg-white rounded shadow-sm border flex justify-between items-center"
+        >
+          <span>
+            Item 6
+          </span>
+        </div>
+        <div
+          class="p-3 bg-white rounded shadow-sm border flex justify-between items-center"
+        >
+          <span>
+            Item 7
+          </span>
+        </div>
+        <div
+          class="p-3 bg-white rounded shadow-sm border flex justify-between items-center"
+        >
+          <span>
+            Item 8
+          </span>
+        </div>
+        <div
+          class="p-3 bg-white rounded shadow-sm border flex justify-between items-center"
+        >
+          <span>
+            Item 9
+          </span>
+        </div>
+        <div
+          class="p-3 bg-white rounded shadow-sm border flex justify-between items-center"
+        >
+          <span>
+            Item 10
+          </span>
+        </div>
+        <div
+          class="p-3 bg-white rounded shadow-sm border flex justify-between items-center"
+        >
+          <span>
+            Item 11
+          </span>
+          <div
+            class="relative w-fit"
+          >
+            <button
+              aria-controls="«r4»"
+              aria-disabled="false"
+              aria-expanded="false"
+              aria-haspopup="menu"
+              aria-label="Open menu"
+              class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md h-9 w-9 rounded-md"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-ellipsis inline-flex items-center justify-center w-4 h-4 text-neutral"
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="1"
+                />
+                <circle
+                  cx="19"
+                  cy="12"
+                  r="1"
+                />
+                <circle
+                  cx="5"
+                  cy="12"
+                  r="1"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div
+          class="p-3 bg-white rounded shadow-sm border flex justify-between items-center"
+        >
+          <span>
+            Item 12
+          </span>
+        </div>
+        <div
+          class="p-3 bg-white rounded shadow-sm border flex justify-between items-center"
+        >
+          <span>
+            Item 13
+          </span>
+        </div>
+        <div
+          class="p-3 bg-white rounded shadow-sm border flex justify-between items-center"
+        >
+          <span>
+            Item 14
+          </span>
+        </div>
+        <div
+          class="p-3 bg-white rounded shadow-sm border flex justify-between items-center"
+        >
+          <span>
+            Item 15
+          </span>
+        </div>
+        <div
+          class="p-3 bg-white rounded shadow-sm border flex justify-between items-center"
+        >
+          <span>
+            Item 16
+          </span>
+        </div>
+        <div
+          class="p-3 bg-white rounded shadow-sm border flex justify-between items-center"
+        >
+          <span>
+            Item 17
+          </span>
+        </div>
+        <div
+          class="p-3 bg-white rounded shadow-sm border flex justify-between items-center"
+        >
+          <span>
+            Item 18
+          </span>
+        </div>
+        <div
+          class="p-3 bg-white rounded shadow-sm border flex justify-between items-center"
+        >
+          <span>
+            Item 19
+          </span>
+        </div>
+        <div
+          class="p-3 bg-white rounded shadow-sm border flex justify-between items-center"
+        >
+          <span>
+            Item 20
+          </span>
+        </div>
+      </div>
+      <p
+        class="mt-8 text-sm text-gray-600"
+      >
+        Scroll this container to see how the menu adapts its position and hides when the trigger goes out of bounds.
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

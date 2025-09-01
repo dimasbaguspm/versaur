@@ -45,6 +45,32 @@ export const Basic = () => {
   )
 }
 
+export const Preserve = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <Menu
+      isOpen={isOpen}
+      onOutsideClick={() => setIsOpen(false)}
+      size='md'
+      preserve
+      content={
+        <MenuContent>
+          <MenuItem>Profile</MenuItem>
+          <MenuItem>Settings</MenuItem>
+          <MenuItem disabled>Logout</MenuItem>
+        </MenuContent>
+      }
+    >
+      <ButtonIcon
+        as={EllipsisVertical}
+        aria-label='Open menu'
+        onClick={() => setIsOpen(o => !o)}
+      />
+    </Menu>
+  )
+}
+
 export const Sizes = () => {
   const [openSm, setOpenSm] = useState(false)
   const [openMd, setOpenMd] = useState(false)
@@ -90,8 +116,14 @@ export const Sizes = () => {
 }
 
 export const AutoPlacement = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isMenuAOpen, setIsMenuAOpen] = useState(false)
+  const [isMenuBOpen, setIsMenuBOpen] = useState(false)
+  const [isMenuCOpen, setIsMenuCOpen] = useState(false)
+  const [isMenuDOpen, setIsMenuDOpen] = useState(false)
+
   const containerRef = useRef<HTMLDivElement>(null)
+
+  console.log(containerRef.current)
 
   return (
     <div className='space-y-4'>
@@ -110,9 +142,8 @@ export const AutoPlacement = () => {
         {/* Top-left corner */}
         <div className='absolute top-4 left-4'>
           <Menu
-            isOpen={isOpen}
-            onOutsideClick={() => setIsOpen(false)}
-            placement='auto'
+            isOpen={isMenuAOpen}
+            onOutsideClick={() => setIsMenuAOpen(false)}
             container={containerRef.current}
             content={
               <MenuContent>
@@ -126,7 +157,30 @@ export const AutoPlacement = () => {
             <ButtonIcon
               as={EllipsisVertical}
               aria-label='Top left menu'
-              onClick={() => setIsOpen(o => !o)}
+              onClick={() => setIsMenuAOpen(o => !o)}
+            />
+          </Menu>
+        </div>
+
+        {/* Top-right corner */}
+        <div className='absolute top-4 right-4'>
+          <Menu
+            isOpen={isMenuBOpen}
+            onOutsideClick={() => setIsMenuBOpen(false)}
+            container={containerRef.current}
+            content={
+              <MenuContent>
+                <MenuItem>Top Right Menu</MenuItem>
+                <MenuItem>Option 2</MenuItem>
+                <MenuItem>Option 3</MenuItem>
+                <MenuItem>Option 4</MenuItem>
+              </MenuContent>
+            }
+          >
+            <ButtonIcon
+              as={EllipsisVertical}
+              aria-label='Top right menu'
+              onClick={() => setIsMenuBOpen(o => !o)}
             />
           </Menu>
         </div>
@@ -134,9 +188,8 @@ export const AutoPlacement = () => {
         {/* Bottom-right corner */}
         <div className='absolute bottom-4 right-4'>
           <Menu
-            isOpen={isOpen}
-            onOutsideClick={() => setIsOpen(false)}
-            placement='auto'
+            isOpen={isMenuCOpen}
+            onOutsideClick={() => setIsMenuCOpen(false)}
             container={containerRef.current}
             content={
               <MenuContent>
@@ -150,7 +203,30 @@ export const AutoPlacement = () => {
             <ButtonIcon
               as={EllipsisVertical}
               aria-label='Bottom right menu'
-              onClick={() => setIsOpen(o => !o)}
+              onClick={() => setIsMenuCOpen(o => !o)}
+            />
+          </Menu>
+        </div>
+
+        {/* Bottom-left corner */}
+        <div className='absolute bottom-4 left-4'>
+          <Menu
+            isOpen={isMenuDOpen}
+            onOutsideClick={() => setIsMenuDOpen(false)}
+            container={containerRef.current}
+            content={
+              <MenuContent>
+                <MenuItem>Bottom Left Menu</MenuItem>
+                <MenuItem>Option 2</MenuItem>
+                <MenuItem>Option 3</MenuItem>
+                <MenuItem>Option 4</MenuItem>
+              </MenuContent>
+            }
+          >
+            <ButtonIcon
+              as={EllipsisVertical}
+              aria-label='Bottom left menu'
+              onClick={() => setIsMenuDOpen(o => !o)}
             />
           </Menu>
         </div>
@@ -266,7 +342,6 @@ export const ContainerConstraints = () => {
           <Menu
             isOpen={isOpen}
             onOutsideClick={() => setIsOpen(false)}
-            placement='auto'
             container={containerRef.current}
             content={
               <MenuContent>
@@ -289,6 +364,129 @@ export const ContainerConstraints = () => {
               onClick={() => setIsOpen(o => !o)}
             />
           </Menu>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export const ScrollableContainer = () => {
+  const contentRef = useRef<HTMLDivElement>(null)
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <div className='h-96 border border-gray-300 rounded-lg p-4'>
+      <h3 className='mb-4 font-semibold'>Scrollable Container Example</h3>
+      <div
+        ref={contentRef}
+        className='h-full overflow-y-auto bg-gray-50 p-4 rounded'
+      >
+        {/* Content that makes container scrollable */}
+        <div className='space-y-4'>
+          {Array.from({ length: 20 }, (_, i) => (
+            <div
+              key={i}
+              className='p-3 bg-white rounded shadow-sm border flex justify-between items-center'
+            >
+              <span>Item {i + 1}</span>
+              {i === 10 && (
+                <Menu
+                  isOpen={isOpen}
+                  onOutsideClick={() => setIsOpen(false)}
+                  size='md'
+                  placement='auto'
+                  container={contentRef.current}
+                  content={
+                    <MenuContent>
+                      <MenuItem>View Details</MenuItem>
+                      <MenuItem>Edit Item</MenuItem>
+                      <MenuItem>Share</MenuItem>
+                      <MenuItem>Delete</MenuItem>
+                    </MenuContent>
+                  }
+                >
+                  <ButtonIcon
+                    as={Ellipsis}
+                    aria-label='Open menu'
+                    onClick={() => setIsOpen(o => !o)}
+                  />
+                </Menu>
+              )}
+            </div>
+          ))}
+        </div>
+        <p className='mt-8 text-sm text-gray-600'>
+          Scroll this container to see how the menu adapts its position and
+          hides when the trigger goes out of bounds.
+        </p>
+      </div>
+    </div>
+  )
+}
+
+export const ViewportScrolling = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <div className='space-y-4'>
+      <h3 className='font-semibold'>Viewport Scrolling Example</h3>
+      <p className='text-sm text-gray-600 mb-4'>
+        This example demonstrates menu behavior when the page itself is
+        scrollable. Scroll the page up/down to see the menu reposition.
+      </p>
+
+      {/* Create a tall page that requires scrolling */}
+      <div className='h-screen bg-gradient-to-b from-blue-50 to-purple-50 p-8 rounded-lg'>
+        <div className='h-1/2 flex items-center justify-center'>
+          <div className='text-center space-y-4'>
+            <h4 className='text-lg font-medium'>
+              Scroll down to find the menu
+            </h4>
+            <p className='text-gray-600'>↓ Keep scrolling ↓</p>
+          </div>
+        </div>
+
+        <div className='h-1/2 flex items-center justify-center'>
+          <div className='bg-white p-6 rounded-lg shadow-md text-center space-y-4'>
+            <h4 className='text-lg font-medium'>Menu in scrollable page</h4>
+            <p className='text-sm text-gray-600'>
+              The menu will track with the trigger as you scroll the page
+            </p>
+            <Menu
+              isOpen={isOpen}
+              onOutsideClick={() => setIsOpen(false)}
+              size='md'
+              placement='auto'
+              content={
+                <MenuContent>
+                  <MenuItem>Profile Settings</MenuItem>
+                  <MenuItem>Notifications</MenuItem>
+                  <MenuItem>Privacy</MenuItem>
+                  <MenuItem>Help & Support</MenuItem>
+                  <MenuItem>Sign Out</MenuItem>
+                </MenuContent>
+              }
+            >
+              <ButtonIcon
+                as={EllipsisVertical}
+                aria-label='Open menu'
+                onClick={() => setIsOpen(o => !o)}
+              />
+            </Menu>
+          </div>
+        </div>
+      </div>
+
+      {/* Additional content to make page scrollable */}
+      <div className='h-screen bg-gradient-to-b from-green-50 to-yellow-50 p-8 rounded-lg'>
+        <div className='h-full flex items-center justify-center'>
+          <div className='text-center space-y-4'>
+            <h4 className='text-lg font-medium'>Continue scrolling</h4>
+            <p className='text-gray-600'>
+              Notice how the menu disappears when the trigger scrolls out of
+              view
+            </p>
+          </div>
         </div>
       </div>
     </div>

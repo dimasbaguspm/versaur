@@ -6,7 +6,7 @@ import { menuVariants } from './helpers'
 import type { MenuProps } from './types'
 import { useMenuOutsideClick, useMenuPosition } from './use-menu'
 import { MenuContent, MenuItem } from './menu.atoms'
-import { useEscapeClose } from '@/utils/use-escape-close'
+import { MenuProvider } from './context'
 
 const MenuRoot: React.FC<MenuProps> = ({
   isOpen,
@@ -14,22 +14,22 @@ const MenuRoot: React.FC<MenuProps> = ({
   size = 'md',
   content,
   children,
-  placement = 'bottom-start',
+  placement = 'auto',
   container,
+  preserve,
 }) => {
   const triggerRef = useRef<HTMLButtonElement | null>(null)
   const contentRef = useRef<HTMLDivElement | null>(null)
   const menuId = useId()
 
   useMenuOutsideClick(isOpen, contentRef, triggerRef, onOutsideClick)
-  useEscapeClose(isOpen, onOutsideClick)
 
   const position = useMenuPosition(
     isOpen,
     triggerRef,
     contentRef,
     placement,
-    container
+    container || null
   )
 
   const positionStyles: React.CSSProperties = {
@@ -56,47 +56,51 @@ const MenuRoot: React.FC<MenuProps> = ({
   )
 
   return (
-    <div className='relative w-fit'>
-      {cloneElement(children as React.ReactElement, {
-        // @ts-expect-error: ref is valid for button or forwardRef components
-        ref: triggerRef,
-        'aria-haspopup': 'menu',
-        'aria-expanded': isOpen,
-        'aria-controls': menuId,
-      })}
-      {isOpen && (
-        <>
-          {/* Hidden menu for measurement when position is not ready */}
-          {!position.isReady && (
-            <div
-              ref={contentRef}
-              className={cn(menuVariants({ size, open: false }))}
-              style={{
-                position: 'absolute',
-                visibility: 'hidden',
-                opacity: 0,
-                pointerEvents: 'none',
-              }}
-              role='menu'
-              aria-hidden={true}
-            >
-              {content}
-            </div>
-          )}
+    <MenuProvider
+      value={{ onClose: onOutsideClick, preserve: Boolean(preserve) }}
+    >
+      <div className='relative w-fit'>
+        {cloneElement(children as React.ReactElement, {
+          // @ts-expect-error: ref is valid for button or forwardRef components
+          ref: triggerRef,
+          'aria-haspopup': 'menu',
+          'aria-expanded': isOpen,
+          'aria-controls': menuId,
+        })}
+        {isOpen && (
+          <>
+            {/* Hidden menu for measurement when position is not ready */}
+            {!position.isReady && (
+              <div
+                ref={contentRef}
+                className={cn(menuVariants({ size, open: false }))}
+                style={{
+                  position: 'absolute',
+                  visibility: 'hidden',
+                  opacity: 0,
+                  pointerEvents: 'none',
+                }}
+                role='menu'
+                aria-hidden={true}
+              >
+                {content}
+              </div>
+            )}
 
-          {/* Visible menu when position is ready */}
-          {position.isReady && (
-            <>
-              {position.position === 'fixed' ? (
-                <OverlayPortal>{menuContent}</OverlayPortal>
-              ) : (
-                menuContent
-              )}
-            </>
-          )}
-        </>
-      )}
-    </div>
+            {/* Visible menu when position is ready */}
+            {position.isReady && (
+              <>
+                {position.position === 'fixed' ? (
+                  <OverlayPortal>{menuContent}</OverlayPortal>
+                ) : (
+                  menuContent
+                )}
+              </>
+            )}
+          </>
+        )}
+      </div>
+    </MenuProvider>
   )
 }
 

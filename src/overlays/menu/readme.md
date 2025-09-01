@@ -1,15 +1,17 @@
 # Menu Component
 
-Accessible, animated menu for Versaur UI. Follows Material Design menu principles. Now uses a simple
-API similar to Tooltip.
+Accessible, animated menu for Versaur UI with advanced scroll handling and intelligent positioning.
+Follows Material Design menu principles with enhanced support for scrollable containers and viewport
+scrolling.
 
-## Usage
+## Features
 
-````markdown
-# Menu Component
-
-Accessible, animated menu for Versaur UI. Follows Material Design menu principles with smart
-positioning to prevent overlaps.
+- **Smart scroll handling**: Automatically adapts position when containers or viewport scroll
+- **Intelligent positioning**: Prevents overlaps and repositions based on available space
+- **Scrollable container support**: Works seamlessly within scrollable elements
+- **Viewport tracking**: Hides menu when trigger scrolls out of view
+- **Performance optimized**: Uses throttled scroll listeners and requestAnimationFrame
+- **Accessibility focused**: Proper ARIA attributes and keyboard navigation
 
 ## Usage
 
@@ -37,6 +39,67 @@ export default function Example() {
   )
 }
 ```
+
+## Scroll Handling
+
+The menu automatically handles scrollable containers and viewport scrolling with two distinct modes:
+
+### 1. Viewport Mode (default)
+
+When no `container` prop is provided, the menu uses viewport-based positioning:
+
+```tsx
+<div className="h-screen">
+  {/* Page content that requires scrolling */}
+  <Menu isOpen={isOpen} onOutsideClick={close} content={...}>
+    <button>Menu on scrollable page</button>
+  </Menu>
+</div>
+```
+
+**Behavior:**
+
+- Uses `position: absolute` relative to trigger element
+- Auto placement calculates space relative to **viewport**
+- **Tracks viewport scrolling** and repositions accordingly
+- **Hides when trigger scrolls out of viewport**
+- Optimal for full-page menus and simple scenarios
+
+### 2. Container Mode
+
+When a `container` prop is provided, the menu uses container-constrained positioning:
+
+```tsx
+<div ref={containerRef} className="overflow-y-auto h-64">
+  {/* Long list of items */}
+  <Menu
+    isOpen={isOpen}
+    onOutsideClick={close}
+    container={containerRef.current}
+    content={...}
+  >
+    <button>Menu in scrollable container</button>
+  </Menu>
+</div>
+```
+
+**Behavior:**
+
+- Uses `position: fixed` for better scroll handling
+- Auto placement calculates space relative to **container boundaries**
+- **Tracks container and viewport scrolling**
+- **Hides when trigger scrolls out of container or viewport**
+- **Respects container boundaries** for positioning
+- Ideal for dropdowns within modals, sidebars, or constrained areas
+
+### Performance Features
+
+Both modes include:
+
+- **Throttled scroll updates** using `requestAnimationFrame`
+- **Automatic cleanup** of scroll listeners
+- **Efficient visibility detection** for nested scrollable elements
+- **Smart position recalculation** only when needed
 
 ## Positioning
 
@@ -66,7 +129,8 @@ The menu supports intelligent positioning to prevent overlaps:
 - Strictly typed props
 - Tailwind styling
 - Easy to extend for submenus
-````
+
+```
 
 ## Features
 
@@ -76,3 +140,4 @@ The menu supports intelligent positioning to prevent overlaps:
 - Strictly typed props
 - Tailwind styling
 - Easy to extend for submenus
+```
