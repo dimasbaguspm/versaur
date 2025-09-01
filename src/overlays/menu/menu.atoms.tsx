@@ -1,15 +1,10 @@
-/**
- * Menu atoms for Versaur
- */
-import { forwardRef } from 'react'
+import { forwardRef, type MouseEvent } from 'react'
 import type { MenuContentProps, MenuItemProps } from './types'
 
 import { Button } from '@/primitive/button'
 import { cn } from '@/utils'
+import { useMenuProvider } from './context'
 
-/**
- * MenuContent: Wraps menu items
- */
 export const MenuContent = forwardRef<HTMLUListElement, MenuContentProps>(
   ({ children }, ref) => {
     return (
@@ -20,17 +15,24 @@ export const MenuContent = forwardRef<HTMLUListElement, MenuContentProps>(
   }
 )
 
-/**
- * MenuItem: Single menu item
- */
 export const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
-  ({ children, disabled, ...props }, ref) => {
+  ({ children, disabled, onClick, ...props }, ref) => {
+    const { preserve, onClose } = useMenuProvider()
+
+    const handleOnClick = (ev: MouseEvent<HTMLButtonElement>) => {
+      onClick?.(ev)
+
+      if (!preserve) {
+        onClose()
+      }
+    }
     return (
       <li ref={ref} {...props}>
         <Button
           variant='ghost'
           className={cn('block text-left w-full')}
           disabled={disabled}
+          onClick={handleOnClick}
         >
           {children}
         </Button>

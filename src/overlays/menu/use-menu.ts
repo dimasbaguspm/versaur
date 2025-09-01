@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback, type RefObject } from 'react'
 import type { MenuPlacement } from './types'
 
 export function useMenuOutsideClick(
@@ -33,16 +33,80 @@ interface MenuPosition {
   isReady?: boolean
 }
 
+/**
+ * Get all scrollable ancestors of an element
+ */
+function getScrollableAncestors(element: HTMLElement): HTMLElement[] {
+  const scrollableAncestors: HTMLElement[] = []
+  let parent = element.parentElement
+
+  while (parent && parent !== document.documentElement) {
+    const style = getComputedStyle(parent)
+    if (
+      style.overflow === 'auto' ||
+      style.overflow === 'scroll' ||
+      style.overflowY === 'auto' ||
+      style.overflowY === 'scroll' ||
+      style.overflowX === 'auto' ||
+      style.overflowX === 'scroll'
+    ) {
+      scrollableAncestors.push(parent)
+    }
+    parent = parent.parentElement
+  }
+
+  // Always include window for viewport scrolling
+  scrollableAncestors.push(document.documentElement)
+  return scrollableAncestors
+}
+
+/**
+ * Check if trigger element is visible within scrollable containers
+ */
+function isTriggerVisible(
+  trigger: HTMLElement,
+  scrollableAncestors: HTMLElement[]
+): boolean {
+  const triggerRect = trigger.getBoundingClientRect()
+
+  // Check if trigger is within viewport
+  if (
+    triggerRect.bottom < 0 ||
+    triggerRect.top > window.innerHeight ||
+    triggerRect.right < 0 ||
+    triggerRect.left > window.innerWidth
+  ) {
+    return false
+  }
+
+  // Check if trigger is within all scrollable ancestors
+  for (const ancestor of scrollableAncestors) {
+    if (ancestor === document.documentElement) continue
+
+    const ancestorRect = ancestor.getBoundingClientRect()
+    if (
+      triggerRect.bottom < ancestorRect.top ||
+      triggerRect.top > ancestorRect.bottom ||
+      triggerRect.right < ancestorRect.left ||
+      triggerRect.left > ancestorRect.right
+    ) {
+      return false
+    }
+  }
+
+  return true
+}
+
 export function useMenuPosition(
   isOpen: boolean,
   triggerRef: React.RefObject<HTMLElement | null>,
   contentRef: React.RefObject<HTMLDivElement | null>,
   placement: MenuPlacement = 'bottom-start',
-  container?: HTMLElement | null
+  container: HTMLElement | RefObject<HTMLElement | null> | null
 ): MenuPosition {
   const [position, setPosition] = useState<MenuPosition>({ isReady: false })
 
-  useEffect(() => {
+  const calculatePosition = useCallback(() => {
     if (!isOpen || !triggerRef.current) {
       setPosition({ isReady: false })
       return
@@ -58,11 +122,36 @@ export function useMenuPosition(
 
     const trigger = triggerRef.current
     const content = contentRef.current
-    const containerEl = container || document.documentElement
+
+    // Check if trigger is still visible in scrollable containers
+    const scrollableAncestors = getScrollableAncestors(trigger)
+    if (!isTriggerVisible(trigger, scrollableAncestors)) {
+      // Hide menu when trigger is not visible
+      setPosition({ isReady: false })
+      return
+    }
 
     // Get all the necessary measurements
     const triggerRect = trigger.getBoundingClientRect()
-    const containerRect = containerEl.getBoundingClientRect()
+    const viewportWidth = window.innerWidth
+    const viewportHeight = window.innerHeight
+
+    // Resolve container element (handle both HTMLElement and RefObject)
+    let containerElement: HTMLElement | null = null
+    if (container) {
+      if ('getBoundingClientRect' in container) {
+        containerElement = container as HTMLElement
+      } else if ('current' in container) {
+        containerElement = container.current
+      }
+    }
+
+    // Determine the constraining container
+    const containerEl = containerElement || document.documentElement
+    const containerRect =
+      containerEl === document.documentElement
+        ? { top: 0, bottom: viewportHeight, left: 0, right: viewportWidth }
+        : containerEl.getBoundingClientRect()
 
     // Measure content size by temporarily making it invisible but measurable
     const originalVisibility = content.style.visibility
@@ -79,7 +168,7 @@ export function useMenuPosition(
     content.style.position = originalPosition
     content.style.opacity = originalOpacity
 
-    // Calculate available space in each direction
+    // Calculate available space in each direction relative to container
     const spaceBelow = containerRect.bottom - triggerRect.bottom - 8
     const spaceAbove = triggerRect.top - containerRect.top - 8
     const spaceRight = containerRect.right - triggerRect.left - 8
@@ -88,32 +177,64 @@ export function useMenuPosition(
     // Determine final placement
     let finalPlacement = placement
     if (placement === 'auto') {
-      if (spaceBelow >= contentRect.height && spaceRight >= contentRect.width) {
-        finalPlacement = 'bottom-start'
-      } else if (
-        spaceBelow >= contentRect.height &&
-        spaceLeft >= contentRect.width
-      ) {
-        finalPlacement = 'bottom-end'
-      } else if (
-        spaceAbove >= contentRect.height &&
-        spaceRight >= contentRect.width
-      ) {
-        finalPlacement = 'top-start'
-      } else if (
-        spaceAbove >= contentRect.height &&
-        spaceLeft >= contentRect.width
-      ) {
-        finalPlacement = 'top-end'
+      // Calculate if each placement would fit within container bounds
+      const placements = [
+        {
+          name: 'bottom-start' as MenuPlacement,
+          fits:
+            spaceBelow >= contentRect.height && spaceRight >= contentRect.width,
+          spaceUsed: spaceBelow,
+          priority: 1, // Prefer bottom-start as default
+        },
+        {
+          name: 'bottom-end' as MenuPlacement,
+          fits:
+            spaceBelow >= contentRect.height && spaceLeft >= contentRect.width,
+          spaceUsed: spaceBelow,
+          priority: 2,
+        },
+        {
+          name: 'top-start' as MenuPlacement,
+          fits:
+            spaceAbove >= contentRect.height && spaceRight >= contentRect.width,
+          spaceUsed: spaceAbove,
+          priority: 3,
+        },
+        {
+          name: 'top-end' as MenuPlacement,
+          fits:
+            spaceAbove >= contentRect.height && spaceLeft >= contentRect.width,
+          spaceUsed: spaceAbove,
+          priority: 4,
+        },
+      ]
+
+      // First, try to find a placement that fits completely
+      const fittingPlacements = placements.filter(p => p.fits)
+
+      if (fittingPlacements.length > 0) {
+        // Choose the fitting placement with highest priority (lowest priority number)
+        finalPlacement = fittingPlacements.sort(
+          (a, b) => a.priority - b.priority
+        )[0].name
       } else {
-        finalPlacement = spaceBelow >= spaceAbove ? 'bottom-start' : 'top-start'
+        // If nothing fits perfectly, choose based on available space
+        // Prefer vertical placement over horizontal (bottom over top)
+        if (spaceBelow >= spaceAbove) {
+          // Choose bottom placement - prefer start if there's more right space
+          finalPlacement =
+            spaceRight >= spaceLeft ? 'bottom-start' : 'bottom-end'
+        } else {
+          // Choose top placement - prefer start if there's more right space
+          finalPlacement = spaceRight >= spaceLeft ? 'top-start' : 'top-end'
+        }
       }
     }
 
     // Simple positioning relative to trigger
     const newPosition: MenuPosition = {}
 
-    // Use fixed positioning when container constraints are provided
+    // Use fixed positioning when container constraints are provided or for better scroll handling
     if (container) {
       newPosition.position = 'fixed'
 
@@ -159,7 +280,7 @@ export function useMenuPosition(
       }
     }
 
-    // Apply container constraints if provided
+    // Apply container/viewport constraints
     if (container) {
       // Get position of menu relative to container for boundary checking
       const menuRect = {
@@ -208,12 +329,103 @@ export function useMenuPosition(
           newPosition.maxHeight = availableHeight
         }
       }
+    } else {
+      // No container constraints, just apply basic viewport boundary checks
+      // for absolute positioned menus (mainly for edge cases)
+
+      // Get position of menu relative to trigger for boundary checking
+      const menuRect = {
+        top: finalPlacement.startsWith('bottom')
+          ? triggerRect.height + 4
+          : -contentRect.height - 4,
+        left: finalPlacement.endsWith('start') ? 0 : -contentRect.width,
+        width: contentRect.width,
+        height: contentRect.height,
+      }
+
+      // Basic overflow prevention - adjust if menu would go outside viewport
+      const triggerInViewport = {
+        left: triggerRect.left,
+        right: triggerRect.right,
+        top: triggerRect.top,
+        bottom: triggerRect.bottom,
+      }
+
+      // Horizontal viewport overflow check
+      if (triggerInViewport.left + menuRect.left < 8) {
+        const shift = 8 - (triggerInViewport.left + menuRect.left)
+        if (finalPlacement.endsWith('start')) {
+          newPosition.left = (newPosition.left || 0) + shift
+        } else {
+          newPosition.right = (newPosition.right || 0) - shift
+        }
+      } else if (
+        triggerInViewport.left + menuRect.left + menuRect.width >
+        viewportWidth - 8
+      ) {
+        const shift =
+          triggerInViewport.left +
+          menuRect.left +
+          menuRect.width -
+          (viewportWidth - 8)
+        if (finalPlacement.endsWith('start')) {
+          newPosition.left = (newPosition.left || 0) - shift
+        } else {
+          newPosition.right = (newPosition.right || 0) + shift
+        }
+      }
     }
 
     // Mark position as ready
     newPosition.isReady = true
     setPosition(newPosition)
-  }, [isOpen, placement, container, triggerRef, contentRef])
+  }, [isOpen, placement, triggerRef, contentRef, container])
+
+  // Initial position calculation
+  useEffect(() => {
+    calculatePosition()
+  }, [calculatePosition])
+
+  // Set up scroll listeners for all scrollable ancestors
+  useEffect(() => {
+    if (!isOpen || !triggerRef.current) return
+
+    const trigger = triggerRef.current
+    const scrollableAncestors = getScrollableAncestors(trigger)
+
+    // Throttle scroll updates to prevent excessive recalculations
+    let ticking = false
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          calculatePosition()
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    // Add scroll listeners to all scrollable ancestors
+    scrollableAncestors.forEach(ancestor => {
+      if (ancestor === document.documentElement) {
+        window.addEventListener('scroll', handleScroll, { passive: true })
+        window.addEventListener('resize', handleScroll, { passive: true })
+      } else {
+        ancestor.addEventListener('scroll', handleScroll, { passive: true })
+      }
+    })
+
+    return () => {
+      scrollableAncestors.forEach(ancestor => {
+        if (ancestor === document.documentElement) {
+          window.removeEventListener('scroll', handleScroll)
+          window.removeEventListener('resize', handleScroll)
+        } else {
+          ancestor.removeEventListener('scroll', handleScroll)
+        }
+      })
+    }
+  }, [isOpen, calculatePosition, triggerRef])
 
   return position
 }

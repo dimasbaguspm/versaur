@@ -11,8 +11,9 @@ const ButtonMenuIconRoot = forwardRef<HTMLButtonElement, ButtonMenuIconProps>(
       children,
       onOpenChange,
       onClick,
-      placement = 'bottom-start',
+      placement,
       container,
+      preserve,
       ...rest
     } = props ?? {}
     const [isOpen, setIsOpen] = useState(false)
@@ -34,9 +35,9 @@ const ButtonMenuIconRoot = forwardRef<HTMLButtonElement, ButtonMenuIconProps>(
       <Menu
         isOpen={isOpen}
         onOutsideClick={handleOnClose}
-        size='md'
         placement={placement}
         container={container}
+        preserve={preserve}
         content={<Menu.Content>{children}</Menu.Content>}
       >
         <ButtonIcon ref={ref} as={Icon} onClick={handleToggle} {...rest} />

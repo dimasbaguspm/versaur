@@ -10,7 +10,7 @@ describe('ButtonMenu', () => {
     render(<Basic />)
     expect(
       screen.getByRole('button', {
-        name: /open filter/i,
+        name: /open menu/i,
       })
     ).toBeInTheDocument()
   })
@@ -20,7 +20,7 @@ describe('ButtonMenu', () => {
     const { asFragment } = render(<Basic />)
 
     const trigger = screen.getByRole('button', {
-      name: /open filter/i,
+      name: /open menu/i,
     })
     await user.click(trigger)
 
