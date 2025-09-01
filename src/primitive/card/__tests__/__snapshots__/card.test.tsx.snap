@@ -24,7 +24,7 @@ exports[`Card > matches snapshot for default card 1`] = `
           class="mb-2"
         >
           <h3
-            class="text-ghost text-left text-lg font-semibold"
+            class="text-ghost text-left text-base font-semibold"
           >
             Default Card
           </h3>

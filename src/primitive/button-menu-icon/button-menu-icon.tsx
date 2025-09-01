@@ -8,7 +8,7 @@ const ButtonMenuIconRoot = forwardRef<HTMLButtonElement, ButtonMenuIconProps>(
   (props, ref) => {
     const {
       as: Icon = EllipsisVerticalIcon,
-      content,
+      children,
       onOpenChange,
       onClick,
       ...rest
@@ -33,7 +33,7 @@ const ButtonMenuIconRoot = forwardRef<HTMLButtonElement, ButtonMenuIconProps>(
         isOpen={isOpen}
         onOutsideClick={handleOnClose}
         size='md'
-        content={<Menu.Content>{content}</Menu.Content>}
+        content={<Menu.Content>{children}</Menu.Content>}
       >
         <ButtonIcon ref={ref} as={Icon} onClick={handleToggle} {...rest} />
       </Menu>

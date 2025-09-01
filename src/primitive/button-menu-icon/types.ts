@@ -13,5 +13,5 @@ export interface ButtonMenuIconProps
   /**
    * The content to be displayed inside the menu.
    */
-  content: ReactNode
+  children: ReactNode
 }

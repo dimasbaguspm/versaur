@@ -55,7 +55,7 @@ const CardRoot = forwardRef<HTMLButtonElement, CardProps>(
           <div className='w-full'>
             <div className='mb-2'>
               {title && (
-                <Text as='h3' fontSize='lg' fontWeight='semibold'>
+                <Text as='h3' fontSize='base' fontWeight='semibold'>
                   {title}
                 </Text>
               )}

@@ -3,8 +3,11 @@ import React, { useRef, useId, cloneElement } from 'react'
 import { cn } from '@/utils/cn'
 import { menuVariants } from './helpers'
 import type { MenuProps } from './types'
-import { useMenuOutsideClick } from './use-menu'
-import { useEscapeClose } from '@/utils/use-escape-close'
+import {
+  useMenuOutsideClick,
+  useMenuPosition,
+  useMenuEscapeClose,
+} from './use-menu'
 import { MenuContent, MenuItem } from './menu.atoms'
 
 const MenuRoot: React.FC<MenuProps> = ({
@@ -13,13 +16,29 @@ const MenuRoot: React.FC<MenuProps> = ({
   size = 'md',
   content,
   children,
+  placement = 'bottom-start',
+  container,
 }) => {
   const triggerRef = useRef<HTMLButtonElement | null>(null)
   const contentRef = useRef<HTMLDivElement | null>(null)
   const menuId = useId()
 
   useMenuOutsideClick(isOpen, contentRef, triggerRef, onOutsideClick)
-  useEscapeClose(isOpen, onOutsideClick)
+  useMenuEscapeClose(isOpen, onOutsideClick)
+
+  const position = useMenuPosition(
+    isOpen,
+    triggerRef,
+    contentRef,
+    placement,
+    container
+  )
+
+  const positionStyles: React.CSSProperties = {
+    ...position,
+    overflowY: position.maxHeight ? 'auto' : undefined,
+    overflowX: position.maxWidth ? 'auto' : undefined,
+  }
 
   return (
     <div className='relative w-fit'>
@@ -35,6 +54,7 @@ const MenuRoot: React.FC<MenuProps> = ({
           id={menuId}
           ref={contentRef}
           className={cn(menuVariants({ size, open: isOpen }))}
+          style={positionStyles}
           role='menu'
           aria-hidden={!isOpen}
         >

@@ -6,7 +6,7 @@
 import { cva } from '@/utils/variants'
 
 export const menuVariants = cva(
-  'absolute z-70 min-w-40 bg-background rounded-lg border border-border transition-all duration-200 ease-out will-change-transform',
+  'absolute z-70 min-w-40 bg-background rounded-lg border border-border transition-all duration-200 ease-out will-change-transform shadow-lg',
   {
     variants: {
       size: {
@@ -14,8 +14,8 @@ export const menuVariants = cva(
         md: 'py-2 px-1',
       },
       open: {
-        true: 'opacity-100 translate-y-1',
-        false: 'opacity-0 pointer-events-none translate-y-3',
+        true: 'opacity-100 scale-100',
+        false: 'opacity-0 pointer-events-none scale-95',
       },
     },
     defaultVariants: {
