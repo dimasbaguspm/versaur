@@ -37,6 +37,7 @@ export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
       alignment = 'start',
       gap = 'md',
       fluid = false,
+      hasMargin,
       ...props
     },
     ref
@@ -51,6 +52,7 @@ export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
             gap,
             fluid,
           }),
+          hasMargin && 'mb-4',
           className
         )}
         role='group'

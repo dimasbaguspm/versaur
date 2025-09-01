@@ -36,4 +36,10 @@ export interface ButtonGroupProps
    * @default 'md'
    */
   gap?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+
+  /**
+   * Whether the badge group has bottom margin
+   * @default false
+   */
+  hasMargin?: boolean
 }

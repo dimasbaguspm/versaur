@@ -50,6 +50,7 @@ const AccordionRoot = forwardRef<HTMLDivElement, AccordionProps>(
       subtitle,
       isDefaultOpen = false,
       disabled = false,
+      hasMargin,
       className,
       children,
       ...props
@@ -74,7 +75,11 @@ const AccordionRoot = forwardRef<HTMLDivElement, AccordionProps>(
       <AccordionContext.Provider value={contextValue}>
         <div
           ref={ref}
-          className={cn(accordionVariants({ disabled }), className)}
+          className={cn(
+            accordionVariants({ disabled }),
+            className,
+            hasMargin && 'mb-4'
+          )}
           {...props}
         >
           <div

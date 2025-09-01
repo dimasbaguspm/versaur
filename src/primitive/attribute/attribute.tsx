@@ -12,9 +12,13 @@ import { Text } from '../text'
  * <Attribute title="Name">John Doe</Attribute>
  */
 export const Attribute = forwardRef<HTMLDivElement, AttributeProps>(
-  function Attribute({ title, children, className, ...props }, ref) {
+  function Attribute({ title, children, className, hasMargin, ...props }, ref) {
     return (
-      <div ref={ref} className={cn('space-y-1', className)} {...props}>
+      <div
+        ref={ref}
+        className={cn('space-y-1', className, hasMargin && 'mb-4')}
+        {...props}
+      >
         <Text
           as='h4'
           fontSize='sm'
