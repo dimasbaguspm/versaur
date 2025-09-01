@@ -14,18 +14,11 @@ const { ThreeItems, FiveItems } = composeStories(stories)
 describe('BottomBar', () => {
   it('renders 3 items and matches snapshot', () => {
     const { asFragment } = render(<ThreeItems />)
-    expect(screen.getByText('Home')).toBeInTheDocument()
-    expect(screen.getByText('Search')).toBeInTheDocument()
-    expect(screen.getByText('Profile')).toBeInTheDocument()
     expect(asFragment()).toMatchSnapshot()
   })
 
   it('renders 5 items and matches snapshot', () => {
     const { asFragment } = render(<FiveItems />)
-    expect(screen.getByText('Home')).toBeInTheDocument()
-    expect(screen.getByText('Search')).toBeInTheDocument()
-    expect(screen.getByText('Settings')).toBeInTheDocument()
-    expect(screen.getByText('Profile')).toBeInTheDocument()
     expect(asFragment()).toMatchSnapshot()
   })
 

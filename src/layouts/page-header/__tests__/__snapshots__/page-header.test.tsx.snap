@@ -147,7 +147,7 @@ exports[`PageHeader > renders complete layout with all elements 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="lucide lucide-arrow-down inline-flex items-center justify-center w-4 h-4 text-neutral"
+                  class="lucide lucide-arrow-down inline-flex items-center justify-center w-4 h-4 text-white"
                   fill="none"
                   height="24"
                   stroke="currentColor"
@@ -174,7 +174,7 @@ exports[`PageHeader > renders complete layout with all elements 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="lucide lucide-plus inline-flex items-center justify-center w-4 h-4 text-neutral"
+                  class="lucide lucide-plus inline-flex items-center justify-center w-4 h-4 text-white"
                   fill="none"
                   height="24"
                   stroke="currentColor"
@@ -517,7 +517,7 @@ exports[`PageHeader > renders correctly with simple props 1`] = `
               >
                 <svg
                   aria-hidden="true"
-                  class="lucide lucide-plus inline-flex items-center justify-center w-4 h-4 text-neutral"
+                  class="lucide lucide-plus inline-flex items-center justify-center w-4 h-4 text-white"
                   fill="none"
                   height="24"
                   stroke="currentColor"

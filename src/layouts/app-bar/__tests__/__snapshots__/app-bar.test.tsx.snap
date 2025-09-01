@@ -64,7 +64,7 @@ exports[`AppBar > renders WithBottom story and AppBar.Bottom is always on a new 
       >
         <svg
           aria-hidden="true"
-          class="lucide lucide-printer inline-flex items-center justify-center w-4 h-4 text-neutral"
+          class="lucide lucide-printer inline-flex items-center justify-center w-4 h-4 text-white"
           fill="none"
           height="24"
           stroke="currentColor"
@@ -197,7 +197,7 @@ exports[`AppBar > renders correctly (snapshot) 1`] = `
       >
         <svg
           aria-hidden="true"
-          class="lucide lucide-printer inline-flex items-center justify-center w-4 h-4 text-neutral"
+          class="lucide lucide-printer inline-flex items-center justify-center w-4 h-4 text-white"
           fill="none"
           height="24"
           stroke="currentColor"

@@ -8,6 +8,7 @@ export const iconVariants = cva('inline-flex items-center justify-center', {
       md: 'w-5 h-5',
       lg: 'w-6 h-6',
       xl: 'w-8 h-8',
+      inherit: 'w-auto h-auto',
     },
     color: {
       primary: 'text-primary',
