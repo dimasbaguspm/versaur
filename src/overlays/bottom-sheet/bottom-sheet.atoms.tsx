@@ -1,4 +1,4 @@
-import { forwardRef } from 'react'
+import { forwardRef, type MouseEvent } from 'react'
 
 import {
   bottomSheetHeaderVariants,
@@ -10,7 +10,11 @@ import type {
   BottomSheetBodyProps,
   BottomSheetFooterProps,
   BottomSheetTitleProps,
+  BottomSheetCloseIconProps,
 } from './types'
+import { ButtonIcon, Heading } from '@/primitive'
+import { XIcon } from 'lucide-react'
+import { useBottomSheet } from './context'
 
 /**
  * BottomSheetTitle: Title text for the sheet header (for consistency)
@@ -18,14 +22,29 @@ import type {
 export const BottomSheetTitle = forwardRef<
   HTMLHeadingElement,
   BottomSheetTitleProps
->(function BottomSheetTitleImpl({ className, ...props }, ref) {
+>(function BottomSheetTitleImpl(props, ref) {
+  return <Heading level={3} ref={ref} {...props} />
+})
+
+export const BottomSheetCloseIcon = forwardRef<
+  HTMLButtonElement,
+  BottomSheetCloseIconProps
+>(function BottomSheetCloseIconImpl(props, ref) {
+  const { onClose } = useBottomSheet()
+
+  const handleOnClick = (ev: MouseEvent<HTMLButtonElement>) => {
+    onClose()
+    props?.onClick?.(ev)
+  }
+
   return (
-    <h2
+    <ButtonIcon
       ref={ref}
-      className={['text-lg font-semibold text-foreground', className]
-        .filter(Boolean)
-        .join(' ')}
+      variant='ghost'
+      aria-label='Close'
+      as={XIcon}
       {...props}
+      onClick={handleOnClick}
     />
   )
 })

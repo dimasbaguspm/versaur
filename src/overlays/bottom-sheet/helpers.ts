@@ -49,12 +49,14 @@ export const bottomSheetBackdropVariants = cva(
   }
 )
 
-export const bottomSheetHeaderVariants = cva('px-4 pt-4 pb-2 flex-shrink-0')
+export const bottomSheetHeaderVariants = cva(
+  'p-4 pb-2 flex justify-between w-full'
+)
 export const bottomSheetBodyVariants = cva([
-  'px-4 py-2 flex-1 overflow-y-auto',
+  'p-4 py-2 flex-1 overflow-y-auto',
   'scrollbar-thin scrollbar-track-transparent scrollbar-thumb-border',
 ])
-export const bottomSheetFooterVariants = cva('px-4 pt-2 pb-4 flex-shrink-0')
+export const bottomSheetFooterVariants = cva('p-4 pt-2 flex-shrink-0')
 
 /**
  * Types for BottomSheet variants
