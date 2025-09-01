@@ -30,7 +30,7 @@ export const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
       <li ref={ref} {...props}>
         <Button
           variant='ghost'
-          className={cn('block text-left w-full')}
+          className={cn('justify-start w-full gap-2')}
           disabled={disabled}
           onClick={handleOnClick}
         >
