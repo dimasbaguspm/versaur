@@ -34,9 +34,10 @@ exports[`ButtonMenu > opens menu and shows items when clicked 1`] = `
     </button>
     <div
       aria-hidden="false"
-      class="absolute z-70 min-w-40 bg-background rounded-lg border border-border transition-all duration-200 ease-out will-change-transform py-2 px-1 opacity-100 translate-y-1"
+      class="absolute z-70 min-w-40 bg-background rounded-lg border border-border transition-all duration-200 ease-out will-change-transform shadow-lg py-2 px-1 opacity-100 scale-100"
       id="«r1»"
       role="menu"
+      style="top: 4px; left: 0px;"
     >
       <ul
         class="flex flex-col gap-1"

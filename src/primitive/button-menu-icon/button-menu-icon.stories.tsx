@@ -8,17 +8,10 @@ export default {
 
 export const Basic = () => {
   return (
-    <ButtonMenuIcon
-      aria-label='Open Filter'
-      as={FilterIcon}
-      variant='outline'
-      content={
-        <>
-          <ButtonMenuIcon.Item>Profile</ButtonMenuIcon.Item>
-          <ButtonMenuIcon.Item>Settings</ButtonMenuIcon.Item>
-          <ButtonMenuIcon.Item disabled>Logout</ButtonMenuIcon.Item>
-        </>
-      }
-    />
+    <ButtonMenuIcon aria-label='Open Filter' as={FilterIcon} variant='outline'>
+      <ButtonMenuIcon.Item>Profile</ButtonMenuIcon.Item>
+      <ButtonMenuIcon.Item>Settings</ButtonMenuIcon.Item>
+      <ButtonMenuIcon.Item disabled>Logout</ButtonMenuIcon.Item>
+    </ButtonMenuIcon>
   )
 }
