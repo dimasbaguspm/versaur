@@ -33,6 +33,12 @@ export type AccordionProps = Omit<
    * Content to show when accordion is expanded
    */
   children?: ReactNode
+
+  /**
+   * Whether the accordion has bottom margin
+   * @default false
+   */
+  hasMargin?: boolean
 }
 
 /**
