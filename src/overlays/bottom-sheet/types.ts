@@ -1,3 +1,4 @@
+import type { ButtonIconProps, HeadingProps } from '@/primitive'
 import type { OverlayPortalProps } from '@/utils/overlay-portal'
 import type { HTMLAttributes } from 'react'
 
@@ -28,4 +29,5 @@ export interface BottomSheetProps
 export type BottomSheetHeaderProps = HTMLAttributes<HTMLDivElement>
 export type BottomSheetBodyProps = HTMLAttributes<HTMLDivElement>
 export type BottomSheetFooterProps = HTMLAttributes<HTMLDivElement>
-export type BottomSheetTitleProps = HTMLAttributes<HTMLHeadingElement>
+export type BottomSheetTitleProps = HeadingProps
+export type BottomSheetCloseIconProps = Partial<ButtonIconProps>

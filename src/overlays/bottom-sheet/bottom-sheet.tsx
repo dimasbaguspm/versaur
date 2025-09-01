@@ -6,11 +6,13 @@ import {
   BottomSheetBody,
   BottomSheetFooter,
   BottomSheetTitle,
+  BottomSheetCloseIcon,
 } from './bottom-sheet.atoms'
 import { cn, useKeyboardVirtual } from '@/utils'
 import { useEscapeClose } from '@/utils/use-escape-close'
 import { combineRefs } from '@/utils/combine-ref'
 import { OverlayPortal } from '@/utils/overlay-portal'
+import { BottomSheetProvider } from './context'
 
 /**
  * BottomSheet component for mobile overlays
@@ -38,7 +40,6 @@ const BottomSheetRoot = forwardRef<HTMLDivElement, BottomSheetProps>(
       isSupported,
     } = useKeyboardVirtual()
 
-    // Calculate dynamic styles when virtual keyboard is open
     const dynamicStyles = useMemo(() => {
       if (!isOpen || !isSupported || !keyboardOpen) return {}
 
@@ -59,28 +60,30 @@ const BottomSheetRoot = forwardRef<HTMLDivElement, BottomSheetProps>(
 
     return (
       <OverlayPortal container={container}>
-        <div
-          className={bottomSheetBackdropVariants({ open: isOpen })}
-          aria-hidden='true'
-          onClick={handleBackdropClick}
-        />
-        <div
-          ref={combineRefs(ref, sheetRef)}
-          className={cn(
-            bottomSheetRootVariants({
-              open: isOpen,
-            }),
-            'flex flex-col', // Add flex layout for proper header/body/footer arrangement
-            className
-          )}
-          style={dynamicStyles}
-          role='dialog'
-          aria-modal='true'
-          tabIndex={-1}
-          {...props}
-        >
-          {children}
-        </div>
+        <BottomSheetProvider value={{ onClose }}>
+          <div
+            className={bottomSheetBackdropVariants({ open: isOpen })}
+            aria-hidden='true'
+            onClick={handleBackdropClick}
+          />
+          <div
+            ref={combineRefs(ref, sheetRef)}
+            className={cn(
+              bottomSheetRootVariants({
+                open: isOpen,
+              }),
+              'flex flex-col', // Add flex layout for proper header/body/footer arrangement
+              className
+            )}
+            style={dynamicStyles}
+            role='dialog'
+            aria-modal='true'
+            tabIndex={-1}
+            {...props}
+          >
+            {children}
+          </div>
+        </BottomSheetProvider>
       </OverlayPortal>
     )
   }
@@ -89,6 +92,7 @@ const BottomSheetRoot = forwardRef<HTMLDivElement, BottomSheetProps>(
 export const BottomSheet = Object.assign(BottomSheetRoot, {
   Header: BottomSheetHeader,
   Title: BottomSheetTitle,
+  CloseIcon: BottomSheetCloseIcon,
   Body: BottomSheetBody,
   Footer: BottomSheetFooter,
 })

@@ -10,10 +10,9 @@ import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import { BottomSheet } from './bottom-sheet'
 import { Button } from '@/primitive/button'
-import { ButtonIcon } from '@/primitive'
-import { X } from 'lucide-react'
 import { TextInput } from '@/forms/text-input'
 import { TextAreaInput } from '@/forms/textarea-input'
+import { ButtonGroup } from '@/layouts'
 
 const meta: Meta<typeof BottomSheet> = {
   title: 'Overlays/BottomSheet',
@@ -48,16 +47,8 @@ export const Basic: Story = {
 
           <BottomSheet isOpen={open} onClose={() => setOpen(false)}>
             <BottomSheet.Header>
-              <div className='flex items-center justify-between'>
-                <BottomSheet.Title>Sheet Title</BottomSheet.Title>
-                <ButtonIcon
-                  as={X}
-                  variant='ghost'
-                  size='sm'
-                  onClick={() => setOpen(false)}
-                  aria-label='Close'
-                />
-              </div>
+              <BottomSheet.Title>Sheet Title</BottomSheet.Title>
+              <BottomSheet.CloseIcon />
             </BottomSheet.Header>
             <BottomSheet.Body>
               <p className='text-sm text-foreground-light'>
@@ -97,16 +88,8 @@ export const Confirmation: Story = {
           </Button>
           <BottomSheet isOpen={open} onClose={() => setOpen(false)}>
             <BottomSheet.Header>
-              <div className='flex items-center justify-between'>
-                <BottomSheet.Title>Delete Item</BottomSheet.Title>
-                <ButtonIcon
-                  as={X}
-                  variant='ghost'
-                  size='sm'
-                  onClick={() => setOpen(false)}
-                  aria-label='Close'
-                />
-              </div>
+              <BottomSheet.Title>Delete Item</BottomSheet.Title>
+              <BottomSheet.CloseIcon />
             </BottomSheet.Header>
             <BottomSheet.Body>
               <p className='text-sm text-danger'>
@@ -115,7 +98,7 @@ export const Confirmation: Story = {
               </p>
             </BottomSheet.Body>
             <BottomSheet.Footer>
-              <div className='flex gap-2'>
+              <ButtonGroup alignment='end'>
                 <Button
                   variant='ghost'
                   size='md'
@@ -132,7 +115,7 @@ export const Confirmation: Story = {
                 >
                   Delete
                 </Button>
-              </div>
+              </ButtonGroup>
             </BottomSheet.Footer>
           </BottomSheet>
         </>
@@ -156,16 +139,8 @@ export const Menu: Story = {
           </Button>
           <BottomSheet isOpen={open} onClose={() => setOpen(false)}>
             <BottomSheet.Header>
-              <div className='flex items-center justify-between'>
-                <BottomSheet.Title>Menu</BottomSheet.Title>
-                <ButtonIcon
-                  as={X}
-                  variant='ghost'
-                  size='sm'
-                  onClick={() => setOpen(false)}
-                  aria-label='Close'
-                />
-              </div>
+              <BottomSheet.Title>Menu</BottomSheet.Title>
+              <BottomSheet.CloseIcon />
             </BottomSheet.Header>
             <BottomSheet.Body>
               <ul className='divide-y divide-border'>
@@ -208,16 +183,8 @@ export const CustomContent: Story = {
           </Button>
           <BottomSheet isOpen={open} onClose={() => setOpen(false)}>
             <BottomSheet.Header>
-              <div className='flex items-center justify-between'>
-                <BottomSheet.Title>Custom Content</BottomSheet.Title>
-                <ButtonIcon
-                  as={X}
-                  variant='ghost'
-                  size='sm'
-                  onClick={() => setOpen(false)}
-                  aria-label='Close'
-                />
-              </div>
+              <BottomSheet.Title>Custom Content</BottomSheet.Title>
+              <BottomSheet.CloseIcon />
             </BottomSheet.Header>
             <BottomSheet.Body>
               <form className='flex flex-col gap-3'>
@@ -230,13 +197,15 @@ export const CustomContent: Story = {
               </form>
             </BottomSheet.Body>
             <BottomSheet.Footer>
-              <Button
-                variant='primary'
-                className='w-full'
-                onClick={() => setOpen(false)}
-              >
-                Submit
-              </Button>
+              <ButtonGroup alignment='end'>
+                <Button
+                  variant='primary'
+                  className='w-full'
+                  onClick={() => setOpen(false)}
+                >
+                  Submit
+                </Button>
+              </ButtonGroup>
             </BottomSheet.Footer>
           </BottomSheet>
         </>
@@ -279,16 +248,8 @@ export const FormExample: Story = {
 
           <BottomSheet isOpen={open} onClose={() => setOpen(false)}>
             <BottomSheet.Header>
-              <div className='flex items-center justify-between'>
-                <BottomSheet.Title>Contact Us</BottomSheet.Title>
-                <ButtonIcon
-                  as={X}
-                  variant='ghost'
-                  size='sm'
-                  onClick={() => setOpen(false)}
-                  aria-label='Close'
-                />
-              </div>
+              <BottomSheet.Title>Contact Us</BottomSheet.Title>
+              <BottomSheet.CloseIcon />
             </BottomSheet.Header>
 
             <BottomSheet.Body>
@@ -330,7 +291,7 @@ export const FormExample: Story = {
             </BottomSheet.Body>
 
             <BottomSheet.Footer>
-              <div className='flex gap-3'>
+              <ButtonGroup>
                 <Button
                   variant='ghost'
                   size='md'
@@ -347,7 +308,7 @@ export const FormExample: Story = {
                 >
                   Send Message
                 </Button>
-              </div>
+              </ButtonGroup>
             </BottomSheet.Footer>
           </BottomSheet>
         </>
