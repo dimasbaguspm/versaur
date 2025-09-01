@@ -7,7 +7,14 @@ import { useState, useRef } from 'react'
 import { Menu } from './menu'
 import { MenuContent, MenuItem } from './menu.atoms'
 import { ButtonIcon } from '@/primitive/button-icon'
-import { Ellipsis, EllipsisVertical } from 'lucide-react'
+import {
+  Ellipsis,
+  EllipsisVertical,
+  LogOutIcon,
+  SettingsIcon,
+  UserCogIcon,
+} from 'lucide-react'
+import { Hr, Icon } from '@/primitive'
 
 export default {
   title: 'Overlays/Menu',
@@ -30,9 +37,19 @@ export const Basic = () => {
       size='md'
       content={
         <MenuContent>
-          <MenuItem>Profile</MenuItem>
-          <MenuItem>Settings</MenuItem>
-          <MenuItem disabled>Logout</MenuItem>
+          <MenuItem>
+            <Icon as={UserCogIcon} color='inherit' />
+            Profile
+          </MenuItem>
+          <MenuItem>
+            <Icon as={SettingsIcon} color='inherit' />
+            Settings
+          </MenuItem>
+          <Hr />
+          <MenuItem disabled>
+            <Icon as={LogOutIcon} color='danger' />
+            Logout
+          </MenuItem>
         </MenuContent>
       }
     >
@@ -122,8 +139,6 @@ export const AutoPlacement = () => {
   const [isMenuDOpen, setIsMenuDOpen] = useState(false)
 
   const containerRef = useRef<HTMLDivElement>(null)
-
-  console.log(containerRef.current)
 
   return (
     <div className='space-y-4'>
