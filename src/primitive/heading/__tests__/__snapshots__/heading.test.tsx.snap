@@ -1,0 +1,21 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Heading > matches snapshot 1`] = `
+<DocumentFragment>
+  <h1
+    class="text-ghost text-left font-bold text-2xl leading-loose"
+  >
+    Default Heading
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`Heading > matches snapshot for primary with all features 1`] = `
+<DocumentFragment>
+  <h1
+    class="text-primary underline capitalize mb-4 text-center italic font-bold text-2xl leading-loose"
+  >
+    Primary Heading: Underline, Capitalize, Center, Italic, Margin
+  </h1>
+</DocumentFragment>
+`;
