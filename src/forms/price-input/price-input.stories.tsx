@@ -16,7 +16,8 @@ type Story = StoryObj<typeof PriceInput>
 
 /**
  * Default PriceInput usage
- * Demonstrates raw string value, comma/dot/minus as separators, and standard input attributes
+ * Demonstrates Rupiah currency format with proper thousands separator (dot) and decimal separator (comma)
+ * Valid formats: 10000, 10.000, 10.000,50, 1.000.000,99
  */
 export const Default: Story = {
   render: function DefaultStory(args) {
@@ -29,7 +30,7 @@ export const Default: Story = {
           args?.onChange?.(v)
         }}
         label='Amount'
-        helperText='Enter price in IDR (accepts digits, comma, dot, minus)'
+        helperText='Enter price in IDR format (e.g., 10.000 or 10.000,50)'
       />
     )
   },
