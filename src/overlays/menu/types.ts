@@ -47,5 +47,8 @@ export interface MenuItemProps
   children: ReactNode
   /** Whether the item is disabled */
   disabled?: boolean
+  /** Click handler */
   onClick?: (ev: MouseEvent<HTMLButtonElement>) => void
+  /** Whether the item is active */
+  active?: boolean
 }
