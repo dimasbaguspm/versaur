@@ -2,8 +2,10 @@ import { forwardRef, type MouseEvent } from 'react'
 import type { MenuContentProps, MenuItemProps } from './types'
 
 import { Button } from '@/primitive/button'
+import { Icon } from '@/primitive/icon'
 import { cn } from '@/utils'
 import { useMenuProvider } from './context'
+import { CheckIcon } from 'lucide-react'
 
 export const MenuContent = forwardRef<HTMLUListElement, MenuContentProps>(
   ({ children }, ref) => {
@@ -16,7 +18,7 @@ export const MenuContent = forwardRef<HTMLUListElement, MenuContentProps>(
 )
 
 export const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
-  ({ children, disabled, onClick, ...props }, ref) => {
+  ({ children, disabled, onClick, active, ...props }, ref) => {
     const { preserve, onClose } = useMenuProvider()
 
     const handleOnClick = (ev: MouseEvent<HTMLButtonElement>) => {
@@ -35,6 +37,14 @@ export const MenuItem = forwardRef<HTMLLIElement, MenuItemProps>(
           onClick={handleOnClick}
         >
           {children}
+          {active && (
+            <Icon
+              as={CheckIcon}
+              color='inherit'
+              className='ml-auto'
+              size='sm'
+            />
+          )}
         </Button>
       </li>
     )
