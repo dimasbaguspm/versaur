@@ -3,7 +3,7 @@
 exports[`Card > matches snapshot for default card 1`] = `
 <DocumentFragment>
   <button
-    class="block transition-colors duration-200 cursor-pointer w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light hover:bg-gray-50 p-4 rounded-lg"
+    class="flex justify-between transition-colors duration-200 cursor-pointer w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light hover:bg-gray-50 p-4 rounded-lg"
   >
     <div
       class="flex items-start gap-4"
@@ -35,19 +35,25 @@ exports[`Card > matches snapshot for default card 1`] = `
           </p>
         </div>
         <div
-          class="flex justify-between items-center"
+          class="flex justify-start items-center"
         >
           <span
             class="inline-flex items-center justify-center font-medium transition-all duration-200 select-none gap-1 min-h-[1.25rem] rounded-xs text-xs px-1.5 py-0.5 h-4 bg-secondary-light/70 text-secondary"
           >
             Status
           </span>
-          <p
-            class="text-gray-500 text-left font-normal text-sm"
-          >
-            Info
-          </p>
         </div>
+      </div>
+    </div>
+    <div
+      class="flex flex-col items-end gap-2 justify-end"
+    >
+      <div>
+        <p
+          class="text-gray-500 text-left font-normal text-sm"
+        >
+          Info
+        </p>
       </div>
     </div>
   </button>
