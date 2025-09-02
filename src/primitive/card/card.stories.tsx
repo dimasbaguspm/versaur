@@ -44,13 +44,6 @@ const meta: Meta<typeof Card> = {
       control: 'text',
     },
   },
-  decorators: [
-    Story => (
-      <div className='p-4 w-[80%] bg-white border border-primary mx-auto'>
-        <Story />
-      </div>
-    ),
-  ],
 }
 
 export default meta
