@@ -50,43 +50,55 @@ const CardRoot = forwardRef<HTMLButtonElement, CardProps>(
         className={cn(cardVariants({ size, shape, bordered }), className)}
         {...props}
       >
-        <div className='flex items-start gap-4'>
+        <div className='flex items-start gap-4 w-full'>
           {avatar && <div className='flex-shrink-0'>{avatar}</div>}
 
-          <div className='w-full'>
+          <div className='w-full min-w-0'>
             <div className='mb-2'>
-              {title && (
-                <Text as='h3' fontSize='base' fontWeight='semibold'>
+              <div className='flex justify-between'>
+                <Text
+                  as='h3'
+                  fontSize='base'
+                  fontWeight='semibold'
+                  className='truncate'
+                >
                   {title}
                 </Text>
-              )}
+                {actions && <div>{actions}</div>}
+              </div>
+
               {subtitle && (
-                <Text as='p' fontSize='sm' color='gray'>
-                  {subtitle}
-                </Text>
+                <div className={cn(actions && '-mt-3')}>
+                  {typeof subtitle === 'string' ? (
+                    <Text as='p' fontSize='sm' color='gray'>
+                      {subtitle}
+                    </Text>
+                  ) : (
+                    <div className='min-w-0 overflow-hidden'>
+                      <Text
+                        as='p'
+                        fontSize='sm'
+                        color='gray'
+                        className='min-w-0'
+                      >
+                        {subtitle}
+                      </Text>
+                    </div>
+                  )}
+                </div>
               )}
             </div>
 
-            {badge && (
-              <div className='flex justify-start items-center'>{badge}</div>
-            )}
-          </div>
-        </div>
-        <div
-          className={cn(
-            'flex flex-col items-end gap-2',
-            actions ? 'justify-between' : 'justify-end'
-          )}
-        >
-          {actions && <div>{actions}</div>}
-          <div>
-            {typeof supplementaryInfo === 'string' ? (
-              <Text as='p' fontSize='sm' color='gray'>
-                {supplementaryInfo}
-              </Text>
-            ) : (
-              supplementaryInfo
-            )}
+            <div className='flex justify-between items-center gap-2'>
+              {badge && badge}
+              {supplementaryInfo && typeof supplementaryInfo === 'string' ? (
+                <Text as='p' fontSize='sm' color='gray'>
+                  {supplementaryInfo}
+                </Text>
+              ) : (
+                <div>{supplementaryInfo}</div>
+              )}
+            </div>
           </div>
         </div>
       </button>
