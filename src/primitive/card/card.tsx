@@ -36,6 +36,7 @@ const CardRoot = forwardRef<HTMLButtonElement, CardProps>(
       title,
       subtitle,
       badge,
+      actions,
       supplementaryInfo,
       bordered = false,
       className,
@@ -66,17 +67,25 @@ const CardRoot = forwardRef<HTMLButtonElement, CardProps>(
               )}
             </div>
 
-            {(badge || supplementaryInfo) && (
-              <div className='flex justify-between items-center'>
-                {badge}
-                {typeof supplementaryInfo === 'string' ? (
-                  <Text as='p' fontSize='sm' color='gray'>
-                    {supplementaryInfo}
-                  </Text>
-                ) : (
-                  supplementaryInfo
-                )}
-              </div>
+            {badge && (
+              <div className='flex justify-start items-center'>{badge}</div>
+            )}
+          </div>
+        </div>
+        <div
+          className={cn(
+            'flex flex-col items-end gap-2',
+            actions ? 'justify-between' : 'justify-end'
+          )}
+        >
+          {actions && <div>{actions}</div>}
+          <div>
+            {typeof supplementaryInfo === 'string' ? (
+              <Text as='p' fontSize='sm' color='gray'>
+                {supplementaryInfo}
+              </Text>
+            ) : (
+              supplementaryInfo
             )}
           </div>
         </div>

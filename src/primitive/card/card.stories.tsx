@@ -3,6 +3,8 @@ import { Card } from './card'
 import { Avatar } from '../avatar'
 import { Badge } from '../badge'
 import { BadgeGroup } from '@/layouts'
+import { ButtonMenuIcon } from '../button-menu-icon'
+import { MoreVerticalIcon } from 'lucide-react'
 
 /**
  * Card is a clickable container component for displaying structured information.
@@ -42,6 +44,13 @@ const meta: Meta<typeof Card> = {
       control: 'text',
     },
   },
+  decorators: [
+    Story => (
+      <div className='p-4 w-[80%] bg-white border border-primary mx-auto'>
+        <Story />
+      </div>
+    ),
+  ],
 }
 
 export default meta
@@ -71,6 +80,17 @@ export const Default: Story = {
         <Badge color='secondary'>Active</Badge>
         <Badge color='primary'>Admin</Badge>
       </BadgeGroup>
+    ),
+    actions: (
+      <ButtonMenuIcon
+        onClick={e => e.stopPropagation()}
+        as={MoreVerticalIcon}
+        aria-label='More options'
+        variant='ghost'
+      >
+        <ButtonMenuIcon.Item>Edit</ButtonMenuIcon.Item>
+        <ButtonMenuIcon.Item>Delete</ButtonMenuIcon.Item>
+      </ButtonMenuIcon>
     ),
   },
   render: args => <Card {...args} onClick={() => alert('Card clicked!')} />,
