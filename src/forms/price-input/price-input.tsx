@@ -62,11 +62,7 @@ export const PriceInput: FC<PriceInputProps> = ({
       variant={variant}
       inputMode='numeric'
       autoComplete='off'
-      pattern={
-        allowNegative
-          ? '^-?\\d{1,3}(\\.\\d{3})*(,\\d{1,2})?$'
-          : '^\\d{1,3}(\\.\\d{3})*(,\\d{1,2})?$'
-      }
+      pattern='[0-9.,-]*'
       {...inputProps}
       {...rest}
     />
