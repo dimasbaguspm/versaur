@@ -2,13 +2,13 @@ import { cva } from 'class-variance-authority'
 
 /**
  * snackbarPlacementVariants: Responsive placement for snackbars
- * - mobile: full width bottom
+ * - mobile: full width top
  * - desktop/tablet: bottom left
  */
 export const snackbarPlacementVariants = cva(
   [
     'fixed z-100 flex flex-col gap-2 px-0 pb-2',
-    'w-screen left-0 bottom-0', // mobile: full width
+    'w-[80vw] left-0 top-4', // mobile: full width
     'sm:w-auto sm:left-4 sm:bottom-4 sm:max-w-sm', // desktop/tablet
   ].join(' ')
 )
