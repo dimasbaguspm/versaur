@@ -20,6 +20,7 @@ export const PageLoader = React.forwardRef<HTMLDivElement, PageLoaderProps>(
       color = 'primary',
       ariaLabel = 'Loading page',
       message,
+      fullscreen = false,
       minimal = false,
       className,
       children,
@@ -30,7 +31,7 @@ export const PageLoader = React.forwardRef<HTMLDivElement, PageLoaderProps>(
     return (
       <div
         ref={ref}
-        className={cn(pageLoaderVariants({ minimal }), className)}
+        className={cn(pageLoaderVariants({ minimal, fullscreen }), className)}
         {...rest}
       >
         <div className='max-w-xs w-full flex justify-center'>

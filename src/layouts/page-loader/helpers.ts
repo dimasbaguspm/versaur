@@ -29,9 +29,14 @@ export const pageLoaderVariants = cva(
           'py-8',
         ],
       },
+      fullscreen: {
+        true: ['fixed', 'inset-0', 'z-100', 'bg-background'],
+        false: [],
+      },
     },
     defaultVariants: {
       minimal: false,
+      fullscreen: false,
     },
   }
 )
