@@ -76,16 +76,7 @@ const CardRoot = forwardRef<HTMLButtonElement | HTMLDivElement, CardProps>(
                       {subtitle}
                     </Text>
                   ) : (
-                    <div className='min-w-0 overflow-hidden'>
-                      <Text
-                        as='p'
-                        fontSize='sm'
-                        color='gray'
-                        className='min-w-0'
-                      >
-                        {subtitle}
-                      </Text>
-                    </div>
+                    <div className='min-w-0 overflow-hidden'>{subtitle}</div>
                   )}
                 </div>
               )}
