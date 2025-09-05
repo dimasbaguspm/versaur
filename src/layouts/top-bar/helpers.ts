@@ -4,7 +4,7 @@ import { cva } from 'class-variance-authority'
  * TopBarRoot styles
  */
 export const topBarRootStyles = cva(
-  'w-full flex items-center px-6 py-4 mb-6 border-b border-border shadow-xs bg-white',
+  'w-full flex items-center px-6 py-4 border-b border-border shadow-xs bg-white',
   {
     variants: {},
     defaultVariants: {},
