@@ -51,6 +51,8 @@
 - Use the latest widely supported HTML attributes (e.g., `command`).
 - Ensure components have versiliate variations (cva): size, variant, color, etc.
 - Standard accessibility is a priority; align with browser DOM and avoid hacks.
+- Always use modern named container queries for responsiveness with (`@container/card` ->
+  `@sm/card:flex-row`).
 
 ## Component Patterns
 
