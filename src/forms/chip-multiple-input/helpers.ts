@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority'
 
 export const chipOptionVariants = cva(
-  'inline-flex items-center bg-white font-regular transition-colors duration-200 cursor-pointer border border-border',
+  'inline-flex items-center bg-white transition-colors duration-200 cursor-pointer border border-border',
   {
     variants: {
       variant: {
@@ -48,9 +48,9 @@ export const chipOptionVariants = cva(
         rounded: 'rounded-lg',
       },
       size: {
-        sm: 'px-3 py-1 text-xs min-h-[32px]',
-        md: 'px-4 py-2 text-sm min-h-[40px]',
-        lg: 'px-5 py-2.5 text-base min-h-[48px]',
+        sm: 'h-7 px-3 text-sm min-w-[2.25rem]',
+        md: 'h-9 px-4 text-sm min-w-[2.5rem]',
+        lg: 'h-10 px-8 text-lg min-w-[2.75rem]',
       },
     },
   }

@@ -17,7 +17,7 @@ exports[`ChipSingleInput > matches snapshot 1`] = `
         value="apple"
       />
       <label
-        class="inline-flex items-center bg-white font-regular transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-bold focus:border-primary-light data-[selected=true]:bg-primary data-[selected=true]:border-primary data-[selected=true]:text-white rounded-full h-7 px-3 text-sm"
+        class="inline-flex items-center bg-white transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-bold focus:border-primary-light data-[selected=true]:bg-primary data-[selected=true]:border-primary data-[selected=true]:text-white rounded-full h-7 px-3 text-sm min-w-[2.25rem]"
         data-selected="false"
         for="«rr»"
       >
@@ -35,7 +35,7 @@ exports[`ChipSingleInput > matches snapshot 1`] = `
         value="banana"
       />
       <label
-        class="inline-flex items-center bg-white font-regular transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-bold focus:border-primary-light data-[selected=true]:bg-primary data-[selected=true]:border-primary data-[selected=true]:text-white rounded-full h-7 px-3 text-sm"
+        class="inline-flex items-center bg-white transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-bold focus:border-primary-light data-[selected=true]:bg-primary data-[selected=true]:border-primary data-[selected=true]:text-white rounded-full h-7 px-3 text-sm min-w-[2.25rem]"
         data-selected="false"
         for="«rs»"
       >
@@ -54,7 +54,7 @@ exports[`ChipSingleInput > matches snapshot 1`] = `
         value="cherry"
       />
       <label
-        class="inline-flex items-center bg-white font-regular transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-bold focus:border-primary-light data-[selected=true]:bg-primary data-[selected=true]:border-primary data-[selected=true]:text-white rounded-full h-7 px-3 text-sm"
+        class="inline-flex items-center bg-white transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-bold focus:border-primary-light data-[selected=true]:bg-primary data-[selected=true]:border-primary data-[selected=true]:text-white rounded-full h-7 px-3 text-sm min-w-[2.25rem]"
         data-selected="true"
         for="«rt»"
       >
