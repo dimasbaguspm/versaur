@@ -34,4 +34,9 @@ export interface PageLoaderProps extends HTMLAttributes<HTMLDivElement> {
    * Whether to use a minimal height (useful for inline loading states)
    */
   minimal?: boolean
+
+  /**
+   * Whether to cover the entire viewport
+   */
+  fullscreen?: boolean
 }

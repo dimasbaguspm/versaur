@@ -4,7 +4,8 @@ import { describe, it, expect } from 'vitest'
 import { PageLoader } from '../page-loader'
 import * as stories from '../page-loader.stories'
 
-const { Default, WithMessage, Minimal, BarType } = composeStories(stories)
+const { Default, WithMessage, Minimal, BarType, Fullscreen } =
+  composeStories(stories)
 
 describe('PageLoader', () => {
   it('should render PageLoader with default props', () => {
@@ -102,5 +103,12 @@ describe('PageLoader', () => {
     // Message should have aria-live for screen reader announcements
     const message = screen.getByText('Loading content')
     expect(message).toHaveAttribute('aria-live', 'polite')
+  })
+  it('should render fullscreen variant correctly', () => {
+    const { container } = render(<Fullscreen />)
+    expect(container.firstChild).toHaveClass('fixed')
+    expect(container.firstChild).toHaveClass('inset-0')
+    expect(container.firstChild).toHaveClass('z-100')
+    expect(container.firstChild).toHaveClass('bg-background')
   })
 })

@@ -221,3 +221,15 @@ export const FullPage: Story = {
     ),
   ],
 }
+
+/** * Fullscreen overlay loading state
+ */
+export const Fullscreen: Story = {
+  args: {
+    message: 'Hang on there...',
+    fullscreen: true,
+  },
+  parameters: {
+    layout: 'fullscreen',
+  },
+}
