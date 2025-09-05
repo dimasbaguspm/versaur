@@ -3,10 +3,10 @@
 exports[`Card > matches snapshot for default card 1`] = `
 <DocumentFragment>
   <button
-    class="flex justify-between transition-colors duration-200 w-full p-3 sm:p-4 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light hover:bg-gray-50 cursor-pointer"
+    class="flex justify-between transition-colors duration-200 w-full p-3 sm:p-4 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light hover:bg-gray-50 cursor-pointer @container/card"
   >
     <div
-      class="flex items-start gap-3 sm:gap-4 w-full"
+      class="flex items-start gap-3 @sm/card:gap-4 w-full"
     >
       <div
         class="flex-shrink-0"
@@ -47,10 +47,10 @@ exports[`Card > matches snapshot for default card 1`] = `
           </div>
         </div>
         <div
-          class="flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-center"
+          class="flex flex-col gap-2 @sm/card:flex-row @sm/card:justify-between @sm/card:items-center"
         >
           <div
-            class="order-1 sm:order-none overflow-hidden"
+            class="order-1 @sm/card:order-none overflow-hidden"
           >
             <span
               class="inline-flex items-center justify-center font-medium transition-all duration-200 select-none gap-1 min-h-[1.25rem] rounded-xs text-xs px-1.5 py-0.5 h-4 bg-secondary-light text-secondary-bold"
@@ -59,7 +59,7 @@ exports[`Card > matches snapshot for default card 1`] = `
             </span>
           </div>
           <div
-            class="flex-shrink-0 order-2 sm:order-none sm:ml-auto"
+            class="flex-shrink-0 order-2 @sm/card:order-none @sm/card:ml-auto"
           >
             <p
               class="text-gray-500 text-right font-normal text-sm truncate"

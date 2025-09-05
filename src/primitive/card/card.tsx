@@ -50,11 +50,12 @@ const CardRoot = forwardRef<HTMLButtonElement | HTMLDivElement, CardProps>(
         ref={ref}
         className={cn(
           cardVariants({ size, shape, bordered, as: Component }),
-          className
+          className,
+          '@container/card'
         )}
         {...props}
       >
-        <div className='flex items-start gap-3 sm:gap-4 w-full'>
+        <div className='flex items-start gap-3 @sm/card:gap-4 w-full'>
           {avatar && <div className='flex-shrink-0'>{avatar}</div>}
 
           <div className='w-full min-w-0'>
@@ -86,15 +87,15 @@ const CardRoot = forwardRef<HTMLButtonElement | HTMLDivElement, CardProps>(
               </div>
             </div>
 
-            <div className='flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-center'>
+            <div className='flex flex-col gap-2 @sm/card:flex-row @sm/card:justify-between @sm/card:items-center'>
               {badge && (
-                <div className='order-1 sm:order-none overflow-hidden'>
+                <div className='order-1 @sm/card:order-none overflow-hidden'>
                   {badge}
                 </div>
               )}
 
               {supplementaryInfo && (
-                <div className='flex-shrink-0 order-2 sm:order-none sm:ml-auto'>
+                <div className='flex-shrink-0 order-2 @sm/card:order-none @sm/card:ml-auto'>
                   {typeof supplementaryInfo === 'string' ? (
                     <Text
                       as='p'
