@@ -32,6 +32,9 @@ const meta: Meta<typeof Avatar> = {
         'info',
         'warning',
         'danger',
+        'accent_1',
+        'accent_2',
+        'accent_3',
       ],
       description: 'Visual style variant based on Versaur color system',
     },
@@ -109,6 +112,9 @@ export const Variants: Story = {
       <Avatar variant='primary'>P</Avatar>
       <Avatar variant='secondary'>S</Avatar>
       <Avatar variant='tertiary'>T</Avatar>
+      <Avatar variant='accent_1'>A1</Avatar>
+      <Avatar variant='accent_2'>A2</Avatar>
+      <Avatar variant='accent_3'>A3</Avatar>
       <Avatar variant='ghost'>G</Avatar>
       <Avatar variant='neutral'>N</Avatar>
       <Avatar variant='success'>✓</Avatar>

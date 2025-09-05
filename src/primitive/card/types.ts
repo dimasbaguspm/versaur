@@ -56,6 +56,12 @@ export interface CardProps
    * @default false
    */
   bordered?: boolean
+
+  /**
+   * Is the card a button or a div?
+   * @default 'button'
+   */
+  as?: 'button' | 'div'
 }
 
 export type CardListProps = {

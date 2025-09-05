@@ -87,6 +87,24 @@
   --color-cream-bold: #e2d9b8;
   --color-cream-soft: #f9f7f3;
 
+  /* Accent 1 (Lavender) */
+  --color-accent-1: #b69ad1;
+  --color-accent-1-light: #e8dcf5;
+  --color-accent-1-bold: #8a6ba8;
+  --color-accent-1-soft: #f7f3ff;
+
+  /* Accent 2 (Amber) */
+  --color-accent-2: #d4a942;
+  --color-accent-2-light: #ffeaa3;
+  --color-accent-2-bold: #a6822a;
+  --color-accent-2-soft: #fffbef;
+
+  /* Accent 3 (Rose) */
+  --color-accent-3: #d1869b;
+  --color-accent-3-light: #f5d4df;
+  --color-accent-3-bold: #a8647a;
+  --color-accent-3-soft: #fff6f8;
+
   /* Border and Accent */
   --color-border: #e0e0e0;
   --color-accent: #84a5c0;

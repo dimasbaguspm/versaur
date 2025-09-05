@@ -12,6 +12,12 @@ export const buttonVariants = cva(
           'bg-secondary text-white hover:bg-secondary/90 focus-visible:ring-secondary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md',
         tertiary:
           'bg-tertiary text-white hover:bg-tertiary/90 focus-visible:ring-tertiary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md',
+        accent_1:
+          'bg-accent-1 text-white hover:bg-accent-1/90 focus-visible:ring-accent-1-light focus-visible:ring-offset-white shadow-sm hover:shadow-md',
+        accent_2:
+          'bg-accent-2 text-white hover:bg-accent-2/90 focus-visible:ring-accent-2-light focus-visible:ring-offset-white shadow-sm hover:shadow-md',
+        accent_3:
+          'bg-accent-3 text-white hover:bg-accent-3/90 focus-visible:ring-accent-3-light focus-visible:ring-offset-white shadow-sm hover:shadow-md',
         ghost:
           'bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-light focus-visible:ring-offset-white',
         neutral:
@@ -24,6 +30,12 @@ export const buttonVariants = cva(
           'border border-secondary text-secondary bg-white hover:bg-secondary hover:text-white focus-visible:ring-secondary-light focus-visible:ring-offset-white transition-all',
         'tertiary-outline':
           'border border-tertiary text-tertiary bg-white hover:bg-tertiary hover:text-white focus-visible:ring-tertiary-light focus-visible:ring-offset-white transition-all',
+        'accent_1-outline':
+          'border border-accent-1 text-accent-1 bg-white hover:bg-accent-1 hover:text-white focus-visible:ring-accent-1-light focus-visible:ring-offset-white transition-all',
+        'accent_2-outline':
+          'border border-accent-2 text-accent-2 bg-white hover:bg-accent-2 hover:text-white focus-visible:ring-accent-2-light focus-visible:ring-offset-white transition-all',
+        'accent_3-outline':
+          'border border-accent-3 text-accent-3 bg-white hover:bg-accent-3 hover:text-white focus-visible:ring-accent-3-light focus-visible:ring-offset-white transition-all',
         'ghost-outline':
           'border border-ghost text-ghost bg-white hover:bg-ghost hover:text-white focus-visible:ring-ghost-light focus-visible:ring-offset-white transition-all',
         'neutral-outline':
@@ -39,6 +51,12 @@ export const buttonVariants = cva(
         'neutral-ghost':
           'text-foreground bg-white hover:bg-neutral/50 focus-visible:ring-foreground focus-visible:ring-offset-white',
 
+        'accent_1-ghost':
+          'text-accent-1 bg-white hover:bg-accent-1/20 focus-visible:ring-accent-1 focus-visible:ring-offset-white',
+        'accent_2-ghost':
+          'text-accent-2 bg-white hover:bg-accent-2/20 focus-visible:ring-accent-2 focus-visible:ring-offset-white',
+        'accent_3-ghost':
+          'text-accent-3 bg-white hover:bg-accent-3/20 focus-visible:ring-accent-3 focus-visible:ring-offset-white',
         // Semantic variants
         success:
           'bg-success text-white hover:bg-success/90 focus-visible:ring-success-light focus-visible:ring-offset-white shadow-sm hover:shadow-md',

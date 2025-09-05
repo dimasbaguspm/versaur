@@ -19,6 +19,10 @@ export const badgeVariants = cva(
         tertiary: '',
         ghost: '',
         neutral: '',
+        // Accent colors
+        accent_1: '',
+        accent_2: '',
+        accent_3: '',
         // Semantic colors
         success: '',
         info: '',
@@ -44,17 +48,17 @@ export const badgeVariants = cva(
       {
         variant: 'default',
         color: 'primary',
-        className: 'bg-primary-light/60 text-primary',
+        className: 'bg-primary-light text-primary-bold',
       },
       {
         variant: 'default',
         color: 'secondary',
-        className: 'bg-secondary-light/70 text-secondary',
+        className: 'bg-secondary-light text-secondary-bold',
       },
       {
         variant: 'default',
         color: 'tertiary',
-        className: 'bg-tertiary-light/50 text-tertiary',
+        className: 'bg-tertiary-light text-tertiary-bold',
       },
       {
         variant: 'default',
@@ -69,22 +73,37 @@ export const badgeVariants = cva(
       {
         variant: 'default',
         color: 'success',
-        className: 'bg-success-light/40 text-success',
+        className: 'bg-success-light/50 text-success-bold',
       },
       {
         variant: 'default',
         color: 'info',
-        className: 'bg-info-light/50 text-info',
+        className: 'bg-info-light/50 text-info-bold',
       },
       {
         variant: 'default',
         color: 'warning',
-        className: 'bg-warning-light/50 text-warning',
+        className: 'bg-warning-light/50 text-warning-bold',
       },
       {
         variant: 'default',
         color: 'danger',
-        className: 'bg-danger-light/40 text-danger',
+        className: 'bg-danger-light/40 text-danger-bold',
+      },
+      {
+        variant: 'default',
+        color: 'accent_1',
+        className: 'bg-accent-1-light text-accent-1-bold',
+      },
+      {
+        variant: 'default',
+        color: 'accent_2',
+        className: 'bg-accent-2-light text-accent-2-bold',
+      },
+      {
+        variant: 'default',
+        color: 'accent_3',
+        className: 'bg-accent-3-light text-accent-3-bold',
       },
 
       // Outline variant color combinations
@@ -132,6 +151,21 @@ export const badgeVariants = cva(
         variant: 'outline',
         color: 'danger',
         className: 'border-danger text-danger',
+      },
+      {
+        variant: 'outline',
+        color: 'accent_1',
+        className: 'border-accent-1 text-accent-1',
+      },
+      {
+        variant: 'outline',
+        color: 'accent_2',
+        className: 'border-accent-2 text-accent-2',
+      },
+      {
+        variant: 'outline',
+        color: 'accent_3',
+        className: 'border-accent-3 text-accent-3',
       },
 
       // Icon-only size adjustments

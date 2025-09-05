@@ -73,19 +73,19 @@ describe('Badge Component', () => {
     it('applies primary color by default', () => {
       render(<Badge>Primary</Badge>)
       const badge = screen.getByText('Primary')
-      expect(badge).toHaveClass('bg-primary-light/60', 'text-primary')
+      expect(badge).toHaveClass('bg-primary-light', 'text-primary-bold')
     })
 
     it('applies secondary color correctly', () => {
       render(<Badge color='secondary'>Secondary</Badge>)
       const badge = screen.getByText('Secondary')
-      expect(badge).toHaveClass('bg-secondary-light/70', 'text-secondary')
+      expect(badge).toHaveClass('bg-secondary-light', 'text-secondary-bold')
     })
 
     it('applies success color correctly', () => {
       render(<Badge color='success'>Success</Badge>)
       const badge = screen.getByText('Success')
-      expect(badge).toHaveClass('bg-success-light/40', 'text-success')
+      expect(badge).toHaveClass('bg-success-light/50', 'text-success-bold')
     })
 
     it('applies outline color correctly', () => {

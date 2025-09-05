@@ -22,6 +22,9 @@ export interface AvatarProps extends HTMLAttributes<HTMLDivElement> {
     | 'info'
     | 'warning'
     | 'danger'
+    | 'accent_1'
+    | 'accent_2'
+    | 'accent_3'
 
   /**
    * Size of the avatar
