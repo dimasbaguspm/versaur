@@ -196,3 +196,213 @@ export const BorderedCard: Story = {
     <Card {...args} onClick={() => alert('Bordered card clicked!')} bordered />
   ),
 }
+
+/**
+ * Minimal content card with actions.
+ * Demonstrates better visual balance when using short titles/subtitles with action buttons.
+ */
+export const MinimalWithActions: Story = {
+  args: {
+    avatar: (
+      <Avatar shape='rounded' size='md'>
+        JD
+      </Avatar>
+    ),
+    title: 'John',
+    subtitle: 'Designer',
+    actions: (
+      <ButtonMenuIcon
+        onClick={e => e.stopPropagation()}
+        as={MoreVerticalIcon}
+        aria-label='More options'
+        variant='ghost'
+        size='sm'
+      >
+        <ButtonMenuIcon.Item>Edit</ButtonMenuIcon.Item>
+        <ButtonMenuIcon.Item>Delete</ButtonMenuIcon.Item>
+      </ButtonMenuIcon>
+    ),
+  },
+  render: args => (
+    <Card {...args} onClick={() => alert('Minimal card clicked!')} />
+  ),
+}
+
+/**
+ * Very short content with actions.
+ * Shows how the card handles extremely minimal content with action buttons.
+ */
+export const ShortContentWithActions: Story = {
+  args: {
+    title: 'Task',
+    supplementaryInfo: 'Done',
+    actions: (
+      <ButtonMenuIcon
+        onClick={e => e.stopPropagation()}
+        as={MoreVerticalIcon}
+        aria-label='More options'
+        variant='ghost'
+        size='sm'
+      >
+        <ButtonMenuIcon.Item>Edit</ButtonMenuIcon.Item>
+        <ButtonMenuIcon.Item>Archive</ButtonMenuIcon.Item>
+        <ButtonMenuIcon.Item>Delete</ButtonMenuIcon.Item>
+      </ButtonMenuIcon>
+    ),
+  },
+  render: args => (
+    <Card {...args} onClick={() => alert('Short content card clicked!')} />
+  ),
+}
+
+/**
+ * Balanced minimal card with proper actions positioning.
+ * Demonstrates optimized layout for cards with short titles and actions.
+ * The actions are positioned to not overwhelm the minimal content.
+ */
+export const BalancedMinimal: Story = {
+  args: {
+    avatar: (
+      <Avatar shape='rounded' size='md'>
+        <Avatar.Image
+          src='https://via.placeholder.com/40x40/84a5c0/ffffff?text=JB'
+          alt='Jane Brown'
+        />
+        JB
+      </Avatar>
+    ),
+    title: 'Jane',
+    subtitle: 'Project Manager',
+    badge: (
+      <BadgeGroup>
+        <Badge color='success' size='sm'>
+          Online
+        </Badge>
+      </BadgeGroup>
+    ),
+    supplementaryInfo: '2 min ago',
+    actions: (
+      <ButtonMenuIcon
+        onClick={e => e.stopPropagation()}
+        as={MoreVerticalIcon}
+        aria-label='More options'
+        variant='ghost'
+        size='sm'
+      >
+        <ButtonMenuIcon.Item>Message</ButtonMenuIcon.Item>
+        <ButtonMenuIcon.Item>View Profile</ButtonMenuIcon.Item>
+        <ButtonMenuIcon.Item>Add to Team</ButtonMenuIcon.Item>
+      </ButtonMenuIcon>
+    ),
+  },
+  render: args => (
+    <Card {...args} onClick={() => alert('Balanced minimal card clicked!')} />
+  ),
+}
+
+/**
+ * Mobile-optimized card demonstrating responsive layout.
+ * Shows how the card adapts to smaller screens with proper wrapping and spacing.
+ */
+export const MobileOptimized: Story = {
+  args: {
+    avatar: (
+      <Avatar shape='rounded' size='md'>
+        MO
+      </Avatar>
+    ),
+    title: 'Sarah Johnson',
+    subtitle: 'Senior Software Engineer at Tech Corp',
+    badge: (
+      <BadgeGroup>
+        <Badge color='success' size='sm'>
+          Available
+        </Badge>
+      </BadgeGroup>
+    ),
+    supplementaryInfo: '$125k/year',
+    actions: (
+      <ButtonMenuIcon
+        onClick={e => e.stopPropagation()}
+        as={MoreVerticalIcon}
+        aria-label='More options'
+        variant='ghost'
+        size='sm'
+      >
+        <ButtonMenuIcon.Item>View Profile</ButtonMenuIcon.Item>
+        <ButtonMenuIcon.Item>Send Message</ButtonMenuIcon.Item>
+        <ButtonMenuIcon.Item>Add to Team</ButtonMenuIcon.Item>
+      </ButtonMenuIcon>
+    ),
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile1',
+    },
+  },
+  render: args => (
+    <div className='w-full max-w-xs mx-auto p-4'>
+      <Card {...args} onClick={() => alert('Mobile card clicked!')} />
+    </div>
+  ),
+}
+
+/**
+ * Complex mobile layout demonstrating wrapping behavior.
+ * Shows how the card handles complex content on mobile screens with proper wrapping.
+ */
+export const ComplexMobileLayout: Story = {
+  args: {
+    avatar: (
+      <Avatar shape='rounded' size='md'>
+        CL
+      </Avatar>
+    ),
+    title: 'Complex Mobile Card Layout with Long Title',
+    subtitle: (
+      <Card.List>
+        <Card.ListItem>Senior Software Engineer</Card.ListItem>
+        <Card.ListItem>San Francisco, CA</Card.ListItem>
+      </Card.List>
+    ),
+    badge: (
+      <BadgeGroup>
+        <Badge color='success' size='sm'>
+          Available
+        </Badge>
+        <Badge color='primary' size='sm'>
+          Premium
+        </Badge>
+      </BadgeGroup>
+    ),
+    supplementaryInfo: '$125,000/year',
+    actions: (
+      <ButtonMenuIcon
+        onClick={e => e.stopPropagation()}
+        as={MoreVerticalIcon}
+        aria-label='More options'
+        variant='ghost'
+        size='sm'
+      >
+        <ButtonMenuIcon.Item>View Profile</ButtonMenuIcon.Item>
+        <ButtonMenuIcon.Item>Send Message</ButtonMenuIcon.Item>
+      </ButtonMenuIcon>
+    ),
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile1',
+    },
+  },
+  render: args => (
+    <div className='w-full max-w-sm mx-auto p-4 space-y-4'>
+      <Card {...args} onClick={() => alert('Complex mobile card clicked!')} />
+      <Card
+        {...args}
+        title='Another Complex Card'
+        subtitle='Multiple items in a mobile layout'
+        onClick={() => alert('Second card clicked!')}
+      />
+    </div>
+  ),
+}

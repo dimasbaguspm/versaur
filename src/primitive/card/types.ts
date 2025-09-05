@@ -12,7 +12,7 @@ export interface CardProps
    * Size variant affecting padding
    * @default 'md'
    */
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+  size?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
   /**
    * Shape variant affecting border radius
