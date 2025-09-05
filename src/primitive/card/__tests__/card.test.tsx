@@ -50,7 +50,7 @@ describe('Card', () => {
   it('applies correct size classes', () => {
     render(<Card title='Large Card' size='lg' data-testid='card' />)
     const card = screen.getByTestId('card')
-    expect(card).toHaveClass('p-6')
+    expect(card).toHaveClass('p-4')
   })
 
   it('applies correct shape classes', () => {

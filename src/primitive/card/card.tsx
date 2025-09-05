@@ -52,49 +52,61 @@ const CardRoot = forwardRef<HTMLButtonElement | HTMLDivElement, CardProps>(
         className={cn(cardVariants({ size, shape, bordered }), className)}
         {...props}
       >
-        <div className='flex items-start gap-4 w-full'>
+        <div className='flex items-start gap-3 sm:gap-4 w-full'>
           {avatar && <div className='flex-shrink-0'>{avatar}</div>}
 
           <div className='w-full min-w-0'>
             <div className='mb-2'>
-              <div className='flex justify-between'>
-                <Text
-                  as='h3'
-                  fontSize='base'
-                  fontWeight='semibold'
-                  className='truncate'
-                >
-                  {title}
-                </Text>
-                {actions && <div>{actions}</div>}
-              </div>
-
-              {subtitle && (
-                <div className={cn(actions && '-mt-3')}>
-                  {typeof subtitle === 'string' ? (
-                    <Text as='p' fontSize='sm' color='gray'>
-                      {subtitle}
-                    </Text>
-                  ) : (
-                    <div className='min-w-0 overflow-hidden'>{subtitle}</div>
+              <div className='flex items-start justify-between gap-2'>
+                <div className='flex-1 min-w-0'>
+                  <Text
+                    as='h3'
+                    fontSize='base'
+                    fontWeight='semibold'
+                    className='break-words leading-tight'
+                  >
+                    {title}
+                  </Text>
+                  {subtitle && (
+                    <div className='mt-1'>
+                      {typeof subtitle === 'string' ? (
+                        <Text as='p' fontSize='sm' color='gray'>
+                          {subtitle}
+                        </Text>
+                      ) : (
+                        <div className='min-w-0 overflow-hidden'>
+                          {subtitle}
+                        </div>
+                      )}
+                    </div>
                   )}
                 </div>
-              )}
+                {actions && (
+                  <div className='flex-shrink-0 ml-2 -mt-1'>{actions}</div>
+                )}
+              </div>
             </div>
 
-            <div className='flex justify-between items-center gap-2 flex-wrap '>
+            <div className='flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-center'>
               {badge && (
-                <div className='mr-auto flex-shrink-0 flex-wrap'>{badge}</div>
+                <div className='flex-shrink-0 order-1 sm:order-none overflow-hidden'>
+                  {badge}
+                </div>
               )}
 
               {supplementaryInfo && (
-                <div className='ml-auto flex-shrink-0'>
+                <div className='flex-shrink-0 order-2 sm:order-none sm:ml-auto'>
                   {typeof supplementaryInfo === 'string' ? (
-                    <Text as='p' fontSize='sm' color='gray'>
+                    <Text
+                      as='p'
+                      fontSize='sm'
+                      color='gray'
+                      className='truncate'
+                    >
                       {supplementaryInfo}
                     </Text>
                   ) : (
-                    <div>{supplementaryInfo}</div>
+                    <div className='overflow-hidden'>{supplementaryInfo}</div>
                   )}
                 </div>
               )}
