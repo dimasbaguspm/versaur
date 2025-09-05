@@ -20,7 +20,7 @@ export const CardListItem = forwardRef<HTMLLIElement, CardListItemProps>(
     return (
       <li
         ref={ref}
-        className="flex items-center min-w-0 flex-shrink-0 after:content-[''] after:inline-block after:mx-1.5 sm:after:mx-2 after:w-1 after:h-1 after:rounded-full after:bg-ghost last:after:hidden after:flex-shrink-0"
+        className="flex items-center min-w-0 flex-shrink-0 after:content-[''] after:inline-block after:mx-1.5 @sm/card:after:mx-2 after:w-1 after:h-1 after:rounded-full after:bg-ghost last:after:hidden after:flex-shrink-0"
       >
         <Text as='span' fontSize='sm' color='gray' ellipsis clamp={1}>
           {children}
