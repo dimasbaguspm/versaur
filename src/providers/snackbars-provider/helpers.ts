@@ -8,8 +8,7 @@ import { cva } from 'class-variance-authority'
 export const snackbarPlacementVariants = cva(
   [
     'fixed z-100 flex flex-col gap-2 px-0 pb-2',
-    'w-[80vw] left-0 top-4', // mobile: full width
-    'sm:w-auto sm:left-4 sm:bottom-4 sm:max-w-sm', // desktop/tablet
+    'w-[80vw] left-0 top-4 md:w-auto md:left-4 md:top-auto md:bottom-4 md:max-w-sm',
   ].join(' ')
 )
 

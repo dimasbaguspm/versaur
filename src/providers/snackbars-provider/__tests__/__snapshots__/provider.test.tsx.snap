@@ -51,7 +51,7 @@ exports[`SnackbarsProvider > renders the provider and children 1`] = `
   <div
     aria-atomic="true"
     aria-live="polite"
-    class="fixed z-100 flex flex-col gap-2 px-0 pb-2 w-[80vw] left-0 top-4 sm:w-auto sm:left-4 sm:bottom-4 sm:max-w-sm"
+    class="fixed z-100 flex flex-col gap-2 px-0 pb-2 w-[80vw] left-0 top-4 md:w-auto md:left-4 md:top-auto md:bottom-4 md:max-w-sm"
   />
 </DocumentFragment>
 `;
