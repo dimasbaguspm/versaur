@@ -27,7 +27,7 @@ import { CardList, CardListItem } from './card.atoms'
  * />
  * ```
  */
-const CardRoot = forwardRef<HTMLButtonElement, CardProps>(
+const CardRoot = forwardRef<HTMLButtonElement | HTMLDivElement, CardProps>(
   (
     {
       size = 'md',
@@ -39,13 +39,15 @@ const CardRoot = forwardRef<HTMLButtonElement, CardProps>(
       actions,
       supplementaryInfo,
       bordered = false,
+      as: Component = 'button',
       className,
       ...props
     },
     ref
   ) => {
     return (
-      <button
+      <Component
+        // @ts-expect-error - ref type depends on `as` prop
         ref={ref}
         className={cn(cardVariants({ size, shape, bordered }), className)}
         {...props}
@@ -74,34 +76,32 @@ const CardRoot = forwardRef<HTMLButtonElement, CardProps>(
                       {subtitle}
                     </Text>
                   ) : (
-                    <div className='min-w-0 overflow-hidden'>
-                      <Text
-                        as='p'
-                        fontSize='sm'
-                        color='gray'
-                        className='min-w-0'
-                      >
-                        {subtitle}
-                      </Text>
-                    </div>
+                    <div className='min-w-0 overflow-hidden'>{subtitle}</div>
                   )}
                 </div>
               )}
             </div>
 
-            <div className='flex justify-between items-center gap-2'>
-              {badge && badge}
-              {supplementaryInfo && typeof supplementaryInfo === 'string' ? (
-                <Text as='p' fontSize='sm' color='gray'>
-                  {supplementaryInfo}
-                </Text>
-              ) : (
-                <div>{supplementaryInfo}</div>
+            <div className='flex justify-between items-center gap-2 flex-wrap '>
+              {badge && (
+                <div className='mr-auto flex-shrink-0 flex-wrap'>{badge}</div>
+              )}
+
+              {supplementaryInfo && (
+                <div className='ml-auto flex-shrink-0'>
+                  {typeof supplementaryInfo === 'string' ? (
+                    <Text as='p' fontSize='sm' color='gray'>
+                      {supplementaryInfo}
+                    </Text>
+                  ) : (
+                    <div>{supplementaryInfo}</div>
+                  )}
+                </div>
               )}
             </div>
           </div>
         </div>
-      </button>
+      </Component>
     )
   }
 )

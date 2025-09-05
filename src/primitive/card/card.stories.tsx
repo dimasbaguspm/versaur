@@ -72,6 +72,7 @@ export const Default: Story = {
       <BadgeGroup>
         <Badge color='secondary'>Active</Badge>
         <Badge color='primary'>Admin</Badge>
+        <Badge color='accent_1'>Verified</Badge>
       </BadgeGroup>
     ),
     actions: (

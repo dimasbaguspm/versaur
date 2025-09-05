@@ -25,55 +25,6 @@ Uses the Spenicle color palette with professional harmony: coral for primary act
       },
     },
   },
-  argTypes: {
-    variant: {
-      control: { type: 'select' },
-      options: [
-        'primary',
-        'primary-outline',
-        'primary-ghost',
-        'secondary',
-        'secondary-outline',
-        'secondary-ghost',
-        'tertiary',
-        'tertiary-outline',
-        'tertiary-ghost',
-        'ghost',
-        'ghost-outline',
-        'neutral',
-        'neutral-outline',
-        'neutral-ghost',
-        'success',
-        'success-outline',
-        'success-ghost',
-        'info',
-        'info-outline',
-        'info-ghost',
-        'warning',
-        'warning-outline',
-        'warning-ghost',
-        'danger',
-        'danger-outline',
-        'danger-ghost',
-        'outline',
-        'destructive',
-      ],
-      description: 'Visual style variant of the button',
-    },
-    size: {
-      control: { type: 'select' },
-      options: ['sm', 'md', 'lg'],
-      description: 'Size of the button',
-    },
-    disabled: {
-      control: { type: 'boolean' },
-      description: 'Whether the button is disabled',
-    },
-    children: {
-      control: { type: 'text' },
-      description: 'Button content',
-    },
-  },
 }
 
 export default meta
@@ -96,6 +47,9 @@ export const ColorMatrix: Story = {
           <Button variant='primary'>Primary (Coral)</Button>
           <Button variant='secondary'>Secondary (Sage)</Button>
           <Button variant='tertiary'>Tertiary (Mist)</Button>
+          <Button variant='accent_1'>Accent 1 (Lavender)</Button>
+          <Button variant='accent_2'>Accent 2 (Amber)</Button>
+          <Button variant='accent_3'>Accent 3 (Rose)</Button>
           <Button variant='ghost'>Ghost (Slate)</Button>
           <Button variant='neutral'>Neutral (Light Gray)</Button>
         </div>
@@ -117,6 +71,9 @@ export const ColorMatrix: Story = {
           <Button variant='primary-outline'>Primary</Button>
           <Button variant='secondary-outline'>Secondary</Button>
           <Button variant='tertiary-outline'>Tertiary</Button>
+          <Button variant='accent_1-outline'>Accent 1</Button>
+          <Button variant='accent_2-outline'>Accent 2</Button>
+          <Button variant='accent_3-outline'>Accent 3</Button>
           <Button variant='ghost-outline'>Ghost</Button>
           <Button variant='neutral-outline'>Neutral</Button>
           <Button variant='success-outline'>Success</Button>
@@ -132,6 +89,10 @@ export const ColorMatrix: Story = {
           <Button variant='primary-ghost'>Primary</Button>
           <Button variant='secondary-ghost'>Secondary</Button>
           <Button variant='tertiary-ghost'>Tertiary</Button>
+          <Button variant='accent_1-ghost'>Accent 1</Button>
+          <Button variant='accent_2-ghost'>Accent 2</Button>
+          <Button variant='accent_3-ghost'>Accent 3</Button>
+
           <Button variant='neutral-ghost'>Neutral</Button>
           <Button variant='success-ghost'>Success</Button>
           <Button variant='info-ghost'>Info</Button>

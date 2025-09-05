@@ -15,6 +15,10 @@ export const avatarVariants = cva(
         tertiary: 'bg-tertiary-light text-tertiary',
         ghost: 'bg-ghost-light text-ghost',
         neutral: 'bg-neutral-light text-foreground border border-border',
+        // Accent variants
+        accent_1: 'bg-accent-1-light text-accent-1',
+        accent_2: 'bg-accent-2-light text-accent-2',
+        accent_3: 'bg-accent-3-light text-accent-3',
 
         // Semantic variants
         success: 'bg-success-light text-success',

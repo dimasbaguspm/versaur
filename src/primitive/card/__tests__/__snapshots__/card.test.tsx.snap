@@ -43,18 +43,26 @@ exports[`Card > matches snapshot for default card 1`] = `
           </div>
         </div>
         <div
-          class="flex justify-between items-center gap-2"
+          class="flex justify-between items-center gap-2 flex-wrap "
         >
-          <span
-            class="inline-flex items-center justify-center font-medium transition-all duration-200 select-none gap-1 min-h-[1.25rem] rounded-xs text-xs px-1.5 py-0.5 h-4 bg-secondary-light/70 text-secondary"
+          <div
+            class="mr-auto flex-shrink-0 flex-wrap"
           >
-            Status
-          </span>
-          <p
-            class="text-gray-500 text-left font-normal text-sm"
+            <span
+              class="inline-flex items-center justify-center font-medium transition-all duration-200 select-none gap-1 min-h-[1.25rem] rounded-xs text-xs px-1.5 py-0.5 h-4 bg-secondary-light text-secondary-bold"
+            >
+              Status
+            </span>
+          </div>
+          <div
+            class="ml-auto flex-shrink-0"
           >
-            Info
-          </p>
+            <p
+              class="text-gray-500 text-left font-normal text-sm"
+            >
+              Info
+            </p>
+          </div>
         </div>
       </div>
     </div>

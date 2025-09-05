@@ -108,6 +108,9 @@ export const Colors: Story = {
       <Badge color='primary'>Primary</Badge>
       <Badge color='secondary'>Secondary</Badge>
       <Badge color='tertiary'>Tertiary</Badge>
+      <Badge color='accent_1'>Accent 1</Badge>
+      <Badge color='accent_2'>Accent 2</Badge>
+      <Badge color='accent_3'>Accent 3</Badge>
       <Badge color='ghost'>Ghost</Badge>
       <Badge color='neutral'>Neutral</Badge>
       <Badge color='success'>Success</Badge>
@@ -132,6 +135,16 @@ export const Outline: Story = {
       </Badge>
       <Badge variant='outline' color='tertiary'>
         Tertiary
+      </Badge>
+
+      <Badge variant='outline' color='accent_1'>
+        Accent 1
+      </Badge>
+      <Badge variant='outline' color='accent_2'>
+        Accent 2
+      </Badge>
+      <Badge variant='outline' color='accent_3'>
+        Accent 3
       </Badge>
       <Badge variant='outline' color='ghost'>
         Ghost

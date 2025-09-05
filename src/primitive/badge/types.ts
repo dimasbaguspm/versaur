@@ -45,6 +45,9 @@ export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
     | 'info'
     | 'warning'
     | 'danger'
+    | 'accent_1'
+    | 'accent_2'
+    | 'accent_3'
 
   /**
    * Icon element to display on the left side of the badge
