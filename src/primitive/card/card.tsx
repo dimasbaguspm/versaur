@@ -36,7 +36,6 @@ const CardRoot = forwardRef<HTMLButtonElement | HTMLDivElement, CardProps>(
       title,
       subtitle,
       badge,
-      actions,
       supplementaryInfo,
       bordered = false,
       as: Component = 'button',
@@ -49,7 +48,10 @@ const CardRoot = forwardRef<HTMLButtonElement | HTMLDivElement, CardProps>(
       <Component
         // @ts-expect-error - ref type depends on `as` prop
         ref={ref}
-        className={cn(cardVariants({ size, shape, bordered }), className)}
+        className={cn(
+          cardVariants({ size, shape, bordered, as: Component }),
+          className
+        )}
         {...props}
       >
         <div className='flex items-start gap-3 sm:gap-4 w-full'>
@@ -81,15 +83,12 @@ const CardRoot = forwardRef<HTMLButtonElement | HTMLDivElement, CardProps>(
                     </div>
                   )}
                 </div>
-                {actions && (
-                  <div className='flex-shrink-0 ml-2 -mt-1'>{actions}</div>
-                )}
               </div>
             </div>
 
             <div className='flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-center'>
               {badge && (
-                <div className='flex-shrink-0 order-1 sm:order-none overflow-hidden'>
+                <div className='order-1 sm:order-none overflow-hidden'>
                   {badge}
                 </div>
               )}
@@ -102,6 +101,7 @@ const CardRoot = forwardRef<HTMLButtonElement | HTMLDivElement, CardProps>(
                       fontSize='sm'
                       color='gray'
                       className='truncate'
+                      align='right'
                     >
                       {supplementaryInfo}
                     </Text>

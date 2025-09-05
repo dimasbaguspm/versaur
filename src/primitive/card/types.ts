@@ -41,11 +41,6 @@ export interface CardProps
   badge?: ReactNode
 
   /**
-   * Action elements to display in the right top area
-   */
-  actions?: ReactNode
-
-  /**
    * Supplementary information to display on the bottom-right side
    * Usually used for amounts, status, or additional info
    */

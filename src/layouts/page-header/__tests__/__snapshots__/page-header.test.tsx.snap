@@ -106,7 +106,7 @@ exports[`PageHeader > renders complete layout with all elements 1`] = `
             data-versaur-page-header-mobile-actions="true"
           >
             <div
-              class="flex flex-row justify-start gap-3"
+              class="flex flex-wrap items-center flex-row justify-start gap-3"
               role="group"
             >
               <button
@@ -222,7 +222,7 @@ exports[`PageHeader > renders complete layout with all elements 1`] = `
         data-versaur-page-header-actions="true"
       >
         <div
-          class="flex flex-row justify-start gap-3"
+          class="flex flex-wrap items-center flex-row justify-start gap-3"
           role="group"
         >
           <button
@@ -506,7 +506,7 @@ exports[`PageHeader > renders correctly with simple props 1`] = `
             data-versaur-page-header-mobile-actions="true"
           >
             <div
-              class="flex flex-row justify-start gap-3"
+              class="flex flex-wrap items-center flex-row justify-start gap-3"
               role="group"
             >
               <button
@@ -550,7 +550,7 @@ exports[`PageHeader > renders correctly with simple props 1`] = `
         data-versaur-page-header-actions="true"
       >
         <div
-          class="flex flex-row justify-start gap-3"
+          class="flex flex-wrap items-center flex-row justify-start gap-3"
           role="group"
         >
           <button
