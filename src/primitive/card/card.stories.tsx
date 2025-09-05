@@ -3,8 +3,6 @@ import { Card } from './card'
 import { Avatar } from '../avatar'
 import { Badge } from '../badge'
 import { BadgeGroup } from '@/layouts'
-import { ButtonMenuIcon } from '../button-menu-icon'
-import { MoreVerticalIcon } from 'lucide-react'
 
 /**
  * Card is a clickable container component for displaying structured information.
@@ -23,25 +21,6 @@ const meta: Meta<typeof Card> = {
         component:
           'A clickable card container component with structured layout for avatar, title, subtitle, badge, and supplementary information.',
       },
-    },
-  },
-  argTypes: {
-    size: {
-      control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-    },
-    shape: {
-      control: 'select',
-      options: ['rounded', 'square'],
-    },
-    title: {
-      control: 'text',
-    },
-    subtitle: {
-      control: 'text',
-    },
-    supplementaryInfo: {
-      control: 'text',
     },
   },
 }
@@ -73,18 +52,8 @@ export const Default: Story = {
         <Badge color='secondary'>Active</Badge>
         <Badge color='primary'>Admin</Badge>
         <Badge color='accent_1'>Verified</Badge>
+        <Badge color='success'>Online</Badge>
       </BadgeGroup>
-    ),
-    actions: (
-      <ButtonMenuIcon
-        onClick={e => e.stopPropagation()}
-        as={MoreVerticalIcon}
-        aria-label='More options'
-        variant='ghost'
-      >
-        <ButtonMenuIcon.Item>Edit</ButtonMenuIcon.Item>
-        <ButtonMenuIcon.Item>Delete</ButtonMenuIcon.Item>
-      </ButtonMenuIcon>
     ),
   },
   render: args => <Card {...args} onClick={() => alert('Card clicked!')} />,
@@ -201,7 +170,7 @@ export const BorderedCard: Story = {
  * Minimal content card with actions.
  * Demonstrates better visual balance when using short titles/subtitles with action buttons.
  */
-export const MinimalWithActions: Story = {
+export const MinimalBadge: Story = {
   args: {
     avatar: (
       <Avatar shape='rounded' size='md'>
@@ -209,18 +178,12 @@ export const MinimalWithActions: Story = {
       </Avatar>
     ),
     title: 'John',
-    subtitle: 'Designer',
-    actions: (
-      <ButtonMenuIcon
-        onClick={e => e.stopPropagation()}
-        as={MoreVerticalIcon}
-        aria-label='More options'
-        variant='ghost'
-        size='sm'
-      >
-        <ButtonMenuIcon.Item>Edit</ButtonMenuIcon.Item>
-        <ButtonMenuIcon.Item>Delete</ButtonMenuIcon.Item>
-      </ButtonMenuIcon>
+    badge: (
+      <BadgeGroup>
+        <Badge color='success' size='sm'>
+          Online
+        </Badge>
+      </BadgeGroup>
     ),
   },
   render: args => (
@@ -236,19 +199,6 @@ export const ShortContentWithActions: Story = {
   args: {
     title: 'Task',
     supplementaryInfo: 'Done',
-    actions: (
-      <ButtonMenuIcon
-        onClick={e => e.stopPropagation()}
-        as={MoreVerticalIcon}
-        aria-label='More options'
-        variant='ghost'
-        size='sm'
-      >
-        <ButtonMenuIcon.Item>Edit</ButtonMenuIcon.Item>
-        <ButtonMenuIcon.Item>Archive</ButtonMenuIcon.Item>
-        <ButtonMenuIcon.Item>Delete</ButtonMenuIcon.Item>
-      </ButtonMenuIcon>
-    ),
   },
   render: args => (
     <Card {...args} onClick={() => alert('Short content card clicked!')} />
@@ -281,19 +231,6 @@ export const BalancedMinimal: Story = {
       </BadgeGroup>
     ),
     supplementaryInfo: '2 min ago',
-    actions: (
-      <ButtonMenuIcon
-        onClick={e => e.stopPropagation()}
-        as={MoreVerticalIcon}
-        aria-label='More options'
-        variant='ghost'
-        size='sm'
-      >
-        <ButtonMenuIcon.Item>Message</ButtonMenuIcon.Item>
-        <ButtonMenuIcon.Item>View Profile</ButtonMenuIcon.Item>
-        <ButtonMenuIcon.Item>Add to Team</ButtonMenuIcon.Item>
-      </ButtonMenuIcon>
-    ),
   },
   render: args => (
     <Card {...args} onClick={() => alert('Balanced minimal card clicked!')} />
@@ -321,19 +258,6 @@ export const MobileOptimized: Story = {
       </BadgeGroup>
     ),
     supplementaryInfo: '$125k/year',
-    actions: (
-      <ButtonMenuIcon
-        onClick={e => e.stopPropagation()}
-        as={MoreVerticalIcon}
-        aria-label='More options'
-        variant='ghost'
-        size='sm'
-      >
-        <ButtonMenuIcon.Item>View Profile</ButtonMenuIcon.Item>
-        <ButtonMenuIcon.Item>Send Message</ButtonMenuIcon.Item>
-        <ButtonMenuIcon.Item>Add to Team</ButtonMenuIcon.Item>
-      </ButtonMenuIcon>
-    ),
   },
   parameters: {
     viewport: {
@@ -376,18 +300,6 @@ export const ComplexMobileLayout: Story = {
       </BadgeGroup>
     ),
     supplementaryInfo: '$125,000/year',
-    actions: (
-      <ButtonMenuIcon
-        onClick={e => e.stopPropagation()}
-        as={MoreVerticalIcon}
-        aria-label='More options'
-        variant='ghost'
-        size='sm'
-      >
-        <ButtonMenuIcon.Item>View Profile</ButtonMenuIcon.Item>
-        <ButtonMenuIcon.Item>Send Message</ButtonMenuIcon.Item>
-      </ButtonMenuIcon>
-    ),
   },
   parameters: {
     viewport: {

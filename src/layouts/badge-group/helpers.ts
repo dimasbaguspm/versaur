@@ -3,7 +3,7 @@ import { cva } from '@/utils/variants'
 /**
  * Badge group variants for managing layout and alignment
  */
-export const badgeGroupVariants = cva('flex', {
+export const badgeGroupVariants = cva('flex flex-wrap items-center', {
   variants: {
     orientation: {
       horizontal: 'flex-row',

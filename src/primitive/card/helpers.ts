@@ -5,7 +5,7 @@ import { cva } from 'class-variance-authority'
  * All cards are clickable by default with hover effects
  */
 export const cardVariants = cva(
-  'flex justify-between transition-colors duration-200 cursor-pointer w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light hover:bg-gray-50',
+  'flex justify-between transition-colors duration-200 w-full',
   {
     variants: {
       size: {
@@ -24,11 +24,18 @@ export const cardVariants = cva(
         true: 'border border-border',
         false: '',
       },
+      as: {
+        button:
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-light hover:bg-gray-50 cursor-pointer',
+
+        div: '',
+      },
     },
     defaultVariants: {
       size: 'md',
       shape: 'rounded',
       bordered: false,
+      as: 'button',
     },
   }
 )
