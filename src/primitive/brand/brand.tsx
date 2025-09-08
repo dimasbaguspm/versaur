@@ -19,7 +19,7 @@ export const Brand = forwardRef<HTMLDivElement, BrandProps>(
         className={cn('inline-flex items-center gap-2')}
         {...props}
       >
-        <BrandLogo shape={shape} size={size} aria-hidden='true' />
+        <BrandLogo name={_name} shape={shape} size={size} aria-hidden='true' />
       </span>
     )
   }
