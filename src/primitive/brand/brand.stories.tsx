@@ -45,6 +45,9 @@ export const Name: Story = {
       <Brand name='spenicle' size='md' shape='square' />
       <Brand name='spenicle' size='md' shape='rounded' />
       <Brand name='spenicle' size='md' shape='circle' />
+      <Brand name='hub' size='md' shape='square' />
+      <Brand name='hub' size='md' shape='rounded' />
+      <Brand name='hub' size='md' shape='circle' />
     </div>
   ),
 }
@@ -57,6 +60,11 @@ export const Sizes: Story = {
       <Brand size='md' name='spenicle' />
       <Brand size='lg' name='spenicle' />
       <Brand size='xl' name='spenicle' />
+      <Brand size='xs' name='hub' />
+      <Brand size='sm' name='hub' />
+      <Brand size='md' name='hub' />
+      <Brand size='lg' name='hub' />
+      <Brand size='xl' name='hub' />
     </div>
   ),
 }
