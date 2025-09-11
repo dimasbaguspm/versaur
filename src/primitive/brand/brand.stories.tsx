@@ -20,7 +20,7 @@ const meta: Meta<typeof Brand> = {
   argTypes: {
     name: {
       control: { type: 'select' },
-      options: ['spenicle'], // Extend this list as more apps are added
+      options: ['spenicle', 'hub', 'notunic'], // Extend this list as more apps are added
       description: 'The app name to display (predefined)',
     },
   },
@@ -48,6 +48,9 @@ export const Name: Story = {
       <Brand name='hub' size='md' shape='square' />
       <Brand name='hub' size='md' shape='rounded' />
       <Brand name='hub' size='md' shape='circle' />
+      <Brand name='notunic' size='md' shape='square' />
+      <Brand name='notunic' size='md' shape='rounded' />
+      <Brand name='notunic' size='md' shape='circle' />
     </div>
   ),
 }
@@ -65,6 +68,11 @@ export const Sizes: Story = {
       <Brand size='md' name='hub' />
       <Brand size='lg' name='hub' />
       <Brand size='xl' name='hub' />
+      <Brand size='xs' name='notunic' />
+      <Brand size='sm' name='notunic' />
+      <Brand size='md' name='notunic' />
+      <Brand size='lg' name='notunic' />
+      <Brand size='xl' name='notunic' />
     </div>
   ),
 }

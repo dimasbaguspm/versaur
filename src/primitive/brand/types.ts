@@ -7,7 +7,7 @@ export interface BrandProps extends HTMLAttributes<HTMLSpanElement> {
   /**
    * The app name to display (predefined, default: 'spenicle')
    */
-  name: 'spenicle' | 'hub'
+  name: 'spenicle' | 'hub' | 'notunic'
   /**
    * The size of the brand icon and text
    * @default 'md'
