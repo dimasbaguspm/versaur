@@ -4,6 +4,9 @@ import SpenicleCircle from './__assets__/spenicle-circle.svg?react'
 import HubSquare from './__assets__/hub-square.svg?react'
 import HubRounded from './__assets__/hub-rounded.svg?react'
 import HubCircle from './__assets__/hub-circle.svg?react'
+import NotunicSquare from './__assets__/notunic-square.svg?react'
+import NotunicRounded from './__assets__/notunic-rounded.svg?react'
+import NotunicCircle from './__assets__/notunic-circle.svg?react'
 import type { BrandAtomProps } from './types'
 
 import { forwardRef, type SVGProps } from 'react'
@@ -30,6 +33,11 @@ export const BrandLogo = forwardRef<SVGSVGElement, BrandAtomProps>(
         square: HubSquare,
         rounded: HubRounded,
         circle: HubCircle,
+      },
+      notunic: {
+        square: NotunicSquare,
+        rounded: NotunicRounded,
+        circle: NotunicCircle,
       },
     }
 

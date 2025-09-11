@@ -272,6 +272,218 @@ exports[`Brand > renders all shape variants in Name story 1`] = `
         </g>
       </svg>
     </span>
+    <span
+      class="inline-flex items-center gap-2"
+    >
+      <svg
+        aria-hidden="true"
+        class="inline-block h-9 w-9"
+        fill="none"
+        height="32"
+        viewBox="0 0 32 32"
+        width="32"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <title>
+          Notunic
+        </title>
+        <rect
+          fill="#e07a5f"
+          height="32"
+          width="32"
+        />
+        <g
+          transform="translate(16, 16) scale(0.625) translate(-12, -12)"
+        >
+          <path
+            d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 6h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 10h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 14h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 18h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"
+            fill="white"
+          />
+        </g>
+      </svg>
+    </span>
+    <span
+      class="inline-flex items-center gap-2"
+    >
+      <svg
+        aria-hidden="true"
+        class="inline-block h-9 w-9"
+        fill="none"
+        height="32"
+        viewBox="0 0 32 32"
+        width="32"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <title>
+          Notunic
+        </title>
+        <rect
+          fill="#e07a5f"
+          height="32"
+          rx="8"
+          width="32"
+        />
+        <g
+          transform="translate(16, 16) scale(0.625) translate(-12, -12)"
+        >
+          <path
+            d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 6h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 10h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 14h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 18h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"
+            fill="white"
+          />
+        </g>
+      </svg>
+    </span>
+    <span
+      class="inline-flex items-center gap-2"
+    >
+      <svg
+        aria-hidden="true"
+        class="inline-block h-9 w-9"
+        fill="none"
+        height="32"
+        viewBox="0 0 32 32"
+        width="32"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <title>
+          Notunic
+        </title>
+        <circle
+          cx="16"
+          cy="16"
+          fill="#e07a5f"
+          r="16"
+        />
+        <g
+          transform="translate(16, 16) scale(0.625) translate(-12, -12)"
+        >
+          <path
+            d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 6h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 10h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 14h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 18h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"
+            fill="white"
+          />
+        </g>
+      </svg>
+    </span>
   </div>
 </div>
 `;
@@ -722,6 +934,356 @@ exports[`Brand > renders all size variants in Sizes story 1`] = `
             cy="19"
             fill="white"
             r="2"
+          />
+        </g>
+      </svg>
+    </span>
+    <span
+      class="inline-flex items-center gap-2"
+    >
+      <svg
+        aria-hidden="true"
+        class="inline-block h-6 w-6"
+        fill="none"
+        height="32"
+        viewBox="0 0 32 32"
+        width="32"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <title>
+          Notunic
+        </title>
+        <rect
+          fill="#e07a5f"
+          height="32"
+          width="32"
+        />
+        <g
+          transform="translate(16, 16) scale(0.625) translate(-12, -12)"
+        >
+          <path
+            d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 6h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 10h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 14h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 18h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"
+            fill="white"
+          />
+        </g>
+      </svg>
+    </span>
+    <span
+      class="inline-flex items-center gap-2"
+    >
+      <svg
+        aria-hidden="true"
+        class="inline-block h-7 w-7"
+        fill="none"
+        height="32"
+        viewBox="0 0 32 32"
+        width="32"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <title>
+          Notunic
+        </title>
+        <rect
+          fill="#e07a5f"
+          height="32"
+          width="32"
+        />
+        <g
+          transform="translate(16, 16) scale(0.625) translate(-12, -12)"
+        >
+          <path
+            d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 6h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 10h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 14h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 18h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"
+            fill="white"
+          />
+        </g>
+      </svg>
+    </span>
+    <span
+      class="inline-flex items-center gap-2"
+    >
+      <svg
+        aria-hidden="true"
+        class="inline-block h-9 w-9"
+        fill="none"
+        height="32"
+        viewBox="0 0 32 32"
+        width="32"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <title>
+          Notunic
+        </title>
+        <rect
+          fill="#e07a5f"
+          height="32"
+          width="32"
+        />
+        <g
+          transform="translate(16, 16) scale(0.625) translate(-12, -12)"
+        >
+          <path
+            d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 6h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 10h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 14h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 18h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"
+            fill="white"
+          />
+        </g>
+      </svg>
+    </span>
+    <span
+      class="inline-flex items-center gap-2"
+    >
+      <svg
+        aria-hidden="true"
+        class="inline-block h-10 w-10"
+        fill="none"
+        height="32"
+        viewBox="0 0 32 32"
+        width="32"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <title>
+          Notunic
+        </title>
+        <rect
+          fill="#e07a5f"
+          height="32"
+          width="32"
+        />
+        <g
+          transform="translate(16, 16) scale(0.625) translate(-12, -12)"
+        >
+          <path
+            d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 6h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 10h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 14h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 18h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"
+            fill="white"
+          />
+        </g>
+      </svg>
+    </span>
+    <span
+      class="inline-flex items-center gap-2"
+    >
+      <svg
+        aria-hidden="true"
+        class="inline-block h-12 w-12"
+        fill="none"
+        height="32"
+        viewBox="0 0 32 32"
+        width="32"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <title>
+          Notunic
+        </title>
+        <rect
+          fill="#e07a5f"
+          height="32"
+          width="32"
+        />
+        <g
+          transform="translate(16, 16) scale(0.625) translate(-12, -12)"
+        >
+          <path
+            d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 6h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 10h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 14h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M2 18h4"
+            fill="none"
+            stroke="white"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+          <path
+            d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"
+            fill="white"
           />
         </g>
       </svg>

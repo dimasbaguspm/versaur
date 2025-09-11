@@ -15,14 +15,14 @@ describe('Brand', () => {
   it('renders all shape variants in Name story', () => {
     const { container } = render(<Name />)
     const svgs = container.querySelectorAll('svg')
-    expect(svgs.length).toBe(6)
+    expect(svgs.length).toBe(9) // 3 brands × 3 shapes each
     expect(container).toMatchSnapshot()
   })
 
   it('renders all size variants in Sizes story', () => {
     const { container } = render(<Sizes />)
     const svgs = container.querySelectorAll('svg')
-    expect(svgs.length).toBe(10)
+    expect(svgs.length).toBe(15) // 3 brands × 5 sizes each
     expect(container).toMatchSnapshot()
   })
 })
