@@ -173,11 +173,11 @@ exports[`Brand > renders all shape variants in Name story 1`] = `
         </title>
         <rect
           fill="#e07a5f"
-          height="28"
+          height="32"
           rx="8"
-          width="28"
-          x="2"
-          y="2"
+          width="32"
+          x="0"
+          y="0"
         />
         <g
           transform="translate(16, 16) scale(0.625) translate(-12, -12)"
