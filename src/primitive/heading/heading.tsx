@@ -12,7 +12,7 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
   (
     {
       level = 3,
-      color = 'ghost',
+      color = 'black',
       hasUnderline = false,
       isCapitalize = false,
       hasMargin = false,
