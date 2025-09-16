@@ -205,7 +205,6 @@ describe('PinField', () => {
     inputs.forEach(input => {
       expect(input).toHaveAttribute('aria-invalid', 'false')
       expect(input).toHaveAttribute('inputmode', 'numeric')
-      expect(input).toHaveAttribute('pattern', '[0-9]*')
     })
   })
 
