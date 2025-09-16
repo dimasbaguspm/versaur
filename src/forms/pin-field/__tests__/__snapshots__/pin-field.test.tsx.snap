@@ -1,0 +1,101 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`PinField > matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="w-full"
+  >
+    <label
+      class="block text-sm font-medium text-foreground mb-2"
+      for="«rf»-0"
+    >
+      Enter PIN
+    </label>
+    <div
+      aria-describedby="«rf»-helper"
+      aria-labelledby="«rf»-label"
+      class="flex gap-2 justify-center"
+      role="group"
+    >
+      <input
+        aria-invalid="false"
+        autocomplete="one-time-code"
+        class="w-12 h-12 text-center border rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 text-lg font-semibold border-primary/30 text-foreground focus:border-primary focus:ring-primary/20"
+        data-testid="pin-input-0"
+        id="«rf»-0"
+        inputmode="numeric"
+        maxlength="1"
+        pattern="[0-9]*"
+        type="text"
+        value=""
+      />
+      <input
+        aria-invalid="false"
+        autocomplete="one-time-code"
+        class="w-12 h-12 text-center border rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 text-lg font-semibold border-primary/30 text-foreground focus:border-primary focus:ring-primary/20"
+        data-testid="pin-input-1"
+        id="«rf»-1"
+        inputmode="numeric"
+        maxlength="1"
+        pattern="[0-9]*"
+        type="text"
+        value=""
+      />
+      <input
+        aria-invalid="false"
+        autocomplete="one-time-code"
+        class="w-12 h-12 text-center border rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 text-lg font-semibold border-primary/30 text-foreground focus:border-primary focus:ring-primary/20"
+        data-testid="pin-input-2"
+        id="«rf»-2"
+        inputmode="numeric"
+        maxlength="1"
+        pattern="[0-9]*"
+        type="text"
+        value=""
+      />
+      <input
+        aria-invalid="false"
+        autocomplete="one-time-code"
+        class="w-12 h-12 text-center border rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 text-lg font-semibold border-primary/30 text-foreground focus:border-primary focus:ring-primary/20"
+        data-testid="pin-input-3"
+        id="«rf»-3"
+        inputmode="numeric"
+        maxlength="1"
+        pattern="[0-9]*"
+        type="text"
+        value=""
+      />
+      <input
+        aria-invalid="false"
+        autocomplete="one-time-code"
+        class="w-12 h-12 text-center border rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 text-lg font-semibold border-primary/30 text-foreground focus:border-primary focus:ring-primary/20"
+        data-testid="pin-input-4"
+        id="«rf»-4"
+        inputmode="numeric"
+        maxlength="1"
+        pattern="[0-9]*"
+        type="text"
+        value=""
+      />
+      <input
+        aria-invalid="false"
+        autocomplete="one-time-code"
+        class="w-12 h-12 text-center border rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 text-lg font-semibold border-primary/30 text-foreground focus:border-primary focus:ring-primary/20"
+        data-testid="pin-input-5"
+        id="«rf»-5"
+        inputmode="numeric"
+        maxlength="1"
+        pattern="[0-9]*"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      class="mt-2 text-sm text-gray-600"
+      id="«rf»-helper"
+    >
+      Enter your 6-digit PIN code
+    </div>
+  </div>
+</DocumentFragment>
+`;
