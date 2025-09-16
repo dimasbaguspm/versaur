@@ -58,7 +58,7 @@ export const headingVariants = cva('', {
     level: {
       1: 'font-bold text-2xl leading-loose',
       2: 'font-semibold text-xl leading-relaxed',
-      3: 'font-medium text-base leading-relaxed',
+      3: 'font-semibold text-lg leading-relaxed',
       4: 'font-bold text-sm leading-normal',
       5: 'font-semibold text-sm leading-normal',
       6: 'font-medium text-xs leading-normal',
