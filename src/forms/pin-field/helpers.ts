@@ -1,7 +1,8 @@
 import { cva } from '@/utils/variants'
 
 export const pinFieldVariants = cva(
-  'w-12 h-12 text-center border rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 text-lg font-semibold',
+  // align sizing with TextInput which uses h-9; keep width slightly narrower for single-digit input
+  'w-9 h-9 text-center border rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 text-sm font-semibold',
   {
     variants: {
       variant: {
