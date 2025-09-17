@@ -36,6 +36,7 @@ export default defineConfig({
       '@/feedbacks': resolve(__dirname, 'src/feedbacks'),
       '@/layouts': resolve(__dirname, 'src/layouts'),
       '@/providers': resolve(__dirname, 'src/providers'),
+      '@/templates': resolve(__dirname, 'src/templates'),
       '@/utils': resolve(__dirname, 'src/utils'),
     },
   },
@@ -56,6 +57,7 @@ export default defineConfig({
         feedbacks: resolve(__dirname, 'src/feedbacks/index.ts'),
         providers: resolve(__dirname, 'src/providers/index.ts'),
         layouts: resolve(__dirname, 'src/layouts/index.ts'),
+        templates: resolve(__dirname, 'src/templates/index.ts'),
       },
       formats: ['es'],
       fileName: (_, entryName) => {

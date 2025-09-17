@@ -35,6 +35,7 @@
       "@/navigation/*": ["src/navigation/*"],
       "@/providers/*": ["src/providers/*"],
       "@/utils/*": ["src/utils/*"],
+      "@/templates/*": ["src/templates/*"]
     }
   },
   "include": [
@@ -43,7 +44,7 @@
     "vitest.config.ts",
     "tailwind.config.ts",
     ".storybook/**/*",
-    "vitest.setup.ts",
+    "vitest.setup.ts"
   ],
   "exclude": ["node_modules", "dist", "coverage", "storybook-static"]
 }
