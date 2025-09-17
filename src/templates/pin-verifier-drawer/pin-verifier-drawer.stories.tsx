@@ -80,7 +80,6 @@ export const Default: Story = {
   render: args => <PinVerifierDemo {...args} />,
   args: {
     title: 'Enter PIN',
-    subtitle: 'Please enter your 6-digit PIN to continue',
     secure: true,
     as: 'modal',
     variant: 'primary',
@@ -94,7 +93,6 @@ export const DrawerWithKeypad: Story = {
   render: args => <PinVerifierDemo {...args} />,
   args: {
     title: 'Enter Your PIN',
-    subtitle: 'Use the keypad below to enter your PIN',
     secure: true,
     as: 'drawer',
     showKeypad: true,
@@ -109,7 +107,6 @@ export const NonSecure: Story = {
   render: args => <PinVerifierDemo {...args} />,
   args: {
     title: 'Verification Code',
-    subtitle: 'Enter the 6-digit code sent to your device',
     secure: false,
     as: 'modal',
     variant: 'secondary',
@@ -123,7 +120,6 @@ export const WithError: Story = {
   render: args => <PinVerifierDemo {...args} value='123456' />,
   args: {
     title: 'Enter PIN',
-    subtitle: 'Please enter your 6-digit PIN to continue',
     secure: true,
     as: 'modal',
     variant: 'primary',
@@ -138,7 +134,6 @@ export const Loading: Story = {
   render: args => <PinVerifierDemo {...args} value='123456' />,
   args: {
     title: 'Enter PIN',
-    subtitle: 'Please enter your 6-digit PIN to continue',
     secure: true,
     as: 'modal',
     variant: 'primary',
@@ -153,7 +148,6 @@ export const DrawerWithoutKeypad: Story = {
   render: args => <PinVerifierDemo {...args} />,
   args: {
     title: 'Enter PIN',
-    subtitle: 'Use your keyboard to enter the PIN',
     secure: true,
     as: 'drawer',
     showKeypad: false,
