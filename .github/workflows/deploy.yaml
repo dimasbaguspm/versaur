@@ -1,4 +1,3 @@
-
 name: Deploy
 
 on:
@@ -15,7 +14,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js 22.14
         uses: actions/setup-node@v4
         with:
@@ -43,5 +42,5 @@ jobs:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           password: ${{ secrets.VPS_PASSWORD }}
-          source: "storybook-static/**"
-          target: "/deployments/versaur"
+          source: 'storybook-static/**'
+          target: '~/versaur'
