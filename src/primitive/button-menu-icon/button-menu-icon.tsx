@@ -27,6 +27,7 @@ const ButtonMenuIconRoot = forwardRef<HTMLButtonElement, ButtonMenuIconProps>(
     }
 
     const handleToggle = (ev: MouseEvent<HTMLButtonElement>) => {
+      ev.stopPropagation()
       setIsOpen(o => !o)
       onClick?.(ev)
     }
