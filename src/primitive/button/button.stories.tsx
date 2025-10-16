@@ -9,20 +9,38 @@ const meta: Meta<typeof Button> = {
     docs: {
       description: {
         component: `
-The Button component is a versatile, accessible button with support for semantic variants, outline styles, ghost styles, and multiple sizes. Built with Tailwind CSS and following Versaur's Spenicle color system.
+The Button component is a simple, accessible button that directly aligns with the native HTML button element. It provides 4 essential variants for different use cases and 3 size options.
 
 ## Features
-- **Core Variants**: Primary (coral), secondary (sage), tertiary (mist), ghost (slate), neutral (cream)
-- **Semantic Variants**: Success, info, warning, danger
-- **Style Variants**: Filled, outline, ghost
-- **Sizes**: Small, medium, large
+- **4 Variants**: Primary (main actions), ghost (subtle), outline (secondary), destructive (dangerous actions)
+- **3 Sizes**: Small, medium (default), large
 - **Accessibility**: Full keyboard navigation, ARIA attributes, focus management
-- **Responsive**: Mobile-first responsive design
+- **Browser-aligned**: Behaves like native button with enhanced styling
 
-## Color System
-Uses the Spenicle color palette with professional harmony: coral for primary actions, sage for secondary, mist for tertiary, slate for ghost/text, and cream for neutral backgrounds.
+## Usage
+Use the Button component for any clickable action in your UI. Choose the variant based on the action's importance and context:
+- **Primary**: Main call-to-action buttons
+- **Ghost**: Subtle actions that shouldn't compete visually
+- **Outline**: Secondary actions or alternative choices
+- **Destructive**: Delete, remove, or other irreversible actions
         `,
       },
+    },
+  },
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['primary', 'ghost', 'outline', 'destructive'],
+    },
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
+    },
+    disabled: {
+      control: 'boolean',
+    },
+    busy: {
+      control: 'boolean',
     },
   },
 }
@@ -31,170 +49,51 @@ export default meta
 type Story = StoryObj<typeof Button>
 
 // =============================================================================
-// Color Stories - Semantic color system
+// Interactive Playground
 // =============================================================================
 
 /**
- * Complete color matrix showing all core and semantic colors in all style variants.
- * Demonstrates the comprehensive Spenicle color system and variant combinations.
+ * Interactive playground to test all button properties.
+ * Use controls to change variant, size, disabled, and busy states.
  */
-export const ColorMatrix: Story = {
-  render: () => (
-    <div className='space-y-6'>
-      <div>
-        <h3 className='text-lg font-semibold mb-3'>Core Variants</h3>
-        <div className='flex flex-wrap gap-3'>
-          <Button variant='primary'>Primary (Coral)</Button>
-          <Button variant='secondary'>Secondary (Sage)</Button>
-          <Button variant='tertiary'>Tertiary (Mist)</Button>
-          <Button variant='accent_1'>Accent 1 (Lavender)</Button>
-          <Button variant='accent_2'>Accent 2 (Amber)</Button>
-          <Button variant='accent_3'>Accent 3 (Rose)</Button>
-          <Button variant='ghost'>Ghost (Slate)</Button>
-          <Button variant='neutral'>Neutral (Light Gray)</Button>
-        </div>
-      </div>
-
-      <div>
-        <h3 className='text-lg font-semibold mb-3'>Semantic Variants</h3>
-        <div className='flex flex-wrap gap-3'>
-          <Button variant='success'>Success</Button>
-          <Button variant='info'>Info</Button>
-          <Button variant='warning'>Warning</Button>
-          <Button variant='danger'>Danger</Button>
-        </div>
-      </div>
-
-      <div>
-        <h3 className='text-lg font-semibold mb-3'>Outline Variants</h3>
-        <div className='flex flex-wrap gap-3'>
-          <Button variant='primary-outline'>Primary</Button>
-          <Button variant='secondary-outline'>Secondary</Button>
-          <Button variant='tertiary-outline'>Tertiary</Button>
-          <Button variant='accent_1-outline'>Accent 1</Button>
-          <Button variant='accent_2-outline'>Accent 2</Button>
-          <Button variant='accent_3-outline'>Accent 3</Button>
-          <Button variant='ghost-outline'>Ghost</Button>
-          <Button variant='neutral-outline'>Neutral</Button>
-          <Button variant='success-outline'>Success</Button>
-          <Button variant='info-outline'>Info</Button>
-          <Button variant='warning-outline'>Warning</Button>
-          <Button variant='danger-outline'>Danger</Button>
-        </div>
-      </div>
-
-      <div>
-        <h3 className='text-lg font-semibold mb-3'>Ghost Variants</h3>
-        <div className='flex flex-wrap gap-3'>
-          <Button variant='primary-ghost'>Primary</Button>
-          <Button variant='secondary-ghost'>Secondary</Button>
-          <Button variant='tertiary-ghost'>Tertiary</Button>
-          <Button variant='accent_1-ghost'>Accent 1</Button>
-          <Button variant='accent_2-ghost'>Accent 2</Button>
-          <Button variant='accent_3-ghost'>Accent 3</Button>
-
-          <Button variant='neutral-ghost'>Neutral</Button>
-          <Button variant='success-ghost'>Success</Button>
-          <Button variant='info-ghost'>Info</Button>
-          <Button variant='warning-ghost'>Warning</Button>
-          <Button variant='danger-ghost'>Danger</Button>
-        </div>
-      </div>
-    </div>
-  ),
+export const Playground: Story = {
+  args: {
+    children: 'Click me',
+    variant: 'primary',
+    size: 'md',
+    disabled: false,
+    busy: false,
+  },
 }
 
-/**
- * All core colors in their filled variant.
- * Demonstrates the Spenicle color palette with coral, sage, mist, slate, and cream.
- */
-export const CoreColors: Story = {
-  render: () => (
-    <div className='flex flex-wrap gap-4'>
-      <Button variant='primary'>Primary (Coral)</Button>
-      <Button variant='secondary'>Secondary (Sage)</Button>
-      <Button variant='tertiary'>Tertiary (Mist)</Button>
-      <Button variant='ghost'>Ghost (Slate)</Button>
-      <Button variant='neutral'>Neutral (Light Gray)</Button>
-    </div>
-  ),
-}
+// =============================================================================
+// Variants
+// =============================================================================
 
 /**
- * All semantic colors in their filled variant.
- * Demonstrates the semantic color system for success, info, warning, and danger states.
+ * All 4 button variants showing visual hierarchy and use cases.
+ * Primary for main actions, ghost for subtle actions, outline for secondary, destructive for dangerous actions.
  */
-export const SemanticColors: Story = {
+export const Variants: Story = {
   render: () => (
     <div className='flex flex-wrap gap-4'>
-      <Button variant='success'>Success</Button>
-      <Button variant='info'>Info</Button>
-      <Button variant='warning'>Warning</Button>
-      <Button variant='danger'>Danger</Button>
-    </div>
-  ),
-}
-
-/**
- * Outline variants provide a lighter visual weight while maintaining semantic meaning.
- * Perfect for secondary actions or when you need multiple buttons in close proximity.
- */
-export const OutlineVariants: Story = {
-  render: () => (
-    <div className='flex flex-wrap gap-4'>
-      <Button variant='primary-outline'>Primary Outline</Button>
-      <Button variant='secondary-outline'>Secondary Outline</Button>
-      <Button variant='tertiary-outline'>Tertiary Outline</Button>
-      <Button variant='ghost-outline'>Ghost Outline</Button>
-      <Button variant='success-outline'>Success Outline</Button>
-      <Button variant='info-outline'>Info Outline</Button>
-      <Button variant='warning-outline'>Warning Outline</Button>
-      <Button variant='danger-outline'>Danger Outline</Button>
-    </div>
-  ),
-}
-
-/**
- * Ghost variants are the most subtle, perfect for navigation or when you need
- * a button that doesn't visually compete with other content.
- */
-export const GhostVariants: Story = {
-  render: () => (
-    <div className='flex flex-wrap gap-4'>
-      <Button variant='primary-ghost'>Primary Ghost</Button>
-      <Button variant='secondary-ghost'>Secondary Ghost</Button>
-      <Button variant='tertiary-ghost'>Tertiary Ghost</Button>
-      <Button variant='success-ghost'>Success Ghost</Button>
-      <Button variant='info-ghost'>Info Ghost</Button>
-      <Button variant='warning-ghost'>Warning Ghost</Button>
-      <Button variant='danger-ghost'>Danger Ghost</Button>
-    </div>
-  ),
-}
-
-/**
- * Comparison of all three style variants for the primary semantic color.
- * Shows how the same semantic meaning can be expressed with different visual weights.
- */
-export const StyleComparison: Story = {
-  render: () => (
-    <div className='flex flex-wrap gap-4'>
-      <Button variant='primary'>Primary Filled</Button>
-      <Button variant='primary-outline'>Primary Outline</Button>
-      <Button variant='primary-ghost'>Primary Ghost</Button>
+      <Button variant='primary'>Primary</Button>
+      <Button variant='ghost'>Ghost</Button>
+      <Button variant='outline'>Outline</Button>
+      <Button variant='destructive'>Destructive</Button>
     </div>
   ),
 }
 
 // =============================================================================
-// Size Stories - Different button sizes
+// Sizes
 // =============================================================================
 
 /**
- * Size comparison showing all three sizes side by side.
- * Demonstrates the proportional scaling of button sizes.
+ * All three sizes showing proportional scaling.
+ * Small (28px), medium/default (36px), and large (40px) heights.
  */
-export const SizeComparison: Story = {
+export const Sizes: Story = {
   render: () => (
     <div className='flex flex-wrap items-center gap-4'>
       <Button size='sm'>Small</Button>
@@ -205,45 +104,106 @@ export const SizeComparison: Story = {
 }
 
 // =============================================================================
-// State Stories - Interactive states and conditions
+// States
 // =============================================================================
 
 /**
- * Comparison of enabled vs disabled states across different variants.
- * Shows how disabled state affects visual appearance while maintaining accessibility.
+ * All button states: normal, busy (loading), and disabled.
+ * Busy state shows spinner and auto-disables interaction. Disabled state reduces opacity.
  */
-export const DisabledComparison: Story = {
+export const States: Story = {
   render: () => (
     <div className='space-y-4'>
       <div className='flex flex-wrap gap-4'>
-        <Button variant='primary'>Enabled</Button>
+        <Button variant='primary'>Normal</Button>
+        <Button variant='primary' busy>
+          Busy
+        </Button>
         <Button variant='primary' disabled>
           Disabled
         </Button>
       </div>
       <div className='flex flex-wrap gap-4'>
-        <Button variant='primary-outline'>Enabled Outline</Button>
-        <Button variant='primary-outline' disabled>
-          Disabled Outline
+        <Button variant='outline'>Normal</Button>
+        <Button variant='outline' busy>
+          Busy
+        </Button>
+        <Button variant='outline' disabled>
+          Disabled
         </Button>
       </div>
       <div className='flex flex-wrap gap-4'>
-        <Button variant='primary-ghost'>Enabled Ghost</Button>
-        <Button variant='primary-ghost' disabled>
-          Disabled Ghost
+        <Button variant='destructive'>Normal</Button>
+        <Button variant='destructive' busy>
+          Busy
+        </Button>
+        <Button variant='destructive' disabled>
+          Disabled
         </Button>
       </div>
     </div>
   ),
 }
 
+// =============================================================================
+// Real-world Examples
+// =============================================================================
+
 /**
- * Loading state example showing how buttons can indicate ongoing processes.
- * While not built into the component, shows common usage patterns.
+ * Common form actions pattern with cancel and submit buttons.
  */
-export const LoadingState: Story = {
-  args: {
-    children: 'Loading...',
-    disabled: true,
-  },
+export const FormActions: Story = {
+  render: () => (
+    <div className='flex gap-3'>
+      <Button variant='outline'>Cancel</Button>
+      <Button variant='primary'>Submit</Button>
+    </div>
+  ),
+}
+
+/**
+ * Form submission with loading state - typical async operation pattern.
+ */
+export const FormSubmitting: Story = {
+  render: () => (
+    <div className='flex gap-3'>
+      <Button variant='outline' disabled>
+        Cancel
+      </Button>
+      <Button variant='primary' busy>
+        Submitting...
+      </Button>
+    </div>
+  ),
+}
+
+/**
+ * Destructive action with confirmation pattern for dangerous operations.
+ */
+export const DestructiveAction: Story = {
+  render: () => (
+    <div className='flex gap-3'>
+      <Button variant='outline'>Cancel</Button>
+      <Button variant='destructive'>Delete Account</Button>
+    </div>
+  ),
+}
+
+/**
+ * Multiple button sizes working together in context.
+ */
+export const SizeVariations: Story = {
+  render: () => (
+    <div className='flex flex-wrap items-center gap-3'>
+      <Button size='sm' variant='outline'>
+        Cancel
+      </Button>
+      <Button size='md' variant='primary'>
+        Save
+      </Button>
+      <Button size='lg' variant='primary'>
+        Continue
+      </Button>
+    </div>
+  ),
 }

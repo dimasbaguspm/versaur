@@ -67,11 +67,11 @@
   --color-warning-bold: #b86a2c;
   --color-warning-soft: #fff1e4;
 
-  /* Danger */
-  --color-danger: #e06650;
-  --color-danger-light: #ffbfb3;
-  --color-danger-bold: #b83c2a;
-  --color-danger-soft: #ffeeeb;
+  /* Danger (Red) */
+  --color-danger: #dc3545;
+  --color-danger-light: #ffccd2;
+  --color-danger-bold: #a82835;
+  --color-danger-soft: #fff5f6;
 
   /* Background and Foreground */
   --color-background: #ffffff;
@@ -105,9 +105,17 @@
   --color-accent-3-bold: #a8647a;
   --color-accent-3-soft: #fff6f8;
 
-  /* Border and Accent */
+  /* Border (Neutral Gray) */
   --color-border: #e0e0e0;
+  --color-border-light: #f0f0f0;
+  --color-border-bold: #b0b0b0;
+  --color-border-soft: #f8f8f8;
+
+  /* Accent (Mist) */
   --color-accent: #84a5c0;
+  --color-accent-light: #d8ebff;
+  --color-accent-bold: #5a7a99;
+  --color-accent-soft: #f5faff;
 }
 
 /* Apply Inter font to body */
