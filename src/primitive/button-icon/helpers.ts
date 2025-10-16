@@ -8,46 +8,17 @@ import type { IconProps } from '../icon'
 export function getIconColorFromVariant(
   variant: ButtonIconProps['variant'] = 'primary'
 ): IconProps['color'] {
-  const base = variant.split('-')
-
-  if (base.length === 1) {
-    switch (base[0]) {
-      case 'ghost':
-      case 'neutral':
-      case 'outline':
-        return 'ghost'
-
-      default:
-        return 'white'
-    }
+  // For primary and destructive, use white icons
+  if (variant === 'primary' || variant === 'destructive') {
+    return 'white'
   }
 
-  if (base?.[1] === 'outline') return 'inherit'
-
-  // Map variant to icon color by semantic prefix
-  // e.g. 'primary', 'primary-outline', 'primary-ghost' => 'primary'
-  switch (base[0]) {
-    case 'primary':
-      return 'primary'
-    case 'secondary':
-      return 'secondary'
-    case 'tertiary':
-      return 'tertiary'
-    case 'ghost':
-      return 'ghost'
-    case 'neutral':
-      return 'ghost'
-    case 'success':
-      return 'success'
-    case 'info':
-      return 'info'
-    case 'warning':
-      return 'warning'
-    case 'danger':
-      return 'danger'
-    default:
-      return 'neutral'
+  // For ghost and outline, inherit color from button text
+  if (variant === 'ghost' || variant === 'outline') {
+    return 'inherit'
   }
+
+  return 'inherit'
 }
 
 export const buttonIconVariants = cva(
@@ -55,75 +26,23 @@ export const buttonIconVariants = cva(
   {
     variants: {
       variant: {
+        // Primary variant - main action button with coral accent
         primary:
           'bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md',
-        secondary:
-          'bg-secondary text-white hover:bg-secondary/90 focus-visible:ring-secondary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md',
-        tertiary:
-          'bg-tertiary text-white hover:bg-tertiary/90 focus-visible:ring-tertiary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md',
+        // Ghost variant - subtle, minimal visual weight
         ghost:
           'bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-light focus-visible:ring-offset-white',
-        neutral:
-          'bg-neutral text-foreground border border-border hover:bg-neutral/80 focus-visible:ring-foreground-light focus-visible:ring-offset-white shadow-sm',
-
-        'primary-outline':
-          'border border-border text-primary bg-white hover:bg-primary hover:text-white focus-visible:ring-primary-light focus-visible:ring-offset-white transition-all',
-        'secondary-outline':
-          'border border-border text-secondary bg-white hover:bg-secondary hover:text-white focus-visible:ring-secondary-light focus-visible:ring-offset-white transition-all',
-        'tertiary-outline':
-          'border border-border text-tertiary bg-white hover:bg-tertiary hover:text-white focus-visible:ring-tertiary-light focus-visible:ring-offset-white transition-all',
-        'ghost-outline':
-          'border border-border text-ghost bg-white hover:bg-ghost hover:text-white focus-visible:ring-ghost-light focus-visible:ring-offset-white transition-all',
-        'neutral-outline':
-          'border border-border text-foreground bg-white hover:bg-neutral hover:text-foreground focus-visible:ring-foreground-light focus-visible:ring-offset-white transition-all',
-
-        'primary-ghost':
-          'text-primary bg-white hover:bg-primary/20 focus-visible:ring-primary focus-visible:ring-offset-white',
-        'secondary-ghost':
-          'text-secondary bg-white hover:bg-secondary/20 focus-visible:ring-secondary focus-visible:ring-offset-white',
-        'tertiary-ghost':
-          'text-tertiary bg-white hover:bg-tertiary/20 focus-visible:ring-tertiary focus-visible:ring-offset-white',
-        'neutral-ghost':
-          'text-foreground bg-white hover:bg-neutral/50 focus-visible:ring-foreground focus-visible:ring-offset-white',
-
-        success:
-          'bg-success text-white hover:bg-success/90 focus-visible:ring-success-light focus-visible:ring-offset-white shadow-sm hover:shadow-md',
-        'success-outline':
-          'border border-border text-success bg-white hover:bg-success hover:text-white focus-visible:ring-success-light focus-visible:ring-offset-white transition-all',
-        'success-ghost':
-          'text-success bg-white hover:bg-success/20 focus-visible:ring-success-light focus-visible:ring-offset-white',
-
-        info: 'bg-info text-white hover:bg-info/90 focus-visible:ring-info-light focus-visible:ring-offset-white shadow-sm hover:shadow-md',
-        'info-outline':
-          'border border-border text-info bg-white hover:bg-info hover:text-white focus-visible:ring-info-light focus-visible:ring-offset-white transition-all',
-        'info-ghost':
-          'text-info bg-white hover:bg-info/20 focus-visible:ring-info-light focus-visible:ring-offset-white',
-
-        warning:
-          'bg-warning text-white hover:bg-warning/90 focus-visible:ring-warning-light focus-visible:ring-offset-white shadow-sm hover:shadow-md',
-        'warning-outline':
-          'border border-border text-warning bg-white hover:bg-warning hover:text-white focus-visible:ring-warning-light focus-visible:ring-offset-white transition-all',
-        'warning-ghost':
-          'text-warning bg-white hover:bg-warning/20 focus-visible:ring-warning-light focus-visible:ring-offset-white',
-
-        danger:
-          'bg-danger text-white hover:bg-danger/90 focus-visible:ring-danger-light focus-visible:ring-offset-white shadow-sm hover:shadow-md',
-        'danger-outline':
-          'border border-border text-danger bg-white hover:bg-danger hover:text-white focus-visible:ring-danger-light focus-visible:ring-offset-white transition-all',
-        'danger-ghost':
-          'text-danger bg-white hover:bg-danger/20 focus-visible:ring-danger-light focus-visible:ring-offset-white',
-
+        // Outline variant - bordered, lightweight alternative
         outline:
           'border border-border text-foreground bg-white hover:bg-accent-soft focus-visible:ring-accent-soft focus-visible:ring-offset-white transition-all',
+        // Destructive variant - for dangerous or irreversible actions
         destructive:
           'bg-danger text-white hover:bg-danger/90 focus-visible:ring-danger-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md',
       },
       size: {
-        xs: 'h-6 w-6',
         sm: 'h-7 w-7',
         md: 'h-9 w-9',
         lg: 'h-10 w-10',
-        xl: 'h-12 w-12',
       },
       shape: {
         rounded: 'rounded-md',

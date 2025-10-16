@@ -4,13 +4,12 @@ import type { IconProps } from '@/primitive/icon'
 /**
  * ButtonIconProps defines the props for the ButtonIcon component
  * @property as - Icon component to render inside the button (e.g., from lucide-react)
- * @property variant - Visual style variant based on Versaur color system
+ * @property variant - Visual style variant (primary, ghost, outline, destructive)
  * @property shape - Shape type of the button (rounded, square, circle)
  * @property size - Size of the button (sm, md, lg)
  * @property disabled - Whether the button is disabled
+ * @property busy - Whether the button is in a loading/busy state
  * @property aria-label - Accessible label for screen readers (required for icon-only buttons)
- *
- * Inherits icon sizing and color props from IconProps for alignment
  */
 export interface ButtonIconProps
   extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'color'>,
@@ -18,51 +17,30 @@ export interface ButtonIconProps
   /**
    * Icon component to render inside the button (e.g., from lucide-react)
    */
+  as: IconProps['as']
 
   /**
-   * Visual style variant supporting Versaur color system
+   * Visual style variant
+   * - primary: Main action button with coral background (default)
+   * - ghost: Subtle, minimal visual weight for secondary actions
+   * - outline: Bordered lightweight alternative for secondary actions
+   * - destructive: For dangerous or irreversible actions (delete, remove, etc.)
    */
-  variant?:
-    | 'primary'
-    | 'primary-outline'
-    | 'primary-ghost'
-    | 'secondary'
-    | 'secondary-outline'
-    | 'secondary-ghost'
-    | 'tertiary'
-    | 'tertiary-outline'
-    | 'tertiary-ghost'
-    | 'ghost'
-    | 'ghost-outline'
-    | 'neutral'
-    | 'neutral-outline'
-    | 'neutral-ghost'
-    | 'success'
-    | 'success-outline'
-    | 'success-ghost'
-    | 'info'
-    | 'info-outline'
-    | 'info-ghost'
-    | 'warning'
-    | 'warning-outline'
-    | 'warning-ghost'
-    | 'danger'
-    | 'danger-outline'
-    | 'danger-ghost'
-    | 'outline'
-    | 'destructive'
+  variant?: 'primary' | 'ghost' | 'outline' | 'destructive'
 
   /**
    * Size of the button and icon
-   * xs: 24px, sm: 32px, md: 40px, lg: 48px, xl: 56px
+   * - sm: 28px height/width, compact for space-constrained interfaces
+   * - md: 36px height/width, standard for most use cases (default)
+   * - lg: 40px height/width, prominent for primary actions
    */
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+  size?: 'sm' | 'md' | 'lg'
 
   /**
    * Shape type of the button
-   * rounded: Standard rounded corners (default)
-   * square: Perfect square with minimal rounded corners
-   * circle: Circular shape
+   * - rounded: Standard rounded corners (default)
+   * - square: Perfect square with minimal rounded corners
+   * - circle: Circular shape
    */
   shape?: 'rounded' | 'square' | 'circle'
 
@@ -71,6 +49,12 @@ export interface ButtonIconProps
    * When true, the button becomes non-interactive and visually dimmed
    */
   disabled?: boolean
+
+  /**
+   * Whether the button is in a loading/busy state
+   * Can be used to show loading indicators or disable interaction during async operations
+   */
+  busy?: boolean
 
   /**
    * Accessible label for screen readers

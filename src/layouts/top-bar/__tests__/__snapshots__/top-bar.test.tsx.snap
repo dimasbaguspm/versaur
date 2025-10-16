@@ -67,14 +67,13 @@ exports[`TopBar > renders correctly (snapshot) 1`] = `
         class="flex items-center gap-2 mr-4"
       >
         <button
-          aria-disabled="false"
           aria-label="Notifications"
           class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-light focus-visible:ring-offset-white h-7 w-7 rounded-md"
           type="button"
         >
           <svg
             aria-hidden="true"
-            class="lucide lucide-bell inline-flex items-center justify-center w-4 h-4 text-ghost"
+            class="lucide lucide-bell inline-flex items-center justify-center w-4 h-4"
             fill="none"
             height="24"
             stroke="currentColor"
@@ -94,14 +93,13 @@ exports[`TopBar > renders correctly (snapshot) 1`] = `
           </svg>
         </button>
         <button
-          aria-disabled="false"
           aria-label="Settings"
           class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-light focus-visible:ring-offset-white h-7 w-7 rounded-md"
           type="button"
         >
           <svg
             aria-hidden="true"
-            class="lucide lucide-between-horizontal-start inline-flex items-center justify-center w-4 h-4 text-ghost"
+            class="lucide lucide-between-horizontal-start inline-flex items-center justify-center w-4 h-4"
             fill="none"
             height="24"
             stroke="currentColor"

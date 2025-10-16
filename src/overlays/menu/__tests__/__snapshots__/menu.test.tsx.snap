@@ -7,7 +7,6 @@ exports[`Menu > renders basic menu correctly 1`] = `
   >
     <button
       aria-controls="«r0»"
-      aria-disabled="false"
       aria-expanded="false"
       aria-haspopup="menu"
       aria-label="Open menu"
@@ -58,7 +57,6 @@ exports[`Menu > renders menu with different sizes 1`] = `
     >
       <button
         aria-controls="«r1»"
-        aria-disabled="false"
         aria-expanded="false"
         aria-haspopup="menu"
         aria-label="Open small menu"
@@ -101,7 +99,6 @@ exports[`Menu > renders menu with different sizes 1`] = `
     >
       <button
         aria-controls="«r2»"
-        aria-disabled="false"
         aria-expanded="false"
         aria-haspopup="menu"
         aria-label="Open medium menu"
@@ -240,7 +237,6 @@ exports[`Menu > renders scrollable container menu correctly 1`] = `
           >
             <button
               aria-controls="«r4»"
-              aria-disabled="false"
               aria-expanded="false"
               aria-haspopup="menu"
               aria-label="Open menu"

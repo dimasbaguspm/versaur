@@ -1,0 +1,32 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ButtonIcon > Rendering > matches snapshot 1`] = `
+<DocumentFragment>
+  <button
+    aria-label="Test"
+    class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md h-9 w-9 rounded-md"
+    type="button"
+  >
+    <svg
+      aria-hidden="true"
+      class="lucide lucide-plus inline-flex items-center justify-center w-4 h-4 text-white"
+      fill="none"
+      height="24"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M5 12h14"
+      />
+      <path
+        d="M12 5v14"
+      />
+    </svg>
+  </button>
+</DocumentFragment>
+`;

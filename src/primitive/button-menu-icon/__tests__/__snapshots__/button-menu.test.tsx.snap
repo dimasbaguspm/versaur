@@ -7,7 +7,6 @@ exports[`ButtonMenu > opens menu and shows items when clicked 1`] = `
   >
     <button
       aria-controls="«r1»"
-      aria-disabled="false"
       aria-expanded="true"
       aria-haspopup="menu"
       aria-label="Open menu"
@@ -16,7 +15,7 @@ exports[`ButtonMenu > opens menu and shows items when clicked 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="lucide lucide-ellipsis-vertical inline-flex items-center justify-center w-4 h-4 text-ghost"
+        class="lucide lucide-ellipsis-vertical inline-flex items-center justify-center w-4 h-4"
         fill="none"
         height="24"
         stroke="currentColor"

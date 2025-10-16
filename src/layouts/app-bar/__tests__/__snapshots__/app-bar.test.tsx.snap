@@ -11,14 +11,13 @@ exports[`AppBar > renders WithBottom story and AppBar.Bottom is always on a new 
       data-versaur-appbar-leading="true"
     >
       <button
-        aria-disabled="false"
         aria-label="Back"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer text-foreground bg-white hover:bg-neutral/50 focus-visible:ring-foreground focus-visible:ring-offset-white h-10 w-10 rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer h-10 w-10 rounded-md"
         type="button"
       >
         <svg
           aria-hidden="true"
-          class="lucide lucide-arrow-left inline-flex items-center justify-center w-4 h-4 text-ghost"
+          class="lucide lucide-arrow-left inline-flex items-center justify-center w-4 h-4"
           fill="none"
           height="24"
           stroke="currentColor"
@@ -57,7 +56,6 @@ exports[`AppBar > renders WithBottom story and AppBar.Bottom is always on a new 
       data-versaur-appbar-trailing="true"
     >
       <button
-        aria-disabled="false"
         aria-label="Print"
         class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md h-7 w-7 rounded-full"
         type="button"
@@ -144,14 +142,13 @@ exports[`AppBar > renders correctly (snapshot) 1`] = `
       data-versaur-appbar-leading="true"
     >
       <button
-        aria-disabled="false"
         aria-label="Open navigation"
-        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer text-foreground bg-white hover:bg-neutral/50 focus-visible:ring-foreground focus-visible:ring-offset-white h-10 w-10 rounded-md"
+        class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer h-10 w-10 rounded-md"
         type="button"
       >
         <svg
           aria-hidden="true"
-          class="lucide lucide-arrow-left inline-flex items-center justify-center w-4 h-4 text-ghost"
+          class="lucide lucide-arrow-left inline-flex items-center justify-center w-4 h-4"
           fill="none"
           height="24"
           stroke="currentColor"
@@ -190,7 +187,6 @@ exports[`AppBar > renders correctly (snapshot) 1`] = `
       data-versaur-appbar-trailing="true"
     >
       <button
-        aria-disabled="false"
         aria-label="Print"
         class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md h-7 w-7 rounded-full"
         type="button"

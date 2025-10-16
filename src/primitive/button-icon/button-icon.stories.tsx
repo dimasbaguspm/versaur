@@ -1,7 +1,6 @@
 /**
  * ButtonIcon stories demonstrating icon-only buttons with various variants, shapes, and sizes.
  * This component is perfect for toolbars, action buttons, and compact interfaces where space is limited.
- * Each story showcases different use cases and styling options available in the Versaur design system.
  */
 
 import type { Meta, StoryObj } from '@storybook/react'
@@ -15,45 +14,32 @@ const meta: Meta<typeof ButtonIcon> = {
     layout: 'centered',
     docs: {
       description: {
-        component:
-          'Icon-only buttons for compact interfaces and toolbars. Supports all Versaur color variants with customizable shapes and sizes.',
+        component: `
+The ButtonIcon component is an icon-only button that directly aligns with the native HTML button element. It provides 4 essential variants for different use cases, 3 size options, and 3 shape variations.
+
+## Features
+- **4 Variants**: Primary (main actions), ghost (subtle), outline (secondary), destructive (dangerous actions)
+- **3 Sizes**: Small, medium (default), large
+- **3 Shapes**: Rounded (default), square, circle
+- **Busy State**: Loading spinner with auto-disable
+- **Accessibility**: Full keyboard navigation, ARIA attributes, focus management, required aria-label
+- **Browser-aligned**: Behaves like native button with enhanced styling
+
+## Usage
+Use the ButtonIcon component for any icon-only action in your UI. Choose the variant based on the action's importance and context:
+- **Primary**: Main call-to-action icon buttons
+- **Ghost**: Subtle actions that shouldn't compete visually
+- **Outline**: Secondary actions or alternative choices
+- **Destructive**: Delete, remove, or other irreversible actions
+        `,
       },
     },
   },
   argTypes: {
     variant: {
       control: 'select',
-      options: [
-        'primary',
-        'primary-outline',
-        'primary-ghost',
-        'secondary',
-        'secondary-outline',
-        'secondary-ghost',
-        'tertiary',
-        'tertiary-outline',
-        'tertiary-ghost',
-        'ghost',
-        'ghost-outline',
-        'neutral',
-        'neutral-outline',
-        'neutral-ghost',
-        'success',
-        'success-outline',
-        'success-ghost',
-        'info',
-        'info-outline',
-        'info-ghost',
-        'warning',
-        'warning-outline',
-        'warning-ghost',
-        'danger',
-        'danger-outline',
-        'danger-ghost',
-        'outline',
-        'destructive',
-      ],
-      description: 'Visual style variant based on Versaur color system',
+      options: ['primary', 'ghost', 'outline', 'destructive'],
+      description: 'Visual style variant',
     },
     size: {
       control: 'select',
@@ -69,9 +55,13 @@ const meta: Meta<typeof ButtonIcon> = {
       control: 'boolean',
       description: 'Whether the button is disabled',
     },
+    busy: {
+      control: 'boolean',
+      description: 'Whether the button is in a loading/busy state',
+    },
     'aria-label': {
       control: 'text',
-      description: 'Accessible label for screen readers',
+      description: 'Accessible label for screen readers (required)',
     },
   },
   args: {
@@ -83,234 +73,105 @@ export default meta
 type Story = StoryObj<typeof ButtonIcon>
 
 /**
- * Default ButtonIcon with primary variant, medium size, and rounded shape.
- * This is the most common configuration for general-purpose icon buttons.
+ * Interactive playground to test all button icon properties.
  */
-export const Default: Story = {
+export const Playground: Story = {
   args: {
     as: Plus,
+    variant: 'primary',
     size: 'md',
+    shape: 'rounded',
+    disabled: false,
+    busy: false,
   },
 }
 
 /**
- * All available color variants showcasing the Versaur color system.
- * Each variant has a specific purpose and semantic meaning in the design system.
+ * All 4 button icon variants showing visual hierarchy and use cases.
  */
-export const AllVariants: Story = {
+export const Variants: Story = {
   render: () => (
     <div className='flex flex-wrap gap-4'>
-      <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon as={Plus} variant='primary' aria-label='Primary action' />
-        <span className='text-sm text-gray-600'>Primary</span>
-      </div>
-      <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon
-          as={Heart}
-          variant='secondary'
-          aria-label='Secondary action'
-        />
-        <span className='text-sm text-gray-600'>Secondary</span>
-      </div>
-      <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon
-          as={Settings}
-          variant='tertiary'
-          aria-label='Tertiary action'
-        />
-        <span className='text-sm text-gray-600'>Tertiary</span>
-      </div>
-      <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon as={Plus} variant='ghost' aria-label='Ghost action' />
-        <span className='text-sm text-gray-600'>Ghost</span>
-      </div>
-      <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon
-          as={Settings}
-          variant='neutral'
-          aria-label='Neutral action'
-        />
-        <span className='text-sm text-gray-600'>Neutral</span>
-      </div>
-      <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon as={Heart} variant='success' aria-label='Success action' />
-        <span className='text-sm text-gray-600'>Success</span>
-      </div>
-      <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon as={Settings} variant='info' aria-label='Info action' />
-        <span className='text-sm text-gray-600'>Info</span>
-      </div>
-      <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon as={Plus} variant='warning' aria-label='Warning action' />
-        <span className='text-sm text-gray-600'>Warning</span>
-      </div>
-      <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon as={Trash2} variant='danger' aria-label='Danger action' />
-        <span className='text-sm text-gray-600'>Danger</span>
-      </div>
-    </div>
-  ),
-}
-
-/**
- * Outline variants provide a subtle, bordered appearance.
- * Perfect for secondary actions and interfaces that need visual hierarchy.
- */
-export const OutlineVariants: Story = {
-  render: () => (
-    <div className='flex flex-wrap gap-4'>
-      <ButtonIcon
-        as={Plus}
-        variant='primary-outline'
-        aria-label='Primary outline'
-      />
-      <ButtonIcon
-        as={Heart}
-        variant='secondary-outline'
-        aria-label='Secondary outline'
-      />
-      <ButtonIcon
-        as={Settings}
-        variant='tertiary-outline'
-        aria-label='Tertiary outline'
-      />
-      <ButtonIcon
-        as={Heart}
-        variant='success-outline'
-        aria-label='Success outline'
-      />
+      <ButtonIcon as={Plus} variant='primary' aria-label='Primary action' />
+      <ButtonIcon as={Heart} variant='ghost' aria-label='Ghost action' />
+      <ButtonIcon as={Settings} variant='outline' aria-label='Outline action' />
       <ButtonIcon
         as={Trash2}
-        variant='danger-outline'
-        aria-label='Danger outline'
+        variant='destructive'
+        aria-label='Delete action'
       />
     </div>
   ),
 }
 
 /**
- * Ghost variants provide minimal visual weight with subtle hover effects.
- * Ideal for toolbar buttons and non-primary actions.
+ * All three sizes showing proportional scaling.
  */
-export const GhostVariants: Story = {
+export const Sizes: Story = {
   render: () => (
-    <div className='flex flex-wrap gap-4'>
-      <ButtonIcon
-        as={Plus}
-        variant='primary-ghost'
-        aria-label='Primary ghost'
-      />
-      <ButtonIcon
-        as={Heart}
-        variant='secondary-ghost'
-        aria-label='Secondary ghost'
-      />
-      <ButtonIcon
-        as={Settings}
-        variant='tertiary-ghost'
-        aria-label='Tertiary ghost'
-      />
-      <ButtonIcon
-        as={Heart}
-        variant='success-ghost'
-        aria-label='Success ghost'
-      />
-      <ButtonIcon
-        as={Trash2}
-        variant='danger-ghost'
-        aria-label='Danger ghost'
-      />
-    </div>
-  ),
-}
-
-/**
- * Different sizes for various interface contexts.
- * Small for compact toolbars, medium for standard use, large for prominent actions.
- */
-export const AllSizes: Story = {
-  render: () => (
-    <div className='flex items-center gap-4'>
-      <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon as={Plus} size='xs' aria-label='Small size' />
-        <span className='text-sm text-gray-600'>XS (32px)</span>
-      </div>
-      <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon as={Plus} size='sm' aria-label='Small size' />
-        <span className='text-sm text-gray-600'>Small (32px)</span>
-      </div>
-      <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon as={Plus} size='md' aria-label='Medium size' />
-        <span className='text-sm text-gray-600'>Medium (40px)</span>
-      </div>
-      <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon as={Plus} size='lg' aria-label='Large size' />
-        <span className='text-sm text-gray-600'>Large (48px)</span>
-      </div>
-      <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon as={Plus} size='xl' aria-label='Large size' />
-        <span className='text-sm text-gray-600'>Large (48px)</span>
-      </div>
+    <div className='flex flex-wrap items-center gap-4'>
+      <ButtonIcon as={Plus} size='sm' aria-label='Small button' />
+      <ButtonIcon as={Plus} size='md' aria-label='Medium button' />
+      <ButtonIcon as={Plus} size='lg' aria-label='Large button' />
     </div>
   ),
 }
 
 /**
  * Different shapes for various design contexts.
- * Rounded for general use, square for grid layouts, circle for profile actions.
  */
-export const AllShapes: Story = {
+export const Shapes: Story = {
   render: () => (
     <div className='flex items-center gap-4'>
-      <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon as={Plus} shape='rounded' aria-label='Rounded shape' />
-        <span className='text-sm text-gray-600'>Rounded</span>
-      </div>
-      <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon as={Plus} shape='square' aria-label='Square shape' />
-        <span className='text-sm text-gray-600'>Square</span>
-      </div>
-      <div className='flex flex-col items-center gap-2'>
-        <ButtonIcon as={Plus} shape='circle' aria-label='Circle shape' />
-        <span className='text-sm text-gray-600'>Circle</span>
-      </div>
+      <ButtonIcon as={Plus} shape='rounded' aria-label='Rounded shape' />
+      <ButtonIcon as={Plus} shape='square' aria-label='Square shape' />
+      <ButtonIcon as={Plus} shape='circle' aria-label='Circle shape' />
     </div>
   ),
 }
 
 /**
- * Disabled state for all variants and sizes.
- * Demonstrates consistent disabled styling across the component system.
+ * All button states: normal, busy (loading), and disabled.
  */
-export const DisabledStates: Story = {
+export const States: Story = {
   render: () => (
-    <div className='flex flex-wrap gap-4'>
-      <ButtonIcon as={Plus} disabled aria-label='Disabled primary' />
-      <ButtonIcon
-        as={Heart}
-        disabled
-        variant='secondary'
-        aria-label='Disabled secondary'
-      />
-      <ButtonIcon
-        as={Settings}
-        disabled
-        variant='primary-outline'
-        aria-label='Disabled outline'
-      />
-      <ButtonIcon
-        as={Trash2}
-        disabled
-        variant='danger-ghost'
-        aria-label='Disabled ghost'
-      />
+    <div className='space-y-4'>
+      <div className='flex flex-wrap gap-4'>
+        <ButtonIcon as={Plus} variant='primary' aria-label='Normal' />
+        <ButtonIcon as={Plus} variant='primary' busy aria-label='Busy' />
+        <ButtonIcon
+          as={Plus}
+          variant='primary'
+          disabled
+          aria-label='Disabled'
+        />
+      </div>
+      <div className='flex flex-wrap gap-4'>
+        <ButtonIcon as={Settings} variant='outline' aria-label='Normal' />
+        <ButtonIcon as={Settings} variant='outline' busy aria-label='Busy' />
+        <ButtonIcon
+          as={Settings}
+          variant='outline'
+          disabled
+          aria-label='Disabled'
+        />
+      </div>
+      <div className='flex flex-wrap gap-4'>
+        <ButtonIcon as={Trash2} variant='destructive' aria-label='Normal' />
+        <ButtonIcon as={Trash2} variant='destructive' busy aria-label='Busy' />
+        <ButtonIcon
+          as={Trash2}
+          variant='destructive'
+          disabled
+          aria-label='Disabled'
+        />
+      </div>
     </div>
   ),
 }
 
 /**
  * Toolbar example showing ButtonIcon in a practical context.
- * Demonstrates how icon buttons work together in a typical interface.
  */
 export const ToolbarExample: Story = {
   render: () => (
@@ -324,10 +185,58 @@ export const ToolbarExample: Story = {
         aria-label='Settings'
       />
       <div className='w-px h-4 bg-gray-300 mx-1' />
+      <ButtonIcon as={Trash2} variant='ghost' size='sm' aria-label='Delete' />
+    </div>
+  ),
+}
+
+/**
+ * Loading states for async operations.
+ */
+export const LoadingStates: Story = {
+  render: () => (
+    <div className='flex flex-wrap gap-4'>
+      <ButtonIcon
+        as={Plus}
+        variant='primary'
+        busy
+        aria-label='Loading primary'
+      />
+      <ButtonIcon as={Heart} variant='ghost' busy aria-label='Loading ghost' />
+      <ButtonIcon
+        as={Settings}
+        variant='outline'
+        busy
+        aria-label='Loading outline'
+      />
       <ButtonIcon
         as={Trash2}
-        variant='danger-ghost'
-        size='sm'
+        variant='destructive'
+        busy
+        aria-label='Loading destructive'
+      />
+    </div>
+  ),
+}
+
+/**
+ * Circular icon buttons for profile and avatar actions.
+ */
+export const CircularButtons: Story = {
+  render: () => (
+    <div className='flex flex-wrap gap-4'>
+      <ButtonIcon as={Plus} shape='circle' variant='primary' aria-label='Add' />
+      <ButtonIcon as={Heart} shape='circle' variant='ghost' aria-label='Like' />
+      <ButtonIcon
+        as={Settings}
+        shape='circle'
+        variant='outline'
+        aria-label='Settings'
+      />
+      <ButtonIcon
+        as={Trash2}
+        shape='circle'
+        variant='destructive'
         aria-label='Delete'
       />
     </div>
