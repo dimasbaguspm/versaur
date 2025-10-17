@@ -312,7 +312,7 @@ exports[`PageHeader > renders complete layout with all elements 1`] = `
     >
       <nav
         aria-label="Tabs"
-        class="relative"
+        class="relative w-full"
       >
         <div
           class="relative overflow-hidden"

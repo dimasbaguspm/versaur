@@ -30,7 +30,11 @@ const TabsRoot: React.FC<TabsRootProps> = ({
 
   return (
     <TabsContext.Provider value={contextValue}>
-      <nav className={cn('relative', className)} aria-label='Tabs' {...props}>
+      <nav
+        className={cn('relative w-full', className)}
+        aria-label='Tabs'
+        {...props}
+      >
         <div className='relative overflow-hidden'>
           <ul
             role='tablist'

@@ -95,7 +95,7 @@ exports[`AppBar > renders WithBottom story and AppBar.Bottom is always on a new 
     >
       <nav
         aria-label="Tabs"
-        class="relative"
+        class="relative w-full"
       >
         <div
           class="relative overflow-hidden"
