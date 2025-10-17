@@ -45,7 +45,7 @@ export const WithAction: Story = {
   args: {
     children: 'Snackbar with action',
     action: (
-      <ButtonIcon as={CopyIcon} aria-label='Copy' size='xs' variant='success' />
+      <ButtonIcon as={CopyIcon} aria-label='Copy' size='sm' variant='outline' />
     ),
     onClose: () => alert('Closed'),
     color: 'success',

@@ -14,7 +14,7 @@ describe('FilterChipGroup', () => {
       <FilterChipGroup>
         <FilterChip>Active Filter 1</FilterChip>
         <FilterChip>Active Filter 2</FilterChip>
-        <Button variant='neutral-ghost'>Clear All</Button>
+        <Button variant='ghost'>Clear All</Button>
       </FilterChipGroup>
     )
     expect(asFragment()).toMatchSnapshot()
@@ -186,7 +186,7 @@ describe('FilterChipGroup', () => {
       <FilterChipGroup>
         <FilterChip>Category</FilterChip>
         <FilterChip>Brand</FilterChip>
-        <Button variant='neutral-ghost'>Clear All</Button>
+        <Button variant='ghost'>Clear All</Button>
       </FilterChipGroup>
     )
 
@@ -201,7 +201,7 @@ describe('FilterChipGroup', () => {
     render(
       <FilterChipGroup>
         <FilterChip>Active Filter</FilterChip>
-        <Button variant='neutral-ghost' size='sm'>
+        <Button variant='ghost' size='sm'>
           Clear
         </Button>
       </FilterChipGroup>

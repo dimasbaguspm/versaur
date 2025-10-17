@@ -37,7 +37,7 @@ export const Basic = () => (
           <ButtonIcon as={Pen} variant='ghost' size='sm' aria-label='Edit' />
           <ButtonIcon
             as={Trash}
-            variant='danger-ghost'
+            variant='destructive'
             size='sm'
             aria-label='Delete'
           />
@@ -51,7 +51,7 @@ export const Basic = () => (
           <ButtonIcon as={Pen} variant='ghost' size='sm' aria-label='Edit' />
           <ButtonIcon
             as={Trash}
-            variant='danger-ghost'
+            variant='destructive'
             size='sm'
             aria-label='Delete'
           />
@@ -65,7 +65,7 @@ export const Basic = () => (
           <ButtonIcon as={Pen} variant='ghost' size='sm' aria-label='Edit' />
           <ButtonIcon
             as={Trash}
-            variant='danger-ghost'
+            variant='destructive'
             size='sm'
             aria-label='Delete'
           />

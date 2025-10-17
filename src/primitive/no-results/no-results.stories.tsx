@@ -60,7 +60,7 @@ export const WithSubtitleAndAction: Story = {
     icon: SearchIcon,
     title: 'No results found',
     subtitle: "We couldn't find any items matching your search criteria.",
-    action: <Button variant='neutral'>Clear Search</Button>,
+    action: <Button variant='outline'>Clear Search</Button>,
   },
 }
 
@@ -72,7 +72,7 @@ export const SearchEmpty: Story = {
     icon: SearchIcon,
     title: 'No groups found',
     subtitle: 'We couldn\'t find any groups matching "design team"',
-    action: <Button variant='neutral'>Clear Search</Button>,
+    action: <Button variant='outline'>Clear Search</Button>,
   },
 }
 

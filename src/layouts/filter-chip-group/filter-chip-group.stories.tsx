@@ -64,7 +64,7 @@ export const Default: Story = {
     <FilterChipGroup {...args}>
       <FilterChip>Active Filter 1</FilterChip>
       <FilterChip>Active Filter 2</FilterChip>
-      <Button variant='neutral-ghost'>Clear All</Button>
+      <Button variant='ghost'>Clear All</Button>
     </FilterChipGroup>
   ),
 }
@@ -77,7 +77,7 @@ export const CenterAligned: Story = {
     <FilterChipGroup {...args} alignment='center'>
       <FilterChip>Active Filter 1</FilterChip>
       <FilterChip>Active Filter 2</FilterChip>
-      <Button variant='neutral-ghost'>Clear All</Button>
+      <Button variant='ghost'>Clear All</Button>
     </FilterChipGroup>
   ),
 }
@@ -97,7 +97,7 @@ export const SpaceBetween: Story = {
       <FilterChipGroup {...args} alignment='between'>
         <FilterChip>Active Filter 1</FilterChip>
         <FilterChip>Active Filter 2</FilterChip>
-        <Button variant='neutral-ghost'>Clear All</Button>
+        <Button variant='ghost'>Clear All</Button>
       </FilterChipGroup>
     </div>
   ),
@@ -111,7 +111,7 @@ export const Vertical: Story = {
     <FilterChipGroup {...args} orientation='vertical'>
       <FilterChip>Active Filter 1</FilterChip>
       <FilterChip>Active Filter 2</FilterChip>
-      <Button variant='neutral-ghost'>Clear All</Button>
+      <Button variant='ghost'>Clear All</Button>
     </FilterChipGroup>
   ),
 }
@@ -131,7 +131,7 @@ export const Fluid: Story = {
       <FilterChipGroup {...args} fluid>
         <FilterChip>Active Filter 1</FilterChip>
         <FilterChip>Active Filter 2</FilterChip>
-        <Button variant='neutral-ghost'>Clear All</Button>
+        <Button variant='ghost'>Clear All</Button>
       </FilterChipGroup>
     </div>
   ),
@@ -152,7 +152,7 @@ export const VerticalFluid: Story = {
       <FilterChipGroup {...args} orientation='vertical' fluid>
         <FilterChip>Active Filter 1</FilterChip>
         <FilterChip>Active Filter 2</FilterChip>
-        <Button variant='neutral-ghost'>Clear All</Button>
+        <Button variant='ghost'>Clear All</Button>
       </FilterChipGroup>
     </div>
   ),
@@ -169,7 +169,7 @@ export const GapVariations: Story = {
         <FilterChipGroup gap='xs'>
           <FilterChip>Active Filter 1</FilterChip>
           <FilterChip>Active Filter 2</FilterChip>
-          <Button variant='neutral-ghost'>Clear All</Button>
+          <Button variant='ghost'>Clear All</Button>
         </FilterChipGroup>
       </div>
       <div>
@@ -177,7 +177,7 @@ export const GapVariations: Story = {
         <FilterChipGroup gap='sm'>
           <FilterChip>Active Filter 1</FilterChip>
           <FilterChip>Active Filter 2</FilterChip>
-          <Button variant='neutral-ghost'>Clear All</Button>
+          <Button variant='ghost'>Clear All</Button>
         </FilterChipGroup>
       </div>
       <div>
@@ -185,7 +185,7 @@ export const GapVariations: Story = {
         <FilterChipGroup gap='md'>
           <FilterChip>Active Filter 1</FilterChip>
           <FilterChip>Active Filter 2</FilterChip>
-          <Button variant='neutral-ghost'>Clear All</Button>
+          <Button variant='ghost'>Clear All</Button>
         </FilterChipGroup>
       </div>
       <div>
@@ -193,7 +193,7 @@ export const GapVariations: Story = {
         <FilterChipGroup gap='lg'>
           <FilterChip>Active Filter 1</FilterChip>
           <FilterChip>Active Filter 2</FilterChip>
-          <Button variant='neutral-ghost'>Clear All</Button>
+          <Button variant='ghost'>Clear All</Button>
         </FilterChipGroup>
       </div>
       <div>
@@ -201,7 +201,7 @@ export const GapVariations: Story = {
         <FilterChipGroup gap='xl'>
           <FilterChip>Active Filter 1</FilterChip>
           <FilterChip>Active Filter 2</FilterChip>
-          <Button variant='neutral-ghost'>Clear All</Button>
+          <Button variant='ghost'>Clear All</Button>
         </FilterChipGroup>
       </div>
     </div>
@@ -219,7 +219,7 @@ export const MixedVariants: Story = {
         <FilterChipGroup {...args}>
           <FilterChip>Active Filter 1</FilterChip>
           <FilterChip>Active Filter 2</FilterChip>
-          <Button variant='neutral-ghost'>Clear All</Button>
+          <Button variant='ghost'>Clear All</Button>
         </FilterChipGroup>
       </div>
       <div>
@@ -227,7 +227,7 @@ export const MixedVariants: Story = {
         <FilterChipGroup {...args}>
           <FilterChip>Active Filter 1</FilterChip>
           <FilterChip>Active Filter 2</FilterChip>
-          <Button variant='neutral-ghost'>Clear All</Button>
+          <Button variant='ghost'>Clear All</Button>
         </FilterChipGroup>
       </div>
     </div>
@@ -247,7 +247,7 @@ export const EcommerceFilters: Story = {
         <FilterChip>Active Filter 3</FilterChip>
         <FilterChip>Active Filter 4</FilterChip>
         <FilterChip>Active Filter 5</FilterChip>
-        <Button variant='neutral-ghost'>Clear All</Button>
+        <Button variant='ghost'>Clear All</Button>
       </FilterChipGroup>
     </div>
   ),

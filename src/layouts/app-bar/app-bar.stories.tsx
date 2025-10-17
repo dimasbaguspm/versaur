@@ -36,7 +36,7 @@ export const Home: Story = {
       <AppBar.Trailing>
         <ButtonIcon
           as={EllipsisVerticalIcon}
-          variant='neutral-ghost'
+          variant='ghost'
           size='sm'
           shape='circle'
           aria-label='More'
@@ -52,7 +52,7 @@ export const Detail: Story = {
       <AppBar.Leading>
         <ButtonIcon
           as={ArrowLeft}
-          variant='neutral-ghost'
+          variant='ghost'
           aria-label='Open navigation'
           size='lg'
         />
@@ -80,7 +80,7 @@ export const WithBottom: Story = {
       <AppBar.Leading>
         <ButtonIcon
           as={ArrowLeft}
-          variant='neutral-ghost'
+          variant='ghost'
           aria-label='Back'
           size='lg'
         />

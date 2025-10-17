@@ -86,7 +86,7 @@ export const Complete = () => {
             <Icon as={UploadIcon} color='inherit' />
             Import
           </Button>
-          <Button variant='secondary'>
+          <Button variant='outline'>
             <Icon as={ArrowDownIcon} color='inherit' />
             Export
           </Button>
@@ -101,7 +101,7 @@ export const Complete = () => {
           <ButtonIcon as={UploadIcon} variant='ghost' aria-label='Import' />
           <ButtonIcon
             as={ArrowDownIcon}
-            variant='secondary'
+            variant='outline'
             aria-label='Export'
           />
           <ButtonIcon as={PlusIcon} variant='primary' aria-label='Add User' />

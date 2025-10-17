@@ -95,12 +95,12 @@ exports[`Table > renders table structure and content correctly 1`] = `
           </button>
           <button
             aria-label="Delete"
-            class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer h-7 w-7 rounded-md"
+            class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-danger text-white hover:bg-danger/90 focus-visible:ring-danger-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-7 w-7 rounded-md"
             type="button"
           >
             <svg
               aria-hidden="true"
-              class="lucide lucide-trash inline-flex items-center justify-center w-4 h-4"
+              class="lucide lucide-trash inline-flex items-center justify-center w-4 h-4 text-white"
               fill="none"
               height="24"
               stroke="currentColor"
@@ -175,12 +175,12 @@ exports[`Table > renders table structure and content correctly 1`] = `
           </button>
           <button
             aria-label="Delete"
-            class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer h-7 w-7 rounded-md"
+            class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-danger text-white hover:bg-danger/90 focus-visible:ring-danger-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-7 w-7 rounded-md"
             type="button"
           >
             <svg
               aria-hidden="true"
-              class="lucide lucide-trash inline-flex items-center justify-center w-4 h-4"
+              class="lucide lucide-trash inline-flex items-center justify-center w-4 h-4 text-white"
               fill="none"
               height="24"
               stroke="currentColor"
@@ -255,12 +255,12 @@ exports[`Table > renders table structure and content correctly 1`] = `
           </button>
           <button
             aria-label="Delete"
-            class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer h-7 w-7 rounded-md"
+            class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-danger text-white hover:bg-danger/90 focus-visible:ring-danger-soft focus-visible:ring-offset-white shadow-sm hover:shadow-md h-7 w-7 rounded-md"
             type="button"
           >
             <svg
               aria-hidden="true"
-              class="lucide lucide-trash inline-flex items-center justify-center w-4 h-4"
+              class="lucide lucide-trash inline-flex items-center justify-center w-4 h-4 text-white"
               fill="none"
               height="24"
               stroke="currentColor"

@@ -75,7 +75,6 @@ export const CenterAligned: Story = {
   render: args => (
     <ButtonGroup {...args} alignment='center'>
       <Button variant='primary'>Confirm</Button>
-      <Button variant='secondary'>Maybe Later</Button>
       <Button variant='ghost'>Cancel</Button>
     </ButtonGroup>
   ),
@@ -102,7 +101,6 @@ export const Vertical: Story = {
   render: args => (
     <ButtonGroup {...args} orientation='vertical'>
       <Button variant='primary'>Create New</Button>
-      <Button variant='secondary'>Import</Button>
       <Button variant='ghost'>Cancel</Button>
     </ButtonGroup>
   ),
@@ -116,7 +114,6 @@ export const Fluid: Story = {
     <div style={{ width: '400px', border: '1px solid var(--color-primary)' }}>
       <ButtonGroup {...args} fluid>
         <Button variant='primary'>Save</Button>
-        <Button variant='secondary'>Save as Draft</Button>
         <Button variant='ghost'>Cancel</Button>
       </ButtonGroup>
     </div>
@@ -131,7 +128,6 @@ export const VerticalFluid: Story = {
     <div style={{ width: '200px' }}>
       <ButtonGroup {...args} orientation='vertical' fluid>
         <Button variant='primary'>Sign In</Button>
-        <Button variant='secondary'>Create Account</Button>
         <Button variant='ghost'>Continue as Guest</Button>
       </ButtonGroup>
     </div>
@@ -196,9 +192,6 @@ export const ComplexExample: Story = {
           <Button variant='ghost' size='sm'>
             Reset
           </Button>
-          <Button variant='secondary' size='sm'>
-            Save as Draft
-          </Button>
           <Button variant='primary' size='sm'>
             Submit
           </Button>
@@ -226,9 +219,6 @@ export const ComplexExample: Story = {
           </Button>
           <Button variant='ghost' className='justify-start'>
             Help & Support
-          </Button>
-          <Button variant='danger-outline' className='justify-start'>
-            Sign Out
           </Button>
         </ButtonGroup>
       </div>

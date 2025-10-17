@@ -83,7 +83,7 @@ export const Confirmation: Story = {
       const [open, setOpen] = useState(false)
       return (
         <>
-          <Button variant='danger' size='md' onClick={() => setOpen(true)}>
+          <Button variant='destructive' size='md' onClick={() => setOpen(true)}>
             Delete Item
           </Button>
           <BottomSheet isOpen={open} onClose={() => setOpen(false)}>
@@ -108,7 +108,7 @@ export const Confirmation: Story = {
                   Cancel
                 </Button>
                 <Button
-                  variant='danger'
+                  variant='destructive'
                   size='md'
                   className='flex-1'
                   onClick={() => setOpen(false)}
@@ -134,7 +134,7 @@ export const Menu: Story = {
       const [open, setOpen] = useState(false)
       return (
         <>
-          <Button variant='secondary' size='md' onClick={() => setOpen(true)}>
+          <Button variant='outline' size='md' onClick={() => setOpen(true)}>
             Open Menu
           </Button>
           <BottomSheet isOpen={open} onClose={() => setOpen(false)}>
@@ -178,7 +178,7 @@ export const CustomContent: Story = {
       const [open, setOpen] = useState(false)
       return (
         <>
-          <Button variant='tertiary' size='md' onClick={() => setOpen(true)}>
+          <Button variant='outline' size='md' onClick={() => setOpen(true)}>
             Show Custom Content
           </Button>
           <BottomSheet isOpen={open} onClose={() => setOpen(false)}>
