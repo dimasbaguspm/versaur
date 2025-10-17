@@ -21,14 +21,14 @@ export const Attribute = forwardRef<HTMLDivElement, AttributeProps>(
       >
         <Text
           as='h4'
-          fontSize='sm'
+          fontSize='xs'
           fontWeight='normal'
           color='gray'
           className='leading-none'
         >
           {title}
         </Text>
-        <Text as='p' fontSize='base' fontWeight='normal'>
+        <Text as='p' fontSize='sm' fontWeight='normal'>
           {children}
         </Text>
       </div>

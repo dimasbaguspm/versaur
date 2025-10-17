@@ -1,7 +1,7 @@
 /**
  * Tabs types for Versaur UI
  */
-import type { ReactNode, HTMLAttributes } from 'react'
+import type { ReactNode, HTMLAttributes, AnchorHTMLAttributes } from 'react'
 
 /**
  * TabsContextValue: Shared state for compound/context Tabs
@@ -11,32 +11,25 @@ export interface TabsContextValue {
   activeTab: string
   /** Set active tab */
   setActiveTab: (tab: string) => void
-  /** Default color for triggers */
-  color?: 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'neutral'
-  /** Variant for tab style */
-  variant?: 'underline' | 'filled'
 }
 
 /**
- * TabsRootProps: Props for Tabs root
+ * TabsRootProps: Props for Tabs root (rendered as nav element)
  */
-export interface TabsRootProps extends HTMLAttributes<HTMLDivElement> {
+export interface TabsRootProps extends HTMLAttributes<HTMLElement> {
   /** Controlled tab value */
   value: string
   /** Callback when tab changes */
   onValueChange: (tab: string) => void
-  /** Color for triggers */
-  color?: 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'neutral'
-  /** Variant for tab style */
-  variant?: 'underline' | 'filled'
   /** Children: Tabs.Trigger */
   children: ReactNode
 }
 
 /**
- * TabsTriggerProps: Individual tab button
+ * TabsTriggerProps: Individual tab link (rendered as li > a)
  */
-export interface TabsTriggerProps extends HTMLAttributes<HTMLButtonElement> {
+export interface TabsTriggerProps
+  extends AnchorHTMLAttributes<HTMLAnchorElement> {
   /** Tab value (unique string) */
   value: string
   /** Children: tab label */

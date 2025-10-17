@@ -1,8 +1,8 @@
 /**
  * Tabs component stories for Versaur UI
- * Follows Material Design guidelines and Versaur codebase standards
- * Demonstrates vertical orientation, color variants, and accessibility
- * Includes interactive controlled example
+ * Demonstrates semantic HTML structure (nav > ul > li > a)
+ * Follows WCAG 2.1 AA accessibility standards
+ * Uses primary color with underline style only
  */
 import { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
@@ -18,7 +18,8 @@ export default meta
 type Story = StoryObj<typeof Tabs>
 
 /**
- * Example: Basic vertical tabs, content rendered externally
+ * Basic tabs with semantic HTML structure
+ * Uses nav > ul > li > a for proper navigation semantics
  */
 function BasicExample() {
   const [tab, setTab] = useState('tab1')
@@ -29,7 +30,7 @@ function BasicExample() {
         <Tabs.Trigger value='tab2'>Tab 2</Tabs.Trigger>
         <Tabs.Trigger value='tab3'>Tab 3</Tabs.Trigger>
       </Tabs>
-      <div className='mt-4'>
+      <div className='mt-4 p-4 border rounded-lg'>
         {tab === 'tab1' && <div>Content for Tab 1</div>}
         {tab === 'tab2' && <div>Content for Tab 2</div>}
         {tab === 'tab3' && <div>Content for Tab 3</div>}
@@ -39,60 +40,22 @@ function BasicExample() {
 }
 
 /**
- * Basic vertical tabs
+ * Basic tabs example with content panels
  */
 export const Basic: Story = {
   render: () => <BasicExample />,
 }
 
 /**
- * Example: Tabs with all color variants
- */
-function ColorVariantsExample() {
-  const [tab, setTab] = useState('primary')
-  const colors: Array<{
-    key: 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'neutral'
-    label: string
-  }> = [
-    { key: 'primary', label: 'Coral' },
-    { key: 'secondary', label: 'Sage' },
-    { key: 'tertiary', label: 'Mist' },
-    { key: 'ghost', label: 'Slate' },
-    { key: 'neutral', label: 'Light Gray' },
-  ]
-  return (
-    <div className='space-y-6'>
-      {colors.map(({ key, label }) => (
-        <div key={key}>
-          <div className='mb-2 font-semibold text-sm'>{label}</div>
-          <Tabs value={tab} onValueChange={setTab} color={key}>
-            <Tabs.Trigger value='primary'>Primary</Tabs.Trigger>
-            <Tabs.Trigger value='secondary'>Secondary</Tabs.Trigger>
-            <Tabs.Trigger value='tertiary'>Tertiary</Tabs.Trigger>
-            <Tabs.Trigger value='ghost'>Ghost</Tabs.Trigger>
-            <Tabs.Trigger value='neutral'>Neutral</Tabs.Trigger>
-          </Tabs>
-        </div>
-      ))}
-    </div>
-  )
-}
-
-/**
- * Tabs with color variants
- */
-export const ColorVariants: Story = {
-  render: () => <ColorVariantsExample />,
-}
-
-/**
- * Example: Tabs with scroll behavior and many items
+ * Tabs with many items demonstrating scroll behavior
+ * Active tab automatically scrolls into view
  */
 function ScrollBehaviorExample() {
-  const [tab, setTab] = useState('tab5')
+  const [tab, setTab] = useState('tab8')
   const tabItems = Array.from({ length: 15 }, (_, i) => `tab${i + 1}`)
+
   return (
-    <div className='max-w-xl border p-4'>
+    <div className='max-w-2xl border rounded-lg p-4'>
       <Tabs value={tab} onValueChange={setTab}>
         {tabItems.map(key => (
           <Tabs.Trigger key={key} value={key}>
@@ -100,42 +63,92 @@ function ScrollBehaviorExample() {
           </Tabs.Trigger>
         ))}
       </Tabs>
-      <div className='mt-4'>{`Content for ${tab}`}</div>
+      <div className='mt-4 p-4 bg-neutral-soft rounded-lg'>
+        <p className='text-sm text-foreground'>
+          Active tab: <strong>{tab.replace('tab', '')}</strong>
+        </p>
+        <p className='text-xs text-foreground-light mt-2'>
+          The active tab automatically scrolls into view for better UX
+        </p>
+      </div>
     </div>
   )
 }
 
 /**
- * Tabs with scroll behavior
+ * Tabs with horizontal scrolling for many items
  */
 export const ScrollBehavior: Story = {
   render: () => <ScrollBehaviorExample />,
 }
 
 /**
- * Example: Tabs with filled variant
+ * Tabs with long labels demonstrating text wrapping
  */
-function FilledVariantExample() {
-  const [tab, setTab] = useState('tab1')
+function LongLabelsExample() {
+  const [tab, setTab] = useState('short')
+
   return (
     <>
-      <Tabs value={tab} onValueChange={setTab} variant='filled'>
-        <Tabs.Trigger value='tab1'>Tab 1</Tabs.Trigger>
-        <Tabs.Trigger value='tab2'>Tab 2</Tabs.Trigger>
-        <Tabs.Trigger value='tab3'>Tab 3</Tabs.Trigger>
+      <Tabs value={tab} onValueChange={setTab}>
+        <Tabs.Trigger value='short'>Short</Tabs.Trigger>
+        <Tabs.Trigger value='medium'>Medium Label</Tabs.Trigger>
+        <Tabs.Trigger value='long'>This is a very long tab label</Tabs.Trigger>
       </Tabs>
-      <div className='mt-4'>
-        {tab === 'tab1' && <div>Content for Tab 1</div>}
-        {tab === 'tab2' && <div>Content for Tab 2</div>}
-        {tab === 'tab3' && <div>Content for Tab 3</div>}
+      <div className='mt-4 p-4 border rounded-lg'>
+        {tab === 'short' && <div>Content for short tab</div>}
+        {tab === 'medium' && <div>Content for medium label tab</div>}
+        {tab === 'long' && <div>Content for very long tab label</div>}
       </div>
     </>
   )
 }
 
 /**
- * Tabs with filled variant
+ * Tabs with varying label lengths
  */
-export const FilledVariant: Story = {
-  render: () => <FilledVariantExample />,
+export const LongLabels: Story = {
+  render: () => <LongLabelsExample />,
+}
+
+/**
+ * Tabs demonstrating keyboard navigation
+ * Use Tab key to focus, arrow keys to navigate (browser default behavior)
+ */
+function KeyboardNavigationExample() {
+  const [tab, setTab] = useState('home')
+
+  return (
+    <div className='space-y-4'>
+      <div className='p-4 bg-info-soft rounded-lg border border-info-light'>
+        <p className='text-sm text-info-bold font-medium'>
+          Keyboard Navigation:
+        </p>
+        <ul className='text-xs text-info mt-2 space-y-1 list-disc list-inside'>
+          <li>Press Tab to focus the active tab</li>
+          <li>Use Left/Right arrow keys to navigate between tabs</li>
+          <li>Press Enter or Space to activate a tab</li>
+        </ul>
+      </div>
+      <Tabs value={tab} onValueChange={setTab}>
+        <Tabs.Trigger value='home'>Home</Tabs.Trigger>
+        <Tabs.Trigger value='products'>Products</Tabs.Trigger>
+        <Tabs.Trigger value='about'>About</Tabs.Trigger>
+        <Tabs.Trigger value='contact'>Contact</Tabs.Trigger>
+      </Tabs>
+      <div className='p-4 border rounded-lg'>
+        {tab === 'home' && <div>Home content</div>}
+        {tab === 'products' && <div>Products content</div>}
+        {tab === 'about' && <div>About content</div>}
+        {tab === 'contact' && <div>Contact content</div>}
+      </div>
+    </div>
+  )
+}
+
+/**
+ * Tabs with keyboard navigation instructions
+ */
+export const KeyboardNavigation: Story = {
+  render: () => <KeyboardNavigationExample />,
 }

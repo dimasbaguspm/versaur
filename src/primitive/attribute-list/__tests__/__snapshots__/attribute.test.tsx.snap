@@ -12,12 +12,12 @@ exports[`AttributeList > should render default AttributeList with correct HTML s
         class="space-y-1"
       >
         <h4
-          class="text-gray-500 text-left text-sm font-normal leading-none"
+          class="text-gray-500 text-left text-xs font-normal leading-none"
         >
           Name
         </h4>
         <p
-          class="text-ghost text-left text-base font-normal"
+          class="text-ghost text-left text-sm font-normal"
         >
           John Doe
         </p>
@@ -30,12 +30,12 @@ exports[`AttributeList > should render default AttributeList with correct HTML s
         class="space-y-1"
       >
         <h4
-          class="text-gray-500 text-left text-sm font-normal leading-none"
+          class="text-gray-500 text-left text-xs font-normal leading-none"
         >
           Email
         </h4>
         <p
-          class="text-ghost text-left text-base font-normal"
+          class="text-ghost text-left text-sm font-normal"
         >
           john.doe@example.com
         </p>
@@ -48,12 +48,12 @@ exports[`AttributeList > should render default AttributeList with correct HTML s
         class="space-y-1"
       >
         <h4
-          class="text-gray-500 text-left text-sm font-normal leading-none"
+          class="text-gray-500 text-left text-xs font-normal leading-none"
         >
           Phone
         </h4>
         <p
-          class="text-ghost text-left text-base font-normal"
+          class="text-ghost text-left text-sm font-normal"
         >
           +1 (555) 123-4567
         </p>
@@ -66,12 +66,12 @@ exports[`AttributeList > should render default AttributeList with correct HTML s
         class="space-y-1"
       >
         <h4
-          class="text-gray-500 text-left text-sm font-normal leading-none"
+          class="text-gray-500 text-left text-xs font-normal leading-none"
         >
           Location
         </h4>
         <p
-          class="text-ghost text-left text-base font-normal"
+          class="text-ghost text-left text-sm font-normal"
         >
           New York, NY
         </p>

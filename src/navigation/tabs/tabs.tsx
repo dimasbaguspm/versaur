@@ -1,58 +1,50 @@
 // Compound/context Tabs component for Versaur UI
-// See context.ts for shared state
+// Uses semantic HTML: nav > ul > li > a
 import React, { useRef } from 'react'
 import { TabsContext } from './context'
 import type { TabsRootProps } from './types'
 import { TabsTrigger, TabsIndicator } from './tabs.atoms'
 import { cn } from '@/utils/cn'
 import { tabsContainerVariants } from './helpers'
-import { useTabIndicatorAndFocus } from './use-tab-indicator'
+import { useTabIndicator } from './use-tab-indicator'
 
 /**
- * TabsRoot: Compound/context root for Tabs
+ * TabsRoot: Semantic navigation tabs with primary underline style
  * @see https://m3.material.io/components/tabs/guidelines
+ * @see https://www.w3.org/WAI/ARIA/apg/patterns/tabs/
  */
 const TabsRoot: React.FC<TabsRootProps> = ({
   value,
   onValueChange,
   children,
   className,
-  color = 'primary',
-  variant = 'underline',
   ...props
 }) => {
   const contextValue = {
     activeTab: value,
     setActiveTab: onValueChange,
-    color,
-    variant,
   }
 
-  const containerRef = useRef<HTMLDivElement>(null)
-  const indicatorStyle = useTabIndicatorAndFocus(value, containerRef, children)
+  const containerRef = useRef<HTMLUListElement>(null)
+  const indicatorStyle = useTabIndicator(value, containerRef)
 
   return (
     <TabsContext.Provider value={contextValue}>
-      <div
-        role='tablist'
-        className={cn(
-          tabsContainerVariants({
-            variant,
-          }),
-          className
-        )}
-        ref={containerRef}
-        style={{ position: 'relative' }}
-        {...props}
-      >
-        {children}
-        {variant === 'underline' && (
+      <nav className={cn('relative', className)} aria-label='Tabs' {...props}>
+        <div className='relative overflow-hidden'>
+          <ul
+            role='tablist'
+            className={tabsContainerVariants()}
+            ref={containerRef}
+          >
+            {children}
+          </ul>
           <TabsIndicator
             left={indicatorStyle.left}
             width={indicatorStyle.width}
           />
-        )}
-      </div>
+        </div>
+      </nav>
     </TabsContext.Provider>
   )
 }

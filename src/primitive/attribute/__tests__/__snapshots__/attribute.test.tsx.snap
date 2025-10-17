@@ -6,12 +6,12 @@ exports[`Attribute > should render with correct HTML structure 1`] = `
     class="space-y-1"
   >
     <h4
-      class="text-gray-500 text-left text-sm font-normal leading-none"
+      class="text-gray-500 text-left text-xs font-normal leading-none"
     >
       Name
     </h4>
     <p
-      class="text-ghost text-left text-base font-normal"
+      class="text-ghost text-left text-sm font-normal"
     >
       John Doe
     </p>

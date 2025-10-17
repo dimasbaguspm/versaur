@@ -2,82 +2,53 @@
 
 exports[`Tabs > matches snapshot 1`] = `
 <DocumentFragment>
-  <div
-    class="flex flex-row w-full overflow-x-auto whitespace-nowrap border-b border-border"
-    role="tablist"
-    style="position: relative;"
+  <nav
+    aria-label="Tabs"
+    class="relative"
   >
-    <button
-      aria-controls="tabs-content-tab1"
-      aria-selected="true"
-      class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-sm relative font-medium bg-transparent border-b-2 text-primary border-primary"
-      id="tabs-trigger-tab1"
-      role="tab"
-      tabindex="0"
-      type="button"
-    >
-      Tab 1
-    </button>
-    <button
-      aria-controls="tabs-content-tab2"
-      aria-selected="false"
-      class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-sm relative font-normal bg-transparent border-b-2 border-transparent text-foreground hover:text-primary"
-      id="tabs-trigger-tab2"
-      role="tab"
-      tabindex="-1"
-      type="button"
-    >
-      Tab 2
-    </button>
     <div
-      aria-hidden="true"
-      class="absolute bottom-0 h-0.5 rounded transition-all duration-300 bg-primary"
-      style="left: 0px; width: 0px; pointer-events: none;"
-    />
-  </div>
-</DocumentFragment>
-`;
-
-exports[`Tabs > renders filled variant with correct layout and style 1`] = `
-<DocumentFragment>
-  <div
-    class="flex flex-row w-full overflow-x-auto whitespace-nowrap p-1 bg-neutral rounded-lg gap-2"
-    role="tablist"
-    style="position: relative;"
-  >
-    <button
-      aria-controls="tabs-content-tab1"
-      aria-selected="true"
-      class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-sm relative font-medium rounded-lg bg-none flex-1 min-w-0 bg-white text-foreground shadow-sm"
-      id="tabs-trigger-tab1"
-      role="tab"
-      tabindex="0"
-      type="button"
+      class="relative overflow-hidden"
     >
-      Tab 1
-    </button>
-    <button
-      aria-controls="tabs-content-tab2"
-      aria-selected="false"
-      class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-sm relative font-normal rounded-lg bg-none flex-1 min-w-0 bg-transparent text-foreground hover:bg-white/80"
-      id="tabs-trigger-tab2"
-      role="tab"
-      tabindex="-1"
-      type="button"
-    >
-      Tab 2
-    </button>
-    <button
-      aria-controls="tabs-content-tab3"
-      aria-selected="false"
-      class="inline-flex items-center justify-center transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none px-4 py-2 text-sm relative font-normal rounded-lg bg-none flex-1 min-w-0 bg-transparent text-foreground hover:bg-white/80"
-      id="tabs-trigger-tab3"
-      role="tab"
-      tabindex="-1"
-      type="button"
-    >
-      Tab 3
-    </button>
-  </div>
+      <ul
+        class="flex flex-row w-full border-b border-border overflow-x-auto overflow-y-visible whitespace-nowrap py-1"
+        role="tablist"
+      >
+        <li
+          role="presentation"
+        >
+          <a
+            aria-controls="tabs-content-tab1"
+            aria-current="page"
+            aria-selected="true"
+            class="inline-flex items-center justify-center px-4 py-2 text-sm transition-all duration-200 border-b-2 border-transparent select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:z-10 disabled:opacity-50 disabled:pointer-events-none text-primary font-medium"
+            href="#tab1"
+            id="tabs-trigger-tab1"
+            role="tab"
+          >
+            Tab 1
+          </a>
+        </li>
+        <li
+          role="presentation"
+        >
+          <a
+            aria-controls="tabs-content-tab2"
+            aria-selected="false"
+            class="inline-flex items-center justify-center px-4 py-2 text-sm font-normal text-foreground transition-all duration-200 border-b-2 border-transparent select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:z-10 disabled:opacity-50 disabled:pointer-events-none hover:text-primary"
+            href="#tab2"
+            id="tabs-trigger-tab2"
+            role="tab"
+          >
+            Tab 2
+          </a>
+        </li>
+      </ul>
+      <div
+        aria-hidden="true"
+        class="absolute bottom-0 h-0.5 rounded bg-primary transition-all duration-300 pointer-events-none"
+        style="left: 0px; width: 0px;"
+      />
+    </div>
+  </nav>
 </DocumentFragment>
 `;
