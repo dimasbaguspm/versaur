@@ -8,50 +8,25 @@ const meta: Meta<typeof FilterChip> = {
     docs: {
       description: {
         component: `
-The FilterChip component is a versatile, accessible chip with support for semantic variants, outline styles, and multiple sizes. Built with Tailwind CSS and following Versaur's color system.
+The FilterChip component is a simple, accessible chip with neutral outline styling. Built with Tailwind CSS and following Versaur's design system.
 
 ## Features
-- **Core Variants**: Primary (coral), secondary (sage), tertiary (mist), ghost (slate), neutral (cream)
-- **Semantic Variants**: Success, info, warning, danger
-- **Style Variants**: Filled, outline
+- **Fixed Style**: Neutral outline variant for consistent filtering UI
 - **Sizes**: Small, medium, large
-- **Removable**: Optional cross icon for removing the chip
+- **Removable**: Includes cross icon for removing the chip
 - **Accessibility**: Full keyboard navigation, ARIA attributes, focus management
 - **Responsive**: Mobile-first responsive design
 
 ## Usage
-Use FilterChip for tags, filters, categories, or any removable label elements. The chip can be clickable (without onRemove) or removable (with onRemove callback).
+Use FilterChip for tags, filters, categories, or any removable label elements in filtering contexts.
 
-## Color System
-Uses the Versaur color palette with professional harmony: coral for primary actions, sage for secondary, mist for tertiary, slate for ghost/text, and cream for neutral backgrounds.
+## Design
+Uses a neutral outline style with border, white background, and subtle hover states for professional, consistent filtering interfaces.
         `,
       },
     },
   },
   argTypes: {
-    variant: {
-      control: { type: 'select' },
-      options: [
-        'primary',
-        'primary-outline',
-        'secondary',
-        'secondary-outline',
-        'tertiary',
-        'tertiary-outline',
-        'ghost',
-        'ghost-outline',
-        'neutral',
-        'neutral-outline',
-        'success',
-        'success-outline',
-        'info',
-        'info-outline',
-        'warning',
-        'warning-outline',
-        'danger',
-        'danger-outline',
-      ],
-    },
     size: {
       control: { type: 'select' },
       options: ['sm', 'md', 'lg'],
@@ -62,7 +37,6 @@ Uses the Versaur color palette with professional harmony: coral for primary acti
   },
   args: {
     children: 'Filter Label',
-    variant: 'neutral-outline',
     size: 'md',
     disabled: false,
   },
@@ -81,44 +55,6 @@ export const Default: Story = {
 }
 
 /**
- * All available variants showcasing the Versaur color system
- */
-export const Variants: Story = {
-  render: () => (
-    <div className='flex flex-wrap gap-2'>
-      <FilterChip variant='primary'>Primary</FilterChip>
-      <FilterChip variant='primary-outline'>Primary Outline</FilterChip>
-      <FilterChip variant='secondary'>Secondary</FilterChip>
-      <FilterChip variant='secondary-outline'>Secondary Outline</FilterChip>
-      <FilterChip variant='tertiary'>Tertiary</FilterChip>
-      <FilterChip variant='tertiary-outline'>Tertiary Outline</FilterChip>
-      <FilterChip variant='ghost'>Ghost</FilterChip>
-      <FilterChip variant='ghost-outline'>Ghost Outline</FilterChip>
-      <FilterChip variant='neutral'>Neutral</FilterChip>
-      <FilterChip variant='neutral-outline'>Neutral Outline</FilterChip>
-    </div>
-  ),
-}
-
-/**
- * Semantic color variants for different states and contexts
- */
-export const SemanticColors: Story = {
-  render: () => (
-    <div className='flex flex-wrap gap-2'>
-      <FilterChip variant='success'>Success</FilterChip>
-      <FilterChip variant='success-outline'>Success Outline</FilterChip>
-      <FilterChip variant='info'>Info</FilterChip>
-      <FilterChip variant='info-outline'>Info Outline</FilterChip>
-      <FilterChip variant='warning'>Warning</FilterChip>
-      <FilterChip variant='warning-outline'>Warning Outline</FilterChip>
-      <FilterChip variant='danger'>Danger</FilterChip>
-      <FilterChip variant='danger-outline'>Danger Outline</FilterChip>
-    </div>
-  ),
-}
-
-/**
  * Different sizes for various layout contexts
  */
 export const Sizes: Story = {
@@ -132,15 +68,15 @@ export const Sizes: Story = {
 }
 
 /**
- * Removable chips in different variants
+ * Multiple filter chips demonstrating typical usage
  */
-export const RemovableVariants: Story = {
+export const MultipleFilters: Story = {
   render: () => (
     <div className='flex flex-wrap gap-2'>
-      <FilterChip variant='primary'>Primary</FilterChip>
-      <FilterChip variant='secondary-outline'>Secondary</FilterChip>
-      <FilterChip variant='success'>Success</FilterChip>
-      <FilterChip variant='danger-outline'>Danger</FilterChip>
+      <FilterChip>Category A</FilterChip>
+      <FilterChip>Status: Active</FilterChip>
+      <FilterChip>Date: Today</FilterChip>
+      <FilterChip>Priority: High</FilterChip>
     </div>
   ),
 }
@@ -151,13 +87,12 @@ export const RemovableVariants: Story = {
 export const Disabled: Story = {
   render: () => (
     <div className='flex flex-wrap gap-2'>
-      <FilterChip disabled>Disabled</FilterChip>
-      <FilterChip disabled>Disabled Removable</FilterChip>
-      <FilterChip variant='primary' disabled>
-        Disabled Primary
+      <FilterChip disabled>Disabled Filter</FilterChip>
+      <FilterChip disabled size='sm'>
+        Small Disabled
       </FilterChip>
-      <FilterChip variant='secondary-outline' disabled>
-        Disabled Outline
+      <FilterChip disabled size='lg'>
+        Large Disabled
       </FilterChip>
     </div>
   ),

@@ -6,14 +6,7 @@ import { FilterChip } from '../filter-chip'
 import * as stories from '../filter-chip.stories'
 import { composeStories } from '@storybook/react'
 
-const {
-  Default,
-  Variants,
-  SemanticColors,
-  Sizes,
-  RemovableVariants,
-  Disabled,
-} = composeStories(stories)
+const { Default, Sizes, MultipleFilters, Disabled } = composeStories(stories)
 
 describe('FilterChip', () => {
   it('renders correctly', () => {
@@ -23,10 +16,13 @@ describe('FilterChip', () => {
     expect(result.asFragment()).toMatchSnapshot()
   })
 
-  it('applies variant classes correctly', () => {
-    render(<FilterChip variant='primary'>Primary Chip</FilterChip>)
+  it('applies neutral-outline style correctly', () => {
+    render(<FilterChip>Neutral Chip</FilterChip>)
     const chip = screen.getByRole('button')
-    expect(chip).toHaveClass('bg-primary-light')
+    expect(chip).toHaveClass('border')
+    expect(chip).toHaveClass('border-border')
+    expect(chip).toHaveClass('text-foreground')
+    expect(chip).toHaveClass('bg-white')
   })
 
   it('applies size classes correctly', () => {
@@ -84,23 +80,13 @@ describe('FilterChip', () => {
     expect(result.asFragment()).toMatchSnapshot()
   })
 
-  it('renders all variants correctly', () => {
-    const result = render(<Variants />)
-    expect(result.asFragment()).toMatchSnapshot()
-  })
-
-  it('renders semantic color variants correctly', () => {
-    const result = render(<SemanticColors />)
-    expect(result.asFragment()).toMatchSnapshot()
-  })
-
   it('renders different sizes correctly', () => {
     const result = render(<Sizes />)
     expect(result.asFragment()).toMatchSnapshot()
   })
 
-  it('renders removable variants correctly', () => {
-    const result = render(<RemovableVariants />)
+  it('renders multiple filters correctly', () => {
+    const result = render(<MultipleFilters />)
     expect(result.asFragment()).toMatchSnapshot()
   })
 

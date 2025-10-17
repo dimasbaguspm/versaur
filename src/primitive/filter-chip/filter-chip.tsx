@@ -7,21 +7,14 @@ import { XIcon } from 'lucide-react'
 
 export const FilterChip = React.forwardRef<HTMLButtonElement, FilterChipProps>(
   function FilterChip(
-    {
-      className,
-      variant = 'neutral-outline',
-      size = 'md',
-      disabled = false,
-      children,
-      ...props
-    },
+    { className, size = 'md', disabled = false, children, ...props },
     ref
   ) {
     return (
       <button
         ref={ref}
         type='button'
-        className={cn(filterChipVariants({ variant, size }), className)}
+        className={cn(filterChipVariants({ size }), className)}
         disabled={disabled}
         aria-disabled={disabled}
         aria-label={`${children}, removable`}
