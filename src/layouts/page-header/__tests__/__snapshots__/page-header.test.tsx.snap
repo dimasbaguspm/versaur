@@ -7,10 +7,10 @@ exports[`PageHeader > renders correctly 1`] = `
     role="banner"
   >
     <div
-      class="w-full mx-auto pt-4 md:pt-10 max-w-full"
+      class="w-full mx-auto pt-4 md:pt-10 max-w-full px-0"
     >
       <div
-        class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 px-4 sm:px-6 mb-4"
+        class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4"
         data-versaur-page-header-top="true"
       >
         <div

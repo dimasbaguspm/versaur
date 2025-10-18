@@ -1,8 +1,8 @@
-# PageLayout Component Specification
+# PageContent Component Specification
 
 ## Overview
 
-The `PageLayout` component serves as a parent wrapper for main content in the body region or below
+The `PageContent` component serves as a parent wrapper for main content in the body region or below
 the page header. It provides a flexible container system with configurable sizing, column templates,
 and background colors.
 
@@ -126,36 +126,36 @@ The component extends `React.HTMLAttributes<HTMLDivElement>`, so all standard di
 ### Basic Single Column Layout
 
 ```tsx
-<PageLayout>
+<PageContent>
   <h1>Page Content</h1>
   <p>Your content here...</p>
-</PageLayout>
+</PageContent>
 ```
 
 ### Wide Container with Two Columns
 
 ```tsx
-<PageLayout size='wide' template='two-column'>
+<PageContent size='wide' template='two-column'>
   <div>Column 1</div>
   <div>Column 2</div>
-</PageLayout>
+</PageContent>
 ```
 
 ### Content-Focused Layout with Sidebar
 
 ```tsx
-<PageLayout size='wide' template='two-column-asymmetric-left'>
+<PageContent size='wide' template='two-column-asymmetric-left'>
   <div className='md:col-span-2'>{/* Main content (wider) */}</div>
   <div>{/* Sidebar */}</div>
-</PageLayout>
+</PageContent>
 ```
 
 ### Gray Background for Visual Contrast
 
 ```tsx
-<PageLayout size='wide' backgroundColor='gray'>
+<PageContent size='wide' backgroundColor='gray'>
   <div className='rounded-lg bg-white p-6'>{/* Content on contrasting background */}</div>
-</PageLayout>
+</PageContent>
 ```
 
 ## Accessibility
@@ -170,7 +170,7 @@ The component extends `React.HTMLAttributes<HTMLDivElement>`, so all standard di
 ### Via className
 
 ```tsx
-<PageLayout className='pt-8 gap-8'>{/* Adds top padding and larger gap */}</PageLayout>
+<PageContent className='pt-8 gap-8'>{/* Adds top padding and larger gap */}</PageContent>
 ```
 
 ### Tailwind Class Override Priority
@@ -228,7 +228,7 @@ page-layout/
 
 ## Related Components
 
-- **PageHeader**: Often used above PageLayout
-- **PageContent**: May be used within PageLayout for additional structure
+- **PageHeader**: Often used above PageContent
+- **PageContent**: May be used within PageContent for additional structure
 - **Card**: Common child component for content sections
 - **SideBar**: Works well with asymmetric column templates

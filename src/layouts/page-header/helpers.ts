@@ -17,13 +17,14 @@ export const pageHeaderOuterVariants = cva('w-full', {
 
 /**
  * PageHeader inner container styles (size and padding)
+ * Padding must match PageLayout for visual consistency
  */
 export const pageHeaderInnerVariants = cva('w-full mx-auto pt-4 md:pt-10', {
   variants: {
     size: {
-      fluid: 'max-w-full',
-      wide: 'max-w-7xl',
-      narrow: 'max-w-3xl',
+      fluid: 'max-w-full px-0',
+      wide: 'max-w-7xl px-6',
+      narrow: 'max-w-3xl px-4',
     },
   },
   defaultVariants: {
@@ -36,14 +37,13 @@ export const pageHeaderInnerVariants = cva('w-full mx-auto pt-4 md:pt-10', {
  * Mobile-first responsive: stacks vertically on mobile, horizontal on desktop
  */
 export const pageHeaderTopVariants = cva(
-  'flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 px-4 sm:px-6 mb-4'
+  'flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4'
 )
 
 /**
  * PageHeaderBreadcrumbs styles
- * Responsive padding for mobile
  */
-export const pageHeaderBreadcrumbsVariants = cva('mb-4 px-4 sm:px-6')
+export const pageHeaderBreadcrumbsVariants = cva('mb-4')
 
 /**
  * PageHeaderContent styles - title and subtitle area
@@ -77,8 +77,8 @@ export const pageHeaderMobileActionsVariants = cva('md:hidden')
 
 /**
  * PageHeaderBottom styles - bottom section for tabs
- * Responsive padding and overflow handling
+ * Overflow handling for horizontal scrolling
  */
 export const pageHeaderBottomVariants = cva(
-  'w-full flex items-center px-4 sm:px-6 py-0 overflow-x-auto'
+  'w-full flex items-center py-0 overflow-x-auto'
 )

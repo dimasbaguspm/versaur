@@ -1,15 +1,38 @@
-import type { ReactNode, HTMLAttributes } from 'react'
-
 /**
- * Props for PageContent main container
- *
- * A layout component that provides consistent horizontal spacing
- * matching the page-header component, with additional vertical
- * padding for content separation
+ * Props for the PageContent component
  */
-export interface PageContentProps extends HTMLAttributes<HTMLDivElement> {
+export interface PageContentProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
-   * Content to be displayed inside the page content area
+   * Size determines the max-width and padding
+   * - 'fluid': No padding, full viewport width
+   * - 'wide': Container for desktop screens (centered)
+   * - 'narrow': Container for mobile screens (centered)
    */
-  children?: ReactNode
+  size?: 'fluid' | 'wide' | 'narrow'
+  /**
+   * Template defines the column layout structure
+   * - 'single-column': Single centered column
+   * - 'two-column': Two equal columns
+   * - 'two-column-asymmetric-left': Two columns with left column wider
+   * - 'two-column-asymmetric-right': Two columns with right column wider
+   */
+  template?:
+    | 'single-column'
+    | 'two-column'
+    | 'two-column-asymmetric-left'
+    | 'two-column-asymmetric-right'
+  /**
+   * Background color of the layout
+   * - 'white': White background
+   * - 'gray': Gray background
+   */
+  backgroundColor?: 'white' | 'gray'
+  /**
+   * Content to render inside the layout
+   */
+  children: React.ReactNode
+  /**
+   * Additional class names to apply to the root element
+   */
+  className?: string
 }

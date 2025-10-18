@@ -1,2 +1,2 @@
 export { PageContent } from './page-content'
-export type { PageContentProps } from './types'
+export type * from './types'

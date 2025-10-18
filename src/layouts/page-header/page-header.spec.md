@@ -4,23 +4,23 @@
 
 The `PageHeader` component provides a flexible layout system for page headers that can include
 breadcrumbs, titles, subtitles, badges, action buttons, and bottom navigation tabs. It is designed
-to work in tandem with `PageLayout` for consistent page structure.
+to work in tandem with `PageContent` for consistent page structure.
 
 ## Purpose
 
 - **Unified Header Structure**: Provides consistent header layout across the application
 - **Flexible Composition**: Supports simplified prop-based API for common use cases
 - **Responsive Design**: Adapts to mobile and desktop viewports with appropriate stacking
-- **Visual Consistency**: Matches PageLayout's size and backgroundColor options for seamless pairing
+- **Visual Consistency**: Matches PageContent's size and backgroundColor options for seamless pairing
 
 ## Component Structure
 
-The component uses a **two-div wrapper structure** matching PageLayout:
+The component uses a **two-div wrapper structure** matching PageContent:
 
 1. **Outer Wrapper**: Handles background color and extends full viewport width
-2. **Inner Container**: Controls max-width and padding, matching PageLayout's size constraints
+2. **Inner Container**: Controls max-width and padding, matching PageContent's size constraints
 
-This structure ensures visual consistency when PageHeader is paired with PageLayout on the same
+This structure ensures visual consistency when PageHeader is paired with PageContent on the same
 page.
 
 ## Props API
@@ -36,7 +36,7 @@ Controls the maximum width and padding of the inner container.
   - `wide`: Desktop-optimized container (max-w-7xl)
   - `narrow`: Mobile-optimized container (max-w-3xl)
 
-**Important**: Should match the `size` of the paired `PageLayout` component for visual alignment.
+**Important**: Should match the `size` of the paired `PageContent` component for visual alignment.
 
 ### `backgroundColor`
 
@@ -48,7 +48,7 @@ Controls the background color of the outer wrapper.
   - `white`: White background (bg-white)
   - `gray`: Neutral gray background (bg-neutral)
 
-**Important**: Should match the `backgroundColor` of the paired `PageLayout` component for seamless
+**Important**: Should match the `backgroundColor` of the paired `PageContent` component for seamless
 integration.
 
 ### Simplified API Props
@@ -153,12 +153,12 @@ The component extends `HTMLAttributes<HTMLElement>`, so all standard header attr
 ### Visual Hierarchy
 
 - Background extends full viewport width
-- Content respects size constraints matching PageLayout
+- Content respects size constraints matching PageContent
 - Proper spacing between sections (mb-4 for breadcrumbs, px-4/px-6 responsive padding)
 
-## Pairing with PageLayout
+## Pairing with PageContent
 
-For visual consistency, PageHeader should be paired with PageLayout using matching `size` and
+For visual consistency, PageHeader should be paired with PageContent using matching `size` and
 `backgroundColor` props:
 
 ### Example: Fluid Layout (Full Width)
@@ -171,9 +171,9 @@ For visual consistency, PageHeader should be paired with PageLayout using matchi
     title='Dashboard'
     subtitle='Overview of your projects'
   />
-  <PageLayout size='fluid' backgroundColor='white'>
+  <PageContent size='fluid' backgroundColor='white'>
     {/* Page content */}
-  </PageLayout>
+  </PageContent>
 </>
 ```
 
@@ -188,9 +188,9 @@ For visual consistency, PageHeader should be paired with PageLayout using matchi
     subtitle='Manage users and permissions'
     breadcrumbs={<Breadcrumbs>{/* ... */}</Breadcrumbs>}
   />
-  <PageLayout size='wide' backgroundColor='gray'>
+  <PageContent size='wide' backgroundColor='gray'>
     {/* Page content */}
-  </PageLayout>
+  </PageContent>
 </>
 ```
 
@@ -204,9 +204,9 @@ For visual consistency, PageHeader should be paired with PageLayout using matchi
     title='Account Settings'
     subtitle='Manage your preferences'
   />
-  <PageLayout size='narrow' backgroundColor='white'>
+  <PageContent size='narrow' backgroundColor='white'>
     {/* Page content */}
-  </PageLayout>
+  </PageContent>
 </>
 ```
 
@@ -277,8 +277,8 @@ For visual consistency, PageHeader should be paired with PageLayout using matchi
 
 ## Best Practices
 
-1. **Match with PageLayout**: Always use matching `size` and `backgroundColor` props when pairing
-   with PageLayout
+1. **Match with PageContent**: Always use matching `size` and `backgroundColor` props when pairing
+   with PageContent
 2. **Mobile Actions**: Provide both `actions` and `mobileActions` for optimal mobile experience
 3. **Breadcrumbs**: Include breadcrumbs for better navigation context on nested pages
 4. **Badges**: Use sparingly for important status indicators only
@@ -295,7 +295,7 @@ For visual consistency, PageHeader should be paired with PageLayout using matchi
 
 ## Related Components
 
-- **PageLayout**: Main content wrapper that should match PageHeader's size and backgroundColor
+- **PageContent**: Main content wrapper that should match PageHeader's size and backgroundColor
 - **Breadcrumbs**: Navigation breadcrumbs component
 - **Tabs**: Bottom navigation tabs
 - **Button**: Action buttons

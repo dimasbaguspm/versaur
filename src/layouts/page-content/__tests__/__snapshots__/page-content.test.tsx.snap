@@ -1,65 +1,264 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`PageContent > matches snapshot 1`] = `
+exports[`PageContent > renders default layout and matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="w-full px-4 sm:px-6 py-6 sm:py-8"
+    class="min-h-screen"
   >
     <div
-      class="space-y-6"
+      class="w-full bg-white"
     >
       <div
-        class="prose"
+        class="w-full mx-auto relative max-w-full px-0 grid grid-cols-1"
       >
-        <p
-          class="text-ghost text-left font-normal text-base"
+        <div
+          class="rounded-lg bg-primary-soft p-6 text-foreground"
         >
-          This is the main content area of your page. PageContent provides consistent horizontal spacing that matches the PageHeader component, ensuring a cohesive layout across your application.
-        </p>
+          <h2
+            class="mb-2 text-xl font-semibold"
+          >
+            Content
+          </h2>
+          <p
+            class="text-foreground-light"
+          >
+            This is sample content to demonstrate the layout behavior.
+          </p>
+        </div>
       </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`PageContent > renders gray background layout and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="min-h-screen"
+  >
+    <div
+      class="w-full bg-neutral"
+    >
       <div
-        class="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
+        class="w-full mx-auto relative max-w-7xl px-6 pb-10 grid grid-cols-1"
       >
         <div
-          class="p-4 bg-neutral rounded-lg"
+          class="rounded-lg bg-white p-6"
         >
-          <h3
-            class="text-ghost text-left text-lg font-semibold mb-2"
+          <h2
+            class="mb-2 text-xl font-semibold"
           >
-            Card 1
-          </h3>
+            Content on Gray Background
+          </h2>
           <p
-            class="text-gray-500 text-left font-normal text-base leading-normal"
+            class="text-foreground-light"
           >
-            Some content in the first card using Versaur Text component.
+            The gray background provides visual contrast for the page.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`PageContent > renders narrow container layout and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="min-h-screen"
+  >
+    <div
+      class="w-full bg-white"
+    >
+      <div
+        class="w-full mx-auto relative max-w-3xl px-4 pb-10 grid grid-cols-1"
+      >
+        <div
+          class="rounded-lg bg-primary-soft p-6 text-foreground"
+        >
+          <h2
+            class="mb-2 text-xl font-semibold"
+          >
+            Narrow Container Content
+          </h2>
+          <p
+            class="text-foreground-light"
+          >
+            This is sample content to demonstrate the layout behavior.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`PageContent > renders two column asymmetric left layout and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="min-h-screen"
+  >
+    <div
+      class="w-full bg-white"
+    >
+      <div
+        class="w-full mx-auto relative max-w-7xl px-6 pb-10 grid grid-cols-1 md:grid-cols-3 gap-6"
+      >
+        <div
+          class="md:col-span-2"
+        >
+          <div
+            class="rounded-lg bg-primary-soft p-6 text-foreground"
+          >
+            <h2
+              class="mb-2 text-xl font-semibold"
+            >
+              Main Content (Wider)
+            </h2>
+            <p
+              class="text-foreground-light"
+            >
+              This is sample content to demonstrate the layout behavior.
+            </p>
+          </div>
+        </div>
+        <div
+          class="rounded-lg bg-primary-soft p-6 text-foreground"
+        >
+          <h2
+            class="mb-2 text-xl font-semibold"
+          >
+            Sidebar
+          </h2>
+          <p
+            class="text-foreground-light"
+          >
+            This is sample content to demonstrate the layout behavior.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`PageContent > renders two column asymmetric right layout and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="min-h-screen"
+  >
+    <div
+      class="w-full bg-white"
+    >
+      <div
+        class="w-full mx-auto relative max-w-7xl px-6 pb-10 grid grid-cols-1 md:grid-cols-3 gap-6"
+      >
+        <div
+          class="rounded-lg bg-primary-soft p-6 text-foreground"
+        >
+          <h2
+            class="mb-2 text-xl font-semibold"
+          >
+            Sidebar
+          </h2>
+          <p
+            class="text-foreground-light"
+          >
+            This is sample content to demonstrate the layout behavior.
           </p>
         </div>
         <div
-          class="p-4 bg-neutral rounded-lg"
+          class="md:col-span-2"
         >
-          <h3
-            class="text-ghost text-left text-lg font-semibold mb-2"
+          <div
+            class="rounded-lg bg-primary-soft p-6 text-foreground"
           >
-            Card 2
-          </h3>
+            <h2
+              class="mb-2 text-xl font-semibold"
+            >
+              Main Content (Wider)
+            </h2>
+            <p
+              class="text-foreground-light"
+            >
+              This is sample content to demonstrate the layout behavior.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`PageContent > renders two column layout and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="min-h-screen"
+  >
+    <div
+      class="w-full bg-white"
+    >
+      <div
+        class="w-full mx-auto relative max-w-7xl px-6 pb-10 grid grid-cols-1 md:grid-cols-2 gap-6"
+      >
+        <div
+          class="rounded-lg bg-primary-soft p-6 text-foreground"
+        >
+          <h2
+            class="mb-2 text-xl font-semibold"
+          >
+            Column 1
+          </h2>
           <p
-            class="text-gray-500 text-left font-normal text-base leading-normal"
+            class="text-foreground-light"
           >
-            Some content in the second card with semantic typography.
+            This is sample content to demonstrate the layout behavior.
           </p>
         </div>
         <div
-          class="p-4 bg-neutral rounded-lg"
+          class="rounded-lg bg-primary-soft p-6 text-foreground"
         >
-          <h3
-            class="text-ghost text-left text-lg font-semibold mb-2"
+          <h2
+            class="mb-2 text-xl font-semibold"
           >
-            Card 3
-          </h3>
+            Column 2
+          </h2>
           <p
-            class="text-gray-500 text-left font-normal text-base leading-normal"
+            class="text-foreground-light"
           >
-            Some content in the third card demonstrating consistency.
+            This is sample content to demonstrate the layout behavior.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`PageContent > renders wide container layout and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="min-h-screen"
+  >
+    <div
+      class="w-full bg-white"
+    >
+      <div
+        class="w-full mx-auto relative max-w-7xl px-6 pb-10 grid grid-cols-1"
+      >
+        <div
+          class="rounded-lg bg-primary-soft p-6 text-foreground"
+        >
+          <h2
+            class="mb-2 text-xl font-semibold"
+          >
+            Wide Container Content
+          </h2>
+          <p
+            class="text-foreground-light"
+          >
+            This is sample content to demonstrate the layout behavior.
           </p>
         </div>
       </div>

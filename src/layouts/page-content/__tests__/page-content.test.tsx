@@ -1,93 +1,61 @@
-import { render } from '@testing-library/react'
+// ...existing code...
+import { render, screen } from '@testing-library/react'
 import { composeStories } from '@storybook/react'
-import { describe, expect, it } from 'vitest'
-import * as Stories from '../page-content.stories'
-
-const { Default, WithFormElements, WithNoResults, WithSearchAndData } =
-  composeStories(Stories)
+import * as stories from '../page-content.stories'
 
 describe('PageContent', () => {
-  it('renders default story correctly', () => {
-    const { container } = render(<Default />)
-    expect(container.firstChild).toHaveClass(
-      'w-full',
-      'px-4',
-      'sm:px-6',
-      'py-6',
-      'sm:py-8'
-    )
+  const {
+    Default,
+    WideContainer,
+    NarrowContainer,
+    TwoColumn,
+    TwoColumnAsymmetricLeft,
+    TwoColumnAsymmetricRight,
+    GrayBackground,
+  } = composeStories(stories)
+
+  it('renders default layout and matches snapshot', () => {
+    const { asFragment } = render(<Default />)
+    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByText(/sample content/i)).toBeInTheDocument()
   })
 
-  it('renders with form elements story correctly', () => {
-    const { container } = render(<WithFormElements />)
-    expect(container.firstChild).toHaveClass(
-      'w-full',
-      'px-4',
-      'sm:px-6',
-      'py-6',
-      'sm:py-8'
-    )
+  it('renders wide container layout and matches snapshot', () => {
+    const { asFragment } = render(<WideContainer />)
+    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByText(/Wide Container Content/)).toBeInTheDocument()
   })
 
-  it('renders minimal story correctly', () => {
-    const { container } = render(<WithNoResults />)
-    expect(container.firstChild).toHaveClass(
-      'w-full',
-      'px-4',
-      'sm:px-6',
-      'py-6',
-      'sm:py-8'
-    )
+  it('renders narrow container layout and matches snapshot', () => {
+    const { asFragment } = render(<NarrowContainer />)
+    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByText(/Narrow Container Content/)).toBeInTheDocument()
   })
 
-  it('renders search and data story correctly', () => {
-    const { container } = render(<WithSearchAndData />)
-    expect(container.firstChild).toHaveClass(
-      'w-full',
-      'px-4',
-      'sm:px-6',
-      'py-6',
-      'sm:py-8'
-    )
+  it('renders two column layout and matches snapshot', () => {
+    const { asFragment } = render(<TwoColumn />)
+    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByText(/Column 1/)).toBeInTheDocument()
+    expect(screen.getByText(/Column 2/)).toBeInTheDocument()
   })
 
-  it('renders children correctly', () => {
-    const { getByText } = render(<Default />)
-    expect(getByText(/This is the main content area/)).toBeInTheDocument()
-    expect(getByText('Card 1')).toBeInTheDocument()
+  it('renders two column asymmetric left layout and matches snapshot', () => {
+    const { asFragment } = render(<TwoColumnAsymmetricLeft />)
+    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByText(/Main Content \(Wider\)/)).toBeInTheDocument()
+    expect(screen.getByText(/Sidebar/)).toBeInTheDocument()
   })
 
-  it('renders NoResults story correctly', () => {
-    const { getByText } = render(<WithNoResults />)
-    expect(getByText('No Content Yet')).toBeInTheDocument()
-    expect(getByText('Get Started')).toBeInTheDocument()
+  it('renders two column asymmetric right layout and matches snapshot', () => {
+    const { asFragment } = render(<TwoColumnAsymmetricRight />)
+    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByText(/Main Content \(Wider\)/)).toBeInTheDocument()
+    expect(screen.getByText(/Sidebar/)).toBeInTheDocument()
   })
 
-  it('renders form elements story correctly', () => {
-    const { getByText } = render(<WithFormElements />)
-    expect(getByText('User Settings')).toBeInTheDocument()
-    expect(getByText('Save Changes')).toBeInTheDocument()
-  })
-
-  it('applies custom className', () => {
-    const customClass = 'custom-page-content'
-    const { container } = render(<Default className={customClass} />)
-    expect(container.firstChild).toHaveClass(customClass)
-  })
-
-  it('matches snapshot', () => {
-    expect(render(<Default />).asFragment()).toMatchSnapshot()
-  })
-
-  it('has correct semantic structure', () => {
-    const { container } = render(<Default />)
-    const element = container.firstChild as HTMLElement
-    expect(element.tagName).toBe('DIV')
-  })
-
-  it('forwards ref correctly', () => {
-    const ref = { current: null }
-    render(<Default ref={ref} />)
-    expect(ref.current).toBeInstanceOf(HTMLDivElement)
+  it('renders gray background layout and matches snapshot', () => {
+    const { asFragment } = render(<GrayBackground />)
+    expect(asFragment()).toMatchSnapshot()
+    expect(screen.getByText(/Content on Gray Background/)).toBeInTheDocument()
   })
 })
