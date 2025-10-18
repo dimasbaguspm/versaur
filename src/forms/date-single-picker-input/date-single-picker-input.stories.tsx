@@ -1,7 +1,7 @@
 /**
  * Stories for DateSinglePickerInput
  * Group: Forms
- * Shows usage and variations for date picking
+ * Shows usage and variations for date picking with native browser support
  */
 import { useState } from 'react'
 import { DateSinglePickerInput } from './date-single-picker-input'
@@ -14,7 +14,7 @@ const meta: Meta<typeof DateSinglePickerInput> = {
     docs: {
       description: {
         component:
-          'A wrapper around TextInput for picking a single date. Uses native <input type="date"> for accessibility and browser support.',
+          'A date picker component that uses native <input type="date"> for accessibility and browser support. Displays a formatted text input that triggers the native date picker.',
       },
     },
   },
@@ -31,25 +31,42 @@ export const Default: Story = {
         value={date}
         onChange={setDate}
         label='Date of Birth'
-        helperText='Select your birth date.'
+        helperText='Select your birth date'
       />
     )
   },
 }
 
-export const CustomFormatter: Story = {
-  render: function CustomFormatter() {
+export const WithMinMax: Story = {
+  render: function WithMinMax() {
     const [date, setDate] = useState('2025-08-01')
     return (
       <DateSinglePickerInput
         value={date}
         onChange={setDate}
-        label='Date of Birth'
+        label='Appointment Date'
+        helperText='Select a date within the next 30 days'
+        min='2025-08-01'
+        max='2025-08-31'
+      />
+    )
+  },
+}
+
+export const WithCustomFormatter: Story = {
+  render: function WithCustomFormatter() {
+    const [date, setDate] = useState('2025-08-01')
+    return (
+      <DateSinglePickerInput
+        value={date}
+        onChange={setDate}
+        label='Event Date'
         formatter={date => {
           if (!date) return ''
           const d = new Date(date)
           return d.toLocaleDateString('en-US', {
-            month: 'short',
+            weekday: 'long',
+            month: 'long',
             day: 'numeric',
             year: 'numeric',
           })
@@ -66,7 +83,7 @@ export const WithError: Story = {
       <DateSinglePickerInput
         value={date}
         onChange={setDate}
-        label='Date of Birth'
+        label='Required Date'
         error={date === '' ? 'Date is required' : undefined}
         required
       />

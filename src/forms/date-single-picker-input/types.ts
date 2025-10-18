@@ -24,4 +24,14 @@ export interface DateSinglePickerInputProps
    * @returns formatted string for display
    */
   formatter?: (value: string) => string
+  /**
+   * Minimum date allowed (ISO date string: YYYY-MM-DD)
+   * Uses native HTML validation
+   */
+  min?: string
+  /**
+   * Maximum date allowed (ISO date string: YYYY-MM-DD)
+   * Uses native HTML validation
+   */
+  max?: string
 }

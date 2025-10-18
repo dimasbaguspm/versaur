@@ -3,7 +3,8 @@ import { composeStories } from '@storybook/react'
 import * as stories from '../date-single-picker-input.stories'
 
 describe('DateSinglePickerInput', () => {
-  const { Default, WithError, CustomFormatter } = composeStories(stories)
+  const { Default, WithError, WithCustomFormatter, WithMinMax } =
+    composeStories(stories)
 
   it('renders correctly (snapshot)', () => {
     const { asFragment } = render(<Default />)
@@ -12,15 +13,13 @@ describe('DateSinglePickerInput', () => {
 
   it('shows label and helper text', () => {
     render(<Default />)
-    // There should be two inputs: visible and hidden
     const dateInputs = screen.getAllByLabelText('Date of Birth')
     expect(dateInputs.length).toBeGreaterThanOrEqual(1)
-    expect(screen.getByText('Select your birth date.')).toBeInTheDocument()
+    expect(screen.getByText('Select your birth date')).toBeInTheDocument()
   })
 
   it('calls onChange with correct value', () => {
     render(<Default />)
-    // The accessible input is type="date" and should be detected by label
     const dateInputs = screen.getAllByLabelText(
       'Date of Birth'
     ) as HTMLInputElement[]
@@ -41,22 +40,21 @@ describe('DateSinglePickerInput', () => {
   })
 
   it('supports custom formatter', () => {
-    render(<CustomFormatter />)
+    render(<WithCustomFormatter />)
     // The visible input should use the custom formatted value
     const visibleInput = screen.getByTestId(
       'date-single-picker-visible-input'
     ) as HTMLInputElement
-    expect(visibleInput.value).toBe('Aug 1, 2025')
+    expect(visibleInput.value).toBe('Friday, August 1, 2025')
   })
 
-  it('visible input is readonly and not accessible', () => {
+  it('visible input is aria-hidden and not interactive', () => {
     render(<Default />)
     const visibleInput = screen.getByTestId(
       'date-single-picker-visible-input'
     ) as HTMLInputElement
     expect(visibleInput).toHaveAttribute('readonly')
     expect(visibleInput).not.toHaveAttribute('aria-label')
-    expect(visibleInput).not.toHaveAttribute('aria-hidden', 'false')
     expect(visibleInput).toHaveAttribute('aria-hidden', 'true')
   })
 
@@ -68,5 +66,15 @@ describe('DateSinglePickerInput', () => {
     const input = dateInputs.find(i => i.type === 'date')!
     input.focus()
     expect(document.activeElement).toBe(input)
+  })
+
+  it('supports min and max validation attributes', () => {
+    render(<WithMinMax />)
+    const dateInputs = screen.getAllByLabelText(
+      'Appointment Date'
+    ) as HTMLInputElement[]
+    const input = dateInputs.find(i => i.type === 'date')!
+    expect(input).toHaveAttribute('min', '2025-08-01')
+    expect(input).toHaveAttribute('max', '2025-08-31')
   })
 })

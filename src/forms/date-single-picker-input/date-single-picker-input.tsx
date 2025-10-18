@@ -1,6 +1,6 @@
 /**
  * DateSinglePickerInput renders a visually accessible text input and a hidden date input
- * Clicking the visible input triggers the browser date picker
+ * Clicking the wrapper triggers the browser date picker
  * The forwarded ref is attached to the hidden date input
  */
 import React, { useRef } from 'react'
@@ -14,7 +14,7 @@ export const DateSinglePickerInput = React.forwardRef<
   HTMLInputElement,
   DateSinglePickerInputProps
 >(function DateSinglePickerInput(
-  { value = '', onChange, label, formatter, ...rest },
+  { value = '', onChange, label, formatter, min, max, ...rest },
   ref
 ) {
   const dateInputRef = useRef<HTMLInputElement>(null)
@@ -29,8 +29,8 @@ export const DateSinglePickerInput = React.forwardRef<
     }
   }
 
-  // Show the browser date picker when the visible input is clicked
-  const handleTextClick = () => {
+  // Show the browser date picker when the wrapper is clicked or focused
+  const handleTriggerPicker = () => {
     if (dateInputRef.current) {
       if (typeof dateInputRef.current.showPicker === 'function') {
         dateInputRef.current.showPicker()
@@ -49,23 +49,30 @@ export const DateSinglePickerInput = React.forwardRef<
 
   return (
     <div className='relative'>
-      <TextInput
-        type='text'
-        value={displayValue}
-        label={label}
-        readOnly
-        tabIndex={0}
-        aria-hidden='true'
-        onClick={handleTextClick}
-        leftContent={<Icon as={Calendar} color='inherit' size='sm' />}
-        data-testid='date-single-picker-visible-input'
-        {...rest}
-      />
+      <div
+        onClick={handleTriggerPicker}
+        className='cursor-pointer'
+        role='presentation'
+      >
+        <TextInput
+          inert
+          type='text'
+          value={displayValue}
+          label={label}
+          readOnly
+          aria-hidden='true'
+          leftContent={<Icon as={Calendar} color='inherit' size='sm' />}
+          data-testid='date-single-picker-visible-input'
+          {...rest}
+        />
+      </div>
       <input
         ref={setRef}
         type='date'
         value={value}
         onChange={handleDateChange}
+        min={min}
+        max={max}
         className='sr-only absolute opacity-0 h-0 w-0 pointer-events-none'
         tabIndex={-1}
         aria-label={typeof label === 'string' ? label : undefined}
