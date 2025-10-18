@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`SelectableMultipleInput > renders correctly (snapshot) 1`] = `
+exports[`SelectableMultipleInput > renders basic options and allows multiple selections 1`] = `
 <DocumentFragment>
   <div
     class="flex flex-col"
@@ -8,7 +8,7 @@ exports[`SelectableMultipleInput > renders correctly (snapshot) 1`] = `
     <label
       aria-checked="false"
       aria-label="Select apple"
-      class="flex items-center gap-3 cursor-pointer border-b border-border select-none p-4 transition-colors hover:bg-neutral-light"
+      class="flex gap-3 cursor-pointer border-b border-border select-none p-4 transition-colors hover:bg-neutral-light items-center"
       for="«r0»"
       role="checkbox"
       tabindex="0"
@@ -23,7 +23,7 @@ exports[`SelectableMultipleInput > renders correctly (snapshot) 1`] = `
       />
       <span
         aria-hidden="true"
-        class="flex h-6 w-6 items-center justify-center rounded-sm overflow-hidden border border-border transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 border-border bg-white active:scale-95"
+        class="relative h-6 w-6 rounded border cursor-pointer transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 appearance-none checked:bg-primary checked:border-primary focus:ring-primary/20 border-primary/40 bg-white active:scale-95 after:content-[""] after:absolute after:left-1/2 after:top-[45%] after:-translate-x-1/2 after:-translate-y-1/2 after:border-b-2 after:border-r-2 after:border-white after:rotate-45 after:opacity-0 after:transition-opacity after:duration-200 after:w-[6px] after:h-[12px]"
       />
       <span
         class="flex-1 min-w-0 text-base text-foreground"
@@ -34,7 +34,7 @@ exports[`SelectableMultipleInput > renders correctly (snapshot) 1`] = `
     <label
       aria-checked="false"
       aria-label="Select banana"
-      class="flex items-center gap-3 cursor-pointer border-b border-border select-none p-4 transition-colors hover:bg-neutral-light"
+      class="flex gap-3 cursor-pointer border-b border-border select-none p-4 transition-colors hover:bg-neutral-light items-center"
       for="«r1»"
       role="checkbox"
       tabindex="0"
@@ -49,7 +49,7 @@ exports[`SelectableMultipleInput > renders correctly (snapshot) 1`] = `
       />
       <span
         aria-hidden="true"
-        class="flex h-6 w-6 items-center justify-center rounded-sm overflow-hidden border border-border transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 border-border bg-white active:scale-95"
+        class="relative h-6 w-6 rounded border cursor-pointer transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 appearance-none checked:bg-primary checked:border-primary focus:ring-primary/20 border-primary/40 bg-white active:scale-95 after:content-[""] after:absolute after:left-1/2 after:top-[45%] after:-translate-x-1/2 after:-translate-y-1/2 after:border-b-2 after:border-r-2 after:border-white after:rotate-45 after:opacity-0 after:transition-opacity after:duration-200 after:w-[6px] after:h-[12px]"
       />
       <span
         class="flex-1 min-w-0 text-base text-foreground"
@@ -60,7 +60,7 @@ exports[`SelectableMultipleInput > renders correctly (snapshot) 1`] = `
     <label
       aria-checked="false"
       aria-label="Select orange"
-      class="flex items-center gap-3 cursor-pointer border-b border-border select-none p-4 transition-colors hover:bg-neutral-light"
+      class="flex gap-3 cursor-pointer border-b border-border select-none p-4 transition-colors hover:bg-neutral-light items-center"
       for="«r2»"
       role="checkbox"
       tabindex="0"
@@ -75,7 +75,7 @@ exports[`SelectableMultipleInput > renders correctly (snapshot) 1`] = `
       />
       <span
         aria-hidden="true"
-        class="flex h-6 w-6 items-center justify-center rounded-sm overflow-hidden border border-border transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 border-border bg-white active:scale-95"
+        class="relative h-6 w-6 rounded border cursor-pointer transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 appearance-none checked:bg-primary checked:border-primary focus:ring-primary/20 border-primary/40 bg-white active:scale-95 after:content-[""] after:absolute after:left-1/2 after:top-[45%] after:-translate-x-1/2 after:-translate-y-1/2 after:border-b-2 after:border-r-2 after:border-white after:rotate-45 after:opacity-0 after:transition-opacity after:duration-200 after:w-[6px] after:h-[12px]"
       />
       <span
         class="flex-1 min-w-0 text-base text-foreground"
