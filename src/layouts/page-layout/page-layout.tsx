@@ -1,22 +1,37 @@
 import * as React from 'react'
 import { cn } from '@/utils/cn'
-import { pageLayoutVariants } from './helpers'
+import { pageLayoutInnerVariants, pageLayoutOuterVariants } from './helpers'
 import type { PageLayoutProps } from './types'
 
 /**
- * PageLayout component for consistent responsive layout breakpoints
+ * PageLayout component serves as a parent wrapper for main content
+ * Sits in the body region or below the page header
  *
  * @group Layout
  */
 export const PageLayout = React.forwardRef<HTMLDivElement, PageLayoutProps>(
-  function PageLayout({ type = 'desktop', className, children, ...rest }, ref) {
+  function PageLayout(
+    {
+      size = 'fluid',
+      template = 'single-column',
+      backgroundColor = 'white',
+      className,
+      children,
+      ...rest
+    },
+    ref
+  ) {
     return (
       <div
         ref={ref}
-        className={cn(pageLayoutVariants({ type }), className)}
+        className={cn(pageLayoutOuterVariants({ backgroundColor }))}
         {...rest}
       >
-        {children}
+        <div
+          className={cn(pageLayoutInnerVariants({ size, template }), className)}
+        >
+          {children}
+        </div>
       </div>
     )
   }

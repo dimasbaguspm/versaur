@@ -1,14 +1,32 @@
 /**
  * Props for the PageLayout component
  */
-export interface PageLayoutProps {
+export interface PageLayoutProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
-   * The layout type to use for breakpoint consistency
-   * - 'desktop': For large screens (default)
-   * - 'tablet': For medium screens
-   * - 'mobile': For small screens
+   * Size determines the max-width and padding
+   * - 'fluid': No padding, full viewport width
+   * - 'wide': Container for desktop screens (centered)
+   * - 'narrow': Container for mobile screens (centered)
    */
-  type?: 'desktop' | 'tablet' | 'mobile'
+  size?: 'fluid' | 'wide' | 'narrow'
+  /**
+   * Template defines the column layout structure
+   * - 'single-column': Single centered column
+   * - 'two-column': Two equal columns
+   * - 'two-column-asymmetric-left': Two columns with left column wider
+   * - 'two-column-asymmetric-right': Two columns with right column wider
+   */
+  template?:
+    | 'single-column'
+    | 'two-column'
+    | 'two-column-asymmetric-left'
+    | 'two-column-asymmetric-right'
+  /**
+   * Background color of the layout
+   * - 'white': White background
+   * - 'gray': Gray background
+   */
+  backgroundColor?: 'white' | 'gray'
   /**
    * Content to render inside the layout
    */

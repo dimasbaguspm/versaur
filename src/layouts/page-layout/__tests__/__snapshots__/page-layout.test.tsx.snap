@@ -1,31 +1,268 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`PageLayout > renders desktop layout and matches snapshot 1`] = `
+exports[`PageLayout > renders default layout and matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="w-full mx-auto relative max-w-7xl px-6 pb-10"
+    class="min-h-screen"
   >
-    Desktop layout (max-w-7xl)
+    <div
+      class="w-full bg-white"
+    >
+      <div
+        class="w-full mx-auto relative max-w-full px-0 grid grid-cols-1"
+      >
+        <div
+          class="rounded-lg bg-primary-soft p-6 text-foreground"
+        >
+          <h2
+            class="mb-2 text-xl font-semibold"
+          >
+            Content
+          </h2>
+          <p
+            class="text-foreground-light"
+          >
+            This is sample content to demonstrate the layout behavior.
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </DocumentFragment>
 `;
 
-exports[`PageLayout > renders mobile layout and matches snapshot 1`] = `
+exports[`PageLayout > renders gray background layout and matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="mx-auto relative w-full"
+    class="min-h-screen"
   >
-    Mobile layout (full width)
+    <div
+      class="w-full bg-neutral"
+    >
+      <div
+        class="w-full mx-auto relative max-w-7xl px-6 pb-10 grid grid-cols-1"
+      >
+        <div
+          class="rounded-lg bg-white p-6"
+        >
+          <h2
+            class="mb-2 text-xl font-semibold"
+          >
+            Content on Gray Background
+          </h2>
+          <p
+            class="text-foreground-light"
+          >
+            The gray background provides visual contrast for the page.
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </DocumentFragment>
 `;
 
-exports[`PageLayout > renders tablet layout and matches snapshot 1`] = `
+exports[`PageLayout > renders narrow container layout and matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="w-full mx-auto relative max-w-3xl px-4"
+    class="min-h-screen"
   >
-    Tablet layout (max-w-3xl)
+    <div
+      class="w-full bg-white"
+    >
+      <div
+        class="w-full mx-auto relative max-w-3xl px-4 pb-10 grid grid-cols-1"
+      >
+        <div
+          class="rounded-lg bg-primary-soft p-6 text-foreground"
+        >
+          <h2
+            class="mb-2 text-xl font-semibold"
+          >
+            Narrow Container Content
+          </h2>
+          <p
+            class="text-foreground-light"
+          >
+            This is sample content to demonstrate the layout behavior.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`PageLayout > renders two column asymmetric left layout and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="min-h-screen"
+  >
+    <div
+      class="w-full bg-white"
+    >
+      <div
+        class="w-full mx-auto relative max-w-7xl px-6 pb-10 grid grid-cols-1 md:grid-cols-3 gap-6"
+      >
+        <div
+          class="md:col-span-2"
+        >
+          <div
+            class="rounded-lg bg-primary-soft p-6 text-foreground"
+          >
+            <h2
+              class="mb-2 text-xl font-semibold"
+            >
+              Main Content (Wider)
+            </h2>
+            <p
+              class="text-foreground-light"
+            >
+              This is sample content to demonstrate the layout behavior.
+            </p>
+          </div>
+        </div>
+        <div
+          class="rounded-lg bg-primary-soft p-6 text-foreground"
+        >
+          <h2
+            class="mb-2 text-xl font-semibold"
+          >
+            Sidebar
+          </h2>
+          <p
+            class="text-foreground-light"
+          >
+            This is sample content to demonstrate the layout behavior.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`PageLayout > renders two column asymmetric right layout and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="min-h-screen"
+  >
+    <div
+      class="w-full bg-white"
+    >
+      <div
+        class="w-full mx-auto relative max-w-7xl px-6 pb-10 grid grid-cols-1 md:grid-cols-3 gap-6"
+      >
+        <div
+          class="rounded-lg bg-primary-soft p-6 text-foreground"
+        >
+          <h2
+            class="mb-2 text-xl font-semibold"
+          >
+            Sidebar
+          </h2>
+          <p
+            class="text-foreground-light"
+          >
+            This is sample content to demonstrate the layout behavior.
+          </p>
+        </div>
+        <div
+          class="md:col-span-2"
+        >
+          <div
+            class="rounded-lg bg-primary-soft p-6 text-foreground"
+          >
+            <h2
+              class="mb-2 text-xl font-semibold"
+            >
+              Main Content (Wider)
+            </h2>
+            <p
+              class="text-foreground-light"
+            >
+              This is sample content to demonstrate the layout behavior.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`PageLayout > renders two column layout and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="min-h-screen"
+  >
+    <div
+      class="w-full bg-white"
+    >
+      <div
+        class="w-full mx-auto relative max-w-7xl px-6 pb-10 grid grid-cols-1 md:grid-cols-2 gap-6"
+      >
+        <div
+          class="rounded-lg bg-primary-soft p-6 text-foreground"
+        >
+          <h2
+            class="mb-2 text-xl font-semibold"
+          >
+            Column 1
+          </h2>
+          <p
+            class="text-foreground-light"
+          >
+            This is sample content to demonstrate the layout behavior.
+          </p>
+        </div>
+        <div
+          class="rounded-lg bg-primary-soft p-6 text-foreground"
+        >
+          <h2
+            class="mb-2 text-xl font-semibold"
+          >
+            Column 2
+          </h2>
+          <p
+            class="text-foreground-light"
+          >
+            This is sample content to demonstrate the layout behavior.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`PageLayout > renders wide container layout and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="min-h-screen"
+  >
+    <div
+      class="w-full bg-white"
+    >
+      <div
+        class="w-full mx-auto relative max-w-7xl px-6 pb-10 grid grid-cols-1"
+      >
+        <div
+          class="rounded-lg bg-primary-soft p-6 text-foreground"
+        >
+          <h2
+            class="mb-2 text-xl font-semibold"
+          >
+            Wide Container Content
+          </h2>
+          <p
+            class="text-foreground-light"
+          >
+            This is sample content to demonstrate the layout behavior.
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </DocumentFragment>
 `;

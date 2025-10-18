@@ -1,17 +1,38 @@
 import { cva } from 'class-variance-authority'
 /**
- * Tailwind variants for PageLayout
+ * Tailwind variants for PageLayout outer wrapper (background)
  */
-
-export const pageLayoutVariants = cva('w-full mx-auto relative', {
+export const pageLayoutOuterVariants = cva('w-full', {
   variants: {
-    type: {
-      desktop: 'max-w-7xl px-6 pb-10',
-      tablet: 'max-w-3xl px-4',
-      mobile: 'w-full',
+    backgroundColor: {
+      white: 'bg-white',
+      gray: 'bg-neutral',
     },
   },
   defaultVariants: {
-    type: 'desktop',
+    backgroundColor: 'white',
+  },
+})
+
+/**
+ * Tailwind variants for PageLayout inner container (size and template)
+ */
+export const pageLayoutInnerVariants = cva('w-full mx-auto relative', {
+  variants: {
+    size: {
+      fluid: 'max-w-full px-0',
+      wide: 'max-w-7xl px-6 pb-10',
+      narrow: 'max-w-3xl px-4 pb-10',
+    },
+    template: {
+      'single-column': 'grid grid-cols-1',
+      'two-column': 'grid grid-cols-1 md:grid-cols-2 gap-6',
+      'two-column-asymmetric-left': 'grid grid-cols-1 md:grid-cols-3 gap-6',
+      'two-column-asymmetric-right': 'grid grid-cols-1 md:grid-cols-3 gap-6',
+    },
+  },
+  defaultVariants: {
+    size: 'fluid',
+    template: 'single-column',
   },
 })
