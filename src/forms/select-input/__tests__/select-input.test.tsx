@@ -3,15 +3,19 @@ import { render, screen } from '@testing-library/react'
 import { composeStories } from '@storybook/react'
 import * as stories from '../select-input.stories'
 
-const { Default, WithError, WithHelperText, Disabled } = composeStories(stories)
+const { Default, WithError, WithHelperText, Required, Disabled, ReadOnly } =
+  composeStories(stories)
 
 describe('SelectInput', () => {
+  it('matches snapshot', () => {
+    const { asFragment } = render(<Default />)
+    expect(asFragment()).toMatchSnapshot()
+  })
+
   it('renders with label and options', () => {
     render(<Default />)
 
-    expect(
-      screen.getByLabelText('Choose your favorite color')
-    ).toBeInTheDocument()
+    expect(screen.getByLabelText('Country')).toBeInTheDocument()
     expect(screen.getByRole('combobox')).toBeInTheDocument()
   })
 
@@ -19,7 +23,7 @@ describe('SelectInput', () => {
     render(<WithHelperText />)
 
     expect(
-      screen.getByText('This will be used for shipping calculations')
+      screen.getByText('Select your primary department')
     ).toBeInTheDocument()
   })
 
@@ -34,29 +38,46 @@ describe('SelectInput', () => {
     expect(screen.getByRole('alert')).toBeInTheDocument()
   })
 
+  it('shows required asterisk when required prop is true', () => {
+    render(<Required />)
+
+    const asterisk = screen.getByLabelText('required')
+    expect(asterisk).toBeInTheDocument()
+    expect(asterisk).toHaveClass('text-danger')
+
+    const select = screen.getByRole('combobox')
+    expect(select).toBeRequired()
+  })
+
   it('is disabled when disabled prop is true', () => {
     render(<Disabled />)
 
     const select = screen.getByRole('combobox')
     expect(select).toBeDisabled()
-    expect(select).toHaveAttribute('aria-disabled', 'true')
+  })
+
+  it('is disabled when readOnly prop is true', () => {
+    render(<ReadOnly />)
+
+    const select = screen.getByRole('combobox')
+    expect(select).toBeDisabled()
   })
 
   it('generates unique ID when not provided', () => {
     render(<Default />)
 
     const select = screen.getByRole('combobox')
-    const label = screen.getByText('Choose your favorite color')
+    const label = screen.getByText('Country')
 
     expect(select).toHaveAttribute('id')
     expect(label).toHaveAttribute('for', select.getAttribute('id'))
   })
 
   it('uses provided ID when given', () => {
-    render(<Default {...Default.args} id='custom-select-id' />)
+    render(<Default id='custom-select-id' />)
 
     const select = screen.getByRole('combobox')
-    const label = screen.getByText('Choose your favorite color')
+    const label = screen.getByText('Country')
 
     expect(select).toHaveAttribute('id', 'custom-select-id')
     expect(label).toHaveAttribute('for', 'custom-select-id')
@@ -65,23 +86,21 @@ describe('SelectInput', () => {
   it('shows placeholder option when provided', () => {
     render(<Default />)
 
-    expect(screen.getByText('Select a color...')).toBeInTheDocument()
+    expect(screen.getByText('Select a country')).toBeInTheDocument()
   })
 
-  it('renders all provided options', () => {
+  it('renders all provided options using SelectInput.Option', () => {
     render(<Default />)
 
-    expect(screen.getByText('Red')).toBeInTheDocument()
-    expect(screen.getByText('Blue')).toBeInTheDocument()
-    expect(screen.getByText('Green')).toBeInTheDocument()
-    expect(screen.getByText('Purple')).toBeInTheDocument()
-    expect(screen.getByText('Orange')).toBeInTheDocument()
+    expect(screen.getByText('United States')).toBeInTheDocument()
+    expect(screen.getByText('Canada')).toBeInTheDocument()
+    expect(screen.getByText('United Kingdom')).toBeInTheDocument()
+    expect(screen.getByText('Germany')).toBeInTheDocument()
+    expect(screen.getByText('France')).toBeInTheDocument()
   })
 
   it('does not show helper text when error is present', () => {
-    render(
-      <WithError {...WithError.args} helperText='This should not be visible' />
-    )
+    render(<WithError helperText='This should not be visible' />)
 
     expect(
       screen.queryByText('This should not be visible')
@@ -89,5 +108,22 @@ describe('SelectInput', () => {
     expect(
       screen.getByText('Please select a plan to continue')
     ).toBeInTheDocument()
+  })
+
+  it('sets aria-describedby when helper text is present', () => {
+    render(<WithHelperText />)
+
+    const select = screen.getByRole('combobox')
+    const helperId = `${select.id}-helper`
+    expect(select).toHaveAttribute('aria-describedby', helperId)
+  })
+
+  it('sets aria-describedby and aria-errormessage when error is present', () => {
+    render(<WithError />)
+
+    const select = screen.getByRole('combobox')
+    const errorId = `${select.id}-error`
+    expect(select).toHaveAttribute('aria-describedby', errorId)
+    expect(select).toHaveAttribute('aria-errormessage', errorId)
   })
 })

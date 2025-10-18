@@ -1,4 +1,8 @@
-import type { SelectHTMLAttributes, ReactNode } from 'react'
+import type {
+  SelectHTMLAttributes,
+  OptionHTMLAttributes,
+  ReactNode,
+} from 'react'
 
 /**
  * Props for the SelectInput component
@@ -6,34 +10,9 @@ import type { SelectHTMLAttributes, ReactNode } from 'react'
 export interface SelectInputProps
   extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size'> {
   /**
-   * Visual style variant supporting Versaur color system
-   * Core variants: primary (coral), secondary (sage), tertiary (mist), ghost (slate), neutral (light gray)
-   * Semantic variants: success, info, warning, danger
-   * Each variant supports outline form for flexible design expression
-   */
-  variant?:
-    | 'primary'
-    | 'primary-outline'
-    | 'secondary'
-    | 'secondary-outline'
-    | 'tertiary'
-    | 'tertiary-outline'
-    | 'ghost'
-    | 'ghost-outline'
-    | 'neutral'
-    | 'neutral-outline'
-    | 'success'
-    | 'success-outline'
-    | 'info'
-    | 'info-outline'
-    | 'warning'
-    | 'warning-outline'
-    | 'danger'
-    | 'danger-outline'
-  /**
    * Label text to display above the select
    */
-  label: ReactNode
+  label?: ReactNode
   /**
    * Helper text to display below the select
    */
@@ -46,4 +25,38 @@ export interface SelectInputProps
    * Placeholder text for when no option is selected
    */
   placeholder?: string
+  /**
+   * Whether the select is read-only
+   */
+  readOnly?: boolean
+}
+
+/**
+ * Props for the SelectOption component
+ */
+export interface SelectOptionProps
+  extends OptionHTMLAttributes<HTMLOptionElement> {
+  /**
+   * Option value (required)
+   */
+  value: string
+  /**
+   * Option label/content (required)
+   */
+  children: ReactNode
+}
+
+/**
+ * Props for the SelectOptionGroup component
+ */
+export interface SelectOptionGroupProps
+  extends React.OptgroupHTMLAttributes<HTMLOptGroupElement> {
+  /**
+   * Group label (required)
+   */
+  label: string
+  /**
+   * Options within the group (required)
+   */
+  children: ReactNode
 }

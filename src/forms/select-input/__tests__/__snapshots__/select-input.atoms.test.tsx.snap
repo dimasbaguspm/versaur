@@ -1,0 +1,34 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SelectOption > matches snapshot 1`] = `
+<DocumentFragment>
+  <select>
+    <option
+      value="test"
+    >
+      Test Option
+    </option>
+  </select>
+</DocumentFragment>
+`;
+
+exports[`SelectOptionGroup > matches snapshot 1`] = `
+<DocumentFragment>
+  <select>
+    <optgroup
+      label="Test Group"
+    >
+      <option
+        value="option1"
+      >
+        Option 1
+      </option>
+      <option
+        value="option2"
+      >
+        Option 2
+      </option>
+    </optgroup>
+  </select>
+</DocumentFragment>
+`;
