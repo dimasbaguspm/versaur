@@ -34,7 +34,7 @@ const PinInput = React.forwardRef<HTMLInputElement, PinInputProps>(
         id={id}
         type='text'
         inputMode='numeric'
-        pattern='[0-9]*'
+        pattern={secure ? undefined : '[0-9]*'}
         maxLength={1}
         value={secure ? (value ? '•' : '') : value}
         onChange={e => {
