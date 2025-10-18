@@ -3,7 +3,7 @@ import { cva } from 'class-variance-authority'
 /**
  * PageHeader outer wrapper styles (background)
  */
-export const pageHeaderOuterVariants = cva('w-full', {
+export const pageHeaderOuterVariants = cva('w-full mb-4', {
   variants: {
     backgroundColor: {
       white: 'bg-white',

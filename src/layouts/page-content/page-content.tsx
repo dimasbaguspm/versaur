@@ -33,7 +33,7 @@ export const PageContent = React.forwardRef<HTMLDivElement, PageContentProps>(
             className
           )}
         >
-          {children}
+          <div>{children}</div>
         </div>
       </div>
     )
