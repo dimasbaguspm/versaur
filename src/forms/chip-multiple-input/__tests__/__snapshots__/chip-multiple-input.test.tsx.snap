@@ -1,25 +1,29 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ChipInput > matches snapshot 1`] = `
+exports[`ChipMultipleInput > matches snapshot 1`] = `
 <DocumentFragment>
-  <div
-    aria-label="Select fruits"
-    class="w-full"
+  <fieldset
+    class="w-full border-0 p-0 m-0"
   >
+    <legend
+      class="block text-sm font-medium text-foreground mb-3 float-none w-auto"
+    >
+      Select fruits
+    </legend>
     <div
       class="flex flex-wrap gap-2"
     >
       <input
         class="sr-only"
-        id="«rn»"
+        id="«rv»"
         name="fruits[]"
         type="checkbox"
         value="apple"
       />
       <label
-        class="inline-flex items-center bg-white transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-bold focus:border-primary-light data-[selected=true]:bg-primary data-[selected=true]:border-primary data-[selected=true]:text-white rounded-full h-7 px-3 text-sm min-w-[2.25rem]"
+        class="inline-flex items-center justify-center rounded-full bg-white transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-bold focus:border-primary-light data-[selected=true]:bg-primary data-[selected=true]:border-primary data-[selected=true]:text-white h-9 px-4 text-sm min-w-[2.5rem]"
         data-selected="false"
-        for="«rn»"
+        for="«rv»"
       >
         <span
           class="flex items-center gap-2"
@@ -28,16 +32,17 @@ exports[`ChipInput > matches snapshot 1`] = `
         </span>
       </label>
       <input
+        checked=""
         class="sr-only"
-        id="«ro»"
+        id="«r10»"
         name="fruits[]"
         type="checkbox"
         value="banana"
       />
       <label
-        class="inline-flex items-center bg-white transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-bold focus:border-primary-light data-[selected=true]:bg-primary data-[selected=true]:border-primary data-[selected=true]:text-white rounded-full h-7 px-3 text-sm min-w-[2.25rem]"
-        data-selected="false"
-        for="«ro»"
+        class="inline-flex items-center justify-center rounded-full bg-white transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-bold focus:border-primary-light data-[selected=true]:bg-primary data-[selected=true]:border-primary data-[selected=true]:text-white h-9 px-4 text-sm min-w-[2.5rem]"
+        data-selected="true"
+        for="«r10»"
       >
         <span
           class="flex items-center gap-2"
@@ -47,15 +52,15 @@ exports[`ChipInput > matches snapshot 1`] = `
       </label>
       <input
         class="sr-only"
-        id="«rp»"
+        id="«r11»"
         name="fruits[]"
         type="checkbox"
         value="cherry"
       />
       <label
-        class="inline-flex items-center bg-white transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-bold focus:border-primary-light data-[selected=true]:bg-primary data-[selected=true]:border-primary data-[selected=true]:text-white rounded-full h-7 px-3 text-sm min-w-[2.25rem]"
+        class="inline-flex items-center justify-center rounded-full bg-white transition-colors duration-200 cursor-pointer border border-border hover:bg-primary-soft hover:border-primary-bold focus:border-primary-light data-[selected=true]:bg-primary data-[selected=true]:border-primary data-[selected=true]:text-white h-9 px-4 text-sm min-w-[2.5rem]"
         data-selected="false"
-        for="«rp»"
+        for="«r11»"
       >
         <span
           class="flex items-center gap-2"
@@ -64,6 +69,6 @@ exports[`ChipInput > matches snapshot 1`] = `
         </span>
       </label>
     </div>
-  </div>
+  </fieldset>
 </DocumentFragment>
 `;

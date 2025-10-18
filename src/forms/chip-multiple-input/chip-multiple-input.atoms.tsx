@@ -1,6 +1,6 @@
-import React, { forwardRef } from 'react'
+import React, { useId } from 'react'
 import { cn } from '@/utils/cn'
-import { chipOptionVariants } from './helpers'
+import { chipMultipleInputOptionVariants } from './helpers'
 import { useChipMultipleInputContext } from './context'
 import type { ChipMultipleInputOptionProps } from './types'
 
@@ -9,27 +9,24 @@ import type { ChipMultipleInputOptionProps } from './types'
  *
  * Individual chip option for ChipMultipleInput
  * Uses checkbox input pattern for multiple selection
- * Supports leading icon and animated tick/check
+ * Supports text truncation with maxWidth and icon-only mode
  */
-export const ChipMultipleOption = forwardRef<
+export const ChipMultipleInputOption = React.forwardRef<
   HTMLInputElement,
   ChipMultipleInputOptionProps
 >(({ children, className, disabled, id, value, ...props }, ref) => {
-  const {
-    variant = 'primary',
-    shape = 'circle',
-    size = 'sm',
-    ...context
-  } = useChipMultipleInputContext()
-  const generatedId = React.useId()
-  const inputId = id || generatedId
-  const isDisabled = disabled || context.disabled
+  const { size = 'md', maxWidth, ...context } = useChipMultipleInputContext()
+  const generatedId = useId()
 
-  // check if this option is selected
+  const inputId = id || generatedId
+
+  const isDisabled = disabled || context.disabled
+  const isReadOnly = context.readOnly
+
   const isChecked = context.value?.includes(value) ?? false
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (!isDisabled) {
+    if (!isDisabled && !isReadOnly) {
       const currentValues = context.value || []
       let newValues: string[]
 
@@ -43,7 +40,6 @@ export const ChipMultipleOption = forwardRef<
 
       context.onChange?.(newValues)
     }
-    // Always call the original onChange prop if provided
     props.onChange?.(event)
   }
 
@@ -57,6 +53,7 @@ export const ChipMultipleOption = forwardRef<
         value={value}
         checked={isChecked}
         disabled={isDisabled}
+        readOnly={isReadOnly}
         onChange={handleChange}
         className='sr-only'
         {...props}
@@ -64,20 +61,25 @@ export const ChipMultipleOption = forwardRef<
       <label
         htmlFor={inputId}
         data-selected={isChecked}
+        style={maxWidth ? { maxWidth } : undefined}
         className={cn(
-          chipOptionVariants({
-            variant,
-            shape,
+          chipMultipleInputOptionVariants({
             size,
           }),
           isDisabled && 'opacity-50 cursor-not-allowed pointer-events-none',
+          isReadOnly && 'cursor-default pointer-events-none',
           className
         )}
       >
-        <span className='flex items-center gap-2'>{children}</span>
+        <span
+          className={cn(
+            'flex items-center gap-2',
+            maxWidth && 'truncate text-ellipsis overflow-hidden w-full'
+          )}
+        >
+          {children}
+        </span>
       </label>
     </>
   )
 })
-
-ChipMultipleOption.displayName = 'ChipMultipleOption'

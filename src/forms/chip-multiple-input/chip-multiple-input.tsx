@@ -4,7 +4,7 @@ import {
   ChipMultipleInputContext,
   type ChipMultipleInputContextValue,
 } from './context'
-import { ChipMultipleOption } from './chip-multiple-input.atoms'
+import { ChipMultipleInputOption } from './chip-multiple-input.atoms'
 import type { ChipMultipleInputProps } from './types'
 
 /**
@@ -12,21 +12,23 @@ import type { ChipMultipleInputProps } from './types'
  *
  * Provides a group of checkbox chips for multiple selection
  * Controlled component pattern for React forms
+ * Uses fieldset and legend for semantic HTML
  */
 const ChipMultipleInputRoot = forwardRef<
-  HTMLDivElement,
+  HTMLFieldSetElement,
   ChipMultipleInputProps
 >(
   (
     {
-      variant = 'primary',
-      shape = 'circle',
-      size = 'sm',
+      size = 'md',
       label,
+      required,
       helperText,
       error,
       className,
       disabled,
+      readOnly,
+      maxWidth,
       name,
       value = [],
       onChange,
@@ -38,23 +40,33 @@ const ChipMultipleInputRoot = forwardRef<
     const hasError = Boolean(error)
 
     const contextValue = {
-      variant,
-      shape,
       size,
       disabled,
+      readOnly,
       error: hasError,
       name,
       value,
+      maxWidth,
       onChange,
     } satisfies ChipMultipleInputContextValue
 
     return (
       <ChipMultipleInputContext.Provider value={contextValue}>
-        <div ref={ref} className={cn('w-full', className)} {...props}>
+        <fieldset
+          ref={ref}
+          className={cn('w-full border-0 p-0 m-0', className)}
+          disabled={disabled}
+          {...props}
+        >
           {label && (
-            <div className='block text-sm font-medium text-foreground mb-3'>
+            <legend className='block text-sm font-medium text-foreground mb-3 float-none w-auto'>
               {label}
-            </div>
+              {required && (
+                <span className='text-danger ml-1' aria-label='required'>
+                  *
+                </span>
+              )}
+            </legend>
           )}
           <div className='flex flex-wrap gap-2'>{children}</div>
           {hasError && (
@@ -65,12 +77,12 @@ const ChipMultipleInputRoot = forwardRef<
           {!hasError && helperText && (
             <div className='mt-2 text-sm text-gray-600'>{helperText}</div>
           )}
-        </div>
+        </fieldset>
       </ChipMultipleInputContext.Provider>
     )
   }
 )
 
 export const ChipMultipleInput = Object.assign(ChipMultipleInputRoot, {
-  Option: ChipMultipleOption,
+  Option: ChipMultipleInputOption,
 })

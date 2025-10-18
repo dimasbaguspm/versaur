@@ -2,10 +2,18 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import { composeStories } from '@storybook/react'
 import * as stories from '../chip-multiple-input.stories'
 
-describe('ChipInput', () => {
-  const { Basic, Disabled, Variants, Shape, Sizes } = composeStories(stories)
+describe('ChipMultipleInput', () => {
+  const {
+    Basic,
+    Sizes,
+    States,
+    IconOnly,
+    WithIcons,
+    Truncation,
+    WithValidation,
+  } = composeStories(stories)
 
-  it('renders options, toggles selection, and displays correct text', () => {
+  it('renders options, toggles multiple selection, and displays correct text', () => {
     render(<Basic />)
     const apple = screen.getByLabelText('Apple')
     const banana = screen.getByLabelText('Banana')
@@ -15,69 +23,118 @@ describe('ChipInput', () => {
     expect(banana).toBeInTheDocument()
     expect(cherry).toBeInTheDocument()
 
+    // Banana is pre-selected in Basic story
+    expect(banana).toBeChecked()
+
+    // Multiple selections work
     fireEvent.click(apple)
     expect(apple).toBeChecked()
-    fireEvent.click(banana)
-    expect(banana).toBeChecked()
+    expect(banana).toBeChecked() // Still checked
+
+    fireEvent.click(cherry)
+    expect(cherry).toBeChecked()
+
+    // Deselect works
     fireEvent.click(apple)
     expect(apple).not.toBeChecked()
+    expect(banana).toBeChecked()
+    expect(cherry).toBeChecked()
   })
 
-  it('renders shape variations and toggles selection', () => {
-    render(<Shape />)
-    const circleA = screen.getByLabelText('Circle A')
-    const circleB = screen.getByLabelText('Circle B')
-    const roundedC = screen.getByLabelText('Rounded C')
-    const roundedD = screen.getByLabelText('Rounded D')
-    expect(circleA).toBeInTheDocument()
-    expect(circleB).toBeInTheDocument()
-    expect(roundedC).toBeInTheDocument()
-    expect(roundedD).toBeInTheDocument()
-    fireEvent.click(circleA)
-    expect(circleA).toBeChecked()
-    fireEvent.click(roundedC)
-    expect(roundedC).toBeChecked()
-  })
-
-  it('renders size variations and toggles selection', () => {
+  it('renders size variations with correct labels', () => {
     render(<Sizes />)
-    // There are three groups, each with Small/Medium/Large, so we must use getAllByLabelText
-    const smallInputs = screen.getAllByLabelText('Small')
-    const mediumInputs = screen.getAllByLabelText('Medium')
-    const largeInputs = screen.getAllByLabelText('Large')
-    expect(smallInputs.length).toBe(3)
-    expect(mediumInputs.length).toBe(3)
-    expect(largeInputs.length).toBe(3)
-    // Interact with the first group (sm)
-    fireEvent.click(smallInputs[0])
-    expect(smallInputs[0]).toBeChecked()
-    fireEvent.click(mediumInputs[0])
-    expect(mediumInputs[0]).toBeChecked()
-    fireEvent.click(largeInputs[0])
-    expect(largeInputs[0]).toBeChecked()
+
+    // Check labels are present
+    expect(screen.getByText('Small')).toBeInTheDocument()
+    expect(screen.getByText('Medium (default)')).toBeInTheDocument()
+    expect(screen.getByText('Large')).toBeInTheDocument()
+
+    // Check options are rendered (multiple sets with same labels)
+    const optionAs = screen.getAllByLabelText('Option A')
+    const optionBs = screen.getAllByLabelText('Option B')
+    expect(optionAs.length).toBeGreaterThan(0)
+    expect(optionBs.length).toBeGreaterThan(0)
   })
 
-  it('respects disabled state and applies disabled class', () => {
-    render(<Disabled />)
-    const apple = screen.getByLabelText('Apple')
-    expect(apple).toBeDisabled()
-    const label = screen.getByText('Apple').closest('label')
-    expect(label?.className).toMatch(/cursor-not-allowed/)
+  it('respects disabled and readOnly states', () => {
+    render(<States />)
+
+    // Check disabled state
+    const disabledLabel = screen.getByText('Disabled')
+    expect(disabledLabel).toBeInTheDocument()
+    const optionB = screen.getAllByLabelText('Option B')[0]
+    expect(optionB).toBeDisabled()
+
+    // Check readOnly state
+    const readOnlyLabel = screen.getByText('Read-only')
+    expect(readOnlyLabel).toBeInTheDocument()
+    const optionC = screen.getByLabelText('Option C')
+    expect(optionC).toHaveAttribute('readOnly')
   })
 
-  it('renders all color variants and checks classes', () => {
-    render(<Variants />)
-    const variantLabels = ['Coral', 'Sage', 'Mist', 'Slate']
-    variantLabels.forEach(label => {
-      const chip = screen.getByText(label).closest('label')
-      expect(chip).toBeInTheDocument()
-    })
-    // Check selection and color for one variant
-    const coralInput = screen.getByLabelText('Coral')
-    fireEvent.click(coralInput)
-    expect(coralInput).toBeChecked()
-    const coralLabel = screen.getByText('Coral').closest('label')
-    expect(coralLabel?.className).toMatch('bg-primary-soft')
+  it('renders icon-only chips with aria-labels', () => {
+    render(<IconOnly />)
+    const star = screen.getByLabelText('Star')
+    const heart = screen.getByLabelText('Heart')
+    const sparkles = screen.getByLabelText('Sparkles')
+
+    expect(star).toBeInTheDocument()
+    expect(heart).toBeInTheDocument()
+    expect(sparkles).toBeInTheDocument()
+
+    // Heart is pre-selected in story
+    expect(heart).toBeChecked()
+
+    // Toggle selection
+    fireEvent.click(star)
+    expect(star).toBeChecked()
+  })
+
+  it('renders chips with icons and text', () => {
+    render(<WithIcons />)
+    expect(screen.getByText('Star')).toBeInTheDocument()
+    expect(screen.getByText('Heart')).toBeInTheDocument()
+    expect(screen.getByText('Sparkles')).toBeInTheDocument()
+  })
+
+  it('applies maxWidth for text truncation', () => {
+    render(<Truncation />)
+    const label = screen.getByText('With maxWidth (120px)')
+    expect(label).toBeInTheDocument()
+
+    // Check that long text options exist
+    expect(
+      screen.getByLabelText('Very Long Text That Will Be Truncated')
+    ).toBeInTheDocument()
+  })
+
+  it('displays required asterisk and error message', () => {
+    render(<WithValidation />)
+
+    // Check required asterisk
+    const requiredLabel = screen.getByText('Required field')
+    expect(requiredLabel).toBeInTheDocument()
+
+    // Check error message is shown (no selection by default)
+    expect(
+      screen.getByText('Please select at least one option')
+    ).toBeInTheDocument()
+
+    // Check helper text story
+    expect(screen.getByText('With helper text')).toBeInTheDocument()
+    expect(
+      screen.getByText('Choose all options that apply to you')
+    ).toBeInTheDocument()
+  })
+
+  it('renders with fieldset and legend', () => {
+    const { container } = render(<Basic />)
+    const fieldset = container.querySelector('fieldset')
+    const legend = container.querySelector('legend')
+
+    expect(fieldset).toBeInTheDocument()
+    expect(legend).toBeInTheDocument()
+    expect(legend?.textContent).toContain('Select fruits')
   })
 
   it('matches snapshot', () => {

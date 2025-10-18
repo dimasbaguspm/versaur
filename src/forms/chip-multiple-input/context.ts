@@ -2,13 +2,13 @@ import { createContext, useContext } from 'react'
 import type { ChipMultipleInputProps } from './types'
 
 export interface ChipMultipleInputContextValue {
-  variant: ChipMultipleInputProps['variant']
-  shape?: ChipMultipleInputProps['shape']
   size?: ChipMultipleInputProps['size']
   disabled?: boolean
+  readOnly?: boolean
   error?: boolean
   name: string
   value?: string[]
+  maxWidth?: string
   onChange?: (value: string[]) => void
 }
 
