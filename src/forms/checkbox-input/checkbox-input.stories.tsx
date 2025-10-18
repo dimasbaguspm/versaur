@@ -2,15 +2,17 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { CheckboxInput } from './checkbox-input'
 
 /**
- * CheckboxInput is a compound component that provides customizable checkbox inputs
- * with support for multiple variants, sizes, and accessibility features.
+ * CheckboxInput is a compound component that provides checkbox inputs with primary variant styling
+ * Uses fieldset/legend for proper semantic structure and accessibility
  *
  * Key features:
  * - Custom styled checkboxes using ::after pseudo-elements
- * - Multiple variants following the Versaur color system
+ * - Primary variant using Versaur's coral color
  * - Flexible compound pattern for composition
- * - Full accessibility support with proper ARIA attributes
+ * - Full accessibility support with proper ARIA attributes and fieldset/legend structure
  * - Support for both horizontal and vertical layouts
+ * - Required field indicator with asterisk
+ * - Error state that only affects error text, not checkbox styling
  */
 const meta: Meta<typeof CheckboxInput> = {
   title: 'Forms/CheckboxInput',
@@ -20,38 +22,11 @@ const meta: Meta<typeof CheckboxInput> = {
     docs: {
       description: {
         component:
-          'A flexible checkbox input component supporting multiple selection with customizable styling and accessibility features.',
+          'A flexible checkbox input component supporting multiple selection with primary variant styling and proper semantic structure using fieldset/legend.',
       },
     },
   },
   argTypes: {
-    variant: {
-      control: 'select',
-      options: [
-        'primary',
-        'primary-outline',
-        'secondary',
-        'secondary-outline',
-        'tertiary',
-        'tertiary-outline',
-        'ghost',
-        'ghost-outline',
-        'neutral',
-        'neutral-outline',
-        'success',
-        'success-outline',
-        'info',
-        'info-outline',
-        'warning',
-        'warning-outline',
-        'danger',
-        'danger-outline',
-      ],
-    },
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-    },
     direction: {
       control: 'select',
       options: ['horizontal', 'vertical'],
@@ -68,8 +43,6 @@ type Story = StoryObj<typeof CheckboxInput>
 export const Default: Story = {
   args: {
     label: 'Choose your preferences',
-    variant: 'primary',
-    size: 'md',
     direction: 'vertical',
   },
   render: args => (
@@ -88,13 +61,12 @@ export const Default: Story = {
 }
 
 /**
- * Checkbox options with descriptions for better context
+ * Checkbox options with descriptions and required indicator
  */
 export const WithDescriptions: Story = {
   args: {
     label: 'Privacy settings',
-    variant: 'secondary',
-    size: 'md',
+    required: true,
   },
   render: args => (
     <CheckboxInput {...args}>
@@ -128,9 +100,7 @@ export const WithDescriptions: Story = {
 export const HorizontalLayout: Story = {
   args: {
     label: 'Skills',
-    variant: 'tertiary',
     direction: 'horizontal',
-    size: 'sm',
   },
   render: args => (
     <CheckboxInput {...args}>
@@ -143,69 +113,12 @@ export const HorizontalLayout: Story = {
 }
 
 /**
- * Different sizes demonstration
- */
-export const Sizes: Story = {
-  render: () => (
-    <div className='space-y-6'>
-      <CheckboxInput label='Small size' size='sm'>
-        <CheckboxInput.Option value='sm1'>Small option 1</CheckboxInput.Option>
-        <CheckboxInput.Option value='sm2'>Small option 2</CheckboxInput.Option>
-      </CheckboxInput>
-
-      <CheckboxInput label='Medium size' size='md'>
-        <CheckboxInput.Option value='md1'>Medium option 1</CheckboxInput.Option>
-        <CheckboxInput.Option value='md2'>Medium option 2</CheckboxInput.Option>
-      </CheckboxInput>
-
-      <CheckboxInput label='Large size' size='lg'>
-        <CheckboxInput.Option value='lg1'>Large option 1</CheckboxInput.Option>
-        <CheckboxInput.Option value='lg2'>Large option 2</CheckboxInput.Option>
-      </CheckboxInput>
-    </div>
-  ),
-}
-
-/**
- * Variant showcase demonstrating all available styles
- */
-export const Variants: Story = {
-  render: () => (
-    <div className='space-y-4'>
-      <div className='grid grid-cols-2 gap-4'>
-        <CheckboxInput label='Primary' variant='primary'>
-          <CheckboxInput.Option value='p1'>Primary option</CheckboxInput.Option>
-        </CheckboxInput>
-
-        <CheckboxInput label='Secondary' variant='secondary'>
-          <CheckboxInput.Option value='s1'>
-            Secondary option
-          </CheckboxInput.Option>
-        </CheckboxInput>
-
-        <CheckboxInput label='Success' variant='success'>
-          <CheckboxInput.Option value='success1'>
-            Success option
-          </CheckboxInput.Option>
-        </CheckboxInput>
-
-        <CheckboxInput label='Warning' variant='warning'>
-          <CheckboxInput.Option value='warning1'>
-            Warning option
-          </CheckboxInput.Option>
-        </CheckboxInput>
-      </div>
-    </div>
-  ),
-}
-
-/**
- * Error state demonstration
+ * Error state demonstration - error only affects error text, not checkbox styling
  */
 export const WithError: Story = {
   args: {
     label: 'Terms and conditions',
-    variant: 'primary',
+    required: true,
     error: 'You must accept the terms to continue',
   },
   render: args => (

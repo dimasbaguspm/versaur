@@ -10,19 +10,22 @@ import type { CheckboxInputProps } from './types'
  *
  * Provides a compound checkbox input with customizable styling and accessibility
  * Follows browser standards and supports multiple selection patterns
+ * Uses fieldset/legend structure for proper semantics
  * Uses custom ::after pseudo-element for checkmark styling instead of browser defaults
  */
-const CheckboxInputRoot = React.forwardRef<HTMLDivElement, CheckboxInputProps>(
+const CheckboxInputRoot = React.forwardRef<
+  HTMLFieldSetElement,
+  CheckboxInputProps
+>(
   (
     {
-      variant = 'primary',
-      size = 'md',
       label,
       helperText,
       error,
       direction = 'vertical',
       className,
       disabled,
+      required,
       children,
       ...props
     },
@@ -31,19 +34,26 @@ const CheckboxInputRoot = React.forwardRef<HTMLDivElement, CheckboxInputProps>(
     const hasError = Boolean(error)
 
     const contextValue = {
-      variant,
-      size,
       disabled,
-      error: hasError,
     }
 
     return (
       <CheckboxContext.Provider value={contextValue}>
-        <div ref={ref} className={cn('w-full', className)} {...props}>
+        <fieldset
+          ref={ref}
+          disabled={disabled}
+          className={cn('w-full border-0 p-0 m-0', className)}
+          {...props}
+        >
           {label && (
-            <div className='block text-sm font-medium text-foreground mb-3'>
+            <legend className='block text-sm font-medium text-foreground mb-3'>
               {label}
-            </div>
+              {required && (
+                <span className='text-danger ml-1' aria-label='required'>
+                  *
+                </span>
+              )}
+            </legend>
           )}
           <div className={checkboxGroupVariants({ direction })}>{children}</div>
           {hasError && (
@@ -54,7 +64,7 @@ const CheckboxInputRoot = React.forwardRef<HTMLDivElement, CheckboxInputProps>(
           {!hasError && helperText && (
             <div className='mt-2 text-sm text-gray-600'>{helperText}</div>
           )}
-        </div>
+        </fieldset>
       </CheckboxContext.Provider>
     )
   }

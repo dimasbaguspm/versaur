@@ -8,9 +8,18 @@ const { Default, WithDescriptions, WithError, Disabled } =
   composeStories(stories)
 
 describe('CheckboxInput', () => {
+  it('should match snapshot', () => {
+    const { asFragment } = render(<Default />)
+    expect(asFragment()).toMatchSnapshot()
+  })
+
   describe('Basic functionality', () => {
-    it('renders checkbox options correctly', () => {
+    it('renders checkbox options correctly with fieldset/legend', () => {
       render(<Default />)
+
+      const fieldset = screen.getByRole('group')
+      expect(fieldset).toBeInTheDocument()
+      expect(fieldset.tagName).toBe('FIELDSET')
 
       expect(screen.getByText('Choose your preferences')).toBeInTheDocument()
       expect(
@@ -42,7 +51,7 @@ describe('CheckboxInput', () => {
     })
   })
 
-  describe('With descriptions', () => {
+  describe('With descriptions and required indicator', () => {
     it('renders option descriptions', () => {
       render(<WithDescriptions />)
 
@@ -55,6 +64,14 @@ describe('CheckboxInput', () => {
       expect(
         screen.getByText('Required for core functionality and security')
       ).toBeInTheDocument()
+    })
+
+    it('displays required asterisk', () => {
+      render(<WithDescriptions />)
+
+      const asterisk = screen.getByLabelText('required')
+      expect(asterisk).toBeInTheDocument()
+      expect(asterisk).toHaveClass('text-danger')
     })
 
     it('handles disabled options correctly', () => {
@@ -76,18 +93,23 @@ describe('CheckboxInput', () => {
       )
     })
 
-    it('applies error styling to checkboxes', () => {
+    it('error does not affect checkbox styling, only error text', () => {
       render(<WithError />)
 
       const checkbox = screen.getByLabelText(
         'I accept the terms and conditions'
       )
-      expect(checkbox).toHaveClass(/danger/)
+      // Checkbox should still have primary styling
+      expect(checkbox).toHaveClass(/border-primary/)
+      expect(checkbox).not.toHaveClass(/danger/)
+
+      // Error text should be displayed
+      expect(screen.getByRole('alert')).toHaveClass('text-danger')
     })
   })
 
   describe('Disabled state', () => {
-    it('disables all options when component is disabled', () => {
+    it('disables all options when fieldset is disabled', () => {
       render(<Disabled />)
 
       const option1 = screen.getByLabelText('Disabled option 1')
@@ -95,6 +117,10 @@ describe('CheckboxInput', () => {
 
       expect(option1).toBeDisabled()
       expect(option2).toBeDisabled()
+
+      // Fieldset should be disabled
+      const fieldset = screen.getByRole('group')
+      expect(fieldset).toBeDisabled()
     })
 
     it('shows helper text for disabled state', () => {
@@ -114,6 +140,17 @@ describe('CheckboxInput', () => {
       checkboxes.forEach(checkbox => {
         expect(checkbox).toHaveAttribute('type', 'checkbox')
       })
+    })
+
+    it('uses fieldset and legend for proper semantics', () => {
+      render(<Default />)
+
+      const fieldset = screen.getByRole('group')
+      expect(fieldset.tagName).toBe('FIELDSET')
+
+      const legend = fieldset.querySelector('legend')
+      expect(legend).toBeInTheDocument()
+      expect(legend).toHaveTextContent('Choose your preferences')
     })
 
     it('associates labels with checkboxes correctly', () => {

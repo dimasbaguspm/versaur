@@ -1,11 +1,7 @@
 import { createContext, useContext } from 'react'
-import type { CheckboxInputProps } from './types'
 
 interface CheckboxContextValue {
-  variant: CheckboxInputProps['variant']
-  size: CheckboxInputProps['size']
   disabled?: boolean
-  error?: boolean
 }
 
 export const CheckboxContext = createContext<CheckboxContextValue | null>(null)

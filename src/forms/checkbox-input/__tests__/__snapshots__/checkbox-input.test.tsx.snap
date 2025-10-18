@@ -1,0 +1,91 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CheckboxInput > should match snapshot 1`] = `
+<DocumentFragment>
+  <fieldset
+    class="w-full border-0 p-0 m-0"
+  >
+    <legend
+      class="block text-sm font-medium text-foreground mb-3"
+    >
+      Choose your preferences
+    </legend>
+    <div
+      class="space-y-2 space-y-2 space-x-0"
+    >
+      <div
+        class="flex items-start gap-2"
+      >
+        <div
+          class="relative flex items-center mt-0.5"
+        >
+          <input
+            class="relative h-4 w-4 rounded border cursor-pointer transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed appearance-none bg-white border-primary/40 checked:bg-primary checked:border-primary focus:ring-primary/20 after:content-[""] after:absolute after:left-1/2 after:top-[45%] after:-translate-x-1/2 after:-translate-y-1/2 after:border-b-2 after:border-r-2 after:border-white after:rotate-45 after:opacity-0 after:transition-opacity after:duration-200 after:w-[4px] after:h-[8px] checked:after:opacity-100"
+            id="«r0»"
+            type="checkbox"
+            value="option1"
+          />
+        </div>
+        <div
+          class="flex flex-col"
+        >
+          <label
+            class="text-sm text-foreground cursor-pointer select-none"
+            for="«r0»"
+          >
+            Newsletter subscription
+          </label>
+        </div>
+      </div>
+      <div
+        class="flex items-start gap-2"
+      >
+        <div
+          class="relative flex items-center mt-0.5"
+        >
+          <input
+            class="relative h-4 w-4 rounded border cursor-pointer transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed appearance-none bg-white border-primary/40 checked:bg-primary checked:border-primary focus:ring-primary/20 after:content-[""] after:absolute after:left-1/2 after:top-[45%] after:-translate-x-1/2 after:-translate-y-1/2 after:border-b-2 after:border-r-2 after:border-white after:rotate-45 after:opacity-0 after:transition-opacity after:duration-200 after:w-[4px] after:h-[8px] checked:after:opacity-100"
+            id="«r1»"
+            type="checkbox"
+            value="option2"
+          />
+        </div>
+        <div
+          class="flex flex-col"
+        >
+          <label
+            class="text-sm text-foreground cursor-pointer select-none"
+            for="«r1»"
+          >
+            Marketing emails
+          </label>
+        </div>
+      </div>
+      <div
+        class="flex items-start gap-2"
+      >
+        <div
+          class="relative flex items-center mt-0.5"
+        >
+          <input
+            class="relative h-4 w-4 rounded border cursor-pointer transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed appearance-none bg-white border-primary/40 checked:bg-primary checked:border-primary focus:ring-primary/20 after:content-[""] after:absolute after:left-1/2 after:top-[45%] after:-translate-x-1/2 after:-translate-y-1/2 after:border-b-2 after:border-r-2 after:border-white after:rotate-45 after:opacity-0 after:transition-opacity after:duration-200 after:w-[4px] after:h-[8px] checked:after:opacity-100"
+            id="«r2»"
+            type="checkbox"
+            value="option3"
+          />
+        </div>
+        <div
+          class="flex flex-col"
+        >
+          <label
+            class="text-sm text-foreground cursor-pointer select-none"
+            for="«r2»"
+          >
+            Product updates
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</DocumentFragment>
+`;
