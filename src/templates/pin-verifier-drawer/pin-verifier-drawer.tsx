@@ -32,7 +32,6 @@ export const PinVerifierDrawer: React.FC<PinVerifierDrawerProps> = ({
   showKeypad = true,
   as = 'modal',
   verifyButtonText = 'Verify',
-  variant = 'primary',
   modalProps,
   drawerProps,
 }) => {
@@ -118,7 +117,6 @@ export const PinVerifierDrawer: React.FC<PinVerifierDrawerProps> = ({
           onComplete={onComplete}
           secure={secure}
           error={error}
-          variant={variant}
           disabled={loading}
         />
       </div>

@@ -21,7 +21,6 @@ export const PriceInput: FC<PriceInputProps> = ({
   label,
   helperText,
   error,
-  variant,
   ...rest
 }) => {
   const inputRef = useRef<HTMLInputElement>(null)
@@ -59,7 +58,6 @@ export const PriceInput: FC<PriceInputProps> = ({
       helperText={helperText}
       placeholder={rest.placeholder}
       leftContent={<Icon as={Banknote} color='inherit' size='sm' />}
-      variant={variant}
       inputMode='numeric'
       autoComplete='off'
       pattern='[0-9.,-]*'

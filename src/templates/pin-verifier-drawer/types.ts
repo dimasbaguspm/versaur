@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react'
-import type { PinFieldProps } from '@/forms/pin-field'
 import type { DrawerProps } from '@/overlays/drawer'
 import type { ModalRootProps } from '@/overlays/modal'
 
@@ -68,10 +67,6 @@ export interface PinVerifierDrawerProps {
    * Custom verify button text
    */
   verifyButtonText?: string
-  /**
-   * PIN field variant
-   */
-  variant?: PinFieldProps['variant']
   /**
    * Additional props passed to Modal (when as='modal')
    */

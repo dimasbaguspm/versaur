@@ -3,7 +3,7 @@ import type { ReactNode, InputHTMLAttributes } from 'react'
 /**
  * Checkbox placement position
  */
-export type CheckboxPlacement = 'top' | 'center' | 'bottom'
+type CheckboxPlacement = 'top' | 'center' | 'bottom'
 
 /**
  * Props for SelectableMultipleInput

@@ -39,11 +39,6 @@ const meta: Meta<typeof PinVerifierDrawer> = {
       control: 'boolean',
       description: 'Whether to show numeric keypad (drawer mode only)',
     },
-    variant: {
-      control: 'select',
-      options: ['primary', 'secondary', 'tertiary', 'ghost', 'neutral'],
-      description: 'PIN field visual variant',
-    },
   },
 }
 
@@ -82,7 +77,6 @@ export const Default: Story = {
     title: 'Enter PIN',
     secure: true,
     as: 'modal',
-    variant: 'primary',
   },
 }
 
@@ -96,7 +90,6 @@ export const DrawerWithKeypad: Story = {
     secure: true,
     as: 'drawer',
     showKeypad: true,
-    variant: 'primary',
   },
 }
 
@@ -109,7 +102,6 @@ export const NonSecure: Story = {
     title: 'Verification Code',
     secure: false,
     as: 'modal',
-    variant: 'secondary',
   },
 }
 
@@ -122,7 +114,7 @@ export const WithError: Story = {
     title: 'Enter PIN',
     secure: true,
     as: 'modal',
-    variant: 'primary',
+
     error: 'Invalid PIN. Please try again.',
   },
 }
@@ -136,7 +128,6 @@ export const Loading: Story = {
     title: 'Enter PIN',
     secure: true,
     as: 'modal',
-    variant: 'primary',
     loading: true,
   },
 }
@@ -151,6 +142,5 @@ export const DrawerWithoutKeypad: Story = {
     secure: true,
     as: 'drawer',
     showKeypad: false,
-    variant: 'primary',
   },
 }

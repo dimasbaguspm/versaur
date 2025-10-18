@@ -276,11 +276,11 @@ export const FormExample: Story = {
                 <TextAreaInput
                   label='Message'
                   value={formData.message}
-                  onChange={e =>
-                    setFormData(prev => ({ ...prev, message: e.target.value }))
+                  onChange={value =>
+                    setFormData(prev => ({ ...prev, message: value }))
                   }
                   placeholder='Enter your message'
-                  rows={4}
+                  row={4}
                   required
                 />
                 <div className='text-xs text-foreground-light'>
