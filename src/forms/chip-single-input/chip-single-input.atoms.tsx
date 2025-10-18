@@ -57,13 +57,14 @@ export const ChipSingleInputOption = React.forwardRef<
           }),
           isDisabled && 'opacity-50 cursor-not-allowed pointer-events-none',
           isReadOnly && 'cursor-default pointer-events-none',
+          maxWidth && 'overflow-hidden',
           className
         )}
       >
         <span
           className={cn(
             'flex items-center gap-2',
-            maxWidth && 'truncate text-ellipsis overflow-hidden w-full'
+            maxWidth && 'truncate min-w-0'
           )}
         >
           {children}
