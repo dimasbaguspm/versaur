@@ -7,86 +7,92 @@ exports[`PinField > matches snapshot 1`] = `
   >
     <label
       class="block text-sm font-medium text-foreground mb-2"
-      for="«rf»-0"
+      for="«rg»-0"
     >
       Enter PIN
     </label>
     <div
-      aria-describedby="«rf»-helper"
-      aria-labelledby="«rf»-label"
+      aria-describedby="«rg»-helper"
+      aria-labelledby="«rg»-label"
       class="flex gap-2 justify-center"
       role="group"
     >
       <input
         aria-invalid="false"
         autocomplete="one-time-code"
-        class="w-9 h-9 text-center border rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 text-sm font-semibold border-primary/30 text-foreground focus:border-primary focus:ring-primary/20"
+        class="w-9 h-9 text-center border border-primary/30 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 text-sm font-semibold text-foreground"
         data-testid="pin-input-0"
-        id="«rf»-0"
+        id="«rg»-0"
         inputmode="numeric"
         maxlength="1"
+        pattern="[0-9]*"
         type="text"
         value=""
       />
       <input
         aria-invalid="false"
         autocomplete="one-time-code"
-        class="w-9 h-9 text-center border rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 text-sm font-semibold border-primary/30 text-foreground focus:border-primary focus:ring-primary/20"
+        class="w-9 h-9 text-center border border-primary/30 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 text-sm font-semibold text-foreground"
         data-testid="pin-input-1"
-        id="«rf»-1"
+        id="«rg»-1"
         inputmode="numeric"
         maxlength="1"
+        pattern="[0-9]*"
         type="text"
         value=""
       />
       <input
         aria-invalid="false"
         autocomplete="one-time-code"
-        class="w-9 h-9 text-center border rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 text-sm font-semibold border-primary/30 text-foreground focus:border-primary focus:ring-primary/20"
+        class="w-9 h-9 text-center border border-primary/30 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 text-sm font-semibold text-foreground"
         data-testid="pin-input-2"
-        id="«rf»-2"
+        id="«rg»-2"
         inputmode="numeric"
         maxlength="1"
+        pattern="[0-9]*"
         type="text"
         value=""
       />
       <input
         aria-invalid="false"
         autocomplete="one-time-code"
-        class="w-9 h-9 text-center border rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 text-sm font-semibold border-primary/30 text-foreground focus:border-primary focus:ring-primary/20"
+        class="w-9 h-9 text-center border border-primary/30 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 text-sm font-semibold text-foreground"
         data-testid="pin-input-3"
-        id="«rf»-3"
+        id="«rg»-3"
         inputmode="numeric"
         maxlength="1"
+        pattern="[0-9]*"
         type="text"
         value=""
       />
       <input
         aria-invalid="false"
         autocomplete="one-time-code"
-        class="w-9 h-9 text-center border rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 text-sm font-semibold border-primary/30 text-foreground focus:border-primary focus:ring-primary/20"
+        class="w-9 h-9 text-center border border-primary/30 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 text-sm font-semibold text-foreground"
         data-testid="pin-input-4"
-        id="«rf»-4"
+        id="«rg»-4"
         inputmode="numeric"
         maxlength="1"
+        pattern="[0-9]*"
         type="text"
         value=""
       />
       <input
         aria-invalid="false"
         autocomplete="one-time-code"
-        class="w-9 h-9 text-center border rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 text-sm font-semibold border-primary/30 text-foreground focus:border-primary focus:ring-primary/20"
+        class="w-9 h-9 text-center border border-primary/30 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 text-sm font-semibold text-foreground"
         data-testid="pin-input-5"
-        id="«rf»-5"
+        id="«rg»-5"
         inputmode="numeric"
         maxlength="1"
+        pattern="[0-9]*"
         type="text"
         value=""
       />
     </div>
     <div
       class="mt-2 text-sm text-gray-600"
-      id="«rf»-helper"
+      id="«rg»-helper"
     >
       Enter your 6-digit PIN code
     </div>

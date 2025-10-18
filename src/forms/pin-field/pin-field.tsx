@@ -1,6 +1,11 @@
 import React from 'react'
 import { cn } from '@/utils/cn'
-import { pinFieldVariants, isDigit, formatPinValue } from './helpers'
+import {
+  pinInputClassName,
+  pinInputErrorClassName,
+  isDigit,
+  formatPinValue,
+} from './helpers'
 import type { PinFieldProps, PinInputProps } from './types'
 
 /**
@@ -16,7 +21,6 @@ const PinInput = React.forwardRef<HTMLInputElement, PinInputProps>(
       onPaste,
       disabled,
       error,
-      variant,
       secure,
       inputRef,
       index,
@@ -28,8 +32,9 @@ const PinInput = React.forwardRef<HTMLInputElement, PinInputProps>(
       <input
         ref={inputRef}
         id={id}
-        type={secure ? 'password' : 'text'}
+        type='text'
         inputMode='numeric'
+        pattern='[0-9]*'
         maxLength={1}
         value={secure ? (value ? '•' : '') : value}
         onChange={e => {
@@ -44,11 +49,7 @@ const PinInput = React.forwardRef<HTMLInputElement, PinInputProps>(
         disabled={disabled}
         aria-invalid={error}
         aria-disabled={disabled}
-        className={cn(
-          pinFieldVariants({
-            variant: error ? 'danger' : variant,
-          })
-        )}
+        className={error ? pinInputErrorClassName : pinInputClassName}
         autoComplete='one-time-code'
         data-testid={`pin-input-${index}`}
       />
@@ -61,22 +62,20 @@ PinInput.displayName = 'PinInput'
 /**
  * PinField component for Versaur UI
  *
- * Provides a 6-digit PIN input field with automatic focus management
- * Ensures only numeric input and follows accessibility best practices
+ * A fully controlled PIN input field with configurable digit length
+ * Ensures only numeric input with automatic focus management
  */
 export const PinField = React.forwardRef<HTMLDivElement, PinFieldProps>(
   (
     {
-      variant = 'primary',
       label,
       helperText,
       error,
       disabled,
       value,
-      defaultValue,
       onChange,
       onComplete,
-      autoSubmit = false,
+      digits = 6,
       className,
       id,
       name,
@@ -92,86 +91,87 @@ export const PinField = React.forwardRef<HTMLDivElement, PinFieldProps>(
 
     // Create refs for each input
     const inputRefs = React.useRef<(HTMLInputElement | null)[]>([])
-    const [internalValue, setInternalValue] = React.useState(() =>
-      formatPinValue(defaultValue || '')
-    )
 
-    // Use controlled or uncontrolled value
-    const currentValue =
-      value !== undefined ? formatPinValue(value) : internalValue
-    const digits = currentValue
+    // Format and ensure value is valid
+    const currentValue = formatPinValue(value, digits)
+    const digitArray = currentValue
       .split('')
-      .concat(Array(6 - currentValue.length).fill(''))
+      .concat(Array(digits - currentValue.length).fill(''))
 
     const handleValueChange = React.useCallback(
       (newValue: string) => {
-        const formattedValue = formatPinValue(newValue)
+        const formattedValue = formatPinValue(newValue, digits)
+        onChange(formattedValue)
 
-        if (value === undefined) {
-          setInternalValue(formattedValue)
-        }
-
-        onChange?.(formattedValue)
-
-        if (formattedValue.length === 6) {
+        if (formattedValue.length === digits) {
           onComplete?.(formattedValue)
-          if (autoSubmit) {
-            // Find the closest form and submit it
-            const form = inputRefs.current[0]?.closest('form')
-            if (form) {
-              form.requestSubmit()
-            }
-          }
         }
       },
-      [value, onChange, onComplete, autoSubmit]
+      [onChange, onComplete, digits]
     )
 
     const handleInputChange = React.useCallback(
       (index: number, inputValue: string) => {
-        const newDigits = [...digits]
+        // Create new value by replacing character at index
+        const newDigits = [...digitArray]
         newDigits[index] = inputValue
 
-        // Remove empty strings from the end
+        // Join and remove trailing empty strings
         const newValue = newDigits.join('').replace(/\s+$/, '')
         handleValueChange(newValue)
 
-        // Auto-focus next input
-        if (inputValue && index < 5) {
+        // Auto-focus next input if digit entered and not last input
+        if (inputValue && index < digits - 1) {
           inputRefs.current[index + 1]?.focus()
         }
       },
-      [digits, handleValueChange]
+      [digitArray, handleValueChange, digits]
     )
 
     const handleKeyDown = React.useCallback(
       (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Backspace' && !digits[index] && index > 0) {
-          // Focus previous input on backspace when current is empty
-          inputRefs.current[index - 1]?.focus()
+        if (e.key === 'Backspace') {
+          if (!digitArray[index] && index > 0) {
+            // If current input is empty and backspace is pressed, move to previous
+            e.preventDefault()
+            const newDigits = [...digitArray]
+            newDigits[index - 1] = ''
+            const newValue = newDigits.join('').replace(/\s+$/, '')
+            handleValueChange(newValue)
+            inputRefs.current[index - 1]?.focus()
+          } else if (digitArray[index]) {
+            // Clear current digit
+            e.preventDefault()
+            const newDigits = [...digitArray]
+            newDigits[index] = ''
+            const newValue = newDigits.join('').replace(/\s+$/, '')
+            handleValueChange(newValue)
+          }
         } else if (e.key === 'ArrowLeft' && index > 0) {
+          e.preventDefault()
           inputRefs.current[index - 1]?.focus()
-        } else if (e.key === 'ArrowRight' && index < 5) {
+        } else if (e.key === 'ArrowRight' && index < digits - 1) {
+          e.preventDefault()
           inputRefs.current[index + 1]?.focus()
         }
       },
-      [digits]
+      [digitArray, handleValueChange, digits]
     )
 
     const handlePaste = React.useCallback(
       (e: React.ClipboardEvent<HTMLInputElement>) => {
         e.preventDefault()
         const pastedData = e.clipboardData.getData('text')
-        const formattedData = formatPinValue(pastedData)
+        const formattedData = formatPinValue(pastedData, digits)
 
         if (formattedData.length > 0) {
           handleValueChange(formattedData)
           // Focus the next empty input or last input
-          const nextIndex = Math.min(formattedData.length, 5)
+          const nextIndex = Math.min(formattedData.length, digits - 1)
           inputRefs.current[nextIndex]?.focus()
         }
       },
-      [handleValueChange]
+      [handleValueChange, digits]
     )
 
     return (
@@ -182,7 +182,11 @@ export const PinField = React.forwardRef<HTMLDivElement, PinFieldProps>(
             className='block text-sm font-medium text-foreground mb-2'
           >
             {label}
-            {required && <span className='text-danger ml-1'>*</span>}
+            {required && (
+              <span className='text-danger ml-1' aria-label='required'>
+                *
+              </span>
+            )}
           </label>
         )}
 
@@ -198,7 +202,7 @@ export const PinField = React.forwardRef<HTMLDivElement, PinFieldProps>(
                 : undefined
           }
         >
-          {digits.map((digit, index) => (
+          {digitArray.map((digit, index) => (
             <PinInput
               key={index}
               value={digit}
@@ -214,7 +218,6 @@ export const PinField = React.forwardRef<HTMLDivElement, PinFieldProps>(
               onPaste={handlePaste}
               disabled={disabled}
               error={hasError}
-              variant={variant}
               secure={secure}
               inputRef={el => {
                 inputRefs.current[index] = el

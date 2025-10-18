@@ -5,31 +5,6 @@ import type { ReactNode } from 'react'
  */
 export interface PinFieldProps {
   /**
-   * Visual style variant supporting Versaur color system
-   * Core variants: primary (coral), secondary (sage), tertiary (mist), ghost (slate), neutral (light gray)
-   * Semantic variants: success, info, warning, danger
-   * Each variant supports outline form for flexible design expression
-   */
-  variant?:
-    | 'primary'
-    | 'primary-outline'
-    | 'secondary'
-    | 'secondary-outline'
-    | 'tertiary'
-    | 'tertiary-outline'
-    | 'ghost'
-    | 'ghost-outline'
-    | 'neutral'
-    | 'neutral-outline'
-    | 'success'
-    | 'success-outline'
-    | 'info'
-    | 'info-outline'
-    | 'warning'
-    | 'warning-outline'
-    | 'danger'
-    | 'danger-outline'
-  /**
    * Label text to display above the pin field
    */
   label?: ReactNode
@@ -46,45 +21,41 @@ export interface PinFieldProps {
    */
   disabled?: boolean
   /**
-   * Current value of the pin field (6 digits)
+   * Current value of the pin field (controlled)
    */
-  value?: string
-  /**
-   * Default value for uncontrolled usage
-   */
-  defaultValue?: string
+  value: string
   /**
    * Callback fired when the pin value changes
    */
-  onChange?: (value: string) => void
+  onChange: (value: string) => void
   /**
-   * Callback fired when the pin field is completed (all 6 digits entered)
+   * Callback fired when the pin field is completed (all digits entered)
    */
   onComplete?: (value: string) => void
   /**
-   * Whether to automatically submit when complete
+   * Number of digits for the PIN (default: 6)
    */
-  autoSubmit?: boolean
+  digits?: number
   /**
-   * Custom className for styling
+   * Whether the pin field is required
+   */
+  required?: boolean
+  /**
+   * Whether to show the pin values as dots for security
+   */
+  secure?: boolean
+  /**
+   * Additional CSS classes
    */
   className?: string
   /**
-   * ID for the pin field group
+   * ID attribute for the field
    */
   id?: string
   /**
    * Name attribute for form submission
    */
   name?: string
-  /**
-   * Whether the pin field is required
-   */
-  required?: boolean
-  /**
-   * Whether to show the pin values as dots/asterisks for security
-   */
-  secure?: boolean
 }
 
 /**
@@ -98,7 +69,6 @@ export interface PinInputProps {
   onPaste: (e: React.ClipboardEvent<HTMLInputElement>) => void
   disabled?: boolean
   error?: boolean
-  variant: PinFieldProps['variant']
   secure?: boolean
   inputRef: (el: HTMLInputElement | null) => void
   index: number
