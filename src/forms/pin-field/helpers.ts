@@ -22,5 +22,5 @@ export const isDigit = (char: string): boolean => {
  * Formats a value to ensure it only contains digits and limits to max length
  */
 export const formatPinValue = (value: string, maxLength: number): string => {
-  return value?.replace(/\D/g, '').slice(0, maxLength)
+  return value?.replace(/\D/g, '').slice(0, maxLength) || ''
 }
