@@ -1,22 +1,23 @@
-import React, { useId, useState } from 'react'
+import React from 'react'
 import { SwitchTrack, SwitchThumb, SwitchLabel } from './switch-input.atoms'
 import type { SwitchInputProps } from './types'
 import { cn } from '@/utils/cn'
 
 /**
- * SwitchInput component for toggling boolean state
+ * SwitchInput component for Versaur UI
+ *
+ * A controlled switch input component for boolean toggles that aligns with native HTML input element
+ * Follows browser standards and accessibility best practices with proper ARIA attributes
+ * Always uses inline label placement for consistent layout
  */
 export const SwitchInput = React.forwardRef<HTMLInputElement, SwitchInputProps>(
   (
     {
-      checked,
-      defaultChecked,
-      onCheckedChange,
-      color = 'primary',
-      size = 'md',
+      value,
+      onChange,
       label,
-      labelPlacement = 'top',
       disabled = false,
+      required = false,
       className,
       id,
       ariaLabel,
@@ -24,60 +25,41 @@ export const SwitchInput = React.forwardRef<HTMLInputElement, SwitchInputProps>(
     },
     ref
   ) => {
-    const [internalChecked, setInternalChecked] = useState(
-      defaultChecked ?? false
-    )
-    const generatedId = useId()
-
+    const generatedId = React.useId()
     const inputId = id || generatedId
-    const isControlled = typeof checked === 'boolean'
-    const isChecked = isControlled ? checked : internalChecked
+    const isChecked = value ?? false
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (!isControlled) setInternalChecked(e.target.checked)
-      onCheckedChange?.(e.target.checked)
+      onChange?.(e.target.checked)
     }
 
     return (
-      <div
-        className={cn(
-          'flex flex-col',
-          labelPlacement === 'inline' && 'flex-row items-center',
-          className
-        )}
-      >
-        <SwitchLabel
-          label={label}
-          htmlFor={inputId}
-          placement={labelPlacement}
-          disabled={disabled}
-        />
-
-        <span
-          className={cn(
-            'relative flex items-center',
-            labelPlacement === 'inline' && 'ml-2'
-          )}
-        >
+      <div className={cn('inline-flex items-center gap-2', className)}>
+        <span className='relative inline-flex items-center'>
           <input
             ref={ref}
             type='checkbox'
+            role='switch'
             id={inputId}
             aria-label={ariaLabel || label}
+            aria-checked={isChecked}
             checked={isChecked}
             disabled={disabled}
+            required={required}
             onChange={handleChange}
-            className='absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10'
+            className='absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10 disabled:cursor-not-allowed'
             {...props}
           />
-          <SwitchTrack
-            color={color}
-            size={size}
-            disabled={disabled}
-            checked={isChecked}
-          />
-          <SwitchThumb size={size} checked={isChecked} />
+          <SwitchTrack disabled={disabled} checked={isChecked} />
+          <SwitchThumb checked={isChecked} />
         </span>
+
+        <SwitchLabel
+          label={label}
+          htmlFor={inputId}
+          disabled={disabled}
+          required={required}
+        />
       </div>
     )
   }

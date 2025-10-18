@@ -3,32 +3,34 @@
 exports[`SwitchInput > renders correctly (snapshot) 1`] = `
 <DocumentFragment>
   <div
-    class="flex flex-col"
+    class="inline-flex items-center gap-2"
   >
-    <label
-      class="text-sm select-none font-medium text-foreground mb-1"
-      for="«r0»"
-    >
-      Enable notifications
-    </label>
     <span
-      class="relative flex items-center"
+      class="relative inline-flex items-center"
     >
       <input
+        aria-checked="false"
         aria-label="Enable notifications"
-        class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+        class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10 disabled:cursor-not-allowed"
         id="«r0»"
+        role="switch"
         type="checkbox"
       />
       <span
         aria-hidden="true"
-        class="relative inline-flex items-center transition-colors duration-200 border h-5 w-10 bg-white border-border rounded-full pointer-events-none"
+        class="relative inline-flex items-center h-5 w-10 rounded-full transition-colors duration-200 border bg-white border-border pointer-events-none"
       />
       <span
         aria-hidden="true"
-        class="absolute rounded-full transition-transform duration-200 h-4 w-4 bg-neutral left-0.5"
+        class="absolute h-4 w-4 rounded-full transition-transform duration-200 bg-neutral left-0.5"
       />
     </span>
+    <label
+      class="text-sm select-none font-medium text-foreground"
+      for="«r0»"
+    >
+      Enable notifications
+    </label>
   </div>
 </DocumentFragment>
 `;

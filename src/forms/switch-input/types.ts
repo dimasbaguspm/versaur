@@ -1,58 +1,31 @@
+import type { InputHTMLAttributes } from 'react'
+
 /**
  * Props for SwitchInput component
  */
-export interface SwitchInputProps {
+export interface SwitchInputProps
+  extends Omit<
+    InputHTMLAttributes<HTMLInputElement>,
+    'type' | 'value' | 'onChange' | 'size'
+  > {
   /**
-   * Controlled checked state
+   * Controlled value state (checked or unchecked)
    */
-  checked?: boolean
+  value?: boolean
   /**
-   * Uncontrolled default checked state
+   * Callback when value changes
    */
-  defaultChecked?: boolean
+  onChange?: (value: boolean) => void
   /**
-   * Callback when checked state changes
-   */
-  onCheckedChange?: (checked: boolean) => void
-  /**
-   * Color variant (primary, secondary, etc.)
-   */
-  color?:
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'ghost'
-    | 'neutral'
-    | 'success'
-    | 'info'
-    | 'warning'
-    | 'danger'
-  /**
-   * Size variant
-   */
-  size?: 'sm' | 'md' | 'lg'
-  /**
-   * Label text
+   * Label text displayed inline with the switch
    */
   label?: string
   /**
-   * Label placement: top (default) or inline
+   * Whether the field is required
    */
-  labelPlacement?: 'top' | 'inline'
+  required?: boolean
   /**
-   * Disabled state
-   */
-  disabled?: boolean
-  /**
-   * Additional className for root
-   */
-  className?: string
-  /**
-   * id for input (for accessibility)
-   */
-  id?: string
-  /**
-   * aria-label for accessibility
+   * aria-label for accessibility when no label is provided
    */
   ariaLabel?: string
 }

@@ -1,7 +1,7 @@
 /**
  * SwitchInput stories for Storybook
- * Demonstrates all variants, label placement, color, and accessibility features
- * Showcases Versaur's harmonious color palette and professional design
+ * Demonstrates controlled boolean toggle with inline labels
+ * Follows browser-standard input patterns with primary color
  */
 import { useState } from 'react'
 import { SwitchInput } from './switch-input'
@@ -12,121 +12,88 @@ const meta: Meta<typeof SwitchInput> = {
   title: 'Forms/SwitchInput',
   component: SwitchInput,
   argTypes: {
-    color: {
-      control: 'select',
-      options: [
-        'primary',
-        'secondary',
-        'tertiary',
-        'ghost',
-        'neutral',
-        'success',
-        'info',
-        'warning',
-        'danger',
-      ],
-    },
-    size: { control: 'select', options: ['sm', 'md', 'lg'] },
-    labelPlacement: { control: 'select', options: ['top', 'inline'] },
     disabled: { control: 'boolean' },
+    required: { control: 'boolean' },
   },
 }
 export default meta
 
 type Story = StoryObj<typeof SwitchInput>
 
-function DefaultStory(args: SwitchInputProps) {
-  const [checked, setChecked] = useState(false)
-  return (
-    <SwitchInput {...args} checked={checked} onCheckedChange={setChecked} />
-  )
+/**
+ * Default switch input with label and controlled state
+ */
+function ControlledStory(args: SwitchInputProps) {
+  const [value, setValue] = useState(false)
+  return <SwitchInput {...args} value={value} onChange={setValue} />
 }
+
 export const Default: Story = {
   args: {
     label: 'Enable notifications',
-    color: 'primary',
-    size: 'md',
   },
-  render: DefaultStory,
+  render: ControlledStory,
 }
 
-function InlineLabelStory(args: SwitchInputProps) {
-  const [checked, setChecked] = useState(false)
-  return (
-    <SwitchInput {...args} checked={checked} onCheckedChange={setChecked} />
-  )
-}
-export const InlineLabel: Story = {
-  args: {
-    label: 'Inline label',
-    labelPlacement: 'inline',
-    color: 'secondary',
-    size: 'md',
-  },
-  render: InlineLabelStory,
-}
-
-function DisabledStory(args: SwitchInputProps) {
-  const [checked, setChecked] = useState(false)
-  return (
-    <SwitchInput {...args} checked={checked} onCheckedChange={setChecked} />
-  )
-}
+/**
+ * Disabled switch input cannot be toggled
+ */
 export const Disabled: Story = {
   args: {
-    label: 'Disabled',
+    label: 'Disabled switch',
     disabled: true,
-    color: 'ghost',
-    size: 'md',
+    value: false,
   },
-  render: DisabledStory,
+  render: ControlledStory,
 }
 
-function NoLabelStory(args: SwitchInputProps) {
-  const [checked, setChecked] = useState(false)
-  return (
-    <SwitchInput {...args} checked={checked} onCheckedChange={setChecked} />
-  )
+/**
+ * Required switch input displays an asterisk
+ */
+export const Required: Story = {
+  args: {
+    label: 'Accept terms and conditions',
+    required: true,
+  },
+  render: ControlledStory,
 }
+
+/**
+ * Switch without label uses ariaLabel for accessibility
+ */
 export const NoLabel: Story = {
   args: {
-    color: 'primary',
-    size: 'md',
+    ariaLabel: 'Toggle setting',
   },
-  render: NoLabelStory,
+  render: ControlledStory,
 }
 
-function ColorVariationsStory() {
-  const colors: Array<NonNullable<SwitchInputProps['color']>> = [
-    'primary',
-    'secondary',
-    'tertiary',
-    'ghost',
-    'neutral',
-    'success',
-    'info',
-    'warning',
-    'danger',
-  ]
-  const [checked, setChecked] = useState<Record<string, boolean>>({})
+/**
+ * Multiple switches demonstrating different states
+ */
+function InteractiveStatesStory() {
+  const [notifications, setNotifications] = useState(true)
+  const [darkMode, setDarkMode] = useState(false)
+  const [marketing, setMarketing] = useState(false)
+
   return (
-    <div className='flex flex-wrap gap-6'>
-      {colors.map(color => (
-        <div key={color} className='flex flex-col items-center'>
-          <SwitchInput
-            color={color}
-            label={color.charAt(0).toUpperCase() + color.slice(1)}
-            checked={checked[color] || false}
-            onCheckedChange={val =>
-              setChecked(prev => ({ ...prev, [color]: val }))
-            }
-            size='md'
-          />
-        </div>
-      ))}
+    <div className='flex flex-col gap-4'>
+      <SwitchInput
+        label='Push notifications'
+        value={notifications}
+        onChange={setNotifications}
+      />
+      <SwitchInput label='Dark mode' value={darkMode} onChange={setDarkMode} />
+      <SwitchInput
+        label='Marketing emails'
+        value={marketing}
+        onChange={setMarketing}
+        required
+      />
     </div>
   )
 }
-export const ColorVariations: Story = {
-  render: ColorVariationsStory,
+
+export const InteractiveStates: Story = {
+  render: InteractiveStatesStory,
 }
