@@ -2,17 +2,26 @@
 
 exports[`EmailInput > renders correctly (snapshot) 1`] = `
 <DocumentFragment>
-  <div>
+  <div
+    class="w-full"
+  >
     <label
       class="block text-sm font-medium text-foreground mb-2"
       for="«r0»"
     >
       Email
+      <span
+        aria-label="required"
+        class="text-danger ml-1"
+      >
+        *
+      </span>
     </label>
     <div
       class="relative w-full"
     >
       <span
+        aria-hidden="true"
         class="absolute left-2.5 top-0 bottom-0 pointer-events-none text-gray-500 flex items-center justify-center w-5"
         data-testid="left-content"
       >

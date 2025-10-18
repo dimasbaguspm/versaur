@@ -22,7 +22,7 @@ describe('EmailInput', () => {
 
   it('uses type="email" and proper attributes', () => {
     const { getByLabelText } = render(<Basic />)
-    const input = getByLabelText('Email') as HTMLInputElement
+    const input = getByLabelText('Email*') as HTMLInputElement
     expect(input.type).toBe('email')
     expect(input.autocomplete).toBe('email')
     expect(input.getAttribute('inputmode')).toBe('email')

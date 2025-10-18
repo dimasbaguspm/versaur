@@ -5,90 +5,112 @@ import * as stories from '../text-input.stories'
 describe('TextInput', () => {
   const {
     Default,
-    Primary,
-    Warning,
-    WithLeftContent,
-    Outline,
-    Error,
+    WithHelperText,
+    WithLeftIcon,
+    WithError,
     Disabled,
-    WithLabelAndCustomId,
-    LabelWithError,
+    ReadOnly,
+    Required,
   } = composeStories(stories)
+
+  it('matches snapshot', () => {
+    const { asFragment } = render(<Default />)
+    expect(asFragment()).toMatchSnapshot()
+  })
 
   it('renders default input', () => {
     render(<Default />)
-    expect(screen.getByPlaceholderText('Enter your name')).toBeInTheDocument()
+    expect(
+      screen.getByPlaceholderText('Enter your full name')
+    ).toBeInTheDocument()
+    expect(screen.getByLabelText('Full Name')).toBeInTheDocument()
   })
 
-  it('renders with primary variant', () => {
-    render(<Primary />)
+  it('renders with helper text', () => {
+    render(<WithHelperText />)
     expect(
-      screen.getByPlaceholderText('Primary coral input')
+      screen.getByText('We will never share your email with anyone else')
     ).toBeInTheDocument()
   })
 
-  it('renders with warning variant', () => {
-    render(<Warning />)
-    expect(screen.getByPlaceholderText('Warning input')).toBeInTheDocument()
+  it('renders with left icon', () => {
+    render(<WithLeftIcon />)
+    expect(screen.getByPlaceholderText('Enter username')).toBeInTheDocument()
+    expect(screen.getByTestId('left-content')).toBeInTheDocument()
   })
 
-  it('renders with left content', () => {
-    render(<WithLeftContent />)
-    expect(screen.getByPlaceholderText('Username')).toBeInTheDocument()
-    expect(screen.getByTestId('left-content')).toBeDefined()
-  })
-
-  it('renders outline variant', () => {
-    render(<Outline />)
+  it('shows error message and sets aria-invalid', () => {
+    render(<WithError />)
+    const input = screen.getByLabelText('Email Address')
     expect(
-      screen.getByPlaceholderText('Info outline input')
+      screen.getByText('Please enter a valid email address')
     ).toBeInTheDocument()
+    expect(input).toHaveAttribute('aria-invalid', 'true')
   })
 
-  it('shows error message', () => {
-    render(<Error />)
+  it('hides helper text when error is present', () => {
+    const { rerender } = render(<WithHelperText />)
     expect(
-      screen.getByText(
-        'This field is required and must be a valid email address'
-      )
+      screen.getByText('We will never share your email with anyone else')
     ).toBeInTheDocument()
+
+    rerender(<WithError />)
+    expect(
+      screen.queryByText('We will never share your email with anyone else')
+    ).not.toBeInTheDocument()
   })
 
   it('renders disabled state', () => {
     render(<Disabled />)
-    const input = screen.getByPlaceholderText('Disabled input')
+    const input = screen.getByLabelText('Account ID')
     expect(input).toBeDisabled()
+    expect(input).toHaveAttribute('disabled')
   })
 
-  it('renders with label', () => {
-    render(<Default />)
-    expect(screen.getByLabelText('Name')).toBeInTheDocument()
-    expect(screen.getByText('Name')).toBeInTheDocument()
+  it('renders readOnly state', () => {
+    render(<ReadOnly />)
+    const input = screen.getByLabelText('Transaction ID')
+    expect(input).toHaveAttribute('readOnly')
+    expect(input).toHaveValue('TXN-98765-ABCD')
   })
 
-  it('associates label with input using custom id', () => {
-    render(<WithLabelAndCustomId />)
-    const label = screen.getByText('Custom ID Input')
-    const input = screen.getByLabelText('Custom ID Input')
-    expect(label).toHaveAttribute('for', 'custom-input-id')
-    expect(input).toHaveAttribute('id', 'custom-input-id')
+  it('renders required field with asterisk', () => {
+    render(<Required />)
+    expect(screen.getByText('*')).toBeInTheDocument()
+    const input = screen.getByPlaceholderText('Acme Inc.')
+    expect(input).toBeRequired()
+    expect(input).toHaveAttribute('required')
   })
 
   it('generates automatic id when none provided', () => {
     render(<Default />)
-    const input = screen.getByLabelText('Name')
-    const label = screen.getByText('Name')
+    const input = screen.getByLabelText('Full Name')
+    const label = screen.getByText('Full Name')
     const inputId = input.getAttribute('id')
     expect(inputId).toBeTruthy()
     expect(label).toHaveAttribute('for', inputId)
   })
 
-  it('shows error message with label', () => {
-    render(<LabelWithError />)
-    expect(screen.getByText('Required Field')).toBeInTheDocument()
-    expect(
-      screen.getByText('This field is required and cannot be empty')
-    ).toBeInTheDocument()
-    expect(screen.getByLabelText('Required Field')).toBeInTheDocument()
+  it('sets aria-describedby with helper text', () => {
+    render(<WithHelperText />)
+    const input = screen.getByLabelText('Email Address')
+    const ariaDescribedBy = input.getAttribute('aria-describedby')
+    expect(ariaDescribedBy).toBeTruthy()
+    expect(document.getElementById(ariaDescribedBy!)).toHaveTextContent(
+      'We will never share your email with anyone else'
+    )
+  })
+
+  it('sets aria-describedby and aria-errormessage with error', () => {
+    render(<WithError />)
+    const input = screen.getByLabelText('Email Address')
+    const ariaDescribedBy = input.getAttribute('aria-describedby')
+    const ariaErrorMessage = input.getAttribute('aria-errormessage')
+    expect(ariaDescribedBy).toBeTruthy()
+    expect(ariaErrorMessage).toBeTruthy()
+    expect(ariaDescribedBy).toBe(ariaErrorMessage)
+    expect(document.getElementById(ariaErrorMessage!)).toHaveTextContent(
+      'Please enter a valid email address'
+    )
   })
 })

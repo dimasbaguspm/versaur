@@ -8,7 +8,9 @@ exports[`FormLayout > renders a 12-column grid and columns with correct span 1`]
     <div
       class="col-span-3"
     >
-      <div>
+      <div
+        class="w-full"
+      >
         <label
           class="block text-sm font-medium text-foreground mb-2"
           for="«r0»"
@@ -29,7 +31,9 @@ exports[`FormLayout > renders a 12-column grid and columns with correct span 1`]
     <div
       class="col-span-9"
     >
-      <div>
+      <div
+        class="w-full"
+      >
         <label
           class="block text-sm font-medium text-foreground mb-2"
           for="«r1»"

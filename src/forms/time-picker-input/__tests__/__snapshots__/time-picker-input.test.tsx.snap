@@ -2,7 +2,9 @@
 
 exports[`TimePickerInput > renders correctly (snapshot) 1`] = `
 <DocumentFragment>
-  <div>
+  <div
+    class="w-full"
+  >
     <label
       class="block text-sm font-medium text-foreground mb-2"
       for="«r0»"
@@ -13,6 +15,7 @@ exports[`TimePickerInput > renders correctly (snapshot) 1`] = `
       class="relative w-full"
     >
       <span
+        aria-hidden="true"
         class="absolute left-2.5 top-0 bottom-0 pointer-events-none text-gray-500 flex items-center justify-center w-5"
         data-testid="left-content"
       >
@@ -40,6 +43,7 @@ exports[`TimePickerInput > renders correctly (snapshot) 1`] = `
         </svg>
       </span>
       <input
+        aria-describedby="«r0»-helper"
         aria-hidden="true"
         aria-invalid="false"
         class="block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50 border-primary/30 text-foreground focus:border-primary focus:ring-primary/20 pl-9 pr-3 h-9"
@@ -51,6 +55,7 @@ exports[`TimePickerInput > renders correctly (snapshot) 1`] = `
     </div>
     <div
       class="mt-1 text-sm text-gray-600"
+      id="«r0»-helper"
     >
       Choose a time for your meeting
     </div>
