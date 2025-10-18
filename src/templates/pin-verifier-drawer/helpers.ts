@@ -69,7 +69,7 @@ export const keypadGridVariants = cva([
  * Utility to format PIN input (ensure only digits, max 6 characters)
  */
 export const formatPinInput = (value: string): string => {
-  return value.replace(/\D/g, '').slice(0, 6)
+  return value?.replace(/\D/g, '').slice(0, 6)
 }
 
 /**
