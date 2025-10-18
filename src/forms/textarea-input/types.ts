@@ -1,35 +1,13 @@
-import type { TextareaHTMLAttributes, ReactNode } from 'react'
+import type { HTMLAttributes, ReactNode } from 'react'
 
 /**
  * Props for the TextAreaInput component
  */
 export interface TextAreaInputProps
-  extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'> {
-  /**
-   * Visual style variant supporting Versaur color system
-   * Core variants: primary (coral), secondary (sage), tertiary (mist), ghost (slate), neutral (light gray)
-   * Semantic variants: success, info, warning, danger
-   * Each variant supports outline form for flexible design expression
-   */
-  variant?:
-    | 'primary'
-    | 'primary-outline'
-    | 'secondary'
-    | 'secondary-outline'
-    | 'tertiary'
-    | 'tertiary-outline'
-    | 'ghost'
-    | 'ghost-outline'
-    | 'neutral'
-    | 'neutral-outline'
-    | 'success'
-    | 'success-outline'
-    | 'info'
-    | 'info-outline'
-    | 'warning'
-    | 'warning-outline'
-    | 'danger'
-    | 'danger-outline'
+  extends Omit<
+    HTMLAttributes<HTMLDivElement>,
+    'onChange' | 'children' | 'defaultValue'
+  > {
   /**
    * Label text to display above the textarea
    */
@@ -43,18 +21,40 @@ export interface TextAreaInputProps
    */
   error?: ReactNode
   /**
-   * Minimum number of rows for the textarea
+   * The current value of the textarea (for controlled components)
    */
-  minRows?: number
+  value?: string
   /**
-   * Maximum number of rows for the textarea
-   * Only applies when fieldSizing is 'fixed'
+   * The default value for uncontrolled components
    */
-  maxRows?: number
+  defaultValue?: string
   /**
-   * Enable field-sizing CSS property for auto-resizing
-   * 'content' - Auto-resize to fit content (ignores maxRows)
-   * 'fixed' - Fixed size with manual resize handle (respects minRows/maxRows)
+   * Callback fired when the content changes
    */
-  fieldSizing?: 'content' | 'fixed'
+  onChange?: (value: string) => void
+  /**
+   * Whether the textarea is disabled
+   */
+  disabled?: boolean
+  /**
+   * Whether the textarea is read-only
+   */
+  readOnly?: boolean
+  /**
+   * Placeholder text to display when empty
+   */
+  placeholder?: string
+  /**
+   * Name attribute for form submission
+   */
+  name?: string
+  /**
+   * Number of rows (height in rem units)
+   * @default 3
+   */
+  row?: number
+  /**
+   * Whether the textarea is required
+   */
+  required?: boolean
 }

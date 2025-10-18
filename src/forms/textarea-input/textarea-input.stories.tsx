@@ -2,9 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { TextAreaInput } from './textarea-input'
 
 /**
- * TextAreaInput provides a styled textarea field for multi-line text input.
- * It supports field-sizing for auto-resizing, configurable minimum height,
- * and all the variant styles from the Versaur design system.
+ * TextAreaInput provides a robust multi-line text input using contentEditable div.
+ * Uses primary variant by default with support for error states, disabled, and readOnly modes.
  */
 const meta: Meta<typeof TextAreaInput> = {
   title: 'Forms/TextAreaInput',
@@ -13,14 +12,13 @@ const meta: Meta<typeof TextAreaInput> = {
     docs: {
       description: {
         component: `
-A versatile textarea component that supports:
-- Auto-resizing with field-sizing CSS property
-- Configurable minimum height
-- All Versaur color variants (primary, secondary, tertiary, ghost, neutral)
-- Semantic variants (success, info, warning, danger)
-- Outline variants for each color
-- Error states and helper text
-- Full accessibility support
+A versatile textarea component built with contentEditable div for better control:
+- Uses primary variant styling by default
+- Error states with validation messages
+- Disabled and readOnly support
+- Helper text for guidance
+- Full accessibility with proper ARIA attributes
+- Works cross-browser with consistent behavior
 
 Perfect for forms, comments, descriptions, and any multi-line text input needs.
         `,
@@ -32,41 +30,15 @@ Perfect for forms, comments, descriptions, and any multi-line text input needs.
     placeholder: 'Enter your description here...',
   },
   argTypes: {
-    variant: {
-      control: 'select',
-      options: [
-        'primary',
-        'primary-outline',
-        'secondary',
-        'secondary-outline',
-        'tertiary',
-        'tertiary-outline',
-        'ghost',
-        'ghost-outline',
-        'neutral',
-        'neutral-outline',
-        'success',
-        'success-outline',
-        'info',
-        'info-outline',
-        'warning',
-        'warning-outline',
-        'danger',
-        'danger-outline',
-      ],
-    },
-    fieldSizing: {
-      control: 'select',
-      options: ['fixed', 'content'],
-    },
-    minRows: {
-      control: 'number',
-    },
-    maxRows: {
-      control: 'number',
-    },
     disabled: {
       control: 'boolean',
+    },
+    readOnly: {
+      control: 'boolean',
+    },
+    row: {
+      control: 'number',
+      description: 'Height in rem units',
     },
   },
 }
@@ -75,127 +47,20 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 /**
- * Default textarea with primary variant and fixed sizing
+ * Default textarea with primary styling
  */
 export const Default: Story = {}
 
 /**
- * Auto-resizing textarea that grows with content using field-sizing: content
+ * With default value for uncontrolled usage
  */
-export const AutoResize: Story = {
+export const WithDefaultValue: Story = {
   args: {
-    label: 'Auto-resizing Comment',
-    fieldSizing: 'content',
-    placeholder: 'Type your message and watch it auto-resize...',
+    label: 'Comment',
+    placeholder: 'Add your comment...',
     defaultValue:
-      'This textarea will automatically resize as you type more content.\n\nTry adding more lines to see it grow!',
+      'This is a default value that can be edited.\n\nIt supports multi-line content naturally.',
   },
-}
-
-/**
- * Custom row configuration for larger text areas
- */
-export const CustomRows: Story = {
-  args: {
-    label: 'Large Text Area',
-    minRows: 5,
-    maxRows: 8,
-    placeholder: 'This textarea starts with 5 rows and can expand to 8 rows',
-  },
-}
-
-/**
- * All color variants showcasing the Versaur design system
- */
-export const Variants: Story = {
-  render: () => (
-    <div className='space-y-6 w-96'>
-      <TextAreaInput
-        label='Primary (Coral)'
-        variant='primary'
-        placeholder='Primary variant...'
-      />
-      <TextAreaInput
-        label='Secondary (Sage)'
-        variant='secondary'
-        placeholder='Secondary variant...'
-      />
-      <TextAreaInput
-        label='Tertiary (Mist)'
-        variant='tertiary'
-        placeholder='Tertiary variant...'
-      />
-      <TextAreaInput
-        label='Ghost (Slate)'
-        variant='ghost'
-        placeholder='Ghost variant...'
-      />
-      <TextAreaInput
-        label='Neutral'
-        variant='neutral'
-        placeholder='Neutral variant...'
-      />
-    </div>
-  ),
-}
-
-/**
- * Outline variants for subtle styling
- */
-export const OutlineVariants: Story = {
-  render: () => (
-    <div className='space-y-6 w-96'>
-      <TextAreaInput
-        label='Primary Outline'
-        variant='primary-outline'
-        placeholder='Primary outline variant...'
-      />
-      <TextAreaInput
-        label='Secondary Outline'
-        variant='secondary-outline'
-        placeholder='Secondary outline variant...'
-      />
-      <TextAreaInput
-        label='Ghost Outline'
-        variant='ghost-outline'
-        placeholder='Ghost outline variant...'
-      />
-    </div>
-  ),
-}
-
-/**
- * Semantic variants for different states and contexts
- */
-export const SemanticVariants: Story = {
-  render: () => (
-    <div className='space-y-6 w-96'>
-      <TextAreaInput
-        label='Success'
-        variant='success'
-        placeholder='Success state...'
-        helperText='Great! Your input looks good.'
-      />
-      <TextAreaInput
-        label='Info'
-        variant='info'
-        placeholder='Info state...'
-        helperText='Additional information about this field.'
-      />
-      <TextAreaInput
-        label='Warning'
-        variant='warning'
-        placeholder='Warning state...'
-        helperText='Please review your input carefully.'
-      />
-      <TextAreaInput
-        label='Danger'
-        variant='danger'
-        placeholder='Error state...'
-        error='This field is required and cannot be empty.'
-      />
-    </div>
-  ),
 }
 
 /**
@@ -223,35 +88,60 @@ export const WithHelperText: Story = {
 }
 
 /**
- * Disabled state for read-only scenarios
+ * Required field with asterisk indicator
  */
-export const Disabled: Story = {
+export const Required: Story = {
   args: {
-    label: 'Read-only Content',
-    disabled: true,
-    defaultValue: 'This content cannot be edited in the current context.',
+    label: 'Message',
+    placeholder: 'Enter your message...',
+    required: true,
+    helperText: 'This field is required and must be filled out.',
   },
 }
 
 /**
- * Form example showing practical usage in a contact form
+ * Disabled state prevents all interactions
  */
-export const ContactForm: Story = {
+export const Disabled: Story = {
+  args: {
+    label: 'Disabled Field',
+    disabled: true,
+    defaultValue:
+      'This content cannot be edited because the field is disabled.',
+  },
+}
+
+/**
+ * ReadOnly state allows viewing but not editing
+ */
+export const ReadOnly: Story = {
+  args: {
+    label: 'Read-Only Content',
+    readOnly: true,
+    defaultValue:
+      'This content is read-only. You can select and copy the text, but cannot modify it.',
+  },
+}
+
+/**
+ * Custom height using row prop (in rem units)
+ */
+export const CustomHeight: Story = {
   render: () => (
     <div className='space-y-6 w-96'>
       <TextAreaInput
-        label='Message'
-        placeholder='Tell us about your project...'
-        minRows={4}
-        maxRows={8}
-        helperText='Please provide as much detail as possible about your requirements.'
+        label='Small (1 row)'
+        placeholder='Compact textarea...'
+        row={1}
       />
       <TextAreaInput
-        label='Additional Notes'
-        variant='secondary'
-        fieldSizing='content'
-        placeholder='Any additional information...'
-        helperText='This field will auto-resize as you type.'
+        label='Default (3 rows)'
+        placeholder='Default size textarea...'
+      />
+      <TextAreaInput
+        label='Large (10 rows)'
+        placeholder='Expanded textarea...'
+        row={10}
       />
     </div>
   ),

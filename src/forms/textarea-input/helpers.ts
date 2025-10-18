@@ -1,62 +1,78 @@
 import { cva } from '@/utils/variants'
+import type React from 'react'
 
 export const textAreaInputVariants = cva(
-  'block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50',
+  'block w-full rounded-md border bg-white text-foreground transition-colors focus:outline-none overflow-y-auto whitespace-pre-wrap break-words',
   {
     variants: {
-      variant: {
-        // Core variants using Versaur color system
-        primary:
-          'border-primary/30 text-foreground focus:border-primary focus:ring-primary/20',
-        secondary:
-          'border-secondary/30 text-foreground focus:border-secondary focus:ring-secondary/20',
-        tertiary:
-          'border-tertiary/30 text-foreground focus:border-tertiary focus:ring-tertiary/20',
-        ghost:
-          'border-ghost/30 text-foreground focus:border-ghost focus:ring-ghost/20',
-        neutral:
-          'border-gray-300 text-foreground focus:border-gray-400 focus:ring-gray-400/20',
-
-        // Outline variants
-        'primary-outline':
-          'border-primary text-foreground focus:border-primary focus:ring-primary/20',
-        'secondary-outline':
-          'border-secondary text-foreground focus:border-secondary focus:ring-secondary/20',
-        'tertiary-outline':
-          'border-tertiary text-foreground focus:border-tertiary focus:ring-tertiary/20',
-        'ghost-outline':
-          'border-ghost text-foreground focus:border-ghost focus:ring-ghost/20',
-        'neutral-outline':
-          'border-gray-400 text-foreground focus:border-gray-500 focus:ring-gray-500/20',
-
-        // Semantic variants
-        success:
-          'border-success/30 text-foreground focus:border-success focus:ring-success/20',
-        'success-outline':
-          'border-success text-foreground focus:border-success focus:ring-success/20',
-
-        info: 'border-info/30 text-foreground focus:border-info focus:ring-info/20',
-        'info-outline':
-          'border-info text-foreground focus:border-info focus:ring-info/20',
-
-        warning:
-          'border-warning/30 text-foreground focus:border-warning focus:ring-warning/20',
-        'warning-outline':
-          'border-warning text-foreground focus:border-warning focus:ring-warning/20',
-
-        danger:
-          'border-danger bg-danger/5 text-foreground focus:border-danger focus:ring-danger/20',
-        'danger-outline':
-          'border-danger bg-danger/5 text-foreground focus:border-danger focus:ring-danger/20',
-      },
-      fieldSizing: {
-        content: 'field-sizing-content resize-none',
-        fixed: 'resize-y',
+      state: {
+        default:
+          'border-primary/30 focus:ring-2 focus:ring-primary/20 focus:border-primary',
+        error:
+          'border-danger bg-danger/5 focus:ring-2 focus:border-danger focus:ring-danger/20',
+        disabled:
+          'opacity-50 pointer-events-none bg-gray-50 border-gray-300 cursor-not-allowed',
+        readOnly:
+          'bg-gray-50 cursor-default focus:ring-0 border-gray-300 focus:border-gray-300',
       },
     },
     defaultVariants: {
-      variant: 'primary',
-      fieldSizing: 'fixed',
+      state: 'default',
     },
   }
 )
+
+/**
+ * Get the appropriate state for the textarea based on props
+ */
+export const getTextAreaState = (
+  disabled?: boolean,
+  readOnly?: boolean,
+  hasError?: boolean
+): 'default' | 'error' | 'disabled' | 'readOnly' => {
+  if (disabled) return 'disabled'
+  if (readOnly) return 'readOnly'
+  if (hasError) return 'error'
+  return 'default'
+}
+
+/**
+ * Handle paste event to insert plain text only
+ */
+export const handlePlainTextPaste = (
+  e: React.ClipboardEvent<HTMLDivElement>,
+  disabled?: boolean,
+  readOnly?: boolean
+) => {
+  // Prevent paste when disabled or readOnly
+  if (disabled || readOnly) {
+    e.preventDefault()
+    return
+  }
+
+  // Paste as plain text using modern API
+  e.preventDefault()
+  const text = e.clipboardData.getData('text/plain')
+
+  // Use the modern Selection API instead of deprecated execCommand
+  const selection = window.getSelection()
+  if (!selection || !selection.rangeCount) return
+
+  // Delete the current selection if any
+  selection.deleteFromDocument()
+
+  // Insert the plain text at the current position
+  const range = selection.getRangeAt(0)
+  const textNode = document.createTextNode(text)
+  range.insertNode(textNode)
+
+  // Move cursor to end of inserted text
+  range.setStartAfter(textNode)
+  range.setEndAfter(textNode)
+  selection.removeAllRanges()
+  selection.addRange(range)
+
+  // Trigger input event to update state
+  const inputEvent = new Event('input', { bubbles: true })
+  e.currentTarget.dispatchEvent(inputEvent)
+}

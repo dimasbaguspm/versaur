@@ -1,7 +1,7 @@
 import { cva } from '@/utils/variants'
 
 export const textInputVariants = cva(
-  'block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none disabled:bg-gray-50',
+  'block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none disabled:bg-gray-50',
   {
     variants: {
       state: {
