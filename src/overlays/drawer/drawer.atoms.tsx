@@ -24,7 +24,7 @@ import {
 
 /**
  * DrawerOverlay - Background overlay that appears behind the drawer
- * Always provides a dark blurred background to help users focus on the drawer content
+ * Provides a dark blurred background to help users focus on the drawer content
  */
 export const DrawerOverlay = React.forwardRef<
   HTMLDivElement,
@@ -41,6 +41,7 @@ export const DrawerOverlay = React.forwardRef<
     <div
       ref={ref}
       onClick={handleClick}
+      aria-hidden='true'
       className={cn(
         drawerOverlayVariants({
           state: isOpen ? 'open' : 'closed',
@@ -52,33 +53,47 @@ export const DrawerOverlay = React.forwardRef<
   )
 })
 
+DrawerOverlay.displayName = 'DrawerOverlay'
+
 /**
  * DrawerHeader - Header section of the drawer
- * Typically contains the title and close button
+ * Uses semantic <header> element with proper ARIA labeling
  */
-export const DrawerHeader = React.forwardRef<HTMLDivElement, DrawerHeaderProps>(
+export const DrawerHeader = React.forwardRef<HTMLElement, DrawerHeaderProps>(
   ({ children, className, hasTab, ...props }, ref) => {
-    const { variant } = useDrawerContext()
-
     return (
-      <div
+      <header
         ref={ref}
         className={cn(
-          drawerHeaderVariants({ variant, tab: Boolean(hasTab) }),
+          drawerHeaderVariants({ tab: Boolean(hasTab) }),
           className
         )}
         {...props}
       >
         {children}
-      </div>
+      </header>
     )
   }
 )
 
+DrawerHeader.displayName = 'DrawerHeader'
+
+/**
+ * DrawerTitle - Title element for the drawer header
+ * Automatically uses the titleId from context for ARIA labeling
+ */
 export const DrawerTitle = forwardRef<HTMLElement, TextProps>((props, ref) => {
-  return <Text {...props} ref={ref} as='h3' fontSize='lg' />
+  const { titleId } = useDrawerContext()
+
+  return <Text {...props} ref={ref} as='h3' fontSize='lg' id={titleId} />
 })
 
+DrawerTitle.displayName = 'DrawerTitle'
+
+/**
+ * DrawerCloseButton - Close button for the drawer
+ * Triggers the onClose callback when clicked
+ */
 export const DrawerCloseButton = forwardRef<
   HTMLButtonElement,
   Partial<ButtonIconProps>
@@ -103,53 +118,66 @@ export const DrawerCloseButton = forwardRef<
   )
 })
 
+DrawerCloseButton.displayName = 'DrawerCloseButton'
+
+/**
+ * DrawerTab - Container for tabbed navigation within drawer header
+ */
 export const DrawerTab = forwardRef<HTMLDivElement, DrawerHeaderTabProps>(
   ({ children, className, ...props }, ref) => {
     return (
-      <div ref={ref} className={cn('[&>div]:px-6', className)} {...props}>
+      <div
+        ref={ref}
+        className={cn('[&>nav>div>ul]:px-6', className)}
+        {...props}
+      >
         {children}
       </div>
     )
   }
 )
+
+DrawerTab.displayName = 'DrawerTab'
 
 /**
  * DrawerBody - Main content area of the drawer
- * Scrollable container for the drawer content
+ * Uses semantic <main> element and scrollable container
  */
-export const DrawerBody = React.forwardRef<HTMLDivElement, DrawerBodyProps>(
+export const DrawerBody = React.forwardRef<HTMLElement, DrawerBodyProps>(
   ({ children, className, ...props }, ref) => {
-    const { variant } = useDrawerContext()
+    const { descriptionId } = useDrawerContext()
 
     return (
-      <div
+      <main
         ref={ref}
-        className={cn(drawerBodyVariants({ variant }), className)}
+        id={descriptionId}
+        className={cn(drawerBodyVariants(), className)}
         {...props}
       >
         {children}
-      </div>
+      </main>
     )
   }
 )
+
+DrawerBody.displayName = 'DrawerBody'
 
 /**
  * DrawerFooter - Footer section of the drawer
- * Typically contains action buttons
- * Supports responsive flex behavior for optimal button layout across screen sizes
+ * Uses semantic <footer> element for action buttons
  */
-export const DrawerFooter = React.forwardRef<HTMLDivElement, DrawerFooterProps>(
+export const DrawerFooter = React.forwardRef<HTMLElement, DrawerFooterProps>(
   ({ children, className, ...props }, ref) => {
-    const { variant } = useDrawerContext()
-
     return (
-      <div
+      <footer
         ref={ref}
-        className={cn(drawerFooterVariants({ variant }), className)}
+        className={cn(drawerFooterVariants(), className)}
         {...props}
       >
         {children}
-      </div>
+      </footer>
     )
   }
 )
+
+DrawerFooter.displayName = 'DrawerFooter'

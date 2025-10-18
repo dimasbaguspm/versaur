@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useId } from 'react'
 import { cn } from '@/utils/cn'
 import { DrawerContext } from './context'
 import {
@@ -16,8 +16,8 @@ import type { DrawerProps, DrawerContextValue } from './types'
 import { OverlayPortal } from '@/utils/overlay-portal'
 
 /**
- * Drawer - A controlled sliding drawer overlay component
- * Provides additional space for content with positioning, sizing, and glass variant options
+ * DrawerRoot - A controlled sliding drawer overlay component
+ * Provides additional space for content with positioning and sizing options
  */
 export const DrawerRoot: React.FC<DrawerProps> = ({
   container,
@@ -26,23 +26,26 @@ export const DrawerRoot: React.FC<DrawerProps> = ({
   onClose,
   position = 'right',
   size = 'md',
-  variant = 'default',
   transitionType = 'slide',
   disableOverlayClickToClose = false,
   disableEscapeKeyDown = false,
   className,
   ...props
 }) => {
-  const contextValue: DrawerContextValue = {
+  const titleId = useId()
+  const descriptionId = useId()
+
+  const contextValue = {
     isOpen,
     onClose,
     position,
     size,
-    variant,
     transitionType,
     disableOverlayClickToClose,
     disableEscapeKeyDown,
-  }
+    titleId,
+    descriptionId,
+  } satisfies DrawerContextValue
 
   const drawerRef = useEscapeClose(isOpen, onClose, disableEscapeKeyDown)
 
@@ -58,14 +61,16 @@ export const DrawerRoot: React.FC<DrawerProps> = ({
           <DrawerOverlay />
           <div
             ref={drawerRef}
+            role='dialog'
             tabIndex={-1}
-            role={isOpen ? 'dialog' : undefined}
-            aria-modal={isOpen ? 'true' : undefined}
+            aria-modal='true'
+            aria-labelledby={titleId}
+            aria-describedby={descriptionId}
+            aria-hidden={!isOpen}
             className={cn(
               drawerVariants({
                 position,
                 size,
-                variant,
                 transitionType,
               }),
               transitionType === 'slide'

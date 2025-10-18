@@ -16,10 +16,11 @@ const mockContextValue: DrawerContextValue = {
   onClose: vi.fn(),
   position: 'right',
   size: 'md',
-  variant: 'default',
   transitionType: 'slide',
   disableEscapeKeyDown: false,
   disableOverlayClickToClose: false,
+  titleId: 'test-title-id',
+  descriptionId: 'test-description-id',
 }
 
 // Helper component to provide context
@@ -90,17 +91,14 @@ describe('Drawer Atoms', () => {
       expect(screen.getByText('Header Content')).toBeInTheDocument()
     })
 
-    it('applies variant classes correctly', () => {
-      render(
-        <ContextWrapper
-          contextValue={{ ...mockContextValue, variant: 'glass' }}
-        >
-          <DrawerHeader data-testid='header'>Header Content</DrawerHeader>
+    it('uses semantic header element', () => {
+      const { container } = render(
+        <ContextWrapper>
+          <DrawerHeader>Header Content</DrawerHeader>
         </ContextWrapper>
       )
 
-      const header = screen.getByTestId('header')
-      expect(header).toHaveClass('bg-transparent')
+      expect(container.querySelector('header')).toBeInTheDocument()
     })
   })
 
@@ -115,17 +113,25 @@ describe('Drawer Atoms', () => {
       expect(screen.getByText('Body Content')).toBeInTheDocument()
     })
 
-    it('applies variant classes correctly', () => {
+    it('uses semantic main element', () => {
+      const { container } = render(
+        <ContextWrapper>
+          <DrawerBody>Body Content</DrawerBody>
+        </ContextWrapper>
+      )
+
+      expect(container.querySelector('main')).toBeInTheDocument()
+    })
+
+    it('has description ID from context', () => {
       render(
-        <ContextWrapper
-          contextValue={{ ...mockContextValue, variant: 'glass' }}
-        >
+        <ContextWrapper>
           <DrawerBody data-testid='body'>Body Content</DrawerBody>
         </ContextWrapper>
       )
 
       const body = screen.getByTestId('body')
-      expect(body).toHaveClass('bg-transparent')
+      expect(body).toHaveAttribute('id', 'test-description-id')
     })
   })
 
@@ -140,17 +146,14 @@ describe('Drawer Atoms', () => {
       expect(screen.getByText('Footer Content')).toBeInTheDocument()
     })
 
-    it('applies variant classes correctly', () => {
-      render(
-        <ContextWrapper
-          contextValue={{ ...mockContextValue, variant: 'glass' }}
-        >
-          <DrawerFooter data-testid='footer'>Footer Content</DrawerFooter>
+    it('uses semantic footer element', () => {
+      const { container } = render(
+        <ContextWrapper>
+          <DrawerFooter>Footer Content</DrawerFooter>
         </ContextWrapper>
       )
 
-      const footer = screen.getByTestId('footer')
-      expect(footer).toHaveClass('bg-transparent')
+      expect(container.querySelector('footer')).toBeInTheDocument()
     })
   })
 })

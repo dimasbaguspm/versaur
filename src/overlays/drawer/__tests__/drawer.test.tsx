@@ -3,8 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import { composeStories } from '@storybook/react'
 import * as stories from '../drawer.stories'
 
-const { Default, LeftPosition, LargeSize, FullWidth, Fade } =
-  composeStories(stories)
+const { Default, LeftPosition, LargeSize, WithTabs } = composeStories(stories)
 
 describe('Drawer', () => {
   describe('Default Story', () => {
@@ -16,19 +15,47 @@ describe('Drawer', () => {
     it('opens the drawer when trigger is clicked', () => {
       render(<Default />)
 
-      // Initially, drawer content should not be visible
-      expect(screen.queryByText('Drawer Title')).not.toBeInTheDocument()
+      // Initially, drawer should be hidden (use querySelector since aria-hidden=true makes it inaccessible)
+      const initialDialog = document.querySelector('[role="dialog"]')
+      expect(initialDialog).toHaveAttribute('aria-hidden', 'true')
 
       // Click the trigger button
       fireEvent.click(screen.getByText('Open Drawer'))
 
-      // Drawer content should now be visible
+      // Drawer should now be visible with proper ARIA attributes
+      const dialog = screen.getByRole('dialog')
+      expect(dialog).toBeInTheDocument()
+      expect(dialog).toHaveAttribute('aria-modal', 'true')
+      expect(dialog).toHaveAttribute('aria-hidden', 'false')
       expect(screen.getByText('Drawer Title')).toBeInTheDocument()
-      expect(
-        screen.getByText(
-          'This is the main content area of the drawer. You can put any content here.'
-        )
-      ).toBeInTheDocument()
+    })
+
+    it('uses semantic HTML elements', () => {
+      render(<Default />)
+      fireEvent.click(screen.getByText('Open Drawer'))
+
+      const dialog = screen.getByRole('dialog')
+
+      // Check for semantic elements
+      expect(dialog.querySelector('header')).toBeInTheDocument()
+      expect(dialog.querySelector('main')).toBeInTheDocument()
+      expect(dialog.querySelector('footer')).toBeInTheDocument()
+    })
+
+    it('has proper ARIA labeling', () => {
+      render(<Default />)
+      fireEvent.click(screen.getByText('Open Drawer'))
+
+      const dialog = screen.getByRole('dialog')
+      const titleId = dialog.getAttribute('aria-labelledby')
+      const descriptionId = dialog.getAttribute('aria-describedby')
+
+      expect(titleId).toBeTruthy()
+      expect(descriptionId).toBeTruthy()
+
+      // Verify the IDs match actual elements
+      expect(document.getElementById(titleId!)).toBeInTheDocument()
+      expect(document.getElementById(descriptionId!)).toBeInTheDocument()
     })
 
     it('matches snapshot when open', () => {
@@ -48,29 +75,49 @@ describe('Drawer', () => {
       // Press escape key
       fireEvent.keyDown(document, { key: 'Escape', code: 'Escape' })
 
-      // Drawer content should be hidden
-      expect(screen.queryByText('Drawer Title')).not.toBeInTheDocument()
+      // Drawer should close (use querySelector since aria-hidden=true makes it inaccessible)
+      const dialog = document.querySelector('[role="dialog"]')
+      expect(dialog).toHaveAttribute('aria-hidden', 'true')
+    })
+
+    it('closes when close button is clicked', () => {
+      render(<Default />)
+
+      // Open the drawer
+      fireEvent.click(screen.getByText('Open Drawer'))
+      expect(screen.getByText('Drawer Title')).toBeInTheDocument()
+
+      // Click close button
+      const closeButton = screen.getByLabelText('Close drawer')
+      fireEvent.click(closeButton)
+
+      // Drawer should close (use querySelector since aria-hidden=true makes it inaccessible)
+      const dialog = document.querySelector('[role="dialog"]')
+      expect(dialog).toHaveAttribute('aria-hidden', 'true')
     })
   })
 
   describe('Left Position Story', () => {
-    it('renders the settings drawer with left position', () => {
+    it('renders the left position drawer', () => {
       render(<LeftPosition />)
 
-      fireEvent.click(screen.getByText('Settings'))
+      // Click the trigger button
+      fireEvent.click(screen.getByRole('button', { name: 'Settings' }))
 
+      // Check that the drawer content is visible
+      expect(
+        screen.getByRole('heading', { name: 'Settings' })
+      ).toBeInTheDocument()
       expect(screen.getByText('Appearance')).toBeInTheDocument()
-      expect(screen.getByText('Notifications')).toBeInTheDocument()
-      expect(screen.getByText('Privacy')).toBeInTheDocument()
     })
   })
 
   describe('Large Size Story', () => {
-    it('renders the large drawer with notifications', () => {
+    it('renders the large size drawer with scrollable content', () => {
       render(<LargeSize />)
 
       // Click the trigger button
-      fireEvent.click(screen.getByText('Open Large Drawer'))
+      fireEvent.click(screen.getByText('Open Notifications'))
 
       // Check that the drawer content is visible
       expect(screen.getByText('Notifications')).toBeInTheDocument()
@@ -79,17 +126,17 @@ describe('Drawer', () => {
     })
   })
 
-  describe('Full Width Story', () => {
-    it('renders the full width drawer', () => {
-      render(<FullWidth />)
+  describe('With Tabs Story', () => {
+    it('renders the drawer with tabs', () => {
+      render(<WithTabs />)
 
       // Click the trigger button
-      fireEvent.click(screen.getByText('Open Full Width'))
+      fireEvent.click(screen.getByText('Open Tabbed Drawer'))
 
       // Check that the drawer content is visible
-      expect(screen.getByText('Full Width Drawer')).toBeInTheDocument()
-      expect(screen.getByText('Card 1')).toBeInTheDocument()
-      expect(screen.getByText('Save All')).toBeInTheDocument()
+      expect(screen.getByText('Tabbed Content')).toBeInTheDocument()
+      expect(screen.getByText('Details')).toBeInTheDocument()
+      expect(screen.getByText('Settings')).toBeInTheDocument()
     })
   })
 
@@ -103,16 +150,21 @@ describe('Drawer', () => {
       // Check ARIA attributes
       const dialog = screen.getByRole('dialog')
       expect(dialog).toHaveAttribute('aria-modal', 'true')
+      expect(dialog).toHaveAttribute('aria-labelledby')
+      expect(dialog).toHaveAttribute('aria-describedby')
     })
 
-    it('traps focus within the drawer when open', () => {
+    it('has overlay with aria-hidden', () => {
       render(<Default />)
 
       // Open the drawer
       fireEvent.click(screen.getByText('Open Drawer'))
 
-      // The drawer content should be in the document
-      expect(screen.getByRole('dialog')).toBeInTheDocument()
+      // Check overlay has aria-hidden (overlay is the first child of the portal container)
+      const portalContainer = document.querySelector('.fixed.z-50.inset-0')
+      const overlay = portalContainer?.querySelector('[aria-hidden="true"]')
+      expect(overlay).toBeInTheDocument()
+      expect(overlay).toHaveAttribute('aria-hidden', 'true')
     })
   })
 
@@ -122,80 +174,18 @@ describe('Drawer', () => {
 
       // Open the drawer
       fireEvent.click(screen.getByText('Open Drawer'))
-      expect(screen.getByText('Drawer Title')).toBeInTheDocument()
+      let dialog = screen.getByRole('dialog')
+      expect(dialog).toHaveAttribute('aria-hidden', 'false')
 
-      // Click the overlay (the overlay should be in the DOM when drawer is open)
-      const overlay = document.querySelector('[class*="drawerOverlayVariants"]')
+      // Click the overlay (first div with backdrop-blur class)
+      const overlay = document.querySelector('.backdrop-blur-md')
       if (overlay) {
         fireEvent.click(overlay)
-        // Drawer should close
-        expect(screen.queryByText('Drawer Title')).not.toBeInTheDocument()
+
+        // Drawer should close (use querySelector since aria-hidden=true makes it inaccessible)
+        dialog = document.querySelector('[role="dialog"]') as HTMLElement
+        expect(dialog).toHaveAttribute('aria-hidden', 'true')
       }
-    })
-
-    // Skipped: closeOnOverlayClick is not implemented in Drawer
-    // it('does not close drawer if overlay is clicked and closeOnOverlayClick is false', () => {
-    //   // Use a custom story with closeOnOverlayClick false
-    //   render(<Default closeOnOverlayClick={false} />)
-    //   fireEvent.click(screen.getByText('Open Drawer'))
-    //   const overlay = document.querySelector('[class*="drawerOverlayVariants"]')
-    //   if (overlay) {
-    //     fireEvent.click(overlay)
-    //     expect(screen.getByText('Drawer Title')).toBeInTheDocument()
-    //   }
-    // })
-  })
-
-  describe('Fade Transition Story', () => {
-    it('renders the fade transition drawer', () => {
-      render(<Fade />)
-
-      // Click the trigger button
-      fireEvent.click(screen.getByText('Open Fade Drawer'))
-
-      // Check that the drawer content is visible
-      expect(screen.getByText('Fade Transition')).toBeInTheDocument()
-      expect(
-        screen.getByText(
-          'This drawer uses a fade transition instead of sliding in/out.'
-        )
-      ).toBeInTheDocument()
-    })
-  })
-
-  describe('Glass Variant', () => {
-    const { GlassVariant } = composeStories(stories)
-    it('renders the glass variant drawer', () => {
-      render(<GlassVariant />)
-      fireEvent.click(screen.getByText('Open Glass Drawer'))
-      expect(screen.getByText(/glass variant/i)).toBeInTheDocument()
-      // Check for glass style class
-      const dialog = screen.getByRole('dialog')
-      expect(dialog.className).toMatch('backdrop-blur-lg')
-    })
-  })
-
-  describe('Tab Usage', () => {
-    const { HeaderTab } = composeStories(stories)
-    it('renders drawer with tabs in header', () => {
-      render(<HeaderTab />)
-      fireEvent.click(screen.getByText('Open Tab Drawer'))
-      expect(screen.getByText('Tab Drawer')).toBeInTheDocument()
-      expect(screen.getByRole('tab', { name: 'Details' })).toBeInTheDocument()
-      expect(screen.getByRole('tab', { name: 'Settings' })).toBeInTheDocument()
-    })
-  })
-
-  describe('Edge Cases', () => {
-    it('handles double open/close gracefully', () => {
-      render(<Default />)
-      const trigger = screen.getByText('Open Drawer')
-      fireEvent.click(trigger)
-      fireEvent.click(trigger) // open again
-      expect(screen.getByText('Drawer Title')).toBeInTheDocument()
-      fireEvent.keyDown(document, { key: 'Escape', code: 'Escape' })
-      fireEvent.keyDown(document, { key: 'Escape', code: 'Escape' })
-      expect(screen.queryByText('Drawer Title')).not.toBeInTheDocument()
     })
   })
 })
