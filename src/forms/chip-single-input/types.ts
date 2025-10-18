@@ -1,32 +1,26 @@
-import type { InputHTMLAttributes, ReactNode } from 'react'
+import type {
+  FieldsetHTMLAttributes,
+  InputHTMLAttributes,
+  ReactNode,
+} from 'react'
 
 /**
  * Props for the ChipSingleInput component
  */
 export interface ChipSingleInputProps
-  extends Omit<
-    InputHTMLAttributes<HTMLInputElement>,
-    'type' | 'size' | 'onChange' | 'value'
-  > {
+  extends Omit<FieldsetHTMLAttributes<HTMLFieldSetElement>, 'onChange'> {
   /**
-   * The shape of the chip: 'circle' (default) or 'rounded'
-   */
-  shape?: 'circle' | 'rounded'
-  /**
-   * The size of the chip: 'sm' (default), 'md', or 'lg'
+   * The size of the chip: 'sm', 'md' (default), or 'lg'
    */
   size?: 'sm' | 'md' | 'lg'
   /**
-   * Visual style variant supporting Versaur color system
-   * Core variants: primary (coral), secondary (sage), tertiary (mist), ghost (slate), neutral (light gray)
-   * Semantic variants: success, info, warning, danger
-   * Each variant supports outline form for flexible design expression
-   */
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost'
-  /**
-   * Label text to display above the chip group
+   * Label text to display above the chip group (rendered as legend)
    */
   label?: ReactNode
+  /**
+   * Whether the field is required (displays asterisk in legend)
+   */
+  required?: boolean
   /**
    * Helper text to display below the chip group
    */
@@ -48,6 +42,14 @@ export interface ChipSingleInputProps
    * Callback when value changes
    */
   onChange?: (value: string) => void
+  /**
+   * Whether the chip group is read-only
+   */
+  readOnly?: boolean
+  /**
+   * Maximum width for individual chips (enables text truncation)
+   */
+  maxWidth?: string
 }
 
 /**

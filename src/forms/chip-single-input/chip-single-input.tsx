@@ -10,20 +10,25 @@ import type { ChipSingleInputProps } from './types'
 /**
  * ChipSingleInput component for Versaur UI
  *
- * Provides a group of checkbox chips for multiple selection
+ * Provides a group of radio chips for single selection
  * Controlled component pattern for React forms
+ * Uses fieldset and legend for semantic HTML
  */
-const ChipSingleInputRoot = forwardRef<HTMLDivElement, ChipSingleInputProps>(
+const ChipSingleInputRoot = forwardRef<
+  HTMLFieldSetElement,
+  ChipSingleInputProps
+>(
   (
     {
-      variant = 'primary',
-      shape = 'circle',
-      size = 'sm',
+      size = 'md',
       label,
+      required,
       helperText,
       error,
       className,
       disabled,
+      readOnly,
+      maxWidth,
       name,
       value,
       onChange,
@@ -35,23 +40,33 @@ const ChipSingleInputRoot = forwardRef<HTMLDivElement, ChipSingleInputProps>(
     const hasError = Boolean(error)
 
     const contextValue = {
-      variant,
-      shape,
       size,
       disabled,
+      readOnly,
       error: hasError,
       name,
       value,
+      maxWidth,
       onChange,
     } satisfies ChipSingleInputContextValue
 
     return (
       <ChipSingleInputContext.Provider value={contextValue}>
-        <div ref={ref} className={cn('w-full', className)} {...props}>
+        <fieldset
+          ref={ref}
+          className={cn('w-full border-0 p-0 m-0', className)}
+          disabled={disabled}
+          {...props}
+        >
           {label && (
-            <div className='block text-sm font-medium text-foreground mb-3'>
+            <legend className='block text-sm font-medium text-foreground mb-3 float-none w-auto'>
               {label}
-            </div>
+              {required && (
+                <span className='text-danger ml-1' aria-label='required'>
+                  *
+                </span>
+              )}
+            </legend>
           )}
           <div className='flex flex-wrap gap-2'>{children}</div>
           {hasError && (
@@ -62,7 +77,7 @@ const ChipSingleInputRoot = forwardRef<HTMLDivElement, ChipSingleInputProps>(
           {!hasError && helperText && (
             <div className='mt-2 text-sm text-gray-600'>{helperText}</div>
           )}
-        </div>
+        </fieldset>
       </ChipSingleInputContext.Provider>
     )
   }

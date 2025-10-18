@@ -9,33 +9,26 @@ import type { ChipSingleInputOptionProps } from './types'
  *
  * Individual chip option for ChipSingleInput
  * Uses radio input pattern for single selection
- * Supports leading icon and animated tick/check
+ * Supports text truncation with maxWidth and icon-only mode
  */
 export const ChipSingleInputOption = React.forwardRef<
   HTMLInputElement,
   ChipSingleInputOptionProps
 >(({ children, className, disabled, id, value, ...props }, ref) => {
-  const {
-    variant = 'primary',
-    shape = 'circle',
-    size = 'sm',
-
-    ...context
-  } = useChipSingleInputContext()
+  const { size = 'md', maxWidth, ...context } = useChipSingleInputContext()
   const generatedId = useId()
 
   const inputId = id || generatedId
 
   const isDisabled = disabled || context.disabled
+  const isReadOnly = context.readOnly
 
   const isChecked = context.value === value
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (!isDisabled) {
-      // Only one value can be selected
+    if (!isDisabled && !isReadOnly) {
       context.onChange?.(value)
     }
-    // Always call the original onChange prop if provided
     props.onChange?.(event)
   }
 
@@ -49,6 +42,7 @@ export const ChipSingleInputOption = React.forwardRef<
         value={value}
         checked={isChecked}
         disabled={isDisabled}
+        readOnly={isReadOnly}
         onChange={handleChange}
         className='sr-only'
         {...props}
@@ -56,17 +50,24 @@ export const ChipSingleInputOption = React.forwardRef<
       <label
         htmlFor={inputId}
         data-selected={isChecked}
+        style={maxWidth ? { maxWidth } : undefined}
         className={cn(
           chipSingleInputOptionVariants({
-            variant,
-            shape,
             size,
           }),
           isDisabled && 'opacity-50 cursor-not-allowed pointer-events-none',
+          isReadOnly && 'cursor-default pointer-events-none',
           className
         )}
       >
-        <span className='flex items-center gap-2'>{children}</span>
+        <span
+          className={cn(
+            'flex items-center gap-2',
+            maxWidth && 'truncate text-ellipsis overflow-hidden w-full'
+          )}
+        >
+          {children}
+        </span>
       </label>
     </>
   )

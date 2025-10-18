@@ -2,13 +2,13 @@ import { createContext, useContext } from 'react'
 import type { ChipSingleInputProps } from './types'
 
 export interface ChipSingleInputContextValue {
-  variant: ChipSingleInputProps['variant']
-  shape?: ChipSingleInputProps['shape']
   size?: ChipSingleInputProps['size']
   disabled?: boolean
+  readOnly?: boolean
   error?: boolean
   name: string
   value?: string
+  maxWidth?: string
   onChange?: (value: string) => void
 }
 

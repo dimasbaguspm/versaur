@@ -3,8 +3,15 @@ import { composeStories } from '@storybook/react'
 import * as stories from '../chip-single-input.stories'
 
 describe('ChipSingleInput', () => {
-  const { Basic, Disabled, Variants, Shape, Sizes, CheckIcon } =
-    composeStories(stories)
+  const {
+    Basic,
+    Sizes,
+    States,
+    IconOnly,
+    WithIcons,
+    Truncation,
+    WithValidation,
+  } = composeStories(stories)
 
   it('renders options, toggles selection, and displays correct text', () => {
     render(<Basic />)
@@ -16,86 +23,107 @@ describe('ChipSingleInput', () => {
     expect(banana).toBeInTheDocument()
     expect(cherry).toBeInTheDocument()
 
-    fireEvent.click(apple)
-    expect(apple).toBeChecked()
-    fireEvent.click(banana)
+    // Banana should be checked initially
     expect(banana).toBeChecked()
+
     fireEvent.click(apple)
     expect(apple).toBeChecked()
     expect(banana).not.toBeChecked()
+
+    fireEvent.click(cherry)
+    expect(cherry).toBeChecked()
+    expect(apple).not.toBeChecked()
   })
 
-  it('renders shape variations and toggles selection', () => {
-    render(<Shape />)
-    const circleA = screen.getByLabelText('Circle A')
-    const circleB = screen.getByLabelText('Circle B')
-    const roundedC = screen.getByLabelText('Rounded C')
-    const roundedD = screen.getByLabelText('Rounded D')
-    expect(circleA).toBeInTheDocument()
-    expect(circleB).toBeInTheDocument()
-    expect(roundedC).toBeInTheDocument()
-    expect(roundedD).toBeInTheDocument()
-    fireEvent.click(circleA)
-    expect(circleA).toBeChecked()
-    fireEvent.click(roundedC)
-    expect(roundedC).toBeChecked()
-  })
-
-  it('renders size variations and toggles selection', () => {
+  it('renders size variations', () => {
     render(<Sizes />)
-    // There are three groups, each with Small/Medium/Large, so we must use getAllByLabelText
-    const smallInputs = screen.getAllByLabelText('Small')
-    const mediumInputs = screen.getAllByLabelText('Medium')
-    const largeInputs = screen.getAllByLabelText('Large')
-    expect(smallInputs.length).toBe(3)
-    expect(mediumInputs.length).toBe(3)
-    expect(largeInputs.length).toBe(3)
-    // Interact with the first group (sm)
-    fireEvent.click(smallInputs[0])
-    expect(smallInputs[0]).toBeChecked()
-    fireEvent.click(mediumInputs[0])
-    expect(mediumInputs[0]).toBeChecked()
-    fireEvent.click(largeInputs[0])
-    expect(largeInputs[0]).toBeChecked()
+    const optionA = screen.getByLabelText('Option A')
+    const optionC = screen.getByLabelText('Option C')
+    const optionE = screen.getByLabelText('Option E')
+
+    expect(optionA).toBeInTheDocument()
+    expect(optionC).toBeInTheDocument()
+    expect(optionE).toBeInTheDocument()
+
+    fireEvent.click(optionA)
+    expect(optionA).toBeChecked()
   })
 
-  it('renders custom and default check icons', () => {
-    render(<CheckIcon />)
-    // Custom check icon
+  it('respects disabled and readOnly states', () => {
+    render(<States />)
+
+    // Test disabled state
+    const optionB = screen.getByLabelText('Option B')
+    expect(optionB).toBeDisabled()
+    expect(optionB).toBeChecked() // Initially checked
+    const disabledLabel = screen.getByText('Option B').closest('label')
+    expect(disabledLabel?.className).toMatch(/cursor-not-allowed/)
+
+    // Test readOnly state
+    const optionD = screen.getByLabelText('Option D')
+    expect(optionD).toHaveAttribute('readOnly')
+    expect(optionD).toBeChecked() // Initially checked
+    const readOnlyLabel = screen.getByText('Option D').closest('label')
+    expect(readOnlyLabel?.className).toMatch(/cursor-default/)
+  })
+
+  it('renders icon-only chips', () => {
+    render(<IconOnly />)
     const star = screen.getByLabelText('Star')
-    const circle = screen.getByLabelText('Circle')
+    const heart = screen.getByLabelText('Heart')
+    const sparkles = screen.getByLabelText('Sparkles')
+
     expect(star).toBeInTheDocument()
-    expect(circle).toBeInTheDocument()
+    expect(heart).toBeInTheDocument()
+    expect(sparkles).toBeInTheDocument()
+    expect(heart).toBeChecked() // Initially checked
+
     fireEvent.click(star)
     expect(star).toBeChecked()
-    // No check icon
-    const noCheckA = screen.getByLabelText('No Check A')
-    expect(noCheckA).toBeInTheDocument()
-    fireEvent.click(noCheckA)
-    expect(noCheckA).toBeChecked()
+    expect(heart).not.toBeChecked()
   })
 
-  it('respects disabled state and applies disabled class', () => {
-    render(<Disabled />)
-    const apple = screen.getByLabelText('Apple')
-    expect(apple).toBeDisabled()
-    const label = screen.getByText('Apple').closest('label')
-    expect(label?.className).toMatch(/cursor-not-allowed/)
+  it('renders chips with icons and text', () => {
+    render(<WithIcons />)
+    const star = screen.getByText('Star')
+    const heart = screen.getByText('Heart')
+    const sparkles = screen.getByText('Sparkles')
+
+    expect(star).toBeInTheDocument()
+    expect(heart).toBeInTheDocument()
+    expect(sparkles).toBeInTheDocument()
   })
 
-  it('renders all color variants and checks classes', () => {
-    render(<Variants />)
-    const variantLabels = ['Coral', 'Sage', 'Mist', 'Slate']
-    variantLabels.forEach(label => {
-      const chip = screen.getByText(label).closest('label')
-      expect(chip).toBeInTheDocument()
-    })
-    // Check selection and color for one variant
-    const coralInput = screen.getByLabelText('Coral')
-    fireEvent.click(coralInput)
-    expect(coralInput).toBeChecked()
-    const coralLabel = screen.getByText('Coral').closest('label')
-    expect(coralLabel?.className).toMatch('bg-primary-soft')
+  it('renders truncation with maxWidth', () => {
+    render(<Truncation />)
+    const shortChip = screen.getByText('Short')
+    const longChip = screen.getByText('Very Long Text That Will Be Truncated')
+
+    expect(shortChip).toBeInTheDocument()
+    expect(longChip).toBeInTheDocument()
+
+    const longLabel = longChip.closest('label')
+    expect(longLabel?.style.maxWidth).toBe('120px')
+  })
+
+  it('displays required asterisk, error and helper text', () => {
+    render(<WithValidation />)
+
+    // Check for required asterisk
+    const asterisk = screen.getByText('*')
+    expect(asterisk).toBeInTheDocument()
+    expect(asterisk.className).toMatch(/text-danger/)
+
+    // Check for error message
+    const errorMessage = screen.getByText('Please select an option')
+    expect(errorMessage).toBeInTheDocument()
+    expect(errorMessage).toHaveAttribute('role', 'alert')
+
+    // Check for helper text
+    const helperText = screen.getByText(
+      'Choose the option that best fits your needs'
+    )
+    expect(helperText).toBeInTheDocument()
   })
 
   it('matches snapshot', () => {
