@@ -1,7 +1,7 @@
 /**
  * PageHeader stories for Storybook
  * Group: Layout
- * Demonstrates PageHeader usage patterns, both simplified API and compound pattern
+ * Demonstrates PageHeader usage patterns with size and backgroundColor variants
  * Icons from lucide-react (dev only)
  */
 import { useState } from 'react'
@@ -23,26 +23,13 @@ export default {
 }
 
 /**
- * Simple page header with just title and actions
+ * Default page header with title, subtitle, and actions
+ * Demonstrates fluid size (full width) and white background
  */
-export const Simple = () => (
+export const Default = () => (
   <PageHeader
     title='Dashboard'
     subtitle='Welcome back, John'
-    breadcrumbs={
-      <Breadcrumbs>
-        <Breadcrumbs.Item
-          href='/'
-          icon={<Icon as={HomeIcon} color='inherit' size='sm' />}
-        >
-          Home
-        </Breadcrumbs.Item>
-        <Breadcrumbs.Separator />
-        <Breadcrumbs.Item href='/admin'>Admin</Breadcrumbs.Item>
-        <Breadcrumbs.Separator />
-        <Breadcrumbs.Item>Users</Breadcrumbs.Item>
-      </Breadcrumbs>
-    }
     actions={
       <ButtonGroup>
         <Button variant='primary'>New Project</Button>
@@ -57,17 +44,25 @@ export const Simple = () => (
 )
 
 /**
- * Full-featured page header with all elements using simplified API
+ * Complete page header with all elements including breadcrumbs, badges, and tabs
+ * Demonstrates wide size (max-width container) and gray background
  */
 export const Complete = () => {
   const [activeTab, setActiveTab] = useState('all')
   return (
     <PageHeader
+      size='wide'
+      backgroundColor='gray'
       title='User Management'
       subtitle='Manage user accounts and permissions across the organization'
       breadcrumbs={
         <Breadcrumbs>
-          <Breadcrumbs.Item href='/'>Home</Breadcrumbs.Item>
+          <Breadcrumbs.Item
+            href='/'
+            icon={<Icon as={HomeIcon} color='inherit' size='sm' />}
+          >
+            Home
+          </Breadcrumbs.Item>
           <Breadcrumbs.Separator />
           <Breadcrumbs.Item href='/admin'>Admin</Breadcrumbs.Item>
           <Breadcrumbs.Separator />
@@ -120,24 +115,26 @@ export const Complete = () => {
 }
 
 /**
- * Minimal header with only title
+ * Narrow header for focused content pages
+ * Demonstrates narrow size (max-width 768px) centered layout
  */
-export const Minimal = () => (
+export const Narrow = () => (
   <PageHeader
-    title='Simple Page'
+    size='narrow'
+    title='Account Settings'
+    subtitle='Manage your account preferences and security settings'
     breadcrumbs={
       <Breadcrumbs>
-        <Breadcrumbs.Item
-          href='/'
-          icon={<Icon as={HomeIcon} color='inherit' size='sm' />}
-        >
-          Home
-        </Breadcrumbs.Item>
+        <Breadcrumbs.Item href='/'>Home</Breadcrumbs.Item>
         <Breadcrumbs.Separator />
-        <Breadcrumbs.Item href='/admin'>Admin</Breadcrumbs.Item>
-        <Breadcrumbs.Separator />
-        <Breadcrumbs.Item>Users</Breadcrumbs.Item>
+        <Breadcrumbs.Item>Settings</Breadcrumbs.Item>
       </Breadcrumbs>
+    }
+    actions={
+      <ButtonGroup>
+        <Button variant='outline'>Cancel</Button>
+        <Button variant='primary'>Save Changes</Button>
+      </ButtonGroup>
     }
   />
 )

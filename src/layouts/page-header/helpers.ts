@@ -1,9 +1,35 @@
 import { cva } from 'class-variance-authority'
 
 /**
- * PageHeader root styles
+ * PageHeader outer wrapper styles (background)
  */
-export const pageHeaderVariants = cva('w-full pt-4 md:pt-10')
+export const pageHeaderOuterVariants = cva('w-full', {
+  variants: {
+    backgroundColor: {
+      white: 'bg-white',
+      gray: 'bg-neutral',
+    },
+  },
+  defaultVariants: {
+    backgroundColor: 'white',
+  },
+})
+
+/**
+ * PageHeader inner container styles (size and padding)
+ */
+export const pageHeaderInnerVariants = cva('w-full mx-auto pt-4 md:pt-10', {
+  variants: {
+    size: {
+      fluid: 'max-w-full',
+      wide: 'max-w-7xl',
+      narrow: 'max-w-3xl',
+    },
+  },
+  defaultVariants: {
+    size: 'fluid',
+  },
+})
 
 /**
  * PageHeaderTop styles - main header area

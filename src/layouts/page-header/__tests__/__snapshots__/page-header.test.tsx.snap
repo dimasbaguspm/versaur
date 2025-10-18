@@ -1,710 +1,88 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`PageHeader > renders complete layout with all elements 1`] = `
+exports[`PageHeader > renders correctly 1`] = `
 <div>
   <header
-    class="w-full pt-4 md:pt-10"
+    class="w-full bg-white"
     role="banner"
   >
     <div
-      class="mb-4 px-4 sm:px-6"
-      data-versaur-page-header-breadcrumbs="true"
-    >
-      <nav
-        aria-label="Breadcrumb"
-      >
-        <ol
-          class="flex items-center gap-2 text-sm text-gray-500"
-        >
-          <li
-            class="flex items-center"
-          >
-            <a
-              class="inline-flex items-center gap-1 transition-colors hover:underline cursor-pointer"
-              href="/"
-              tabindex="0"
-            >
-              Home
-            </a>
-          </li>
-          <svg
-            aria-hidden="true"
-            class="lucide lucide-chevron-right inline-flex items-center justify-center w-3 h-3"
-            fill="none"
-            height="24"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="m9 18 6-6-6-6"
-            />
-          </svg>
-          <li
-            class="flex items-center"
-          >
-            <a
-              class="inline-flex items-center gap-1 transition-colors hover:underline cursor-pointer"
-              href="/admin"
-              tabindex="0"
-            >
-              Admin
-            </a>
-          </li>
-          <svg
-            aria-hidden="true"
-            class="lucide lucide-chevron-right inline-flex items-center justify-center w-3 h-3"
-            fill="none"
-            height="24"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="m9 18 6-6-6-6"
-            />
-          </svg>
-          <li
-            class="flex items-center"
-          >
-            <a
-              class="inline-flex items-center gap-1 transition-colors hover:underline cursor-pointer"
-              tabindex="0"
-            >
-              Users
-            </a>
-          </li>
-        </ol>
-      </nav>
-    </div>
-    <div
-      class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 px-4 sm:px-6 mb-4"
-      data-versaur-page-header-top="true"
+      class="w-full mx-auto pt-4 md:pt-10 max-w-full"
     >
       <div
-        class="flex-1 min-w-0 flex flex-col gap-2 w-full sm:w-auto"
-        data-versaur-page-header-content="true"
+        class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 px-4 sm:px-6 mb-4"
+        data-versaur-page-header-top="true"
       >
         <div
-          class="flex items-center justify-between"
+          class="flex-1 min-w-0 flex flex-col gap-2 w-full sm:w-auto"
+          data-versaur-page-header-content="true"
         >
-          <h1
-            class="text-ghost text-left truncate text-xl font-semibold"
-          >
-            User Management
-          </h1>
           <div
-            class="md:hidden"
-            data-versaur-page-header-mobile-actions="true"
+            class="flex items-center justify-between"
           >
-            <div
-              class="flex flex-wrap items-center flex-row justify-start gap-3"
-              role="group"
+            <h1
+              class="text-ghost text-left truncate text-xl font-semibold"
             >
-              <button
-                aria-label="Import"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-light focus-visible:ring-offset-white h-9 w-9 rounded-md"
-                type="button"
+              Dashboard
+            </h1>
+            <div
+              class="md:hidden"
+              data-versaur-page-header-mobile-actions="true"
+            >
+              <div
+                class="flex flex-wrap items-center flex-row justify-start gap-3"
+                role="group"
               >
-                <svg
-                  aria-hidden="true"
-                  class="lucide lucide-upload inline-flex items-center justify-center w-4 h-4"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
+                <button
+                  aria-label="New Project"
+                  class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md h-9 w-9 rounded-md"
+                  type="button"
                 >
-                  <path
-                    d="M12 3v12"
-                  />
-                  <path
-                    d="m17 8-5-5-5 5"
-                  />
-                  <path
-                    d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
-                  />
-                </svg>
-              </button>
-              <button
-                aria-label="Export"
-                class="inline-flex items-center justify-center font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer border border-border text-foreground bg-white hover:bg-accent-soft focus-visible:ring-accent-soft focus-visible:ring-offset-white transition-all h-9 w-9 rounded-md"
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="lucide lucide-arrow-down inline-flex items-center justify-center w-4 h-4"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 5v14"
-                  />
-                  <path
-                    d="m19 12-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              <button
-                aria-label="Add User"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md h-9 w-9 rounded-md"
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="lucide lucide-plus inline-flex items-center justify-center w-4 h-4 text-white"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M5 12h14"
-                  />
-                  <path
-                    d="M12 5v14"
-                  />
-                </svg>
-              </button>
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-plus inline-flex items-center justify-center w-4 h-4 text-white"
+                    fill="none"
+                    height="24"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    width="24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5 12h14"
+                    />
+                    <path
+                      d="M12 5v14"
+                    />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
+          <p
+            class="text-ghost text-left line-clamp-2 text-sm font-normal mb-2 sm:clamp-3"
+          >
+            Welcome back, John
+          </p>
         </div>
-        <p
-          class="text-ghost text-left line-clamp-2 text-sm font-normal mb-2 sm:clamp-3"
-        >
-          Manage user accounts and permissions across the organization
-        </p>
         <div
-          class="flex items-center gap-2 flex-wrap"
-          data-versaur-page-header-badges="true"
+          class="hidden md:flex flex-col sm:flex-row gap-2 sm:gap-3 w-auto sm:ml-auto sm:shrink-0 [&>*]:w-full sm:[&>*]:w-auto"
+          data-versaur-page-header-actions="true"
         >
-          <span
-            class="inline-flex items-center justify-center font-medium transition-all duration-200 select-none gap-1 min-h-[1.25rem] rounded-xs text-xs px-1.5 py-0.5 h-4 bg-primary-light text-primary-bold"
-          >
-            Active
-          </span>
-          <span
-            class="inline-flex items-center justify-center font-medium transition-all duration-200 select-none gap-1 min-h-[1.25rem] rounded-xs text-xs px-1.5 py-0.5 h-4 bg-neutral-light text-foreground"
-          >
-            Admin
-          </span>
-        </div>
-      </div>
-      <div
-        class="hidden md:flex flex-col sm:flex-row gap-2 sm:gap-3 w-auto sm:ml-auto sm:shrink-0 [&>*]:w-full sm:[&>*]:w-auto"
-        data-versaur-page-header-actions="true"
-      >
-        <div
-          class="flex flex-wrap items-center flex-row justify-start gap-3"
-          role="group"
-        >
-          <button
-            class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-light focus-visible:ring-offset-white h-9 px-4 text-sm min-w-[2.5rem]"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              class="lucide lucide-upload inline-flex items-center justify-center w-5 h-5"
-              fill="none"
-              height="24"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 3v12"
-              />
-              <path
-                d="m17 8-5-5-5 5"
-              />
-              <path
-                d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
-              />
-            </svg>
-            Import
-          </button>
-          <button
-            class="inline-flex items-center justify-center gap-2 rounded-md font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer border border-border text-foreground bg-white hover:bg-accent-soft focus-visible:ring-accent-soft focus-visible:ring-offset-white transition-all h-9 px-4 text-sm min-w-[2.5rem]"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              class="lucide lucide-arrow-down inline-flex items-center justify-center w-5 h-5"
-              fill="none"
-              height="24"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 5v14"
-              />
-              <path
-                d="m19 12-7 7-7-7"
-              />
-            </svg>
-            Export
-          </button>
-          <button
-            class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md h-9 px-4 text-sm min-w-[2.5rem]"
-            type="button"
-          >
-            <svg
-              aria-hidden="true"
-              class="lucide lucide-plus inline-flex items-center justify-center w-5 h-5"
-              fill="none"
-              height="24"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5 12h14"
-              />
-              <path
-                d="M12 5v14"
-              />
-            </svg>
-            Add User
-          </button>
-        </div>
-      </div>
-    </div>
-    <div
-      class="w-full flex items-center px-4 sm:px-6 py-0 overflow-x-auto"
-      data-versaur-page-header-bottom="true"
-    >
-      <nav
-        aria-label="Tabs"
-        class="relative w-full"
-      >
-        <div
-          class="relative overflow-hidden"
-        >
-          <ul
-            class="flex flex-row w-full border-b border-border overflow-x-auto overflow-y-visible whitespace-nowrap py-1"
-            role="tablist"
-          >
-            <li
-              role="presentation"
-            >
-              <a
-                aria-controls="tabs-content-all"
-                aria-current="page"
-                aria-selected="true"
-                class="inline-flex items-center justify-center px-4 py-2 text-sm transition-all duration-200 border-b-2 border-transparent select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:z-10 disabled:opacity-50 disabled:pointer-events-none text-primary font-medium"
-                href="#all"
-                id="tabs-trigger-all"
-                role="tab"
-              >
-                All Users
-              </a>
-            </li>
-            <li
-              role="presentation"
-            >
-              <a
-                aria-controls="tabs-content-active"
-                aria-selected="false"
-                class="inline-flex items-center justify-center px-4 py-2 text-sm font-normal text-foreground transition-all duration-200 border-b-2 border-transparent select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:z-10 disabled:opacity-50 disabled:pointer-events-none hover:text-primary"
-                href="#active"
-                id="tabs-trigger-active"
-                role="tab"
-              >
-                Active
-              </a>
-            </li>
-            <li
-              role="presentation"
-            >
-              <a
-                aria-controls="tabs-content-pending"
-                aria-selected="false"
-                class="inline-flex items-center justify-center px-4 py-2 text-sm font-normal text-foreground transition-all duration-200 border-b-2 border-transparent select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:z-10 disabled:opacity-50 disabled:pointer-events-none hover:text-primary"
-                href="#pending"
-                id="tabs-trigger-pending"
-                role="tab"
-              >
-                Pending
-              </a>
-            </li>
-            <li
-              role="presentation"
-            >
-              <a
-                aria-controls="tabs-content-disabled"
-                aria-selected="false"
-                class="inline-flex items-center justify-center px-4 py-2 text-sm font-normal text-foreground transition-all duration-200 border-b-2 border-transparent select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:z-10 disabled:opacity-50 disabled:pointer-events-none hover:text-primary"
-                href="#disabled"
-                id="tabs-trigger-disabled"
-                role="tab"
-              >
-                Disabled
-              </a>
-            </li>
-          </ul>
           <div
-            aria-hidden="true"
-            class="absolute bottom-0 h-0.5 rounded bg-primary transition-all duration-300 pointer-events-none"
-            style="left: 0px; width: 0px;"
-          />
-        </div>
-      </nav>
-    </div>
-  </header>
-</div>
-`;
-
-exports[`PageHeader > renders correctly with simple props 1`] = `
-<div>
-  <header
-    class="w-full pt-4 md:pt-10"
-    role="banner"
-  >
-    <div
-      class="mb-4 px-4 sm:px-6"
-      data-versaur-page-header-breadcrumbs="true"
-    >
-      <nav
-        aria-label="Breadcrumb"
-      >
-        <ol
-          class="flex items-center gap-2 text-sm text-gray-500"
-        >
-          <li
-            class="flex items-center"
+            class="flex flex-wrap items-center flex-row justify-start gap-3"
+            role="group"
           >
-            <a
-              class="inline-flex items-center gap-1 transition-colors hover:underline cursor-pointer"
-              href="/"
-              tabindex="0"
+            <button
+              class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md h-9 px-4 text-sm min-w-[2.5rem]"
+              type="button"
             >
-              <span
-                class="mr-1 inline-flex"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="lucide lucide-house inline-flex items-center justify-center w-4 h-4"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"
-                  />
-                  <path
-                    d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
-                  />
-                </svg>
-              </span>
-              Home
-            </a>
-          </li>
-          <svg
-            aria-hidden="true"
-            class="lucide lucide-chevron-right inline-flex items-center justify-center w-3 h-3"
-            fill="none"
-            height="24"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="m9 18 6-6-6-6"
-            />
-          </svg>
-          <li
-            class="flex items-center"
-          >
-            <a
-              class="inline-flex items-center gap-1 transition-colors hover:underline cursor-pointer"
-              href="/admin"
-              tabindex="0"
-            >
-              Admin
-            </a>
-          </li>
-          <svg
-            aria-hidden="true"
-            class="lucide lucide-chevron-right inline-flex items-center justify-center w-3 h-3"
-            fill="none"
-            height="24"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="m9 18 6-6-6-6"
-            />
-          </svg>
-          <li
-            class="flex items-center"
-          >
-            <a
-              class="inline-flex items-center gap-1 transition-colors hover:underline cursor-pointer"
-              tabindex="0"
-            >
-              Users
-            </a>
-          </li>
-        </ol>
-      </nav>
-    </div>
-    <div
-      class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 px-4 sm:px-6 mb-4"
-      data-versaur-page-header-top="true"
-    >
-      <div
-        class="flex-1 min-w-0 flex flex-col gap-2 w-full sm:w-auto"
-        data-versaur-page-header-content="true"
-      >
-        <div
-          class="flex items-center justify-between"
-        >
-          <h1
-            class="text-ghost text-left truncate text-xl font-semibold"
-          >
-            Dashboard
-          </h1>
-          <div
-            class="md:hidden"
-            data-versaur-page-header-mobile-actions="true"
-          >
-            <div
-              class="flex flex-wrap items-center flex-row justify-start gap-3"
-              role="group"
-            >
-              <button
-                aria-label="New Project"
-                class="inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md h-9 w-9 rounded-md"
-                type="button"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="lucide lucide-plus inline-flex items-center justify-center w-4 h-4 text-white"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M5 12h14"
-                  />
-                  <path
-                    d="M12 5v14"
-                  />
-                </svg>
-              </button>
-            </div>
+              New Project
+            </button>
           </div>
-        </div>
-        <p
-          class="text-ghost text-left line-clamp-2 text-sm font-normal mb-2 sm:clamp-3"
-        >
-          Welcome back, John
-        </p>
-      </div>
-      <div
-        class="hidden md:flex flex-col sm:flex-row gap-2 sm:gap-3 w-auto sm:ml-auto sm:shrink-0 [&>*]:w-full sm:[&>*]:w-auto"
-        data-versaur-page-header-actions="true"
-      >
-        <div
-          class="flex flex-wrap items-center flex-row justify-start gap-3"
-          role="group"
-        >
-          <button
-            class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md h-9 px-4 text-sm min-w-[2.5rem]"
-            type="button"
-          >
-            New Project
-          </button>
-        </div>
-      </div>
-    </div>
-  </header>
-</div>
-`;
-
-exports[`PageHeader > renders minimal layout 1`] = `
-<div>
-  <header
-    class="w-full pt-4 md:pt-10"
-    role="banner"
-  >
-    <div
-      class="mb-4 px-4 sm:px-6"
-      data-versaur-page-header-breadcrumbs="true"
-    >
-      <nav
-        aria-label="Breadcrumb"
-      >
-        <ol
-          class="flex items-center gap-2 text-sm text-gray-500"
-        >
-          <li
-            class="flex items-center"
-          >
-            <a
-              class="inline-flex items-center gap-1 transition-colors hover:underline cursor-pointer"
-              href="/"
-              tabindex="0"
-            >
-              <span
-                class="mr-1 inline-flex"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="lucide lucide-house inline-flex items-center justify-center w-4 h-4"
-                  fill="none"
-                  height="24"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"
-                  />
-                  <path
-                    d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
-                  />
-                </svg>
-              </span>
-              Home
-            </a>
-          </li>
-          <svg
-            aria-hidden="true"
-            class="lucide lucide-chevron-right inline-flex items-center justify-center w-3 h-3"
-            fill="none"
-            height="24"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="m9 18 6-6-6-6"
-            />
-          </svg>
-          <li
-            class="flex items-center"
-          >
-            <a
-              class="inline-flex items-center gap-1 transition-colors hover:underline cursor-pointer"
-              href="/admin"
-              tabindex="0"
-            >
-              Admin
-            </a>
-          </li>
-          <svg
-            aria-hidden="true"
-            class="lucide lucide-chevron-right inline-flex items-center justify-center w-3 h-3"
-            fill="none"
-            height="24"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="m9 18 6-6-6-6"
-            />
-          </svg>
-          <li
-            class="flex items-center"
-          >
-            <a
-              class="inline-flex items-center gap-1 transition-colors hover:underline cursor-pointer"
-              tabindex="0"
-            >
-              Users
-            </a>
-          </li>
-        </ol>
-      </nav>
-    </div>
-    <div
-      class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 px-4 sm:px-6 mb-4"
-      data-versaur-page-header-top="true"
-    >
-      <div
-        class="flex-1 min-w-0 flex flex-col gap-2 w-full sm:w-auto"
-        data-versaur-page-header-content="true"
-      >
-        <div
-          class="flex items-center justify-between"
-        >
-          <h1
-            class="text-ghost text-left truncate text-xl font-semibold"
-          >
-            Simple Page
-          </h1>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { forwardRef, type ReactNode } from 'react'
 import { cn } from '@/utils/cn'
-import { pageHeaderVariants } from './helpers'
+import { pageHeaderOuterVariants, pageHeaderInnerVariants } from './helpers'
 import type { PageHeaderProps } from './types'
 import {
   PageHeaderTop,
@@ -62,6 +62,8 @@ const PageHeaderRoot = forwardRef<HTMLElement, PageHeaderRootProps>(
     {
       children,
       className,
+      size = 'fluid',
+      backgroundColor = 'white',
       title,
       subtitle,
       breadcrumbs,
@@ -78,32 +80,34 @@ const PageHeaderRoot = forwardRef<HTMLElement, PageHeaderRootProps>(
     return (
       <header
         ref={ref}
-        className={cn(pageHeaderVariants(), className)}
+        className={cn(pageHeaderOuterVariants({ backgroundColor }))}
         role='banner'
         {...props}
       >
-        {breadcrumbs && (
-          <PageHeaderBreadcrumbs>{breadcrumbs}</PageHeaderBreadcrumbs>
-        )}
+        <div className={cn(pageHeaderInnerVariants({ size }), className)}>
+          {breadcrumbs && (
+            <PageHeaderBreadcrumbs>{breadcrumbs}</PageHeaderBreadcrumbs>
+          )}
 
-        <PageHeaderTop>
-          <PageHeaderContent>
-            <div className='flex items-center justify-between'>
-              <PageHeaderTitle>{title}</PageHeaderTitle>
-              {mobileActions && (
-                <PageHeaderMobileActions>
-                  {mobileActions}
-                </PageHeaderMobileActions>
-              )}
-            </div>
-            {subtitle && <PageHeaderSubtitle>{subtitle}</PageHeaderSubtitle>}
-            {badges && <PageHeaderBadges>{badges}</PageHeaderBadges>}
-          </PageHeaderContent>
-          {actions && <PageHeaderActions>{actions}</PageHeaderActions>}
-        </PageHeaderTop>
+          <PageHeaderTop>
+            <PageHeaderContent>
+              <div className='flex items-center justify-between'>
+                <PageHeaderTitle>{title}</PageHeaderTitle>
+                {mobileActions && (
+                  <PageHeaderMobileActions>
+                    {mobileActions}
+                  </PageHeaderMobileActions>
+                )}
+              </div>
+              {subtitle && <PageHeaderSubtitle>{subtitle}</PageHeaderSubtitle>}
+              {badges && <PageHeaderBadges>{badges}</PageHeaderBadges>}
+            </PageHeaderContent>
+            {actions && <PageHeaderActions>{actions}</PageHeaderActions>}
+          </PageHeaderTop>
 
-        {hasBottomContent && <PageHeaderBottom>{tabs}</PageHeaderBottom>}
-        {children}
+          {hasBottomContent && <PageHeaderBottom>{tabs}</PageHeaderBottom>}
+          {children}
+        </div>
       </header>
     )
   }

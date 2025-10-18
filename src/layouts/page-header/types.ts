@@ -5,6 +5,19 @@ import type { ReactNode, HTMLAttributes } from 'react'
  * Props for PageHeader main container
  */
 export interface PageHeaderProps extends HTMLAttributes<HTMLElement> {
+  /**
+   * Size determines the max-width and padding
+   * - 'fluid': No padding, full viewport width
+   * - 'wide': Container for desktop screens (centered)
+   * - 'narrow': Container for mobile screens (centered)
+   */
+  size?: 'fluid' | 'wide' | 'narrow'
+  /**
+   * Background color of the header
+   * - 'white': White background
+   * - 'gray': Gray background
+   */
+  backgroundColor?: 'white' | 'gray'
   children?: ReactNode
 }
 
