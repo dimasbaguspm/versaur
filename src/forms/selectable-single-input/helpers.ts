@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority'
 
 export const selectableSingleInputRootClass = cva(
-  'flex gap-3 cursor-pointer border-b border-border select-none p-4 transition-colors hover:bg-neutral-light',
+  'flex gap-3 cursor-pointer border-b border-border select-none transition-colors',
   {
     variants: {
       checked: {
@@ -17,11 +17,16 @@ export const selectableSingleInputRootClass = cva(
         center: 'items-center',
         bottom: 'items-end',
       },
+      hideCheckbox: {
+        true: '',
+        false: 'p-4 hover:bg-neutral-light',
+      },
     },
     defaultVariants: {
       checked: false,
       disabled: false,
       checkboxPlacement: 'center',
+      hideCheckbox: false,
     },
   }
 )

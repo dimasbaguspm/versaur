@@ -40,6 +40,7 @@ export const SelectableMultipleInput = forwardRef<
             checked: !!checked,
             disabled: !!disabled,
             checkboxPlacement,
+            hideCheckbox,
           }),
           className
         )}

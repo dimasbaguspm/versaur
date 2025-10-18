@@ -40,6 +40,7 @@ export const SelectableSingleInput = forwardRef<
             checked: !!checked,
             disabled: !!disabled,
             checkboxPlacement,
+            hideCheckbox,
           }),
           className
         )}

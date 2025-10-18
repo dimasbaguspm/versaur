@@ -8,7 +8,7 @@ exports[`SelectableSingleInput > renders basic options and allows selection 1`] 
     <label
       aria-checked="true"
       aria-label="Select option1"
-      class="flex gap-3 cursor-pointer border-b border-border select-none p-4 transition-colors hover:bg-neutral-light items-center"
+      class="flex gap-3 cursor-pointer border-b border-border select-none transition-colors items-center p-4 hover:bg-neutral-light"
       for="«r0»"
       role="radio"
       tabindex="0"
@@ -35,7 +35,7 @@ exports[`SelectableSingleInput > renders basic options and allows selection 1`] 
     <label
       aria-checked="false"
       aria-label="Select option2"
-      class="flex gap-3 cursor-pointer border-b border-border select-none p-4 transition-colors hover:bg-neutral-light items-center"
+      class="flex gap-3 cursor-pointer border-b border-border select-none transition-colors items-center p-4 hover:bg-neutral-light"
       for="«r1»"
       role="radio"
       tabindex="0"
@@ -61,7 +61,7 @@ exports[`SelectableSingleInput > renders basic options and allows selection 1`] 
     <label
       aria-checked="false"
       aria-label="Select option3"
-      class="flex gap-3 cursor-pointer border-b border-border select-none p-4 transition-colors hover:bg-neutral-light items-center"
+      class="flex gap-3 cursor-pointer border-b border-border select-none transition-colors items-center p-4 hover:bg-neutral-light"
       for="«r2»"
       role="radio"
       tabindex="0"
