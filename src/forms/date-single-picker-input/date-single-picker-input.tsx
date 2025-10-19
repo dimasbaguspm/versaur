@@ -51,7 +51,8 @@ export const DateSinglePickerInput = React.forwardRef<
     <div className='relative'>
       <TextInputAsButton
         onClick={handleTriggerPicker}
-        value={displayValue}
+        value={value}
+        displayValue={displayValue}
         label={label}
         leftContent={<Icon as={Calendar} color='inherit' size='sm' />}
         data-testid='date-single-picker-visible-input'

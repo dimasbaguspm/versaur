@@ -2,18 +2,16 @@ import { cva } from '@/utils/variants'
 import type React from 'react'
 
 export const textAreaInputVariants = cva(
-  'block w-full rounded-md border bg-white text-foreground transition-colors focus:outline-none overflow-y-auto whitespace-pre-wrap break-words',
+  'block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none disabled:bg-gray-50 overflow-y-auto whitespace-pre-wrap break-words',
   {
     variants: {
       state: {
         default:
-          'border-primary/30 focus:ring-2 focus:ring-primary/20 focus:border-primary',
+          'border-primary/30 text-foreground focus:border-primary focus:ring-primary/20',
         error:
-          'border-danger bg-danger/5 focus:ring-2 focus:border-danger focus:ring-danger/20',
-        disabled:
-          'opacity-50 pointer-events-none bg-gray-50 border-gray-300 cursor-not-allowed',
+          'border-danger bg-danger/5 text-foreground focus:border-danger focus:ring-danger/20',
         readOnly:
-          'bg-gray-50 cursor-default focus:ring-0 border-gray-300 focus:border-gray-300',
+          'border-gray-300 bg-gray-50 text-foreground cursor-default focus:ring-0 focus:border-gray-300',
       },
     },
     defaultVariants: {
@@ -26,11 +24,9 @@ export const textAreaInputVariants = cva(
  * Get the appropriate state for the textarea based on props
  */
 export const getTextAreaState = (
-  disabled?: boolean,
   readOnly?: boolean,
   hasError?: boolean
-): 'default' | 'error' | 'disabled' | 'readOnly' => {
-  if (disabled) return 'disabled'
+): 'default' | 'error' | 'readOnly' => {
   if (readOnly) return 'readOnly'
   if (hasError) return 'error'
   return 'default'

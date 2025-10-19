@@ -63,7 +63,7 @@ export const TextAreaInput = React.forwardRef<
     }, [currentValue])
 
     // Get the appropriate state variant
-    const state = getTextAreaState(disabled, readOnly, hasError)
+    const state = getTextAreaState(readOnly, hasError)
 
     // Handle placeholder visibility
     const showPlaceholder = !currentValue && placeholder
