@@ -3,8 +3,8 @@
 ## Overview
 
 `DateSinglePickerInput` is a date picker component that wraps a native HTML `<input type="date">`
-for optimal accessibility and browser support. It displays a formatted text input that triggers the
-browser's native date picker when clicked or focused.
+for optimal accessibility and browser support. It displays a button-styled input (using
+`TextInputAsButton`) that triggers the browser's native date picker when clicked.
 
 ## Component Pattern
 
@@ -15,16 +15,17 @@ HTML element (`<input type="date">`) and aligns with browser standards.
 
 The component consists of two main elements:
 
-1. **Visible Text Input**: A `TextInput` component that displays the formatted date value
+1. **Visible Button Input**: A `TextInputAsButton` component that displays the formatted date value
+   and triggers the picker
 2. **Hidden Date Input**: A native `<input type="date">` that provides the actual date picking
    functionality
 
 ### Implementation Details
 
-- The visible text input is wrapped in a clickable/focusable `<div>` that triggers the date picker
+- The visible button triggers the native date picker via `showPicker()` or `focus()` fallback
 - The hidden date input is screen-reader accessible but visually hidden
 - The forwarded ref is attached to the hidden date input for programmatic access
-- The visible input does not use `readOnly` or custom `tabIndex` to avoid conflicts with the wrapper
+- Uses `TextInputAsButton` for consistent styling and proper button semantics
 
 ## Props
 
@@ -41,13 +42,15 @@ The component consists of two main elements:
 
 ### Inherited Props
 
-Extends all `TextInputProps` except `type`, `value`, and `onChange`:
+Extends all `TextInputAsButtonProps` except `value`, `onClick`, and `onChange`:
 
-- `helperText` - Helper text displayed below the input
+- `helperText` - Helper text displayed below the button
 - `error` - Error message (triggers error state)
-- `disabled` - Disables the input
+- `disabled` - Disables the button and date input
 - `required` - Marks the field as required
 - `className` - Additional CSS classes
+- `leftContent` - Custom left content (defaults to Calendar icon)
+- `rightContent` - Optional right content
 
 ## Behavior
 
@@ -55,8 +58,7 @@ Extends all `TextInputProps` except `type`, `value`, and `onChange`:
 
 The date picker is triggered by:
 
-- Clicking anywhere on the wrapper div
-- Focusing on the wrapper div
+- Clicking the visible button
 - Uses `showPicker()` API when available, falls back to `focus()`
 
 ### Value Formatting
@@ -74,9 +76,10 @@ The date picker is triggered by:
 ## Accessibility
 
 - **ARIA**: The hidden date input has proper `aria-label` derived from the `label` prop
-- **Screen Readers**: The visible input is marked with `aria-hidden="true"` to prevent duplication
+- **Screen Readers**: The button is fully accessible and announces the current date value
 - **Keyboard**: The native date input is fully keyboard accessible
-- **Focus Management**: The wrapper handles focus to trigger the date picker seamlessly
+- **Focus Management**: Button click triggers the native date picker seamlessly
+- **Semantic HTML**: Uses proper button element for interactive control
 
 ## Usage Examples
 
@@ -165,10 +168,10 @@ Tests should verify:
 
 ## Design System Integration
 
-- Uses `TextInput` for consistent styling
+- Uses `TextInputAsButton` for consistent button-styled input appearance
 - Calendar icon from `lucide-react` (left content)
 - Follows Versaur color palette and spacing
-- Supports all `TextInput` states (error, disabled, etc.)
+- Supports all `TextInputAsButton` states (error, disabled, etc.)
 
 ## Future Enhancements
 

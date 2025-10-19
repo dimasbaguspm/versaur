@@ -6,76 +6,68 @@ exports[`DateSinglePickerInput > renders correctly (snapshot) 1`] = `
     class="relative"
   >
     <div
-      class="cursor-pointer"
-      role="presentation"
+      class="w-full"
     >
-      <div
-        class="w-full"
+      <label
+        class="block text-sm font-medium text-foreground mb-2"
+        for="«r0»"
       >
-        <label
-          class="block text-sm font-medium text-foreground mb-2"
-          for="«r0»"
+        Date of Birth
+      </label>
+      <div
+        class="relative w-full"
+      >
+        <span
+          aria-hidden="true"
+          class="absolute left-2.5 top-0 bottom-0 pointer-events-none text-gray-500 flex items-center justify-center w-5 z-10"
+          data-testid="left-content"
         >
-          Date of Birth
-        </label>
-        <div
-          class="relative w-full"
-        >
-          <span
+          <svg
             aria-hidden="true"
-            class="absolute left-2.5 top-0 bottom-0 pointer-events-none text-gray-500 flex items-center justify-center w-5"
-            data-testid="left-content"
+            class="lucide lucide-calendar inline-flex items-center justify-center w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              aria-hidden="true"
-              class="lucide lucide-calendar inline-flex items-center justify-center w-4 h-4"
-              fill="none"
-              height="24"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              width="24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M8 2v4"
-              />
-              <path
-                d="M16 2v4"
-              />
-              <rect
-                height="18"
-                rx="2"
-                width="18"
-                x="3"
-                y="4"
-              />
-              <path
-                d="M3 10h18"
-              />
-            </svg>
-          </span>
-          <input
-            aria-describedby="«r0»-helper"
-            aria-hidden="true"
-            aria-invalid="false"
-            class="block w-full rounded-md border transition-colors focus:outline-none focus:ring-offset-2 disabled:pointer-events-none disabled:bg-gray-50 border-gray-300 bg-gray-50 text-foreground cursor-default focus:ring-0 focus:border-gray-300 pl-9 pr-3 h-9"
-            data-testid="date-single-picker-visible-input"
-            id="«r0»"
-            inert=""
-            readonly=""
-            type="text"
-            value="Jul 29, 2025"
-          />
-        </div>
-        <div
-          class="mt-1 text-sm text-gray-600"
-          id="«r0»-helper"
+            <path
+              d="M8 2v4"
+            />
+            <path
+              d="M16 2v4"
+            />
+            <rect
+              height="18"
+              rx="2"
+              width="18"
+              x="3"
+              y="4"
+            />
+            <path
+              d="M3 10h18"
+            />
+          </svg>
+        </span>
+        <button
+          aria-describedby="«r0»-helper"
+          class="block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none disabled:bg-gray-50 text-left border-primary/30 text-foreground focus:border-primary focus:ring-primary/20 hover:border-primary/50 pl-9 pr-3 h-9"
+          data-testid="date-single-picker-visible-input"
+          id="«r0»"
+          type="button"
         >
-          Select your birth date
-        </div>
+          Jul 29, 2025
+        </button>
+      </div>
+      <div
+        class="mt-1 text-sm text-gray-600"
+        id="«r0»-helper"
+      >
+        Select your birth date
       </div>
     </div>
     <input

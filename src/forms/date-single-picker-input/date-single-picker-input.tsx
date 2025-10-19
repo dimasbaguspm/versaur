@@ -1,11 +1,11 @@
 /**
- * DateSinglePickerInput renders a visually accessible text input and a hidden date input
- * Clicking the wrapper triggers the browser date picker
+ * DateSinglePickerInput renders a button-styled input that triggers a native date picker
+ * Uses TextInputAsButton for consistent styling with other form inputs
  * The forwarded ref is attached to the hidden date input
  */
 import React, { useRef } from 'react'
 import type { DateSinglePickerInputProps } from './types'
-import { TextInput } from '../text-input'
+import { TextInputAsButton } from '../text-input-as-button'
 import { Icon } from '@/primitive/icon'
 import { Calendar } from 'lucide-react'
 import { defaultDateFormatter } from './helpers'
@@ -49,23 +49,14 @@ export const DateSinglePickerInput = React.forwardRef<
 
   return (
     <div className='relative'>
-      <div
+      <TextInputAsButton
         onClick={handleTriggerPicker}
-        className='cursor-pointer'
-        role='presentation'
-      >
-        <TextInput
-          inert
-          type='text'
-          value={displayValue}
-          label={label}
-          readOnly
-          aria-hidden='true'
-          leftContent={<Icon as={Calendar} color='inherit' size='sm' />}
-          data-testid='date-single-picker-visible-input'
-          {...rest}
-        />
-      </div>
+        value={displayValue}
+        label={label}
+        leftContent={<Icon as={Calendar} color='inherit' size='sm' />}
+        data-testid='date-single-picker-visible-input'
+        {...rest}
+      />
       <input
         ref={setRef}
         type='date'

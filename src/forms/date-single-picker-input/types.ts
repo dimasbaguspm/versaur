@@ -2,14 +2,14 @@
  * Props for DateSinglePickerInput
  */
 
-import type { TextInputProps } from '../text-input/types'
+import type { TextInputAsButtonProps } from '../text-input-as-button/types'
 
 /**
  * Props for DateSinglePickerInput
- * Extends TextInputProps, but restricts type to 'date' and value to string
+ * Extends TextInputAsButtonProps for button-styled input behavior
  */
 export interface DateSinglePickerInputProps
-  extends Omit<TextInputProps, 'type' | 'value' | 'onChange'> {
+  extends Omit<TextInputAsButtonProps, 'value' | 'onClick' | 'onChange'> {
   /**
    * The value of the input (ISO date string: YYYY-MM-DD)
    */

@@ -27,11 +27,11 @@ describe('DateSinglePickerInput', () => {
     const input = dateInputs.find(i => i.type === 'date')!
     fireEvent.change(input, { target: { value: '2025-08-01' } })
     expect(input.value).toBe('2025-08-01')
-    // The visible input should show the formatted value
-    const visibleInput = screen.getByTestId(
+    // The visible button should show the formatted value
+    const visibleButton = screen.getByTestId(
       'date-single-picker-visible-input'
-    ) as HTMLInputElement
-    expect(visibleInput.value).toBe('Aug 1, 2025')
+    ) as HTMLButtonElement
+    expect(visibleButton.textContent).toBe('Aug 1, 2025')
   })
 
   it('shows error when value is empty and required', () => {
@@ -41,21 +41,22 @@ describe('DateSinglePickerInput', () => {
 
   it('supports custom formatter', () => {
     render(<WithCustomFormatter />)
-    // The visible input should use the custom formatted value
-    const visibleInput = screen.getByTestId(
+    // The visible button should use the custom formatted value
+    const visibleButton = screen.getByTestId(
       'date-single-picker-visible-input'
-    ) as HTMLInputElement
-    expect(visibleInput.value).toBe('Friday, August 1, 2025')
+    ) as HTMLButtonElement
+    expect(visibleButton.textContent).toBe('Friday, August 1, 2025')
   })
 
-  it('visible input is aria-hidden and not interactive', () => {
+  it('visible button is interactive and accessible', () => {
     render(<Default />)
-    const visibleInput = screen.getByTestId(
+    const visibleButton = screen.getByTestId(
       'date-single-picker-visible-input'
-    ) as HTMLInputElement
-    expect(visibleInput).toHaveAttribute('readonly')
-    expect(visibleInput).not.toHaveAttribute('aria-label')
-    expect(visibleInput).toHaveAttribute('aria-hidden', 'true')
+    ) as HTMLButtonElement
+    expect(visibleButton.tagName).toBe('BUTTON')
+    expect(visibleButton.type).toBe('button')
+    // Button should be accessible (not aria-hidden)
+    expect(visibleButton).not.toHaveAttribute('aria-hidden')
   })
 
   it('hidden input is accessible and receives focus', () => {
