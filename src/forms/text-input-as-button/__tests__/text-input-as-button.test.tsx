@@ -12,6 +12,12 @@ describe('TextInputAsButton', () => {
     Disabled,
     Required,
     WithHiddenInput,
+    WithForeignKeyValue,
+    WithArrayValue,
+    WithArrayValueAutoDisplay,
+    WithObjectValue,
+    WithNumberValue,
+    WithBooleanValue,
   } = composeStories(stories)
 
   it('matches snapshot', () => {
@@ -117,6 +123,64 @@ describe('TextInputAsButton', () => {
     expect(hiddenInput).toHaveAttribute('name', 'bookingDate')
     expect(hiddenInput).toHaveAttribute('readonly')
     expect(hiddenInput).toHaveValue('2025-01-15')
+  })
+
+  it('uses displayValue when both value and displayValue are provided', () => {
+    render(<WithHiddenInput />)
+    const button = screen.getByRole('button', { name: /booking date/i })
+    expect(button).toHaveTextContent('January 15, 2025')
+    const hiddenInput = screen.getByTestId('hidden-input')
+    expect(hiddenInput).toHaveValue('2025-01-15')
+  })
+
+  it('handles foreign key relationship with number value and display value', () => {
+    render(<WithForeignKeyValue />)
+    const button = screen.getByRole('button', { name: /assigned user/i })
+    expect(button).toHaveTextContent('John Doe')
+    const hiddenInput = screen.getByTestId('hidden-input')
+    expect(hiddenInput).toHaveValue('12345')
+  })
+
+  it('handles array value with custom display value', () => {
+    render(<WithArrayValue />)
+    const button = screen.getByRole('button', { name: /selected tags/i })
+    expect(button).toHaveTextContent('React, TypeScript, Tailwind (3 selected)')
+    const hiddenInput = screen.getByTestId('hidden-input')
+    expect(hiddenInput).toHaveValue(
+      JSON.stringify(['react', 'typescript', 'tailwind'])
+    )
+  })
+
+  it('auto-displays array value when no displayValue is provided', () => {
+    render(<WithArrayValueAutoDisplay />)
+    const button = screen.getByRole('button', { name: /categories/i })
+    expect(button).toHaveTextContent('frontend, design, ui')
+  })
+
+  it('handles object value with custom display value', () => {
+    render(<WithObjectValue />)
+    const button = screen.getByRole('button', { name: /location/i })
+    expect(button).toHaveTextContent('New York City, NY')
+    const hiddenInput = screen.getByTestId('hidden-input')
+    expect(hiddenInput).toHaveValue(
+      JSON.stringify({ lat: 40.7128, lng: -74.006 })
+    )
+  })
+
+  it('handles number value', () => {
+    render(<WithNumberValue />)
+    const button = screen.getByRole('button', { name: /quantity/i })
+    expect(button).toHaveTextContent('42')
+    const hiddenInput = screen.getByTestId('hidden-input')
+    expect(hiddenInput).toHaveValue('42')
+  })
+
+  it('handles boolean value with display value', () => {
+    render(<WithBooleanValue />)
+    const button = screen.getByRole('button', { name: /active status/i })
+    expect(button).toHaveTextContent('Active')
+    const hiddenInput = screen.getByTestId('hidden-input')
+    expect(hiddenInput).toHaveValue('true')
   })
 
   it('does not render hidden input when name prop is not provided', () => {

@@ -18,6 +18,11 @@ button behavior.
 
 - ✅ **TextInput Visual Style**: Matches TextInput appearance for consistent UI
 - ✅ **Button Behavior**: Uses native button element for proper click handling
+- ✅ **Multiple Value Types**: Supports string, number, boolean, array, and object values
+- ✅ **Separate Display Value**: Display user-friendly text while storing technical values (FK
+  pattern)
+- ✅ **Automatic Serialization**: Arrays and objects are automatically JSON-stringified for form
+  submission
 - ✅ **Hidden Input Support**: Optional hidden input for form submission with name/value
 - ✅ **Full Accessibility**: ARIA attributes, proper label association, error messaging
 - ✅ **Helper Text Support**: Additional guidance below the button
@@ -30,13 +35,23 @@ button behavior.
 
 ## Use Cases
 
-- **Date/Time Pickers**: Trigger a date or time picker modal
-- **Custom Select**: Open a custom dropdown or modal selection
-- **File Upload**: Trigger file input dialog with custom UI
-- **Location Picker**: Open a map or location selection modal
-- **Color Picker**: Trigger a color selection interface
+- **Date/Time Pickers**: Trigger a date or time picker modal (value: ISO string, displayValue:
+  formatted date)
+- **Custom Select**: Open a custom dropdown or modal selection (value: ID, displayValue: name)
+- **File Upload**: Trigger file input dialog with custom UI (value: file path/data, displayValue:
+  filename)
+- **Location Picker**: Open a map or location selection modal (value: coordinates object,
+  displayValue: address)
+- **Color Picker**: Trigger a color selection interface (value: hex/RGB object, displayValue: color
+  name)
 - **Multi-step Forms**: Navigate to a detail view while maintaining form context
 - **Modal Triggers**: Any scenario requiring a text-input-like trigger for a modal
+- **Foreign Key Relationships**: Display user-friendly text while storing database IDs (value: FK
+  ID, displayValue: entity name)
+- **Multi-Select**: Store array of selected IDs while showing count or names (value: ID array,
+  displayValue: formatted list)
+- **Complex Data**: Store structured data like coordinates, ranges, or settings (value: object,
+  displayValue: summary)
 
 ## API Reference
 
@@ -44,21 +59,68 @@ button behavior.
 
 Extends all native `ButtonHTMLAttributes<HTMLButtonElement>` properties (except `value`).
 
-| Prop           | Type        | Default | Description                                     |
-| -------------- | ----------- | ------- | ----------------------------------------------- |
-| `label`        | `ReactNode` | -       | Label text to display above the button          |
-| `leftContent`  | `ReactNode` | -       | Optional content to display inside (left side)  |
-| `rightContent` | `ReactNode` | -       | Optional content to display inside (right side) |
-| `helperText`   | `ReactNode` | -       | Helper text to display below the button         |
-| `error`        | `ReactNode` | -       | Error message for invalid state                 |
-| `value`        | `string`    | `''`    | Display value to show in the button             |
-| `placeholder`  | `string`    | `''`    | Placeholder text when no value is present       |
-| `name`         | `string`    | -       | Name attribute for the hidden input (if needed) |
-| `disabled`     | `boolean`   | `false` | Whether the button is disabled                  |
-| `required`     | `boolean`   | `false` | Whether the field is required                   |
-| `id`           | `string`    | auto    | Custom ID (auto-generated if not provided)      |
-| `onClick`      | `function`  | -       | Click handler for the button                    |
-| `className`    | `string`    | -       | Additional CSS classes for the container        |
+| Prop           | Type                                                            | Default | Description                                                           |
+| -------------- | --------------------------------------------------------------- | ------- | --------------------------------------------------------------------- |
+| `label`        | `ReactNode`                                                     | -       | Label text to display above the button                                |
+| `leftContent`  | `ReactNode`                                                     | -       | Optional content to display inside (left side)                        |
+| `rightContent` | `ReactNode`                                                     | -       | Optional content to display inside (right side)                       |
+| `helperText`   | `ReactNode`                                                     | -       | Helper text to display below the button                               |
+| `error`        | `ReactNode`                                                     | -       | Error message for invalid state                                       |
+| `value`        | `string \| number \| boolean \| string[] \| number[] \| object` | -       | Actual value for form submission (can be any serializable type)       |
+| `displayValue` | `string`                                                        | -       | Display text in button UI (useful for FK/ID with human-readable text) |
+| `placeholder`  | `string`                                                        | `''`    | Placeholder text when no value is present                             |
+| `name`         | `string`                                                        | -       | Name attribute for the hidden input (enables form submission)         |
+| `disabled`     | `boolean`                                                       | `false` | Whether the button is disabled                                        |
+| `required`     | `boolean`                                                       | `false` | Whether the field is required                                         |
+| `id`           | `string`                                                        | auto    | Custom ID (auto-generated if not provided)                            |
+| `onClick`      | `function`                                                      | -       | Click handler for the button                                          |
+| `className`    | `string`                                                        | -       | Additional CSS classes for the container                              |
+
+### Value Handling
+
+The component supports multiple value types to accommodate various use cases:
+
+#### Value Types
+
+- **String**: Direct text value (e.g., `"2025-01-15"`)
+- **Number**: Numeric values, IDs, quantities (e.g., `12345`)
+- **Boolean**: True/false values (e.g., `true`)
+- **String Array**: Multiple string values (e.g., `["tag1", "tag2"]`)
+- **Number Array**: Multiple numeric values (e.g., `[1, 2, 3]`)
+- **Object**: Complex data structures (e.g., `{ lat: 40.7128, lng: -74.006 }`)
+
+#### Value Serialization
+
+When a `name` prop is provided, a hidden input is rendered for form submission:
+
+- **String/Number**: Converted to string as-is
+- **Boolean**: Converted to `"true"` or `"false"`
+- **Array/Object**: Serialized using `JSON.stringify()`
+
+#### Display Value Logic
+
+The button displays text according to this priority:
+
+1. **`displayValue`** (if provided): Always uses this for display
+2. **`value`** (if no `displayValue`):
+   - String: Displayed as-is
+   - Number/Boolean: Converted to string
+   - Array: Joined with commas (e.g., `"item1, item2, item3"`)
+   - Object: JSON stringified
+3. **`placeholder`**: Shown when no value exists
+
+#### Foreign Key Pattern
+
+A common use case is storing a foreign key ID while displaying a human-readable name:
+
+```tsx
+<TextInputAsButton
+  name='userId'
+  value={12345} // ID stored in hidden input
+  displayValue='John Doe' // Name shown to user
+  label='Assigned User'
+/>
+```
 
 ### Visual Style
 
@@ -223,26 +285,57 @@ data.
 
 ## Examples
 
-### Date Picker Trigger
+### Date Picker Trigger (String Value)
 
 ```tsx
 <TextInputAsButton
   label='Appointment Date'
+  name='appointmentDate'
   leftContent={<Calendar size={16} />}
   placeholder='Select a date'
-  value={selectedDate}
+  value='2025-01-15'
+  displayValue='January 15, 2025'
   onClick={openDatePicker}
 />
 ```
 
-### Custom Select
+### Foreign Key Relationship (Number Value)
 
 ```tsx
 <TextInputAsButton
-  label='Country'
-  value={selectedCountry}
+  label='Assigned User'
+  name='userId'
+  value={12345}
+  displayValue='John Doe'
+  leftContent={<User size={16} />}
+  onClick={openUserSelector}
+  helperText='Select the user responsible for this task'
+/>
+```
+
+### Multi-Select Tags (Array Value)
+
+```tsx
+<TextInputAsButton
+  label='Tags'
+  name='tags'
+  value={['react', 'typescript', 'tailwind']}
+  displayValue='React, TypeScript, Tailwind (3 selected)'
   rightContent={<ChevronDown size={16} />}
-  onClick={openCountryModal}
+  onClick={openTagSelector}
+/>
+```
+
+### Location Picker (Object Value)
+
+```tsx
+<TextInputAsButton
+  label='Location'
+  name='location'
+  value={{ lat: 40.7128, lng: -74.006 }}
+  displayValue='New York City, NY'
+  onClick={openMapPicker}
+  helperText='Coordinates stored as JSON'
 />
 ```
 
@@ -260,6 +353,18 @@ data.
 />
 ```
 
+### Boolean Value
+
+```tsx
+<TextInputAsButton
+  label='Status'
+  name='isActive'
+  value={true}
+  displayValue='Active'
+  onClick={toggleStatus}
+/>
+```
+
 ## Testing Considerations
 
 - Verify button renders with proper `type="button"` attribute
@@ -273,6 +378,10 @@ data.
 - Verify placeholder styling (`text-gray-400`) vs value styling
 - Check disabled state prevents interaction
 - Ensure error message has `role="alert"` and `aria-live="polite"`
+- Test value serialization for different types (string, number, boolean, array, object)
+- Verify `displayValue` takes precedence over `value` for button text
+- Test auto-display of array values (comma-separated)
+- Verify JSON serialization of objects and arrays in hidden input
 
 ## Browser Compatibility
 

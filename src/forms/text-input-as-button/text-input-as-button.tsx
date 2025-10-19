@@ -25,7 +25,8 @@ export const TextInputAsButton = React.forwardRef<
       disabled,
       id,
       required,
-      value = '',
+      value,
+      displayValue,
       placeholder = '',
       name,
       ...props
@@ -37,7 +38,37 @@ export const TextInputAsButton = React.forwardRef<
     const helperTextId = `${buttonId}-helper`
     const errorId = `${buttonId}-error`
     const hasError = Boolean(error)
-    const displayText = value || placeholder
+
+    // Determine the display text for the button
+    const displayText = React.useMemo(() => {
+      if (displayValue) return displayValue
+      if (value !== undefined && value !== null && value !== '') {
+        // Stringify value for display if displayValue is not provided
+        if (typeof value === 'string') return value
+        if (typeof value === 'number' || typeof value === 'boolean')
+          return String(value)
+        if (Array.isArray(value)) return value.join(', ')
+        if (typeof value === 'object') return JSON.stringify(value)
+      }
+      return placeholder
+    }, [value, displayValue, placeholder])
+
+    // Serialize value for hidden input
+    const serializedValue = React.useMemo(() => {
+      if (value === undefined || value === null) return ''
+      if (typeof value === 'string' || typeof value === 'number')
+        return String(value)
+      if (typeof value === 'boolean') return String(value)
+      if (Array.isArray(value) || typeof value === 'object')
+        return JSON.stringify(value)
+      return String(value)
+    }, [value])
+
+    const hasValue =
+      value !== undefined &&
+      value !== null &&
+      value !== '' &&
+      displayText !== placeholder
 
     // Build aria-describedby based on what's present
     const ariaDescribedBy = React.useMemo(() => {
@@ -91,7 +122,7 @@ export const TextInputAsButton = React.forwardRef<
               leftContent ? 'pl-9' : 'pl-3',
               rightContent ? 'pr-9' : 'pr-3',
               'h-9',
-              !value && 'text-gray-400'
+              !hasValue && 'text-gray-400'
             )}
             {...props}
           >
@@ -111,7 +142,7 @@ export const TextInputAsButton = React.forwardRef<
             <input
               type='hidden'
               name={name}
-              value={value}
+              value={serializedValue}
               readOnly
               data-testid='hidden-input'
             />
