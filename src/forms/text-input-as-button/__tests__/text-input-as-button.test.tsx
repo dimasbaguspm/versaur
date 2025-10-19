@@ -14,10 +14,10 @@ describe('TextInputAsButton', () => {
     WithHiddenInput,
     WithForeignKeyValue,
     WithArrayValue,
-    WithArrayValueAutoDisplay,
     WithObjectValue,
     WithNumberValue,
     WithBooleanValue,
+    WithoutDisplayValue,
   } = composeStories(stories)
 
   it('matches snapshot', () => {
@@ -141,7 +141,7 @@ describe('TextInputAsButton', () => {
     expect(hiddenInput).toHaveValue('12345')
   })
 
-  it('handles array value with custom display value', () => {
+  it('handles array value with display value', () => {
     render(<WithArrayValue />)
     const button = screen.getByRole('button', { name: /selected tags/i })
     expect(button).toHaveTextContent('React, TypeScript, Tailwind (3 selected)')
@@ -151,13 +151,18 @@ describe('TextInputAsButton', () => {
     )
   })
 
-  it('auto-displays array value when no displayValue is provided', () => {
-    render(<WithArrayValueAutoDisplay />)
-    const button = screen.getByRole('button', { name: /categories/i })
-    expect(button).toHaveTextContent('frontend, design, ui')
+  it('shows placeholder when no displayValue is provided', () => {
+    render(<WithoutDisplayValue />)
+    const button = screen.getByRole('button', { name: /select option/i })
+    expect(button).toHaveTextContent('Click to select an option')
+    expect(button).toHaveClass('text-gray-400')
+    const hiddenInput = screen.getByTestId('hidden-input')
+    expect(hiddenInput).toHaveValue(
+      JSON.stringify({ id: 123, type: 'premium' })
+    )
   })
 
-  it('handles object value with custom display value', () => {
+  it('handles object value with display value', () => {
     render(<WithObjectValue />)
     const button = screen.getByRole('button', { name: /location/i })
     expect(button).toHaveTextContent('New York City, NY')
@@ -167,10 +172,10 @@ describe('TextInputAsButton', () => {
     )
   })
 
-  it('handles number value', () => {
+  it('handles number value with display value', () => {
     render(<WithNumberValue />)
     const button = screen.getByRole('button', { name: /quantity/i })
-    expect(button).toHaveTextContent('42')
+    expect(button).toHaveTextContent('42 items')
     const hiddenInput = screen.getByTestId('hidden-input')
     expect(hiddenInput).toHaveValue('42')
   })

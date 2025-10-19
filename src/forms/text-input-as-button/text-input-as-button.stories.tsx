@@ -30,12 +30,13 @@ export const Default: Story = {
 }
 
 /**
- * Button with selected value
+ * Button with selected value and display value
  */
 export const WithValue: Story = {
   args: {
     label: 'Selected Date',
-    value: 'January 15, 2025',
+    value: '2025-01-15',
+    displayValue: 'January 15, 2025',
     onClick: () => alert('Open date picker'),
   },
 }
@@ -159,7 +160,7 @@ export const WithForeignKeyValue: Story = {
 }
 
 /**
- * Array value with custom display
+ * Array value stored with human-readable display
  */
 export const WithArrayValue: Story = {
   args: {
@@ -174,21 +175,7 @@ export const WithArrayValue: Story = {
 }
 
 /**
- * Array value without displayValue (auto-stringified)
- */
-export const WithArrayValueAutoDisplay: Story = {
-  args: {
-    label: 'Categories',
-    name: 'categories',
-    value: ['frontend', 'design', 'ui'],
-    rightContent: <ChevronDown size={16} />,
-    helperText: 'Auto-displayed as comma-separated list',
-    onClick: () => alert('Open category selector'),
-  },
-}
-
-/**
- * Object value with custom display
+ * Object value stored with human-readable display
  */
 export const WithObjectValue: Story = {
   args: {
@@ -202,20 +189,21 @@ export const WithObjectValue: Story = {
 }
 
 /**
- * Number value
+ * Number value with display text
  */
 export const WithNumberValue: Story = {
   args: {
     label: 'Quantity',
     name: 'quantity',
     value: 42,
+    displayValue: '42 items',
     helperText: 'Numeric value stored',
     onClick: () => alert('Open number picker'),
   },
 }
 
 /**
- * Boolean value
+ * Boolean value with display text
  */
 export const WithBooleanValue: Story = {
   args: {
@@ -225,5 +213,19 @@ export const WithBooleanValue: Story = {
     displayValue: 'Active',
     helperText: 'Boolean stored as "true"',
     onClick: () => alert('Toggle status'),
+  },
+}
+
+/**
+ * Without displayValue shows placeholder
+ */
+export const WithoutDisplayValue: Story = {
+  args: {
+    label: 'Select Option',
+    name: 'option',
+    value: { id: 123, type: 'premium' },
+    placeholder: 'Click to select an option',
+    helperText: 'Value stored but no displayValue provided',
+    onClick: () => alert('Open selector'),
   },
 }

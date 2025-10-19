@@ -41,17 +41,11 @@ export const TextInputAsButton = React.forwardRef<
 
     // Determine the display text for the button
     const displayText = React.useMemo(() => {
-      if (displayValue) return displayValue
-      if (value !== undefined && value !== null && value !== '') {
-        // Stringify value for display if displayValue is not provided
-        if (typeof value === 'string') return value
-        if (typeof value === 'number' || typeof value === 'boolean')
-          return String(value)
-        if (Array.isArray(value)) return value.join(', ')
-        if (typeof value === 'object') return JSON.stringify(value)
-      }
+      // Always use displayValue if it exists (is a string and not empty)
+      if (displayValue && displayValue !== '') return displayValue
+      // Otherwise show placeholder
       return placeholder
-    }, [value, displayValue, placeholder])
+    }, [displayValue, placeholder])
 
     // Serialize value for hidden input
     const serializedValue = React.useMemo(() => {
@@ -64,11 +58,7 @@ export const TextInputAsButton = React.forwardRef<
       return String(value)
     }, [value])
 
-    const hasValue =
-      value !== undefined &&
-      value !== null &&
-      value !== '' &&
-      displayText !== placeholder
+    const hasValue = displayValue !== undefined && displayValue !== ''
 
     // Build aria-describedby based on what's present
     const ariaDescribedBy = React.useMemo(() => {

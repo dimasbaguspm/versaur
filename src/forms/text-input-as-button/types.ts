@@ -28,12 +28,13 @@ export interface TextInputAsButtonProps
   /**
    * Actual value to store in the hidden input (can be any serializable type)
    * Used for form submission when name is provided
+   * This is NOT displayed to the user - use displayValue for that
    */
   value?: string | number | boolean | string[] | number[] | object
   /**
    * Display value to show in the button UI
-   * If not provided, will attempt to stringify the value
-   * Useful when value is a FK/ID and displayValue is the human-readable representation
+   * This is what the user sees in the button
+   * If not provided or empty, placeholder will be shown instead
    */
   displayValue?: string
   /**

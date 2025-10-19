@@ -99,15 +99,14 @@ When a `name` prop is provided, a hidden input is rendered for form submission:
 
 #### Display Value Logic
 
-The button displays text according to this priority:
+The button displays text according to this simple priority:
 
-1. **`displayValue`** (if provided): Always uses this for display
-2. **`value`** (if no `displayValue`):
-   - String: Displayed as-is
-   - Number/Boolean: Converted to string
-   - Array: Joined with commas (e.g., `"item1, item2, item3"`)
-   - Object: JSON stringified
-3. **`placeholder`**: Shown when no value exists
+1. **`displayValue`** (if provided and not empty): Always uses this for display
+2. **`placeholder`**: Shown when displayValue is not provided or is empty
+
+**Important**: The `value` prop is NEVER displayed to the user. It is only used for form submission
+in the hidden input. You must always provide `displayValue` to show something meaningful to the
+user.
 
 #### Foreign Key Pattern
 
@@ -339,20 +338,6 @@ data.
 />
 ```
 
-### File Upload Trigger
-
-```tsx
-<TextInputAsButton
-  label='Upload Document'
-  leftContent={<Upload size={16} />}
-  placeholder='No file selected'
-  value={fileName}
-  name='document'
-  onClick={openFileDialog}
-  helperText='PDF, DOC, or DOCX up to 10MB'
-/>
-```
-
 ### Boolean Value
 
 ```tsx
@@ -362,6 +347,19 @@ data.
   value={true}
   displayValue='Active'
   onClick={toggleStatus}
+/>
+```
+
+### Without Display Value (Shows Placeholder)
+
+```tsx
+<TextInputAsButton
+  label='Select Option'
+  name='option'
+  value={{ id: 123, type: 'premium' }}
+  placeholder='Click to select an option'
+  onClick={openSelector}
+  helperText='Value is stored but placeholder is shown'
 />
 ```
 
@@ -379,9 +377,10 @@ data.
 - Check disabled state prevents interaction
 - Ensure error message has `role="alert"` and `aria-live="polite"`
 - Test value serialization for different types (string, number, boolean, array, object)
-- Verify `displayValue` takes precedence over `value` for button text
-- Test auto-display of array values (comma-separated)
+- Verify `displayValue` is always shown when provided (never shows `value` directly)
+- Verify placeholder is shown when `displayValue` is not provided or empty
 - Verify JSON serialization of objects and arrays in hidden input
+- Test that `value` is stored correctly in hidden input but never displayed
 
 ## Browser Compatibility
 
