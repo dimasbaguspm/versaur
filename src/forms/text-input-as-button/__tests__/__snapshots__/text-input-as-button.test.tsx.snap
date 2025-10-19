@@ -1,0 +1,27 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TextInputAsButton > matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="w-full"
+  >
+    <label
+      class="block text-sm font-medium text-foreground mb-2"
+      for="«r0»"
+    >
+      Select Date
+    </label>
+    <div
+      class="relative w-full"
+    >
+      <button
+        class="block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none disabled:bg-gray-50 text-left border-primary/30 focus:border-primary focus:ring-primary/20 hover:border-primary/50 pl-3 pr-3 h-9 text-gray-400"
+        id="«r0»"
+        type="button"
+      >
+        Click to select a date
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
