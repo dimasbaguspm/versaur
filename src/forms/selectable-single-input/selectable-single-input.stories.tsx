@@ -190,10 +190,20 @@ export const Disabled: Story = {
   render: function Disabled() {
     return (
       <div className='flex flex-col'>
-        <SelectableSingleInput value='disabled' checked={false} disabled>
+        <SelectableSingleInput
+          value='disabled'
+          checked={false}
+          disabled
+          readOnly
+        >
           Disabled Option
         </SelectableSingleInput>
-        <SelectableSingleInput value='enabled' checked={true} disabled={false}>
+        <SelectableSingleInput
+          value='enabled'
+          checked={true}
+          disabled={false}
+          readOnly
+        >
           Enabled Option
         </SelectableSingleInput>
       </div>
