@@ -20,7 +20,7 @@ exports[`Tabs > matches snapshot 1`] = `
             aria-controls="tabs-content-tab1"
             aria-current="page"
             aria-selected="true"
-            class="inline-flex items-center justify-center px-4 py-2 text-sm transition-all duration-200 border-b-2 border-transparent select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:z-10 disabled:opacity-50 disabled:pointer-events-none text-primary font-medium"
+            class="flex items-center justify-center px-4 py-2 text-sm text-center transition-all duration-200 border-b-2 border-transparent select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:z-10 disabled:opacity-50 disabled:pointer-events-none text-primary font-medium"
             href="#tab1"
             id="tabs-trigger-tab1"
             role="tab"
@@ -34,7 +34,7 @@ exports[`Tabs > matches snapshot 1`] = `
           <a
             aria-controls="tabs-content-tab2"
             aria-selected="false"
-            class="inline-flex items-center justify-center px-4 py-2 text-sm font-normal text-foreground transition-all duration-200 border-b-2 border-transparent select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:z-10 disabled:opacity-50 disabled:pointer-events-none hover:text-primary"
+            class="flex items-center justify-center px-4 py-2 text-sm font-normal text-foreground text-center transition-all duration-200 border-b-2 border-transparent select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:z-10 disabled:opacity-50 disabled:pointer-events-none hover:text-primary"
             href="#tab2"
             id="tabs-trigger-tab2"
             role="tab"

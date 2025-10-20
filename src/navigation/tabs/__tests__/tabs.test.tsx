@@ -176,6 +176,58 @@ describe('Tabs', () => {
     expect(tab).toHaveClass('focus-visible:ring-primary')
   })
 
+  it('renders full-width tab triggers that fill available space', () => {
+    function TestTabs() {
+      const [tab, setTab] = useState('tab1')
+      return (
+        <Tabs value={tab} onValueChange={setTab} fullWidth>
+          <Tabs.Trigger value='tab1'>Tab 1</Tabs.Trigger>
+          <Tabs.Trigger value='tab2'>Tab 2</Tabs.Trigger>
+          <Tabs.Trigger value='tab3'>Tab 3</Tabs.Trigger>
+        </Tabs>
+      )
+    }
+    const { container } = render(<TestTabs />)
+
+    // Check that list items have flex-1 class
+    const listItems = container.querySelectorAll('li[role="presentation"]')
+    expect(listItems).toHaveLength(3)
+    listItems.forEach(li => {
+      expect(li).toHaveClass('flex-1')
+    })
+
+    // Check that tab links have flex-1 class
+    const tabs = container.querySelectorAll('a[role="tab"]')
+    tabs.forEach(tab => {
+      expect(tab).toHaveClass('flex-1')
+    })
+  })
+
+  it('does not apply full-width styles when fullWidth is false', () => {
+    function TestTabs() {
+      const [tab, setTab] = useState('tab1')
+      return (
+        <Tabs value={tab} onValueChange={setTab}>
+          <Tabs.Trigger value='tab1'>Tab 1</Tabs.Trigger>
+          <Tabs.Trigger value='tab2'>Tab 2</Tabs.Trigger>
+        </Tabs>
+      )
+    }
+    const { container } = render(<TestTabs />)
+
+    // Check that list items do not have flex-1 class
+    const listItems = container.querySelectorAll('li[role="presentation"]')
+    listItems.forEach(li => {
+      expect(li).not.toHaveClass('flex-1')
+    })
+
+    // Check that tab links do not have flex-1 class
+    const tabs = container.querySelectorAll('a[role="tab"]')
+    tabs.forEach(tab => {
+      expect(tab).not.toHaveClass('flex-1')
+    })
+  })
+
   it('matches snapshot', () => {
     function TestTabs() {
       const [tab, setTab] = useState('tab1')

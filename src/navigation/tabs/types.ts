@@ -11,6 +11,8 @@ export interface TabsContextValue {
   activeTab: string
   /** Set active tab */
   setActiveTab: (tab: string) => void
+  /** Whether tab triggers should fill available width */
+  fullWidth?: boolean
 }
 
 /**
@@ -23,6 +25,8 @@ export interface TabsRootProps extends HTMLAttributes<HTMLElement> {
   onValueChange: (tab: string) => void
   /** Children: Tabs.Trigger */
   children: ReactNode
+  /** Whether tab triggers should fill available width equally */
+  fullWidth?: boolean
 }
 
 /**

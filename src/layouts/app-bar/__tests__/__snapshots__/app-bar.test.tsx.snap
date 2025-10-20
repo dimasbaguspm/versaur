@@ -110,7 +110,7 @@ exports[`AppBar > renders WithBottom story and AppBar.Bottom is always on a new 
               <a
                 aria-controls="tabs-content-detail"
                 aria-selected="false"
-                class="inline-flex items-center justify-center px-4 py-2 text-sm font-normal text-foreground transition-all duration-200 border-b-2 border-transparent select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:z-10 disabled:opacity-50 disabled:pointer-events-none hover:text-primary"
+                class="flex items-center justify-center px-4 py-2 text-sm font-normal text-foreground text-center transition-all duration-200 border-b-2 border-transparent select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:z-10 disabled:opacity-50 disabled:pointer-events-none hover:text-primary"
                 href="#detail"
                 id="tabs-trigger-detail"
                 role="tab"
@@ -125,7 +125,7 @@ exports[`AppBar > renders WithBottom story and AppBar.Bottom is always on a new 
                 aria-controls="tabs-content-entries"
                 aria-current="page"
                 aria-selected="true"
-                class="inline-flex items-center justify-center px-4 py-2 text-sm transition-all duration-200 border-b-2 border-transparent select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:z-10 disabled:opacity-50 disabled:pointer-events-none text-primary font-medium"
+                class="flex items-center justify-center px-4 py-2 text-sm text-center transition-all duration-200 border-b-2 border-transparent select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:z-10 disabled:opacity-50 disabled:pointer-events-none text-primary font-medium"
                 href="#entries"
                 id="tabs-trigger-entries"
                 role="tab"

@@ -152,3 +152,84 @@ function KeyboardNavigationExample() {
 export const KeyboardNavigation: Story = {
   render: () => <KeyboardNavigationExample />,
 }
+
+/**
+ * Tabs with full width triggers
+ * Each tab trigger fills the available width equally using flex
+ * Perfect for mobile layouts or when you want evenly distributed tabs
+ */
+function FullWidthExample() {
+  const [tab, setTab] = useState('tab1')
+
+  return (
+    <div className='space-y-8'>
+      {/* Two tabs - 50% each */}
+      <div>
+        <h3 className='text-sm font-medium mb-2 text-foreground'>
+          Two tabs (50% each)
+        </h3>
+        <Tabs value={tab} onValueChange={setTab} fullWidth>
+          <Tabs.Trigger value='tab1'>Tab 1</Tabs.Trigger>
+          <Tabs.Trigger value='tab2'>Tab 2</Tabs.Trigger>
+        </Tabs>
+        <div className='mt-4 p-4 border rounded-lg'>
+          {tab === 'tab1' && <div>Content for Tab 1</div>}
+          {tab === 'tab2' && <div>Content for Tab 2</div>}
+        </div>
+      </div>
+
+      {/* Three tabs - 33.33% each */}
+      <div>
+        <h3 className='text-sm font-medium mb-2 text-foreground'>
+          Three tabs (33.33% each)
+        </h3>
+        <Tabs value={tab} onValueChange={setTab} fullWidth>
+          <Tabs.Trigger value='tab1'>Overview</Tabs.Trigger>
+          <Tabs.Trigger value='tab2'>Details</Tabs.Trigger>
+          <Tabs.Trigger value='tab3'>Settings</Tabs.Trigger>
+        </Tabs>
+        <div className='mt-4 p-4 border rounded-lg'>
+          {tab === 'tab1' && <div>Overview content</div>}
+          {tab === 'tab2' && <div>Details content</div>}
+          {tab === 'tab3' && <div>Settings content</div>}
+        </div>
+      </div>
+
+      {/* Four tabs - 25% each */}
+      <div>
+        <h3 className='text-sm font-medium mb-2 text-foreground'>
+          Four tabs (25% each)
+        </h3>
+        <Tabs value={tab} onValueChange={setTab} fullWidth>
+          <Tabs.Trigger value='tab1'>Home</Tabs.Trigger>
+          <Tabs.Trigger value='tab2'>Products</Tabs.Trigger>
+          <Tabs.Trigger value='tab3'>About</Tabs.Trigger>
+          <Tabs.Trigger value='tab4'>Contact</Tabs.Trigger>
+        </Tabs>
+        <div className='mt-4 p-4 border rounded-lg'>
+          {tab === 'tab1' && <div>Home content</div>}
+          {tab === 'tab2' && <div>Products content</div>}
+          {tab === 'tab3' && <div>About content</div>}
+          {tab === 'tab4' && <div>Contact content</div>}
+        </div>
+      </div>
+
+      <div className='p-4 bg-info-soft rounded-lg border border-info-light'>
+        <p className='text-sm text-info-bold font-medium'>Full Width Usage:</p>
+        <ul className='text-xs text-info mt-2 space-y-1 list-disc list-inside'>
+          <li>Each tab trigger fills available width equally using flex-1</li>
+          <li>Perfect for mobile layouts or card-based designs</li>
+          <li>Great for navigation with limited number of tabs (2-4)</li>
+          <li>Works best when all tabs have similar label lengths</li>
+        </ul>
+      </div>
+    </div>
+  )
+}
+
+/**
+ * Tabs with full width triggers for evenly distributed layout
+ */
+export const FullWidth: Story = {
+  render: () => <FullWidthExample />,
+}

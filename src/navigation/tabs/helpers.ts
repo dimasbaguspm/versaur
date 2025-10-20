@@ -7,10 +7,10 @@ import { cva } from 'class-variance-authority'
  */
 export const tabsTriggerVariants = cva(
   [
-    'inline-flex items-center justify-center',
+    'flex items-center justify-center',
     'px-4 py-2',
     'text-sm font-normal',
-    'text-foreground',
+    'text-foreground text-center',
     'transition-all duration-200',
     'border-b-2 border-transparent',
     'select-none',
@@ -31,9 +31,14 @@ export const tabsTriggerVariants = cva(
         true: 'text-primary font-medium',
         false: 'hover:text-primary',
       },
+      fullWidth: {
+        true: 'flex-1 w-full',
+        false: '',
+      },
     },
     defaultVariants: {
       active: false,
+      fullWidth: false,
     },
   }
 )

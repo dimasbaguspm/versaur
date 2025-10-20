@@ -18,11 +18,13 @@ const TabsRoot: React.FC<TabsRootProps> = ({
   onValueChange,
   children,
   className,
+  fullWidth = false,
   ...props
 }) => {
   const contextValue = {
     activeTab: value,
     setActiveTab: onValueChange,
+    fullWidth,
   }
 
   const containerRef = useRef<HTMLUListElement>(null)

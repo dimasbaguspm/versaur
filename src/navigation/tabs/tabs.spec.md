@@ -82,12 +82,13 @@ The root component that wraps all tabs and manages shared state.
 
 **Type**: `TabsRootProps extends HTMLAttributes<HTMLElement>`
 
-| Property        | Type                    | Required | Default | Description                                |
-| --------------- | ----------------------- | -------- | ------- | ------------------------------------------ |
-| `value`         | `string`                | Yes      | -       | Currently active tab value (controlled)    |
-| `onValueChange` | `(tab: string) => void` | Yes      | -       | Callback fired when tab changes            |
-| `children`      | `ReactNode`             | Yes      | -       | Tab triggers (Tabs.Trigger components)     |
-| `className`     | `string`                | No       | -       | Additional CSS classes for the nav element |
+| Property        | Type                    | Required | Default | Description                                                      |
+| --------------- | ----------------------- | -------- | ------- | ---------------------------------------------------------------- |
+| `value`         | `string`                | Yes      | -       | Currently active tab value (controlled)                          |
+| `onValueChange` | `(tab: string) => void` | Yes      | -       | Callback fired when tab changes                                  |
+| `children`      | `ReactNode`             | Yes      | -       | Tab triggers (Tabs.Trigger components)                           |
+| `fullWidth`     | `boolean`               | No       | `false` | Whether tab triggers should fill available width equally (flex)  |
+| `className`     | `string`                | No       | -       | Additional CSS classes for the nav element                       |
 
 **Renders as**: `<nav>` element
 
@@ -116,12 +117,18 @@ Individual tab link component.
 
 ### Tab Switching
 
-1. User clicks a tab trigger
+1. User clicks anywhere on the tab trigger (entire area is clickable)
 2. Click event is prevented (no page navigation)
 3. `onValueChange` callback is fired with the new tab value
 4. Parent component updates the `value` prop
 5. Active tab styling updates automatically
 6. Animated indicator moves to the new active tab
+
+### Clickable Area
+
+- **Full Width**: The entire tab trigger area is clickable, not just the text
+- **Centered Text**: Text is centered within each tab trigger for better visual alignment
+- **Equal Distribution**: When `fullWidth={true}`, tabs fill the entire width equally with the entire area clickable
 
 ### Scroll Behavior
 
@@ -196,9 +203,9 @@ Individual tab link component.
 
 #### Tab Trigger (a[role="tab"])
 
-- `inline-flex items-center justify-center`: Flexbox alignment
+- `flex items-center justify-center`: Flexbox alignment for full-width clickability
 - `px-4 py-2`: Comfortable padding
-- `text-sm font-normal`: Base typography (changes to `font-medium` when active)
+- `text-sm font-normal text-center`: Base typography, centered text (changes to `font-medium` when active)
 - `text-foreground`: Default text color
 - `text-primary`: Active tab color
 - `hover:text-primary`: Hover state for inactive tabs
@@ -208,6 +215,7 @@ Individual tab link component.
   Focus styles
 - `focus-visible:z-10`: Ensure ring is above other elements
 - `disabled:opacity-50 disabled:pointer-events-none`: Disabled state
+- `flex-1 w-full`: Applied when `fullWidth={true}` for equal width distribution
 
 #### Indicator
 
@@ -347,6 +355,45 @@ function RouterTabs() {
   )
 }
 ```
+
+### Full Width Tabs
+
+Use the `fullWidth` prop to make tab triggers fill the available width equally using flexbox.
+Perfect for mobile layouts or when you want evenly distributed tabs.
+
+```tsx
+function FullWidthTabs() {
+  const [activeTab, setActiveTab] = useState('tab1')
+
+  return (
+    <>
+      <Tabs value={activeTab} onValueChange={setActiveTab} fullWidth>
+        <Tabs.Trigger value='tab1'>Overview</Tabs.Trigger>
+        <Tabs.Trigger value='tab2'>Details</Tabs.Trigger>
+        <Tabs.Trigger value='tab3'>Settings</Tabs.Trigger>
+      </Tabs>
+      <div className='mt-4'>
+        {activeTab === 'tab1' && <div>Overview content</div>}
+        {activeTab === 'tab2' && <div>Details content</div>}
+        {activeTab === 'tab3' && <div>Settings content</div>}
+      </div>
+    </>
+  )
+}
+```
+
+**Full Width Behavior:**
+
+- Each tab trigger receives `flex-1 w-full` classes for equal width distribution
+- The entire tab area is clickable, not just the text
+- Text is centered within each tab trigger
+- With 2 tabs, each occupies 50% of the available width
+- With 3 tabs, each occupies 33.33% of the available width
+- With 4 tabs, each occupies 25% of the available width
+- Best suited for layouts with 2-4 tabs
+- Works best when all tabs have similar label lengths
+- Particularly useful for mobile layouts and card-based designs
+- Provides better touch targets for mobile interfaces
 
 ### Constrained Width Container
 

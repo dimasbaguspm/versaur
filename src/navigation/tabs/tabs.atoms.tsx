@@ -17,7 +17,7 @@ export const TabsTrigger: React.FC<TabsTriggerProps> = ({
   onClick,
   ...props
 }) => {
-  const { activeTab, setActiveTab } = useTabsContext()
+  const { activeTab, setActiveTab, fullWidth } = useTabsContext()
   const isActive = activeTab === value
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -27,7 +27,7 @@ export const TabsTrigger: React.FC<TabsTriggerProps> = ({
   }
 
   return (
-    <li role='presentation'>
+    <li role='presentation' className={fullWidth ? 'flex-1' : undefined}>
       <a
         role='tab'
         id={`tabs-trigger-${value}`}
@@ -38,6 +38,7 @@ export const TabsTrigger: React.FC<TabsTriggerProps> = ({
         className={cn(
           tabsTriggerVariants({
             active: isActive,
+            fullWidth,
           }),
           className
         )}
