@@ -38,6 +38,7 @@ export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
       gap = 'md',
       fluid = false,
       hasMargin,
+      overlay = false,
       ...props
     },
     ref
@@ -51,6 +52,7 @@ export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
             alignment,
             gap,
             fluid,
+            overlay,
           }),
           hasMargin && 'mb-4',
           className

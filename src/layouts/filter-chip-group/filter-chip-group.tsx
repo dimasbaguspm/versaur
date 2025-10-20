@@ -38,6 +38,7 @@ export const FilterChipGroup = forwardRef<HTMLDivElement, FilterChipGroupProps>(
       gap = 'md',
       fluid = false,
       hasMargin,
+      overlay = false,
       ...props
     },
     ref
@@ -51,6 +52,7 @@ export const FilterChipGroup = forwardRef<HTMLDivElement, FilterChipGroupProps>(
             alignment,
             gap,
             fluid,
+            overlay,
           }),
           hasMargin && 'mb-4',
           className

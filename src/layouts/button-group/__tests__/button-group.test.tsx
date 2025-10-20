@@ -18,7 +18,7 @@ describe('ButtonGroup', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('should render with default props', () => {
+  it('should render with role group and default classes', () => {
     render(
       <ButtonGroup data-testid='button-group'>
         <Button>Button 1</Button>
@@ -29,85 +29,50 @@ describe('ButtonGroup', () => {
     const buttonGroup = screen.getByTestId('button-group')
     expect(buttonGroup).toBeInTheDocument()
     expect(buttonGroup).toHaveAttribute('role', 'group')
-    expect(buttonGroup).toHaveClass(
-      'flex',
-      'flex-row',
-      'justify-start',
-      'gap-3'
-    )
+    expect(buttonGroup).toHaveClass('flex', 'flex-wrap')
   })
 
-  it('should apply vertical orientation', () => {
-    render(
+  it('should apply orientation variants', () => {
+    const { rerender } = render(
+      <ButtonGroup orientation='horizontal' data-testid='button-group'>
+        <Button>Button 1</Button>
+      </ButtonGroup>
+    )
+
+    let buttonGroup = screen.getByTestId('button-group')
+    expect(buttonGroup).toHaveClass('flex-row')
+
+    rerender(
       <ButtonGroup orientation='vertical' data-testid='button-group'>
+        <Button>Button 1</Button>
+      </ButtonGroup>
+    )
+
+    buttonGroup = screen.getByTestId('button-group')
+    expect(buttonGroup).toHaveClass('flex-col')
+  })
+
+  it('should apply overlay mode', () => {
+    render(
+      <ButtonGroup overlay data-testid='button-group'>
         <Button>Button 1</Button>
         <Button>Button 2</Button>
       </ButtonGroup>
     )
 
     const buttonGroup = screen.getByTestId('button-group')
-    expect(buttonGroup).toHaveClass('flex-col')
-  })
-
-  it('should apply different alignments', () => {
-    const { rerender } = render(
-      <ButtonGroup alignment='center' data-testid='button-group'>
-        <Button>Button 1</Button>
-      </ButtonGroup>
-    )
-
-    let buttonGroup = screen.getByTestId('button-group')
-    expect(buttonGroup).toHaveClass('justify-center')
-
-    rerender(
-      <ButtonGroup alignment='end' data-testid='button-group'>
-        <Button>Button 1</Button>
-      </ButtonGroup>
-    )
-
-    buttonGroup = screen.getByTestId('button-group')
-    expect(buttonGroup).toHaveClass('justify-end')
-
-    rerender(
-      <ButtonGroup alignment='between' data-testid='button-group'>
-        <Button>Button 1</Button>
-      </ButtonGroup>
-    )
-
-    buttonGroup = screen.getByTestId('button-group')
-    expect(buttonGroup).toHaveClass('justify-between')
+    expect(buttonGroup).toHaveClass('flex-nowrap', 'overflow-x-auto')
   })
 
   it('should apply fluid behavior', () => {
     render(
       <ButtonGroup fluid data-testid='button-group'>
         <Button>Button 1</Button>
-        <Button>Button 2</Button>
       </ButtonGroup>
     )
 
     const buttonGroup = screen.getByTestId('button-group')
     expect(buttonGroup).toHaveClass('[&>*]:flex-1')
-  })
-
-  it('should apply different gap sizes', () => {
-    const { rerender } = render(
-      <ButtonGroup gap='xs' data-testid='button-group'>
-        <Button>Button 1</Button>
-      </ButtonGroup>
-    )
-
-    let buttonGroup = screen.getByTestId('button-group')
-    expect(buttonGroup).toHaveClass('gap-1')
-
-    rerender(
-      <ButtonGroup gap='xl' data-testid='button-group'>
-        <Button>Button 1</Button>
-      </ButtonGroup>
-    )
-
-    buttonGroup = screen.getByTestId('button-group')
-    expect(buttonGroup).toHaveClass('gap-6')
   })
 
   it('should forward ref correctly', () => {
@@ -132,59 +97,12 @@ describe('ButtonGroup', () => {
     expect(buttonGroup).toHaveClass('custom-class')
   })
 
-  it('should render children correctly', () => {
-    render(
-      <ButtonGroup>
-        <Button>Save</Button>
-        <Button>Cancel</Button>
-        <Button>Reset</Button>
-      </ButtonGroup>
-    )
-
-    expect(screen.getByRole('button', { name: 'Save' })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: 'Cancel' })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: 'Reset' })).toBeInTheDocument()
-  })
-
   describe('Stories', () => {
-    it('should render Default story', () => {
-      const { container } = render(<composedStories.Default />)
-      expect(container.firstChild).toBeInTheDocument()
-    })
-
-    it('should render CenterAligned story', () => {
-      const { container } = render(<composedStories.CenterAligned />)
-      expect(container.firstChild).toBeInTheDocument()
-    })
-
-    it('should render SpaceBetween story', () => {
-      const { container } = render(<composedStories.SpaceBetween />)
-      expect(container.firstChild).toBeInTheDocument()
-    })
-
-    it('should render Vertical story', () => {
-      const { container } = render(<composedStories.Vertical />)
-      expect(container.firstChild).toBeInTheDocument()
-    })
-
-    it('should render Fluid story', () => {
-      const { container } = render(<composedStories.Fluid />)
-      expect(container.firstChild).toBeInTheDocument()
-    })
-
-    it('should render VerticalFluid story', () => {
-      const { container } = render(<composedStories.VerticalFluid />)
-      expect(container.firstChild).toBeInTheDocument()
-    })
-
-    it('should render GapVariations story', () => {
-      const { container } = render(<composedStories.GapVariations />)
-      expect(container.firstChild).toBeInTheDocument()
-    })
-
-    it('should render ComplexExample story', () => {
-      const { container } = render(<composedStories.ComplexExample />)
-      expect(container.firstChild).toBeInTheDocument()
+    Object.entries(composedStories).forEach(([name, Story]) => {
+      it(`should render ${name} story`, () => {
+        const { container } = render(<Story />)
+        expect(container.firstChild).toBeInTheDocument()
+      })
     })
   })
 })

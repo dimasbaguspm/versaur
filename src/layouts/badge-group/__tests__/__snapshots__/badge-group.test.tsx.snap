@@ -3,21 +3,19 @@
 exports[`BadgeGroup > should render HTML correctly 1`] = `
 <DocumentFragment>
   <div
-    class="flex flex-wrap items-center flex-row justify-start gap-3"
+    class="flex items-center flex-row justify-start gap-3 flex-wrap"
     role="group"
   >
-    <button
-      class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-primary text-white hover:bg-primary/90 focus-visible:ring-primary-light focus-visible:ring-offset-white shadow-sm hover:shadow-md h-9 px-4 text-sm min-w-[2.5rem]"
-      type="button"
+    <span
+      class="inline-flex items-center justify-center font-medium transition-all duration-200 select-none gap-1 min-h-[1.25rem] rounded-xs text-xs px-1.5 py-0.5 h-4 bg-primary-light text-primary-bold"
     >
-      Save
-    </button>
-    <button
-      class="inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-white text-foreground hover:bg-ghost-soft focus-visible:ring-ghost-light focus-visible:ring-offset-white h-9 px-4 text-sm min-w-[2.5rem]"
-      type="button"
+      Primary
+    </span>
+    <span
+      class="inline-flex items-center justify-center font-medium transition-all duration-200 select-none gap-1 min-h-[1.25rem] rounded-xs text-xs px-1.5 py-0.5 h-4 bg-secondary-light text-secondary-bold"
     >
-      Cancel
-    </button>
+      Secondary
+    </span>
   </div>
 </DocumentFragment>
 `;

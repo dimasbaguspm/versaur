@@ -12,6 +12,7 @@ import { Button } from '@/primitive/button'
  * - **Orientation**: Horizontal or vertical layout
  * - **Fluid behavior**: Make buttons expand to fill available space
  * - **Gap management**: Control spacing between buttons with predefined sizes
+ * - **Overlay mode**: Single-line horizontal scrolling without wrapping
  * - **Accessibility**: Proper ARIA roles for screen readers
  *
  * ## Usage
@@ -49,6 +50,11 @@ const meta: Meta<typeof ButtonGroup> = {
       control: { type: 'boolean' },
       description: 'Whether buttons should expand to fill available space',
     },
+    overlay: {
+      control: { type: 'boolean' },
+      description:
+        'Whether items should overlay in single line without wrapping',
+    },
   },
   tags: ['autodocs'],
 }
@@ -69,23 +75,11 @@ export const Default: Story = {
 }
 
 /**
- * Button group with center alignment - useful for modal actions
- */
-export const CenterAligned: Story = {
-  render: args => (
-    <ButtonGroup {...args} alignment='center'>
-      <Button variant='primary'>Confirm</Button>
-      <Button variant='ghost'>Cancel</Button>
-    </ButtonGroup>
-  ),
-}
-
-/**
- * Button group with space between - common for navigation or form actions
+ * Button group with space between alignment - common for navigation or form actions
  */
 export const SpaceBetween: Story = {
   render: args => (
-    <div style={{ width: '400px', border: '1px solid var(--color-primary)' }}>
+    <div style={{ width: '400px', border: '1px solid var(--color-border)' }}>
       <ButtonGroup {...args} alignment='between'>
         <Button variant='ghost'>Back</Button>
         <Button variant='primary'>Next</Button>
@@ -99,19 +93,20 @@ export const SpaceBetween: Story = {
  */
 export const Vertical: Story = {
   render: args => (
-    <ButtonGroup {...args} orientation='vertical'>
+    <ButtonGroup {...args} orientation='vertical' gap='sm'>
       <Button variant='primary'>Create New</Button>
+      <Button variant='outline'>Save Draft</Button>
       <Button variant='ghost'>Cancel</Button>
     </ButtonGroup>
   ),
 }
 
 /**
- * Fluid buttons that expand to fill available space
+ * Fluid buttons that expand equally to fill available space
  */
 export const Fluid: Story = {
   render: args => (
-    <div style={{ width: '400px', border: '1px solid var(--color-primary)' }}>
+    <div style={{ width: '400px', border: '1px solid var(--color-border)' }}>
       <ButtonGroup {...args} fluid>
         <Button variant='primary'>Save</Button>
         <Button variant='ghost'>Cancel</Button>
@@ -121,68 +116,26 @@ export const Fluid: Story = {
 }
 
 /**
- * Vertical fluid layout - perfect for mobile interfaces
+ * Overlay mode - buttons scroll horizontally without wrapping
  */
-export const VerticalFluid: Story = {
+export const Overlay: Story = {
   render: args => (
-    <div style={{ width: '200px' }}>
-      <ButtonGroup {...args} orientation='vertical' fluid>
-        <Button variant='primary'>Sign In</Button>
-        <Button variant='ghost'>Continue as Guest</Button>
+    <div style={{ width: '300px', border: '1px solid var(--color-border)' }}>
+      <ButtonGroup {...args} overlay>
+        <Button variant='primary'>Save</Button>
+        <Button variant='outline'>Save as Draft</Button>
+        <Button variant='ghost'>Cancel</Button>
+        <Button variant='destructive'>Delete</Button>
+        <Button variant='outline'>Preview</Button>
       </ButtonGroup>
     </div>
   ),
 }
 
 /**
- * Different gap sizes to control spacing
+ * Real-world usage patterns showing different configurations
  */
-export const GapVariations: Story = {
-  render: _args => (
-    <div className='space-y-4'>
-      <div>
-        <h3 className='mb-2 text-sm font-medium'>Extra Small Gap</h3>
-        <ButtonGroup gap='xs'>
-          <Button variant='primary'>Save</Button>
-          <Button variant='ghost'>Cancel</Button>
-        </ButtonGroup>
-      </div>
-      <div>
-        <h3 className='mb-2 text-sm font-medium'>Small Gap</h3>
-        <ButtonGroup gap='sm'>
-          <Button variant='primary'>Save</Button>
-          <Button variant='ghost'>Cancel</Button>
-        </ButtonGroup>
-      </div>
-      <div>
-        <h3 className='mb-2 text-sm font-medium'>Medium Gap (Default)</h3>
-        <ButtonGroup gap='md'>
-          <Button variant='primary'>Save</Button>
-          <Button variant='ghost'>Cancel</Button>
-        </ButtonGroup>
-      </div>
-      <div>
-        <h3 className='mb-2 text-sm font-medium'>Large Gap</h3>
-        <ButtonGroup gap='lg'>
-          <Button variant='primary'>Save</Button>
-          <Button variant='ghost'>Cancel</Button>
-        </ButtonGroup>
-      </div>
-      <div>
-        <h3 className='mb-2 text-sm font-medium'>Extra Large Gap</h3>
-        <ButtonGroup gap='xl'>
-          <Button variant='primary'>Save</Button>
-          <Button variant='ghost'>Cancel</Button>
-        </ButtonGroup>
-      </div>
-    </div>
-  ),
-}
-
-/**
- * Complex example with multiple button variants
- */
-export const ComplexExample: Story = {
+export const RealWorldExamples: Story = {
   render: _args => (
     <div className='space-y-6 w-96'>
       {/* Form actions */}
@@ -207,7 +160,7 @@ export const ComplexExample: Story = {
         </ButtonGroup>
       </div>
 
-      {/* Action menu */}
+      {/* Vertical action menu */}
       <div>
         <h3 className='mb-3 text-sm font-medium'>Vertical Action Menu</h3>
         <ButtonGroup orientation='vertical' gap='sm'>

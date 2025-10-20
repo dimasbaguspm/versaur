@@ -42,4 +42,10 @@ export interface BadgeGroupProps
    * @default false
    */
   hasMargin?: boolean
+
+  /**
+   * Whether items should overlay in single line without wrapping
+   * @default false
+   */
+  overlay?: boolean
 }

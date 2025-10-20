@@ -30,7 +30,7 @@ exports[`PageHeader > renders correctly 1`] = `
               data-versaur-page-header-mobile-actions="true"
             >
               <div
-                class="flex flex-wrap items-center flex-row justify-start gap-3"
+                class="flex items-center flex-row justify-start gap-3 flex-wrap"
                 role="group"
               >
                 <button
@@ -73,7 +73,7 @@ exports[`PageHeader > renders correctly 1`] = `
           data-versaur-page-header-actions="true"
         >
           <div
-            class="flex flex-wrap items-center flex-row justify-start gap-3"
+            class="flex items-center flex-row justify-start gap-3 flex-wrap"
             role="group"
           >
             <button

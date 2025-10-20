@@ -42,4 +42,10 @@ export interface FilterChipGroupProps
    * @default false
    */
   hasMargin?: boolean
+
+  /**
+   * Whether items should overlay in single line without wrapping
+   * @default false
+   */
+  overlay?: boolean
 }

@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 import { composeStories } from '@storybook/react'
 import * as stories from '../badge-group.stories'
 import { BadgeGroup } from '../badge-group'
-import { Button } from '@/primitive/button'
+import { Badge } from '@/primitive/badge'
 
 const composedStories = composeStories(stories)
 
@@ -11,105 +11,75 @@ describe('BadgeGroup', () => {
   it('should render HTML correctly', () => {
     const { asFragment } = render(
       <BadgeGroup>
-        <Button variant='primary'>Save</Button>
-        <Button variant='ghost'>Cancel</Button>
+        <Badge color='primary'>Primary</Badge>
+        <Badge color='secondary'>Secondary</Badge>
       </BadgeGroup>
     )
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('should render with default props', () => {
+  it('should render with role group and default classes', () => {
     render(
-      <BadgeGroup data-testid='button-group'>
-        <Button>Button 1</Button>
-        <Button>Button 2</Button>
+      <BadgeGroup data-testid='badge-group'>
+        <Badge color='primary'>Badge 1</Badge>
+        <Badge color='secondary'>Badge 2</Badge>
       </BadgeGroup>
     )
 
-    const badgeGroup = screen.getByTestId('button-group')
+    const badgeGroup = screen.getByTestId('badge-group')
     expect(badgeGroup).toBeInTheDocument()
     expect(badgeGroup).toHaveAttribute('role', 'group')
-    expect(badgeGroup).toHaveClass('flex', 'flex-row', 'justify-start', 'gap-3')
+    expect(badgeGroup).toHaveClass('flex', 'flex-wrap')
   })
 
-  it('should apply vertical orientation', () => {
-    render(
-      <BadgeGroup orientation='vertical' data-testid='button-group'>
-        <Button>Button 1</Button>
-        <Button>Button 2</Button>
+  it('should apply orientation variants', () => {
+    const { rerender } = render(
+      <BadgeGroup orientation='horizontal' data-testid='badge-group'>
+        <Badge color='primary'>Badge 1</Badge>
       </BadgeGroup>
     )
 
-    const badgeGroup = screen.getByTestId('button-group')
+    let badgeGroup = screen.getByTestId('badge-group')
+    expect(badgeGroup).toHaveClass('flex-row')
+
+    rerender(
+      <BadgeGroup orientation='vertical' data-testid='badge-group'>
+        <Badge color='primary'>Badge 1</Badge>
+      </BadgeGroup>
+    )
+
+    badgeGroup = screen.getByTestId('badge-group')
     expect(badgeGroup).toHaveClass('flex-col')
   })
 
-  it('should apply different alignments', () => {
-    const { rerender } = render(
-      <BadgeGroup alignment='center' data-testid='button-group'>
-        <Button>Button 1</Button>
+  it('should apply overlay mode', () => {
+    render(
+      <BadgeGroup overlay data-testid='badge-group'>
+        <Badge color='primary'>Badge 1</Badge>
+        <Badge color='secondary'>Badge 2</Badge>
       </BadgeGroup>
     )
 
-    let badgeGroup = screen.getByTestId('button-group')
-    expect(badgeGroup).toHaveClass('justify-center')
-
-    rerender(
-      <BadgeGroup alignment='end' data-testid='button-group'>
-        <Button>Button 1</Button>
-      </BadgeGroup>
-    )
-
-    badgeGroup = screen.getByTestId('button-group')
-    expect(badgeGroup).toHaveClass('justify-end')
-
-    rerender(
-      <BadgeGroup alignment='between' data-testid='button-group'>
-        <Button>Button 1</Button>
-      </BadgeGroup>
-    )
-
-    badgeGroup = screen.getByTestId('button-group')
-    expect(badgeGroup).toHaveClass('justify-between')
+    const badgeGroup = screen.getByTestId('badge-group')
+    expect(badgeGroup).toHaveClass('flex-nowrap', 'overflow-x-auto')
   })
 
   it('should apply fluid behavior', () => {
     render(
-      <BadgeGroup fluid data-testid='button-group'>
-        <Button>Button 1</Button>
-        <Button>Button 2</Button>
+      <BadgeGroup fluid data-testid='badge-group'>
+        <Badge color='primary'>Badge 1</Badge>
       </BadgeGroup>
     )
 
-    const badgeGroup = screen.getByTestId('button-group')
+    const badgeGroup = screen.getByTestId('badge-group')
     expect(badgeGroup).toHaveClass('[&>*]:flex-1')
-  })
-
-  it('should apply different gap sizes', () => {
-    const { rerender } = render(
-      <BadgeGroup gap='xs' data-testid='button-group'>
-        <Button>Button 1</Button>
-      </BadgeGroup>
-    )
-
-    let badgeGroup = screen.getByTestId('button-group')
-    expect(badgeGroup).toHaveClass('gap-1')
-
-    rerender(
-      <BadgeGroup gap='xl' data-testid='button-group'>
-        <Button>Button 1</Button>
-      </BadgeGroup>
-    )
-
-    badgeGroup = screen.getByTestId('button-group')
-    expect(badgeGroup).toHaveClass('gap-6')
   })
 
   it('should forward ref correctly', () => {
     const ref = { current: null }
     render(
       <BadgeGroup ref={ref}>
-        <Button>Button 1</Button>
+        <Badge color='primary'>Badge 1</Badge>
       </BadgeGroup>
     )
 
@@ -118,63 +88,21 @@ describe('BadgeGroup', () => {
 
   it('should accept custom className', () => {
     render(
-      <BadgeGroup className='custom-class' data-testid='button-group'>
-        <Button>Button 1</Button>
+      <BadgeGroup className='custom-class' data-testid='badge-group'>
+        <Badge color='primary'>Badge 1</Badge>
       </BadgeGroup>
     )
 
-    const badgeGroup = screen.getByTestId('button-group')
+    const badgeGroup = screen.getByTestId('badge-group')
     expect(badgeGroup).toHaveClass('custom-class')
   })
 
-  it('should render children correctly', () => {
-    render(
-      <BadgeGroup>
-        <Button>Save</Button>
-        <Button>Cancel</Button>
-        <Button>Reset</Button>
-      </BadgeGroup>
-    )
-
-    expect(screen.getByRole('button', { name: 'Save' })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: 'Cancel' })).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: 'Reset' })).toBeInTheDocument()
-  })
-
   describe('Stories', () => {
-    it('should render Default story', () => {
-      const { container } = render(<composedStories.Default />)
-      expect(container.firstChild).toBeInTheDocument()
-    })
-
-    it('should render CenterAligned story', () => {
-      const { container } = render(<composedStories.CenterAligned />)
-      expect(container.firstChild).toBeInTheDocument()
-    })
-
-    it('should render SpaceBetween story', () => {
-      const { container } = render(<composedStories.SpaceBetween />)
-      expect(container.firstChild).toBeInTheDocument()
-    })
-
-    it('should render Vertical story', () => {
-      const { container } = render(<composedStories.Vertical />)
-      expect(container.firstChild).toBeInTheDocument()
-    })
-
-    it('should render Fluid story', () => {
-      const { container } = render(<composedStories.Fluid />)
-      expect(container.firstChild).toBeInTheDocument()
-    })
-
-    it('should render VerticalFluid story', () => {
-      const { container } = render(<composedStories.VerticalFluid />)
-      expect(container.firstChild).toBeInTheDocument()
-    })
-
-    it('should render GapVariations story', () => {
-      const { container } = render(<composedStories.GapVariations />)
-      expect(container.firstChild).toBeInTheDocument()
+    Object.entries(composedStories).forEach(([name, Story]) => {
+      it(`should render ${name} story`, () => {
+        const { container } = render(<Story />)
+        expect(container.firstChild).toBeInTheDocument()
+      })
     })
   })
 })

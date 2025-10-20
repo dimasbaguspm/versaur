@@ -3,7 +3,7 @@ import { cva } from '@/utils/variants'
 /**
  * Button group variants for managing layout and alignment
  */
-export const buttonGroupVariants = cva('flex flex-wrap items-center', {
+export const buttonGroupVariants = cva('flex items-center', {
   variants: {
     orientation: {
       horizontal: 'flex-row',
@@ -28,11 +28,16 @@ export const buttonGroupVariants = cva('flex flex-wrap items-center', {
       true: '[&>*]:flex-1',
       false: '',
     },
+    overlay: {
+      true: 'flex-nowrap overflow-x-auto',
+      false: 'flex-wrap',
+    },
   },
   defaultVariants: {
     orientation: 'horizontal',
     alignment: 'start',
     gap: 'md',
     fluid: false,
+    overlay: false,
   },
 })
