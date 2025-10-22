@@ -6,7 +6,7 @@ import type { MenuProps } from '@/overlays/menu/types'
 export interface ButtonMenuIconProps
   extends Omit<ButtonIconProps, 'content'>,
     Pick<IconProps, 'as'>,
-    Pick<MenuProps, 'placement' | 'container' | 'preserve'> {
+    Pick<MenuProps, 'placement' | 'preserve'> {
   /**
    * Callback function triggered when the menu open state changes.
    */

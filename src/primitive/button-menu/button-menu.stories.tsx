@@ -102,7 +102,6 @@ export const AutoPlacement = () => {
               </>
             }
             variant='outline'
-            container={containerRef}
           >
             <ButtonMenu.Item active>
               <Icon as={User2Icon} color='inherit' />
@@ -130,7 +129,6 @@ export const AutoPlacement = () => {
               </>
             }
             variant='outline'
-            container={containerRef}
           >
             <ButtonMenu.Item active>
               <Icon as={User2Icon} color='inherit' />
@@ -158,7 +156,6 @@ export const AutoPlacement = () => {
               </>
             }
             variant='outline'
-            container={containerRef}
           >
             <ButtonMenu.Item active>
               <Icon as={User2Icon} color='inherit' />
@@ -186,7 +183,6 @@ export const AutoPlacement = () => {
               </>
             }
             variant='outline'
-            container={containerRef}
           >
             <ButtonMenu.Item active>
               <Icon as={User2Icon} color='inherit' />
@@ -222,7 +218,7 @@ export const Placements = () => {
               </>
             }
             variant='outline'
-            placement='bottom-start'
+            placement='bottom-left'
           >
             <ButtonMenu.Item active>
               <Icon as={User2Icon} color='inherit' />
@@ -246,7 +242,7 @@ export const Placements = () => {
               </>
             }
             variant='outline'
-            placement='bottom-end'
+            placement='bottom-right'
           >
             <ButtonMenu.Item active>
               <Icon as={User2Icon} color='inherit' />
@@ -275,7 +271,7 @@ export const Placements = () => {
               </>
             }
             variant='outline'
-            placement='top-start'
+            placement='top-left'
           >
             <ButtonMenu.Item active>
               <Icon as={User2Icon} color='inherit' />
@@ -299,7 +295,7 @@ export const Placements = () => {
               </>
             }
             variant='outline'
-            placement='top-end'
+            placement='top-right'
           >
             <ButtonMenu.Item active>
               <Icon as={User2Icon} color='inherit' />
@@ -337,7 +333,6 @@ export const ContainerConstraints = () => {
             aria-label='Open constrained menu'
             label='Profile'
             variant='outline'
-            container={containerRef}
           >
             <ButtonMenu.Item>Item 1</ButtonMenu.Item>
             <ButtonMenu.Item>Item 2</ButtonMenu.Item>
@@ -379,7 +374,6 @@ export const ScrollableContainer = () => {
                   aria-label='Open menu'
                   label='Profile'
                   variant='outline'
-                  container={contentRef}
                 >
                   <ButtonMenu.Item>View Details</ButtonMenu.Item>
                   <ButtonMenu.Item>Edit Item</ButtonMenu.Item>
@@ -431,7 +425,6 @@ export const ViewportScrolling = () => {
               aria-label='Open menu'
               label='Profile'
               variant='outline'
-              placement='auto'
             >
               <ButtonMenu.Item>Profile Settings</ButtonMenu.Item>
               <ButtonMenu.Item>Notifications</ButtonMenu.Item>

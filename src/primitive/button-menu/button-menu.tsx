@@ -10,7 +10,6 @@ const ButtonMenuRoot = forwardRef<HTMLButtonElement, ButtonMenuProps>(
       onOpenChange,
       onClick,
       placement,
-      container,
       preserve,
       label,
       ...rest
@@ -34,9 +33,8 @@ const ButtonMenuRoot = forwardRef<HTMLButtonElement, ButtonMenuProps>(
     return (
       <Menu
         isOpen={isOpen}
-        onOutsideClick={handleOnClose}
+        onClose={handleOnClose}
         placement={placement}
-        container={container}
         preserve={preserve}
         content={<Menu.Content>{children}</Menu.Content>}
       >

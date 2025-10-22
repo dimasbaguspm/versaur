@@ -112,7 +112,6 @@ export const AutoPlacement = () => {
             aria-label='Top left menu'
             as={MoreVertical}
             variant='outline'
-            container={containerRef}
           >
             <ButtonMenuIcon.Item>Top Left Menu</ButtonMenuIcon.Item>
             <ButtonMenuIcon.Item>Option 2</ButtonMenuIcon.Item>
@@ -127,7 +126,6 @@ export const AutoPlacement = () => {
             aria-label='Top right menu'
             as={MoreVertical}
             variant='outline'
-            container={containerRef}
           >
             <ButtonMenuIcon.Item>Top Right Menu</ButtonMenuIcon.Item>
             <ButtonMenuIcon.Item>Option 2</ButtonMenuIcon.Item>
@@ -142,7 +140,6 @@ export const AutoPlacement = () => {
             aria-label='Bottom right menu'
             as={MoreVertical}
             variant='outline'
-            container={containerRef}
           >
             <ButtonMenuIcon.Item>Bottom Right Menu</ButtonMenuIcon.Item>
             <ButtonMenuIcon.Item>Should flip up and left</ButtonMenuIcon.Item>
@@ -157,7 +154,6 @@ export const AutoPlacement = () => {
             aria-label='Bottom left menu'
             as={MoreVertical}
             variant='outline'
-            container={containerRef}
           >
             <ButtonMenuIcon.Item>Bottom Left Menu</ButtonMenuIcon.Item>
             <ButtonMenuIcon.Item>Option 2</ButtonMenuIcon.Item>
@@ -180,7 +176,7 @@ export const Placements = () => {
             aria-label='Bottom start menu'
             as={MoreVertical}
             variant='outline'
-            placement='bottom-start'
+            placement='bottom-left'
           >
             <ButtonMenuIcon.Item>Bottom Start</ButtonMenuIcon.Item>
             <ButtonMenuIcon.Item>Option 2</ButtonMenuIcon.Item>
@@ -189,7 +185,7 @@ export const Placements = () => {
             aria-label='Bottom end menu'
             as={MoreVertical}
             variant='outline'
-            placement='bottom-end'
+            placement='bottom-right'
           >
             <ButtonMenuIcon.Item>Bottom End</ButtonMenuIcon.Item>
             <ButtonMenuIcon.Item>Option 2</ButtonMenuIcon.Item>
@@ -203,7 +199,7 @@ export const Placements = () => {
             aria-label='Top start menu'
             as={MoreVertical}
             variant='outline'
-            placement='top-start'
+            placement='top-left'
           >
             <ButtonMenuIcon.Item>Top Start</ButtonMenuIcon.Item>
             <ButtonMenuIcon.Item>Option 2</ButtonMenuIcon.Item>
@@ -212,7 +208,7 @@ export const Placements = () => {
             aria-label='Top end menu'
             as={MoreVertical}
             variant='outline'
-            placement='top-end'
+            placement='top-right'
           >
             <ButtonMenuIcon.Item>Top End</ButtonMenuIcon.Item>
             <ButtonMenuIcon.Item>Option 2</ButtonMenuIcon.Item>
@@ -240,7 +236,6 @@ export const ContainerConstraints = () => {
             aria-label='Open constrained menu'
             as={MoreVertical}
             variant='outline'
-            container={containerRef}
           >
             <ButtonMenuIcon.Item>Item 1</ButtonMenuIcon.Item>
             <ButtonMenuIcon.Item>Item 2</ButtonMenuIcon.Item>
@@ -282,7 +277,6 @@ export const ScrollableContainer = () => {
                   aria-label='Open menu'
                   as={MoreHorizontal}
                   variant='outline'
-                  container={contentRef}
                 >
                   <ButtonMenuIcon.Item>View Details</ButtonMenuIcon.Item>
                   <ButtonMenuIcon.Item>Edit Item</ButtonMenuIcon.Item>
@@ -334,7 +328,6 @@ export const ViewportScrolling = () => {
               aria-label='Open menu'
               as={MoreVertical}
               variant='outline'
-              placement='auto'
             >
               <ButtonMenuIcon.Item>Profile Settings</ButtonMenuIcon.Item>
               <ButtonMenuIcon.Item>Notifications</ButtonMenuIcon.Item>

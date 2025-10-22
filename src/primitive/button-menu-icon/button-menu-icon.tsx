@@ -12,7 +12,6 @@ const ButtonMenuIconRoot = forwardRef<HTMLButtonElement, ButtonMenuIconProps>(
       onOpenChange,
       onClick,
       placement,
-      container,
       preserve,
       ...rest
     } = props ?? {}
@@ -35,9 +34,8 @@ const ButtonMenuIconRoot = forwardRef<HTMLButtonElement, ButtonMenuIconProps>(
     return (
       <Menu
         isOpen={isOpen}
-        onOutsideClick={handleOnClose}
+        onClose={handleOnClose}
         placement={placement}
-        container={container}
         preserve={preserve}
         content={<Menu.Content>{children}</Menu.Content>}
       >

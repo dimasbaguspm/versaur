@@ -4,7 +4,7 @@ import type { ButtonProps } from '../button/types'
 
 export interface ButtonMenuProps
   extends Omit<ButtonProps, 'content'>,
-    Pick<MenuProps, 'placement' | 'container' | 'preserve'> {
+    Pick<MenuProps, 'placement' | 'preserve'> {
   /**
    * Callback function triggered when the menu open state changes.
    */
