@@ -2,14 +2,15 @@
 
 ## Overview
 
-The Menu component is a fully accessible, animated dropdown menu overlay for Versaur UI. It follows
-Material Design principles with intelligent positioning, scroll handling, and compound component
-architecture using the Context pattern.
+The Menu component is a fully accessible dropdown menu overlay for Versaur UI. It leverages the
+browser's native Popover API (via the Popover utility component) for intelligent positioning and
+scroll handling, following Material Design principles with compound component architecture using the
+Context pattern.
 
 ## Component Pattern
 
 **Pattern Type**: Compound + Context  
-**Reasoning**: Menu requires multiple related sub-components (MenuContent, MenuItem) with shared
+**Reasoning**: Menu requires multiple related sub-components (Menu.Content, Menu.Item) with shared
 state for managing open/close behavior and preserve mode.
 
 ## Architecture
@@ -21,7 +22,6 @@ menu/
 ├── menu.tsx              # Root component with compound pattern
 ├── menu.atoms.tsx        # Sub-components (MenuContent, MenuItem)
 ├── context.ts            # Context for shared state
-├── use-menu.ts           # Custom hooks (positioning, outside click)
 ├── helpers.ts            # Utility functions and variants
 ├── types.ts              # TypeScript interfaces
 ├── index.ts              # Public API exports
@@ -52,62 +52,62 @@ Menu (Root Component)
 
 ### 1. Menu (Root)
 
-Main component that manages menu state, positioning, and rendering.
+Main component that manages menu state and delegates positioning to Popover.
 
 #### Props Interface
 
 ```typescript
 interface MenuProps {
   isOpen: boolean // Required: Controlled open state
-  onOutsideClick: () => void // Required: Handler for outside clicks
+  onClose: () => void // Required: Handler for closing the menu
   size?: 'sm' | 'md' // Optional: Menu size variant
-  content: ReactNode // Required: Menu content (MenuContent/MenuItem)
+  content: ReactNode // Required: Menu content (Menu.Content/Menu.Item)
   children: ReactNode // Required: Trigger element
-  placement?: MenuPlacement // Optional: Preferred placement
-  container?: HTMLElement | RefObject | null // Optional: Container boundaries
+  placement?: PopoverPlacement // Optional: Preferred placement ('top' | 'right' | 'bottom' | 'left')
+  gap?: number // Optional: Gap between trigger and menu in pixels
   preserve?: boolean // Optional: Keep menu open after item click
 }
-
-type MenuPlacement = 'bottom-start' | 'bottom-end' | 'top-start' | 'top-end' | 'auto'
 ```
 
 #### Default Values
 
 - `size`: `'md'`
-- `placement`: `'auto'`
-- `container`: `null` (uses viewport)
+- `placement`: `'bottom'`
+- `gap`: `4`
 - `preserve`: `false`
 
 #### Behavior
 
-1. **Controlled Component**: Menu is fully controlled via `isOpen` prop
-2. **Positioning Modes**:
-   - **Viewport Mode** (no container): Uses `position: absolute`, tracks viewport scrolling
-   - **Container Mode** (with container): Uses `position: fixed`, respects container boundaries
-3. **Auto Placement**: When `placement='auto'`, intelligently positions based on available space
-4. **Scroll Handling**:
-   - Tracks all scrollable ancestors
-   - Repositions on scroll (throttled with `requestAnimationFrame`)
-   - Hides when trigger scrolls out of view
-5. **Portal Rendering**: Fixed positioned menus render via `OverlayPortal`
-6. **Measurement Strategy**: Hidden menu rendered for dimension calculation before showing
+1. **Controlled Component**: Menu is fully controlled via `isOpen` and `onClose` props
+2. **Popover Integration**: Uses browser Popover API in controlled mode for positioning and
+   visibility
+3. **Automatic Positioning**: Popover handles intelligent placement based on available space
+4. **Scroll Handling**: Popover automatically tracks scrolling and repositions
+5. **Trigger Control**: Trigger element must handle its own onClick to control menu state (no
+   automatic `popovertarget` attributes)
 
 #### ARIA Attributes
 
+The Popover component provides basic structure:
+
 ```typescript
-// Trigger element receives:
+// Menu container (via Popover):
 {
-  'aria-haspopup': 'menu',
-  'aria-expanded': isOpen,
-  'aria-controls': menuId
+  popover: 'auto',
+  id: menuId
 }
 
-// Menu container:
+// Trigger element (consumer responsibility):
 {
-  role: 'menu',
-  'aria-hidden': !isVisible
+  // Consumer must add onClick handler to toggle isOpen state
+  // Example: onClick={() => setIsOpen(!isOpen)}
 }
 ```
+
+**Note**: In controlled mode, the trigger does NOT receive `popovertarget` attributes. The consumer
+is responsible for managing the open/close state through the trigger's event handlers.
+
+````
 
 ### 2. Menu.Content (MenuContent)
 
@@ -119,7 +119,7 @@ Container component for menu items, renders as semantic `<ul>` element.
 interface MenuContentProps extends HTMLAttributes<HTMLUListElement> {
   children: ReactNode
 }
-```
+````
 
 #### Styling
 
@@ -182,7 +182,7 @@ interface MenuContextModel {
 
 ```typescript
 // Provider (in Menu root)
-<MenuProvider value={{ onClose: onOutsideClick, preserve: Boolean(preserve) }}>
+<MenuProvider value={{ onClose, preserve: Boolean(preserve) }}>
   {children}
 </MenuProvider>
 
@@ -229,140 +229,40 @@ menuVariants = cva(
 - **Z-Index**: `z-70`
 - **Shadow**: `shadow-lg`
 
-## Positioning Algorithm
+## Positioning System
 
-### Overview
+### Popover Integration
 
-The positioning system uses a multi-step algorithm to ensure the menu is always visible and properly
-constrained.
+Menu delegates all positioning logic to the Popover utility component, which:
 
-### Steps
+1. **Uses Native Popover API**: Leverages browser's built-in popover functionality
+2. **Intelligent Placement**: Automatically positions based on available viewport space
+3. **Scroll Tracking**: Monitors scroll events and repositions accordingly
+4. **Viewport Constraints**: Ensures menu stays within visible viewport bounds
+5. **Performance Optimized**: Uses `requestAnimationFrame` for smooth updates
 
-1. **Visibility Check**
+### Placement Options
 
-   - Verify trigger is visible within scrollable containers
-   - Verify trigger is within viewport
-   - Hide menu if trigger is not visible
+Popover supports four placement directions:
 
-2. **Measurement Phase**
+- `'top'`: Menu appears above the trigger
+- `'right'`: Menu appears to the right of the trigger
+- `'bottom'`: Menu appears below the trigger (default)
+- `'left'`: Menu appears to the left of the trigger
 
-   - Get trigger dimensions and position
-   - Resolve container element (if provided)
-   - Measure content dimensions (temporarily hidden)
-
-3. **Space Calculation**
-
-   - Calculate available space in all directions relative to container/viewport
-   - `spaceBelow`, `spaceAbove`, `spaceRight`, `spaceLeft`
-
-4. **Placement Determination**
-
-   - If `placement='auto'`:
-     - Evaluate all 4 placement options with priorities
-     - Choose placement that fits completely
-     - Fallback to best available space if none fit
-   - Otherwise use specified placement
-
-5. **Position Calculation**
-
-   - **Container Mode** (fixed): Calculate coordinates relative to viewport
-   - **Viewport Mode** (absolute): Calculate coordinates relative to trigger
-
-6. **Constraint Application**
-
-   - **Container Mode**: Apply container boundaries, calculate max height
-   - **Viewport Mode**: Apply basic viewport overflow prevention
-
-7. **Render**
-   - Apply calculated position styles
-   - Render in portal (fixed) or inline (absolute)
-
-### Helper Functions
-
-| Function                      | Purpose                                                |
-| ----------------------------- | ------------------------------------------------------ |
-| `getScrollableAncestors()`    | Find all scrollable parent elements                    |
-| `isTriggerVisible()`          | Check if trigger is visible in containers and viewport |
-| `calculateBestPlacement()`    | Determine optimal placement based on available space   |
-| `calculateFixedPosition()`    | Calculate fixed positioning coordinates                |
-| `calculateAbsolutePosition()` | Calculate absolute positioning coordinates             |
-| `applyContainerConstraints()` | Apply container boundary constraints and max height    |
-| `applyViewportConstraints()`  | Apply viewport overflow prevention                     |
-| `resolveContainer()`          | Resolve container from HTMLElement or RefObject        |
-| `getContainerBounds()`        | Get container boundary coordinates                     |
-| `calculateAvailableSpace()`   | Calculate space around trigger                         |
-| `measureContentDimensions()`  | Safely measure content size                            |
-
-## Custom Hooks
-
-### useMenuOutsideClick
-
-Handles click outside detection to close the menu.
-
-```typescript
-function useMenuOutsideClick(
-  isOpen: boolean,
-  contentRef: RefObject<HTMLDivElement | null>,
-  triggerRef: RefObject<HTMLButtonElement | null>,
-  onOutsideClick: () => void
-): void
-```
-
-**Behavior**:
-
-- Adds mousedown listener when menu is open
-- Checks if click target is outside both menu and trigger
-- Calls `onOutsideClick` if outside click detected
-- Cleans up listener when menu closes
-
-### useMenuPosition
-
-Manages menu positioning, scroll tracking, and visibility.
-
-```typescript
-function useMenuPosition(
-  isOpen: boolean,
-  triggerRef: RefObject<HTMLElement | null>,
-  contentRef: RefObject<HTMLDivElement | null>,
-  placement: MenuPlacement,
-  container: HTMLElement | RefObject<HTMLElement | null> | null
-): MenuPosition
-```
-
-**Returns**:
-
-```typescript
-interface MenuPosition {
-  top?: number
-  bottom?: number
-  left?: number
-  right?: number
-  maxHeight?: number
-  maxWidth?: number
-  position?: 'absolute' | 'fixed'
-  isReady?: boolean
-}
-```
-
-**Features**:
-
-- Initial position calculation
-- Scroll event listeners (throttled with `requestAnimationFrame`)
-- Resize event listeners
-- Automatic repositioning
-- Visibility tracking
-- Content measurement
+The Popover component automatically adjusts position if there's insufficient space in the preferred
+direction.
 
 ## Usage Examples
 
-### Basic Menu
+### Basic Menu (Controlled)
 
 ```tsx
 const [isOpen, setIsOpen] = useState(false)
 
 <Menu
   isOpen={isOpen}
-  onOutsideClick={() => setIsOpen(false)}
+  onClose={() => setIsOpen(false)}
   content={
     <Menu.Content>
       <Menu.Item>Profile</Menu.Item>
@@ -371,11 +271,13 @@ const [isOpen, setIsOpen] = useState(false)
     </Menu.Content>
   }
 >
-  <button onClick={() => setIsOpen(!isOpen)}>
-    Open Menu
-  </button>
+  <button onClick={() => setIsOpen(!isOpen)}>Open Menu</button>
 </Menu>
 ```
+
+**Important**: The trigger button must handle its own onClick to toggle the `isOpen` state. The Menu
+component uses controlled mode with Popover, so it does NOT automatically add `popovertarget`
+attributes.
 
 ### With Icons and Active State
 
@@ -397,7 +299,7 @@ const [isOpen, setIsOpen] = useState(false)
 ```tsx
 <Menu
   isOpen={isOpen}
-  onOutsideClick={() => setIsOpen(false)}
+  onClose={() => setIsOpen(false)}
   preserve={true}
   content={
     <Menu.Content>
@@ -409,34 +311,29 @@ const [isOpen, setIsOpen] = useState(false)
 </Menu>
 ```
 
-### With Container Constraints
-
-```tsx
-const containerRef = useRef<HTMLDivElement>(null)
-
-<div ref={containerRef} className="overflow-auto h-96">
-  <Menu
-    isOpen={isOpen}
-    onOutsideClick={() => setIsOpen(false)}
-    container={containerRef.current}
-    placement="auto"
-    content={<Menu.Content>...</Menu.Content>}
-  >
-    <button>Menu in Scrollable Container</button>
-  </Menu>
-</div>
-```
-
 ### Specific Placement
 
 ```tsx
 <Menu
   isOpen={isOpen}
-  onOutsideClick={() => setIsOpen(false)}
-  placement='bottom-end'
+  onClose={() => setIsOpen(false)}
+  placement='top'
   content={<Menu.Content>...</Menu.Content>}
 >
-  <button>Always Bottom-End</button>
+  <button>Always Top</button>
+</Menu>
+```
+
+### Custom Gap
+
+```tsx
+<Menu
+  isOpen={isOpen}
+  onClose={() => setIsOpen(false)}
+  gap={8}
+  content={<Menu.Content>...</Menu.Content>}
+>
+  <button>Menu with 8px Gap</button>
 </Menu>
 ```
 
@@ -444,53 +341,52 @@ const containerRef = useRef<HTMLDivElement>(null)
 
 ### WCAG 2.1 AA Compliance
 
-- ✅ Keyboard navigation support (via Button component)
-- ✅ Focus management
-- ✅ Screen reader support with ARIA attributes
+- ✅ Keyboard navigation support (via Button component and Popover API)
+- ✅ Focus management (handled by browser Popover API)
+- ✅ Screen reader support with semantic HTML
 - ✅ Proper semantic HTML (`<ul>`, `<li>`)
-- ✅ Role attributes (`role="menu"`)
-- ✅ State communication (`aria-expanded`, `aria-hidden`)
+- ✅ Popover API provides built-in accessibility features
 - ✅ Disabled state handling
 
 ### Keyboard Interactions
 
-| Key               | Action                                   |
-| ----------------- | ---------------------------------------- |
-| `Enter` / `Space` | Activate trigger button                  |
-| `Enter` / `Space` | Select menu item                         |
-| `Escape`          | Close menu (handled by consumer)         |
-| `Tab`             | Navigate away (closes via outside click) |
+| Key               | Action                                 |
+| ----------------- | -------------------------------------- |
+| `Enter` / `Space` | Activate trigger button                |
+| `Enter` / `Space` | Select menu item                       |
+| `Escape`          | Close menu (via Popover API)           |
+| `Tab`             | Navigate away (closes via Popover API) |
 
 ### Focus Management
 
-- Focus remains on trigger when menu opens
+- Focus management handled by browser Popover API
 - Menu items are keyboard navigable via Button component
-- Focus returns to trigger when menu closes
+- Escape key automatically closes popover
 
 ## Performance Optimizations
 
-1. **Throttled Scroll Updates**: Uses `requestAnimationFrame` to prevent excessive recalculations
-2. **Conditional Rendering**: Hidden menu only rendered when position not ready
-3. **Portal Usage**: Fixed positioned menus use portal for optimal rendering
-4. **Will-Change Transform**: Hints browser for transform optimizations
-5. **Passive Event Listeners**: Scroll listeners use `{ passive: true }` flag
+1. **Browser Popover API**: Native browser support for optimal performance
+2. **Throttled Scroll Updates**: Popover uses `requestAnimationFrame` for smooth positioning
+3. **Will-Change Transform**: Hints browser for transform optimizations
+4. **Passive Event Listeners**: Scroll listeners use `{ passive: true }` flag
+5. **Minimal Re-renders**: Controlled component pattern reduces unnecessary updates
 
 ## Browser Support
 
-- All modern browsers (Chrome, Firefox, Safari, Edge)
-- Requires CSS custom properties support
-- Requires Intersection Observer API (for scroll detection)
-- Fallback to absolute positioning if fixed is not supported
+- Requires native Popover API support (Chrome 114+, Edge 114+, Safari 17+)
+- Falls back gracefully in unsupported browsers (menu may not position correctly)
+- CSS custom properties required
+- Modern JavaScript features (ES2020+)
 
 ## Testing Strategy
 
 ### Test Coverage
 
 1. **Snapshot Tests**: Verify rendered output matches expected structure
-2. **Interaction Tests**: Test opening, closing, item clicks, outside clicks
-3. **Scroll Tests**: Verify positioning updates on scroll
-4. **Accessibility Tests**: Verify ARIA attributes and keyboard navigation
-5. **State Tests**: Test preserve mode, disabled items, active items
+2. **Interaction Tests**: Test opening, closing, item clicks
+3. **Accessibility Tests**: Verify semantic HTML and disabled states
+4. **State Tests**: Test preserve mode, disabled items, active items
+5. **Popover Integration**: Test that Popover API attributes are correctly applied
 
 ### Example Tests
 
@@ -501,19 +397,18 @@ it('renders basic menu correctly', () => {
   expect(asFragment()).toMatchSnapshot()
 })
 
-// Handles outside click
-it('closes menu when clicking outside', () => {
-  render(<Basic />)
-  fireEvent.click(trigger)
-  expect(menuItem).toBeInTheDocument()
-  fireEvent.mouseDown(document.body)
-  expect(menuItem).not.toBeInTheDocument()
-})
-
 // Handles disabled state
 it('disables menu item', () => {
   render(<Basic />)
   expect(screen.getByText('Logout')).toBeDisabled()
+})
+
+// Opens menu
+it('opens menu on trigger click', () => {
+  render(<Basic />)
+  const trigger = screen.getByLabelText('Open menu')
+  fireEvent.click(trigger)
+  expect(screen.getByText('Profile')).toBeVisible()
 })
 ```
 
@@ -521,25 +416,51 @@ it('disables menu item', () => {
 
 ### From Previous Implementation
 
-If migrating from a previous menu implementation:
+If migrating from the previous custom positioning implementation:
+
+#### Breaking Changes
 
 1. **Props Renamed**:
+   - `onOutsideClick` → `onClose`
+   - `container` prop removed (Popover handles viewport constraints)
+2. **Placement Values Changed**:
 
-   - `onClose` → `onOutsideClick`
-   - No changes to other props
+   - `'auto'` removed (Popover automatically adjusts)
+   - `'bottom-start'` → `'bottom'`
+   - `'bottom-end'` → `'bottom'`
+   - `'top-start'` → `'top'`
+   - `'top-end'` → `'top'`
+   - Added: `'left'` and `'right'`
 
-2. **Compound Pattern**:
+3. **Behavior Changes**:
+   - Menu content always rendered in DOM (hidden via Popover API)
+   - Uses native browser Popover API instead of custom positioning
+   - No more container constraints prop (viewport-based only)
 
-   - Replace `<MenuContent>` with `<Menu.Content>`
-   - Replace `<MenuItem>` with `<Menu.Item>`
+#### Migration Steps
 
-3. **Context Pattern**:
-   - MenuItem now uses context internally
-   - No changes needed in consumer code
+```tsx
+// Before
+<Menu
+  isOpen={isOpen}
+  onOutsideClick={() => setIsOpen(false)}
+  placement="bottom-start"
+  container={containerRef.current}
+  content={<Menu.Content>...</Menu.Content>}
+>
+  <button>Menu</button>
+</Menu>
 
-### Breaking Changes
-
-None - Public API remains stable.
+// After
+<Menu
+  isOpen={isOpen}
+  onClose={() => setIsOpen(false)}
+  placement="bottom"
+  content={<Menu.Content>...</Menu.Content>}
+>
+  <button>Menu</button>
+</Menu>
+```
 
 ## Design Tokens
 
@@ -558,26 +479,24 @@ Uses Versaur design system tokens:
 - Menu padding: `sm: py-1.5 px-1`, `md: py-2 px-1`
 - Item gap: `gap-1` (4px)
 - Button gap: `gap-2` (8px)
-- Placement offset: `4px` from trigger
-- Container padding: `8px` safety margin
+- Default placement offset: `4px` from trigger (configurable via `gap` prop)
 
 ### Sizing
 
 - Minimum width: `min-w-56` (224px)
-- Max height: Calculated based on container/viewport
+- Max width: `max-w-sm` (inherited from Popover)
 - Z-index: `z-70` (700)
 
 ## Future Enhancements
 
 ### Potential Improvements
 
-1. **Submenu Support**: Nested menus
-2. **Keyboard Navigation**: Arrow key navigation between items
+1. **Submenu Support**: Nested menus with hover/click interactions
+2. **Arrow Key Navigation**: Navigate between menu items with keyboard
 3. **Search/Filter**: Built-in search for large menus
-4. **Group Headers**: Semantic grouping with headers
-5. **Checkbox/Radio Items**: Selection menu items
-6. **Animation Customization**: Configurable animation styles
-7. **Virtual Scrolling**: For very large menus
+4. **Group Headers**: Semantic grouping with headers and separators
+5. **Checkbox/Radio Items**: Selection menu items with state
+6. **Virtual Scrolling**: For very large menus with many items
 
 ### Backwards Compatibility
 
@@ -586,7 +505,8 @@ props and feature detection.
 
 ## References
 
+- [Popover API (MDN)](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API)
 - [Material Design: Menus](https://material.io/components/menus)
 - [WAI-ARIA: Menu Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/menu/)
-- [MDN: ARIA Menu Role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/menu_role)
 - Versaur Design System Documentation
+- [Popover Utility Specification](../../utils/popover/popover.spec.md)

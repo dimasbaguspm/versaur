@@ -1,21 +1,16 @@
-import type { HTMLAttributes, MouseEvent, ReactNode, RefObject } from 'react'
+import type { HTMLAttributes, MouseEvent, ReactNode } from 'react'
+import type { PopoverPlacement } from '@/utils/popover'
 
 export type MenuSize = 'sm' | 'md'
-export type MenuPlacement =
-  | 'bottom-start'
-  | 'bottom-end'
-  | 'top-start'
-  | 'top-end'
-  | 'auto'
 
 /**
  * Props for Menu
  */
 export interface MenuProps {
-  /** Whether the menu is open (controlled externally) */
+  /** Whether the menu is open (controlled) */
   isOpen: boolean
-  /** Callback when clicking outside menu */
-  onOutsideClick: () => void
+  /** Callback when the menu closes */
+  onClose: () => void
   /** Menu size variant */
   size?: MenuSize
   /** Menu content (MenuContent/MenuItem) */
@@ -23,9 +18,9 @@ export interface MenuProps {
   /** Trigger element */
   children: ReactNode
   /** Preferred placement of the menu relative to trigger */
-  placement?: MenuPlacement
-  /** Container element to respect boundaries (defaults to viewport) */
-  container?: HTMLElement | RefObject<HTMLElement | null> | null
+  placement?: PopoverPlacement
+  /** Gap between trigger and menu in pixels */
+  gap?: number
   /** Whether to keep the menu after list item clicked */
   preserve?: boolean
 }
