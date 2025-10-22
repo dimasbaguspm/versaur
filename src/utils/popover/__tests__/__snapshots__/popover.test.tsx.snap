@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Popover > matches snapshot 1`] = `
+<DocumentFragment>
+  <button>
+    Trigger
+  </button>
+  <div
+    class="fixed overflow-auto max-w-sm"
+    id="test-popover"
+    popover="auto"
+    style="opacity: 0; pointer-events: none; transition: none; top: 8px; left: 8px; margin: 0px;"
+  >
+    <p>
+      Content
+    </p>
+  </div>
+</DocumentFragment>
+`;
