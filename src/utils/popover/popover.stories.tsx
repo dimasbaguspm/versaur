@@ -19,101 +19,309 @@ export default {
 }
 
 /**
- * Uncontrolled - Basic usage with all placement options.
+ * Uncontrolled - Basic usage with all 12 placement options.
  * Uses browser's native popover behavior with popovertarget attribute.
+ * Shows center-aligned, left-aligned, and right-aligned variations for each side.
  */
 export const Placements = () => {
-  const triggerBottomRef = useRef<HTMLButtonElement>(null)
+  // Top placements
   const triggerTopRef = useRef<HTMLButtonElement>(null)
-  const triggerLeftRef = useRef<HTMLButtonElement>(null)
+  const triggerTopLeftRef = useRef<HTMLButtonElement>(null)
+  const triggerTopRightRef = useRef<HTMLButtonElement>(null)
+
+  // Right placements
   const triggerRightRef = useRef<HTMLButtonElement>(null)
+  const triggerRightTopRef = useRef<HTMLButtonElement>(null)
+  const triggerRightBottomRef = useRef<HTMLButtonElement>(null)
+
+  // Bottom placements
+  const triggerBottomRef = useRef<HTMLButtonElement>(null)
+  const triggerBottomLeftRef = useRef<HTMLButtonElement>(null)
+  const triggerBottomRightRef = useRef<HTMLButtonElement>(null)
+
+  // Left placements
+  const triggerLeftRef = useRef<HTMLButtonElement>(null)
+  const triggerLeftTopRef = useRef<HTMLButtonElement>(null)
+  const triggerLeftBottomRef = useRef<HTMLButtonElement>(null)
 
   return (
     <div
       style={{
-        padding: '200px',
+        padding: '250px',
         display: 'flex',
-        gap: '16px',
+        gap: '24px',
         flexDirection: 'column',
         alignItems: 'center',
       }}
     >
-      <p style={{ marginBottom: '16px', textAlign: 'center' }}>
-        Click buttons to see positioned popovers
-      </p>
-
-      <div
+      <p
         style={{
-          display: 'flex',
-          gap: '16px',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
+          marginBottom: '16px',
+          textAlign: 'center',
+          fontWeight: 'bold',
         }}
       >
-        <button
-          ref={triggerBottomRef}
-          {...Popover.getTriggerProps('popover-bottom')}
-        >
-          Bottom
-        </button>
-        <Popover
-          id='popover-bottom'
-          placement='bottom'
-          triggerRef={triggerBottomRef}
-          className='bg-primary text-background border-primary-bold'
-        >
-          <div style={{ padding: '12px', minWidth: '150px' }}>
-            Positioned below trigger
-          </div>
-        </Popover>
+        Click buttons to see all 12 positioned popovers
+      </p>
 
-        <button ref={triggerTopRef} {...Popover.getTriggerProps('popover-top')}>
-          Top
-        </button>
-        <Popover
-          id='popover-top'
-          placement='top'
-          triggerRef={triggerTopRef}
-          className='bg-secondary text-background border-secondary-bold'
+      {/* Top Placements */}
+      <div style={{ marginBottom: '16px' }}>
+        <h3 style={{ textAlign: 'center', marginBottom: '12px' }}>
+          Top Placements
+        </h3>
+        <div
+          style={{
+            display: 'flex',
+            gap: '12px',
+            justifyContent: 'center',
+          }}
         >
-          <div style={{ padding: '12px', minWidth: '150px' }}>
-            Positioned above trigger
-          </div>
-        </Popover>
+          <button
+            ref={triggerTopLeftRef}
+            {...Popover.getTriggerProps('popover-top-left')}
+          >
+            Top Left
+          </button>
+          <Popover
+            id='popover-top-left'
+            placement='top-left'
+            triggerRef={triggerTopLeftRef}
+            className='bg-primary text-background border border-primary-bold rounded-lg shadow-lg'
+          >
+            <div style={{ padding: '12px', minWidth: '150px' }}>
+              Top-left aligned
+            </div>
+          </Popover>
 
-        <button
-          ref={triggerLeftRef}
-          {...Popover.getTriggerProps('popover-left')}
-        >
-          Left
-        </button>
-        <Popover
-          id='popover-left'
-          placement='left'
-          triggerRef={triggerLeftRef}
-          className='bg-tertiary text-background border-tertiary-bold'
-        >
-          <div style={{ padding: '12px', minWidth: '150px' }}>
-            Positioned left of trigger
-          </div>
-        </Popover>
+          <button
+            ref={triggerTopRef}
+            {...Popover.getTriggerProps('popover-top')}
+          >
+            Top
+          </button>
+          <Popover
+            id='popover-top'
+            placement='top'
+            triggerRef={triggerTopRef}
+            className='bg-primary text-background border border-primary-bold rounded-lg shadow-lg'
+          >
+            <div style={{ padding: '12px', minWidth: '150px' }}>
+              Top centered
+            </div>
+          </Popover>
 
-        <button
-          ref={triggerRightRef}
-          {...Popover.getTriggerProps('popover-right')}
+          <button
+            ref={triggerTopRightRef}
+            {...Popover.getTriggerProps('popover-top-right')}
+          >
+            Top Right
+          </button>
+          <Popover
+            id='popover-top-right'
+            placement='top-right'
+            triggerRef={triggerTopRightRef}
+            className='bg-primary text-background border border-primary-bold rounded-lg shadow-lg'
+          >
+            <div style={{ padding: '12px', minWidth: '150px' }}>
+              Top-right aligned
+            </div>
+          </Popover>
+        </div>
+      </div>
+
+      {/* Right Placements */}
+      <div style={{ marginBottom: '16px' }}>
+        <h3 style={{ textAlign: 'center', marginBottom: '12px' }}>
+          Right Placements
+        </h3>
+        <div
+          style={{
+            display: 'flex',
+            gap: '12px',
+            justifyContent: 'center',
+          }}
         >
-          Right
-        </button>
-        <Popover
-          id='popover-right'
-          placement='right'
-          triggerRef={triggerRightRef}
-          className='bg-ghost text-background border-ghost-bold'
+          <button
+            ref={triggerRightTopRef}
+            {...Popover.getTriggerProps('popover-right-top')}
+          >
+            Right Top
+          </button>
+          <Popover
+            id='popover-right-top'
+            placement='right-top'
+            triggerRef={triggerRightTopRef}
+            className='bg-secondary text-background border border-secondary-bold rounded-lg shadow-lg'
+          >
+            <div style={{ padding: '12px', minWidth: '150px' }}>
+              Right-top aligned
+            </div>
+          </Popover>
+
+          <button
+            ref={triggerRightRef}
+            {...Popover.getTriggerProps('popover-right')}
+          >
+            Right
+          </button>
+          <Popover
+            id='popover-right'
+            placement='right'
+            triggerRef={triggerRightRef}
+            className='bg-secondary text-background border border-secondary-bold rounded-lg shadow-lg'
+          >
+            <div style={{ padding: '12px', minWidth: '150px' }}>
+              Right centered
+            </div>
+          </Popover>
+
+          <button
+            ref={triggerRightBottomRef}
+            {...Popover.getTriggerProps('popover-right-bottom')}
+          >
+            Right Bottom
+          </button>
+          <Popover
+            id='popover-right-bottom'
+            placement='right-bottom'
+            triggerRef={triggerRightBottomRef}
+            className='bg-secondary text-background border border-secondary-bold rounded-lg shadow-lg'
+          >
+            <div style={{ padding: '12px', minWidth: '150px' }}>
+              Right-bottom aligned
+            </div>
+          </Popover>
+        </div>
+      </div>
+
+      {/* Bottom Placements */}
+      <div style={{ marginBottom: '16px' }}>
+        <h3 style={{ textAlign: 'center', marginBottom: '12px' }}>
+          Bottom Placements
+        </h3>
+        <div
+          style={{
+            display: 'flex',
+            gap: '12px',
+            justifyContent: 'center',
+          }}
         >
-          <div style={{ padding: '12px', minWidth: '150px' }}>
-            Positioned right of trigger
-          </div>
-        </Popover>
+          <button
+            ref={triggerBottomLeftRef}
+            {...Popover.getTriggerProps('popover-bottom-left')}
+          >
+            Bottom Left
+          </button>
+          <Popover
+            id='popover-bottom-left'
+            placement='bottom-left'
+            triggerRef={triggerBottomLeftRef}
+            className='bg-tertiary text-background border border-tertiary-bold rounded-lg shadow-lg'
+          >
+            <div style={{ padding: '12px', minWidth: '150px' }}>
+              Bottom-left aligned
+            </div>
+          </Popover>
+
+          <button
+            ref={triggerBottomRef}
+            {...Popover.getTriggerProps('popover-bottom')}
+          >
+            Bottom
+          </button>
+          <Popover
+            id='popover-bottom'
+            placement='bottom'
+            triggerRef={triggerBottomRef}
+            className='bg-tertiary text-background border border-tertiary-bold rounded-lg shadow-lg'
+          >
+            <div style={{ padding: '12px', minWidth: '150px' }}>
+              Bottom centered
+            </div>
+          </Popover>
+
+          <button
+            ref={triggerBottomRightRef}
+            {...Popover.getTriggerProps('popover-bottom-right')}
+          >
+            Bottom Right
+          </button>
+          <Popover
+            id='popover-bottom-right'
+            placement='bottom-right'
+            triggerRef={triggerBottomRightRef}
+            className='bg-tertiary text-background border border-tertiary-bold rounded-lg shadow-lg'
+          >
+            <div style={{ padding: '12px', minWidth: '150px' }}>
+              Bottom-right aligned
+            </div>
+          </Popover>
+        </div>
+      </div>
+
+      {/* Left Placements */}
+      <div>
+        <h3 style={{ textAlign: 'center', marginBottom: '12px' }}>
+          Left Placements
+        </h3>
+        <div
+          style={{
+            display: 'flex',
+            gap: '12px',
+            justifyContent: 'center',
+          }}
+        >
+          <button
+            ref={triggerLeftTopRef}
+            {...Popover.getTriggerProps('popover-left-top')}
+          >
+            Left Top
+          </button>
+          <Popover
+            id='popover-left-top'
+            placement='left-top'
+            triggerRef={triggerLeftTopRef}
+            className='bg-ghost text-background border border-ghost-bold rounded-lg shadow-lg'
+          >
+            <div style={{ padding: '12px', minWidth: '150px' }}>
+              Left-top aligned
+            </div>
+          </Popover>
+
+          <button
+            ref={triggerLeftRef}
+            {...Popover.getTriggerProps('popover-left')}
+          >
+            Left
+          </button>
+          <Popover
+            id='popover-left'
+            placement='left'
+            triggerRef={triggerLeftRef}
+            className='bg-ghost text-background border border-ghost-bold rounded-lg shadow-lg'
+          >
+            <div style={{ padding: '12px', minWidth: '150px' }}>
+              Left centered
+            </div>
+          </Popover>
+
+          <button
+            ref={triggerLeftBottomRef}
+            {...Popover.getTriggerProps('popover-left-bottom')}
+          >
+            Left Bottom
+          </button>
+          <Popover
+            id='popover-left-bottom'
+            placement='left-bottom'
+            triggerRef={triggerLeftBottomRef}
+            className='bg-ghost text-background border border-ghost-bold rounded-lg shadow-lg'
+          >
+            <div style={{ padding: '12px', minWidth: '150px' }}>
+              Left-bottom aligned
+            </div>
+          </Popover>
+        </div>
       </div>
     </div>
   )

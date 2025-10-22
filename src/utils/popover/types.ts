@@ -1,6 +1,18 @@
 import type { HTMLAttributes, ReactNode, RefObject } from 'react'
 
-export type PopoverPlacement = 'top' | 'right' | 'bottom' | 'left'
+export type PopoverPlacement =
+  | 'top'
+  | 'top-left'
+  | 'top-right'
+  | 'right'
+  | 'right-top'
+  | 'right-bottom'
+  | 'bottom'
+  | 'bottom-left'
+  | 'bottom-right'
+  | 'left'
+  | 'left-top'
+  | 'left-bottom'
 
 /**
  * Popover container max-width variants

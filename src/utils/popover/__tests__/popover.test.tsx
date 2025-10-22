@@ -254,17 +254,46 @@ describe('Popover', () => {
   it('renders Placements story correctly', () => {
     render(<Placements />)
 
+    // Check section headers
+    expect(screen.getByText('Top Placements')).toBeInTheDocument()
+    expect(screen.getByText('Right Placements')).toBeInTheDocument()
+    expect(screen.getByText('Bottom Placements')).toBeInTheDocument()
+    expect(screen.getByText('Left Placements')).toBeInTheDocument()
+
     // Check all placement buttons are rendered
+    // Top placements
+    expect(screen.getByText('Top Left')).toBeInTheDocument()
     expect(screen.getByText('Top')).toBeInTheDocument()
+    expect(screen.getByText('Top Right')).toBeInTheDocument()
+
+    // Right placements
+    expect(screen.getByText('Right Top')).toBeInTheDocument()
     expect(screen.getByText('Right')).toBeInTheDocument()
+    expect(screen.getByText('Right Bottom')).toBeInTheDocument()
+
+    // Bottom placements
+    expect(screen.getByText('Bottom Left')).toBeInTheDocument()
     expect(screen.getByText('Bottom')).toBeInTheDocument()
+    expect(screen.getByText('Bottom Right')).toBeInTheDocument()
+
+    // Left placements
+    expect(screen.getByText('Left Top')).toBeInTheDocument()
     expect(screen.getByText('Left')).toBeInTheDocument()
+    expect(screen.getByText('Left Bottom')).toBeInTheDocument()
 
     // Check all popover contents
-    expect(screen.getByText('Positioned above trigger')).toBeInTheDocument()
-    expect(screen.getByText('Positioned right of trigger')).toBeInTheDocument()
-    expect(screen.getByText('Positioned below trigger')).toBeInTheDocument()
-    expect(screen.getByText('Positioned left of trigger')).toBeInTheDocument()
+    expect(screen.getByText('Top-left aligned')).toBeInTheDocument()
+    expect(screen.getByText('Top centered')).toBeInTheDocument()
+    expect(screen.getByText('Top-right aligned')).toBeInTheDocument()
+    expect(screen.getByText('Right-top aligned')).toBeInTheDocument()
+    expect(screen.getByText('Right centered')).toBeInTheDocument()
+    expect(screen.getByText('Right-bottom aligned')).toBeInTheDocument()
+    expect(screen.getByText('Bottom-left aligned')).toBeInTheDocument()
+    expect(screen.getByText('Bottom centered')).toBeInTheDocument()
+    expect(screen.getByText('Bottom-right aligned')).toBeInTheDocument()
+    expect(screen.getByText('Left-top aligned')).toBeInTheDocument()
+    expect(screen.getByText('Left centered')).toBeInTheDocument()
+    expect(screen.getByText('Left-bottom aligned')).toBeInTheDocument()
   })
 
   it('renders Controlled story correctly', () => {
@@ -506,5 +535,114 @@ describe('calculatePopoverPosition', () => {
 
     // Bottom with gap 16: top = 150 + 16 = 166
     expect(position.top).toBe('166px')
+  })
+
+  it('calculates position for top-left placement', () => {
+    const position = calculatePopoverPosition(
+      mockTrigger,
+      mockPopover,
+      'top-left',
+      8
+    )
+
+    // Top-left: left aligned with trigger left
+    expect(position.left).toBe('100px')
+    expect(position).toHaveProperty('top')
+  })
+
+  it('calculates position for top-right placement', () => {
+    const position = calculatePopoverPosition(
+      mockTrigger,
+      mockPopover,
+      'top-right',
+      8
+    )
+
+    // Top-right: left = triggerRight - popoverWidth = 200 - 200 = 0
+    expect(position.left).toBe('8px') // Adjusted to viewport edge with margin
+    expect(position).toHaveProperty('top')
+  })
+
+  it('calculates position for bottom-left placement', () => {
+    const position = calculatePopoverPosition(
+      mockTrigger,
+      mockPopover,
+      'bottom-left',
+      8
+    )
+
+    // Bottom-left: left aligned with trigger left
+    expect(position.left).toBe('100px')
+    // Bottom: top = triggerBottom + gap = 150 + 8 = 158
+    expect(position.top).toBe('158px')
+  })
+
+  it('calculates position for bottom-right placement', () => {
+    const position = calculatePopoverPosition(
+      mockTrigger,
+      mockPopover,
+      'bottom-right',
+      8
+    )
+
+    // Bottom-right: left = triggerRight - popoverWidth = 200 - 200 = 0
+    expect(position.left).toBe('8px') // Adjusted to viewport edge with margin
+    expect(position.top).toBe('158px')
+  })
+
+  it('calculates position for right-top placement', () => {
+    const position = calculatePopoverPosition(
+      mockTrigger,
+      mockPopover,
+      'right-top',
+      8
+    )
+
+    // Right-top: top aligned with trigger top
+    expect(position.top).toBe('100px')
+    // Right: left = triggerRight + gap = 200 + 8 = 208
+    expect(position.left).toBe('208px')
+  })
+
+  it('calculates position for right-bottom placement', () => {
+    const position = calculatePopoverPosition(
+      mockTrigger,
+      mockPopover,
+      'right-bottom',
+      8
+    )
+
+    // Right-bottom: top = triggerBottom - popoverHeight = 150 - 100 = 50
+    expect(position.top).toBe('50px')
+    expect(position.left).toBe('208px')
+  })
+
+  it('calculates position for left-top placement', () => {
+    const position = calculatePopoverPosition(
+      mockTrigger,
+      mockPopover,
+      'left-top',
+      8
+    )
+
+    // Left-top: top aligned with trigger top
+    expect(position.top).toBe('100px')
+    // Left: left = triggerLeft - popoverWidth - gap = 100 - 200 - 8 = -108
+    // Should be adjusted to viewport edge
+    expect(position.left).toBe('8px')
+  })
+
+  it('calculates position for left-bottom placement', () => {
+    const position = calculatePopoverPosition(
+      mockTrigger,
+      mockPopover,
+      'left-bottom',
+      8
+    )
+
+    // Left-bottom: top = triggerBottom - popoverHeight = 150 - 100 = 50
+    expect(position.top).toBe('50px')
+    // Adjusted to viewport edge
+    expect(position.left).toBe('8px')
   })
 })

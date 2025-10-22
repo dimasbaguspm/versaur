@@ -70,7 +70,20 @@ interface PopoverProps extends HTMLAttributes<HTMLDivElement> {
   maxWidth?: PopoverMaxWidth // Optional: Maximum width of popover container
 }
 
-type PopoverPlacement = 'top' | 'right' | 'bottom' | 'left'
+type PopoverPlacement =
+  | 'top' // Top center-aligned
+  | 'top-left' // Top left-aligned
+  | 'top-right' // Top right-aligned
+  | 'right' // Right center-aligned
+  | 'right-top' // Right top-aligned
+  | 'right-bottom' // Right bottom-aligned
+  | 'bottom' // Bottom center-aligned
+  | 'bottom-left' // Bottom left-aligned
+  | 'bottom-right' // Bottom right-aligned
+  | 'left' // Left center-aligned
+  | 'left-top' // Left top-aligned
+  | 'left-bottom' // Left bottom-aligned
+
 type PopoverMaxWidth = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full'
 ```
 
@@ -197,33 +210,77 @@ Calculates optimal popover position relative to trigger with viewport boundary d
 
 1. **Base Position Calculation**:
 
+   The component supports 12 placement options organized into 4 primary directions with 3 alignment
+   variations each:
+
+   **Top Placements** (above trigger):
+
    ```typescript
-   switch (placement) {
-     case 'top':
-       top = triggerTop - popoverHeight - gap
-       left = triggerLeft + triggerWidth / 2 - popoverWidth / 2
-     case 'bottom':
-       top = triggerBottom + gap
-       left = triggerLeft + triggerWidth / 2 - popoverWidth / 2
-     case 'left':
-       top = triggerTop + triggerHeight / 2 - popoverHeight / 2
-       left = triggerLeft - popoverWidth - gap
-     case 'right':
-       top = triggerTop + triggerHeight / 2 - popoverHeight / 2
-       left = triggerRight + gap
-   }
+   case 'top':
+     top = triggerTop - popoverHeight - gap
+     left = triggerLeft + triggerWidth / 2 - popoverWidth / 2  // Center-aligned
+   case 'top-left':
+     top = triggerTop - popoverHeight - gap
+     left = triggerLeft  // Left-aligned
+   case 'top-right':
+     top = triggerTop - popoverHeight - gap
+     left = triggerRight - popoverWidth  // Right-aligned
+   ```
+
+   **Right Placements** (right of trigger):
+
+   ```typescript
+   case 'right':
+     top = triggerTop + triggerHeight / 2 - popoverHeight / 2  // Center-aligned
+     left = triggerRight + gap
+   case 'right-top':
+     top = triggerTop  // Top-aligned
+     left = triggerRight + gap
+   case 'right-bottom':
+     top = triggerBottom - popoverHeight  // Bottom-aligned
+     left = triggerRight + gap
+   ```
+
+   **Bottom Placements** (below trigger):
+
+   ```typescript
+   case 'bottom':
+     top = triggerBottom + gap
+     left = triggerLeft + triggerWidth / 2 - popoverWidth / 2  // Center-aligned
+   case 'bottom-left':
+     top = triggerBottom + gap
+     left = triggerLeft  // Left-aligned
+   case 'bottom-right':
+     top = triggerBottom + gap
+     left = triggerRight - popoverWidth  // Right-aligned
+   ```
+
+   **Left Placements** (left of trigger):
+
+   ```typescript
+   case 'left':
+     top = triggerTop + triggerHeight / 2 - popoverHeight / 2  // Center-aligned
+     left = triggerLeft - popoverWidth - gap
+   case 'left-top':
+     top = triggerTop  // Top-aligned
+     left = triggerLeft - popoverWidth - gap
+   case 'left-bottom':
+     top = triggerBottom - popoverHeight  // Bottom-aligned
+     left = triggerLeft - popoverWidth - gap
    ```
 
 2. **Horizontal Boundary Detection**:
 
-   - If `left + popoverWidth > viewport.width`, adjust left
-   - If `left < 0`, adjust to viewport edge with margin
+   - If `left + popoverWidth > viewport.width`, adjust left to fit within viewport
+   - If `left < 0`, adjust to viewport edge with 8px margin
+   - Ensures popover never extends beyond viewport horizontally
 
 3. **Vertical Boundary Detection**:
 
-   - If `top + popoverHeight > viewport.height`, try flipping placement
-   - If `top < 0`, try flipping or adjust to viewport edge
-   - Maintains 8px margin from viewport edges
+   - If `top + popoverHeight > viewport.height`, try flipping for top/bottom placements
+   - If `top < 0`, try flipping to opposite side or adjust to viewport edge
+   - Maintains 8px margin from all viewport edges
+   - Smart flipping: `bottom*` placements flip to `top`, `top*` placements flip to `bottom`
 
 4. **Returns**:
    ```typescript
@@ -233,6 +290,15 @@ Calculates optimal popover position relative to trigger with viewport boundary d
      margin: 0
    }
    ```
+
+#### Placement Selection Guidelines
+
+- **Center-aligned** (`top`, `right`, `bottom`, `left`): Use when trigger is wide/tall enough for
+  center alignment to look natural
+- **Corner-aligned** (`top-left`, `top-right`, etc.): Use when you need precise alignment with
+  trigger edges
+- **Edge-aligned** (`right-top`, `right-bottom`, etc.): Use when popover should align with specific
+  trigger edges for menus or dropdowns
 
 ## Usage Examples
 
@@ -295,6 +361,28 @@ const popover = usePopover('my-popover', isOpen,
 >
   <p>Popover content</p>
 </Popover>
+```
+
+### With Different Placements
+
+```tsx
+// Center-aligned placements (default behavior)
+<Popover id="top" triggerRef={ref} placement="top">Top</Popover>
+<Popover id="right" triggerRef={ref} placement="right">Right</Popover>
+<Popover id="bottom" triggerRef={ref} placement="bottom">Bottom</Popover>
+<Popover id="left" triggerRef={ref} placement="left">Left</Popover>
+
+// Left/Top-aligned placements
+<Popover id="top-left" triggerRef={ref} placement="top-left">Top Left</Popover>
+<Popover id="right-top" triggerRef={ref} placement="right-top">Right Top</Popover>
+<Popover id="bottom-left" triggerRef={ref} placement="bottom-left">Bottom Left</Popover>
+<Popover id="left-top" triggerRef={ref} placement="left-top">Left Top</Popover>
+
+// Right/Bottom-aligned placements
+<Popover id="top-right" triggerRef={ref} placement="top-right">Top Right</Popover>
+<Popover id="right-bottom" triggerRef={ref} placement="right-bottom">Right Bottom</Popover>
+<Popover id="bottom-right" triggerRef={ref} placement="bottom-right">Bottom Right</Popover>
+<Popover id="left-bottom" triggerRef={ref} placement="left-bottom">Left Bottom</Popover>
 ```
 
 ### Manual Mode with Backdrop
@@ -429,8 +517,10 @@ The component uses a sophisticated positioning algorithm:
    - Scroll/resize handling
 
 3. **Visual Tests**:
-   - All placement options
-   - Viewport boundary detection
+   - All 12 placement options (top, top-left, top-right, right, right-top, right-bottom, bottom,
+     bottom-left, bottom-right, left, left-top, left-bottom)
+   - Viewport boundary detection and smart flipping
    - No position flash on open
    - Max-width variants
    - Custom styling with different colors
+   - Alignment accuracy for corner and edge placements
