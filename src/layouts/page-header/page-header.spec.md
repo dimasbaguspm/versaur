@@ -11,32 +11,50 @@ to work in tandem with `PageContent` for consistent page structure.
 - **Unified Header Structure**: Provides consistent header layout across the application
 - **Flexible Composition**: Supports simplified prop-based API for common use cases
 - **Responsive Design**: Adapts to mobile and desktop viewports with appropriate stacking
-- **Visual Consistency**: Matches PageContent's size and backgroundColor options for seamless pairing
+- **Visual Consistency**: Matches PageContent's size and backgroundColor options for seamless
+  pairing
 
 ## Component Structure
 
-The component uses a **two-div wrapper structure** matching PageContent:
+The component uses a **two-div wrapper structure** with individual section padding:
 
 1. **Outer Wrapper**: Handles background color and extends full viewport width
-2. **Inner Container**: Controls max-width and padding, matching PageContent's size constraints
+2. **Inner Container**: Controls max-width only (no horizontal padding)
+3. **Section-Level Padding**: Individual sections (breadcrumbs, top) apply their own horizontal
+   padding based on the parent's size
 
-This structure ensures visual consistency when PageHeader is paired with PageContent on the same
-page.
+This structure ensures:
+
+- Visual consistency when PageHeader is paired with PageContent
+- Bottom sections (like tabs) can extend edge-to-edge for better mobile scrolling UX
+- Each section controls its own spacing independently
+
+### Padding Architecture
+
+- **Parent Container** (`pageHeaderInnerVariants`): No horizontal padding, only max-width
+  constraints
+- **Breadcrumbs Section**: Applies padding based on size (px-6 for wide, px-4 for narrow, px-0 for
+  fluid)
+- **Top Section**: Applies padding based on size (px-6 for wide, px-4 for narrow, px-0 for fluid)
+- **Bottom Section** (tabs): No padding, allowing edge-to-edge scrolling on mobile devices
 
 ## Props API
 
 ### `size`
 
-Controls the maximum width and padding of the inner container.
+Controls the maximum width of the container and horizontal padding for individual sections.
 
 - **Type**: `'fluid' | 'wide' | 'narrow'`
 - **Default**: `'fluid'`
 - **Options**:
-  - `fluid`: Full viewport width, no max-width constraint
-  - `wide`: Desktop-optimized container (max-w-7xl)
-  - `narrow`: Mobile-optimized container (max-w-3xl)
+  - `fluid`: Full viewport width, no max-width constraint, no section padding
+  - `wide`: Desktop-optimized container (max-w-7xl), sections use px-6 padding
+  - `narrow`: Mobile-optimized container (max-w-3xl), sections use px-4 padding
 
-**Important**: Should match the `size` of the paired `PageContent` component for visual alignment.
+**Important**:
+
+- Should match the `size` of the paired `PageContent` component for visual alignment
+- Tabs in the bottom section remain edge-to-edge regardless of size for optimal mobile scrolling
 
 ### `backgroundColor`
 
@@ -145,16 +163,21 @@ The component extends `HTMLAttributes<HTMLElement>`, so all standard header attr
 ### Layout Regions
 
 1. **Breadcrumbs Section**: Optional, appears first above main content
+   - Includes horizontal padding based on parent size
 2. **Top Section**: Contains content area and actions
+   - Includes horizontal padding based on parent size
    - **Content Area**: Title, subtitle, and badges
    - **Actions Area**: Desktop action buttons (right-aligned)
 3. **Bottom Section**: Optional, for tabs or filters
+   - **No horizontal padding** - extends edge-to-edge for optimal scrolling on mobile
+   - Ideal for horizontal navigation tabs that need to scroll
 
 ### Visual Hierarchy
 
 - Background extends full viewport width
-- Content respects size constraints matching PageContent
-- Proper spacing between sections (mb-4 for breadcrumbs, px-4/px-6 responsive padding)
+- Content respects max-width constraints based on size
+- Individual sections control their own horizontal padding
+- Bottom section (tabs) remains edge-to-edge for better mobile UX
 
 ## Pairing with PageContent
 
@@ -283,7 +306,26 @@ For visual consistency, PageHeader should be paired with PageContent using match
 3. **Breadcrumbs**: Include breadcrumbs for better navigation context on nested pages
 4. **Badges**: Use sparingly for important status indicators only
 5. **Tabs**: Reserve bottom section for primary navigation or filtering, not secondary actions
-6. **Accessibility**: Ensure action buttons have proper labels and ARIA attributes
+6. **Edge-to-Edge Tabs**: Tabs in the bottom section automatically extend edge-to-edge on all screen
+   sizes for optimal horizontal scrolling UX
+7. **Accessibility**: Ensure action buttons have proper labels and ARIA attributes
+
+## Tabs and Mobile UX
+
+The bottom section (typically used for tabs) is designed with mobile-first horizontal scrolling in
+mind:
+
+- **No Horizontal Padding**: The bottom section has no horizontal padding, allowing tabs to extend
+  to the viewport edges
+- **Optimal Scrolling**: Edge-to-edge layout provides maximum scroll area and better thumb reach on
+  mobile devices
+- **Consistent Behavior**: This edge-to-edge behavior applies to all size variants (fluid, wide,
+  narrow)
+- **Desktop Alignment**: While tabs extend edge-to-edge, individual tab items maintain their own
+  spacing and alignment
+
+This design pattern is common in mobile applications where horizontal scrollable elements benefit
+from using the full viewport width.
 
 ## Accessibility
 

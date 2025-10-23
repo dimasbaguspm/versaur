@@ -26,10 +26,10 @@ import { Text } from '@/primitive'
  * PageHeaderTop - main header area containing breadcrumbs, content, and actions
  */
 export const PageHeaderTop = forwardRef<HTMLDivElement, PageHeaderTopProps>(
-  ({ children, className, ...props }, ref) => (
+  ({ children, className, size = 'fluid', ...props }, ref) => (
     <div
       ref={ref}
-      className={cn(pageHeaderTopVariants(), className)}
+      className={cn(pageHeaderTopVariants({ size }), className)}
       data-versaur-page-header-top
       {...props}
     >
@@ -44,10 +44,10 @@ export const PageHeaderTop = forwardRef<HTMLDivElement, PageHeaderTopProps>(
 export const PageHeaderBreadcrumbs = forwardRef<
   HTMLDivElement,
   PageHeaderBreadcrumbsProps
->(({ children, className, ...props }, ref) => (
+>(({ children, className, size = 'fluid', ...props }, ref) => (
   <div
     ref={ref}
-    className={cn(pageHeaderBreadcrumbsVariants(), className)}
+    className={cn(pageHeaderBreadcrumbsVariants({ size }), className)}
     data-versaur-page-header-breadcrumbs
     {...props}
   >

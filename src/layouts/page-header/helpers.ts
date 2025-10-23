@@ -16,15 +16,15 @@ export const pageHeaderOuterVariants = cva('w-full mb-4', {
 })
 
 /**
- * PageHeader inner container styles (size and padding)
- * Padding must match PageLayout for visual consistency
+ * PageHeader inner container styles (size and max-width only)
+ * No horizontal padding here - individual sections handle their own padding
  */
 export const pageHeaderInnerVariants = cva('w-full mx-auto pt-4 md:pt-10', {
   variants: {
     size: {
-      fluid: 'max-w-full px-0',
-      wide: 'max-w-7xl px-6',
-      narrow: 'max-w-3xl px-4',
+      fluid: 'max-w-full',
+      wide: 'max-w-7xl',
+      narrow: 'max-w-3xl',
     },
   },
   defaultVariants: {
@@ -35,15 +35,40 @@ export const pageHeaderInnerVariants = cva('w-full mx-auto pt-4 md:pt-10', {
 /**
  * PageHeaderTop styles - main header area
  * Mobile-first responsive: stacks vertically on mobile, horizontal on desktop
+ * Includes responsive padding based on parent size
  */
 export const pageHeaderTopVariants = cva(
-  'flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4'
+  'flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4',
+  {
+    variants: {
+      size: {
+        fluid: 'px-0',
+        wide: 'px-6',
+        narrow: 'px-4',
+      },
+    },
+    defaultVariants: {
+      size: 'fluid',
+    },
+  }
 )
 
 /**
  * PageHeaderBreadcrumbs styles
+ * Includes responsive padding based on parent size
  */
-export const pageHeaderBreadcrumbsVariants = cva('mb-4')
+export const pageHeaderBreadcrumbsVariants = cva('mb-4', {
+  variants: {
+    size: {
+      fluid: 'px-0',
+      wide: 'px-6',
+      narrow: 'px-4',
+    },
+  },
+  defaultVariants: {
+    size: 'fluid',
+  },
+})
 
 /**
  * PageHeaderContent styles - title and subtitle area
@@ -77,7 +102,8 @@ export const pageHeaderMobileActionsVariants = cva('md:hidden')
 
 /**
  * PageHeaderBottom styles - bottom section for tabs
- * Overflow handling for horizontal scrolling
+ * No padding - allows tabs to be edge-to-edge on mobile for better scrolling
+ * On desktop, tabs can have their own internal padding if needed
  */
 export const pageHeaderBottomVariants = cva(
   'w-full flex items-center py-0 overflow-x-auto'

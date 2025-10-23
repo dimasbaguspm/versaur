@@ -86,10 +86,12 @@ const PageHeaderRoot = forwardRef<HTMLElement, PageHeaderRootProps>(
       >
         <div className={cn(pageHeaderInnerVariants({ size }), className)}>
           {breadcrumbs && (
-            <PageHeaderBreadcrumbs>{breadcrumbs}</PageHeaderBreadcrumbs>
+            <PageHeaderBreadcrumbs size={size}>
+              {breadcrumbs}
+            </PageHeaderBreadcrumbs>
           )}
 
-          <PageHeaderTop>
+          <PageHeaderTop size={size}>
             <PageHeaderContent>
               <div className='flex items-center justify-between'>
                 <PageHeaderTitle>{title}</PageHeaderTitle>

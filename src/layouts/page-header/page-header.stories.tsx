@@ -136,5 +136,13 @@ export const Narrow = () => (
         <Button variant='primary'>Save Changes</Button>
       </ButtonGroup>
     }
+    tabs={
+      <Tabs value='all' onValueChange={() => {}}>
+        <Tabs.Trigger value='all'>All Users</Tabs.Trigger>
+        <Tabs.Trigger value='active'>Active</Tabs.Trigger>
+        <Tabs.Trigger value='pending'>Pending</Tabs.Trigger>
+        <Tabs.Trigger value='disabled'>Disabled</Tabs.Trigger>
+      </Tabs>
+    }
   />
 )

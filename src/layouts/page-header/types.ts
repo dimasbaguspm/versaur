@@ -26,6 +26,13 @@ export interface PageHeaderProps extends HTMLAttributes<HTMLElement> {
  */
 export interface PageHeaderTopProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode
+  /**
+   * Size determines the horizontal padding
+   * - 'fluid': No padding
+   * - 'wide': px-6
+   * - 'narrow': px-4
+   */
+  size?: 'fluid' | 'wide' | 'narrow'
 }
 
 /**
@@ -34,6 +41,13 @@ export interface PageHeaderTopProps extends HTMLAttributes<HTMLDivElement> {
 export interface PageHeaderBreadcrumbsProps
   extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode
+  /**
+   * Size determines the horizontal padding
+   * - 'fluid': No padding
+   * - 'wide': px-6
+   * - 'narrow': px-4
+   */
+  size?: 'fluid' | 'wide' | 'narrow'
 }
 
 /**
