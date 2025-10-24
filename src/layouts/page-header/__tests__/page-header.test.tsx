@@ -38,19 +38,6 @@ describe('PageHeader', () => {
     expect(header).toBeInTheDocument()
   })
 
-  it('applies size and backgroundColor props correctly', () => {
-    const { container } = render(
-      <PageHeader
-        title='Test'
-        size='wide'
-        backgroundColor='gray'
-        data-testid='header'
-      />
-    )
-    const header = container.querySelector('header')
-    expect(header).toHaveClass('bg-neutral')
-  })
-
   it('renders both simplified props and children correctly', () => {
     const { getByText } = render(
       <PageHeader title='Prop Title'>

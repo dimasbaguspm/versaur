@@ -12,12 +12,6 @@ export interface PageHeaderProps extends HTMLAttributes<HTMLElement> {
    * - 'narrow': Container for mobile screens (centered)
    */
   size?: 'fluid' | 'wide' | 'narrow'
-  /**
-   * Background color of the header
-   * - 'white': White background
-   * - 'gray': Gray background
-   */
-  backgroundColor?: 'white' | 'gray'
   children?: ReactNode
 }
 

@@ -14,7 +14,6 @@ export const PageContent = React.forwardRef<HTMLDivElement, PageContentProps>(
     {
       size = 'fluid',
       template = 'single-column',
-      backgroundColor = 'white',
       className,
       children,
       ...rest
@@ -22,11 +21,7 @@ export const PageContent = React.forwardRef<HTMLDivElement, PageContentProps>(
     ref
   ) {
     return (
-      <div
-        ref={ref}
-        className={cn(pageContentOuterVariants({ backgroundColor }))}
-        {...rest}
-      >
+      <div ref={ref} className={cn(pageContentOuterVariants())} {...rest}>
         <div
           className={cn(
             pageContentInnerVariants({ size, template }),

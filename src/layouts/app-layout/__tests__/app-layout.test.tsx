@@ -38,13 +38,6 @@ describe('AppLayout', () => {
       expect(asFragment()).toMatchSnapshot()
     })
 
-    it('renders left sidebar with menu items', () => {
-      render(<LeftSidebarAndMain />)
-      expect(screen.getByText('Overview')).toBeInTheDocument()
-      expect(screen.getByText('Analytics')).toBeInTheDocument()
-      expect(screen.getByText('Settings')).toBeInTheDocument()
-    })
-
     it('renders dashboard content with scrollable widgets', () => {
       render(<LeftSidebarAndMain />)
       expect(screen.getByText('Dashboard Content')).toBeInTheDocument()
@@ -64,9 +57,9 @@ describe('AppLayout', () => {
       // Left sidebar
       expect(screen.getByText('Home')).toBeInTheDocument()
       // Main content
-      expect(screen.getByText('Three Column Layout')).toBeInTheDocument()
+      expect(screen.getByText('Dashboard Content')).toBeInTheDocument()
       // Right sidebar
-      expect(screen.getByText('Details')).toBeInTheDocument()
+      expect(screen.getByText('Overview')).toBeInTheDocument()
     })
 
     it('renders scrollable main content', () => {

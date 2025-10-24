@@ -1,19 +1,9 @@
 import { cva } from 'class-variance-authority'
 
 /**
- * PageHeader outer wrapper styles (background)
+ * PageHeader outer wrapper styles
  */
-export const pageHeaderOuterVariants = cva('w-full mb-4', {
-  variants: {
-    backgroundColor: {
-      white: 'bg-white',
-      gray: 'bg-neutral',
-    },
-  },
-  defaultVariants: {
-    backgroundColor: 'white',
-  },
-})
+export const pageHeaderOuterVariants = cva('w-full mb-4')
 
 /**
  * PageHeader inner container styles (size and max-width only)

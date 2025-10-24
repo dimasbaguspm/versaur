@@ -1,7 +1,7 @@
 /**
  * PageHeader stories for Storybook
  * Group: Layout
- * Demonstrates PageHeader usage patterns with size and backgroundColor variants
+ * Demonstrates PageHeader usage patterns with size variants
  * Icons from lucide-react (dev only)
  */
 import { useState } from 'react'
@@ -45,14 +45,13 @@ export const Default = () => (
 
 /**
  * Complete page header with all elements including breadcrumbs, badges, and tabs
- * Demonstrates wide size (max-width container) and gray background
+ * Demonstrates wide size (max-width container)
  */
 export const Complete = () => {
   const [activeTab, setActiveTab] = useState('all')
   return (
     <PageHeader
       size='wide'
-      backgroundColor='gray'
       title='User Management'
       subtitle='Manage user accounts and permissions across the organization'
       breadcrumbs={

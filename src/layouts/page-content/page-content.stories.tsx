@@ -31,10 +31,6 @@ const meta: Meta<typeof PageContent> = {
         'two-column-asymmetric-right',
       ],
     },
-    backgroundColor: {
-      control: 'radio',
-      options: ['white', 'gray'],
-    },
   },
   decorators: [
     Story => (
@@ -139,19 +135,16 @@ export const TwoColumnAsymmetricRight: Story = {
 }
 
 /**
- * Gray background for visual contrast
+ * Content with white background cards
  */
-export const GrayBackground: Story = {
+export const WhiteBackgroundCards: Story = {
   args: {
     size: 'wide',
-    backgroundColor: 'gray',
     children: (
       <div className='rounded-lg bg-white p-6'>
-        <h2 className='mb-2 text-xl font-semibold'>
-          Content on Gray Background
-        </h2>
+        <h2 className='mb-2 text-xl font-semibold'>Content Card</h2>
         <p className='text-foreground-light'>
-          The gray background provides visual contrast for the page.
+          Card content with white background.
         </p>
       </div>
     ),

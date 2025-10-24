@@ -1,18 +1,9 @@
 import { cva } from 'class-variance-authority'
+
 /**
- * Tailwind variants for PageContent outer wrapper (background)
+ * Tailwind variants for PageContent outer wrapper
  */
-export const pageContentOuterVariants = cva('w-full', {
-  variants: {
-    backgroundColor: {
-      white: 'bg-white',
-      gray: 'bg-neutral',
-    },
-  },
-  defaultVariants: {
-    backgroundColor: 'white',
-  },
-})
+export const pageContentOuterVariants = cva('w-full')
 
 /**
  * Tailwind variants for PageContent inner container (size and template)

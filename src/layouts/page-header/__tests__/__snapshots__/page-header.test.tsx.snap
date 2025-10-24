@@ -3,7 +3,7 @@
 exports[`PageHeader > renders correctly 1`] = `
 <div>
   <header
-    class="w-full mb-4 bg-white"
+    class="w-full mb-4"
     role="banner"
   >
     <div

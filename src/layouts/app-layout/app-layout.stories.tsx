@@ -10,6 +10,7 @@ import { AppLayout } from './app-layout'
 import { TopBar } from '@/layouts/top-bar'
 import { SideBar } from '@/layouts/side-bar'
 import { BottomBar } from '@/layouts/bottom-bar'
+import { PageLayout } from '@/layouts/page-layout'
 import { PageHeader } from '@/layouts/page-header'
 import { PageContent } from '@/layouts/page-content'
 import { Brand, Avatar, ButtonIcon, Icon, Button } from '@/primitive'
@@ -70,22 +71,28 @@ export const TopAndMain: Story = {
         </AppLayout.TopRegion>
 
         <AppLayout.MainRegion>
-          <PageHeader
-            size='wide'
-            title='Simple Layout'
-            subtitle='A minimal layout with top bar and main content'
-            tabs={
-              <Tabs value={activeTab} onValueChange={setActiveTab}>
-                <Tabs.Trigger value='overview'>Overview</Tabs.Trigger>
-                <Tabs.Trigger value='details'>Details</Tabs.Trigger>
-              </Tabs>
-            }
-          />
-          <PageContent size='wide'>
-            {Array.from({ length: 8 }).map((_, idx) => (
-              <SampleContent key={idx} label={`Section ${idx + 1}`} />
-            ))}
-          </PageContent>
+          <PageLayout>
+            <PageLayout.HeaderRegion>
+              <PageHeader
+                size='wide'
+                title='Simple Layout'
+                subtitle='A minimal layout with top bar and main content'
+                tabs={
+                  <Tabs value={activeTab} onValueChange={setActiveTab}>
+                    <Tabs.Trigger value='overview'>Overview</Tabs.Trigger>
+                    <Tabs.Trigger value='details'>Details</Tabs.Trigger>
+                  </Tabs>
+                }
+              />
+            </PageLayout.HeaderRegion>
+            <PageLayout.ContentRegion>
+              <PageContent size='wide'>
+                {Array.from({ length: 8 }).map((_, idx) => (
+                  <SampleContent key={idx} label={`Section ${idx + 1}`} />
+                ))}
+              </PageContent>
+            </PageLayout.ContentRegion>
+          </PageLayout>
         </AppLayout.MainRegion>
       </AppLayout>
     )
@@ -98,6 +105,7 @@ export const TopAndMain: Story = {
  */
 export const LeftSidebarAndMain: Story = {
   render: function LeftSidebarAndMainStory() {
+    const [activeTab, setActiveTab] = useState('overview')
     return (
       <AppLayout>
         <AppLayout.TopRegion>
@@ -136,29 +144,41 @@ export const LeftSidebarAndMain: Story = {
         </AppLayout.SideLeftRegion>
 
         <AppLayout.MainRegion>
-          <PageHeader
-            size='fluid'
-            title='Dashboard Content'
-            subtitle='Monitor your metrics and analytics'
-            actions={
-              <Button variant='primary'>
-                <Icon as={PlusIcon} color='inherit' />
-                Add Widget
-              </Button>
-            }
-            mobileActions={
-              <ButtonIcon
-                as={PlusIcon}
-                variant='primary'
-                aria-label='Add Widget'
+          <PageLayout hasMargin>
+            <PageLayout.HeaderRegion>
+              <PageHeader
+                size='fluid'
+                title='Dashboard Content'
+                subtitle='Monitor your metrics and analytics'
+                tabs={
+                  <Tabs value={activeTab} onValueChange={setActiveTab}>
+                    <Tabs.Trigger value='overview'>Overview</Tabs.Trigger>
+                    <Tabs.Trigger value='details'>Details</Tabs.Trigger>
+                  </Tabs>
+                }
+                actions={
+                  <Button variant='primary'>
+                    <Icon as={PlusIcon} color='inherit' />
+                    Add Widget
+                  </Button>
+                }
+                mobileActions={
+                  <ButtonIcon
+                    as={PlusIcon}
+                    variant='primary'
+                    aria-label='Add Widget'
+                  />
+                }
               />
-            }
-          />
-          <PageContent size='fluid' template='two-column'>
-            {Array.from({ length: 6 }).map((_, idx) => (
-              <SampleContent key={idx} label={`Widget ${idx + 1}`} />
-            ))}
-          </PageContent>
+            </PageLayout.HeaderRegion>
+            <PageLayout.ContentRegion>
+              <PageContent size='fluid' template='two-column'>
+                {Array.from({ length: 6 }).map((_, idx) => (
+                  <SampleContent key={idx} label={`Widget ${idx + 1}`} />
+                ))}
+              </PageContent>
+            </PageLayout.ContentRegion>
+          </PageLayout>
         </AppLayout.MainRegion>
       </AppLayout>
     )
@@ -171,6 +191,7 @@ export const LeftSidebarAndMain: Story = {
  */
 export const ThreeColumn: Story = {
   render: function ThreeColumnStory() {
+    const [activeTab, setActiveTab] = useState('overview')
     return (
       <AppLayout>
         <AppLayout.TopRegion>
@@ -215,16 +236,41 @@ export const ThreeColumn: Story = {
         </AppLayout.SideLeftRegion>
 
         <AppLayout.MainRegion>
-          <PageHeader
-            size='fluid'
-            title='Three Column Layout'
-            subtitle='Content flows between two sidebars'
-          />
-          <PageContent size='fluid'>
-            {Array.from({ length: 12 }).map((_, idx) => (
-              <SampleContent key={idx} label={`Item ${idx + 1}`} />
-            ))}
-          </PageContent>
+          <PageLayout hasMargin>
+            <PageLayout.HeaderRegion>
+              <PageHeader
+                size='fluid'
+                title='Dashboard Content'
+                subtitle='Monitor your metrics and analytics'
+                tabs={
+                  <Tabs value={activeTab} onValueChange={setActiveTab}>
+                    <Tabs.Trigger value='overview'>Overview</Tabs.Trigger>
+                    <Tabs.Trigger value='details'>Details</Tabs.Trigger>
+                  </Tabs>
+                }
+                actions={
+                  <Button variant='primary'>
+                    <Icon as={PlusIcon} color='inherit' />
+                    Add Widget
+                  </Button>
+                }
+                mobileActions={
+                  <ButtonIcon
+                    as={PlusIcon}
+                    variant='primary'
+                    aria-label='Add Widget'
+                  />
+                }
+              />
+            </PageLayout.HeaderRegion>
+            <PageLayout.ContentRegion>
+              <PageContent size='fluid'>
+                {Array.from({ length: 12 }).map((_, idx) => (
+                  <SampleContent key={idx} label={`Item ${idx + 1}`} />
+                ))}
+              </PageContent>
+            </PageLayout.ContentRegion>
+          </PageLayout>
         </AppLayout.MainRegion>
 
         <AppLayout.SideRightRegion>
@@ -251,22 +297,28 @@ export const WithBottomNav: Story = {
     return (
       <AppLayout>
         <AppLayout.MainRegion>
-          <PageHeader
-            size='fluid'
-            title='Feed'
-            subtitle='Your latest updates'
-            tabs={
-              <Tabs value='overview' onValueChange={() => {}}>
-                <Tabs.Trigger value='overview'>Overview</Tabs.Trigger>
-                <Tabs.Trigger value='details'>Details</Tabs.Trigger>
-              </Tabs>
-            }
-          />
-          <PageContent size='fluid'>
-            {Array.from({ length: 15 }).map((_, idx) => (
-              <SampleContent key={idx} label={`Post ${idx + 1}`} />
-            ))}
-          </PageContent>
+          <PageLayout>
+            <PageLayout.HeaderRegion>
+              <PageHeader
+                size='fluid'
+                title='Feed'
+                subtitle='Your latest updates'
+                tabs={
+                  <Tabs value='overview' onValueChange={() => {}}>
+                    <Tabs.Trigger value='overview'>Overview</Tabs.Trigger>
+                    <Tabs.Trigger value='details'>Details</Tabs.Trigger>
+                  </Tabs>
+                }
+              />
+            </PageLayout.HeaderRegion>
+            <PageLayout.ContentRegion>
+              <PageContent size='fluid'>
+                {Array.from({ length: 15 }).map((_, idx) => (
+                  <SampleContent key={idx} label={`Post ${idx + 1}`} />
+                ))}
+              </PageContent>
+            </PageLayout.ContentRegion>
+          </PageLayout>
         </AppLayout.MainRegion>
 
         <AppLayout.BottomRegion>

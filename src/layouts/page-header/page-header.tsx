@@ -63,7 +63,6 @@ const PageHeaderRoot = forwardRef<HTMLElement, PageHeaderRootProps>(
       children,
       className,
       size = 'fluid',
-      backgroundColor = 'white',
       title,
       subtitle,
       breadcrumbs,
@@ -80,7 +79,7 @@ const PageHeaderRoot = forwardRef<HTMLElement, PageHeaderRootProps>(
     return (
       <header
         ref={ref}
-        className={cn(pageHeaderOuterVariants({ backgroundColor }))}
+        className={cn(pageHeaderOuterVariants())}
         role='banner'
         {...props}
       >

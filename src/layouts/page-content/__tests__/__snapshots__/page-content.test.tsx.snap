@@ -6,7 +6,7 @@ exports[`PageContent > renders default layout and matches snapshot 1`] = `
     class="min-h-screen"
   >
     <div
-      class="w-full bg-white"
+      class="w-full"
     >
       <div
         class="w-full mx-auto relative max-w-full px-0 grid grid-cols-1"
@@ -33,46 +33,13 @@ exports[`PageContent > renders default layout and matches snapshot 1`] = `
 </DocumentFragment>
 `;
 
-exports[`PageContent > renders gray background layout and matches snapshot 1`] = `
-<DocumentFragment>
-  <div
-    class="min-h-screen"
-  >
-    <div
-      class="w-full bg-neutral"
-    >
-      <div
-        class="w-full mx-auto relative max-w-7xl px-6 pb-10 grid grid-cols-1"
-      >
-        <div>
-          <div
-            class="rounded-lg bg-white p-6"
-          >
-            <h2
-              class="mb-2 text-xl font-semibold"
-            >
-              Content on Gray Background
-            </h2>
-            <p
-              class="text-foreground-light"
-            >
-              The gray background provides visual contrast for the page.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
 exports[`PageContent > renders narrow container layout and matches snapshot 1`] = `
 <DocumentFragment>
   <div
     class="min-h-screen"
   >
     <div
-      class="w-full bg-white"
+      class="w-full"
     >
       <div
         class="w-full mx-auto relative max-w-3xl px-4 pb-10 grid grid-cols-1"
@@ -105,7 +72,7 @@ exports[`PageContent > renders two column asymmetric left layout and matches sna
     class="min-h-screen"
   >
     <div
-      class="w-full bg-white"
+      class="w-full"
     >
       <div
         class="w-full mx-auto relative max-w-7xl px-6 pb-10 grid grid-cols-1 md:grid-cols-3 gap-6"
@@ -156,7 +123,7 @@ exports[`PageContent > renders two column asymmetric right layout and matches sn
     class="min-h-screen"
   >
     <div
-      class="w-full bg-white"
+      class="w-full"
     >
       <div
         class="w-full mx-auto relative max-w-7xl px-6 pb-10 grid grid-cols-1 md:grid-cols-3 gap-6"
@@ -207,7 +174,7 @@ exports[`PageContent > renders two column layout and matches snapshot 1`] = `
     class="min-h-screen"
   >
     <div
-      class="w-full bg-white"
+      class="w-full"
     >
       <div
         class="w-full mx-auto relative max-w-7xl px-6 pb-10 grid grid-cols-1 md:grid-cols-2 gap-6"
@@ -254,7 +221,7 @@ exports[`PageContent > renders wide container layout and matches snapshot 1`] = 
     class="min-h-screen"
   >
     <div
-      class="w-full bg-white"
+      class="w-full"
     >
       <div
         class="w-full mx-auto relative max-w-7xl px-6 pb-10 grid grid-cols-1"

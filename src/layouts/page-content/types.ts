@@ -22,12 +22,6 @@ export interface PageContentProps extends React.HTMLAttributes<HTMLDivElement> {
     | 'two-column-asymmetric-left'
     | 'two-column-asymmetric-right'
   /**
-   * Background color of the layout
-   * - 'white': White background
-   * - 'gray': Gray background
-   */
-  backgroundColor?: 'white' | 'gray'
-  /**
    * Content to render inside the layout
    */
   children: React.ReactNode

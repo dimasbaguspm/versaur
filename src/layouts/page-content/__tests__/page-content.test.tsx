@@ -11,7 +11,6 @@ describe('PageContent', () => {
     TwoColumn,
     TwoColumnAsymmetricLeft,
     TwoColumnAsymmetricRight,
-    GrayBackground,
   } = composeStories(stories)
 
   it('renders default layout and matches snapshot', () => {
@@ -51,11 +50,5 @@ describe('PageContent', () => {
     expect(asFragment()).toMatchSnapshot()
     expect(screen.getByText(/Main Content \(Wider\)/)).toBeInTheDocument()
     expect(screen.getByText(/Sidebar/)).toBeInTheDocument()
-  })
-
-  it('renders gray background layout and matches snapshot', () => {
-    const { asFragment } = render(<GrayBackground />)
-    expect(asFragment()).toMatchSnapshot()
-    expect(screen.getByText(/Content on Gray Background/)).toBeInTheDocument()
   })
 })
