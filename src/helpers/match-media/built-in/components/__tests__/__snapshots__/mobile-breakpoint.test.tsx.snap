@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MobileBreakpoint > should match snapshot when rendered 1`] = `
+<DocumentFragment>
+  <div>
+    Mobile Content
+  </div>
+</DocumentFragment>
+`;

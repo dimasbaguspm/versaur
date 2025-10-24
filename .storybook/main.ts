@@ -32,6 +32,8 @@ const config: StorybookConfig = {
           '@/layouts': resolve(__dirname, '../src/layouts'),
           '@/utils': resolve(__dirname, '../src/utils'),
           '@/templates': resolve(__dirname, '../src/templates'),
+          '@/providers': resolve(__dirname, '../src/providers'),
+          '@/helpers': resolve(__dirname, '../src/helpers'),
         },
       },
     })

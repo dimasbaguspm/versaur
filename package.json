@@ -46,6 +46,10 @@
       "import": "./dist/js/templates/index.js",
       "types": "./dist/types/templates/index.d.ts"
     },
+    "./helpers": {
+      "import": "./dist/js/helpers/index.js",
+      "types": "./dist/types/helpers/index.d.ts"
+    },
     "./styles.css": "./dist/assets/styles.css",
     "./eslint-subpath-import": "./dist/utils/enforce-subpath-import.js"
   },

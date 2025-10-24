@@ -18,6 +18,8 @@ export default defineConfig({
       '@/feedbacks': resolve(__dirname, 'src/feedbacks'),
       '@/layouts': resolve(__dirname, 'src/layouts'),
       '@/providers': resolve(__dirname, 'src/providers'),
+      '@/templates': resolve(__dirname, 'src/templates'),
+      '@/helpers': resolve(__dirname, 'src/helpers'),
       '@/utils': resolve(__dirname, 'src/utils'),
     },
   },
