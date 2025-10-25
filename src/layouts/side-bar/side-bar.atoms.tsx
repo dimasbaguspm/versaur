@@ -1,84 +1,138 @@
 /**
  * Atoms for SideBar compound component
- * Includes MenuList, MenuListItem, MenuGroup, SubMenu
+ * Includes SideBar.Item and SideBar.Group
  */
 import {
   forwardRef,
+  useState,
   type AnchorHTMLAttributes,
-  type ButtonHTMLAttributes,
   type Ref,
 } from 'react'
-import { sideBarItemClass } from './helpers'
+import {
+  sideBarItemClass,
+  sideBarGroupClass,
+  sideBarIconClass,
+  sideBarGroupHeaderClass,
+  sideBarGroupChildrenClass,
+} from './helpers'
 import type { SideBarItemProps, SideBarGroupProps } from './types'
 import { Text } from '@/primitive'
 import { cn } from '@/utils'
+import { useSideBarContext } from './context'
+import { ChevronDown, ChevronRight } from 'lucide-react'
+import { Icon } from '@/primitive'
 
-export const SideBarItem = forwardRef<HTMLElement, SideBarItemProps>(
+export const SideBarItem = forwardRef<HTMLAnchorElement, SideBarItemProps>(
   (props, ref) => {
-    const { icon, children, href, onClick, active, ...rest } = props
-    const isAnchor = typeof href === 'string'
+    const { icon, children, href, active, ...rest } = props
+    const { isCollapsed } = useSideBarContext()
+    const anchorProps = rest as AnchorHTMLAttributes<HTMLAnchorElement>
 
-    if (isAnchor) {
-      const anchorProps = rest as AnchorHTMLAttributes<HTMLAnchorElement>
-
-      return (
-        <li>
-          <a
-            ref={ref as Ref<HTMLAnchorElement>}
-            href={href}
-            className={sideBarItemClass({
-              disabled: !!props['aria-disabled'],
-              active,
-            })}
-            {...anchorProps}
-          >
-            {icon}
-            <Text as='span' color='inherit' fontSize='sm'>
+    return (
+      <li>
+        <a
+          ref={ref as Ref<HTMLAnchorElement>}
+          href={href}
+          className={sideBarItemClass({
+            disabled: !!props['aria-disabled'],
+            active,
+            collapsed: isCollapsed,
+          })}
+          title={isCollapsed ? String(children) : undefined}
+          {...anchorProps}
+        >
+          {icon && <span className={cn(sideBarIconClass())}>{icon}</span>}
+          {!isCollapsed && (
+            <Text
+              as='span'
+              color='inherit'
+              fontSize='sm'
+              fontWeight='normal'
+              className='truncate'
+            >
               {children}
             </Text>
-          </a>
-        </li>
-      )
-    } else {
-      const buttonProps = rest as ButtonHTMLAttributes<HTMLButtonElement>
-      return (
-        <li>
-          <button
-            ref={ref as Ref<HTMLButtonElement>}
-            type='button'
-            onClick={onClick}
-            className={cn(
-              sideBarItemClass({ disabled: !!buttonProps.disabled, active }),
-              'w-full text-left'
-            )}
-            {...buttonProps}
-          >
-            {icon}
-            <Text as='span' color='inherit' fontSize='sm'>
-              {children}
-            </Text>
-          </button>
-        </li>
-      )
-    }
+          )}
+        </a>
+      </li>
+    )
   }
 )
 
 export const SideBarGroup = forwardRef<HTMLLIElement, SideBarGroupProps>(
-  function SideBarGroup({ children, label, ...props }, ref) {
-    return (
-      <li ref={ref} className='flex flex-col gap-2 mt-2' {...props}>
-        <Text
-          as='h2'
-          fontSize='xs'
-          fontWeight='semibold'
-          color='gray'
-          className='px-2'
-        >
-          {label}
-        </Text>
+  function SideBarGroup(
+    { children, label, icon, defaultExpanded = true, ...props },
+    ref
+  ) {
+    const { isCollapsed, expandSidebar } = useSideBarContext()
+    const [isExpanded, setIsExpanded] = useState(defaultExpanded)
 
-        <ul className='flex flex-col gap-1'>{children}</ul>
+    const toggleExpanded = (e: React.MouseEvent) => {
+      e.preventDefault()
+      setIsExpanded(!isExpanded)
+    }
+
+    const handleClickWhenCollapsed = (e: React.MouseEvent) => {
+      e.preventDefault()
+      // Expand sidebar and the group
+      expandSidebar()
+      setIsExpanded(true)
+    }
+
+    // When sidebar is collapsed (horizontally), show icon only
+    if (isCollapsed) {
+      return (
+        <li>
+          <button
+            type='button'
+            className={sideBarItemClass({
+              active: false,
+              collapsed: true,
+            })}
+            title={String(label)}
+            onClick={handleClickWhenCollapsed}
+          >
+            {icon && <span className={cn(sideBarIconClass())}>{icon}</span>}
+          </button>
+        </li>
+      )
+    }
+
+    // When sidebar is expanded (horizontally)
+    return (
+      <li
+        ref={ref}
+        className={sideBarGroupClass({
+          expanded: isExpanded,
+        })}
+        {...props}
+      >
+        <button
+          type='button'
+          className={sideBarGroupHeaderClass({
+            collapsed: false,
+          })}
+          onClick={toggleExpanded}
+        >
+          {icon && <span className={cn(sideBarIconClass())}>{icon}</span>}
+          <Text
+            as='span'
+            color='inherit'
+            fontSize='sm'
+            className='flex-1 truncate'
+          >
+            {label}
+          </Text>
+          <Icon
+            as={isExpanded ? ChevronDown : ChevronRight}
+            size='xs'
+            color='inherit'
+          />
+        </button>
+
+        {isExpanded && (
+          <ul className={cn(sideBarGroupChildrenClass())}>{children}</ul>
+        )}
       </li>
     )
   }
