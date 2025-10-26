@@ -22,7 +22,9 @@ export const appLayoutRootStyles = cva(
  * AppLayoutTopRegion styles
  * Assigned to 'top' grid area, spans full width
  */
-export const appLayoutTopRegionStyles = cva('[grid-area:top] z-30 sticky top-0')
+export const appLayoutTopRegionStyles = cva(
+  '[grid-area:top] z-30 sticky top-0 border-b border-border'
+)
 
 /**
  * AppLayoutSideLeftRegion styles
@@ -55,7 +57,8 @@ export const appLayoutBottomRegionStyles = cva(
  * Assigned to 'main' grid area, center column
  * Only the main region is scrollable - sidebars remain fixed in position
  * Must set min-h-0 to allow overflow to work within grid
+ * scrollbar-gutter:stable reserves space for scrollbar to prevent layout shift
  */
 export const appLayoutMainRegionStyles = cva(
-  '[grid-area:main] overflow-y-auto min-h-0'
+  '[grid-area:main] overflow-y-auto min-h-0 [scrollbar-gutter:stable]'
 )

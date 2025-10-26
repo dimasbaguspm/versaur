@@ -180,14 +180,6 @@ describe('PageLayout', () => {
       expect(root).toHaveClass('grid-rows-[auto_1fr]')
     })
 
-    it('makes content region scrollable', () => {
-      const { container } = render(<Basic />)
-      const contentRegion = container.querySelector(
-        '[class*="grid-area:content"]'
-      )
-      expect(contentRegion).toHaveClass('overflow-y-auto')
-    })
-
     it('does not apply margins by default', () => {
       const { container } = render(<Basic />)
       const root = container.firstChild as HTMLElement

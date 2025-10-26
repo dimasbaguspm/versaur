@@ -3,7 +3,7 @@
 exports[`PageLayout > Basic story > renders correctly (snapshot) 1`] = `
 <DocumentFragment>
   <div
-    class="grid grid-rows-[auto_1fr] [grid-template-areas:"header"_"content"]"
+    class="grid h-full min-h-0 grid-rows-[auto_1fr] [grid-template-areas:"header"_"content"]"
   >
     <div
       class="[grid-area:header] bg-transparent"
@@ -43,7 +43,7 @@ exports[`PageLayout > Basic story > renders correctly (snapshot) 1`] = `
       </header>
     </div>
     <div
-      class="[grid-area:content] overflow-y-auto min-h-0 bg-transparent"
+      class="[grid-area:content] min-h-0 bg-transparent"
     >
       <div
         class="w-full"
@@ -133,7 +133,7 @@ exports[`PageLayout > Basic story > renders correctly (snapshot) 1`] = `
 exports[`PageLayout > BothGray story > renders correctly (snapshot) 1`] = `
 <DocumentFragment>
   <div
-    class="grid grid-rows-[auto_1fr] [grid-template-areas:"header"_"content"]"
+    class="grid h-full min-h-0 grid-rows-[auto_1fr] [grid-template-areas:"header"_"content"]"
   >
     <div
       class="[grid-area:header] bg-gray-100"
@@ -173,7 +173,7 @@ exports[`PageLayout > BothGray story > renders correctly (snapshot) 1`] = `
       </header>
     </div>
     <div
-      class="[grid-area:content] overflow-y-auto min-h-0 bg-gray-100"
+      class="[grid-area:content] min-h-0 bg-gray-100"
     >
       <div
         class="w-full"
@@ -263,7 +263,7 @@ exports[`PageLayout > BothGray story > renders correctly (snapshot) 1`] = `
 exports[`PageLayout > FluidLayout story > renders correctly (snapshot) 1`] = `
 <DocumentFragment>
   <div
-    class="grid grid-rows-[auto_1fr] [grid-template-areas:"header"_"content"]"
+    class="grid h-full min-h-0 grid-rows-[auto_1fr] [grid-template-areas:"header"_"content"]"
   >
     <div
       class="[grid-area:header] bg-gray-100"
@@ -303,7 +303,7 @@ exports[`PageLayout > FluidLayout story > renders correctly (snapshot) 1`] = `
       </header>
     </div>
     <div
-      class="[grid-area:content] overflow-y-auto min-h-0 bg-transparent"
+      class="[grid-area:content] min-h-0 bg-transparent"
     >
       <div
         class="w-full"
@@ -393,7 +393,7 @@ exports[`PageLayout > FluidLayout story > renders correctly (snapshot) 1`] = `
 exports[`PageLayout > GrayHeaderWhiteContent story > renders correctly (snapshot) 1`] = `
 <DocumentFragment>
   <div
-    class="grid grid-rows-[auto_1fr] [grid-template-areas:"header"_"content"]"
+    class="grid h-full min-h-0 grid-rows-[auto_1fr] [grid-template-areas:"header"_"content"]"
   >
     <div
       class="[grid-area:header] bg-gray-100"
@@ -525,7 +525,7 @@ exports[`PageLayout > GrayHeaderWhiteContent story > renders correctly (snapshot
       </header>
     </div>
     <div
-      class="[grid-area:content] overflow-y-auto min-h-0 bg-transparent"
+      class="[grid-area:content] min-h-0 bg-transparent"
     >
       <div
         class="w-full"
@@ -629,7 +629,7 @@ exports[`PageLayout > GrayHeaderWhiteContent story > renders correctly (snapshot
 exports[`PageLayout > NarrowLayout story > renders correctly (snapshot) 1`] = `
 <DocumentFragment>
   <div
-    class="grid grid-rows-[auto_1fr] [grid-template-areas:"header"_"content"] [&_[class*="grid-area:header"]]:px-4 [&_[class*="grid-area:header"]]:sm:px-6 [&_[class*="grid-area:header"]]:lg:px-8 [&_[class*="grid-area:content"]]:px-4 [&_[class*="grid-area:content"]]:sm:px-6 [&_[class*="grid-area:content"]]:lg:px-8"
+    class="grid h-full min-h-0 grid-rows-[auto_1fr] [grid-template-areas:"header"_"content"] [&_[class*="grid-area:header"]]:px-4 [&_[class*="grid-area:header"]]:sm:px-6 [&_[class*="grid-area:header"]]:lg:px-8 [&_[class*="grid-area:content"]]:px-4 [&_[class*="grid-area:content"]]:sm:px-6 [&_[class*="grid-area:content"]]:lg:px-8"
   >
     <div
       class="[grid-area:header] bg-transparent"
@@ -669,7 +669,7 @@ exports[`PageLayout > NarrowLayout story > renders correctly (snapshot) 1`] = `
       </header>
     </div>
     <div
-      class="[grid-area:content] overflow-y-auto min-h-0 bg-transparent"
+      class="[grid-area:content] min-h-0 bg-transparent"
     >
       <div
         class="w-full"
@@ -801,7 +801,7 @@ exports[`PageLayout > NarrowLayout story > renders correctly (snapshot) 1`] = `
 exports[`PageLayout > WhiteHeaderGrayContent story > renders correctly (snapshot) 1`] = `
 <DocumentFragment>
   <div
-    class="grid grid-rows-[auto_1fr] [grid-template-areas:"header"_"content"]"
+    class="grid h-full min-h-0 grid-rows-[auto_1fr] [grid-template-areas:"header"_"content"]"
   >
     <div
       class="[grid-area:header] bg-transparent"
@@ -876,7 +876,7 @@ exports[`PageLayout > WhiteHeaderGrayContent story > renders correctly (snapshot
       </header>
     </div>
     <div
-      class="[grid-area:content] overflow-y-auto min-h-0 bg-gray-100"
+      class="[grid-area:content] min-h-0 bg-gray-100"
     >
       <div
         class="w-full"
@@ -952,7 +952,7 @@ exports[`PageLayout > WhiteHeaderGrayContent story > renders correctly (snapshot
 exports[`PageLayout > WithMargins story > renders correctly (snapshot) 1`] = `
 <DocumentFragment>
   <div
-    class="grid grid-rows-[auto_1fr] [grid-template-areas:"header"_"content"] [&_[class*="grid-area:header"]]:px-4 [&_[class*="grid-area:header"]]:sm:px-6 [&_[class*="grid-area:header"]]:lg:px-8 [&_[class*="grid-area:content"]]:px-4 [&_[class*="grid-area:content"]]:sm:px-6 [&_[class*="grid-area:content"]]:lg:px-8"
+    class="grid h-full min-h-0 grid-rows-[auto_1fr] [grid-template-areas:"header"_"content"] [&_[class*="grid-area:header"]]:px-4 [&_[class*="grid-area:header"]]:sm:px-6 [&_[class*="grid-area:header"]]:lg:px-8 [&_[class*="grid-area:content"]]:px-4 [&_[class*="grid-area:content"]]:sm:px-6 [&_[class*="grid-area:content"]]:lg:px-8"
   >
     <div
       class="[grid-area:header] bg-transparent"
@@ -992,7 +992,7 @@ exports[`PageLayout > WithMargins story > renders correctly (snapshot) 1`] = `
       </header>
     </div>
     <div
-      class="[grid-area:content] overflow-y-auto min-h-0 bg-transparent"
+      class="[grid-area:content] min-h-0 bg-transparent"
     >
       <div
         class="w-full"

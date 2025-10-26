@@ -4,10 +4,13 @@ import { cva } from 'class-variance-authority'
  * PageLayoutRoot styles
  * Uses CSS Grid with grid-area for page-level layout management
  * Grid template: header on top, content below
+ * Full height to fill parent container and min-h-0 for proper grid behavior
  */
 export const pageLayoutRootStyles = cva(
   [
     'grid',
+    'h-full',
+    'min-h-0',
     'grid-rows-[auto_1fr]',
     '[grid-template-areas:"header"_"content"]',
   ].join(' '),
@@ -46,7 +49,7 @@ export const pageLayoutHeaderRegionStyles = cva('[grid-area:header]', {
  * Scrollable content area
  */
 export const pageLayoutContentRegionStyles = cva(
-  '[grid-area:content] overflow-y-auto min-h-0',
+  '[grid-area:content] min-h-0',
   {
     variants: {
       backgroundColor: {
