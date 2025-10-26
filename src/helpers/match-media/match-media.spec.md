@@ -29,24 +29,50 @@ match-media/
     │   ├── use-mobile-breakpoint.ts
     │   ├── use-tablet-breakpoint.ts
     │   ├── use-desktop-breakpoint.ts
+    │   ├── use-mobile-and-tablet-breakpoint.ts
+    │   ├── use-tablet-and-desktop-breakpoint.ts
+    │   ├── use-mobile-portrait-breakpoint.ts
+    │   ├── use-mobile-landscape-breakpoint.ts
+    │   ├── use-tablet-portrait-breakpoint.ts
+    │   ├── use-tablet-landscape-breakpoint.ts
     │   └── __tests__/
     │       ├── use-mobile-breakpoint.test.ts
     │       ├── use-tablet-breakpoint.test.ts
-    │       └── use-desktop-breakpoint.test.ts
+    │       ├── use-desktop-breakpoint.test.ts
+    │       ├── use-mobile-and-tablet-breakpoint.test.ts
+    │       ├── use-tablet-and-desktop-breakpoint.test.ts
+    │       ├── use-mobile-portrait-breakpoint.test.ts
+    │       ├── use-mobile-landscape-breakpoint.test.ts
+    │       ├── use-tablet-portrait-breakpoint.test.ts
+    │       └── use-tablet-landscape-breakpoint.test.ts
     └── components/                 # Declarative breakpoint components
         ├── index.ts
         ├── mobile-breakpoint.tsx
         ├── tablet-breakpoint.tsx
         ├── desktop-breakpoint.tsx
+        ├── mobile-and-tablet-breakpoint.tsx
+        ├── tablet-and-desktop-breakpoint.tsx
+        ├── mobile-portrait-breakpoint.tsx
+        ├── mobile-landscape-breakpoint.tsx
+        ├── tablet-portrait-breakpoint.tsx
+        ├── tablet-landscape-breakpoint.tsx
         └── __tests__/
             ├── mobile-breakpoint.test.tsx
             ├── tablet-breakpoint.test.tsx
-            └── desktop-breakpoint.test.tsx
+            ├── desktop-breakpoint.test.tsx
+            ├── mobile-and-tablet-breakpoint.test.tsx
+            ├── tablet-and-desktop-breakpoint.test.tsx
+            ├── mobile-portrait-breakpoint.test.tsx
+            ├── mobile-landscape-breakpoint.test.tsx
+            ├── tablet-portrait-breakpoint.test.tsx
+            └── tablet-landscape-breakpoint.test.tsx
 ```
 
 ## Constants
 
 ### Breakpoint Definitions
+
+#### Standard Breakpoints
 
 Aligned with standard Tailwind CSS breakpoints:
 
@@ -54,8 +80,30 @@ Aligned with standard Tailwind CSS breakpoints:
 - `BREAKPOINT_TABLET`: `(min-width: 768px) and (max-width: 1023px)` - Tablet devices (768-1023px)
 - `BREAKPOINT_DESKTOP`: `(min-width: 1024px)` - Desktop devices (1024px+)
 
+#### Combined Breakpoints
+
+For matching multiple device categories:
+
+- `BREAKPOINT_MOBILE_AND_TABLET`: `(max-width: 1023px)` - Mobile and tablet devices (0-1023px)
+- `BREAKPOINT_TABLET_AND_DESKTOP`: `(min-width: 768px)` - Tablet and desktop devices (768px+)
+
+#### Orientation-Specific Breakpoints
+
+For matching device size and orientation:
+
+- `BREAKPOINT_MOBILE_PORTRAIT`: `(max-width: 767px) and (orientation: portrait)` - Mobile in
+  portrait mode
+- `BREAKPOINT_MOBILE_LANDSCAPE`: `(max-width: 767px) and (orientation: landscape)` - Mobile in
+  landscape mode
+- `BREAKPOINT_TABLET_PORTRAIT`:
+  `(min-width: 768px) and (max-width: 1023px) and (orientation: portrait)` - Tablet in portrait mode
+- `BREAKPOINT_TABLET_LANDSCAPE`:
+  `(min-width: 768px) and (max-width: 1023px) and (orientation: landscape)` - Tablet in landscape
+  mode
+
 **Rationale**: These breakpoints align with industry-standard responsive design patterns and
-Tailwind's default breakpoint system.
+Tailwind's default breakpoint system, with additional support for combined ranges and
+orientation-specific layouts.
 
 ## Base Hook: `useMatchMedia`
 
@@ -91,6 +139,8 @@ The `built-in/` directory contains specialized breakpoint utilities that wrap th
 
 ### Specialized Hooks (`built-in/hooks/`)
 
+#### Standard Breakpoint Hooks
+
 #### `useMobileBreakpoint()`
 
 - **Purpose**: Detect mobile viewport
@@ -108,6 +158,52 @@ The `built-in/` directory contains specialized breakpoint utilities that wrap th
 - **Purpose**: Detect desktop viewport
 - **Implementation**: Wrapper around `useMatchMedia(BREAKPOINT_DESKTOP)`
 - **Returns**: `boolean`
+
+#### Combined Breakpoint Hooks
+
+#### `useMobileAndTabletBreakpoint()`
+
+- **Purpose**: Detect mobile or tablet viewport
+- **Implementation**: Wrapper around `useMatchMedia(BREAKPOINT_MOBILE_AND_TABLET)`
+- **Returns**: `boolean`
+- **Use Case**: Show simplified UI for touch devices
+
+#### `useTabletAndDesktopBreakpoint()`
+
+- **Purpose**: Detect tablet or desktop viewport
+- **Implementation**: Wrapper around `useMatchMedia(BREAKPOINT_TABLET_AND_DESKTOP)`
+- **Returns**: `boolean`
+- **Use Case**: Show expanded UI for larger screens
+
+#### Orientation-Specific Hooks
+
+#### `useMobilePortraitBreakpoint()`
+
+- **Purpose**: Detect mobile viewport in portrait orientation
+- **Implementation**: Wrapper around `useMatchMedia(BREAKPOINT_MOBILE_PORTRAIT)`
+- **Returns**: `boolean`
+- **Use Case**: Optimize layout for vertical mobile screens
+
+#### `useMobileLandscapeBreakpoint()`
+
+- **Purpose**: Detect mobile viewport in landscape orientation
+- **Implementation**: Wrapper around `useMatchMedia(BREAKPOINT_MOBILE_LANDSCAPE)`
+- **Returns**: `boolean`
+- **Use Case**: Adjust UI for horizontal mobile screens
+
+#### `useTabletPortraitBreakpoint()`
+
+- **Purpose**: Detect tablet viewport in portrait orientation
+- **Implementation**: Wrapper around `useMatchMedia(BREAKPOINT_TABLET_PORTRAIT)`
+- **Returns**: `boolean`
+- **Use Case**: Optimize layout for vertical tablet screens
+
+#### `useTabletLandscapeBreakpoint()`
+
+- **Purpose**: Detect tablet viewport in landscape orientation
+- **Implementation**: Wrapper around `useMatchMedia(BREAKPOINT_TABLET_LANDSCAPE)`
+- **Returns**: `boolean`
+- **Use Case**: Adjust UI for horizontal tablet screens
 
 ## Generic Component: `MatchMedia`
 
@@ -168,9 +264,23 @@ function XBreakpoint({ children }: BreakpointComponentProps) {
 
 #### Available Components
 
+##### Standard Breakpoint Components
+
 1. **`<MobileBreakpoint>`**: Renders children only on mobile viewports
 2. **`<TabletBreakpoint>`**: Renders children only on tablet viewports
 3. **`<DesktopBreakpoint>`**: Renders children only on desktop viewports
+
+##### Combined Breakpoint Components
+
+4. **`<MobileAndTabletBreakpoint>`**: Renders children on mobile or tablet viewports
+5. **`<TabletAndDesktopBreakpoint>`**: Renders children on tablet or desktop viewports
+
+##### Orientation-Specific Components
+
+6. **`<MobilePortraitBreakpoint>`**: Renders children on mobile in portrait orientation
+7. **`<MobileLandscapeBreakpoint>`**: Renders children on mobile in landscape orientation
+8. **`<TabletPortraitBreakpoint>`**: Renders children on tablet in portrait orientation
+9. **`<TabletLandscapeBreakpoint>`**: Renders children on tablet in landscape orientation
 
 #### Behavior
 
@@ -211,6 +321,8 @@ function MyComponent() {
 
 ### Declarative Rendering
 
+#### Basic Usage
+
 ```tsx
 function MyComponent() {
   return (
@@ -221,6 +333,43 @@ function MyComponent() {
       <DesktopBreakpoint>
         <DesktopNav />
       </DesktopBreakpoint>
+    </>
+  )
+}
+```
+
+#### Combined Breakpoints
+
+```tsx
+function MyComponent() {
+  return (
+    <>
+      <MobileAndTabletBreakpoint>
+        <TouchOptimizedUI />
+      </MobileAndTabletBreakpoint>
+      <TabletAndDesktopBreakpoint>
+        <ExpandedUI />
+      </TabletAndDesktopBreakpoint>
+    </>
+  )
+}
+```
+
+#### Orientation-Specific Layouts
+
+```tsx
+function MyComponent() {
+  return (
+    <>
+      <MobilePortraitBreakpoint>
+        <VerticalMobileLayout />
+      </MobilePortraitBreakpoint>
+      <MobileLandscapeBreakpoint>
+        <HorizontalMobileLayout />
+      </MobileLandscapeBreakpoint>
+      <TabletLandscapeBreakpoint>
+        <WideTabletLayout />
+      </TabletLandscapeBreakpoint>
     </>
   )
 }
@@ -320,12 +469,13 @@ Shared test utilities in `test-helpers.ts`:
 2. **Server Hints**: Accept initial breakpoint from SSR context
 3. **Breakpoint Context**: Provide app-level breakpoint state
 4. **Custom Breakpoints**: Helper to define custom breakpoint sets
+5. **Desktop Orientation**: Add desktop portrait/landscape variants if needed
 
 ### Non-Goals
 
 - CSS-in-JS styling (use Tailwind container queries instead)
 - Element queries (use CSS `@container` instead)
-- Orientation lock/detection (use CSS `@media (orientation)` directly)
+- Programmatic orientation lock (handled by browser/OS)
 
 ## Dependencies
 
@@ -359,6 +509,8 @@ This enables flexible import patterns:
 // Specific imports (recommended)
 import { useMatchMedia, MatchMedia, BREAKPOINT_MOBILE } from '@/helpers/match-media'
 import { useMobileBreakpoint, MobileBreakpoint } from '@/helpers/match-media'
+import { useMobileAndTabletBreakpoint, MobileAndTabletBreakpoint } from '@/helpers/match-media'
+import { useMobilePortraitBreakpoint, MobilePortraitBreakpoint } from '@/helpers/match-media'
 
 // Base foundation only
 import { useMatchMedia, MatchMedia } from '@/helpers/match-media'

@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TabletPortraitBreakpoint > should match snapshot when rendered 1`] = `
+<DocumentFragment>
+  <div>
+    Tablet Portrait Content
+  </div>
+</DocumentFragment>
+`;
