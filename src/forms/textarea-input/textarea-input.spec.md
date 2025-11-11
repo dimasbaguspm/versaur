@@ -27,21 +27,65 @@ control, consistent cross-browser behavior, and more flexibility for advanced te
 
 ### Core Props
 
-| Prop           | Type                      | Default | Description                                               |
-| -------------- | ------------------------- | ------- | --------------------------------------------------------- |
-| `label`        | `ReactNode`               | -       | Label text displayed above the textarea                   |
-| `helperText`   | `ReactNode`               | -       | Helper text displayed below the textarea                  |
-| `error`        | `ReactNode`               | -       | Error message for validation states                       |
-| `value`        | `string`                  | -       | Current value (controlled mode)                           |
-| `defaultValue` | `string`                  | -       | Initial value (uncontrolled mode)                         |
-| `onChange`     | `(value: string) => void` | -       | Callback fired when content changes                       |
-| `disabled`     | `boolean`                 | `false` | Disables the textarea (sets contentEditable to false)     |
-| `readOnly`     | `boolean`                 | `false` | Makes textarea read-only (sets contentEditable to false)  |
-| `placeholder`  | `string`                  | -       | Placeholder text shown when empty                         |
-| `name`         | `string`                  | -       | Name attribute for form identification                    |
-| `row`          | `number`                  | `3`     | Number of rows (height calculated as `row * 1.5 + 1` rem) |
-| `required`     | `boolean`                 | `false` | Marks the field as required with asterisk indicator       |
-| `className`    | `string`                  | -       | Additional CSS classes for the container                  |
+| Prop           | Type                      | Default | Description                                              |
+| -------------- | ------------------------- | ------- | -------------------------------------------------------- |
+| `label`        | `ReactNode`               | -       | Label text displayed above the textarea                  |
+| `helperText`   | `ReactNode`               | -       | Helper text displayed below the textarea                 |
+| `error`        | `ReactNode`               | -       | Error message for validation states                      |
+| `value`        | `string`                  | -       | Current value (controlled mode) - plain text or HTML     |
+| `defaultValue` | `string`                  | -       | Initial value (uncontrolled mode) - plain text or HTML   |
+| `onChange`     | `(value: string) => void` | -       | Callback fired when content changes                      |
+| `disabled`     | `boolean`                 | `false` | Disables the textarea (sets contentEditable to false)    |
+| `readOnly`     | `boolean`                 | `false` | Makes textarea read-only (sets contentEditable to false) |
+| `placeholder`  | `string`                  | -       | Placeholder text shown when empty                        |
+| `name`         | `string`                  | -       | Name attribute for form identification                   |
+| `row`          | `number`                  | `3`     | Number of rows (min/max height as `row * 1.5 + 1` rem)   |
+| `required`     | `boolean`                 | `false` | Marks the field as required with asterisk indicator      |
+| `className`    | `string`                  | -       | Additional CSS classes for the container                 |
+
+### Rich Text Formatting Props
+
+| Prop             | Type           | Default | Description                                           |
+| ---------------- | -------------- | ------- | ----------------------------------------------------- |
+| `showToolbar`    | `boolean`      | `false` | Whether to show the formatting toolbar                |
+| `allowedFormats` | `FormatType[]` | all     | Array of allowed formatting options (filters toolbar) |
+
+### FormatType
+
+Available formatting options:
+
+```typescript
+type FormatType =
+  | 'bold' // Bold text
+  | 'italic' // Italic text
+  | 'underline' // Underlined text
+  | 'strikethrough' // Strikethrough text
+  | 'h1' // Heading 1
+  | 'h2' // Heading 2
+  | 'h3' // Heading 3
+  | 'orderedList' // Numbered list
+  | 'unorderedList' // Bulleted list
+  | 'link' // Hyperlink
+```
+
+### FormatState
+
+State object indicating which formats are currently active:
+
+```typescript
+interface FormatState {
+  bold: boolean
+  italic: boolean
+  underline: boolean
+  strikethrough: boolean
+  h1: boolean
+  h2: boolean
+  h3: boolean
+  orderedList: boolean
+  unorderedList: boolean
+  link: boolean
+}
+```
 
 ### HTML Attributes
 
@@ -81,10 +125,75 @@ empty:before:text-gray-400
 
 ### Paste Handling
 
+#### Plain Text Mode (default)
+
+When `showToolbar={false}`:
+
 - Strips formatting to ensure plain text only
 - Uses modern Selection API for inserting text (no deprecated execCommand)
 - Prevents paste when disabled or readOnly
 - Extracted to `handlePlainTextPaste` helper function in helpers.ts
+
+#### Rich Text Mode
+
+When `showToolbar={true}`:
+
+- Preserves HTML formatting from clipboard
+- Content is stored as HTML string
+- Use with FormattedText component for display
+
+### Rich Text Formatting
+
+When `showToolbar={true}`, a formatting toolbar appears above the textarea:
+
+#### Toolbar Features
+
+- **Text Formatting**: Bold, Italic, Underline, Strikethrough
+- **Headings**: H1, H2, H3
+- **Lists**: Ordered (numbered), Unordered (bulleted)
+- **Links**: Create/edit hyperlinks with URL and text
+
+#### Formatting Behavior
+
+1. **Toggle Formats**: Click toolbar button to apply/remove format
+2. **Active State**: Toolbar buttons highlight when format is active at cursor position
+3. **Selection-based**: Most formats apply to current selection or cursor position
+4. **Link Creation**:
+   - With selection: Prompts for URL, converts selected text to link
+   - Without selection: Prompts for URL and link text, inserts new link
+
+#### Link Insertion
+
+The link button has special behavior:
+
+- **With selected text**: Converts selection to link using provided URL
+- **Without selection**: Prompts for both URL and link text, then inserts anchor element
+- **Link attributes**: Automatically adds `target="_blank"` and `rel="noopener noreferrer"`
+
+#### Content Format
+
+- **Plain text mode**: `textContent` (string)
+- **Rich text mode**: `innerHTML` (HTML string)
+- Store HTML from `onChange` callback
+- Display with `FormattedText` component
+
+```tsx
+// Rich text editing
+const [htmlContent, setHtmlContent] = useState('')
+
+<TextAreaInput
+  label="Content"
+  showToolbar
+  value={htmlContent}
+  onChange={setHtmlContent}
+/>
+
+// Display formatted content
+import { FormattedText } from '@dimasbaguspm/versaur/primitive'
+import DOMPurify from 'dompurify'
+
+<FormattedText content={DOMPurify.sanitize(htmlContent)} />
+```
 
 ## Styling
 
@@ -104,10 +213,25 @@ State is determined by the `getTextAreaState` helper function based on props.
 - **Variant**: Primary (coral) by default
 - **Border**: `border-primary/30` with focus state `border-primary`
 - **Focus Ring**: `ring-primary/20` with 2px ring
-- **Min Height**: Calculated as `row * 1.5 + 1` rem (default: 3 rows = 5.5rem)
+- **Min/Max Height**: Calculated as `row * 1.5 + 1` rem (default: 3 rows = 5.5rem)
   - Accounts for line height (1.5) and padding (1rem)
+  - Sets both `minHeight` and `maxHeight` for scrollable behavior
+- **Overflow**: `overflow-y-auto` for vertical scrolling when content exceeds max height
 - **Padding**: 3px (horizontal) × 2px (vertical)
 - **Text Behavior**: `whitespace-pre-wrap`, `break-words`
+
+### Rich Text Formatting Styles
+
+When `showToolbar={true}`, applies `formattedContentStyles` from `@/primitive/formatted-text`:
+
+- **Headings**: Appropriate sizes (h1: 2xl, h2: xl, h3: lg) and weights
+- **Lists**: Proper indentation and list styling
+- **Links**: Primary color with underline and hover effects
+- **Text formatting**: Bold, italic, underline, strikethrough
+- **Paragraphs**: Proper spacing with first/last child handling
+
+These styles match the `FormattedText` component for visual consistency between editing and display
+modes.
 
 ### Error Styling
 
@@ -132,6 +256,15 @@ State is determined by the `getTextAreaState` helper function based on props.
 - `aria-readonly={readOnly}`: Announces read-only state
 - `aria-required={required}`: Announces required state
 - `aria-label`: Uses label text when label is a string
+
+### Toolbar Accessibility
+
+When `showToolbar={true}`:
+
+- `role="toolbar"`: Identifies the formatting toolbar
+- `aria-label="Text formatting toolbar"`: Describes toolbar purpose
+- `aria-pressed`: Indicates active/inactive state of format buttons
+- `aria-label` on each button: Describes formatting action (e.g., "Bold", "Insert Link")
 
 ### Required Field Indicator
 
@@ -158,14 +291,13 @@ fails.
 
 The component uses helper functions from `helpers.ts` for cleaner, more maintainable code:
 
-### `getTextAreaState(disabled?, readOnly?, hasError?)`
+### `getTextAreaState(readOnly?, hasError?)`
 
 Determines the appropriate state variant based on component props. Priority order:
 
-1. `disabled` → returns 'disabled'
-2. `readOnly` → returns 'readOnly'
-3. `hasError` → returns 'error'
-4. Otherwise → returns 'default'
+1. `readOnly` → returns 'readOnly'
+2. `hasError` → returns 'error'
+3. Otherwise → returns 'default'
 
 ### `handlePlainTextPaste(e, disabled?, readOnly?)`
 
@@ -176,6 +308,45 @@ Handles paste events to insert plain text only using modern Selection API:
 - Uses `window.getSelection()` and `Range` API (no deprecated execCommand)
 - Positions cursor after inserted text
 - Triggers input event to update component state
+- Only used when `showToolbar={false}`
+
+### `applyFormat(format, value?)`
+
+Applies formatting to the current selection using `document.execCommand`:
+
+- **Text formatting**: bold, italic, underline, strikethrough
+- **Headings**: h1, h2, h3 (using formatBlock)
+- **Lists**: orderedList, unorderedList
+- **Links**: createLink with special handling for empty selections
+
+Note: Uses `execCommand` (deprecated but still most reliable for contentEditable)
+
+### `isFormatActive(format)`
+
+Checks if a format is currently active at cursor position:
+
+- Uses `queryCommandState` for most formats
+- Uses normalized `queryCommandValue` for headings (handles `<h1>`, `h1` variations)
+- Returns boolean indicating active state
+
+### `getFormatState()`
+
+Returns complete `FormatState` object with all format active states:
+
+```typescript
+{
+  bold: boolean,
+  italic: boolean,
+  underline: boolean,
+  strikethrough: boolean,
+  h1: boolean,
+  h2: boolean,
+  h3: boolean,
+  orderedList: boolean,
+  unorderedList: boolean,
+  link: boolean
+}
+```
 
 ### `textAreaInputVariants`
 
@@ -209,15 +380,44 @@ formData.append('message', message)
 
 ### Key Test Scenarios
 
-1. **Rendering**: Label, placeholder, default value
+1. **Rendering**: Label, placeholder, default value, toolbar (when enabled)
 2. **User Input**: Typing, pasting, keyboard navigation
 3. **States**: Disabled, readOnly, error
-4. **Accessibility**: ARIA attributes, keyboard support, error announcements
-5. **Controlled/Uncontrolled**: Both modes work correctly
+4. **Formatting**: Toolbar buttons, format state, HTML output
+5. **Accessibility**: ARIA attributes, keyboard support, error announcements, toolbar accessibility
+6. **Controlled/Uncontrolled**: Both modes work correctly
 
 ### Testing contentEditable
 
-Use `textContent` instead of `value`:
+Use `textContent` for plain text mode:
+
+```tsx
+const textbox = screen.getByRole('textbox')
+expect(textbox.textContent).toBe('Expected content')
+```
+
+Use `innerHTML` for rich text mode:
+
+```tsx
+const textbox = screen.getByRole('textbox')
+expect(textbox.innerHTML).toContain('<strong>bold text</strong>')
+```
+
+### Testing Formatting
+
+```tsx
+// Test toolbar presence
+const toolbar = screen.getByRole('toolbar')
+expect(toolbar).toBeInTheDocument()
+
+// Test format buttons
+const boldButton = screen.getByLabelText('Bold')
+expect(boldButton).toHaveAttribute('aria-pressed', 'false')
+
+// Click and verify
+await userEvent.click(boldButton)
+expect(boldButton).toHaveAttribute('aria-pressed', 'true')
+```
 
 ```tsx
 const textbox = screen.getByRole('textbox')
@@ -234,7 +434,8 @@ If migrating from a standard `<textarea>`:
 2. Remove `variant` prop (now defaults to primary)
 3. Remove `fieldSizing`, `minRows`, `maxRows` props (no longer needed)
 4. Add `readOnly` prop if you need read-only state
-5. Update tests to check `textContent` instead of `value`
+5. Add `showToolbar` prop for rich text editing
+6. Update tests to check `textContent` or `innerHTML` instead of `value`
 
 ### Breaking Changes
 
@@ -242,16 +443,27 @@ If migrating from a standard `<textarea>`:
 - ❌ Removed: `fieldSizing`, `minRows`, `maxRows` props
 - ❌ Changed: Element type from `<textarea>` to `<div contentEditable>`
 - ❌ Changed: Ref type from `HTMLTextAreaElement` to `HTMLDivElement`
+- ❌ Changed: Height now uses min/max-height for scrollable behavior
 - ✅ Added: `readOnly` prop
+- ✅ Added: `showToolbar` prop for rich text editing
+- ✅ Added: `allowedFormats` prop to filter toolbar options
+- ✅ Added: `onFormatChange` callback for format state changes
 - ✅ Improved: Better cross-browser consistency
 
 ## Future Enhancements
 
 Potential future additions:
 
-- Rich text formatting (bold, italic, etc.)
-- Markdown support
-- Mention/tag functionality
-- Character/word count
+- ~~Rich text formatting (bold, italic, etc.)~~ ✅ **Implemented**
+- Additional formatting options (subscript, superscript, code)
+- Markdown support with preview mode
+- Mention/tag functionality with autocomplete
+- Character/word count display
 - Max length validation with visual feedback
 - Syntax highlighting for code input
+- Custom toolbar themes/layouts
+- Image/file insertion support
+- Table insertion and editing
+- Undo/redo functionality
+- Keyboard shortcuts for formatting
+- Custom format button icons

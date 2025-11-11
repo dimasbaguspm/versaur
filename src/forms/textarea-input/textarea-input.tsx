@@ -4,14 +4,35 @@ import {
   textAreaInputVariants,
   getTextAreaState,
   handlePlainTextPaste,
+  syncContentWithValue,
+  getContentValue,
 } from './helpers'
-import type { TextAreaInputProps } from './types'
+import type { TextAreaInputProps, FormatType } from './types'
+import {
+  TextAreaInputToolbar,
+  TextAreaInputToolbarButton,
+} from './textarea-input.atoms'
+import {
+  BoldIcon,
+  ItalicIcon,
+  UnderlineIcon,
+  StrikethroughIcon,
+  Heading1Icon,
+  Heading2Icon,
+  Heading3Icon,
+  ListIcon,
+  ListOrderedIcon,
+  LinkIcon,
+} from 'lucide-react'
+import { formattedContentStyles } from '@/primitive/formatted-text'
+import { useTextAreaFormatting } from './use-textarea-formatting'
 
 /**
  * TextAreaInput component for Versaur UI
  *
  * Uses contentEditable div for robust multi-line text input with better control
  * Provides error states, disabled, and readOnly support
+ * Supports rich text formatting with an optional toolbar
  * Follows browser standards and accessibility best practices
  */
 export const TextAreaInput = React.forwardRef<
@@ -37,6 +58,8 @@ export const TextAreaInput = React.forwardRef<
       onBlur,
       onFocus,
       onKeyDown,
+      showToolbar = false,
+      allowedFormats,
       ...props
     },
     ref
@@ -49,18 +72,19 @@ export const TextAreaInput = React.forwardRef<
     const isControlled = value !== undefined
     const currentValue = isControlled ? value : internalValue
 
+    // Use formatting hook when toolbar is enabled
+    const { formatState, handleFormatClick } = useTextAreaFormatting(
+      showToolbar,
+      internalRef
+    )
+
     // Combine refs
     React.useImperativeHandle(ref, () => internalRef.current!)
 
     // Sync contentEditable with value prop
     React.useEffect(() => {
-      if (
-        internalRef.current &&
-        internalRef.current.textContent !== currentValue
-      ) {
-        internalRef.current.textContent = currentValue
-      }
-    }, [currentValue])
+      syncContentWithValue(internalRef.current, currentValue, showToolbar)
+    }, [currentValue, showToolbar])
 
     // Get the appropriate state variant
     const state = getTextAreaState(readOnly, hasError)
@@ -69,7 +93,7 @@ export const TextAreaInput = React.forwardRef<
     const showPlaceholder = !currentValue && placeholder
 
     const handleInput = (e: React.FormEvent<HTMLDivElement>) => {
-      const newValue = e.currentTarget.textContent || ''
+      const newValue = getContentValue(e.currentTarget, showToolbar)
 
       if (!isControlled) {
         setInternalValue(newValue)
@@ -92,6 +116,32 @@ export const TextAreaInput = React.forwardRef<
       internalRef.current?.focus()
     }
 
+    // Determine which formats to show
+    const availableFormats: Array<{
+      format: FormatType
+      icon: typeof BoldIcon
+      label: string
+    }> = [
+      { format: 'bold', icon: BoldIcon, label: 'Bold' },
+      { format: 'italic', icon: ItalicIcon, label: 'Italic' },
+      { format: 'underline', icon: UnderlineIcon, label: 'Underline' },
+      {
+        format: 'strikethrough',
+        icon: StrikethroughIcon,
+        label: 'Strikethrough',
+      },
+      { format: 'h1', icon: Heading1Icon, label: 'Heading 1' },
+      { format: 'h2', icon: Heading2Icon, label: 'Heading 2' },
+      { format: 'h3', icon: Heading3Icon, label: 'Heading 3' },
+      { format: 'orderedList', icon: ListOrderedIcon, label: 'Ordered List' },
+      { format: 'unorderedList', icon: ListIcon, label: 'Unordered List' },
+      { format: 'link', icon: LinkIcon, label: 'Link' },
+    ]
+
+    const displayedFormats = allowedFormats
+      ? availableFormats.filter(f => allowedFormats.includes(f.format))
+      : availableFormats
+
     return (
       <div>
         {label && (
@@ -109,6 +159,21 @@ export const TextAreaInput = React.forwardRef<
           </label>
         )}
         <div className={cn('relative w-full', className)}>
+          {showToolbar && (
+            <TextAreaInputToolbar>
+              {displayedFormats.map(({ format, icon, label: formatLabel }) => (
+                <TextAreaInputToolbarButton
+                  key={format}
+                  format={format}
+                  icon={icon}
+                  label={formatLabel}
+                  isActive={formatState[format]}
+                  disabled={disabled || readOnly}
+                  onClick={handleFormatClick}
+                />
+              ))}
+            </TextAreaInputToolbar>
+          )}
           <div
             ref={internalRef}
             id={inputId}
@@ -123,16 +188,24 @@ export const TextAreaInput = React.forwardRef<
             data-name={name}
             onInput={handleInput}
             onKeyDown={handleKeyDown}
-            onPaste={e => handlePlainTextPaste(e, disabled, readOnly)}
+            onPaste={e =>
+              !showToolbar && handlePlainTextPaste(e, disabled, readOnly)
+            }
             onBlur={onBlur}
             onFocus={onFocus}
             suppressContentEditableWarning
-            style={{ minHeight: `${row * 1.5 + 1}rem` }}
+            style={{
+              minHeight: `${row * 1.5 + 1}rem`,
+              maxHeight: `${row * 1.5 + 1}rem`,
+            }}
             className={cn(
               textAreaInputVariants({ state }),
               'px-3 py-2',
+              showToolbar && 'rounded-t-none',
               showPlaceholder &&
-                'empty:before:content-[attr(data-placeholder)] empty:before:text-gray-400'
+                'empty:before:content-[attr(data-placeholder)] empty:before:text-gray-400',
+              // Apply shared formatting styles when toolbar is enabled
+              showToolbar && formattedContentStyles
             )}
             data-placeholder={placeholder}
             {...props}

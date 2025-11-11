@@ -1,2 +1,2 @@
 export { TextAreaInput } from './textarea-input'
-export type { TextAreaInputProps } from './types'
+export type { TextAreaInputProps, FormatType, FormatState } from './types'

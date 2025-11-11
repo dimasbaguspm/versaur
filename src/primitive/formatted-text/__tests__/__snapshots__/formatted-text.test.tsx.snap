@@ -1,0 +1,38 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FormattedText > should match snapshot for default story 1`] = `
+<div
+  aria-label="Formatted text content"
+  class="block w-full break-words overflow-visible [&_h1]:text-2xl [&_h1]:font-bold [&_h1]:my-2 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:my-1.5 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:my-1 [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:my-2 [&_ol]:list-decimal [&_ol]:ml-6 [&_ol]:my-2 [&_li]:my-0.5 [&_a]:text-primary [&_a]:underline [&_a]:cursor-pointer hover:[&_a]:text-primary-bold [&_strong]:font-bold [&_em]:italic [&_u]:underline [&_s]:line-through [&_p]:my-2 [&_p:first-child]:mt-0 [&_p:last-child]:mb-0"
+  role="article"
+>
+  
+      
+  <p>
+    This is a 
+    <strong>
+      formatted text
+    </strong>
+     component that supports 
+    <em>
+      various
+    </em>
+     
+    <u>
+      formatting
+    </u>
+     
+    <s>
+      options
+    </s>
+    .
+  </p>
+  
+      
+  <p>
+    It can display rich HTML content with consistent styling.
+  </p>
+  
+    
+</div>
+`;

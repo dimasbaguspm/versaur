@@ -1,5 +1,536 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`TextAreaInput > Formatting Toolbar Snapshots > matches snapshot with formatting toolbar 1`] = `
+<DocumentFragment>
+  <div>
+    <label
+      class="block text-sm font-medium text-foreground mb-2 cursor-pointer"
+      for="«rq»"
+    >
+      Article Content
+    </label>
+    <div
+      class="relative w-full"
+    >
+      <div
+        aria-label="Text formatting toolbar"
+        class="flex flex-wrap items-center gap-2 p-2 border-b border-border bg-neutral-soft rounded-t-md"
+        role="toolbar"
+      >
+        <button
+          aria-label="Bold"
+          aria-pressed="false"
+          class="font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-white text-foreground focus-visible:ring-ghost-light focus-visible:ring-offset-white rounded-md transition-all w-8 h-8 flex items-center justify-center hover:bg-ghost-soft"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-bold inline-flex items-center justify-center w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 12h9a4 4 0 0 1 0 8H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h7a4 4 0 0 1 0 8"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Italic"
+          aria-pressed="false"
+          class="font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-white text-foreground focus-visible:ring-ghost-light focus-visible:ring-offset-white rounded-md transition-all w-8 h-8 flex items-center justify-center hover:bg-ghost-soft"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-italic inline-flex items-center justify-center w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="19"
+              x2="10"
+              y1="4"
+              y2="4"
+            />
+            <line
+              x1="14"
+              x2="5"
+              y1="20"
+              y2="20"
+            />
+            <line
+              x1="15"
+              x2="9"
+              y1="4"
+              y2="20"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Underline"
+          aria-pressed="false"
+          class="font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-white text-foreground focus-visible:ring-ghost-light focus-visible:ring-offset-white rounded-md transition-all w-8 h-8 flex items-center justify-center hover:bg-ghost-soft"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-underline inline-flex items-center justify-center w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 4v6a6 6 0 0 0 12 0V4"
+            />
+            <line
+              x1="4"
+              x2="20"
+              y1="20"
+              y2="20"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Strikethrough"
+          aria-pressed="false"
+          class="font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-white text-foreground focus-visible:ring-ghost-light focus-visible:ring-offset-white rounded-md transition-all w-8 h-8 flex items-center justify-center hover:bg-ghost-soft"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-strikethrough inline-flex items-center justify-center w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16 4H9a3 3 0 0 0-2.83 4"
+            />
+            <path
+              d="M14 12a4 4 0 0 1 0 8H6"
+            />
+            <line
+              x1="4"
+              x2="20"
+              y1="12"
+              y2="12"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Heading 1"
+          aria-pressed="false"
+          class="font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-white text-foreground focus-visible:ring-ghost-light focus-visible:ring-offset-white rounded-md transition-all w-8 h-8 flex items-center justify-center hover:bg-ghost-soft"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-heading1 lucide-heading-1 inline-flex items-center justify-center w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 12h8"
+            />
+            <path
+              d="M4 18V6"
+            />
+            <path
+              d="M12 18V6"
+            />
+            <path
+              d="m17 12 3-2v8"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Heading 2"
+          aria-pressed="false"
+          class="font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-white text-foreground focus-visible:ring-ghost-light focus-visible:ring-offset-white rounded-md transition-all w-8 h-8 flex items-center justify-center hover:bg-ghost-soft"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-heading2 lucide-heading-2 inline-flex items-center justify-center w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 12h8"
+            />
+            <path
+              d="M4 18V6"
+            />
+            <path
+              d="M12 18V6"
+            />
+            <path
+              d="M21 18h-4c0-4 4-3 4-6 0-1.5-2-2.5-4-1"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Heading 3"
+          aria-pressed="false"
+          class="font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-white text-foreground focus-visible:ring-ghost-light focus-visible:ring-offset-white rounded-md transition-all w-8 h-8 flex items-center justify-center hover:bg-ghost-soft"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-heading3 lucide-heading-3 inline-flex items-center justify-center w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 12h8"
+            />
+            <path
+              d="M4 18V6"
+            />
+            <path
+              d="M12 18V6"
+            />
+            <path
+              d="M17.5 10.5c1.7-1 3.5 0 3.5 1.5a2 2 0 0 1-2 2"
+            />
+            <path
+              d="M17 17.5c2 1.5 4 .3 4-1.5a2 2 0 0 0-2-2"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Ordered List"
+          aria-pressed="false"
+          class="font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-white text-foreground focus-visible:ring-ghost-light focus-visible:ring-offset-white rounded-md transition-all w-8 h-8 flex items-center justify-center hover:bg-ghost-soft"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-list-ordered inline-flex items-center justify-center w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 12h11"
+            />
+            <path
+              d="M10 18h11"
+            />
+            <path
+              d="M10 6h11"
+            />
+            <path
+              d="M4 10h2"
+            />
+            <path
+              d="M4 6h1v4"
+            />
+            <path
+              d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Unordered List"
+          aria-pressed="false"
+          class="font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-white text-foreground focus-visible:ring-ghost-light focus-visible:ring-offset-white rounded-md transition-all w-8 h-8 flex items-center justify-center hover:bg-ghost-soft"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-list inline-flex items-center justify-center w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3 12h.01"
+            />
+            <path
+              d="M3 18h.01"
+            />
+            <path
+              d="M3 6h.01"
+            />
+            <path
+              d="M8 12h13"
+            />
+            <path
+              d="M8 18h13"
+            />
+            <path
+              d="M8 6h13"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Link"
+          aria-pressed="false"
+          class="font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-white text-foreground focus-visible:ring-ghost-light focus-visible:ring-offset-white rounded-md transition-all w-8 h-8 flex items-center justify-center hover:bg-ghost-soft"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-link inline-flex items-center justify-center w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"
+            />
+            <path
+              d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        aria-invalid="false"
+        aria-label="Article Content"
+        aria-multiline="true"
+        class="block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none disabled:bg-gray-50 overflow-y-auto whitespace-pre-wrap break-words border-primary/30 text-foreground focus:border-primary focus:ring-primary/20 px-3 py-2 rounded-t-none empty:before:content-[attr(data-placeholder)] empty:before:text-gray-400 [&_h1]:text-2xl [&_h1]:font-bold [&_h1]:my-2 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:my-1.5 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:my-1 [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:my-2 [&_ol]:list-decimal [&_ol]:ml-6 [&_ol]:my-2 [&_li]:my-0.5 [&_a]:text-primary [&_a]:underline [&_a]:cursor-pointer hover:[&_a]:text-primary-bold [&_strong]:font-bold [&_em]:italic [&_u]:underline [&_s]:line-through [&_p]:my-2 [&_p:first-child]:mt-0 [&_p:last-child]:mb-0"
+        contenteditable="true"
+        data-placeholder="Start writing your article..."
+        id="«rq»"
+        role="textbox"
+        style="min-height: 13rem; max-height: 13rem;"
+      />
+    </div>
+    <div
+      class="mt-1 text-sm text-gray-600"
+    >
+      Use the toolbar to format your text with bold, italic, headings, and more.
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`TextAreaInput > Formatting Toolbar Snapshots > matches snapshot with limited formats 1`] = `
+<DocumentFragment>
+  <div>
+    <label
+      class="block text-sm font-medium text-foreground mb-2 cursor-pointer"
+      for="«rr»"
+    >
+      Comment Editor
+    </label>
+    <div
+      class="relative w-full"
+    >
+      <div
+        aria-label="Text formatting toolbar"
+        class="flex flex-wrap items-center gap-2 p-2 border-b border-border bg-neutral-soft rounded-t-md"
+        role="toolbar"
+      >
+        <button
+          aria-label="Bold"
+          aria-pressed="false"
+          class="font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-white text-foreground focus-visible:ring-ghost-light focus-visible:ring-offset-white rounded-md transition-all w-8 h-8 flex items-center justify-center hover:bg-ghost-soft"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-bold inline-flex items-center justify-center w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 12h9a4 4 0 0 1 0 8H7a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h7a4 4 0 0 1 0 8"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Italic"
+          aria-pressed="false"
+          class="font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-white text-foreground focus-visible:ring-ghost-light focus-visible:ring-offset-white rounded-md transition-all w-8 h-8 flex items-center justify-center hover:bg-ghost-soft"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-italic inline-flex items-center justify-center w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="19"
+              x2="10"
+              y1="4"
+              y2="4"
+            />
+            <line
+              x1="14"
+              x2="5"
+              y1="20"
+              y2="20"
+            />
+            <line
+              x1="15"
+              x2="9"
+              y1="4"
+              y2="20"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Underline"
+          aria-pressed="false"
+          class="font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-white text-foreground focus-visible:ring-ghost-light focus-visible:ring-offset-white rounded-md transition-all w-8 h-8 flex items-center justify-center hover:bg-ghost-soft"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-underline inline-flex items-center justify-center w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 4v6a6 6 0 0 0 12 0V4"
+            />
+            <line
+              x1="4"
+              x2="20"
+              y1="20"
+              y2="20"
+            />
+          </svg>
+        </button>
+        <button
+          aria-label="Link"
+          aria-pressed="false"
+          class="font-medium duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98] select-none cursor-pointer bg-white text-foreground focus-visible:ring-ghost-light focus-visible:ring-offset-white rounded-md transition-all w-8 h-8 flex items-center justify-center hover:bg-ghost-soft"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-link inline-flex items-center justify-center w-4 h-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"
+            />
+            <path
+              d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        aria-invalid="false"
+        aria-label="Comment Editor"
+        aria-multiline="true"
+        class="block w-full rounded-md border bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none disabled:bg-gray-50 overflow-y-auto whitespace-pre-wrap break-words border-primary/30 text-foreground focus:border-primary focus:ring-primary/20 px-3 py-2 rounded-t-none empty:before:content-[attr(data-placeholder)] empty:before:text-gray-400 [&_h1]:text-2xl [&_h1]:font-bold [&_h1]:my-2 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:my-1.5 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:my-1 [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:my-2 [&_ol]:list-decimal [&_ol]:ml-6 [&_ol]:my-2 [&_li]:my-0.5 [&_a]:text-primary [&_a]:underline [&_a]:cursor-pointer hover:[&_a]:text-primary-bold [&_strong]:font-bold [&_em]:italic [&_u]:underline [&_s]:line-through [&_p]:my-2 [&_p:first-child]:mt-0 [&_p:last-child]:mb-0"
+        contenteditable="true"
+        data-placeholder="Add your comment..."
+        id="«rr»"
+        role="textbox"
+        style="min-height: 8.5rem; max-height: 8.5rem;"
+      />
+    </div>
+    <div
+      class="mt-1 text-sm text-gray-600"
+    >
+      Only basic text formatting is available.
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
 exports[`TextAreaInput > Rendering > matches snapshot 1`] = `
 <DocumentFragment>
   <div>
@@ -21,7 +552,7 @@ exports[`TextAreaInput > Rendering > matches snapshot 1`] = `
         data-placeholder="Enter your description here..."
         id="«r1»"
         role="textbox"
-        style="min-height: 5.5rem;"
+        style="min-height: 5.5rem; max-height: 5.5rem;"
       />
     </div>
   </div>

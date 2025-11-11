@@ -1,6 +1,37 @@
 import type { HTMLAttributes, ReactNode } from 'react'
 
 /**
+ * Available formatting options for rich text editing
+ */
+export type FormatType =
+  | 'bold'
+  | 'italic'
+  | 'underline'
+  | 'strikethrough'
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'orderedList'
+  | 'unorderedList'
+  | 'link'
+
+/**
+ * State of active formats in the current selection
+ */
+export interface FormatState {
+  bold: boolean
+  italic: boolean
+  underline: boolean
+  strikethrough: boolean
+  h1: boolean
+  h2: boolean
+  h3: boolean
+  orderedList: boolean
+  unorderedList: boolean
+  link: boolean
+}
+
+/**
  * Props for the TextAreaInput component
  */
 export interface TextAreaInputProps
@@ -57,4 +88,13 @@ export interface TextAreaInputProps
    * Whether the textarea is required
    */
   required?: boolean
+  /**
+   * Whether to show the formatting toolbar
+   * @default false
+   */
+  showToolbar?: boolean
+  /**
+   * Allowed formatting options (if not specified, all are allowed)
+   */
+  allowedFormats?: FormatType[]
 }

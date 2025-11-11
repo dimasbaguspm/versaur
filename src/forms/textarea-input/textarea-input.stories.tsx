@@ -1,9 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { TextAreaInput } from './textarea-input'
+import { useState } from 'react'
+import { FormattedText } from '@/primitive'
 
 /**
  * TextAreaInput provides a robust multi-line text input using contentEditable div.
  * Uses primary variant by default with support for error states, disabled, and readOnly modes.
+ * Supports rich text formatting with an optional toolbar.
  */
 const meta: Meta<typeof TextAreaInput> = {
   title: 'Forms/TextAreaInput',
@@ -19,6 +22,7 @@ A versatile textarea component built with contentEditable div for better control
 - Helper text for guidance
 - Full accessibility with proper ARIA attributes
 - Works cross-browser with consistent behavior
+- Rich text formatting with optional toolbar (bold, italic, underline, headings, lists, links)
 
 Perfect for forms, comments, descriptions, and any multi-line text input needs.
         `,
@@ -39,6 +43,10 @@ Perfect for forms, comments, descriptions, and any multi-line text input needs.
     row: {
       control: 'number',
       description: 'Height in rem units',
+    },
+    showToolbar: {
+      control: 'boolean',
+      description: 'Show formatting toolbar',
     },
   },
 }
@@ -145,4 +153,126 @@ export const CustomHeight: Story = {
       />
     </div>
   ),
+}
+
+/**
+ * Rich text editor with full formatting toolbar
+ */
+export const WithFormattingToolbar: Story = {
+  args: {
+    label: 'Article Content',
+    placeholder: 'Start writing your article...',
+    showToolbar: true,
+    row: 8,
+    helperText:
+      'Use the toolbar to format your text with bold, italic, headings, and more.',
+  },
+}
+
+/**
+ * Rich text editor with controlled value
+ */
+export const ControlledRichText: Story = {
+  render: () => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [value, setValue] = useState('<p>Hello <strong>world</strong>!</p>')
+
+    return (
+      <div className='space-y-4 w-full max-w-2xl'>
+        <TextAreaInput
+          label='Controlled Rich Text Editor'
+          placeholder='Type and format text...'
+          showToolbar={true}
+          value={value}
+          onChange={setValue}
+          row={6}
+        />
+        <div className='p-4 bg-neutral-soft rounded-md border border-primary/30'>
+          <p className='text-sm font-medium text-foreground mb-2'>
+            HTML Output:
+          </p>
+          <pre className='text-xs bg-white p-2 rounded border overflow-x-auto'>
+            {value}
+          </pre>
+        </div>
+        <div className='p-4 bg-neutral-soft rounded-md border border-primary/30'>
+          <p className='text-sm font-medium text-foreground mb-2'>
+            Rendered Output:
+          </p>
+          <FormattedText content={value} />
+        </div>
+      </div>
+    )
+  },
+}
+
+/**
+ * Limited formatting options
+ */
+export const LimitedFormats: Story = {
+  args: {
+    label: 'Comment Editor',
+    placeholder: 'Add your comment...',
+    showToolbar: true,
+    allowedFormats: ['bold', 'italic', 'underline', 'link'],
+    row: 5,
+    helperText: 'Only basic text formatting is available.',
+  },
+}
+
+/**
+ * Heading and list formatting
+ */
+export const HeadingsAndLists: Story = {
+  args: {
+    label: 'Document Editor',
+    placeholder: 'Start your document...',
+    showToolbar: true,
+    allowedFormats: ['h1', 'h2', 'h3', 'orderedList', 'unorderedList'],
+    row: 8,
+    helperText: 'Structure your document with headings and lists.',
+  },
+}
+
+/**
+ * Disabled with toolbar
+ */
+export const DisabledWithToolbar: Story = {
+  args: {
+    label: 'Disabled Rich Text',
+    showToolbar: true,
+    disabled: true,
+    defaultValue:
+      '<p>This is <strong>formatted</strong> content that cannot be edited.</p>',
+    row: 5,
+  },
+}
+
+/**
+ * Read-only with toolbar (viewing formatted content)
+ */
+export const ReadOnlyWithToolbar: Story = {
+  args: {
+    label: 'Preview Mode',
+    showToolbar: true,
+    readOnly: true,
+    defaultValue:
+      '<h2>Article Title</h2><p>This is a <strong>formatted</strong> article with <em>various</em> styles.</p><ul><li>Point one</li><li>Point two</li></ul>',
+    row: 8,
+    helperText: 'Content is read-only but you can see the formatting.',
+  },
+}
+
+/**
+ * With error and toolbar
+ */
+export const ErrorWithToolbar: Story = {
+  args: {
+    label: 'Required Content',
+    showToolbar: true,
+    error: 'Content must be at least 50 characters long.',
+    defaultValue: '<p>Too short</p>',
+    required: true,
+    row: 6,
+  },
 }
