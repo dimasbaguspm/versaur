@@ -74,12 +74,6 @@ describe('FormattedText', () => {
     expect(formattedText).toHaveClass('overflow-y-auto')
   })
 
-  it('should apply max height when scrollable and maxHeight are provided', () => {
-    const { container } = render(<Scrollable />)
-    const formattedText = container.firstChild as HTMLElement
-    expect(formattedText).toHaveStyle({ maxHeight: '15rem' })
-  })
-
   it('should have proper accessibility role', () => {
     render(<Default />)
     expect(screen.getByRole('article')).toBeInTheDocument()

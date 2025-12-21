@@ -2,11 +2,6 @@ import type { ComponentPropsWithoutRef, HTMLAttributes, ReactNode } from 'react'
 import type { OverlayPortalProps } from '@/utils/overlay-portal'
 
 /**
- * Drawer transition type options
- */
-export type DrawerTransitionType = 'slide' | 'fade'
-
-/**
  * Drawer positioning options
  */
 export type DrawerPosition = 'left' | 'right'
@@ -28,8 +23,6 @@ export interface DrawerContextValue {
   position: DrawerPosition
   /** Drawer size */
   size: DrawerSize
-  /** Drawer transition type */
-  transitionType: DrawerTransitionType
   /** Whether to disable overlay click to close */
   disableOverlayClickToClose: boolean
   /** Whether to disable escape key down */
@@ -44,7 +37,7 @@ export interface DrawerContextValue {
  * Props for the Drawer component (controlled component)
  */
 export interface DrawerProps
-  extends ComponentPropsWithoutRef<'div'>,
+  extends Omit<ComponentPropsWithoutRef<'dialog'>, 'onClose' | 'open'>,
     OverlayPortalProps,
     Partial<Omit<DrawerContextValue, 'isOpen' | 'onClose'>>,
     Pick<DrawerContextValue, 'isOpen' | 'onClose'> {

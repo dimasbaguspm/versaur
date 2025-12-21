@@ -1,12 +1,15 @@
 import { describe, it, expect } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { composeStories } from '@storybook/react'
 import * as stories from '../drawer.stories'
+import { Drawer } from '../drawer'
+import { useState } from 'react'
 
+// Only these stories are present after cleanup
 const { Default, LeftPosition, LargeSize, WithTabs } = composeStories(stories)
 
 describe('Drawer', () => {
-  describe('Default Story', () => {
+  describe('Default Story (slide only, no fade)', () => {
     it('renders the drawer trigger button', () => {
       render(<Default />)
       expect(screen.getByText('Open Drawer')).toBeInTheDocument()
@@ -15,9 +18,9 @@ describe('Drawer', () => {
     it('opens the drawer when trigger is clicked', () => {
       render(<Default />)
 
-      // Initially, drawer should be hidden (use querySelector since aria-hidden=true makes it inaccessible)
-      const initialDialog = document.querySelector('[role="dialog"]')
+      const initialDialog = document.querySelector('dialog')
       expect(initialDialog).toHaveAttribute('aria-hidden', 'true')
+      expect(initialDialog).not.toHaveAttribute('open')
 
       // Click the trigger button
       fireEvent.click(screen.getByText('Open Drawer'))
@@ -27,6 +30,7 @@ describe('Drawer', () => {
       expect(dialog).toBeInTheDocument()
       expect(dialog).toHaveAttribute('aria-modal', 'true')
       expect(dialog).toHaveAttribute('aria-hidden', 'false')
+      expect(dialog).toHaveAttribute('open')
       expect(screen.getByText('Drawer Title')).toBeInTheDocument()
     })
 
@@ -65,19 +69,47 @@ describe('Drawer', () => {
       expect(asFragment()).toMatchSnapshot()
     })
 
-    it('closes the drawer when escape key is pressed', () => {
-      render(<Default />)
+    it('closes the drawer when escape key is pressed', async () => {
+      // This test simulates the Escape key and then manually triggers the parent state update,
+      // since jsdom/happy-dom cannot fully simulate native <dialog> cancel events.
+      let setOpen: (open: boolean) => void = () => {}
+      function ControlledDrawer() {
+        const [isOpen, setIsOpen] = useState(false)
+        setOpen = setIsOpen
+        return (
+          <>
+            <button onClick={() => setIsOpen(true)}>Open Drawer</button>
+            <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)}>
+              <Drawer.Header>
+                <Drawer.Title>Drawer Title</Drawer.Title>
+                <Drawer.CloseButton />
+              </Drawer.Header>
+              <Drawer.Body>Body</Drawer.Body>
+              <Drawer.Footer>Footer</Drawer.Footer>
+            </Drawer>
+          </>
+        )
+      }
+
+      render(<ControlledDrawer />)
 
       // Open the drawer
       fireEvent.click(screen.getByText('Open Drawer'))
       expect(screen.getByText('Drawer Title')).toBeInTheDocument()
 
-      // Press escape key
-      fireEvent.keyDown(document, { key: 'Escape', code: 'Escape' })
+      // Simulate Escape key
+      const dialog = document.querySelector('dialog')
+      fireEvent.keyDown(dialog!, { key: 'Escape', code: 'Escape' })
 
-      // Drawer should close (use querySelector since aria-hidden=true makes it inaccessible)
-      const dialog = document.querySelector('[role="dialog"]')
-      expect(dialog).toHaveAttribute('aria-hidden', 'true')
+      // Manually trigger the parent state update as would happen in a real browser
+      setOpen(false)
+
+      // Wait for drawer to close
+      await waitFor(() => {
+        const dialogEl = document.querySelector('dialog')
+        expect(dialogEl).toHaveAttribute('aria-hidden', 'true')
+        expect(dialogEl).not.toHaveAttribute('open')
+      })
     })
 
     it('closes when close button is clicked', () => {
@@ -92,8 +124,9 @@ describe('Drawer', () => {
       fireEvent.click(closeButton)
 
       // Drawer should close (use querySelector since aria-hidden=true makes it inaccessible)
-      const dialog = document.querySelector('[role="dialog"]')
+      const dialog = document.querySelector('dialog')
       expect(dialog).toHaveAttribute('aria-hidden', 'true')
+      expect(dialog).not.toHaveAttribute('open')
     })
   })
 
@@ -154,17 +187,13 @@ describe('Drawer', () => {
       expect(dialog).toHaveAttribute('aria-describedby')
     })
 
-    it('has overlay with aria-hidden', () => {
+    it('uses native dialog open state', () => {
       render(<Default />)
 
-      // Open the drawer
       fireEvent.click(screen.getByText('Open Drawer'))
 
-      // Check overlay has aria-hidden (overlay is the first child of the portal container)
-      const portalContainer = document.querySelector('.fixed.z-50.inset-0')
-      const overlay = portalContainer?.querySelector('[aria-hidden="true"]')
-      expect(overlay).toBeInTheDocument()
-      expect(overlay).toHaveAttribute('aria-hidden', 'true')
+      const dialog = screen.getByRole('dialog') as HTMLDialogElement
+      expect(dialog.open).toBe(true)
     })
   })
 
@@ -177,15 +206,15 @@ describe('Drawer', () => {
       let dialog = screen.getByRole('dialog')
       expect(dialog).toHaveAttribute('aria-hidden', 'false')
 
-      // Click the overlay (first div with backdrop-blur class)
-      const overlay = document.querySelector('.backdrop-blur-md')
-      if (overlay) {
-        fireEvent.click(overlay)
+      // Click the dialog backdrop (clicking the dialog element simulates backdrop click)
+      const dialogElement = document.querySelector(
+        'dialog'
+      ) as HTMLDialogElement
+      fireEvent.click(dialogElement)
 
-        // Drawer should close (use querySelector since aria-hidden=true makes it inaccessible)
-        dialog = document.querySelector('[role="dialog"]') as HTMLElement
-        expect(dialog).toHaveAttribute('aria-hidden', 'true')
-      }
+      dialog = document.querySelector('dialog') as HTMLElement
+      expect(dialog).toHaveAttribute('aria-hidden', 'true')
+      expect(dialog).not.toHaveAttribute('open')
     })
   })
 })

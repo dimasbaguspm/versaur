@@ -34,11 +34,6 @@ const meta: Meta<typeof Drawer> = {
       options: ['sm', 'md', 'lg', 'xl', '3/4', 'full'],
       description: 'Size of the drawer',
     },
-    transitionType: {
-      control: 'select',
-      options: ['slide', 'fade'],
-      description: 'Type of transition animation',
-    },
   },
 }
 

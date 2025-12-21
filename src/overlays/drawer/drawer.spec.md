@@ -1,11 +1,137 @@
-# Drawer Component Specification
+# Drawer Component
 
-## Overview
+A flexible, accessible sliding overlay component for Versaur UI, built on the native `<dialog>`
+element. Supports compound composition, semantic HTML, and ARIA best practices.
 
-The Drawer is a controlled sliding overlay component that provides additional space for content. It
-uses the **Compound Pattern with Context** for state management and composition flexibility. The
-component uses semantic HTML elements (`<header>`, `<main>`, `<footer>`) and implements
-comprehensive ARIA attributes for accessibility.
+## Features
+
+- **Compound Pattern**: Composed of `Drawer`, `Drawer.Header`, `Drawer.Title`, `Drawer.CloseButton`,
+  `Drawer.Tab`, `Drawer.Body`, and `Drawer.Footer`.
+- **Native Dialog**: Uses `<dialog>` for modal/focus management and accessibility.
+- **Position & Size**: Slide in from left or right; multiple width options.
+- **Portal Rendering**: Renders via portal for stacking and isolation.
+- **ARIA & Accessibility**: Full ARIA labeling, keyboard navigation, and semantic structure.
+- **Scroll Lock**: Locks body scroll when open.
+- **Overlay Click/Escape**: Configurable close on overlay click or Escape key.
+- **Context-Driven**: All subcomponents consume shared context for state and ARIA IDs.
+
+## Usage
+
+### Basic Usage
+
+```tsx
+import { Drawer } from '@/overlays/drawer'
+import { Button } from '@/primitive/button'
+
+function Example() {
+  const [isOpen, setIsOpen] = useState(false)
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>Open Drawer</Button>
+      <Drawer isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <Drawer.Header>
+          <Drawer.Title>Settings</Drawer.Title>
+          <Drawer.CloseButton />
+        </Drawer.Header>
+        <Drawer.Body>
+          <p>Drawer content goes here</p>
+        </Drawer.Body>
+        <Drawer.Footer>
+          <Button onClick={() => setIsOpen(false)}>Save</Button>
+        </Drawer.Footer>
+      </Drawer>
+    </>
+  )
+}
+```
+
+### With Tabs
+
+```tsx
+<Drawer isOpen={isOpen} onClose={onClose}>
+  <Drawer.Header hasTab>
+    <Drawer.Title>Settings</Drawer.Title>
+    <Drawer.CloseButton />
+  </Drawer.Header>
+  <Drawer.Tab>
+    <Tabs>...</Tabs>
+  </Drawer.Tab>
+  <Drawer.Body>...</Drawer.Body>
+</Drawer>
+```
+
+### Left Position & Large Size
+
+```tsx
+<Drawer position='left' size='lg' isOpen={isOpen} onClose={onClose}>
+  {/* ... */}
+</Drawer>
+```
+
+### Disable Overlay Click
+
+```tsx
+<Drawer isOpen={isOpen} onClose={onClose} disableOverlayClickToClose>
+  {/* ... */}
+</Drawer>
+```
+
+## Props
+
+| Prop                         | Type                                              | Default     | Description                    |
+| ---------------------------- | ------------------------------------------------- | ----------- | ------------------------------ |
+| `isOpen`                     | `boolean`                                         | -           | Whether the drawer is open     |
+| `onClose`                    | `() => void`                                      | -           | Callback to close the drawer   |
+| `children`                   | `ReactNode`                                       | -           | Drawer content                 |
+| `position`                   | `'left' \| 'right'`                               | `'right'`   | Slide-in position              |
+| `size`                       | `'sm' \| 'md' \| 'lg' \| 'xl' \| '3/4' \| 'full'` | `'md'`      | Drawer width                   |
+| `disableOverlayClickToClose` | `boolean`                                         | `false`     | Disable close on overlay click |
+| `disableEscapeKeyDown`       | `boolean`                                         | `false`     | Disable close on Escape key    |
+| `container`                  | `HTMLElement`                                     | `undefined` | Portal container               |
+| `className`                  | `string`                                          | `undefined` | Additional CSS classes         |
+| ...rest                      | `ComponentPropsWithoutRef<'dialog'>`              |             | Standard dialog props          |
+
+## Subcomponents
+
+- **Drawer.Header**: Semantic `<header>`, optional `hasTab` for tabbed layouts.
+- **Drawer.Title**: Semantic heading, auto ARIA labeling.
+- **Drawer.CloseButton**: Accessible close button, always `aria-label="Close drawer"`.
+- **Drawer.Tab**: Container for tab navigation.
+- **Drawer.Body**: Semantic `<main>`, scrollable, auto ARIA description.
+- **Drawer.Footer**: Semantic `<footer>`, for actions.
+
+## Accessibility
+
+- Uses `<dialog>` for modal semantics and focus trap.
+- `aria-modal="true"`, `aria-labelledby`, `aria-describedby` set automatically.
+- Keyboard: Escape closes (unless disabled), Tab/Shift+Tab for focus.
+- Overlay click closes (unless disabled).
+- All subcomponents use semantic HTML.
+
+## Best Practices
+
+1. Use semantic subcomponents for structure and accessibility.
+2. Use only one open drawer at a time for best UX.
+3. Use `onClose` for all close actions (button, overlay, Escape).
+4. Use `size` and `position` props for layout needs.
+5. Use `hasTab` on `Drawer.Header` when using `Drawer.Tab`.
+
+## Example Sizes
+
+| Size   | Width | Use Case                      |
+| ------ | ----- | ----------------------------- |
+| `sm`   | 320px | Compact forms, quick actions  |
+| `md`   | 384px | Standard forms, settings      |
+| `lg`   | 448px | Detailed content, long forms  |
+| `xl`   | 512px | Rich content, complex layouts |
+| `3/4`  | 75vw  | Dashboards, editing           |
+| `full` | 100vw | Full-screen experiences       |
+
+## Accessibility
+
+- All ARIA and keyboard requirements are met.
+- Focus is managed by the native dialog.
+- Color and contrast are handled by design tokens.
 
 ## Architecture
 

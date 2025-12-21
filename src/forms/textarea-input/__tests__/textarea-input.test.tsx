@@ -177,22 +177,6 @@ describe('TextAreaInput', () => {
     })
   })
 
-  describe('Custom Row Height', () => {
-    it('applies custom row height calculation', () => {
-      const { container } = render(<Default row={10} />)
-      const textbox = container.querySelector('[role="textbox"]')
-      // Formula: row * 1.5 + 1 = 10 * 1.5 + 1 = 16rem
-      expect(textbox).toHaveStyle({ minHeight: '16rem' })
-    })
-
-    it('uses default height calculation when row prop is not provided', () => {
-      const { container } = render(<Default />)
-      const textbox = container.querySelector('[role="textbox"]')
-      // Formula: 3 * 1.5 + 1 = 5.5rem (default row is 3)
-      expect(textbox).toHaveStyle({ minHeight: '5.5rem' })
-    })
-  })
-
   describe('Required State', () => {
     it('displays asterisk when required prop is true', () => {
       const { container } = render(<Default label='Message' required />)

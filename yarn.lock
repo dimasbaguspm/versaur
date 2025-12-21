@@ -333,6 +333,7 @@ __metadata:
     eslint-plugin-react-refresh: "npm:0.4.20"
     eslint-plugin-storybook: "npm:9.0.16"
     globals: "npm:16.3.0"
+    happy-dom: "npm:20.0.11"
     jsdom: "npm:26.1.0"
     lucide-react: "npm:0.525.0"
     prettier: "npm:3.5.1"
@@ -2024,6 +2025,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:^20.0.0":
+  version: 20.19.27
+  resolution: "@types/node@npm:20.19.27"
+  dependencies:
+    undici-types: "npm:~6.21.0"
+  checksum: 10/a36bdbbf3c3e25bd75454f295b01c72729128a7ab38e99b75dba5fad2ff44fb96179462197345381a086c85de462c10d994fe32868c9a07d42b852566a2e63a7
+  languageName: node
+  linkType: hard
+
 "@types/react-dom@npm:19.1.6":
   version: 19.1.6
   resolution: "@types/react-dom@npm:19.1.6"
@@ -2053,6 +2063,13 @@ __metadata:
   version: 9.0.8
   resolution: "@types/uuid@npm:9.0.8"
   checksum: 10/b8c60b7ba8250356b5088302583d1704a4e1a13558d143c549c408bf8920535602ffc12394ede77f8a8083511b023704bc66d1345792714002bfa261b17c5275
+  languageName: node
+  linkType: hard
+
+"@types/whatwg-mimetype@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "@types/whatwg-mimetype@npm:3.0.2"
+  checksum: 10/609607beeaa8b50b9e00541d8f571880d651b26b6b006103370099aba00784037de54433627c9fe775a5558e3d1fc09c2a48f54c8af91988e9bebeaf6a698eeb
   languageName: node
   linkType: hard
 
@@ -3905,6 +3922,17 @@ __metadata:
   version: 1.4.0
   resolution: "graphemer@npm:1.4.0"
   checksum: 10/6dd60dba97007b21e3a829fab3f771803cc1292977fe610e240ea72afd67e5690ac9eeaafc4a99710e78962e5936ab5a460787c2a1180f1cb0ccfac37d29f897
+  languageName: node
+  linkType: hard
+
+"happy-dom@npm:20.0.11":
+  version: 20.0.11
+  resolution: "happy-dom@npm:20.0.11"
+  dependencies:
+    "@types/node": "npm:^20.0.0"
+    "@types/whatwg-mimetype": "npm:^3.0.2"
+    whatwg-mimetype: "npm:^3.0.0"
+  checksum: 10/0f2cd2a2c394a79ce3ff15b5c00edd4071a5c5ece14f3ee810b954a1c3ee826a3920be37a349c7dc1b5bd3cd49b550f5e6291aa7e109ee4a27c3f6476f4b5d91
   languageName: node
   linkType: hard
 
@@ -6151,6 +6179,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"undici-types@npm:~6.21.0":
+  version: 6.21.0
+  resolution: "undici-types@npm:6.21.0"
+  checksum: 10/ec8f41aa4359d50f9b59fa61fe3efce3477cc681908c8f84354d8567bb3701fafdddf36ef6bff307024d3feb42c837cf6f670314ba37fc8145e219560e473d14
+  languageName: node
+  linkType: hard
+
 "undici-types@npm:~7.8.0":
   version: 7.8.0
   resolution: "undici-types@npm:7.8.0"
@@ -6436,6 +6471,13 @@ __metadata:
   dependencies:
     iconv-lite: "npm:0.6.3"
   checksum: 10/bbef815eb67f91487c7f2ef96329743f5fd8357d7d62b1119237d25d41c7e452dff8197235b2d3c031365a17f61d3bb73ca49d0ed1582475aa4a670815e79534
+  languageName: node
+  linkType: hard
+
+"whatwg-mimetype@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "whatwg-mimetype@npm:3.0.0"
+  checksum: 10/96f9f628c663c2ae05412c185ca81b3df54bcb921ab52fe9ebc0081c1720f25d770665401eb2338ab7f48c71568133845638e18a81ed52ab5d4dcef7d22b40ef
   languageName: node
   linkType: hard
 

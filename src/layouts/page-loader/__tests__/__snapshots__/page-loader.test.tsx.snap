@@ -3,7 +3,7 @@
 exports[`PageLoader > should render PageLoader with default props 1`] = `
 <DocumentFragment>
   <div
-    style="height: 400px; border: 1px dashed rgb(204, 204, 204);"
+    style="height: 400px; border: 1px dashed #ccc;"
   >
     <div
       class="flex items-center justify-center flex-col gap-3 flex-grow w-full min-h-96 h-full"
@@ -25,7 +25,7 @@ exports[`PageLoader > should render PageLoader with default props 1`] = `
 exports[`PageLoader > should render bar type loading indicator 1`] = `
 <DocumentFragment>
   <div
-    style="height: 300px; border: 1px dashed rgb(204, 204, 204);"
+    style="height: 300px; border: 1px dashed #ccc;"
   >
     <div
       class="flex items-center justify-center flex-col gap-3 flex-grow w-full min-h-96 h-full"
@@ -62,10 +62,10 @@ exports[`PageLoader > should render bar type loading indicator 1`] = `
 exports[`PageLoader > should render minimal variant 1`] = `
 <DocumentFragment>
   <div
-    style="border: 1px dashed rgb(204, 204, 204);"
+    style="border: 1px dashed #ccc;"
   >
     <div
-      style="padding: 20px; background-color: rgb(245, 245, 245);"
+      style="padding: 20px; background-color: #f5f5f5;"
     >
       <h3>
         Section Title

@@ -24,12 +24,13 @@ export const drawerOverlayVariants = cva(
  * Provides different sizes and positions for the drawer content
  */
 export const drawerVariants = cva(
-  'fixed z-50 shadow-xl flex flex-col max-w-full bg-white',
+  'fixed z-50 inset-y-0 m-0 border-0 p-0 bg-white shadow-xl flex flex-col max-w-full h-full max-h-screen outline-none overflow-hidden transition-[transform,opacity] duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[transform,opacity] [transform:translateZ(0)] data-[state=open]:opacity-100 data-[state=open]:pointer-events-auto data-[state=closed]:opacity-0 data-[state=closed]:pointer-events-none data-[state=closed]:select-none [&::backdrop]:bg-foreground/30 [&::backdrop]:backdrop-blur-md [&::backdrop]:transition-opacity [&::backdrop]:duration-250 [&::backdrop]:ease-[cubic-bezier(0.22,1,0.36,1)]',
   {
     variants: {
       position: {
-        left: 'left-0 top-0 bottom-0 border-r border-border',
-        right: 'right-0 top-0 bottom-0 border-l border-border',
+        left: 'left-0 right-auto top-0 bottom-0 border-r border-border data-[state=open]:translate-x-0 data-[state=closed]:-translate-x-full',
+        right:
+          'right-0 left-auto top-0 bottom-0 border-l border-border data-[state=open]:translate-x-0 data-[state=closed]:translate-x-full',
       },
       size: {
         sm: 'w-80',
@@ -39,15 +40,10 @@ export const drawerVariants = cva(
         '3/4': 'w-[75vw]',
         full: 'w-full',
       },
-      transitionType: {
-        slide: 'transition-transform duration-300 ease-in-out',
-        fade: 'transition-opacity duration-300 ease-in-out',
-      },
     },
     defaultVariants: {
       position: 'right',
       size: 'md',
-      transitionType: 'slide',
     },
   }
 )

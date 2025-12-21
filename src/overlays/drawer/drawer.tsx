@@ -2,7 +2,6 @@ import React, { useId } from 'react'
 import { cn } from '@/utils/cn'
 import { DrawerContext } from './context'
 import {
-  DrawerOverlay,
   DrawerHeader,
   DrawerBody,
   DrawerFooter,
@@ -11,9 +10,10 @@ import {
   DrawerTitle,
 } from './drawer.atoms'
 import { drawerVariants } from './helpers'
-import { useEscapeClose } from '@/utils/use-escape-close'
 import type { DrawerProps, DrawerContextValue } from './types'
 import { OverlayPortal } from '@/utils/overlay-portal'
+import { useBodyScrollLock } from './use-body-scroll-lock'
+import { useDialogLifecycle } from './use-dialog-lifecycle'
 
 /**
  * DrawerRoot - A controlled sliding drawer overlay component
@@ -26,7 +26,6 @@ export const DrawerRoot: React.FC<DrawerProps> = ({
   onClose,
   position = 'right',
   size = 'md',
-  transitionType = 'slide',
   disableOverlayClickToClose = false,
   disableEscapeKeyDown = false,
   className,
@@ -34,61 +33,65 @@ export const DrawerRoot: React.FC<DrawerProps> = ({
 }) => {
   const titleId = useId()
   const descriptionId = useId()
+  const { dialogRef, dataState } = useDialogLifecycle({ isOpen })
+  useBodyScrollLock(isOpen)
+
+  const handleDialogClose = () => {
+    const dialogEl = dialogRef.current
+    if (dialogEl?.open) {
+      dialogEl.close()
+    }
+    onClose()
+  }
+
+  const handleCancel: React.DialogHTMLAttributes<HTMLDialogElement>['onCancel'] =
+    event => {
+      event.preventDefault()
+      if (disableEscapeKeyDown) return
+      handleDialogClose()
+    }
+
+  const handleClick: React.MouseEventHandler<HTMLDialogElement> = event => {
+    if (event.target !== event.currentTarget) return
+    if (disableOverlayClickToClose) return
+    handleDialogClose()
+  }
 
   const contextValue = {
     isOpen,
-    onClose,
+    onClose: handleDialogClose,
     position,
     size,
-    transitionType,
     disableOverlayClickToClose,
     disableEscapeKeyDown,
     titleId,
     descriptionId,
   } satisfies DrawerContextValue
 
-  const drawerRef = useEscapeClose(isOpen, onClose, disableEscapeKeyDown)
-
   return (
     <OverlayPortal container={container}>
       <DrawerContext.Provider value={contextValue}>
-        <div
+        <dialog
+          ref={dialogRef}
+          role='dialog'
+          aria-modal='true'
+          aria-labelledby={titleId}
+          aria-describedby={descriptionId}
+          aria-hidden={!isOpen}
+          data-state={dataState}
+          onCancel={handleCancel}
+          onClick={handleClick}
           className={cn(
-            'fixed z-50 inset-0 pointer-events-none',
-            isOpen && 'pointer-events-auto'
+            drawerVariants({
+              position,
+              size,
+            }),
+            className
           )}
+          {...props}
         >
-          <DrawerOverlay />
-          <div
-            ref={drawerRef}
-            role='dialog'
-            tabIndex={-1}
-            aria-modal='true'
-            aria-labelledby={titleId}
-            aria-describedby={descriptionId}
-            aria-hidden={!isOpen}
-            className={cn(
-              drawerVariants({
-                position,
-                size,
-                transitionType,
-              }),
-              transitionType === 'slide'
-                ? [
-                    !isOpen && position === 'left' && '-translate-x-full',
-                    !isOpen && position === 'right' && 'translate-x-full',
-                  ]
-                : [
-                    'left-0 right-0 top-0 bottom-0',
-                    isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none',
-                  ],
-              className
-            )}
-            {...props}
-          >
-            {isOpen && children}
-          </div>
-        </div>
+          {isOpen && children}
+        </dialog>
       </DrawerContext.Provider>
     </OverlayPortal>
   )
