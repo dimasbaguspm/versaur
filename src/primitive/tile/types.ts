@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'react'
+import type { HTMLAttributes, JSX } from 'react'
 import type { VariantProps } from 'class-variance-authority'
 import type { tileVariants } from './helpers'
 
@@ -8,6 +8,14 @@ import type { tileVariants } from './helpers'
 export interface TileProps
   extends HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof tileVariants> {
+  /**
+   * Element type to render as
+   * @default 'div'
+   */
+  as?: keyof Pick<
+    JSX.IntrinsicElements,
+    'div' | 'section' | 'article' | 'aside'
+  >
   /**
    * Visual appearance variant
    * @default 'white'

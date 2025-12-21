@@ -1,7 +1,14 @@
-import { forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 import { cn } from '@/utils'
 import { tileVariants } from './helpers'
 import type { TileProps } from './types'
+
+type TileComponent = React.ForwardRefExoticComponent<
+  TileProps & React.RefAttributes<HTMLDivElement>
+> & {
+  /** Props type alias exposed as Tile.Props */
+  Props: TileProps
+}
 
 /**
  * Tile component - A flexible box container with various styling options
@@ -14,15 +21,22 @@ import type { TileProps } from './types'
  */
 export const Tile = forwardRef<HTMLDivElement, TileProps>(
   (
-    { variant = 'white', size = 'md', shape = 'rounded', className, ...props },
+    {
+      as: Component = 'div',
+      variant = 'white',
+      size = 'md',
+      shape = 'rounded',
+      className,
+      ...props
+    },
     ref
   ) => {
     return (
-      <div
+      <Component
         ref={ref}
         className={cn(tileVariants({ variant, size, shape }), className)}
         {...props}
       />
     )
   }
-)
+) as TileComponent

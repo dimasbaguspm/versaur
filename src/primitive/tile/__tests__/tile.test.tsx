@@ -4,8 +4,7 @@ import { describe, it, expect } from 'vitest'
 import { Tile } from '../tile'
 import * as stories from '../tile.stories'
 
-const { Default, Variants, Sizes, Shapes, InfoCard, Dashboard } =
-  composeStories(stories)
+const { Default, Variants, Sizes, Shapes, AsSection } = composeStories(stories)
 
 describe('Tile', () => {
   it('renders default tile correctly', () => {
@@ -27,7 +26,7 @@ describe('Tile', () => {
       </Tile>
     )
     const tile = screen.getByTestId('tile')
-    expect(tile).toHaveClass('bg-primary-soft', 'border-primary')
+    expect(tile).toHaveClass('bg-primary', 'border-primary')
   })
 
   it('applies correct size classes', () => {
@@ -76,6 +75,13 @@ describe('Tile', () => {
     expect(ref.current).toBeInstanceOf(HTMLDivElement)
   })
 
+  it('renders as a semantic section when specified', () => {
+    render(<AsSection />)
+    const sectionHeading = screen.getByText('Section Tile')
+    const section = sectionHeading.closest('section')
+    expect(section?.tagName.toLowerCase()).toBe('section')
+  })
+
   it('renders all variants correctly', () => {
     render(<Variants />)
     expect(screen.getByText('White')).toBeInTheDocument()
@@ -103,24 +109,5 @@ describe('Tile', () => {
     render(<Shapes />)
     expect(screen.getByText('Rounded corners (default)')).toBeInTheDocument()
     expect(screen.getByText('Square corners')).toBeInTheDocument()
-  })
-
-  it('renders info card story correctly', () => {
-    render(<InfoCard />)
-    expect(screen.getByText('Information Panel')).toBeInTheDocument()
-    expect(screen.getByText('Tag 1')).toBeInTheDocument()
-    expect(screen.getByText('Tag 2')).toBeInTheDocument()
-  })
-
-  it('renders dashboard story correctly', () => {
-    render(<Dashboard />)
-    expect(screen.getByText('Active Users')).toBeInTheDocument()
-    expect(screen.getByText('1,234')).toBeInTheDocument()
-    expect(screen.getByText('Pending Tasks')).toBeInTheDocument()
-    expect(screen.getByText('56')).toBeInTheDocument()
-    expect(screen.getByText('Revenue')).toBeInTheDocument()
-    expect(screen.getByText('$12,345')).toBeInTheDocument()
-    expect(screen.getByText('Reports')).toBeInTheDocument()
-    expect(screen.getByText('89')).toBeInTheDocument()
   })
 })

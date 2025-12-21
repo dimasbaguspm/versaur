@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Tile } from './tile'
+import { Text } from '../text'
 
 /**
  * The Tile component is a flexible box container that provides a foundation for
@@ -12,6 +13,11 @@ const meta: Meta<typeof Tile> = {
   component: Tile,
   tags: ['autodocs'],
   argTypes: {
+    as: {
+      control: 'select',
+      options: ['div', 'section', 'article', 'aside'],
+      description: 'Element type to render as',
+    },
     variant: {
       control: 'select',
       options: [
@@ -58,21 +64,61 @@ export const Default: Story = {
 }
 
 /**
+ * Render Tile as a semantic section element.
+ */
+export const AsSection: Story = {
+  args: {
+    as: 'section',
+    variant: 'neutral',
+    role: 'region',
+    'aria-label': 'Section Tile',
+    children: (
+      <div>
+        <Text fontWeight='semibold'>Section Tile</Text>
+        <Text fontSize='sm'>
+          Renders as a semantic section for page structure.
+        </Text>
+      </div>
+    ),
+  },
+}
+
+/**
  * All available color variants demonstrating the soft color palette
  */
 export const Variants: Story = {
   render: () => (
     <div className='grid grid-cols-3 gap-4 max-w-4xl'>
-      <Tile variant='white'>White</Tile>
-      <Tile variant='neutral'>Neutral</Tile>
-      <Tile variant='primary'>Primary</Tile>
-      <Tile variant='secondary'>Secondary</Tile>
-      <Tile variant='tertiary'>Tertiary</Tile>
-      <Tile variant='ghost'>Ghost</Tile>
-      <Tile variant='success'>Success</Tile>
-      <Tile variant='info'>Info</Tile>
-      <Tile variant='warning'>Warning</Tile>
-      <Tile variant='danger'>Danger</Tile>
+      <Tile variant='white'>
+        <Text color='black'>White</Text>
+      </Tile>
+      <Tile variant='neutral'>
+        <Text color='black'>Neutral</Text>
+      </Tile>
+      <Tile variant='primary'>
+        <Text color='white'>Primary</Text>
+      </Tile>
+      <Tile variant='secondary'>
+        <Text color='white'>Secondary</Text>
+      </Tile>
+      <Tile variant='tertiary'>
+        <Text color='white'>Tertiary</Text>
+      </Tile>
+      <Tile variant='ghost'>
+        <Text color='black'>Ghost</Text>
+      </Tile>
+      <Tile variant='success'>
+        <Text color='white'>Success</Text>
+      </Tile>
+      <Tile variant='info'>
+        <Text color='white'>Info</Text>
+      </Tile>
+      <Tile variant='warning'>
+        <Text color='white'>Warning</Text>
+      </Tile>
+      <Tile variant='danger'>
+        <Text color='white'>Danger</Text>
+      </Tile>
     </div>
   ),
 }
@@ -99,63 +145,10 @@ export const Shapes: Story = {
   render: () => (
     <div className='flex gap-4'>
       <Tile shape='rounded' variant='primary'>
-        Rounded corners (default)
+        <Text color='white'>Rounded corners (default) </Text>
       </Tile>
       <Tile shape='square' variant='secondary'>
-        Square corners
-      </Tile>
-    </div>
-  ),
-}
-
-/**
- * Practical use case: Information card with content and styling
- */
-export const InfoCard: Story = {
-  render: () => (
-    <Tile variant='info' size='lg' className='max-w-md'>
-      <h3 className='font-semibold text-lg mb-2'>Information Panel</h3>
-      <p className='text-sm mb-4'>
-        This tile component can be used to create beautiful information cards
-        with soft backgrounds and proper spacing.
-      </p>
-      <div className='flex gap-2'>
-        <span className='text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded'>
-          Tag 1
-        </span>
-        <span className='text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded'>
-          Tag 2
-        </span>
-      </div>
-    </Tile>
-  ),
-}
-
-/**
- * Dashboard-style layout using multiple tiles
- */
-export const Dashboard: Story = {
-  render: () => (
-    <div className='grid grid-cols-2 gap-4 max-w-2xl'>
-      <Tile variant='success' size='lg'>
-        <h4 className='font-semibold mb-2'>Active Users</h4>
-        <p className='text-2xl font-bold'>1,234</p>
-        <p className='text-sm opacity-75'>+12% from last month</p>
-      </Tile>
-      <Tile variant='warning' size='lg'>
-        <h4 className='font-semibold mb-2'>Pending Tasks</h4>
-        <p className='text-2xl font-bold'>56</p>
-        <p className='text-sm opacity-75'>Requires attention</p>
-      </Tile>
-      <Tile variant='primary' size='lg'>
-        <h4 className='font-semibold mb-2'>Revenue</h4>
-        <p className='text-2xl font-bold'>$12,345</p>
-        <p className='text-sm opacity-75'>This quarter</p>
-      </Tile>
-      <Tile variant='tertiary' size='lg'>
-        <h4 className='font-semibold mb-2'>Reports</h4>
-        <p className='text-2xl font-bold'>89</p>
-        <p className='text-sm opacity-75'>Generated today</p>
+        <Text color='white'>Square corners</Text>
       </Tile>
     </div>
   ),
