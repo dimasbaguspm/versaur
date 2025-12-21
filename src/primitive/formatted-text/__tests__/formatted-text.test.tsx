@@ -34,6 +34,15 @@ describe('FormattedText', () => {
     expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent(
       'Subsection Heading'
     )
+    expect(screen.getByRole('heading', { level: 4 })).toHaveTextContent(
+      'Subsection Detail'
+    )
+    expect(screen.getByRole('heading', { level: 5 })).toHaveTextContent(
+      'Minor Heading'
+    )
+    expect(screen.getByRole('heading', { level: 6 })).toHaveTextContent(
+      'Note Heading'
+    )
   })
 
   it('should render ordered lists correctly', () => {

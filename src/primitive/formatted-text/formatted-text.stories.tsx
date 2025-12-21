@@ -68,6 +68,12 @@ export const WithHeadings: Story = {
       <p>Another paragraph with <em>italic text</em> and a <a href="https://example.com" target="_blank" rel="noopener noreferrer">link</a>.</p>
       <h3>Subsection Heading</h3>
       <p>More content with <u>underlined</u> and <s>strikethrough</s> text.</p>
+      <h4>Subsection Detail</h4>
+      <p>Supporting details for subsection content.</p>
+      <h5>Minor Heading</h5>
+      <p>Smaller heading for fine details.</p>
+      <h6>Note Heading</h6>
+      <p>Smallest heading for captions or notes.</p>
     `,
   },
 }
@@ -180,23 +186,5 @@ export const Scrollable: Story = {
         <li>List item 5</li>
       </ul>
     `,
-  },
-}
-
-/**
- * Formatted text with custom className
- */
-export const CustomStyling: Story = {
-  args: {
-    content: `
-      <h2>Custom Styled Content</h2>
-      <p>This content has additional custom styling applied via className.</p>
-      <ul>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-      </ul>
-    `,
-    className: 'border border-primary/30 rounded-md p-4 bg-primary-soft',
   },
 }

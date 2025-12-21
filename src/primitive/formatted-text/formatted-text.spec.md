@@ -98,15 +98,18 @@ The component uses `formattedContentStyles` from `helpers.ts`, which is shared w
 
 #### Headings
 
-- **h1**: `text-2xl`, `font-bold`, `my-2`
-- **h2**: `text-xl`, `font-bold`, `my-1.5`
-- **h3**: `text-lg`, `font-semibold`, `my-1`
+- **h1**: `text-2xl`, `leading-loose`, `font-bold`, `my-2`
+- **h2**: `text-2xl`, `leading-relaxed`, `font-semibold`, `my-2`
+- **h3**: `text-2xl`, `leading-relaxed`, `font-medium`, `my-1.5`
+- **h4**: `text-xl`, `leading-normal`, `font-bold`, `my-1.5`
+- **h5**: `text-lg`, `leading-normal`, `font-semibold`, `my-1.5`
+- **h6**: `text-base`, `leading-normal`, `font-medium`, `my-1`
 
 #### Lists
 
-- **ul**: `list-disc`, `ml-6`, `my-2`
-- **ol**: `list-decimal`, `ml-6`, `my-2`
-- **li**: `my-0.5`
+- **ul**: `list-disc`, `ml-6`, `my-2`, `text-base`, `leading-normal`
+- **ol**: `list-decimal`, `ml-6`, `my-2`, `text-base`, `leading-normal`
+- **li**: `my-0.5`, `text-base`, `leading-normal`
 
 #### Links
 
@@ -121,14 +124,14 @@ The component uses `formattedContentStyles` from `helpers.ts`, which is shared w
 
 #### Paragraphs
 
-- **p**: `my-2`
+- **p**: `text-base`, `leading-normal`, `text-ghost`, `my-2`
 - **p:first-child**: `mt-0`
 - **p:last-child**: `mb-0`
 
 ### Base Styling
 
 - `block w-full`: Full width block element
-- `whitespace-pre-wrap`: Preserves whitespace and line breaks
+- `text-ghost text-base leading-normal`: Matches Text defaults for readable body copy
 - `break-words`: Prevents overflow with long words
 
 ### Scrollable Styling
