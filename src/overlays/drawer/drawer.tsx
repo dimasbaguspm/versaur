@@ -12,8 +12,8 @@ import {
 import { drawerVariants } from './helpers'
 import type { DrawerProps, DrawerContextValue } from './types'
 import { OverlayPortal } from '@/utils/overlay-portal'
-import { useBodyScrollLock } from './use-body-scroll-lock'
-import { useDialogLifecycle } from './use-dialog-lifecycle'
+import { useBodyScrollLock } from '@/utils/use-body-scroll-lock'
+import { useDialogLifecycle } from '@/utils/use-dialog-lifecycle'
 
 /**
  * DrawerRoot - A controlled sliding drawer overlay component

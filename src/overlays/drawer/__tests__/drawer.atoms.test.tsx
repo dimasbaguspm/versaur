@@ -16,7 +16,6 @@ const mockContextValue: DrawerContextValue = {
   onClose: vi.fn(),
   position: 'right',
   size: 'md',
-  transitionType: 'slide',
   disableEscapeKeyDown: false,
   disableOverlayClickToClose: false,
   titleId: 'test-title-id',
