@@ -2,6 +2,7 @@ import { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
 import type { AttributeProps } from './types'
 import { Text } from '../text'
+import { Heading } from '../heading'
 
 /**
  * Attribute component for Versaur UI
@@ -19,16 +20,10 @@ export const Attribute = forwardRef<HTMLDivElement, AttributeProps>(
         className={cn('space-y-1', className, hasMargin && 'mb-4')}
         {...props}
       >
-        <Text
-          as='h4'
-          fontSize='xs'
-          fontWeight='normal'
-          color='gray'
-          className='leading-none'
-        >
+        <Heading level={4} color='gray' className='leading-none'>
           {title}
-        </Text>
-        <Text as='p' fontSize='sm' fontWeight='normal'>
+        </Heading>
+        <Text as='small' fontWeight='normal'>
           {children}
         </Text>
       </div>

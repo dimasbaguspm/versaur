@@ -1,11 +1,17 @@
 # Text Component
 
-The `Text` component provides semantic, accessible typography for Versaur UI, wrapping Tailwind v4 font utilities and the Versaur design system. It supports all design system color, underline, capitalization, alignment, italic, line clamp, ellipsis, and semantic HTML tags. All props are strictly typed and mobile-first.
+The `Text` component provides semantic, accessible typography for Versaur UI, wrapping Tailwind v4
+font utilities and the Versaur design system. It supports all design system colors, text
+decoration/transform helpers, alignment, italic, line clamp, ellipsis, and semantic inline/block
+HTML tags (excluding headings). All props are strictly typed and mobile-first.
 
 ## Features
-- Semantic HTML via `as` prop (`h1`, `h2`, `h3`, `h4`, `h5`, `h6`, `p`, `span`, `label`)
-- Versaur color system (`color`): `primary`, `secondary`, `tertiary`, `ghost`, `neutral`, `success`, `info`, `warning`, `danger`
-- Underline (`hasUnderline`) and capitalization (`isCapitalize`)
+
+- Semantic HTML via `as` prop (`span`, `p`, `q`, `s`, `strong`, `em`, `small`, `label`)
+- Versaur color system (`color`): `primary`, `secondary`, `tertiary`, `ghost`, `neutral`, `success`,
+  `info`, `warning`, `danger`
+- Text transform (`transform`): `none`, `capitalize`, `uppercase`, `lowercase`
+- Text decoration (`decoration`): `none`, `underline`, `line-through`, `overline`
 - Text alignment (`align`): `left`, `center`, `right`, `justify`
 - Italic (`italic`)
 - Line clamp (`clamp`): 1-5 lines
@@ -14,36 +20,29 @@ The `Text` component provides semantic, accessible typography for Versaur UI, wr
 - Responsive, mobile-first, and WCAG 2.1 AA compliant
 
 ## Usage
+
 ```tsx
 import { Text } from '@/components/text'
 
 <Text
-  as="h1"
+  as="p"
   color="primary"
-  hasUnderline
-  isCapitalize
+  decoration="underline"
+  transform="capitalize"
   align="center"
   italic
-  clamp={1}
+  clamp={2}
   ellipsis
 >
-  Heading: Primary, Underline, Capitalize, Center, Italic, Clamp 1, Ellipsis
+  Primary underline capitalize, centered paragraph with clamp
 </Text>
 
-<Text as="h2" color="secondary" align="right" italic clamp={2} ellipsis>
-  SubHeading: Secondary, Right, Italic, Clamp 2, Ellipsis
+<Text as="span" color="secondary" transform="uppercase">
+  Secondary uppercase span
 </Text>
 
-<Text as="p" color="tertiary" align="justify" clamp={3} ellipsis>
-  Paragraph: Tertiary, Justify, Clamp 3, Ellipsis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</Text>
-
-<Text as="span" color="ghost" italic clamp={4} ellipsis>
-  ItalicText: Ghost, Italic, Clamp 4, Ellipsis
-</Text>
-
-<Text as="span" color="danger" hasUnderline isCapitalize align="right" clamp={5} ellipsis>
-  UnderlineCapitalize: Danger, Underline, Capitalize, Right, Clamp 5, Ellipsis
+<Text as="q" color="tertiary" decoration="overline">
+  Overlined quote variant
 </Text>
 
 <Text as="p" color="info" clamp={2} ellipsis>
@@ -58,35 +57,9 @@ import { Text } from '@/components/text'
 ))}
 
 // As variants group
-{['h1','h2','h3','h4','h5','h6','p','span','label'].map(tag => (
+{['span','p','q','s','strong','em','small','label'].map(tag => (
   <Text key={tag} as={tag}>
     {`As: <${tag}>`}
-  </Text>
-))}
-```
-
-## Font Size & Font Weight
-
-The `Text` component allows you to override the default font size and font weight (which are determined by the `as` prop and design system) using the strictly typed `fontSize` and `fontWeight` props. These map directly to Tailwind v4 utilities.
-
-- `fontSize`: `'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl' | '9xl'`
-- `fontWeight`: `'thin' | 'extralight' | 'light' | 'normal' | 'medium' | 'semibold' | 'bold' | 'extrabold' | 'black'`
-
-If set, these props override the defaults from the `as` prop and design system.
-
-### Examples
-
-```tsx
-<Text fontSize="4xl" fontWeight="bold" color="primary" as="h2">
-  Custom fontSize="4xl" fontWeight="bold" color="primary" as="h2"
-</Text>
-
-// Font size variants
-{[
-  'xs', 'sm', 'base', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl', '7xl', '8xl', '9xl',
-].map(size => (
-  <Text key={size} fontSize={size}>
-    {`Font size: text-${size}`}
   </Text>
 ))}
 

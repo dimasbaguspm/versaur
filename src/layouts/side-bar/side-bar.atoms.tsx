@@ -44,9 +44,8 @@ export const SideBarItem = forwardRef<HTMLAnchorElement, SideBarItemProps>(
           {icon && <span className={cn(sideBarIconClass())}>{icon}</span>}
           {!isCollapsed && (
             <Text
-              as='span'
+              as='small'
               color='inherit'
-              fontSize='sm'
               fontWeight='normal'
               className='truncate'
             >
@@ -115,12 +114,7 @@ export const SideBarGroup = forwardRef<HTMLLIElement, SideBarGroupProps>(
           onClick={toggleExpanded}
         >
           {icon && <span className={cn(sideBarIconClass())}>{icon}</span>}
-          <Text
-            as='span'
-            color='inherit'
-            fontSize='sm'
-            className='flex-1 truncate'
-          >
+          <Text as='small' color='inherit' className='flex-1 truncate'>
             {label}
           </Text>
           <Icon

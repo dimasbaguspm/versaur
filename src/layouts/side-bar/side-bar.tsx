@@ -60,12 +60,7 @@ const SideBarRoot = forwardRef<HTMLElement, SideBarProps>(
                 />
               </span>
               {!isCollapsed && (
-                <Text
-                  as='span'
-                  color='inherit'
-                  fontSize='sm'
-                  className='truncate'
-                >
+                <Text as='small' color='inherit' className='truncate'>
                   Collapse
                 </Text>
               )}

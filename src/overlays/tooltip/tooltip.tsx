@@ -69,7 +69,7 @@ export const Tooltip: FC<TooltipRootProps & { delay?: number }> = ({
         role='tooltip'
         aria-hidden={!isOpen}
       >
-        <Text as='p' fontSize='xs' fontWeight='normal' color='black'>
+        <Text as='small' fontWeight='normal' color='black'>
           {content}
         </Text>
       </div>

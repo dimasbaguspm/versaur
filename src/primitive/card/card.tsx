@@ -4,6 +4,7 @@ import { cardVariants } from './helpers'
 import type { CardProps } from './types'
 import { Text } from '../text'
 import { CardList, CardListItem } from './card.atoms'
+import { Heading } from '../heading'
 
 /**
  * Card component - A clickable container component for displaying structured information
@@ -62,18 +63,13 @@ const CardRoot = forwardRef<HTMLButtonElement | HTMLDivElement, CardProps>(
             <div className='mb-2'>
               <div className='flex items-start justify-between gap-2'>
                 <div className='flex-1 min-w-0'>
-                  <Text
-                    as='h3'
-                    fontSize='base'
-                    fontWeight='semibold'
-                    className='break-words leading-tight'
-                  >
+                  <Heading level={3} className='break-words leading-tight'>
                     {title}
-                  </Text>
+                  </Heading>
                   {subtitle && (
                     <div className='mt-1'>
                       {typeof subtitle === 'string' ? (
-                        <Text as='p' fontSize='sm' color='gray'>
+                        <Text as='small' color='gray'>
                           {subtitle}
                         </Text>
                       ) : (
@@ -98,8 +94,7 @@ const CardRoot = forwardRef<HTMLButtonElement | HTMLDivElement, CardProps>(
                 <div className='flex-shrink-0 order-2 @sm/card:order-none @sm/card:ml-auto'>
                   {typeof supplementaryInfo === 'string' ? (
                     <Text
-                      as='p'
-                      fontSize='sm'
+                      as='small'
                       color='gray'
                       className='truncate'
                       align='right'

@@ -1,13 +1,27 @@
+import type { ElementType } from 'react'
 import { cva } from '@/utils/variants'
+
+export const ALLOWED_TEXT_TAGS = [
+  'p',
+  'span',
+  'q',
+  's',
+  'strong',
+  'em',
+  'small',
+  'label',
+] as const
+
+export type AllowedTextTag = (typeof ALLOWED_TEXT_TAGS)[number]
+
+export const normalizeTextTag = (tag?: ElementType): AllowedTextTag =>
+  ALLOWED_TEXT_TAGS.includes(tag as AllowedTextTag)
+    ? (tag as AllowedTextTag)
+    : 'span'
 
 /**
  * Text variants for Versaur design system
- * Supports color, underline, and capitalization
- */
-
-/**
- * Extended text variants for Versaur design system
- * Adds support for align, italic, clamp, ellipsis, fontWeight, fontSize, lineHeight
+ * Supports color, text transform, decoration, alignment, and truncation utilities
  */
 export const textVariants = cva('', {
   variants: {
@@ -26,13 +40,17 @@ export const textVariants = cva('', {
       black: 'text-black',
       white: 'text-white',
     },
-    hasUnderline: {
-      true: 'underline',
-      false: '',
+    transform: {
+      none: 'normal-case',
+      capitalize: 'capitalize',
+      uppercase: 'uppercase',
+      lowercase: 'lowercase',
     },
-    isCapitalize: {
-      true: 'capitalize',
-      false: '',
+    decoration: {
+      none: 'no-underline',
+      underline: 'underline',
+      'line-through': 'line-through',
+      overline: 'overline',
     },
     align: {
       left: 'text-left',
@@ -52,30 +70,24 @@ export const textVariants = cva('', {
       5: 'line-clamp-5',
       none: '',
     },
-    ellipsis: {
-      true: 'truncate',
-      false: '',
-    },
     as: {
-      h1: 'font-bold text-4xl leading-loose',
-      h2: 'font-semibold text-3xl leading-relaxed',
-      h3: 'font-medium text-2xl leading-relaxed',
-      h4: 'font-bold text-xl leading-normal',
-      h5: 'font-semibold text-lg leading-normal',
-      h6: 'font-medium text-base leading-normal',
       p: 'font-normal text-base leading-normal',
       span: 'font-normal text-base leading-normal',
+      q: 'font-normal text-base leading-normal',
+      s: 'font-normal text-base leading-normal',
+      strong: 'font-semibold text-base leading-normal',
+      em: 'font-normal italic text-base leading-normal',
+      small: 'font-normal text-sm leading-normal',
       label: 'font-normal text-xs leading-normal',
     },
   },
   defaultVariants: {
     color: 'neutral',
-    hasUnderline: false,
-    isCapitalize: false,
+    transform: 'none',
+    decoration: 'none',
     align: 'left',
     italic: false,
     clamp: 'none',
-    ellipsis: false,
     as: 'span',
   },
 })

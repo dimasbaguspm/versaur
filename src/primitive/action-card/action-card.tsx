@@ -70,7 +70,6 @@ const ActionCardRoot = forwardRef<
             <div className='flex items-center gap-3 mb-1'>
               <Text
                 as='span'
-                fontSize={size === 'sm' ? 'sm' : 'base'}
                 fontWeight='semibold'
                 color='ghost'
                 className='text-left leading-normal'
@@ -92,8 +91,7 @@ const ActionCardRoot = forwardRef<
             {/* Subtitle */}
             {subtitle && (
               <Text
-                as='p'
-                fontSize='sm'
+                as='small'
                 color='gray'
                 className='text-left leading-normal'
               >

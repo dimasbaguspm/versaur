@@ -9,7 +9,7 @@ const meta: Meta<typeof Text> = {
   argTypes: {
     as: {
       control: 'select',
-      options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'label'],
+      options: ['span', 'p', 'q', 's', 'strong', 'em', 'small', 'label'],
       description: 'HTML element to render',
       table: { type: { summary: 'ElementType' } },
     },
@@ -29,15 +29,15 @@ const meta: Meta<typeof Text> = {
       description: 'Versaur color system',
       table: { type: { summary: 'Color' } },
     },
-    hasUnderline: {
-      control: 'boolean',
-      description: 'Underline text',
-      table: { type: { summary: 'boolean' } },
+    transform: {
+      control: 'select',
+      options: ['none', 'capitalize', 'uppercase', 'lowercase'],
+      description: 'Text transform helper',
     },
-    isCapitalize: {
-      control: 'boolean',
-      description: 'Capitalize text',
-      table: { type: { summary: 'boolean' } },
+    decoration: {
+      control: 'select',
+      options: ['none', 'underline', 'line-through', 'overline'],
+      description: 'Text decoration helper',
     },
     align: {
       control: 'select',
@@ -51,7 +51,8 @@ const meta: Meta<typeof Text> = {
       table: { type: { summary: 'boolean' } },
     },
     clamp: {
-      control: 'number',
+      control: 'select',
+      options: [1, 2, 3, 4, 5, 'none'],
       description: 'Clamp lines (1-5)',
       table: { type: { summary: '1 | 2 | 3 | 4 | 5 | none' } },
     },
@@ -69,13 +70,12 @@ const meta: Meta<typeof Text> = {
   args: {
     as: 'span',
     color: 'neutral',
-    hasUnderline: false,
-    isCapitalize: false,
+    transform: 'none',
+    decoration: 'none',
     align: 'left',
     italic: false,
     clamp: 'none',
     ellipsis: false,
-    fontSize: undefined,
     fontWeight: undefined,
     children: 'Text content',
   },
@@ -87,31 +87,6 @@ type Story = StoryObj<typeof Text>
 
 export const Default: Story = {}
 
-export const Heading: Story = {
-  render: () => (
-    <Text
-      as='h1'
-      color='primary'
-      hasUnderline
-      isCapitalize
-      align='center'
-      italic
-      clamp={1}
-      ellipsis
-    >
-      Heading: Primary, Underline, Capitalize, Center, Italic, Clamp 1, Ellipsis
-    </Text>
-  ),
-}
-
-export const SubHeading: Story = {
-  render: () => (
-    <Text as='h2' color='secondary' align='right' italic clamp={2} ellipsis>
-      SubHeading: Secondary, Right, Italic, Clamp 2, Ellipsis
-    </Text>
-  ),
-}
-
 export const Paragraph: Story = {
   render: () => (
     <Text as='p' color='tertiary' align='justify' clamp={3} ellipsis>
@@ -122,34 +97,31 @@ export const Paragraph: Story = {
   ),
 }
 
-export const ItalicText: Story = {
+export const Transformations: Story = {
   render: () => (
-    <Text as='span' color='ghost' italic clamp={4} ellipsis>
-      ItalicText: Ghost, Italic, Clamp 4, Ellipsis
-    </Text>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <Text transform='capitalize'>capitalize transformation</Text>
+      <Text transform='uppercase'>uppercase transformation</Text>
+      <Text transform='lowercase'>LOWERCASE INPUT TO LOWERCASE OUTPUT</Text>
+      <Text transform='none'>No transform applied</Text>
+    </div>
   ),
 }
 
-export const UnderlineCapitalize: Story = {
+export const Decorations: Story = {
   render: () => (
-    <Text
-      as='span'
-      color='danger'
-      hasUnderline
-      isCapitalize
-      align='right'
-      clamp={5}
-      ellipsis
-    >
-      UnderlineCapitalize: Danger, Underline, Capitalize, Right, Clamp 5,
-      Ellipsis
-    </Text>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <Text decoration='underline'>Underline decoration</Text>
+      <Text decoration='line-through'>Line-through decoration</Text>
+      <Text decoration='overline'>Overline decoration</Text>
+      <Text decoration='none'>No decoration</Text>
+    </div>
   ),
 }
 
 export const ClampEllipsis: Story = {
   render: () => (
-    <Text as='p' color='info' clamp={2} ellipsis>
+    <Text as='p' color='info' clamp={2} ellipsis className='max-w-xl'>
       ClampEllipsis: Info, Clamp 2, Ellipsis. This is a long informational text
       that will be clamped to two lines and truncated with ellipsis if it
       overflows. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
@@ -184,35 +156,9 @@ export const ColorVariants: Story = {
 export const AsVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-      {['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'label'].map(tag => (
+      {['span', 'p', 'q', 's', 'strong', 'em', 'small', 'label'].map(tag => (
         <Text key={tag} as={tag as TextProps['as']}>
           {`As: <${tag}>`}
-        </Text>
-      ))}
-    </div>
-  ),
-}
-
-export const FontSizeVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-      {[
-        'xs',
-        'sm',
-        'base',
-        'lg',
-        'xl',
-        '2xl',
-        '3xl',
-        '4xl',
-        '5xl',
-        '6xl',
-        '7xl',
-        '8xl',
-        '9xl',
-      ].map(size => (
-        <Text key={size} fontSize={size as TextProps['fontSize']}>
-          {`Font size: text-${size}`}
         </Text>
       ))}
     </div>
@@ -238,13 +184,5 @@ export const FontWeightVariants: Story = {
         </Text>
       ))}
     </div>
-  ),
-}
-
-export const CustomFontSizeWeight: Story = {
-  render: () => (
-    <Text fontSize='4xl' fontWeight='bold' color='primary' as='h2'>
-      Custom fontSize="4xl" fontWeight="bold" color="primary" as="h2"
-    </Text>
   ),
 }

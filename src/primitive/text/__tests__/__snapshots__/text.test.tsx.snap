@@ -1,11 +1,11 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Text > matches snapshot 1`] = `
+exports[`Text > matches snapshot for paragraph 1`] = `
 <DocumentFragment>
-  <h1
-    class="text-primary underline capitalize text-center italic line-clamp-1 truncate font-bold text-4xl leading-loose"
+  <p
+    class="text-tertiary normal-case no-underline text-justify line-clamp-3 font-normal text-base leading-normal overflow-hidden"
   >
-    Heading: Primary, Underline, Capitalize, Center, Italic, Clamp 1, Ellipsis
-  </h1>
+    Paragraph: Tertiary, Justify, Clamp 3, Ellipsis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut laoreet cursus, enim erat facilisis urna, vitae dictum massa enim nec velit.
+  </p>
 </DocumentFragment>
 `;

@@ -1,25 +1,31 @@
-import { forwardRef, type ElementType } from 'react'
+import React, { forwardRef } from 'react'
 import { cn } from '@/utils/cn'
-import { textVariants } from './helpers'
+import { textVariants, normalizeTextTag } from './helpers'
 import type { TextProps } from './types'
 
 /**
  * Text component for Versaur UI
- * Provides semantic typography, color, underline, and capitalization support
- * @example <Text as="h1" color="primary" hasUnderline isCapitalize>bar</Text>
+ * Provides semantic typography, color, decoration, and transform support
+ * @example <Text as="p" color="primary" decoration="underline" transform="capitalize">bar</Text>
  */
-export const Text = forwardRef<HTMLElement, TextProps>(
+type TextRef =
+  | HTMLParagraphElement
+  | HTMLSpanElement
+  | HTMLQuoteElement
+  | HTMLLabelElement
+  | HTMLElement
+
+export const Text = forwardRef<TextRef, TextProps>(
   (
     {
       as: Component = 'span',
       color = 'ghost',
-      hasUnderline = false,
-      isCapitalize = false,
+      transform = 'none',
+      decoration = 'none',
       align = 'left',
       italic = false,
       clamp = 'none',
       ellipsis = false,
-      fontSize,
       fontWeight,
       className,
       children,
@@ -27,46 +33,35 @@ export const Text = forwardRef<HTMLElement, TextProps>(
     },
     ref
   ) => {
-    const allowedTags = [
-      'h1',
-      'h2',
-      'h3',
-      'h4',
-      'h5',
-      'h6',
-      'p',
-      'span',
-      'label',
-    ] as ElementType[]
-    const tag = allowedTags.includes(Component)
-      ? (Component as (typeof allowedTags)[number])
-      : 'span'
-    // Compose font size and weight classes if provided
-    const fontSizeClass = fontSize ? `text-${fontSize}` : ''
+    const tag = normalizeTextTag(Component)
+    const Comp = Component as React.ElementType
     const fontWeightClass = fontWeight ? `font-${fontWeight}` : ''
+    const ellipsisClass = ellipsis
+      ? clamp === 'none'
+        ? 'truncate'
+        : 'overflow-hidden'
+      : ''
     return (
-      <Component
-        ref={ref}
+      <Comp
+        ref={ref as React.Ref<HTMLElement>}
         className={cn(
           textVariants({
             color,
-            hasUnderline,
-            isCapitalize,
+            transform,
+            decoration,
             align,
             italic,
             clamp,
-            ellipsis,
-            // @ts-expect-error - `as` is not a valid variant
             as: tag,
           }),
-          fontSizeClass,
           fontWeightClass,
+          ellipsisClass,
           className
         )}
         {...props}
       >
         {children}
-      </Component>
+      </Comp>
     )
   }
 )

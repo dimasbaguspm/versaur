@@ -75,9 +75,7 @@ export const AsSection: Story = {
     children: (
       <div>
         <Text fontWeight='semibold'>Section Tile</Text>
-        <Text fontSize='sm'>
-          Renders as a semantic section for page structure.
-        </Text>
+        <Text>Renders as a semantic section for page structure.</Text>
       </div>
     ),
   },

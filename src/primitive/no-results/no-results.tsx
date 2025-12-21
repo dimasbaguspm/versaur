@@ -4,6 +4,7 @@ import { Icon } from '@/primitive/icon'
 import { Text } from '@/primitive/text'
 import type { NoResultsProps } from './types'
 import { noResultsVariants, noResultsHeaderVariants } from './helpers'
+import { Heading } from '../heading'
 
 /**
  * NoResults component for Versaur UI
@@ -32,9 +33,7 @@ export const NoResults = React.forwardRef<HTMLElement, NoResultsProps>(
       >
         <header className={noResultsHeaderVariants()}>
           <Icon as={icon} size='lg' color='ghost' aria-hidden='true' />
-          <Text as='h2' fontSize='lg'>
-            {title}
-          </Text>
+          <Heading level={2}>{title}</Heading>
         </header>
 
         {subtitle && (

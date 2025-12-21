@@ -20,7 +20,7 @@ import {
   pageHeaderBottomVariants,
   pageHeaderMobileActionsVariants,
 } from './helpers'
-import { Text } from '@/primitive'
+import { Heading, Text } from '@/primitive'
 
 /**
  * PageHeaderTop - main header area containing breadcrumbs, content, and actions
@@ -79,16 +79,7 @@ export const PageHeaderContent = forwardRef<
 export const PageHeaderTitle = forwardRef<
   HTMLHeadingElement,
   PageHeaderTitleProps
->((props, ref) => (
-  <Text
-    {...props}
-    as='h1'
-    fontSize='xl'
-    fontWeight='semibold'
-    ellipsis
-    ref={ref}
-  />
-))
+>((props, ref) => <Heading {...props} level={1} ellipsis ref={ref} />)
 
 /**
  * PageHeaderSubtitle - subtitle/description text
@@ -100,7 +91,6 @@ export const PageHeaderSubtitle = forwardRef<
 >(({ className, ...props }, ref) => (
   <Text
     as='p'
-    fontSize='sm'
     fontWeight='normal'
     clamp={2}
     ref={ref}

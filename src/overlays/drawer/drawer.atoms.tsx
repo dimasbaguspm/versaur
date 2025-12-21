@@ -17,9 +17,9 @@ import type {
 } from './types'
 import {
   ButtonIcon,
-  Text,
+  Heading,
   type ButtonIconProps,
-  type TextProps,
+  type HeadingProps,
 } from '@/primitive'
 
 /**
@@ -82,11 +82,12 @@ DrawerHeader.displayName = 'DrawerHeader'
  * DrawerTitle - Title element for the drawer header
  * Automatically uses the titleId from context for ARIA labeling
  */
-export const DrawerTitle = forwardRef<HTMLElement, TextProps>((props, ref) => {
-  const { titleId } = useDrawerContext()
-
-  return <Text {...props} ref={ref} as='h3' fontSize='lg' id={titleId} />
-})
+export const DrawerTitle = forwardRef<HTMLHeadingElement, HeadingProps>(
+  (props, ref) => {
+    const { titleId } = useDrawerContext()
+    return <Heading {...props} ref={ref} level={3} id={titleId} />
+  }
+)
 
 DrawerTitle.displayName = 'DrawerTitle'
 

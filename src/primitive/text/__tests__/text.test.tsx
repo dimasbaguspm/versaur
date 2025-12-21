@@ -4,52 +4,14 @@ import * as stories from '../text.stories'
 
 describe('Text', () => {
   const {
-    Heading,
-    SubHeading,
     Paragraph,
-    ItalicText,
-    UnderlineCapitalize,
+    Transformations,
+    Decorations,
     ClampEllipsis,
     ColorVariants,
     AsVariants,
-    FontSizeVariants,
     FontWeightVariants,
-    CustomFontSizeWeight,
   } = composeStories(stories)
-
-  it('renders heading with all features', () => {
-    const { getByText } = render(<Heading />)
-    const el = getByText(
-      /Heading: Primary, Underline, Capitalize, Center, Italic, Clamp 1, Ellipsis/i
-    )
-    expect(el.tagName).toBe('H1')
-    expect(el.className).toContain('font-bold')
-    expect(el.className).toContain('text-4xl')
-    expect(el.className).toContain('leading-loose')
-    expect(el.className).toContain('text-primary')
-    expect(el.className).toContain('underline')
-    expect(el.className).toContain('capitalize')
-    expect(el.className).toContain('text-center')
-    expect(el.className).toContain('italic')
-    expect(el.className).toContain('line-clamp-1')
-    expect(el.className).toContain('truncate')
-  })
-
-  it('renders subheading with secondary color and right alignment', () => {
-    const { getByText } = render(<SubHeading />)
-    const el = getByText(
-      /SubHeading: Secondary, Right, Italic, Clamp 2, Ellipsis/i
-    )
-    expect(el.tagName).toBe('H2')
-    expect(el.className).toContain('font-semibold')
-    expect(el.className).toContain('text-3xl')
-    expect(el.className).toContain('leading-relaxed')
-    expect(el.className).toContain('text-secondary')
-    expect(el.className).toContain('text-right')
-    expect(el.className).toContain('italic')
-    expect(el.className).toContain('line-clamp-2')
-    expect(el.className).toContain('truncate')
-  })
 
   it('renders paragraph with tertiary color, justify, clamp, ellipsis', () => {
     const { getByText } = render(<Paragraph />)
@@ -59,33 +21,31 @@ describe('Text', () => {
     expect(el.className).toContain('text-tertiary')
     expect(el.className).toContain('text-justify')
     expect(el.className).toContain('line-clamp-3')
-    expect(el.className).toContain('truncate')
+    expect(el.className).toContain('overflow-hidden')
   })
 
-  it('renders italic ghost text with clamp and ellipsis', () => {
-    const { getByText } = render(<ItalicText />)
-    const el = getByText(/ItalicText: Ghost, Italic, Clamp 4, Ellipsis/i)
-    expect(el.tagName).toBe('SPAN')
-    expect(el.className).toContain('font-normal')
-    expect(el.className).toContain('text-ghost')
-    expect(el.className).toContain('italic')
-    expect(el.className).toContain('line-clamp-4')
-    expect(el.className).toContain('truncate')
-  })
-
-  it('renders span with underline, capitalize, danger, right, clamp, ellipsis', () => {
-    const { getByText } = render(<UnderlineCapitalize />)
-    const el = getByText(
-      /UnderlineCapitalize: Danger, Underline, Capitalize, Right, Clamp 5, Ellipsis/i
+  it('applies transform utilities', () => {
+    const { getByText } = render(<Transformations />)
+    expect(getByText(/capitalize transformation/i).className).toContain(
+      'capitalize'
     )
-    expect(el.tagName).toBe('SPAN')
-    expect(el.className).toContain('font-normal')
-    expect(el.className).toContain('text-danger')
-    expect(el.className).toContain('underline')
-    expect(el.className).toContain('capitalize')
-    expect(el.className).toContain('text-right')
-    expect(el.className).toContain('line-clamp-5')
-    expect(el.className).toContain('truncate')
+    expect(getByText(/uppercase transformation/i).className).toContain(
+      'uppercase'
+    )
+    expect(getByText(/lowercase input/i).className).toContain('lowercase')
+    expect(getByText(/no transform applied/i).className).toContain(
+      'normal-case'
+    )
+  })
+
+  it('applies decoration utilities', () => {
+    const { getByText } = render(<Decorations />)
+    expect(getByText(/Underline decoration/i).className).toContain('underline')
+    expect(getByText(/Line-through decoration/i).className).toContain(
+      'line-through'
+    )
+    expect(getByText(/Overline decoration/i).className).toContain('overline')
+    expect(getByText(/No decoration/i).className).toContain('no-underline')
   })
 
   it('renders clamped and ellipsis paragraph with info color', () => {
@@ -95,7 +55,7 @@ describe('Text', () => {
     expect(el.className).toContain('font-normal')
     expect(el.className).toContain('text-info')
     expect(el.className).toContain('line-clamp-2')
-    expect(el.className).toContain('truncate')
+    expect(el.className).toContain('overflow-hidden')
   })
 
   it('renders all color variants', () => {
@@ -123,38 +83,10 @@ describe('Text', () => {
 
   it('renders all as variants', () => {
     const { getByText } = render(<AsVariants />)
-    const tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'label']
+    const tags = ['span', 'p', 'q', 's', 'strong', 'em', 'small', 'label']
     tags.forEach(tag => {
       const el = getByText(`As: <${tag}>`)
       expect(el.tagName).toBe(tag.toUpperCase())
-    })
-  })
-
-  it('matches snapshot', () => {
-    const { asFragment } = render(<Heading />)
-    expect(asFragment()).toMatchSnapshot()
-  })
-
-  it('renders all font size variants', () => {
-    const { getByText } = render(<FontSizeVariants />)
-    const sizes = [
-      'xs',
-      'sm',
-      'base',
-      'lg',
-      'xl',
-      '2xl',
-      '3xl',
-      '4xl',
-      '5xl',
-      '6xl',
-      '7xl',
-      '8xl',
-      '9xl',
-    ]
-    sizes.forEach(size => {
-      const el = getByText(`Font size: text-${size}`)
-      expect(el.className).toContain(`text-${size}`)
     })
   })
 
@@ -177,14 +109,8 @@ describe('Text', () => {
     })
   })
 
-  it('renders custom font size and weight', () => {
-    const { getByText } = render(<CustomFontSizeWeight />)
-    const el = getByText(
-      'Custom fontSize="4xl" fontWeight="bold" color="primary" as="h2"'
-    )
-    expect(el.className).toContain('text-4xl')
-    expect(el.className).toContain('font-bold')
-    expect(el.className).toContain('text-primary')
-    expect(el.tagName).toBe('H2')
+  it('matches snapshot for paragraph', () => {
+    const { asFragment } = render(<Paragraph />)
+    expect(asFragment()).toMatchSnapshot()
   })
 })

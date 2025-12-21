@@ -2,16 +2,19 @@ import type { HTMLAttributes, ElementType, ReactNode } from 'react'
 
 /**
  * TextProps defines the props for the Text component
- * @property as - HTML element to render (e.g., 'span', 'h1', 'p')
+ * @property as - HTML element to render (inline-friendly elements)
  * @property color - Versaur color system (primary, secondary, tertiary, ghost, neutral, success, info, warning, danger)
- * @property hasUnderline - Whether to underline the text
- * @property isCapitalize - Whether to capitalize the text
+ * @property transform - Text transform helper (capitalize, uppercase, lowercase, or none)
+ * @property decoration - Text decoration helper (underline, line-through, overline, none)
  * @property className - Additional CSS classes
  * @property children - Text content
  */
 export interface TextProps extends HTMLAttributes<HTMLElement> {
-  /** HTML element to render (e.g., 'span', 'h1', 'p') */
-  as?: ElementType
+  /** HTML element to render (inline-friendly elements) */
+  as?: Extract<
+    ElementType,
+    'span' | 'p' | 'q' | 's' | 'strong' | 'em' | 'small' | 'label'
+  >
   /** Versaur color system */
   color?:
     | 'primary'
@@ -27,10 +30,10 @@ export interface TextProps extends HTMLAttributes<HTMLElement> {
     | 'white'
     | 'black'
     | 'gray'
-  /** Underline text */
-  hasUnderline?: boolean
-  /** Capitalize text */
-  isCapitalize?: boolean
+  /** Text transform helper */
+  transform?: 'none' | 'capitalize' | 'uppercase' | 'lowercase'
+  /** Text decoration helper */
+  decoration?: 'none' | 'underline' | 'line-through' | 'overline'
   /** Text alignment */
   align?: 'left' | 'center' | 'right' | 'justify'
   /** Italic text */
@@ -39,29 +42,7 @@ export interface TextProps extends HTMLAttributes<HTMLElement> {
   clamp?: 1 | 2 | 3 | 4 | 5 | 'none'
   /** Ellipsis (truncate) */
   ellipsis?: boolean
-  /** Tailwind font size utility (e.g., 'xs', 'sm', 'base', 'lg', 'xl', etc.)
-   *  If set, overrides the default font size from the `as` prop and design system
-   *  See: https://tailwindcss.com/docs/font-size
-   */
-  fontSize?:
-    | 'xs'
-    | 'sm'
-    | 'base'
-    | 'lg'
-    | 'xl'
-    | '2xl'
-    | '3xl'
-    | '4xl'
-    | '5xl'
-    | '6xl'
-    | '7xl'
-    | '8xl'
-    | '9xl'
-    | undefined
-  /** Tailwind font weight utility (e.g., 'thin', 'extralight', 'light', 'normal', 'medium', 'semibold', 'bold', 'extrabold', 'black')
-   *  If set, overrides the default font weight from the `as` prop and design system
-   *  See: https://tailwindcss.com/docs/font-weight
-   */
+  /** Font weight utility (matches Tailwind font-weight) */
   fontWeight?:
     | 'thin'
     | 'extralight'
