@@ -79,7 +79,9 @@ export const PageHeaderContent = forwardRef<
 export const PageHeaderTitle = forwardRef<
   HTMLHeadingElement,
   PageHeaderTitleProps
->((props, ref) => <Heading {...props} level={1} ellipsis ref={ref} />)
+>((props, ref) => (
+  <Heading color='neutral' {...props} as='h4' ellipsis ref={ref} />
+))
 
 /**
  * PageHeaderSubtitle - subtitle/description text

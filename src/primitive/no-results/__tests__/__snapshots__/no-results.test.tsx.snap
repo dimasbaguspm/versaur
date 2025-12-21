@@ -32,11 +32,11 @@ exports[`NoResults > should render correctly with default props 1`] = `
           r="8"
         />
       </svg>
-      <h2
-        class="text-ghost text-left font-semibold text-lg"
+      <h5
+        class="text-ghost normal-case no-underline text-left font-semibold text-lg leading-normal"
       >
         No results found
-      </h2>
+      </h5>
     </header>
   </section>
 </DocumentFragment>

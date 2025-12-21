@@ -2,7 +2,7 @@ import { cva } from '@/utils/variants'
 
 /**
  * Heading variants for Versaur design system
- * Supports color, underline, capitalization, margin, alignment, italic, clamp, ellipsis, and heading levels
+ * Supports color, transform, decoration, margin, alignment, clamp, ellipsis, and heading tags
  */
 export const headingVariants = cva('', {
   variants: {
@@ -21,13 +21,17 @@ export const headingVariants = cva('', {
       black: 'text-black',
       white: 'text-white',
     },
-    hasUnderline: {
-      true: 'underline',
-      false: '',
+    transform: {
+      none: 'normal-case',
+      capitalize: 'capitalize',
+      uppercase: 'uppercase',
+      lowercase: 'lowercase',
     },
-    isCapitalize: {
-      true: 'capitalize',
-      false: '',
+    decoration: {
+      none: 'no-underline',
+      underline: 'underline',
+      'line-through': 'line-through',
+      overline: 'overline',
     },
     hasMargin: {
       true: 'mb-4',
@@ -39,10 +43,6 @@ export const headingVariants = cva('', {
       right: 'text-right',
       justify: 'text-justify',
     },
-    italic: {
-      true: 'italic',
-      false: '',
-    },
     clamp: {
       1: 'line-clamp-1',
       2: 'line-clamp-2',
@@ -51,28 +51,22 @@ export const headingVariants = cva('', {
       5: 'line-clamp-5',
       none: '',
     },
-    ellipsis: {
-      true: 'truncate',
-      false: '',
-    },
-    level: {
-      1: 'font-bold text-2xl leading-loose',
-      2: 'font-semibold text-xl leading-relaxed',
-      3: 'font-semibold text-lg leading-relaxed',
-      4: 'font-bold text-sm leading-normal',
-      5: 'font-semibold text-sm leading-normal',
-      6: 'font-medium text-xs leading-normal',
+    as: {
+      h1: 'font-bold text-2xl leading-loose',
+      h2: 'font-semibold text-2xl leading-relaxed',
+      h3: 'font-medium text-2xl leading-relaxed',
+      h4: 'font-bold text-xl leading-normal',
+      h5: 'font-semibold text-lg leading-normal',
+      h6: 'font-medium text-base leading-normal',
     },
   },
   defaultVariants: {
     color: 'ghost',
-    hasUnderline: false,
-    isCapitalize: false,
+    transform: 'none',
+    decoration: 'none',
     hasMargin: false,
     align: 'left',
-    italic: false,
     clamp: 'none',
-    ellipsis: false,
-    level: 1,
+    as: 'h1',
   },
 })

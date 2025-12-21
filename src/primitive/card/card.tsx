@@ -63,7 +63,7 @@ const CardRoot = forwardRef<HTMLButtonElement | HTMLDivElement, CardProps>(
             <div className='mb-2'>
               <div className='flex items-start justify-between gap-2'>
                 <div className='flex-1 min-w-0'>
-                  <Heading level={3} className='break-words leading-tight'>
+                  <Heading as='h6' className='break-words leading-tight'>
                     {title}
                   </Heading>
                   {subtitle && (

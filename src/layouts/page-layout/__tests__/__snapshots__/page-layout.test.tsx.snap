@@ -26,14 +26,14 @@ exports[`PageLayout > Basic story > renders correctly (snapshot) 1`] = `
               <div
                 class="flex items-center justify-between"
               >
-                <h1
-                  class="text-ghost text-left truncate text-xl font-semibold"
+                <h4
+                  class="text-ghost normal-case no-underline text-left font-bold text-xl leading-normal truncate"
                 >
                   Page Title
-                </h1>
+                </h4>
               </div>
               <p
-                class="text-ghost text-left line-clamp-2 text-sm font-normal mb-2 sm:clamp-3"
+                class="text-ghost normal-case no-underline text-left line-clamp-2 text-base leading-normal font-normal mb-2 sm:clamp-3"
               >
                 A brief description of this page
               </p>
@@ -156,14 +156,14 @@ exports[`PageLayout > BothGray story > renders correctly (snapshot) 1`] = `
               <div
                 class="flex items-center justify-between"
               >
-                <h1
-                  class="text-ghost text-left truncate text-xl font-semibold"
+                <h4
+                  class="text-ghost normal-case no-underline text-left font-bold text-xl leading-normal truncate"
                 >
                   Reports
-                </h1>
+                </h4>
               </div>
               <p
-                class="text-ghost text-left line-clamp-2 text-sm font-normal mb-2 sm:clamp-3"
+                class="text-ghost normal-case no-underline text-left line-clamp-2 text-base leading-normal font-normal mb-2 sm:clamp-3"
               >
                 View and download your reports
               </p>
@@ -286,14 +286,14 @@ exports[`PageLayout > FluidLayout story > renders correctly (snapshot) 1`] = `
               <div
                 class="flex items-center justify-between"
               >
-                <h1
-                  class="text-ghost text-left truncate text-xl font-semibold"
+                <h4
+                  class="text-ghost normal-case no-underline text-left font-bold text-xl leading-normal truncate"
                 >
                   Full Width Dashboard
-                </h1>
+                </h4>
               </div>
               <p
-                class="text-ghost text-left line-clamp-2 text-sm font-normal mb-2 sm:clamp-3"
+                class="text-ghost normal-case no-underline text-left line-clamp-2 text-base leading-normal font-normal mb-2 sm:clamp-3"
               >
                 Utilize the entire viewport width
               </p>
@@ -462,14 +462,14 @@ exports[`PageLayout > GrayHeaderWhiteContent story > renders correctly (snapshot
               <div
                 class="flex items-center justify-between"
               >
-                <h1
-                  class="text-ghost text-left truncate text-xl font-semibold"
+                <h4
+                  class="text-ghost normal-case no-underline text-left font-bold text-xl leading-normal truncate"
                 >
                   Dashboard
-                </h1>
+                </h4>
               </div>
               <p
-                class="text-ghost text-left line-clamp-2 text-sm font-normal mb-2 sm:clamp-3"
+                class="text-ghost normal-case no-underline text-left line-clamp-2 text-base leading-normal font-normal mb-2 sm:clamp-3"
               >
                 Monitor your metrics and performance
               </p>
@@ -652,14 +652,14 @@ exports[`PageLayout > NarrowLayout story > renders correctly (snapshot) 1`] = `
               <div
                 class="flex items-center justify-between"
               >
-                <h1
-                  class="text-ghost text-left truncate text-xl font-semibold"
+                <h4
+                  class="text-ghost normal-case no-underline text-left font-bold text-xl leading-normal truncate"
                 >
                   Article Title
-                </h1>
+                </h4>
               </div>
               <p
-                class="text-ghost text-left line-clamp-2 text-sm font-normal mb-2 sm:clamp-3"
+                class="text-ghost normal-case no-underline text-left line-clamp-2 text-base leading-normal font-normal mb-2 sm:clamp-3"
               >
                 Published on October 25, 2025
               </p>
@@ -859,14 +859,14 @@ exports[`PageLayout > WhiteHeaderGrayContent story > renders correctly (snapshot
               <div
                 class="flex items-center justify-between"
               >
-                <h1
-                  class="text-ghost text-left truncate text-xl font-semibold"
+                <h4
+                  class="text-ghost normal-case no-underline text-left font-bold text-xl leading-normal truncate"
                 >
                   Settings
-                </h1>
+                </h4>
               </div>
               <p
-                class="text-ghost text-left line-clamp-2 text-sm font-normal mb-2 sm:clamp-3"
+                class="text-ghost normal-case no-underline text-left line-clamp-2 text-base leading-normal font-normal mb-2 sm:clamp-3"
               >
                 Manage your account preferences
               </p>
@@ -975,14 +975,14 @@ exports[`PageLayout > WithMargins story > renders correctly (snapshot) 1`] = `
               <div
                 class="flex items-center justify-between"
               >
-                <h1
-                  class="text-ghost text-left truncate text-xl font-semibold"
+                <h4
+                  class="text-ghost normal-case no-underline text-left font-bold text-xl leading-normal truncate"
                 >
                   Page with Margins
-                </h1>
+                </h4>
               </div>
               <p
-                class="text-ghost text-left line-clamp-2 text-sm font-normal mb-2 sm:clamp-3"
+                class="text-ghost normal-case no-underline text-left line-clamp-2 text-base leading-normal font-normal mb-2 sm:clamp-3"
               >
                 Notice the horizontal margins on the layout
               </p>

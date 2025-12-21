@@ -99,11 +99,11 @@ exports[`AppLayout > LeftSidebarAndMain story > renders correctly (snapshot) 1`]
                     />
                   </svg>
                 </span>
-                <span
-                  class="text-left text-sm font-normal truncate"
+                <small
+                  class="normal-case no-underline text-left text-sm leading-normal font-normal truncate"
                 >
                   Overview
-                </span>
+                </small>
               </a>
             </li>
             <li>
@@ -132,11 +132,11 @@ exports[`AppLayout > LeftSidebarAndMain story > renders correctly (snapshot) 1`]
                     />
                   </svg>
                 </span>
-                <span
-                  class="text-left text-sm font-normal truncate"
+                <small
+                  class="normal-case no-underline text-left text-sm leading-normal font-normal truncate"
                 >
                   Analytics
-                </span>
+                </small>
               </a>
             </li>
             <li>
@@ -170,11 +170,11 @@ exports[`AppLayout > LeftSidebarAndMain story > renders correctly (snapshot) 1`]
                     />
                   </svg>
                 </span>
-                <span
-                  class="text-left text-sm font-normal truncate"
+                <small
+                  class="normal-case no-underline text-left text-sm leading-normal font-normal truncate"
                 >
                   Settings
-                </span>
+                </small>
               </a>
             </li>
           </ul>
@@ -208,11 +208,11 @@ exports[`AppLayout > LeftSidebarAndMain story > renders correctly (snapshot) 1`]
                 />
               </svg>
             </span>
-            <span
-              class="text-left font-normal text-sm truncate"
+            <small
+              class="normal-case no-underline text-left font-normal text-sm leading-normal truncate"
             >
               Collapse
-            </span>
+            </small>
           </button>
         </div>
       </nav>
@@ -244,11 +244,11 @@ exports[`AppLayout > LeftSidebarAndMain story > renders correctly (snapshot) 1`]
                   <div
                     class="flex items-center justify-between"
                   >
-                    <h1
-                      class="text-ghost text-left truncate text-xl font-semibold"
+                    <h4
+                      class="text-ghost normal-case no-underline text-left font-bold text-xl leading-normal truncate"
                     >
                       Dashboard Content
-                    </h1>
+                    </h4>
                     <div
                       class="md:hidden"
                       data-versaur-page-header-mobile-actions="true"
@@ -282,7 +282,7 @@ exports[`AppLayout > LeftSidebarAndMain story > renders correctly (snapshot) 1`]
                     </div>
                   </div>
                   <p
-                    class="text-ghost text-left line-clamp-2 text-sm font-normal mb-2 sm:clamp-3"
+                    class="text-ghost normal-case no-underline text-left line-clamp-2 text-base leading-normal font-normal mb-2 sm:clamp-3"
                   >
                     Monitor your metrics and analytics
                   </p>
@@ -623,11 +623,11 @@ exports[`AppLayout > ThreeColumn story > renders correctly (snapshot) 1`] = `
                     />
                   </svg>
                 </span>
-                <span
-                  class="text-left text-sm font-normal truncate"
+                <small
+                  class="normal-case no-underline text-left text-sm leading-normal font-normal truncate"
                 >
                   Home
-                </span>
+                </small>
               </a>
             </li>
             <li>
@@ -656,11 +656,11 @@ exports[`AppLayout > ThreeColumn story > renders correctly (snapshot) 1`] = `
                     />
                   </svg>
                 </span>
-                <span
-                  class="text-left text-sm font-normal truncate"
+                <small
+                  class="normal-case no-underline text-left text-sm leading-normal font-normal truncate"
                 >
                   Projects
-                </span>
+                </small>
               </a>
             </li>
           </ul>
@@ -694,11 +694,11 @@ exports[`AppLayout > ThreeColumn story > renders correctly (snapshot) 1`] = `
                 />
               </svg>
             </span>
-            <span
-              class="text-left font-normal text-sm truncate"
+            <small
+              class="normal-case no-underline text-left font-normal text-sm leading-normal truncate"
             >
               Collapse
-            </span>
+            </small>
           </button>
         </div>
       </nav>
@@ -730,11 +730,11 @@ exports[`AppLayout > ThreeColumn story > renders correctly (snapshot) 1`] = `
                   <div
                     class="flex items-center justify-between"
                   >
-                    <h1
-                      class="text-ghost text-left truncate text-xl font-semibold"
+                    <h4
+                      class="text-ghost normal-case no-underline text-left font-bold text-xl leading-normal truncate"
                     >
                       Dashboard Content
-                    </h1>
+                    </h4>
                     <div
                       class="md:hidden"
                       data-versaur-page-header-mobile-actions="true"
@@ -768,7 +768,7 @@ exports[`AppLayout > ThreeColumn story > renders correctly (snapshot) 1`] = `
                     </div>
                   </div>
                   <p
-                    class="text-ghost text-left line-clamp-2 text-sm font-normal mb-2 sm:clamp-3"
+                    class="text-ghost normal-case no-underline text-left line-clamp-2 text-base leading-normal font-normal mb-2 sm:clamp-3"
                   >
                     Monitor your metrics and analytics
                   </p>
@@ -1151,14 +1151,14 @@ exports[`AppLayout > TopAndMain story > renders correctly (snapshot) 1`] = `
                   <div
                     class="flex items-center justify-between"
                   >
-                    <h1
-                      class="text-ghost text-left truncate text-xl font-semibold"
+                    <h4
+                      class="text-ghost normal-case no-underline text-left font-bold text-xl leading-normal truncate"
                     >
                       Simple Layout
-                    </h1>
+                    </h4>
                   </div>
                   <p
-                    class="text-ghost text-left line-clamp-2 text-sm font-normal mb-2 sm:clamp-3"
+                    class="text-ghost normal-case no-underline text-left line-clamp-2 text-base leading-normal font-normal mb-2 sm:clamp-3"
                   >
                     A minimal layout with top bar and main content
                   </p>
@@ -1384,14 +1384,14 @@ exports[`AppLayout > WithBottomNav story > renders correctly (snapshot) 1`] = `
                   <div
                     class="flex items-center justify-between"
                   >
-                    <h1
-                      class="text-ghost text-left truncate text-xl font-semibold"
+                    <h4
+                      class="text-ghost normal-case no-underline text-left font-bold text-xl leading-normal truncate"
                     >
                       Feed
-                    </h1>
+                    </h4>
                   </div>
                   <p
-                    class="text-ghost text-left line-clamp-2 text-sm font-normal mb-2 sm:clamp-3"
+                    class="text-ghost normal-case no-underline text-left line-clamp-2 text-base leading-normal font-normal mb-2 sm:clamp-3"
                   >
                     Your latest updates
                   </p>

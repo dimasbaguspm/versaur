@@ -11,16 +11,16 @@ exports[`AttributeList > should render default AttributeList with correct HTML s
       <div
         class="space-y-1"
       >
-        <h4
-          class="text-gray-500 text-left text-xs font-normal leading-none"
+        <h6
+          class="text-gray-500 normal-case no-underline text-left font-medium text-base leading-none"
         >
           Name
-        </h4>
-        <p
-          class="text-ghost text-left text-sm font-normal"
+        </h6>
+        <small
+          class="text-ghost normal-case no-underline text-left text-sm leading-normal font-normal"
         >
           John Doe
-        </p>
+        </small>
       </div>
     </li>
     <li
@@ -29,16 +29,16 @@ exports[`AttributeList > should render default AttributeList with correct HTML s
       <div
         class="space-y-1"
       >
-        <h4
-          class="text-gray-500 text-left text-xs font-normal leading-none"
+        <h6
+          class="text-gray-500 normal-case no-underline text-left font-medium text-base leading-none"
         >
           Email
-        </h4>
-        <p
-          class="text-ghost text-left text-sm font-normal"
+        </h6>
+        <small
+          class="text-ghost normal-case no-underline text-left text-sm leading-normal font-normal"
         >
           john.doe@example.com
-        </p>
+        </small>
       </div>
     </li>
     <li
@@ -47,16 +47,16 @@ exports[`AttributeList > should render default AttributeList with correct HTML s
       <div
         class="space-y-1"
       >
-        <h4
-          class="text-gray-500 text-left text-xs font-normal leading-none"
+        <h6
+          class="text-gray-500 normal-case no-underline text-left font-medium text-base leading-none"
         >
           Phone
-        </h4>
-        <p
-          class="text-ghost text-left text-sm font-normal"
+        </h6>
+        <small
+          class="text-ghost normal-case no-underline text-left text-sm leading-normal font-normal"
         >
           +1 (555) 123-4567
-        </p>
+        </small>
       </div>
     </li>
     <li
@@ -65,16 +65,16 @@ exports[`AttributeList > should render default AttributeList with correct HTML s
       <div
         class="space-y-1"
       >
-        <h4
-          class="text-gray-500 text-left text-xs font-normal leading-none"
+        <h6
+          class="text-gray-500 normal-case no-underline text-left font-medium text-base leading-none"
         >
           Location
-        </h4>
-        <p
-          class="text-ghost text-left text-sm font-normal"
+        </h6>
+        <small
+          class="text-ghost normal-case no-underline text-left text-sm leading-normal font-normal"
         >
           New York, NY
-        </p>
+        </small>
       </div>
     </li>
   </ul>

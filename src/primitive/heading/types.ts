@@ -2,21 +2,20 @@ import type { HTMLAttributes, ReactNode } from 'react'
 
 /**
  * HeadingProps defines the props for the Heading component
- * @property level - Heading level (1-6, corresponding to h1-h6)
+ * @property as - HTML heading element to render (h1-h6)
  * @property color - Versaur color system (primary, secondary, tertiary, ghost, neutral, success, info, warning, danger)
- * @property hasUnderline - Whether to underline the text
- * @property isCapitalize - Whether to capitalize the text
+ * @property transform - Text transform helper
+ * @property decoration - Text decoration helper
  * @property hasMargin - Whether to add margin bottom (mb-4)
  * @property align - Text alignment
- * @property italic - Whether to italicize the text
  * @property clamp - Clamp lines (1-5) or none
  * @property ellipsis - Whether to truncate text with ellipsis
  * @property className - Additional CSS classes
  * @property children - Text content
  */
 export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
-  /** Heading level (1-6, corresponding to h1-h6) */
-  level?: 1 | 2 | 3 | 4 | 5 | 6
+  /** HTML heading element to render (h1-h6) */
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   /** Versaur color system */
   color?:
     | 'primary'
@@ -32,16 +31,14 @@ export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
     | 'white'
     | 'black'
     | 'gray'
-  /** Underline text */
-  hasUnderline?: boolean
-  /** Capitalize text */
-  isCapitalize?: boolean
+  /** Text transform helper */
+  transform?: 'none' | 'capitalize' | 'uppercase' | 'lowercase'
+  /** Text decoration helper */
+  decoration?: 'none' | 'underline' | 'line-through' | 'overline'
   /** Add margin bottom (mb-4) */
   hasMargin?: boolean
   /** Text alignment */
   align?: 'left' | 'center' | 'right' | 'justify'
-  /** Italic text */
-  italic?: boolean
   /** Clamp lines (1-5) or none */
   clamp?: 1 | 2 | 3 | 4 | 5 | 'none'
   /** Ellipsis (truncate) */

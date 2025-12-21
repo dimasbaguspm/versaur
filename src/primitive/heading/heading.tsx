@@ -11,13 +11,12 @@ import type { HeadingProps } from './types'
 export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
   (
     {
-      level = 3,
+      as = 'h3',
       color = 'black',
-      hasUnderline = false,
-      isCapitalize = false,
+      transform = 'none',
+      decoration = 'none',
       hasMargin = false,
       align = 'left',
-      italic = false,
       clamp = 'none',
       ellipsis = false,
       className,
@@ -26,8 +25,12 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
     },
     ref
   ) => {
-    // Determine the HTML tag based on level
-    const HeadingTag = `h${level}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+    const HeadingTag = as
+    const ellipsisClass = ellipsis
+      ? clamp === 'none'
+        ? 'truncate'
+        : 'overflow-hidden'
+      : ''
 
     return (
       <HeadingTag
@@ -35,15 +38,14 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
         className={cn(
           headingVariants({
             color,
-            hasUnderline,
-            isCapitalize,
+            transform,
+            decoration,
             hasMargin,
             align,
-            italic,
             clamp,
-            ellipsis,
-            level,
+            as: HeadingTag,
           }),
+          ellipsisClass,
           className
         )}
         {...props}

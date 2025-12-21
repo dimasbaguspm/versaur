@@ -20,7 +20,7 @@ export const Attribute = forwardRef<HTMLDivElement, AttributeProps>(
         className={cn('space-y-1', className, hasMargin && 'mb-4')}
         {...props}
       >
-        <Heading level={4} color='gray' className='leading-none'>
+        <Heading as='h6' color='gray' className='leading-none'>
           {title}
         </Heading>
         <Text as='small' fontWeight='normal'>

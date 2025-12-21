@@ -17,7 +17,7 @@ describe('NoResults', () => {
     render(<WithSubtitleAndAction />)
 
     expect(screen.getByRole('status')).toBeInTheDocument()
-    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(
+    expect(screen.getByRole('heading', { level: 5 })).toHaveTextContent(
       'No results found'
     )
     expect(
@@ -34,7 +34,7 @@ describe('NoResults', () => {
     render(<NoResults icon={SearchIcon} title='No items found' />)
 
     expect(screen.getByRole('status')).toBeInTheDocument()
-    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(
+    expect(screen.getByRole('heading', { level: 5 })).toHaveTextContent(
       'No items found'
     )
     expect(screen.queryByRole('button')).not.toBeInTheDocument()

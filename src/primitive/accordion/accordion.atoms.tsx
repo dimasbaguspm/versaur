@@ -21,7 +21,7 @@ export const AccordionTitle = forwardRef<
   return (
     <Heading
       ref={ref}
-      level={4}
+      as='h6'
       className={cn('font-medium', className)}
       {...props}
       color='black'

@@ -29,7 +29,7 @@ describe('Heading', () => {
   it('renders primary heading with all features', () => {
     const { getByText } = render(<PrimaryWithFeatures />)
     const el = getByText(
-      /Primary Heading: Underline, Capitalize, Center, Italic, Margin/i
+      /Primary Heading: Underline, Capitalize, Center, Margin/i
     )
     expect(el.tagName).toBe('H1')
     expect(el.className).toContain('font-bold')
@@ -39,7 +39,6 @@ describe('Heading', () => {
     expect(el.className).toContain('underline')
     expect(el.className).toContain('capitalize')
     expect(el.className).toContain('text-center')
-    expect(el.className).toContain('italic')
     expect(el.className).toContain('mb-4')
   })
 
@@ -48,7 +47,7 @@ describe('Heading', () => {
     const el = getByText(/Secondary Heading: Right aligned with line clamp/i)
     expect(el.tagName).toBe('H2')
     expect(el.className).toContain('font-semibold')
-    expect(el.className).toContain('text-xl')
+    expect(el.className).toContain('text-2xl')
     expect(el.className).toContain('leading-relaxed')
     expect(el.className).toContain('text-secondary')
     expect(el.className).toContain('text-right')
@@ -60,8 +59,8 @@ describe('Heading', () => {
     const { getByText } = render(<TertiaryWithEllipsis />)
     const el = getByText(/Tertiary Heading: This is a very long text/i)
     expect(el.tagName).toBe('H3')
-    expect(el.className).toContain('font-semibold')
-    expect(el.className).toContain('text-lg')
+    expect(el.className).toContain('font-medium')
+    expect(el.className).toContain('text-2xl')
     expect(el.className).toContain('leading-relaxed')
     expect(el.className).toContain('text-tertiary')
     expect(el.className).toContain('truncate')
@@ -74,7 +73,7 @@ describe('Heading', () => {
     const el = getByText(/Success Heading/i)
     expect(el.tagName).toBe('H4')
     expect(el.className).toContain('font-bold')
-    expect(el.className).toContain('text-sm')
+    expect(el.className).toContain('text-xl')
     expect(el.className).toContain('leading-normal')
     expect(el.className).toContain('text-success')
     expect(el.className).toContain('mb-4')
@@ -85,7 +84,7 @@ describe('Heading', () => {
     const el = getByText(/warning heading with capitalize and justify/i)
     expect(el.tagName).toBe('H5')
     expect(el.className).toContain('font-semibold')
-    expect(el.className).toContain('text-sm')
+    expect(el.className).toContain('text-lg')
     expect(el.className).toContain('leading-normal')
     expect(el.className).toContain('text-warning')
     expect(el.className).toContain('capitalize')
@@ -95,13 +94,13 @@ describe('Heading', () => {
 
   it('renders danger heading with italic and underline', () => {
     const { getByText } = render(<DangerItalicUnderline />)
-    const el = getByText(/Danger Heading: Italic and Underlined/i)
+    const el = getByText(/Danger Heading: Uppercase and Underlined/i)
     expect(el.tagName).toBe('H6')
     expect(el.className).toContain('font-medium')
-    expect(el.className).toContain('text-xs')
+    expect(el.className).toContain('text-base')
     expect(el.className).toContain('leading-normal')
     expect(el.className).toContain('text-danger')
-    expect(el.className).toContain('italic')
+    expect(el.className).toContain('uppercase')
     expect(el.className).toContain('underline')
     expect(el.className).toContain('mb-4')
   })

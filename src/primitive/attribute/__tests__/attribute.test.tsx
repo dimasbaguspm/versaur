@@ -11,7 +11,7 @@ describe('Attribute', () => {
 
   it('should render with long content', () => {
     const { getByText, getByRole } = render(<LongContent />)
-    expect(getByRole('heading', { level: 4 })).toHaveTextContent('Description')
+    expect(getByRole('heading', { level: 6 })).toHaveTextContent('Description')
     expect(getByText(/This is a longer description/)).toBeInTheDocument()
   })
 })

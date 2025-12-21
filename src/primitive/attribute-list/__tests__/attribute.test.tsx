@@ -14,7 +14,7 @@ describe('AttributeList', () => {
     const listItems = getAllByRole('listitem')
     expect(listItems).toHaveLength(6)
 
-    const headings = getAllByRole('heading', { level: 4 })
+    const headings = getAllByRole('heading', { level: 6 })
     expect(headings[0]).toHaveTextContent('Full Width Description')
     expect(headings[1]).toHaveTextContent('Name')
     expect(headings[2]).toHaveTextContent('Email')
@@ -64,8 +64,8 @@ describe('AttributeList', () => {
 
     // Each list item should contain a heading and paragraph
     listItems.forEach(listItem => {
-      const heading = listItem.querySelector('h4')
-      const paragraph = listItem.querySelector('p')
+      const heading = listItem.querySelector('h6')
+      const paragraph = listItem.querySelector('small')
       expect(heading).toBeInTheDocument()
       expect(paragraph).toBeInTheDocument()
     })

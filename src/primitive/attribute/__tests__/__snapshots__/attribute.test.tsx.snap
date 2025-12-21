@@ -5,16 +5,16 @@ exports[`Attribute > should render with correct HTML structure 1`] = `
   <div
     class="space-y-1"
   >
-    <h4
-      class="text-gray-500 text-left text-xs font-normal leading-none"
+    <h6
+      class="text-gray-500 normal-case no-underline text-left font-medium text-base leading-none"
     >
       Name
-    </h4>
-    <p
-      class="text-ghost text-left text-sm font-normal"
+    </h6>
+    <small
+      class="text-ghost normal-case no-underline text-left text-sm leading-normal font-normal"
     >
       John Doe
-    </p>
+    </small>
   </div>
 </DocumentFragment>
 `;

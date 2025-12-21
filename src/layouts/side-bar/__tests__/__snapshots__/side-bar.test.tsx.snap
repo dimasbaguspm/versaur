@@ -66,11 +66,11 @@ exports[`SideBar > Basic Rendering > renders correctly and matches snapshot 1`] 
                   />
                 </svg>
               </span>
-              <span
-                class="text-left text-sm font-normal truncate"
+              <small
+                class="normal-case no-underline text-left text-sm leading-normal font-normal truncate"
               >
                 Dashboard
-              </span>
+              </small>
             </a>
           </li>
           <li>
@@ -102,11 +102,11 @@ exports[`SideBar > Basic Rendering > renders correctly and matches snapshot 1`] 
                   />
                 </svg>
               </span>
-              <span
-                class="text-left text-sm font-normal truncate"
+              <small
+                class="normal-case no-underline text-left text-sm leading-normal font-normal truncate"
               >
                 Home
-              </span>
+              </small>
             </a>
           </li>
           <li
@@ -146,11 +146,11 @@ exports[`SideBar > Basic Rendering > renders correctly and matches snapshot 1`] 
                   />
                 </svg>
               </span>
-              <span
-                class="text-left font-normal text-sm flex-1 truncate"
+              <small
+                class="normal-case no-underline text-left font-normal text-sm leading-normal flex-1 truncate"
               >
                 Projects
-              </span>
+              </small>
               <svg
                 aria-hidden="true"
                 class="lucide lucide-chevron-down inline-flex items-center justify-center w-3 h-3"
@@ -207,11 +207,11 @@ exports[`SideBar > Basic Rendering > renders correctly and matches snapshot 1`] 
                       />
                     </svg>
                   </span>
-                  <span
-                    class="text-left text-sm font-normal truncate"
+                  <small
+                    class="normal-case no-underline text-left text-sm leading-normal font-normal truncate"
                   >
                     Web Application
-                  </span>
+                  </small>
                 </a>
               </li>
               <li>
@@ -248,11 +248,11 @@ exports[`SideBar > Basic Rendering > renders correctly and matches snapshot 1`] 
                       />
                     </svg>
                   </span>
-                  <span
-                    class="text-left text-sm font-normal truncate"
+                  <small
+                    class="normal-case no-underline text-left text-sm leading-normal font-normal truncate"
                   >
                     Mobile App
-                  </span>
+                  </small>
                 </a>
               </li>
               <li>
@@ -290,11 +290,11 @@ exports[`SideBar > Basic Rendering > renders correctly and matches snapshot 1`] 
                       />
                     </svg>
                   </span>
-                  <span
-                    class="text-left text-sm font-normal truncate"
+                  <small
+                    class="normal-case no-underline text-left text-sm leading-normal font-normal truncate"
                   >
                     API Service
-                  </span>
+                  </small>
                 </a>
               </li>
             </ul>
@@ -330,11 +330,11 @@ exports[`SideBar > Basic Rendering > renders correctly and matches snapshot 1`] 
                   />
                 </svg>
               </span>
-              <span
-                class="text-left text-sm font-normal truncate"
+              <small
+                class="normal-case no-underline text-left text-sm leading-normal font-normal truncate"
               >
                 Settings
-              </span>
+              </small>
             </a>
           </li>
           <li
@@ -376,11 +376,11 @@ exports[`SideBar > Basic Rendering > renders correctly and matches snapshot 1`] 
                   />
                 </svg>
               </span>
-              <span
-                class="text-left font-normal text-sm flex-1 truncate"
+              <small
+                class="normal-case no-underline text-left font-normal text-sm leading-normal flex-1 truncate"
               >
                 Team
-              </span>
+              </small>
               <svg
                 aria-hidden="true"
                 class="lucide lucide-chevron-down inline-flex items-center justify-center w-3 h-3"
@@ -439,11 +439,11 @@ exports[`SideBar > Basic Rendering > renders correctly and matches snapshot 1`] 
                       />
                     </svg>
                   </span>
-                  <span
-                    class="text-left text-sm font-normal truncate"
+                  <small
+                    class="normal-case no-underline text-left text-sm leading-normal font-normal truncate"
                   >
                     Members
-                  </span>
+                  </small>
                 </a>
               </li>
               <li>
@@ -477,11 +477,11 @@ exports[`SideBar > Basic Rendering > renders correctly and matches snapshot 1`] 
                       />
                     </svg>
                   </span>
-                  <span
-                    class="text-left text-sm font-normal truncate"
+                  <small
+                    class="normal-case no-underline text-left text-sm leading-normal font-normal truncate"
                   >
                     Team Settings
-                  </span>
+                  </small>
                 </a>
               </li>
             </ul>
@@ -517,11 +517,11 @@ exports[`SideBar > Basic Rendering > renders correctly and matches snapshot 1`] 
               />
             </svg>
           </span>
-          <span
-            class="text-left font-normal text-sm truncate"
+          <small
+            class="normal-case no-underline text-left font-normal text-sm leading-normal truncate"
           >
             Collapse
-          </span>
+          </small>
         </button>
       </div>
     </nav>

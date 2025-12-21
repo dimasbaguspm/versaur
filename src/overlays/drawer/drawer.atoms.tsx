@@ -85,7 +85,7 @@ DrawerHeader.displayName = 'DrawerHeader'
 export const DrawerTitle = forwardRef<HTMLHeadingElement, HeadingProps>(
   (props, ref) => {
     const { titleId } = useDrawerContext()
-    return <Heading {...props} ref={ref} level={3} id={titleId} />
+    return <Heading {...props} ref={ref} as='h5' id={titleId} />
   }
 )
 

@@ -7,11 +7,11 @@ const meta: Meta<typeof Heading> = {
   component: Heading,
   tags: ['autodocs'],
   argTypes: {
-    level: {
+    as: {
       control: 'select',
-      options: [1, 2, 3, 4, 5, 6],
-      description: 'Heading level (1-6, corresponding to h1-h6)',
-      table: { type: { summary: '1 | 2 | 3 | 4 | 5 | 6' } },
+      options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+      description: 'Heading tag to render',
+      table: { type: { summary: 'h1 | h2 | h3 | h4 | h5 | h6' } },
     },
     color: {
       control: 'select',
@@ -33,15 +33,15 @@ const meta: Meta<typeof Heading> = {
       description: 'Versaur color system',
       table: { type: { summary: 'Color' } },
     },
-    hasUnderline: {
-      control: 'boolean',
-      description: 'Underline text',
-      table: { type: { summary: 'boolean' } },
+    transform: {
+      control: 'select',
+      options: ['none', 'capitalize', 'uppercase', 'lowercase'],
+      description: 'Text transform helper',
     },
-    isCapitalize: {
-      control: 'boolean',
-      description: 'Capitalize text',
-      table: { type: { summary: 'boolean' } },
+    decoration: {
+      control: 'select',
+      options: ['none', 'underline', 'line-through', 'overline'],
+      description: 'Text decoration helper',
     },
     hasMargin: {
       control: 'boolean',
@@ -53,11 +53,6 @@ const meta: Meta<typeof Heading> = {
       options: ['left', 'center', 'right', 'justify'],
       description: 'Text alignment',
       table: { type: { summary: 'left | center | right | justify' } },
-    },
-    italic: {
-      control: 'boolean',
-      description: 'Italic text',
-      table: { type: { summary: 'boolean' } },
     },
     clamp: {
       control: 'select',
@@ -82,7 +77,7 @@ type Story = StoryObj<HeadingProps>
  */
 export const Default: Story = {
   args: {
-    level: 1,
+    as: 'h1',
     color: 'ghost',
     children: 'Default Heading',
   },
@@ -93,14 +88,13 @@ export const Default: Story = {
  */
 export const PrimaryWithFeatures: Story = {
   args: {
-    level: 1,
+    as: 'h1',
     color: 'primary',
-    hasUnderline: true,
-    isCapitalize: true,
+    decoration: 'underline',
+    transform: 'capitalize',
     hasMargin: true,
     align: 'center',
-    italic: true,
-    children: 'Primary Heading: Underline, Capitalize, Center, Italic, Margin',
+    children: 'Primary Heading: Underline, Capitalize, Center, Margin',
   },
 }
 
@@ -109,7 +103,7 @@ export const PrimaryWithFeatures: Story = {
  */
 export const SecondaryWithClamp: Story = {
   args: {
-    level: 2,
+    as: 'h2',
     color: 'secondary',
     align: 'right',
     clamp: 2,
@@ -124,13 +118,14 @@ export const SecondaryWithClamp: Story = {
  */
 export const TertiaryWithEllipsis: Story = {
   args: {
-    level: 3,
+    as: 'h3',
     color: 'tertiary',
     ellipsis: true,
-    hasUnderline: true,
+    decoration: 'underline',
     hasMargin: true,
     children:
       'Tertiary Heading: This is a very long text that will be truncated with ellipsis',
+    className: 'max-w-2xl',
   },
 }
 
@@ -139,7 +134,7 @@ export const TertiaryWithEllipsis: Story = {
  */
 export const SuccessHeading: Story = {
   args: {
-    level: 4,
+    as: 'h4',
     color: 'success',
     hasMargin: true,
     children: 'Success Heading',
@@ -151,9 +146,9 @@ export const SuccessHeading: Story = {
  */
 export const WarningCapitalize: Story = {
   args: {
-    level: 5,
+    as: 'h5',
     color: 'warning',
-    isCapitalize: true,
+    transform: 'capitalize',
     align: 'justify',
     hasMargin: true,
     children: 'warning heading with capitalize and justify alignment',
@@ -165,12 +160,12 @@ export const WarningCapitalize: Story = {
  */
 export const DangerItalicUnderline: Story = {
   args: {
-    level: 6,
+    as: 'h6',
     color: 'danger',
-    italic: true,
-    hasUnderline: true,
+    transform: 'uppercase',
+    decoration: 'underline',
     hasMargin: true,
-    children: 'Danger Heading: Italic and Underlined',
+    children: 'Danger Heading: Uppercase and Underlined',
   },
 }
 
@@ -180,22 +175,22 @@ export const DangerItalicUnderline: Story = {
 export const AllLevels: Story = {
   render: () => (
     <div className='space-y-4'>
-      <Heading level={1} color='primary' hasMargin>
+      <Heading as='h1' color='primary' hasMargin>
         H1 Heading - Primary Color
       </Heading>
-      <Heading level={2} color='secondary' hasMargin>
+      <Heading as='h2' color='secondary' hasMargin>
         H2 Heading - Secondary Color
       </Heading>
-      <Heading level={3} color='tertiary' hasMargin>
+      <Heading as='h3' color='tertiary' hasMargin>
         H3 Heading - Tertiary Color
       </Heading>
-      <Heading level={4} color='success' hasMargin>
+      <Heading as='h4' color='success' hasMargin>
         H4 Heading - Success Color
       </Heading>
-      <Heading level={5} color='warning' hasMargin>
+      <Heading as='h5' color='warning' hasMargin>
         H5 Heading - Warning Color
       </Heading>
-      <Heading level={6} color='danger' hasMargin>
+      <Heading as='h6' color='danger' hasMargin>
         H6 Heading - Danger Color
       </Heading>
     </div>
@@ -208,31 +203,31 @@ export const AllLevels: Story = {
 export const ColorVariants: Story = {
   render: () => (
     <div className='space-y-4'>
-      <Heading level={3} color='primary' hasMargin>
+      <Heading color='primary' hasMargin>
         Primary Heading
       </Heading>
-      <Heading level={3} color='secondary' hasMargin>
+      <Heading color='secondary' hasMargin>
         Secondary Heading
       </Heading>
-      <Heading level={3} color='tertiary' hasMargin>
+      <Heading color='tertiary' hasMargin>
         Tertiary Heading
       </Heading>
-      <Heading level={3} color='ghost' hasMargin>
+      <Heading color='ghost' hasMargin>
         Ghost Heading
       </Heading>
-      <Heading level={3} color='neutral' hasMargin>
+      <Heading color='neutral' hasMargin>
         Neutral Heading
       </Heading>
-      <Heading level={3} color='success' hasMargin>
+      <Heading color='success' hasMargin>
         Success Heading
       </Heading>
-      <Heading level={3} color='info' hasMargin>
+      <Heading color='info' hasMargin>
         Info Heading
       </Heading>
-      <Heading level={3} color='warning' hasMargin>
+      <Heading color='warning' hasMargin>
         Warning Heading
       </Heading>
-      <Heading level={3} color='danger' hasMargin>
+      <Heading color='danger' hasMargin>
         Danger Heading
       </Heading>
     </div>
@@ -245,16 +240,16 @@ export const ColorVariants: Story = {
 export const AlignmentVariants: Story = {
   render: () => (
     <div className='space-y-4'>
-      <Heading level={3} align='left' hasMargin>
+      <Heading align='left' hasMargin>
         Left Aligned Heading
       </Heading>
-      <Heading level={3} align='center' hasMargin>
+      <Heading align='center' hasMargin>
         Center Aligned Heading
       </Heading>
-      <Heading level={3} align='right' hasMargin>
+      <Heading align='right' hasMargin>
         Right Aligned Heading
       </Heading>
-      <Heading level={3} align='justify' hasMargin>
+      <Heading align='justify' hasMargin>
         Justify Aligned Heading - This is a longer heading text to demonstrate
         justify alignment behavior
       </Heading>

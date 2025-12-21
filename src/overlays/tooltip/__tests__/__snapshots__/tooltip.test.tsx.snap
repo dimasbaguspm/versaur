@@ -18,11 +18,11 @@ exports[`Tooltip > renders correctly (snapshot) 1`] = `
       id="«r0»"
       role="tooltip"
     >
-      <p
-        class="text-black text-left text-xs font-normal"
+      <small
+        class="text-black normal-case no-underline text-left text-sm leading-normal font-normal"
       >
         This is a tooltip
-      </p>
+      </small>
     </div>
   </div>
 </DocumentFragment>

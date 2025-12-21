@@ -33,7 +33,9 @@ export const NoResults = React.forwardRef<HTMLElement, NoResultsProps>(
       >
         <header className={noResultsHeaderVariants()}>
           <Icon as={icon} size='lg' color='ghost' aria-hidden='true' />
-          <Heading level={2}>{title}</Heading>
+          <Heading as='h5' color='neutral'>
+            {title}
+          </Heading>
         </header>
 
         {subtitle && (

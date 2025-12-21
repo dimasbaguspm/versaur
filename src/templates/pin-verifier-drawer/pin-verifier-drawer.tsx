@@ -176,7 +176,7 @@ export const PinVerifierDrawer: React.FC<PinVerifierDrawerProps> = ({
       {...modalProps}
     >
       <Modal.Header>
-        <Heading level={3}>{title}</Heading>
+        <Heading as='h3'>{title}</Heading>
       </Modal.Header>
       <Modal.Body>{content}</Modal.Body>
       <Modal.Footer>

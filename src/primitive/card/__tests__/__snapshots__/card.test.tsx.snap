@@ -29,19 +29,19 @@ exports[`Card > matches snapshot for default card 1`] = `
             <div
               class="flex-1 min-w-0"
             >
-              <h3
-                class="text-ghost text-left text-base font-semibold break-words leading-tight"
+              <h6
+                class="text-black normal-case no-underline text-left font-medium text-base break-words leading-tight"
               >
                 Default Card
-              </h3>
+              </h6>
               <div
                 class="mt-1"
               >
-                <p
-                  class="text-gray-500 text-left font-normal text-sm"
+                <small
+                  class="text-gray-500 normal-case no-underline text-left font-normal text-sm leading-normal"
                 >
                   This is a subtitle
-                </p>
+                </small>
               </div>
             </div>
           </div>
@@ -61,11 +61,11 @@ exports[`Card > matches snapshot for default card 1`] = `
           <div
             class="flex-shrink-0 order-2 @sm/card:order-none @sm/card:ml-auto"
           >
-            <p
-              class="text-gray-500 text-right font-normal text-sm truncate"
+            <small
+              class="text-gray-500 normal-case no-underline text-right font-normal text-sm leading-normal truncate"
             >
               Info
-            </p>
+            </small>
           </div>
         </div>
       </div>

@@ -23,7 +23,7 @@ export const BottomSheetTitle = forwardRef<
   HTMLHeadingElement,
   BottomSheetTitleProps
 >(function BottomSheetTitleImpl(props, ref) {
-  return <Heading level={3} ref={ref} {...props} />
+  return <Heading as='h5' ref={ref} {...props} />
 })
 
 export const BottomSheetCloseIcon = forwardRef<
