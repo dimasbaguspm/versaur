@@ -69,9 +69,11 @@ const CardRoot = forwardRef<HTMLButtonElement | HTMLDivElement, CardProps>(
                   {subtitle && (
                     <div className='mt-1'>
                       {typeof subtitle === 'string' ? (
-                        <Text as='small' color='gray'>
-                          {subtitle}
-                        </Text>
+                        <div className='flex'>
+                          <Text as='small' color='gray'>
+                            {subtitle}
+                          </Text>
+                        </div>
                       ) : (
                         <div className='min-w-0 overflow-hidden'>
                           {subtitle}
@@ -93,14 +95,11 @@ const CardRoot = forwardRef<HTMLButtonElement | HTMLDivElement, CardProps>(
               {supplementaryInfo && (
                 <div className='flex-shrink-0 order-2 @sm/card:order-none @sm/card:ml-auto'>
                   {typeof supplementaryInfo === 'string' ? (
-                    <Text
-                      as='small'
-                      color='gray'
-                      className='truncate'
-                      align='right'
-                    >
-                      {supplementaryInfo}
-                    </Text>
+                    <div className='flex justify-end'>
+                      <Text as='small' color='gray' className='truncate'>
+                        {supplementaryInfo}
+                      </Text>
+                    </div>
                   ) : (
                     <div className='overflow-hidden'>{supplementaryInfo}</div>
                   )}
