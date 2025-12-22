@@ -1,26 +1,13 @@
 import { cva } from '@/utils/variants'
 
-export const modalOverlayVariants = cva(
-  'fixed inset-0 z-60 transition-opacity duration-300 bg-foreground/30 backdrop-blur-md flex items-center justify-center transition-opacity duration-200 ease-in-out',
-  {
-    variants: {
-      placement: {
-        top: 'items-start',
-        center: 'items-center',
-      },
-    },
-    defaultVariants: {
-      placement: 'center',
-    },
-  }
-)
-
 export const modalContentVariants = cva(
   [
-    'absolute z-61 bg-white rounded-lg shadow-xl',
+    'fixed z-61 bg-white rounded-lg shadow-xl',
     'flex flex-col',
     'outline-none',
     'transition-all duration-200 ease-in-out',
+    'data-[state=open]:opacity-100 data-[state=open]:pointer-events-auto data-[state=closed]:opacity-0 data-[state=closed]:pointer-events-none data-[state=closed]:select-none',
+    '[&::backdrop]:bg-foreground/30 [&::backdrop]:backdrop-blur-md [&::backdrop]:transition-opacity [&::backdrop]:duration-250 [&::backdrop]:ease-[cubic-bezier(0.22,1,0.36,1)]',
   ],
   {
     variants: {

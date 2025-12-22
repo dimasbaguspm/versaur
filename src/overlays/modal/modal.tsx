@@ -1,16 +1,12 @@
 import React from 'react'
 import { cn } from '@/utils/cn'
 import { ModalContext } from './context'
-import {
-  ModalHeader,
-  ModalFooter,
-  ModalOverlay,
-  ModalBody,
-} from './modal.atoms'
+import { ModalHeader, ModalFooter, ModalBody } from './modal.atoms'
 import { modalContentVariants } from './helpers'
-import { useEscapeClose } from '@/utils/use-escape-close'
 import type { ModalContextValue, ModalRootProps } from './types'
 import { OverlayPortal } from '@/utils/overlay-portal'
+import { useDialogLifecycle } from '@/utils/use-dialog-lifecycle'
+import { useBodyScrollLock } from '@/utils/use-body-scroll-lock'
 
 /**
  * ModalRoot - A controlled modal overlay component
@@ -27,38 +23,58 @@ export const ModalRoot: React.FC<ModalRootProps> = ({
   container,
   ...props
 }) => {
+  const { dialogRef, dataState } = useDialogLifecycle({ isOpen })
+  useBodyScrollLock(isOpen)
+
+  const handleDialogClose = () => {
+    const dialogEl = dialogRef.current
+    if (dialogEl?.open) {
+      dialogEl.close()
+    }
+    onClose()
+  }
+
+  const handleCancel: React.DialogHTMLAttributes<HTMLDialogElement>['onCancel'] =
+    event => {
+      event.preventDefault()
+      if (disableEscapeKeyDown) return
+      handleDialogClose()
+    }
+
+  const handleClick: React.MouseEventHandler<HTMLDialogElement> = event => {
+    if (event.target !== event.currentTarget) return
+    if (disableOverlayClickToClose) return
+    handleDialogClose()
+  }
+
   const contextValue = {
     isOpen,
-    onClose,
+    onClose: handleDialogClose,
     size,
     placement,
     disableOverlayClickToClose,
     disableEscapeKeyDown,
   } satisfies ModalContextValue
 
-  const modalContentRef = useEscapeClose(isOpen, onClose, disableEscapeKeyDown)
-
   return (
     <OverlayPortal container={container}>
       <ModalContext.Provider value={contextValue}>
-        <div
+        <dialog
+          ref={dialogRef}
+          role='dialog'
+          aria-modal='true'
+          aria-hidden={!isOpen}
+          data-state={dataState}
+          onCancel={handleCancel}
+          onClick={handleClick}
           className={cn(
-            'fixed z-50 inset-0 pointer-events-none',
-            isOpen && 'pointer-events-auto'
+            modalContentVariants({ size, placement, isOpen }),
+            props.className
           )}
+          {...props}
         >
-          <ModalOverlay />
-          <div
-            ref={modalContentRef}
-            className={cn(modalContentVariants({ size, placement, isOpen }))}
-            role='dialog'
-            tabIndex={-1}
-            aria-hidden={!isOpen}
-            {...props}
-          >
-            {children}
-          </div>
-        </div>
+          {isOpen && children}
+        </dialog>
       </ModalContext.Provider>
     </OverlayPortal>
   )

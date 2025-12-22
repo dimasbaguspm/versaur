@@ -31,7 +31,7 @@ export interface ModalContextValue {
  */
 
 export interface ModalRootProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, 'children'>,
+  extends Omit<HTMLAttributes<HTMLDialogElement>, 'onClose' | 'children'>,
     OverlayPortalProps,
     Partial<Omit<ModalContextValue, 'isOpen' | 'onClose'>>,
     Pick<ModalContextValue, 'isOpen' | 'onClose'> {
@@ -51,5 +51,3 @@ export interface ModalFooterProps extends HTMLAttributes<HTMLDivElement> {
 export interface ModalBodyProps extends HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
 }
-
-export type ModalOverlayProps = Omit<HTMLAttributes<HTMLDivElement>, 'children'>

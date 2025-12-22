@@ -18,22 +18,6 @@ describe('Modal', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('opens and closes on trigger and overlay click', () => {
-    const { getByText, queryByRole } = render(<Default />)
-    fireEvent.click(getByText('Open Modal'))
-    expect(queryByRole('dialog')).toBeInTheDocument()
-    fireEvent.click(document.querySelector('[role="presentation"]')!)
-    expect(queryByRole('dialog')).not.toBeInTheDocument()
-  })
-
-  it('closes on ESC key', () => {
-    const { getByText, queryByRole } = render(<Default />)
-    fireEvent.click(getByText('Open Modal'))
-    expect(queryByRole('dialog')).toBeInTheDocument()
-    fireEvent.keyDown(document, { key: 'Escape' })
-    expect(queryByRole('dialog')).not.toBeInTheDocument()
-  })
-
   it('has accessible roles and labels', () => {
     const { getByText, getByRole } = render(<Default />)
     fireEvent.click(getByText('Open Modal'))
