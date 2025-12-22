@@ -1,25 +1,6 @@
 import { cva } from '@/utils/variants'
 
 /**
- * Drawer overlay variants using CVA
- * Always provides a dark blurred background to help users focus on the drawer content
- */
-export const drawerOverlayVariants = cva(
-  'fixed inset-0 z-50 transition-opacity duration-300 bg-foreground/30 backdrop-blur-md',
-  {
-    variants: {
-      state: {
-        open: 'opacity-100',
-        closed: 'opacity-0 pointer-events-none',
-      },
-    },
-    defaultVariants: {
-      state: 'closed',
-    },
-  }
-)
-
-/**
  * Drawer content variants using CVA
  * Provides different sizes and positions for the drawer content
  */

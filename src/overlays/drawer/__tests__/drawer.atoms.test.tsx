@@ -1,13 +1,8 @@
 import { describe, it, expect, vi } from 'vitest'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { DrawerContext } from '../context'
-import {
-  DrawerOverlay,
-  DrawerHeader,
-  DrawerBody,
-  DrawerFooter,
-} from '../drawer.atoms'
+import { DrawerHeader, DrawerBody, DrawerFooter } from '../drawer.atoms'
 import type { DrawerContextValue } from '../types'
 
 // Mock context value for testing
@@ -36,49 +31,6 @@ const ContextWrapper = ({
 )
 
 describe('Drawer Atoms', () => {
-  describe('DrawerOverlay', () => {
-    it('renders with correct class when closed', () => {
-      render(
-        <ContextWrapper>
-          <DrawerOverlay data-testid='overlay' />
-        </ContextWrapper>
-      )
-
-      const overlay = screen.getByTestId('overlay')
-      expect(overlay).toHaveClass('opacity-0', 'pointer-events-none')
-    })
-
-    it('renders with correct class when open', () => {
-      render(
-        <ContextWrapper contextValue={{ ...mockContextValue, isOpen: true }}>
-          <DrawerOverlay data-testid='overlay' />
-        </ContextWrapper>
-      )
-
-      const overlay = screen.getByTestId('overlay')
-      expect(overlay).toHaveClass('opacity-100')
-    })
-
-    it('calls onClose when clicked', () => {
-      const onClose = vi.fn()
-
-      render(
-        <ContextWrapper
-          contextValue={{
-            ...mockContextValue,
-            isOpen: true,
-            onClose,
-          }}
-        >
-          <DrawerOverlay data-testid='overlay' />
-        </ContextWrapper>
-      )
-
-      fireEvent.click(screen.getByTestId('overlay'))
-      expect(onClose).toHaveBeenCalledTimes(1)
-    })
-  })
-
   describe('DrawerHeader', () => {
     it('renders children correctly', () => {
       render(

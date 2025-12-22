@@ -78,8 +78,3 @@ export interface DrawerFooterProps extends ComponentPropsWithoutRef<'footer'> {
   /** Children components */
   children: ReactNode
 }
-
-/**
- * Props for the DrawerOverlay component
- */
-export type DrawerOverlayProps = ComponentPropsWithoutRef<'div'>

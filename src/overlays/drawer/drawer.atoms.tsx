@@ -3,7 +3,6 @@ import { XIcon } from 'lucide-react'
 import { cn } from '@/utils/cn'
 import { useDrawerContext } from './context'
 import {
-  drawerOverlayVariants,
   drawerHeaderVariants,
   drawerBodyVariants,
   drawerFooterVariants,
@@ -12,7 +11,6 @@ import type {
   DrawerHeaderProps,
   DrawerBodyProps,
   DrawerFooterProps,
-  DrawerOverlayProps,
   DrawerHeaderTabProps,
 } from './types'
 import {
@@ -21,39 +19,6 @@ import {
   type ButtonIconProps,
   type HeadingProps,
 } from '@/primitive'
-
-/**
- * DrawerOverlay - Background overlay that appears behind the drawer
- * Provides a dark blurred background to help users focus on the drawer content
- */
-export const DrawerOverlay = React.forwardRef<
-  HTMLDivElement,
-  DrawerOverlayProps
->(({ className, ...props }, ref) => {
-  const { isOpen, disableOverlayClickToClose, onClose } = useDrawerContext()
-
-  const handleClick = () => {
-    if (disableOverlayClickToClose) return
-    onClose()
-  }
-
-  return (
-    <div
-      ref={ref}
-      onClick={handleClick}
-      aria-hidden='true'
-      className={cn(
-        drawerOverlayVariants({
-          state: isOpen ? 'open' : 'closed',
-        }),
-        className
-      )}
-      {...props}
-    />
-  )
-})
-
-DrawerOverlay.displayName = 'DrawerOverlay'
 
 /**
  * DrawerHeader - Header section of the drawer
