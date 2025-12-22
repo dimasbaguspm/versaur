@@ -37,11 +37,15 @@ exports[`Card > matches snapshot for default card 1`] = `
               <div
                 class="mt-1"
               >
-                <small
-                  class="text-gray-500 normal-case no-underline text-left font-normal text-sm leading-normal"
+                <div
+                  class="flex"
                 >
-                  This is a subtitle
-                </small>
+                  <small
+                    class="text-gray-500 normal-case no-underline text-left font-normal text-sm leading-normal"
+                  >
+                    This is a subtitle
+                  </small>
+                </div>
               </div>
             </div>
           </div>
@@ -61,11 +65,15 @@ exports[`Card > matches snapshot for default card 1`] = `
           <div
             class="flex-shrink-0 order-2 @sm/card:order-none @sm/card:ml-auto"
           >
-            <small
-              class="text-gray-500 normal-case no-underline text-right font-normal text-sm leading-normal truncate"
+            <div
+              class="flex justify-end"
             >
-              Info
-            </small>
+              <small
+                class="text-gray-500 normal-case no-underline text-left font-normal text-sm leading-normal truncate"
+              >
+                Info
+              </small>
+            </div>
           </div>
         </div>
       </div>
