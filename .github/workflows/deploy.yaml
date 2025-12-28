@@ -16,6 +16,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Setup cloudflared
+        uses: AnimMouse/setup-cloudflared@v2
+
       - name: Setup Node.js 22.14
         uses: actions/setup-node@v4
         with:
@@ -24,6 +27,11 @@ jobs:
       - name: Enable Corepack (Yarn Berry)
         run: |
           corepack enable
+
+      - name: Install rsync and sshpass
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y rsync sshpass
 
       - name: Install dependencies
         run: yarn install
@@ -37,11 +45,21 @@ jobs:
       - name: Build Storybook
         run: yarn build-storybook
 
-      - name: Ship to VPS
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          password: ${{ secrets.VPS_PASSWORD }}
-          source: 'storybook-static/**'
-          target: '~/versaur'
+      - name: Copy source to VPS via cloudflared (rsync over SSH using password)
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_PASSWORD: ${{ secrets.VPS_PASSWORD }}
+        run: |
+          sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no -o ProxyCommand="cloudflared access ssh --hostname %h" $VPS_USER@$VPS_HOST "mkdir -p ~/versaur"
+
+          RSYNC_SSH="sshpass -p '$VPS_PASSWORD' ssh -o StrictHostKeyChecking=no -o ProxyCommand=\"cloudflared access ssh --hostname %h\""
+          rsync -avz --exclude '.git' --exclude "node_modules"  -e "$RSYNC_SSH" ./ $VPS_USER@$VPS_HOST:~/versaur
+
+      - name: Deploy on VPS
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_PASSWORD: ${{ secrets.VPS_PASSWORD }}
+        run: |
+          sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no -o ProxyCommand="cloudflared access ssh --hostname %h" $VPS_USER@$VPS_HOST "cd ~/versaur && docker compose down && docker compose up -d"
