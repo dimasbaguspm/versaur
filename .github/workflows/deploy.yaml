@@ -12,6 +12,12 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      VPS_HOST: ${{ secrets.VPS_HOST }}
+      VPS_USER: ${{ secrets.VPS_USER }}
+      VPS_PASSWORD: ${{ secrets.VPS_PASSWORD }}
+      SSH_CMD: >-
+        sshpass -p '${{ secrets.VPS_PASSWORD }}' ssh -o StrictHostKeyChecking=no -o ProxyCommand="cloudflared access ssh --hostname %h"
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -46,23 +52,17 @@ jobs:
         run: yarn build-storybook
 
       - name: Copy source to VPS via cloudflared (rsync over SSH using password)
-        env:
-          VPS_HOST: ${{ secrets.VPS_HOST }}
-          VPS_USER: ${{ secrets.VPS_USER }}
-          VPS_PASSWORD: ${{ secrets.VPS_PASSWORD }}
         run: |
-          sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no -o ProxyCommand="cloudflared access ssh --hostname %h" $VPS_USER@$VPS_HOST "mkdir -p ~/versaur"
+          $SSH_CMD $VPS_USER@$VPS_HOST "mkdir -p ~/versaur/storybook-static"
 
-          RSYNC_SSH="sshpass -p '$VPS_PASSWORD' ssh -o StrictHostKeyChecking=no -o ProxyCommand=\"cloudflared access ssh --hostname %h\""
-          rsync -avz --exclude '.git' --exclude "node_modules"  -e "$RSYNC_SSH" ./ $VPS_USER@$VPS_HOST:~/versaur
+          # Sync only the built Storybook static directory and mirror it on the server
+          rsync -avz --delete -e "$SSH_CMD" ./storybook-static/ $VPS_USER@$VPS_HOST:~/versaur/storybook-static/
+          # Also ensure the Dockerfile, docker-compose.yml and nginx.conf are present at the repo root on the server
+          rsync -avz -e "$SSH_CMD" ./Dockerfile ./docker-compose.yml ./nginx.conf $VPS_USER@$VPS_HOST:~/versaur/
 
       - name: Deploy on VPS
-        env:
-          VPS_HOST: ${{ secrets.VPS_HOST }}
-          VPS_USER: ${{ secrets.VPS_USER }}
-          VPS_PASSWORD: ${{ secrets.VPS_PASSWORD }}
         run: |
-          sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no -o ProxyCommand="cloudflared access ssh --hostname %h" $VPS_USER@$VPS_HOST "cd ~/versaur\
+          $SSH_CMD $VPS_USER@$VPS_HOST "cd ~/versaur\
             && docker compose down \
             && docker compose build --no-cache \
             && docker compose up -d --force-recreate"
