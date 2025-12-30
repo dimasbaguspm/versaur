@@ -17,7 +17,7 @@ jobs:
       VPS_USER: ${{ secrets.VPS_USER }}
       VPS_PASSWORD: ${{ secrets.VPS_PASSWORD }}
       SSH_CMD: >-
-        sshpass -p '${{ secrets.VPS_PASSWORD }}' ssh -o StrictHostKeyChecking=no -o ProxyCommand="cloudflared access ssh --hostname %h"
+        sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no -o ProxyCommand='cloudflared access ssh --hostname %h'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -51,7 +51,7 @@ jobs:
       - name: Build Storybook
         run: yarn build-storybook
 
-      - name: Copy source to VPS via cloudflared (rsync over SSH using password)
+      - name: Copy source to VPS
         run: |
           $SSH_CMD $VPS_USER@$VPS_HOST "mkdir -p ~/versaur/storybook-static"
 
