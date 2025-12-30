@@ -62,4 +62,7 @@ jobs:
           VPS_USER: ${{ secrets.VPS_USER }}
           VPS_PASSWORD: ${{ secrets.VPS_PASSWORD }}
         run: |
-          sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no -o ProxyCommand="cloudflared access ssh --hostname %h" $VPS_USER@$VPS_HOST "cd ~/versaur && docker compose down && docker compose up -d"
+          sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no -o ProxyCommand="cloudflared access ssh --hostname %h" $VPS_USER@$VPS_HOST "cd ~/versaur\
+            && docker compose down \
+            && docker compose build --no-cache \
+            && docker compose up -d --force-recreate"
