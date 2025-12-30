@@ -12,6 +12,10 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      VPS_HOST: ${{ secrets.VPS_HOST }}
+      VPS_USER: ${{ secrets.VPS_USER }}
+      VPS_PASSWORD: ${{ secrets.VPS_PASSWORD }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
