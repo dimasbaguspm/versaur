@@ -53,16 +53,13 @@ jobs:
 
           # Setup rsync excludes
           EXCLUDES=(
-            ".git/"
-            "node_modules/"
+            --exclude=".git/"
+            --exclude="node_modules/"
           )
-
-          # generate rsync exclude parameters
-          RSYNC_EXCLUDES=$(printf -- '--exclude="%s" ' "${EXCLUDES[@]}")
 
           echo "--- Syncing files to Homelab ---"
           rsync -avz --delete \
-            $RSYNC_EXCLUDES \
+            "${EXCLUDES[@]}" \
             -e "ssh -p ${{ env.PORT }}" \
             ./ ${{ env.VPS_USER }}@${{ env.VPS_HOST }}:${{ env.DIR }}
 
