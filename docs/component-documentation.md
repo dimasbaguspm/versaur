@@ -34,14 +34,7 @@ export const buttonSections: ButtonSection[] = [
 API reference data for the PropsTable:
 
 ```tsx
-export interface ButtonPropDefinition {
-  name: string;
-  type: string;
-  default: string;
-  description: string;
-}
-
-export const buttonProps: ButtonPropDefinition[] = [
+export const buttonProps = [
   { name: "variant", type: "'primary' | 'secondary' | 'danger'", default: "'primary'", description: "..." },
   // ...
 ];
