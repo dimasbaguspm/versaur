@@ -1,8 +1,8 @@
-"use client";
-
 import { useEffect, useState } from "react";
 
 type Framework = "react" | "vue" | "angular";
+
+const VALID_FRAMEWORKS: Framework[] = ["react", "vue", "angular"];
 
 export function useFrameworkSelection() {
   const [selectedFramework, setSelectedFrameworkState] =
@@ -12,22 +12,17 @@ export function useFrameworkSelection() {
   useEffect(() => {
     setIsClient(true);
 
-    // Read URL param first
     const params = new URLSearchParams(window.location.search);
     const urlFramework = params.get("framework") as Framework | null;
 
-    if (urlFramework && ["react", "vue", "angular"].includes(urlFramework)) {
+    if (urlFramework && VALID_FRAMEWORKS.includes(urlFramework)) {
       setSelectedFrameworkState(urlFramework);
       localStorage.setItem("versaur_framework", urlFramework);
     } else {
-      // Fall back to localStorage
       const storedFramework = localStorage.getItem(
         "versaur_framework",
       ) as Framework | null;
-      if (
-        storedFramework &&
-        ["react", "vue", "angular"].includes(storedFramework)
-      ) {
+      if (storedFramework && VALID_FRAMEWORKS.includes(storedFramework)) {
         setSelectedFrameworkState(storedFramework);
       }
     }
@@ -37,7 +32,6 @@ export function useFrameworkSelection() {
     setSelectedFrameworkState(framework);
     localStorage.setItem("versaur_framework", framework);
 
-    // Update URL param
     const params = new URLSearchParams(window.location.search);
     params.set("framework", framework);
     const newUrl = `${window.location.pathname}?${params.toString()}`;

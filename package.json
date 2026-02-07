@@ -10,7 +10,7 @@
     "build:packages": "pnpm --filter \"./packages/**\" build",
     "build:docs": "pnpm --filter docs build",
     "start": "pnpm --filter docs start",
-    "clean": "pnpm -r exec rm -rf dist node_modules .next",
+    "clean": "pnpm -r exec rm -rf dist node_modules .astro",
     "changeset": "changeset",
     "version": "changeset version",
     "release": "pnpm build:packages && changeset publish"

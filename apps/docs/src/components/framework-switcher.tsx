@@ -1,6 +1,4 @@
-"use client";
-
-import { useFrameworkSelection } from "../hooks/useFrameworkSelection";
+import { useFrameworkSelection } from "../hooks/use-framework-selection";
 
 type Framework = "react" | "vue" | "angular";
 

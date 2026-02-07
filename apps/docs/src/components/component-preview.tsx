@@ -1,11 +1,9 @@
-"use client";
-
 import { useState } from "react";
-import { useFrameworkSelection } from "../hooks/useFrameworkSelection";
-import { useShikiHighlighter } from "../hooks/useShikiHighlighter";
+import { useFrameworkSelection } from "../hooks/use-framework-selection";
+import { useShikiHighlighter } from "../hooks/use-shiki-highlighter";
 import { copyToClipboard } from "../utils/clipboard";
-import { previewRegistry } from "../previews/registry";
-import styles from "./ComponentPreview.module.css";
+import { PreviewFrame } from "../preview/preview-frame";
+import styles from "./component-preview.module.css";
 
 interface ComponentPreviewProps {
   component?: string;
@@ -27,8 +25,6 @@ export function ComponentPreview({
 
   if (!isClient) return null;
 
-  const Preview = component ? previewRegistry[component] : undefined;
-
   const example = examples[selectedFramework];
   const code = example?.code ?? "";
   const language = example?.language ?? "tsx";
@@ -41,17 +37,18 @@ export function ComponentPreview({
     }
   };
 
-  const codeHtml = isReady
-    ? highlightCode(code, language)
-    : null;
+  const codeHtml = isReady ? highlightCode(code, language) : null;
 
-  const codeOnly = !Preview;
+  const codeOnly = !component;
 
   return (
-    <div className={styles.wrapper} {...(codeOnly ? { "data-code-only": "" } : {})}>
-      {Preview && (
+    <div
+      className={styles.wrapper}
+      {...(codeOnly ? { "data-code-only": "" } : {})}
+    >
+      {component && (
         <div className={styles.canvas}>
-          <Preview exampleKey={exampleKey} />
+          <PreviewFrame component={component} exampleKey={exampleKey} />
         </div>
       )}
       <div className={styles.toolbar}>
