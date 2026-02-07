@@ -1,0 +1,66 @@
+---
+import Layout from '../components/Layout.astro';
+---
+<Layout title="Versaur Design System">
+  <div class="container">
+    <div class="header">
+      <h1>Versaur Design System</h1>
+      <p>Modern, framework-agnostic UI component library</p>
+    </div>
+
+    <section style="margin-bottom: 3rem;">
+      <h2>About</h2>
+      <p style="font-size: var(--font-size-base); line-height: var(--line-height-relaxed); color: var(--color-text-secondary);">
+        Versaur is a universal design system built with the data-attribute state machine pattern.
+        It provides a framework-agnostic CSS core with thin wrappers for React, Vue, and Angular,
+        enabling consistent UI across your entire stack.
+      </p>
+    </section>
+
+    <section style="margin-bottom: 3rem;">
+      <h2>Key Features</h2>
+      <ul style="font-size: var(--font-size-base); line-height: var(--line-height-relaxed); color: var(--color-text-secondary);">
+        <li>🎨 Framework-agnostic CSS core with CSS Modules</li>
+        <li>⚡ Data-attribute state machine pattern for clean APIs</li>
+        <li>🌲 Tree-shakeable component library</li>
+        <li>📋 shadcn-style code copying via Registry</li>
+        <li>♿ Built-in accessibility features</li>
+        <li>🌗 Dark mode support</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Get Started</h2>
+      <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+        <a
+          href="/docs/components/button"
+          class="primary-button"
+        >
+          View Components
+        </a>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .primary-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .secondary-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-secondary);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-medium);
+  }
+</style>

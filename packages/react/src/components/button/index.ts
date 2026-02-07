@@ -1,0 +1,21 @@
+import { _Button } from "./button";
+import type { Button as CoreButton } from "@versaur/core";
+import type { ButtonProps } from "./button.types";
+
+// Declaration merging: namespace + const = Button.Props, Button.Variant, etc.
+declare namespace Button {
+  export type Variant = CoreButton.Variant;
+  export type Size = CoreButton.Size;
+  export type DataAttrs = CoreButton.DataAttrs;
+  export type Props = ButtonProps;
+}
+const Button = _Button;
+export { Button };
+
+// Backward-compat flat type exports
+export type { ButtonProps };
+export type { ButtonVariant, ButtonSize } from "@versaur/core";
+
+export { ButtonPreview } from "./preview";
+export { buttonExamples } from "./examples";
+export type { ButtonExample } from "./examples";

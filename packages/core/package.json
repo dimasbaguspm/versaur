@@ -1,0 +1,47 @@
+{
+  "name": "@versaur/core",
+  "version": "0.0.1",
+  "description": "Framework-agnostic CSS core for Versaur Design System",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens": {
+      "source": "./src/tokens/index.css",
+      "import": "./dist/tokens/index.css"
+    },
+    "./button.css": {
+      "source": "./src/components/button/button.module.css",
+      "import": "./dist/components/button/button.module.css"
+    },
+    "./components/*": {
+      "source": "./src/components/*/index.ts",
+      "import": "./dist/components/*/index.js"
+    },
+    "./styles/*": {
+      "source": "./src/components/*/*.module.css",
+      "import": "./dist/components/*/*.module.css"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "vite": "^6.0.0",
+    "vite-plugin-dts": "^4.5.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
