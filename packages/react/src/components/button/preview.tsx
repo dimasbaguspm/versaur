@@ -11,9 +11,11 @@ interface ButtonPreviewProps {
   exampleKey: ExampleKey;
 }
 
-function ReactButtonPreview({
+export function ReactButtonPreview({
   exampleKey,
-}: Omit<ButtonPreviewProps, "nodeId">) {
+}: {
+  exampleKey: string;
+}) {
   if (exampleKey === "variants") {
     return (
       <div className="button-group">

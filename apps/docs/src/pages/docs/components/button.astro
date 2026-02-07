@@ -1,8 +1,22 @@
 ---
 import Layout from '../../../components/Layout.astro';
 import { FrameworkSwitcher } from '../../../components/FrameworkSwitcher';
-import { CodeBlock } from '../../../components/CodeBlock';
-import { ButtonPreview } from '@versaur/react/button';
+import { ComponentPreview } from '../../../components/ComponentPreview';
+import { ReactButtonPreview, buttonExamples } from '@versaur/react/button';
+
+function makeExamples(key: 'variants' | 'sizes' | 'states' | 'combined') {
+  return {
+    react: buttonExamples[key],
+    vue: { code: '', language: 'vue' },
+    angular: { code: '', language: 'angular' },
+  };
+}
+
+const installationExamples: Record<string, { code: string; language: string }> = {
+  react: buttonExamples.installation,
+  vue: buttonExamples.installation,
+  angular: buttonExamples.installation,
+};
 ---
 <Layout title="Button - Versaur">
   <div class="container">
@@ -23,46 +37,42 @@ import { ButtonPreview } from '@versaur/react/button';
 
       <div class="section-group">
         <h3>Variants</h3>
-        <div class="preview-section">
-          <div id="button-preview-variants"></div>
-          <ButtonPreview client:load nodeId="button-preview-variants" exampleKey="variants" />
-        </div>
-        <div class="code-block">
-          <CodeBlock client:load exampleKey="variants" />
-        </div>
+        <ComponentPreview
+          client:load
+          preview={ReactButtonPreview}
+          exampleKey="variants"
+          examples={makeExamples('variants')}
+        />
       </div>
 
       <div class="section-group">
         <h3>Sizes</h3>
-        <div class="preview-section">
-          <div id="button-preview-sizes"></div>
-          <ButtonPreview client:load nodeId="button-preview-sizes" exampleKey="sizes" />
-        </div>
-        <div class="code-block">
-          <CodeBlock client:load exampleKey="sizes" />
-        </div>
+        <ComponentPreview
+          client:load
+          preview={ReactButtonPreview}
+          exampleKey="sizes"
+          examples={makeExamples('sizes')}
+        />
       </div>
 
       <div class="section-group">
         <h3>States</h3>
-        <div class="preview-section">
-          <div id="button-preview-states"></div>
-          <ButtonPreview client:load nodeId="button-preview-states" exampleKey="states" />
-        </div>
-        <div class="code-block">
-          <CodeBlock client:load exampleKey="states" />
-        </div>
+        <ComponentPreview
+          client:load
+          preview={ReactButtonPreview}
+          exampleKey="states"
+          examples={makeExamples('states')}
+        />
       </div>
 
       <div class="section-group">
         <h3>Combined Examples</h3>
-        <div class="preview-section">
-          <div id="button-preview-combined"></div>
-          <ButtonPreview client:load nodeId="button-preview-combined" exampleKey="combined" />
-        </div>
-        <div class="code-block">
-          <CodeBlock client:load exampleKey="combined" />
-        </div>
+        <ComponentPreview
+          client:load
+          preview={ReactButtonPreview}
+          exampleKey="combined"
+          examples={makeExamples('combined')}
+        />
       </div>
     </div>
 
@@ -114,9 +124,11 @@ import { ButtonPreview } from '@versaur/react/button';
 
     <div class="component-showcase">
       <h2>Installation</h2>
-      <div class="code-block">
-        <CodeBlock client:load exampleKey="installation" />
-      </div>
+      <ComponentPreview
+        client:load
+        exampleKey="installation"
+        examples={installationExamples}
+      />
     </div>
   </div>
 </Layout>
