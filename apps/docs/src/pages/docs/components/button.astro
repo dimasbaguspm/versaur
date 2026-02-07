@@ -2,7 +2,7 @@
 import Layout from '../../../components/Layout.astro';
 import { FrameworkSwitcher } from '../../../components/FrameworkSwitcher';
 import { ComponentPreview } from '../../../components/ComponentPreview';
-import { ReactButtonPreview, buttonExamples } from '@versaur/react/button';
+import { buttonExamples } from '@versaur/react/button';
 
 function makeExamples(key: 'variants' | 'sizes' | 'states' | 'combined') {
   return {
@@ -39,7 +39,7 @@ const installationExamples: Record<string, { code: string; language: string }> =
         <h3>Variants</h3>
         <ComponentPreview
           client:load
-          preview={ReactButtonPreview}
+          component="button"
           exampleKey="variants"
           examples={makeExamples('variants')}
         />
@@ -49,7 +49,7 @@ const installationExamples: Record<string, { code: string; language: string }> =
         <h3>Sizes</h3>
         <ComponentPreview
           client:load
-          preview={ReactButtonPreview}
+          component="button"
           exampleKey="sizes"
           examples={makeExamples('sizes')}
         />
@@ -59,7 +59,7 @@ const installationExamples: Record<string, { code: string; language: string }> =
         <h3>States</h3>
         <ComponentPreview
           client:load
-          preview={ReactButtonPreview}
+          component="button"
           exampleKey="states"
           examples={makeExamples('states')}
         />
@@ -69,7 +69,7 @@ const installationExamples: Record<string, { code: string; language: string }> =
         <h3>Combined Examples</h3>
         <ComponentPreview
           client:load
-          preview={ReactButtonPreview}
+          component="button"
           exampleKey="combined"
           examples={makeExamples('combined')}
         />

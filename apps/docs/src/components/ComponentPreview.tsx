@@ -4,17 +4,18 @@ import { useState } from "react";
 import { useFrameworkSelection } from "../hooks/useFrameworkSelection";
 import { useShikiHighlighter } from "../hooks/useShikiHighlighter";
 import { copyToClipboard } from "../utils/clipboard";
+import { previewRegistry } from "../previews/registry";
 import styles from "./ComponentPreview.module.css";
 
 interface ComponentPreviewProps {
-  preview?: React.ComponentType<{ exampleKey: string }>;
+  component?: string;
   exampleKey: string;
   examples: Record<string, { code: string; language: string }>;
   defaultExpanded?: boolean;
 }
 
 export function ComponentPreview({
-  preview: Preview,
+  component,
   exampleKey,
   examples,
   defaultExpanded = false,
@@ -25,6 +26,8 @@ export function ComponentPreview({
   const [copied, setCopied] = useState(false);
 
   if (!isClient) return null;
+
+  const Preview = component ? previewRegistry[component] : undefined;
 
   const example = examples[selectedFramework];
   const code = example?.code ?? "";
