@@ -1,84 +1,154 @@
-"use client";
-
-import { useEffect } from "react";
-import { createRoot } from "react-dom/client";
+import type { ComponentType } from "react";
 import { _Button as Button } from "./button";
 
-type ExampleKey = "variants" | "sizes" | "states" | "combined";
-
-interface ButtonPreviewProps {
-  nodeId: string;
-  exampleKey: ExampleKey;
+export interface ButtonSection {
+  key: string;
+  title: string;
+  preview: ComponentType;
+  code: string;
+  language: string;
 }
 
-export function ReactButtonPreview({
-  exampleKey,
-}: {
-  exampleKey: string;
-}) {
-  if (exampleKey === "variants") {
-    return (
-      <div className="button-group">
-        <Button variant="primary">Primary</Button>
-        <Button variant="secondary">Secondary</Button>
-        <Button variant="danger">Danger</Button>
-      </div>
-    );
-  }
-
-  if (exampleKey === "sizes") {
-    return (
-      <div className="button-group" style={{ alignItems: "center" }}>
-        <Button size="small">Small</Button>
-        <Button size="medium">Medium</Button>
-        <Button size="large">Large</Button>
-      </div>
-    );
-  }
-
-  if (exampleKey === "states") {
-    return (
-      <div className="button-group">
-        <Button loading>Loading</Button>
-        <Button disabled>Disabled</Button>
-        <Button pressed>Pressed</Button>
-      </div>
-    );
-  }
-
-  if (exampleKey === "combined") {
-    return (
-      <div className="button-group">
-        <Button variant="primary" size="large">
-          Large Primary
-        </Button>
-        <Button variant="danger" size="small">
-          Small Danger
-        </Button>
-        <Button variant="secondary" loading>
-          Loading Secondary
-        </Button>
-      </div>
-    );
-  }
-
-  return null;
+function VariantsPreview() {
+  return (
+    <div className="button-group">
+      <Button variant="primary">Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="danger">Danger</Button>
+    </div>
+  );
 }
 
-export function ButtonPreview({ nodeId, exampleKey }: ButtonPreviewProps) {
-  useEffect(() => {
-    const container = document.getElementById(nodeId);
-    if (!container) return;
+function SizesPreview() {
+  return (
+    <div className="button-group" style={{ alignItems: "center" }}>
+      <Button size="small">Small</Button>
+      <Button size="medium">Medium</Button>
+      <Button size="large">Large</Button>
+    </div>
+  );
+}
 
-    const content = <ReactButtonPreview exampleKey={exampleKey} />;
+function StatesPreview() {
+  return (
+    <div className="button-group">
+      <Button loading>Loading</Button>
+      <Button disabled>Disabled</Button>
+      <Button pressed>Pressed</Button>
+    </div>
+  );
+}
 
-    const root = createRoot(container);
-    root.render(content);
+function CombinedPreview() {
+  return (
+    <div className="button-group">
+      <Button variant="primary" size="large">
+        Large Primary
+      </Button>
+      <Button variant="danger" size="small">
+        Small Danger
+      </Button>
+      <Button variant="secondary" loading>
+        Loading Secondary
+      </Button>
+    </div>
+  );
+}
 
-    return () => {
-      root.unmount();
-    };
-  }, [nodeId, exampleKey]);
+export const buttonSections: ButtonSection[] = [
+  {
+    key: "variants",
+    title: "Variants",
+    preview: VariantsPreview,
+    code: `<Button variant="primary">Primary</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="danger">Danger</Button>`,
+    language: "tsx",
+  },
+  {
+    key: "sizes",
+    title: "Sizes",
+    preview: SizesPreview,
+    code: `<Button size="small">Small</Button>
+<Button size="medium">Medium</Button>
+<Button size="large">Large</Button>`,
+    language: "tsx",
+  },
+  {
+    key: "states",
+    title: "States",
+    preview: StatesPreview,
+    code: `<Button loading>Loading</Button>
+<Button disabled>Disabled</Button>
+<Button pressed>Pressed</Button>`,
+    language: "tsx",
+  },
+  {
+    key: "combined",
+    title: "Combined Examples",
+    preview: CombinedPreview,
+    code: `<Button variant="primary" size="large">Large Primary</Button>
+<Button variant="danger" size="small">Small Danger</Button>
+<Button variant="secondary" loading>Loading Secondary</Button>`,
+    language: "tsx",
+  },
+];
 
-  return null;
+export const buttonProps = [
+  {
+    name: "variant",
+    type: "'primary' | 'secondary' | 'danger'",
+    default: "'primary'",
+    description: "Visual variant of the button",
+  },
+  {
+    name: "size",
+    type: "'small' | 'medium' | 'large'",
+    default: "'medium'",
+    description: "Size of the button",
+  },
+  {
+    name: "loading",
+    type: "boolean",
+    default: "false",
+    description: "Shows a spinner and disables interaction",
+  },
+  {
+    name: "disabled",
+    type: "boolean",
+    default: "false",
+    description: "Whether the button is disabled",
+  },
+  {
+    name: "pressed",
+    type: "boolean",
+    default: "false",
+    description:
+      "Whether the button is in a pressed state (for toggle buttons)",
+  },
+];
+
+export const buttonInstallation = {
+  code: `# Using npm
+npm install @versaur/react @versaur/core
+
+# Using pnpm
+pnpm add @versaur/react @versaur/core
+
+# Using yarn
+yarn add @versaur/react @versaur/core`,
+  language: "bash" as const,
+};
+
+export function ButtonPreview() {
+  return (
+    <>
+      {buttonSections.map((s) => (
+        <div key={s.key}>
+          <h3>{s.title}</h3>
+          <s.preview />
+        </div>
+      ))}
+    </>
+  );
 }

@@ -5,18 +5,12 @@
   margin: 1rem 0;
 }
 
-.canvas {
-  background: var(--color-surface);
-  padding: 2rem;
-}
-
 .toolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 1rem;
   background: #1a1a1a;
-  border-top: 1px solid #333;
 }
 
 .toggleButton {
@@ -92,9 +86,4 @@
   font-family: var(--font-mono);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-relaxed);
-}
-
-/* Code-only variant (no canvas) */
-.wrapper[data-code-only] .toolbar {
-  border-top: none;
 }

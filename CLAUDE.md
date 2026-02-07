@@ -77,8 +77,7 @@ packages/core/src/components/button/
 packages/react/src/components/button/
   button.tsx              — React component (forwardRef, useDataAttrs)
   button.types.ts         — Props interface (imports types from @versaur/core)
-  examples.ts             — Code snippets for docs (per-framework)
-  preview.tsx             — Live preview component for docs
+  preview.tsx             — Sections array (live previews + code strings + props metadata)
   index.ts                — Re-exports + namespace declaration merging
 ```
 
@@ -86,7 +85,7 @@ packages/react/src/components/button/
 
 1. **Core**: Create `packages/core/src/components/<name>/<name>.module.css` with data-attribute selectors. Add an `index.ts`. Export from `packages/core/src/index.ts`. Add an export entry in `packages/core/package.json`.
 2. **Generate types**: Run `pnpm generate:types` — this creates the `.types.generated.ts` and `.module.css.d.ts` files automatically.
-3. **React wrapper**: Create the component in `packages/react/src/components/<name>/` following the button pattern — types file (importing from `@versaur/core`), component using `useDataAttrs`, examples, preview, and index with namespace merging. Export from `packages/react/src/index.ts` and add to `packages/react/package.json` exports.
+3. **React wrapper**: Create the component in `packages/react/src/components/<name>/` following the button pattern — types file (importing from `@versaur/core`), component using `useDataAttrs`, `preview.tsx` with sections array (live previews, code strings, props metadata, installation), and index with namespace merging. Export from `packages/react/src/index.ts` and add to `packages/react/package.json` exports.
 4. **Docs**: Add a page at `apps/docs/src/pages/docs/components/<name>.astro` with preview and code examples.
 
 ## Key files
@@ -97,8 +96,9 @@ packages/react/src/components/button/
 | `packages/core/src/tokens/` | Design tokens (CSS custom properties) |
 | `packages/react/src/hooks/use-data-attrs.ts` | Core hook: props to data-attributes |
 | `packages/react/src/components/button/button.tsx` | Reference component implementation |
-| `apps/docs/src/components/FrameworkSwitcher.tsx` | Framework toggle for docs |
-| `apps/docs/src/components/CodeBlock.tsx` | Shiki-powered code blocks |
+| `apps/docs/src/components/framework-switcher.tsx` | Framework toggle for docs |
+| `apps/docs/src/components/component-preview.tsx` | Collapsible code panel with Shiki highlighting |
+| `apps/docs/src/components/props-table.tsx` | Reusable API reference table |
 | `packages/tooling/src/generate-types.ts` | PostCSS type extraction entry point |
 | `packages/tooling/src/css-parser.ts` | CSS data-attribute selector parser |
 | `packages/tooling/src/codegen.ts` | TypeScript codegen from parsed CSS |

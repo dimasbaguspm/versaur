@@ -1,9 +1,6 @@
 import type { ComponentType } from "react";
-import { ReactButtonPreview } from "@versaur/react/button";
+import { ButtonDocPage } from "./pages/button-doc-page";
 
-export const previewRegistry: Record<
-  string,
-  ComponentType<{ exampleKey: string }>
-> = {
-  button: ReactButtonPreview,
+export const previewRegistry: Record<string, ComponentType> = {
+  button: ButtonDocPage,
 };

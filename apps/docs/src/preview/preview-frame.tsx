@@ -2,17 +2,16 @@ import { useEffect, useRef, useState } from "react";
 
 interface PreviewFrameProps {
   component: string;
-  exampleKey: string;
 }
 
 let frameCounter = 0;
 
-export function PreviewFrame({ component, exampleKey }: PreviewFrameProps) {
+export function PreviewFrame({ component }: PreviewFrameProps) {
   const [height, setHeight] = useState(100);
   const idRef = useRef(`preview-${frameCounter++}`);
   const id = idRef.current;
 
-  const src = `/preview.html?component=${encodeURIComponent(component)}&exampleKey=${encodeURIComponent(exampleKey)}&id=${encodeURIComponent(id)}`;
+  const src = `/preview.html?component=${encodeURIComponent(component)}&id=${encodeURIComponent(id)}`;
 
   useEffect(() => {
     function handleMessage(event: MessageEvent) {
@@ -34,7 +33,7 @@ export function PreviewFrame({ component, exampleKey }: PreviewFrameProps) {
   return (
     <iframe
       src={src}
-      title={`${component} ${exampleKey} preview`}
+      title={`${component} preview`}
       style={{
         width: "100%",
         height: `${height}px`,

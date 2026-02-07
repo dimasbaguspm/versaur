@@ -6,7 +6,6 @@ export function PreviewRenderer() {
 
   const params = new URLSearchParams(window.location.search);
   const component = params.get("component");
-  const exampleKey = params.get("exampleKey");
   const id = params.get("id");
 
   useEffect(() => {
@@ -26,8 +25,8 @@ export function PreviewRenderer() {
     return () => observer.disconnect();
   }, [id]);
 
-  if (!component || !exampleKey) {
-    return <div>Missing component or exampleKey param</div>;
+  if (!component) {
+    return <div>Missing component param</div>;
   }
 
   const Preview = previewRegistry[component];
@@ -37,7 +36,7 @@ export function PreviewRenderer() {
 
   return (
     <div ref={containerRef}>
-      <Preview exampleKey={exampleKey} />
+      <Preview />
     </div>
   );
 }

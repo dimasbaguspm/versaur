@@ -2,19 +2,14 @@ import { useState } from "react";
 import { useFrameworkSelection } from "../hooks/use-framework-selection";
 import { useShikiHighlighter } from "../hooks/use-shiki-highlighter";
 import { copyToClipboard } from "../utils/clipboard";
-import { PreviewFrame } from "../preview/preview-frame";
 import styles from "./component-preview.module.css";
 
 interface ComponentPreviewProps {
-  component?: string;
-  exampleKey: string;
   examples: Record<string, { code: string; language: string }>;
   defaultExpanded?: boolean;
 }
 
 export function ComponentPreview({
-  component,
-  exampleKey,
   examples,
   defaultExpanded = false,
 }: ComponentPreviewProps) {
@@ -39,18 +34,8 @@ export function ComponentPreview({
 
   const codeHtml = isReady ? highlightCode(code, language) : null;
 
-  const codeOnly = !component;
-
   return (
-    <div
-      className={styles.wrapper}
-      {...(codeOnly ? { "data-code-only": "" } : {})}
-    >
-      {component && (
-        <div className={styles.canvas}>
-          <PreviewFrame component={component} exampleKey={exampleKey} />
-        </div>
-      )}
+    <div className={styles.wrapper}>
       <div className={styles.toolbar}>
         <button
           className={styles.toggleButton}
