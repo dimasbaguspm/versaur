@@ -8,7 +8,7 @@ Framework-agnostic design system using CSS modules + data-attribute state machin
 packages/core     — @versaur/core: CSS modules, design tokens, no JS runtime
 packages/react    — @versaur/react: React wrappers (peer dep on React 18/19)
 packages/tooling  — @versaur/tooling: PostCSS type extraction (private, dev-only)
-apps/docs         — Astro static site with React islands, framework switcher
+apps/docs         — Vite + React SPA with TanStack Router, framework switcher
 ```
 
 Package manager: **pnpm** (workspace protocol `workspace:*` for internal deps).
@@ -16,7 +16,7 @@ Package manager: **pnpm** (workspace protocol `workspace:*` for internal deps).
 ## Commands
 
 ```sh
-pnpm dev              # Start docs dev server (Astro)
+pnpm dev              # Start docs dev server
 pnpm generate:types   # Generate TS types from CSS modules (via @versaur/tooling)
 pnpm build:packages   # Build core + react
 pnpm build:docs       # Build docs site
@@ -37,15 +37,15 @@ pnpm release          # Build packages + changeset publish
 ### Framework wrappers (e.g. `@versaur/react`)
 
 - Thin layers that convert component props into `data-*` attributes via the `useDataAttrs` hook (`packages/react/src/hooks/use-data-attrs.ts`).
-- Wrappers import the scoped class names from core (`buttonStyles`) and the pre-built CSS (`@versaur/core/button.css`).
+- Wrappers import the scoped class names from core (`buttonStyles`) and auto-import the pre-built CSS (`import "@versaur/core/button.css"`) as a side-effect, so consumers get styles automatically.
 - ARIA attributes (`aria-pressed`, `aria-busy`, `aria-disabled`) are set directly from props.
 - Components use `forwardRef` for ref forwarding.
 
 ### Docs (`apps/docs`)
 
-- Astro site with `@astrojs/react` integration for interactive islands.
+- Vite + React SPA with TanStack Router for file-based routing.
 - Framework switcher lets users toggle code examples between frameworks.
-- Component pages live in `apps/docs/src/pages/docs/components/`.
+- Component routes live in `apps/docs/src/routes/docs/components/`.
 - Code blocks use Shiki for syntax highlighting.
 - **Source-first dev resolution**: Vite is configured with `resolve.conditions: ['source']`. Each package declares a `"source"` condition in its `package.json` exports pointing to source files. This means the docs dev server resolves all `@versaur/*` imports from source — no manual aliases needed. Adding new components or subpath exports requires zero alias maintenance.
 
@@ -86,7 +86,7 @@ packages/react/src/components/button/
 1. **Core**: Create `packages/core/src/components/<name>/<name>.module.css` with data-attribute selectors. Add an `index.ts`. Export from `packages/core/src/index.ts`. Add an export entry in `packages/core/package.json`.
 2. **Generate types**: Run `pnpm generate:types` — this creates the `.types.generated.ts` and `.module.css.d.ts` files automatically.
 3. **React wrapper**: Create the component in `packages/react/src/components/<name>/` following the button pattern — types file (importing from `@versaur/core`), component using `useDataAttrs`, `preview.tsx` with sections array (live previews, code strings, props metadata, installation), and index with namespace merging. Export from `packages/react/src/index.ts` and add to `packages/react/package.json` exports.
-4. **Docs**: Add a page at `apps/docs/src/pages/docs/components/<name>.astro` with preview and code examples.
+4. **Docs**: Add a route at `apps/docs/src/routes/docs/components/<name>.tsx`, a doc page at `apps/docs/src/previews/pages/<name>-doc-page.tsx`, and register it in `apps/docs/src/previews/registry.ts`.
 
 ## Key files
 

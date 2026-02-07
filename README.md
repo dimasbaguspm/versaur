@@ -18,14 +18,14 @@ Versaur is a universal design system that provides:
 ### Monorepo Structure
 
 ```
-versaur-new/
+versaur/
 ├── packages/
 │   ├── core/          # CSS Modules + Design Tokens (framework-agnostic)
 │   ├── react/         # React wrapper components
 │   ├── vue/           # Vue wrapper (planned)
 │   └── angular/       # Angular wrapper (planned)
 └── apps/
-    └── docs/          # Next.js Registry/Documentation site
+    └── docs/          # Vite + React documentation site
 ```
 
 ### Key Innovation: Data-Attribute State Machine
@@ -207,16 +207,7 @@ pnpm clean               # Remove all build artifacts
    }
    ```
 
-3. **Add to registry in `apps/docs/registry/registry-items/`**
-   ```json
-   {
-     "name": "component",
-     "type": "component",
-     "files": [...]
-   }
-   ```
-
-4. **Create documentation page in `apps/docs/app/docs/components/`**
+3. **Add docs**: Create a route at `apps/docs/src/routes/docs/components/<name>.tsx`, a doc page at `apps/docs/src/previews/pages/<name>-doc-page.tsx`, and register it in `apps/docs/src/previews/registry.ts`
 
 ## Browser Support
 

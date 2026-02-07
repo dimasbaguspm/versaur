@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
 import { buttonStyles } from "@versaur/core";
+import "@versaur/core/button.css";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type { ButtonProps } from "./button.types";
 
