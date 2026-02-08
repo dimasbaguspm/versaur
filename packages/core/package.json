@@ -36,6 +36,10 @@
       "source": "./src/components/avatar/avatar-group.module.css",
       "import": "./dist/components/avatar/avatar-group.module.css"
     },
+    "./hr.css": {
+      "source": "./src/components/hr/hr.module.css",
+      "import": "./dist/components/hr/hr.module.css"
+    },
     "./components/*": {
       "source": "./src/components/*/index.ts",
       "import": "./dist/components/*/index.js"

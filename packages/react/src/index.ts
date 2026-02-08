@@ -13,3 +13,6 @@ export type { TextProps, TextAs, TextSize, TextWeight, TextIntent } from './comp
 
 export { Avatar, AvatarGroup } from './components/avatar';
 export type { AvatarProps, AvatarGroupProps, AvatarVariant, AvatarSize, AvatarShape, AvatarGroupDirection, AvatarGroupSize } from './components/avatar';
+
+export { Hr } from './components/hr';
+export type { HrProps, HrOrientation, HrVariant, HrSize, HrSpacing } from './components/hr';

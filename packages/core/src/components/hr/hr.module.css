@@ -1,0 +1,93 @@
+/* Base Hr Styles */
+.hr {
+  /* Reset native <hr> */
+  border: none;
+  margin: 0;
+  padding: 0;
+
+  /* Component tokens → private tokens */
+  --_color: var(--vers-comp-hr-color, var(--color-border));
+  --_style: var(--vers-comp-hr-style, solid);
+  --_width: var(--vers-comp-hr-width, 1px);
+  --_spacing: var(--vers-comp-hr-spacing, var(--spacing-4));
+
+  /* Default: horizontal */
+  width: 100%;
+  border-top: var(--_width) var(--_style) var(--_color);
+  margin-block: var(--_spacing);
+}
+
+/* ============================================
+   ORIENTATION
+   ============================================ */
+.hr[data-orientation="horizontal"] {
+  width: 100%;
+  border-top: var(--_width) var(--_style) var(--_color);
+  border-left: none;
+  margin-block: var(--_spacing);
+  margin-inline: 0;
+}
+
+.hr[data-orientation="vertical"] {
+  width: 0;
+  height: 100%;
+  align-self: stretch;
+  border-top: none;
+  border-left: var(--_width) var(--_style) var(--_color);
+  margin-block: 0;
+  margin-inline: var(--_spacing);
+}
+
+/* ============================================
+   VARIANT — border-style
+   ============================================ */
+.hr[data-variant="solid"] {
+  --_style: var(--vers-comp-hr-solid-style, solid);
+}
+
+.hr[data-variant="dashed"] {
+  --_style: var(--vers-comp-hr-dashed-style, dashed);
+}
+
+.hr[data-variant="dotted"] {
+  --_style: var(--vers-comp-hr-dotted-style, dotted);
+}
+
+/* ============================================
+   SIZE — line thickness
+   sm=1px  md=2px  lg=3px
+   ============================================ */
+.hr[data-size="sm"] {
+  --_width: var(--vers-comp-hr-sm-width, 1px);
+}
+
+.hr[data-size="md"] {
+  --_width: var(--vers-comp-hr-md-width, 2px);
+}
+
+.hr[data-size="lg"] {
+  --_width: var(--vers-comp-hr-lg-width, 3px);
+}
+
+/* ============================================
+   SPACING — margin on the cross-axis
+   ============================================ */
+.hr[data-spacing="none"] {
+  --_spacing: 0;
+}
+
+.hr[data-spacing="sm"] {
+  --_spacing: var(--vers-comp-hr-sm-spacing, var(--spacing-2));
+}
+
+.hr[data-spacing="md"] {
+  --_spacing: var(--vers-comp-hr-md-spacing, var(--spacing-4));
+}
+
+.hr[data-spacing="lg"] {
+  --_spacing: var(--vers-comp-hr-lg-spacing, var(--spacing-6));
+}
+
+.hr[data-spacing="xl"] {
+  --_spacing: var(--vers-comp-hr-xl-spacing, var(--spacing-8));
+}

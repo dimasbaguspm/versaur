@@ -19,6 +19,9 @@
       ],
       "avatar": [
         "./dist/avatar.d.ts"
+      ],
+      "hr": [
+        "./dist/hr.d.ts"
       ]
     }
   },
@@ -47,6 +50,11 @@
       "source": "./src/components/avatar/index.ts",
       "types": "./dist/avatar.d.ts",
       "import": "./dist/avatar.js"
+    },
+    "./hr": {
+      "source": "./src/components/hr/index.ts",
+      "types": "./dist/hr.d.ts",
+      "import": "./dist/hr.js"
     }
   },
   "files": [

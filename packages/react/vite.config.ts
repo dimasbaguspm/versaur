@@ -22,6 +22,7 @@ export default defineConfig({
         heading: resolve(__dirname, "src/components/heading/index.ts"),
         text: resolve(__dirname, "src/components/text/index.ts"),
         avatar: resolve(__dirname, "src/components/avatar/index.ts"),
+        hr: resolve(__dirname, "src/components/hr/index.ts"),
       },
       formats: ["es"],
     },
