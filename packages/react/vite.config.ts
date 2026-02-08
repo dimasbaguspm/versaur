@@ -19,6 +19,8 @@ export default defineConfig({
       entry: {
         index: resolve(__dirname, "src/index.ts"),
         button: resolve(__dirname, "src/components/button/index.ts"),
+        heading: resolve(__dirname, "src/components/heading/index.ts"),
+        text: resolve(__dirname, "src/components/text/index.ts"),
       },
       formats: ["es"],
     },

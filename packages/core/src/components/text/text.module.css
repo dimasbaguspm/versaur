@@ -1,0 +1,124 @@
+/* Base Text Styles */
+.text {
+  /* Typography — private tokens default to p preset */
+  --_font-size: var(--vers-comp-text-font-size, var(--font-size-base));
+  --_font-weight: var(--vers-comp-text-font-weight, var(--font-weight-normal));
+  --_line-height: var(--vers-comp-text-line-height, var(--line-height-normal));
+  --_color: var(--vers-comp-text-color, inherit);
+
+  font-family: var(--font-sans);
+  font-size: var(--_font-size);
+  font-weight: var(--_font-weight);
+  line-height: var(--_line-height);
+  color: var(--_color);
+  margin: 0;
+}
+
+/* ============================================
+   AS PRESETS — typographic defaults per element
+   ============================================ */
+.text[data-as="p"] {
+  --_font-size: var(--vers-comp-text-p-font-size, var(--font-size-base));
+  --_font-weight: var(--vers-comp-text-p-font-weight, var(--font-weight-normal));
+  --_line-height: var(--vers-comp-text-p-line-height, var(--line-height-normal));
+}
+
+.text[data-as="span"] {
+  --_font-size: var(--vers-comp-text-span-font-size, var(--font-size-base));
+  --_font-weight: var(--vers-comp-text-span-font-weight, var(--font-weight-normal));
+  --_line-height: var(--vers-comp-text-span-line-height, var(--line-height-normal));
+}
+
+.text[data-as="small"] {
+  --_font-size: var(--vers-comp-text-small-font-size, var(--font-size-sm));
+  --_font-weight: var(--vers-comp-text-small-font-weight, var(--font-weight-normal));
+  --_line-height: var(--vers-comp-text-small-line-height, var(--line-height-normal));
+}
+
+.text[data-as="strong"] {
+  --_font-size: var(--vers-comp-text-strong-font-size, var(--font-size-base));
+  --_font-weight: var(--vers-comp-text-strong-font-weight, var(--font-weight-bold));
+  --_line-height: var(--vers-comp-text-strong-line-height, var(--line-height-normal));
+}
+
+.text[data-as="em"] {
+  --_font-size: var(--vers-comp-text-em-font-size, var(--font-size-base));
+  --_font-weight: var(--vers-comp-text-em-font-weight, var(--font-weight-normal));
+  --_line-height: var(--vers-comp-text-em-line-height, var(--line-height-normal));
+  font-style: italic;
+}
+
+.text[data-as="label"] {
+  --_font-size: var(--vers-comp-text-label-font-size, var(--font-size-sm));
+  --_font-weight: var(--vers-comp-text-label-font-weight, var(--font-weight-medium));
+  --_line-height: var(--vers-comp-text-label-line-height, var(--line-height-normal));
+}
+
+/* ============================================
+   SIZE OVERRIDES — override preset font-size
+   ============================================ */
+.text[data-size="xs"] {
+  --_font-size: var(--vers-comp-text-xs-font-size, var(--font-size-xs));
+}
+
+.text[data-size="sm"] {
+  --_font-size: var(--vers-comp-text-sm-font-size, var(--font-size-sm));
+}
+
+.text[data-size="base"] {
+  --_font-size: var(--vers-comp-text-base-font-size, var(--font-size-base));
+}
+
+.text[data-size="lg"] {
+  --_font-size: var(--vers-comp-text-lg-font-size, var(--font-size-lg));
+}
+
+.text[data-size="xl"] {
+  --_font-size: var(--vers-comp-text-xl-font-size, var(--font-size-xl));
+}
+
+.text[data-size="2xl"] {
+  --_font-size: var(--vers-comp-text-2xl-font-size, var(--font-size-2xl));
+}
+
+/* ============================================
+   WEIGHT OVERRIDES — override preset font-weight
+   ============================================ */
+.text[data-weight="normal"] {
+  --_font-weight: var(--vers-comp-text-normal-font-weight, var(--font-weight-normal));
+}
+
+.text[data-weight="medium"] {
+  --_font-weight: var(--vers-comp-text-medium-font-weight, var(--font-weight-medium));
+}
+
+.text[data-weight="semibold"] {
+  --_font-weight: var(--vers-comp-text-semibold-font-weight, var(--font-weight-semibold));
+}
+
+.text[data-weight="bold"] {
+  --_font-weight: var(--vers-comp-text-bold-font-weight, var(--font-weight-bold));
+}
+
+/* ============================================
+   INTENT VARIANTS — text color
+   ============================================ */
+.text[data-intent="default"] {
+  --_color: var(--vers-comp-text-default-color, var(--color-text-primary));
+}
+
+.text[data-intent="muted"] {
+  --_color: var(--vers-comp-text-muted-color, var(--color-text-secondary));
+}
+
+.text[data-intent="danger"] {
+  --_color: var(--vers-comp-text-danger-color, var(--color-danger-bold));
+}
+
+.text[data-intent="success"] {
+  --_color: var(--vers-comp-text-success-color, var(--color-success-bold));
+}
+
+.text[data-intent="warning"] {
+  --_color: var(--vers-comp-text-warning-color, var(--color-warning-bold));
+}

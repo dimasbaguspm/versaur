@@ -20,6 +20,14 @@
       "source": "./src/components/button/button.module.css",
       "import": "./dist/components/button/button.module.css"
     },
+    "./heading.css": {
+      "source": "./src/components/heading/heading.module.css",
+      "import": "./dist/components/heading/heading.module.css"
+    },
+    "./text.css": {
+      "source": "./src/components/text/text.module.css",
+      "import": "./dist/components/text/text.module.css"
+    },
     "./components/*": {
       "source": "./src/components/*/index.ts",
       "import": "./dist/components/*/index.js"

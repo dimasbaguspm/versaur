@@ -10,11 +10,23 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DocsComponentsTextRouteImport } from './routes/docs/components/text'
+import { Route as DocsComponentsHeadingRouteImport } from './routes/docs/components/heading'
 import { Route as DocsComponentsButtonRouteImport } from './routes/docs/components/button'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocsComponentsTextRoute = DocsComponentsTextRouteImport.update({
+  id: '/docs/components/text',
+  path: '/docs/components/text',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocsComponentsHeadingRoute = DocsComponentsHeadingRouteImport.update({
+  id: '/docs/components/heading',
+  path: '/docs/components/heading',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DocsComponentsButtonRoute = DocsComponentsButtonRouteImport.update({
@@ -26,27 +38,48 @@ const DocsComponentsButtonRoute = DocsComponentsButtonRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/docs/components/button': typeof DocsComponentsButtonRoute
+  '/docs/components/heading': typeof DocsComponentsHeadingRoute
+  '/docs/components/text': typeof DocsComponentsTextRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/docs/components/button': typeof DocsComponentsButtonRoute
+  '/docs/components/heading': typeof DocsComponentsHeadingRoute
+  '/docs/components/text': typeof DocsComponentsTextRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/docs/components/button': typeof DocsComponentsButtonRoute
+  '/docs/components/heading': typeof DocsComponentsHeadingRoute
+  '/docs/components/text': typeof DocsComponentsTextRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/docs/components/button'
+  fullPaths:
+    | '/'
+    | '/docs/components/button'
+    | '/docs/components/heading'
+    | '/docs/components/text'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/docs/components/button'
-  id: '__root__' | '/' | '/docs/components/button'
+  to:
+    | '/'
+    | '/docs/components/button'
+    | '/docs/components/heading'
+    | '/docs/components/text'
+  id:
+    | '__root__'
+    | '/'
+    | '/docs/components/button'
+    | '/docs/components/heading'
+    | '/docs/components/text'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DocsComponentsButtonRoute: typeof DocsComponentsButtonRoute
+  DocsComponentsHeadingRoute: typeof DocsComponentsHeadingRoute
+  DocsComponentsTextRoute: typeof DocsComponentsTextRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -56,6 +89,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/docs/components/text': {
+      id: '/docs/components/text'
+      path: '/docs/components/text'
+      fullPath: '/docs/components/text'
+      preLoaderRoute: typeof DocsComponentsTextRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/docs/components/heading': {
+      id: '/docs/components/heading'
+      path: '/docs/components/heading'
+      fullPath: '/docs/components/heading'
+      preLoaderRoute: typeof DocsComponentsHeadingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/docs/components/button': {
@@ -71,6 +118,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DocsComponentsButtonRoute: DocsComponentsButtonRoute,
+  DocsComponentsHeadingRoute: DocsComponentsHeadingRoute,
+  DocsComponentsTextRoute: DocsComponentsTextRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

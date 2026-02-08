@@ -10,6 +10,12 @@
     "*": {
       "button": [
         "./dist/button.d.ts"
+      ],
+      "heading": [
+        "./dist/heading.d.ts"
+      ],
+      "text": [
+        "./dist/text.d.ts"
       ]
     }
   },
@@ -23,6 +29,16 @@
       "source": "./src/components/button/index.ts",
       "types": "./dist/button.d.ts",
       "import": "./dist/button.js"
+    },
+    "./heading": {
+      "source": "./src/components/heading/index.ts",
+      "types": "./dist/heading.d.ts",
+      "import": "./dist/heading.js"
+    },
+    "./text": {
+      "source": "./src/components/text/index.ts",
+      "types": "./dist/text.d.ts",
+      "import": "./dist/text.js"
     }
   },
   "files": [

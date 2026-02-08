@@ -1,5 +1,7 @@
 // Export design tokens
 export * from "./tokens/index.css";
 
-// Export button component
+// Export components
 export * from "./components/button";
+export * from "./components/heading";
+export * from "./components/text";
