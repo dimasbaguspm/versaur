@@ -1,6 +1,8 @@
 import { forwardRef } from "react";
 import { buttonStyles } from "@versaur/core";
 import "@versaur/core/button.css";
+import { LoaderIcon } from "@versaur/icons";
+import { Icon } from "../icon";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type { ButtonProps } from "./button.types";
 
@@ -12,9 +14,17 @@ import type { ButtonProps } from "./button.types";
  * <Button variant="primary" size="medium">
  *   Click me
  * </Button>
+ *
+ * <Button variant="ghost" size="small" loading>
+ *   Loading...
+ * </Button>
+ *
+ * <Button variant="outline">
+ *   Outline Button
+ * </Button>
  * ```
  */
-export const _Button = forwardRef<HTMLButtonElement, ButtonProps>(
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       variant = "primary",
@@ -28,12 +38,11 @@ export const _Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
-    // Convert component state to data attributes
     const dataAttrs = useDataAttrs({
       variant,
       size,
       loading,
-      disabled: disabled || loading, // Loading also disables the button
+      disabled: disabled || loading,
     });
 
     return (
@@ -47,10 +56,13 @@ export const _Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...dataAttrs}
         {...rest}
       >
+        {loading ? (
+          <Icon as={LoaderIcon} aria-label="Loading" data-icon="loader" />
+        ) : null}
         {children}
       </button>
     );
   },
 );
 
-_Button.displayName = "Button";
+Button.displayName = "Button";

@@ -2,11 +2,13 @@
 // Source: button.module.css
 
 export type ButtonSize = 'large' | 'medium' | 'small';
-export type ButtonVariant = 'danger' | 'primary' | 'secondary';
+export type ButtonVariant = 'danger' | 'ghost' | 'outline' | 'primary' | 'secondary';
+export type ButtonIcon = 'loader';
 
 export interface ButtonDataAttrs {
   size?: ButtonSize;
   variant?: ButtonVariant;
+  icon?: ButtonIcon;
   disabled?: boolean;
   loading?: boolean;
 }
@@ -14,5 +16,6 @@ export interface ButtonDataAttrs {
 export namespace Button {
   export type Size = ButtonSize;
   export type Variant = ButtonVariant;
+  export type Icon = ButtonIcon;
   export type DataAttrs = ButtonDataAttrs;
 }

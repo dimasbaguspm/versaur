@@ -1,5 +1,5 @@
 import type { ComponentType } from "react";
-import { _Button as Button } from "./button";
+import { Button } from "./button";
 
 export interface ButtonSection {
   key: string;
@@ -14,6 +14,8 @@ function VariantsPreview() {
     <div className="button-group">
       <Button variant="primary">Primary</Button>
       <Button variant="secondary">Secondary</Button>
+      <Button variant="outline">Outline</Button>
+      <Button variant="ghost">Ghost</Button>
       <Button variant="danger">Danger</Button>
     </div>
   );
@@ -62,6 +64,8 @@ export const buttonSections: ButtonSection[] = [
     preview: VariantsPreview,
     code: `<Button variant="primary">Primary</Button>
 <Button variant="secondary">Secondary</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
 <Button variant="danger">Danger</Button>`,
     language: "tsx",
   },

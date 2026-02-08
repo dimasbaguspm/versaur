@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite';
-import { resolve } from 'path';
-import dts from 'vite-plugin-dts';
+import { defineConfig } from "vite";
+import { resolve } from "path";
+import dts from "vite-plugin-dts";
 
 export default defineConfig({
   plugins: [
@@ -11,27 +11,28 @@ export default defineConfig({
   ],
   css: {
     modules: {
-      generateScopedName: 'versaur-[name]-[local]',
+      generateScopedName: "versaur-[name]-[local]",
     },
   },
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
-      formats: ['es'],
-      fileName: 'index',
+      entry: resolve(__dirname, "src/index.ts"),
+      formats: ["es"],
+      fileName: "index",
     },
     cssCodeSplit: true,
     rollupOptions: {
+      external: ["react", "react/jsx-runtime"],
       output: {
         preserveModules: true,
-        preserveModulesRoot: 'src',
+        preserveModulesRoot: "src",
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name?.endsWith('.css')) {
+          if (assetInfo.name?.endsWith(".css")) {
             // Strip .module from CSS filenames so downstream consumers
             // don't re-process them as CSS modules
-            return assetInfo.name.replace('.module.css', '.css');
+            return assetInfo.name.replace(".module.css", ".css");
           }
-          return 'assets/[name]-[hash][extname]';
+          return "assets/[name]-[hash][extname]";
         },
       },
     },

@@ -1,4 +1,4 @@
-import { _Button } from "./button";
+import { Button } from "./button";
 import type { Button as CoreButton } from "@versaur/core";
 import type { ButtonProps } from "./button.types";
 
@@ -9,7 +9,6 @@ declare namespace Button {
   export type DataAttrs = CoreButton.DataAttrs;
   export type Props = ButtonProps;
 }
-const Button = _Button;
 export { Button };
 
 // Backward-compat flat type exports

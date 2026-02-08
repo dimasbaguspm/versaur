@@ -24,8 +24,9 @@
   user-select: none;
 
   /* Transitions */
-  transition-property: background-color, border-color, color, transform, box-shadow;
-  transition-duration: var(--transition-fast);
+  transition-property:
+    background-color, border-color, color, transform, box-shadow;
+  transition-duration: var(--transition-base);
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Accessibility */
@@ -34,92 +35,174 @@
 
 /* Size Variants */
 .button[data-size="small"] {
-  height: 2rem;
+  height: 1.75rem;
   padding: 0 var(--spacing-3);
   font-size: var(--font-size-xs);
 }
 
+.button[data-size="small"] svg {
+  width: 1rem;
+  height: 1rem;
+}
+
 .button[data-size="medium"] {
-  height: 2.5rem;
+  height: 2.25rem;
   padding: 0 var(--spacing-4);
   font-size: var(--font-size-sm);
 }
 
+.button[data-size="medium"] svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
 .button[data-size="large"] {
-  height: 3rem;
+  height: 2.5rem;
   padding: 0 var(--spacing-6);
   font-size: var(--font-size-base);
 }
 
-/* Visual Variants - Primary */
+.button[data-size="large"] svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* ============================================
+   PRIMARY VARIANT - Filled Coral Button
+   ============================================ */
 .button[data-variant="primary"] {
   background-color: var(--color-primary);
-  color: var(--color-primary-text);
+  color: #ffffff;
   border-color: var(--color-primary);
 }
 
 .button[data-variant="primary"]:hover:not([data-disabled]):not([data-loading]) {
-  background-color: var(--color-primary-hover);
-  border-color: var(--color-primary-hover);
+  background-color: var(--color-primary-bold);
+  border-color: var(--color-primary-bold);
 }
 
-.button[data-variant="primary"]:active:not([data-disabled]):not([data-loading]) {
-  background-color: var(--color-primary-active);
-  border-color: var(--color-primary-active);
+.button[data-variant="primary"]:active:not([data-disabled]):not(
+    [data-loading]
+  ) {
+  background-color: var(--color-primary-bold);
+  border-color: var(--color-primary-bold);
   transform: scale(0.98);
 }
 
 .button[data-variant="primary"][aria-pressed="true"] {
-  background-color: var(--color-primary-active);
-  border-color: var(--color-primary-active);
+  background-color: var(--color-primary-bold);
+  border-color: var(--color-primary-bold);
   box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.1);
 }
 
-/* Visual Variants - Secondary */
+/* ============================================
+   SECONDARY VARIANT - Filled Sage Button
+   ============================================ */
 .button[data-variant="secondary"] {
   background-color: var(--color-secondary);
-  color: var(--color-secondary-text);
+  color: #ffffff;
   border-color: var(--color-secondary);
 }
 
-.button[data-variant="secondary"]:hover:not([data-disabled]):not([data-loading]) {
-  background-color: var(--color-secondary-hover);
-  border-color: var(--color-secondary-hover);
+.button[data-variant="secondary"]:hover:not([data-disabled]):not(
+    [data-loading]
+  ) {
+  background-color: var(--color-secondary-bold);
+  border-color: var(--color-secondary-bold);
 }
 
-.button[data-variant="secondary"]:active:not([data-disabled]):not([data-loading]) {
-  background-color: var(--color-secondary-active);
-  border-color: var(--color-secondary-active);
+.button[data-variant="secondary"]:active:not([data-disabled]):not(
+    [data-loading]
+  ) {
+  background-color: var(--color-secondary-bold);
+  border-color: var(--color-secondary-bold);
   transform: scale(0.98);
 }
 
 .button[data-variant="secondary"][aria-pressed="true"] {
-  background-color: var(--color-secondary-active);
-  border-color: var(--color-secondary-active);
+  background-color: var(--color-secondary-bold);
+  border-color: var(--color-secondary-bold);
   box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.1);
 }
 
-/* Visual Variants - Danger */
+/* ============================================
+   OUTLINE VARIANT - Outlined Mist Button
+   ============================================ */
+.button[data-variant="outline"] {
+  background-color: var(--color-outline-soft);
+  color: var(--color-outline-bold);
+  border-color: var(--color-outline);
+}
+
+.button[data-variant="outline"]:hover:not([data-disabled]):not([data-loading]) {
+  background-color: var(--color-outline-light);
+  border-color: var(--color-outline-bold);
+}
+
+.button[data-variant="outline"]:active:not([data-disabled]):not(
+    [data-loading]
+  ) {
+  background-color: var(--color-outline-light);
+  border-color: var(--color-outline-bold);
+  transform: scale(0.98);
+}
+
+.button[data-variant="outline"][aria-pressed="true"] {
+  background-color: var(--color-outline);
+  color: #ffffff;
+  border-color: var(--color-outline-bold);
+  box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.1);
+}
+
+/* ============================================
+   GHOST VARIANT - Ghost Slate Button
+   ============================================ */
+.button[data-variant="ghost"] {
+  background-color: var(--color-ghost-soft);
+  color: var(--color-ghost-bold);
+  border-color: transparent;
+}
+
+.button[data-variant="ghost"]:hover:not([data-disabled]):not([data-loading]) {
+  background-color: var(--color-ghost-light);
+  color: var(--color-ghost-bold);
+}
+
+.button[data-variant="ghost"]:active:not([data-disabled]):not([data-loading]) {
+  background-color: var(--color-ghost);
+  color: #ffffff;
+  transform: scale(0.98);
+}
+
+.button[data-variant="ghost"][aria-pressed="true"] {
+  background-color: var(--color-ghost);
+  color: #ffffff;
+  box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.1);
+}
+
+/* ============================================
+   DANGER VARIANT - Filled Red Button
+   ============================================ */
 .button[data-variant="danger"] {
   background-color: var(--color-danger);
-  color: var(--color-danger-text);
+  color: #ffffff;
   border-color: var(--color-danger);
 }
 
 .button[data-variant="danger"]:hover:not([data-disabled]):not([data-loading]) {
-  background-color: var(--color-danger-hover);
-  border-color: var(--color-danger-hover);
+  background-color: var(--color-danger-bold);
+  border-color: var(--color-danger-bold);
 }
 
 .button[data-variant="danger"]:active:not([data-disabled]):not([data-loading]) {
-  background-color: var(--color-danger-active);
-  border-color: var(--color-danger-active);
+  background-color: var(--color-danger-bold);
+  border-color: var(--color-danger-bold);
   transform: scale(0.98);
 }
 
 .button[data-variant="danger"][aria-pressed="true"] {
-  background-color: var(--color-danger-active);
-  border-color: var(--color-danger-active);
+  background-color: var(--color-danger-bold);
+  border-color: var(--color-danger-bold);
   box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.1);
 }
 
@@ -133,40 +216,16 @@
 /* State - Loading */
 .button[data-loading] {
   position: relative;
-  color: transparent;
-  cursor: wait;
   pointer-events: none;
 }
 
-.button[data-loading]::after {
-  content: '';
-  position: absolute;
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid currentColor;
-  border-radius: var(--radius-full);
-  border-right-color: transparent;
+.button[data-loading] svg[data-icon="loader"] {
   animation: spin 0.6s linear infinite;
-
-  /* Restore color for the spinner */
-  color: var(--color-primary-text);
-}
-
-.button[data-variant="primary"][data-loading]::after {
-  color: var(--color-primary-text);
-}
-
-.button[data-variant="secondary"][data-loading]::after {
-  color: var(--color-secondary-text);
-}
-
-.button[data-variant="danger"][data-loading]::after {
-  color: var(--color-danger-text);
 }
 
 /* Accessibility - Focus Ring */
 .button:focus-visible {
-  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline: var(--focus-ring-width) solid var(--color-border-focus);
   outline-offset: var(--focus-ring-offset);
 }
 
