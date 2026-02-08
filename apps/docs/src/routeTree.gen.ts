@@ -9,81 +9,72 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as DocsRouteRouteImport } from './routes/docs/route'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as DocsComponentsTextRouteImport } from './routes/docs/components/text'
-import { Route as DocsComponentsHeadingRouteImport } from './routes/docs/components/heading'
-import { Route as DocsComponentsButtonRouteImport } from './routes/docs/components/button'
+import { Route as DocsIndexRouteImport } from './routes/docs/index'
+import { Route as DocsComponentsComponentRouteImport } from './routes/docs/components/$component'
 
+const DocsRouteRoute = DocsRouteRouteImport.update({
+  id: '/docs',
+  path: '/docs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DocsComponentsTextRoute = DocsComponentsTextRouteImport.update({
-  id: '/docs/components/text',
-  path: '/docs/components/text',
-  getParentRoute: () => rootRouteImport,
+const DocsIndexRoute = DocsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DocsRouteRoute,
 } as any)
-const DocsComponentsHeadingRoute = DocsComponentsHeadingRouteImport.update({
-  id: '/docs/components/heading',
-  path: '/docs/components/heading',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DocsComponentsButtonRoute = DocsComponentsButtonRouteImport.update({
-  id: '/docs/components/button',
-  path: '/docs/components/button',
-  getParentRoute: () => rootRouteImport,
+const DocsComponentsComponentRoute = DocsComponentsComponentRouteImport.update({
+  id: '/components/$component',
+  path: '/components/$component',
+  getParentRoute: () => DocsRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/docs/components/button': typeof DocsComponentsButtonRoute
-  '/docs/components/heading': typeof DocsComponentsHeadingRoute
-  '/docs/components/text': typeof DocsComponentsTextRoute
+  '/docs': typeof DocsRouteRouteWithChildren
+  '/docs/': typeof DocsIndexRoute
+  '/docs/components/$component': typeof DocsComponentsComponentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/docs/components/button': typeof DocsComponentsButtonRoute
-  '/docs/components/heading': typeof DocsComponentsHeadingRoute
-  '/docs/components/text': typeof DocsComponentsTextRoute
+  '/docs': typeof DocsIndexRoute
+  '/docs/components/$component': typeof DocsComponentsComponentRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/docs/components/button': typeof DocsComponentsButtonRoute
-  '/docs/components/heading': typeof DocsComponentsHeadingRoute
-  '/docs/components/text': typeof DocsComponentsTextRoute
+  '/docs': typeof DocsRouteRouteWithChildren
+  '/docs/': typeof DocsIndexRoute
+  '/docs/components/$component': typeof DocsComponentsComponentRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/docs/components/button'
-    | '/docs/components/heading'
-    | '/docs/components/text'
+  fullPaths: '/' | '/docs' | '/docs/' | '/docs/components/$component'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/docs/components/button'
-    | '/docs/components/heading'
-    | '/docs/components/text'
-  id:
-    | '__root__'
-    | '/'
-    | '/docs/components/button'
-    | '/docs/components/heading'
-    | '/docs/components/text'
+  to: '/' | '/docs' | '/docs/components/$component'
+  id: '__root__' | '/' | '/docs' | '/docs/' | '/docs/components/$component'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DocsComponentsButtonRoute: typeof DocsComponentsButtonRoute
-  DocsComponentsHeadingRoute: typeof DocsComponentsHeadingRoute
-  DocsComponentsTextRoute: typeof DocsComponentsTextRoute
+  DocsRouteRoute: typeof DocsRouteRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/docs': {
+      id: '/docs'
+      path: '/docs'
+      fullPath: '/docs'
+      preLoaderRoute: typeof DocsRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -91,35 +82,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/docs/components/text': {
-      id: '/docs/components/text'
-      path: '/docs/components/text'
-      fullPath: '/docs/components/text'
-      preLoaderRoute: typeof DocsComponentsTextRouteImport
-      parentRoute: typeof rootRouteImport
+    '/docs/': {
+      id: '/docs/'
+      path: '/'
+      fullPath: '/docs/'
+      preLoaderRoute: typeof DocsIndexRouteImport
+      parentRoute: typeof DocsRouteRoute
     }
-    '/docs/components/heading': {
-      id: '/docs/components/heading'
-      path: '/docs/components/heading'
-      fullPath: '/docs/components/heading'
-      preLoaderRoute: typeof DocsComponentsHeadingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/docs/components/button': {
-      id: '/docs/components/button'
-      path: '/docs/components/button'
-      fullPath: '/docs/components/button'
-      preLoaderRoute: typeof DocsComponentsButtonRouteImport
-      parentRoute: typeof rootRouteImport
+    '/docs/components/$component': {
+      id: '/docs/components/$component'
+      path: '/components/$component'
+      fullPath: '/docs/components/$component'
+      preLoaderRoute: typeof DocsComponentsComponentRouteImport
+      parentRoute: typeof DocsRouteRoute
     }
   }
 }
 
+interface DocsRouteRouteChildren {
+  DocsIndexRoute: typeof DocsIndexRoute
+  DocsComponentsComponentRoute: typeof DocsComponentsComponentRoute
+}
+
+const DocsRouteRouteChildren: DocsRouteRouteChildren = {
+  DocsIndexRoute: DocsIndexRoute,
+  DocsComponentsComponentRoute: DocsComponentsComponentRoute,
+}
+
+const DocsRouteRouteWithChildren = DocsRouteRoute._addFileChildren(
+  DocsRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DocsComponentsButtonRoute: DocsComponentsButtonRoute,
-  DocsComponentsHeadingRoute: DocsComponentsHeadingRoute,
-  DocsComponentsTextRoute: DocsComponentsTextRoute,
+  DocsRouteRoute: DocsRouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

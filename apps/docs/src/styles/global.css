@@ -27,30 +27,6 @@ body {
   font-size: var(--font-size-lg);
 }
 
-.nav {
-  display: flex;
-  gap: 1rem;
-  margin: 2rem 0;
-}
-
-.nav a {
-  color: var(--color-text-secondary);
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-md);
-  transition: all var(--transition-fast);
-}
-
-.nav a:hover {
-  color: var(--color-text-primary);
-  background: var(--color-surface);
-}
-
-.nav a.active {
-  color: var(--color-primary);
-  background: var(--color-surface);
-}
-
 .component-showcase {
   margin: 3rem 0;
 }

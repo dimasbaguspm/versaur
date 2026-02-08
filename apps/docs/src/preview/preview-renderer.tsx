@@ -29,7 +29,7 @@ export function PreviewRenderer() {
     return <div>Missing component param</div>;
   }
 
-  const Preview = previewRegistry[component];
+  const Preview = previewRegistry[component]?.component;
   if (!Preview) {
     return <div>Unknown component: {component}</div>;
   }

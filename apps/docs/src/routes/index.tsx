@@ -6,7 +6,7 @@ export const Route = createFileRoute("/")({
 
 function HomePage() {
   return (
-    <>
+    <div className="container">
       <div className="header">
         <h1>Versaur Design System</h1>
         <p>Modern, framework-agnostic UI component library</p>
@@ -49,11 +49,11 @@ function HomePage() {
       <section>
         <h2>Get Started</h2>
         <div style={{ display: "flex", gap: "1rem", marginTop: "1rem" }}>
-          <Link to="/docs/components/button" className="primary-button">
+          <Link to="/docs" className="primary-button">
             View Components
           </Link>
         </div>
       </section>
-    </>
+    </div>
   );
 }
