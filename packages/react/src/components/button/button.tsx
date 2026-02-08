@@ -34,6 +34,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       pressed = false,
       children,
       type = "button",
+      onClick,
       ...rest
     },
     ref,
@@ -45,6 +46,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       disabled: disabled || loading,
     });
 
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+      if (disabled || loading) {
+        e.preventDefault();
+        return;
+      }
+      onClick?.(e);
+    };
+
     return (
       <button
         ref={ref}
@@ -55,6 +64,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         aria-disabled={disabled || loading ? "true" : undefined}
         {...dataAttrs}
         {...rest}
+        onClick={handleClick}
       >
         {loading ? (
           <Icon as={LoaderIcon} aria-label="Loading" data-icon="loader" />

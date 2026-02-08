@@ -1,50 +1,66 @@
 :root {
   /* Primary Color - Coral */
-  --color-primary: #e07a5f;
+  --color-primary: #c96a50;
   --color-primary-light: #ffd9cb;
-  --color-primary-bold: #a95a3a;
+  --color-primary-hover: #b55d44;
+  --color-primary-active: #a04d38;
+  --color-primary-bold: #8f4230;
   --color-primary-soft: #fff8f6;
 
   /* Secondary Color - Sage */
-  --color-secondary: #81b29a;
+  --color-secondary: #5f9a7e;
   --color-secondary-light: #d9ffe6;
-  --color-secondary-bold: #56806b;
+  --color-secondary-hover: #4e8569;
+  --color-secondary-active: #3d7057;
+  --color-secondary-bold: #336050;
   --color-secondary-soft: #f6fffa;
 
   /* Outline/Tertiary Color - Mist */
   --color-outline: #84a5c0;
   --color-outline-light: #d8ebff;
+  --color-outline-hover: #6e92b0;
+  --color-outline-active: #5a7fa0;
   --color-outline-bold: #5a7a99;
   --color-outline-soft: #f5faff;
 
   /* Danger Color - Red */
-  --color-danger: #dc3545;
+  --color-danger: #cc2f3e;
   --color-danger-light: #ffccd2;
-  --color-danger-bold: #a82835;
+  --color-danger-hover: #b52835;
+  --color-danger-active: #9e222d;
+  --color-danger-bold: #8a1f2b;
   --color-danger-soft: #fff5f6;
 
   /* Ghost/Neutral Color - Slate */
   --color-ghost: #3d405b;
   --color-ghost-light: #b6b8db;
+  --color-ghost-hover: #4e5175;
+  --color-ghost-active: #33354d;
   --color-ghost-bold: #23243a;
   --color-ghost-soft: #e3e4ea;
 
   /* Neutral Color - Light Gray */
   --color-neutral: #e9ecef;
   --color-neutral-light: #f4f6f8;
+  --color-neutral-hover: #dce0e4;
+  --color-neutral-active: #cfd4d9;
   --color-neutral-bold: #b0b3b8;
   --color-neutral-soft: #f8f9fa;
 
   /* Success Color */
-  --color-success: #6db285;
+  --color-success: #4d9466;
   --color-success-light: #c8ffdd;
-  --color-success-bold: #417a5a;
+  --color-success-hover: #3f7f56;
+  --color-success-active: #336b48;
+  --color-success-bold: #2a5c3e;
   --color-success-soft: #f4fff9;
 
   /* Warning Color */
-  --color-warning: #e08a47;
+  --color-warning: #c47738;
   --color-warning-light: #ffdab5;
-  --color-warning-bold: #b86a2c;
+  --color-warning-hover: #ae6930;
+  --color-warning-active: #985b28;
+  --color-warning-bold: #854f22;
   --color-warning-soft: #fff1e4;
 
   /* Background & Text */

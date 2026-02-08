@@ -101,7 +101,7 @@ export const buttonSections: ButtonSection[] = [
 export const buttonProps = [
   {
     name: "variant",
-    type: "'primary' | 'secondary' | 'danger'",
+    type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'danger'",
     default: "'primary'",
     description: "Visual variant of the button",
   },

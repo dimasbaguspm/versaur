@@ -4,7 +4,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-2);
 
   /* Typography */
   font-family: var(--font-sans);
@@ -12,20 +11,41 @@
   text-decoration: none;
   white-space: nowrap;
 
-  /* Sizing - default medium */
-  height: 2.5rem;
-  padding: 0 var(--spacing-4);
-  font-size: var(--font-size-sm);
+  /* Sizing — private tokens default to medium */
+  --_height: var(--vers-comp-button-height, 2.5rem);
+  --_px: var(--vers-comp-button-padding-x, var(--spacing-4));
+  --_font-size: var(--vers-comp-button-font-size, var(--font-size-sm));
+  --_icon-size: var(--vers-comp-button-icon-size, 1.25rem);
+  --_gap: var(--vers-comp-button-gap, var(--spacing-2));
 
-  /* Visual */
-  border: 1px solid transparent;
-  border-radius: var(--radius-md);
+  height: var(--_height);
+  padding: 0 var(--_px);
+  font-size: var(--_font-size);
+  gap: var(--_gap);
+
+  /* Border radius */
+  --_radius: var(--vers-comp-button-radius, var(--radius-md));
+
+  /* Color — private tokens default to primary */
+  --_bg: var(--vers-comp-button-bg, var(--color-primary));
+  --_color: var(--vers-comp-button-color, #ffffff);
+  --_border-color: var(--vers-comp-button-border-color, var(--color-primary));
+
+  /* Focus ring */
+  --_focus-ring-width: var(--vers-comp-button-focus-ring-width, var(--focus-ring-width));
+  --_focus-ring-offset: var(--vers-comp-button-focus-ring-offset, var(--focus-ring-offset));
+  --_focus-ring-color: var(--vers-comp-button-focus-ring-color, var(--focus-ring-color));
+
+  background-color: var(--_bg);
+  color: var(--_color);
+  border: 1px solid var(--_border-color);
+  border-radius: var(--_radius);
   cursor: pointer;
   user-select: none;
 
   /* Transitions */
   transition-property:
-    background-color, border-color, color, transform, box-shadow;
+    background-color, border-color, color, box-shadow;
   transition-duration: var(--transition-base);
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -33,65 +53,68 @@
   outline: none;
 }
 
-/* Size Variants */
-.button[data-size="small"] {
-  height: 1.75rem;
-  padding: 0 var(--spacing-3);
-  font-size: var(--font-size-xs);
+/* Consolidated icon sizing */
+.button svg {
+  width: var(--_icon-size);
+  height: var(--_icon-size);
 }
 
-.button[data-size="small"] svg {
-  width: 1rem;
-  height: 1rem;
+/* ============================================
+   SIZE VARIANTS — 8px height progression
+   small=32px  medium=40px  large=48px
+   ============================================ */
+.button[data-size="small"] {
+  --_height: var(--vers-comp-button-sm-height, 2rem);
+  --_px: var(--vers-comp-button-sm-padding-x, var(--spacing-3));
+  --_font-size: var(--vers-comp-button-sm-font-size, var(--font-size-xs));
+  --_icon-size: var(--vers-comp-button-sm-icon-size, 1rem);
+  --_gap: var(--vers-comp-button-sm-gap, var(--spacing-1));
+  --_radius: var(--vers-comp-button-sm-radius, var(--radius-md));
 }
 
 .button[data-size="medium"] {
-  height: 2.25rem;
-  padding: 0 var(--spacing-4);
-  font-size: var(--font-size-sm);
-}
-
-.button[data-size="medium"] svg {
-  width: 1.25rem;
-  height: 1.25rem;
+  --_height: var(--vers-comp-button-md-height, 2.5rem);
+  --_px: var(--vers-comp-button-md-padding-x, var(--spacing-4));
+  --_font-size: var(--vers-comp-button-md-font-size, var(--font-size-sm));
+  --_icon-size: var(--vers-comp-button-md-icon-size, 1.25rem);
+  --_gap: var(--vers-comp-button-md-gap, var(--spacing-2));
+  --_radius: var(--vers-comp-button-md-radius, var(--radius-md));
 }
 
 .button[data-size="large"] {
-  height: 2.5rem;
-  padding: 0 var(--spacing-6);
-  font-size: var(--font-size-base);
-}
-
-.button[data-size="large"] svg {
-  width: 1.5rem;
-  height: 1.5rem;
+  --_height: var(--vers-comp-button-lg-height, 3rem);
+  --_px: var(--vers-comp-button-lg-padding-x, var(--spacing-5));
+  --_font-size: var(--vers-comp-button-lg-font-size, var(--font-size-base));
+  --_icon-size: var(--vers-comp-button-lg-icon-size, 1.5rem);
+  --_gap: var(--vers-comp-button-lg-gap, var(--spacing-2));
+  --_radius: var(--vers-comp-button-lg-radius, var(--radius-lg));
 }
 
 /* ============================================
    PRIMARY VARIANT - Filled Coral Button
    ============================================ */
 .button[data-variant="primary"] {
-  background-color: var(--color-primary);
-  color: #ffffff;
-  border-color: var(--color-primary);
+  --_bg: var(--vers-comp-button-primary-bg, var(--color-primary));
+  --_color: var(--vers-comp-button-primary-color, #ffffff);
+  --_border-color: var(--vers-comp-button-primary-border-color, transparent);
+  --_focus-ring-color: var(--vers-comp-button-primary-focus-ring-color, var(--color-primary));
 }
 
 .button[data-variant="primary"]:hover:not([data-disabled]):not([data-loading]) {
-  background-color: var(--color-primary-bold);
-  border-color: var(--color-primary-bold);
+  --_bg: var(--vers-comp-button-primary-hover-bg, var(--color-primary-hover));
+  --_border-color: var(--vers-comp-button-primary-hover-border-color, transparent);
 }
 
 .button[data-variant="primary"]:active:not([data-disabled]):not(
     [data-loading]
   ) {
-  background-color: var(--color-primary-bold);
-  border-color: var(--color-primary-bold);
-  transform: scale(0.98);
+  --_bg: var(--vers-comp-button-primary-active-bg, var(--color-primary-active));
+  --_border-color: var(--vers-comp-button-primary-active-border-color, transparent);
 }
 
 .button[data-variant="primary"][aria-pressed="true"] {
-  background-color: var(--color-primary-bold);
-  border-color: var(--color-primary-bold);
+  --_bg: var(--vers-comp-button-primary-pressed-bg, var(--color-primary-active));
+  --_border-color: var(--vers-comp-button-primary-pressed-border-color, transparent);
   box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.1);
 }
 
@@ -99,29 +122,29 @@
    SECONDARY VARIANT - Filled Sage Button
    ============================================ */
 .button[data-variant="secondary"] {
-  background-color: var(--color-secondary);
-  color: #ffffff;
-  border-color: var(--color-secondary);
+  --_bg: var(--vers-comp-button-secondary-bg, var(--color-secondary));
+  --_color: var(--vers-comp-button-secondary-color, #ffffff);
+  --_border-color: var(--vers-comp-button-secondary-border-color, transparent);
+  --_focus-ring-color: var(--vers-comp-button-secondary-focus-ring-color, var(--color-secondary));
 }
 
 .button[data-variant="secondary"]:hover:not([data-disabled]):not(
     [data-loading]
   ) {
-  background-color: var(--color-secondary-bold);
-  border-color: var(--color-secondary-bold);
+  --_bg: var(--vers-comp-button-secondary-hover-bg, var(--color-secondary-hover));
+  --_border-color: var(--vers-comp-button-secondary-hover-border-color, transparent);
 }
 
 .button[data-variant="secondary"]:active:not([data-disabled]):not(
     [data-loading]
   ) {
-  background-color: var(--color-secondary-bold);
-  border-color: var(--color-secondary-bold);
-  transform: scale(0.98);
+  --_bg: var(--vers-comp-button-secondary-active-bg, var(--color-secondary-active));
+  --_border-color: var(--vers-comp-button-secondary-active-border-color, transparent);
 }
 
 .button[data-variant="secondary"][aria-pressed="true"] {
-  background-color: var(--color-secondary-bold);
-  border-color: var(--color-secondary-bold);
+  --_bg: var(--vers-comp-button-secondary-pressed-bg, var(--color-secondary-active));
+  --_border-color: var(--vers-comp-button-secondary-pressed-border-color, transparent);
   box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.1);
 }
 
@@ -129,28 +152,28 @@
    OUTLINE VARIANT - Outlined Mist Button
    ============================================ */
 .button[data-variant="outline"] {
-  background-color: var(--color-outline-soft);
-  color: var(--color-outline-bold);
-  border-color: var(--color-outline);
+  --_bg: var(--vers-comp-button-outline-bg, var(--color-outline-soft));
+  --_color: var(--vers-comp-button-outline-color, var(--color-outline-bold));
+  --_border-color: var(--vers-comp-button-outline-border-color, var(--color-outline));
+  --_focus-ring-color: var(--vers-comp-button-outline-focus-ring-color, var(--color-outline));
 }
 
 .button[data-variant="outline"]:hover:not([data-disabled]):not([data-loading]) {
-  background-color: var(--color-outline-light);
-  border-color: var(--color-outline-bold);
+  --_bg: var(--vers-comp-button-outline-hover-bg, var(--color-outline-light));
+  --_border-color: var(--vers-comp-button-outline-hover-border-color, var(--color-outline-hover));
 }
 
 .button[data-variant="outline"]:active:not([data-disabled]):not(
     [data-loading]
   ) {
-  background-color: var(--color-outline-light);
-  border-color: var(--color-outline-bold);
-  transform: scale(0.98);
+  --_bg: var(--vers-comp-button-outline-active-bg, var(--color-outline-hover));
+  --_border-color: var(--vers-comp-button-outline-active-border-color, var(--color-outline-bold));
 }
 
 .button[data-variant="outline"][aria-pressed="true"] {
-  background-color: var(--color-outline);
-  color: #ffffff;
-  border-color: var(--color-outline-bold);
+  --_bg: var(--vers-comp-button-outline-pressed-bg, var(--color-outline));
+  --_color: var(--vers-comp-button-outline-pressed-color, #ffffff);
+  --_border-color: var(--vers-comp-button-outline-pressed-border-color, var(--color-outline-bold));
   box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.1);
 }
 
@@ -158,25 +181,25 @@
    GHOST VARIANT - Ghost Slate Button
    ============================================ */
 .button[data-variant="ghost"] {
-  background-color: var(--color-ghost-soft);
-  color: var(--color-ghost-bold);
-  border-color: transparent;
+  --_bg: var(--vers-comp-button-ghost-bg, var(--color-ghost-soft));
+  --_color: var(--vers-comp-button-ghost-color, var(--color-ghost-bold));
+  --_border-color: var(--vers-comp-button-ghost-border-color, transparent);
+  --_focus-ring-color: var(--vers-comp-button-ghost-focus-ring-color, var(--color-ghost));
 }
 
 .button[data-variant="ghost"]:hover:not([data-disabled]):not([data-loading]) {
-  background-color: var(--color-ghost-light);
-  color: var(--color-ghost-bold);
+  --_bg: var(--vers-comp-button-ghost-hover-bg, var(--color-ghost-light));
+  --_color: var(--vers-comp-button-ghost-hover-color, var(--color-ghost-bold));
 }
 
 .button[data-variant="ghost"]:active:not([data-disabled]):not([data-loading]) {
-  background-color: var(--color-ghost);
-  color: #ffffff;
-  transform: scale(0.98);
+  --_bg: var(--vers-comp-button-ghost-active-bg, var(--color-ghost));
+  --_color: var(--vers-comp-button-ghost-active-color, #ffffff);
 }
 
 .button[data-variant="ghost"][aria-pressed="true"] {
-  background-color: var(--color-ghost);
-  color: #ffffff;
+  --_bg: var(--vers-comp-button-ghost-pressed-bg, var(--color-ghost));
+  --_color: var(--vers-comp-button-ghost-pressed-color, #ffffff);
   box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.1);
 }
 
@@ -184,25 +207,25 @@
    DANGER VARIANT - Filled Red Button
    ============================================ */
 .button[data-variant="danger"] {
-  background-color: var(--color-danger);
-  color: #ffffff;
-  border-color: var(--color-danger);
+  --_bg: var(--vers-comp-button-danger-bg, var(--color-danger));
+  --_color: var(--vers-comp-button-danger-color, #ffffff);
+  --_border-color: var(--vers-comp-button-danger-border-color, transparent);
+  --_focus-ring-color: var(--vers-comp-button-danger-focus-ring-color, var(--color-danger));
 }
 
 .button[data-variant="danger"]:hover:not([data-disabled]):not([data-loading]) {
-  background-color: var(--color-danger-bold);
-  border-color: var(--color-danger-bold);
+  --_bg: var(--vers-comp-button-danger-hover-bg, var(--color-danger-hover));
+  --_border-color: var(--vers-comp-button-danger-hover-border-color, transparent);
 }
 
 .button[data-variant="danger"]:active:not([data-disabled]):not([data-loading]) {
-  background-color: var(--color-danger-bold);
-  border-color: var(--color-danger-bold);
-  transform: scale(0.98);
+  --_bg: var(--vers-comp-button-danger-active-bg, var(--color-danger-active));
+  --_border-color: var(--vers-comp-button-danger-active-border-color, transparent);
 }
 
 .button[data-variant="danger"][aria-pressed="true"] {
-  background-color: var(--color-danger-bold);
-  border-color: var(--color-danger-bold);
+  --_bg: var(--vers-comp-button-danger-pressed-bg, var(--color-danger-active));
+  --_border-color: var(--vers-comp-button-danger-pressed-border-color, transparent);
   box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.1);
 }
 
@@ -210,7 +233,6 @@
 .button[data-disabled] {
   opacity: 0.5;
   cursor: not-allowed;
-  pointer-events: none;
 }
 
 /* State - Loading */
@@ -225,8 +247,8 @@
 
 /* Accessibility - Focus Ring */
 .button:focus-visible {
-  outline: var(--focus-ring-width) solid var(--color-border-focus);
-  outline-offset: var(--focus-ring-offset);
+  outline: var(--_focus-ring-width) solid var(--_focus-ring-color);
+  outline-offset: var(--_focus-ring-offset);
 }
 
 /* Animations */
