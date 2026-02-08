@@ -28,6 +28,14 @@
       "source": "./src/components/text/text.module.css",
       "import": "./dist/components/text/text.module.css"
     },
+    "./avatar.css": {
+      "source": "./src/components/avatar/avatar.module.css",
+      "import": "./dist/components/avatar/avatar.module.css"
+    },
+    "./avatar-group.css": {
+      "source": "./src/components/avatar/avatar-group.module.css",
+      "import": "./dist/components/avatar/avatar-group.module.css"
+    },
     "./components/*": {
       "source": "./src/components/*/index.ts",
       "import": "./dist/components/*/index.js"

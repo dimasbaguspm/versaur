@@ -1,0 +1,149 @@
+/* Base Avatar Styles */
+.avatar {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  vertical-align: middle;
+
+  /* Typography */
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+  user-select: none;
+
+  /* Sizing — private tokens default to medium (40px) */
+  --_size: var(--vers-comp-avatar-size, 2.5rem);
+  --_font-size: var(--vers-comp-avatar-font-size, var(--font-size-sm));
+  --_icon-size: var(--vers-comp-avatar-icon-size, 1.25rem);
+
+  width: var(--_size);
+  height: var(--_size);
+  font-size: var(--_font-size);
+
+  /* Shape — default to circle */
+  --_radius: var(--vers-comp-avatar-radius, 50%);
+
+  /* Color — private tokens default to primary */
+  --_bg: var(--vers-comp-avatar-bg, var(--color-primary));
+  --_color: var(--vers-comp-avatar-color, #ffffff);
+  --_border: var(--vers-comp-avatar-border, none);
+
+  background-color: var(--_bg);
+  color: var(--_color);
+  border: var(--_border);
+  border-radius: var(--_radius);
+
+  /* Transitions */
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: var(--transition-base);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Icon sizing */
+.avatar svg {
+  width: var(--_icon-size);
+  height: var(--_icon-size);
+}
+
+/* ============================================
+   SIZE VARIANTS
+   xs=24px  sm=32px  md=40px  lg=48px  xl=64px
+   ============================================ */
+.avatar[data-size="xs"] {
+  --_size: var(--vers-comp-avatar-xs-size, 1.5rem);
+  --_font-size: var(--vers-comp-avatar-xs-font-size, 0.625rem);
+  --_icon-size: var(--vers-comp-avatar-xs-icon-size, 0.75rem);
+}
+
+.avatar[data-size="sm"] {
+  --_size: var(--vers-comp-avatar-sm-size, 2rem);
+  --_font-size: var(--vers-comp-avatar-sm-font-size, var(--font-size-xs));
+  --_icon-size: var(--vers-comp-avatar-sm-icon-size, 1rem);
+}
+
+.avatar[data-size="md"] {
+  --_size: var(--vers-comp-avatar-md-size, 2.5rem);
+  --_font-size: var(--vers-comp-avatar-md-font-size, var(--font-size-sm));
+  --_icon-size: var(--vers-comp-avatar-md-icon-size, 1.25rem);
+}
+
+.avatar[data-size="lg"] {
+  --_size: var(--vers-comp-avatar-lg-size, 3rem);
+  --_font-size: var(--vers-comp-avatar-lg-font-size, var(--font-size-base));
+  --_icon-size: var(--vers-comp-avatar-lg-icon-size, 1.5rem);
+}
+
+.avatar[data-size="xl"] {
+  --_size: var(--vers-comp-avatar-xl-size, 4rem);
+  --_font-size: var(--vers-comp-avatar-xl-font-size, var(--font-size-lg));
+  --_icon-size: var(--vers-comp-avatar-xl-icon-size, 2rem);
+}
+
+/* ============================================
+   SHAPE VARIANTS
+   ============================================ */
+.avatar[data-shape="circle"] {
+  --_radius: var(--vers-comp-avatar-circle-radius, 50%);
+}
+
+.avatar[data-shape="square"] {
+  --_radius: var(--vers-comp-avatar-square-radius, var(--radius-md));
+}
+
+/* ============================================
+   PRIMARY VARIANT - Filled Coral
+   ============================================ */
+.avatar[data-variant="primary"] {
+  --_bg: var(--vers-comp-avatar-primary-bg, var(--color-primary));
+  --_color: var(--vers-comp-avatar-primary-color, #ffffff);
+  --_border: var(--vers-comp-avatar-primary-border, none);
+}
+
+/* ============================================
+   SECONDARY VARIANT - Filled Sage
+   ============================================ */
+.avatar[data-variant="secondary"] {
+  --_bg: var(--vers-comp-avatar-secondary-bg, var(--color-secondary));
+  --_color: var(--vers-comp-avatar-secondary-color, #ffffff);
+  --_border: var(--vers-comp-avatar-secondary-border, none);
+}
+
+/* ============================================
+   OUTLINE VARIANT - Outlined Mist
+   ============================================ */
+.avatar[data-variant="outline"] {
+  --_bg: var(--vers-comp-avatar-outline-bg, var(--color-outline-soft));
+  --_color: var(--vers-comp-avatar-outline-color, var(--color-outline-bold));
+  --_border: var(--vers-comp-avatar-outline-border, 1px solid var(--color-outline));
+}
+
+/* ============================================
+   GHOST VARIANT - Ghost Slate
+   ============================================ */
+.avatar[data-variant="ghost"] {
+  --_bg: var(--vers-comp-avatar-ghost-bg, var(--color-ghost-soft));
+  --_color: var(--vers-comp-avatar-ghost-color, var(--color-ghost-bold));
+  --_border: var(--vers-comp-avatar-ghost-border, none);
+}
+
+/* ============================================
+   DANGER VARIANT - Filled Red
+   ============================================ */
+.avatar[data-variant="danger"] {
+  --_bg: var(--vers-comp-avatar-danger-bg, var(--color-danger));
+  --_color: var(--vers-comp-avatar-danger-color, #ffffff);
+  --_border: var(--vers-comp-avatar-danger-border, none);
+}
+
+/* ============================================
+   IMAGE STYLING
+   ============================================ */
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}

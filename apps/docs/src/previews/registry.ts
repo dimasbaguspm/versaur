@@ -2,6 +2,7 @@ import type { ComponentType } from "react";
 import { ButtonDocPage } from "./pages/button-doc-page";
 import { HeadingDocPage } from "./pages/heading-doc-page";
 import { TextDocPage } from "./pages/text-doc-page";
+import { AvatarDocPage } from "./pages/avatar-doc-page";
 
 export interface RegistryEntry {
   component: ComponentType;
@@ -27,5 +28,11 @@ export const previewRegistry: Record<string, RegistryEntry> = {
     title: "Text",
     description:
       "A typography component for body text with configurable element, size, weight, and intent",
+  },
+  avatar: {
+    component: AvatarDocPage,
+    title: "Avatar",
+    description:
+      "A user representation component with image, initials, or icon fallback and grouping support",
   },
 };

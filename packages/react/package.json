@@ -16,6 +16,9 @@
       ],
       "text": [
         "./dist/text.d.ts"
+      ],
+      "avatar": [
+        "./dist/avatar.d.ts"
       ]
     }
   },
@@ -39,6 +42,11 @@
       "source": "./src/components/text/index.ts",
       "types": "./dist/text.d.ts",
       "import": "./dist/text.js"
+    },
+    "./avatar": {
+      "source": "./src/components/avatar/index.ts",
+      "types": "./dist/avatar.d.ts",
+      "import": "./dist/avatar.js"
     }
   },
   "files": [

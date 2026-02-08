@@ -68,7 +68,10 @@ export function generateCssDtsFile(parsed: ParsedComponent): string {
   const lines: string[] = [HEADER, "declare const styles: {"];
 
   for (const className of parsed.classNames) {
-    lines.push(`  readonly ${className}: string;`);
+    const key = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(className)
+      ? className
+      : `'${className}'`;
+    lines.push(`  readonly ${key}: string;`);
   }
 
   lines.push("};");

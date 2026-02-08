@@ -1,0 +1,59 @@
+/* Base AvatarGroup Styles */
+.avatar-group {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+
+  /* Default direction: horizontal */
+  --_direction: var(--vers-comp-avatar-group-direction, row);
+  --_overlap: var(--vers-comp-avatar-group-overlap, -0.625rem);
+
+  flex-direction: var(--_direction);
+}
+
+/* Overlap for horizontal children */
+.avatar-group[data-direction="horizontal"] {
+  --_direction: var(--vers-comp-avatar-group-horizontal-direction, row);
+}
+
+.avatar-group[data-direction="horizontal"] > * + * {
+  margin-left: var(--_overlap);
+}
+
+/* Overlap for vertical children */
+.avatar-group[data-direction="vertical"] {
+  --_direction: var(--vers-comp-avatar-group-vertical-direction, column);
+}
+
+.avatar-group[data-direction="vertical"] > * + * {
+  margin-top: var(--_overlap);
+}
+
+/* Visual separation ring on children */
+.avatar-group > * {
+  box-shadow: 0 0 0 2px var(--color-background);
+}
+
+/* ============================================
+   SIZE VARIANTS — overlap scales with size
+   xs=-6px  sm=-8px  md=-10px  lg=-12px  xl=-16px
+   ============================================ */
+.avatar-group[data-size="xs"] {
+  --_overlap: var(--vers-comp-avatar-group-xs-overlap, -0.375rem);
+}
+
+.avatar-group[data-size="sm"] {
+  --_overlap: var(--vers-comp-avatar-group-sm-overlap, -0.5rem);
+}
+
+.avatar-group[data-size="md"] {
+  --_overlap: var(--vers-comp-avatar-group-md-overlap, -0.625rem);
+}
+
+.avatar-group[data-size="lg"] {
+  --_overlap: var(--vers-comp-avatar-group-lg-overlap, -0.75rem);
+}
+
+.avatar-group[data-size="xl"] {
+  --_overlap: var(--vers-comp-avatar-group-xl-overlap, -1rem);
+}

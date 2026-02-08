@@ -10,3 +10,6 @@ export type { HeadingProps, HeadingAs, HeadingSize, HeadingWeight, HeadingIntent
 
 export { Text } from './components/text';
 export type { TextProps, TextAs, TextSize, TextWeight, TextIntent } from './components/text';
+
+export { Avatar, AvatarGroup } from './components/avatar';
+export type { AvatarProps, AvatarGroupProps, AvatarVariant, AvatarSize, AvatarShape, AvatarGroupDirection, AvatarGroupSize } from './components/avatar';
