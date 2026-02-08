@@ -12,7 +12,7 @@ function getHighlighter(): Promise<Highlighter> {
     .then(({ createHighlighter }) =>
       createHighlighter({
         themes: ["github-dark"],
-        langs: ["tsx", "vue", "bash", "typescript"],
+        langs: ["tsx", "vue", "bash", "typescript", "css"],
       }),
     )
     .then((instance) => {

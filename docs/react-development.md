@@ -81,6 +81,17 @@ export const _Button = forwardRef<HTMLButtonElement, ButtonProps>(
 _Button.displayName = "Button";
 ```
 
+> **Disabled/loading click prevention:** Wrappers intercept `onClick` to prevent interaction when `disabled` or `loading` is true. This is necessary because the CSS disabled state uses `cursor: not-allowed` without `pointer-events: none`, so clicks still reach the element. The wrapper's `handleClick` guards against this:
+> ```tsx
+> const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+>   if (disabled || loading) {
+>     e.preventDefault();
+>     return;
+>   }
+>   onClick?.(e);
+> };
+> ```
+
 ### Compound pattern
 
 For multi-part components (Dialog, Select, Accordion, etc.):

@@ -31,6 +31,9 @@ pnpm release          # Build packages + changeset publish
 - Pure CSS — no JavaScript runtime. Exports CSS modules and a JS module that re-exports the generated class name mappings (e.g. `buttonStyles.button`).
 - **Design tokens** live in `packages/core/src/tokens/` as CSS custom properties: `colors.css`, `spacing.css`, `typography.css`, `effects.css`.
 - **Data-attribute selectors** drive all state styling. CSS targets `[data-variant="primary"]`, `[data-size="small"]`, `[data-loading]`, `[data-disabled]`, etc. — no class toggling for state.
+- **Component tokens** use a three-layer pattern: global semantic tokens (`--color-primary`) are wrapped in component override tokens (`--vers-comp-button-primary-bg`) which set private tokens (`--_bg`). This allows consumers to customize individual components without affecting the global design system.
+- **Per-variant focus ring**: Each variant overrides `--_focus-ring-color` with its own base color so focus rings visually match the variant.
+- **Disabled state**: CSS uses `cursor: not-allowed` without `pointer-events: none`. Click prevention is handled by framework wrappers in JS.
 - CSS module scoping pattern: `versaur-[name]-[local]` (set in `packages/core/vite.config.ts`).
 - The build strips `.module` from output CSS filenames so consumers don't re-process them.
 

@@ -103,9 +103,16 @@ Purpose-driven tokens that reference primitives. These **do change** between lig
 }
 ```
 
-### Component-level tokens (future)
+### Component-level tokens
 
-See [section 6](#6-extending-tokens--component-level-overrides-future-direction) for the planned component-scoped indirection layer.
+Components use a three-layer indirection pattern so consumers can customize individual components without affecting the global design system:
+
+```
+Global token → Component override token → Private token
+--color-primary → --vers-comp-button-primary-bg → --_bg
+```
+
+See [section 6](#6-component-level-token-pattern) for the full pattern and naming convention.
 
 ## 5. Token categories
 
@@ -171,68 +178,71 @@ All semantic tokens have dark mode overrides via `@media (prefers-color-scheme: 
 | Focus ring (3) | `--focus-ring-width` (2px), `--focus-ring-offset` (2px), `--focus-ring-color` (references `--color-border-focus`) |
 | Transitions (3) | `--transition-fast` (150ms), `--transition-base` (200ms), `--transition-slow` (300ms) — all use `cubic-bezier(0.4, 0, 0.2, 1)` |
 
-## 6. Extending tokens — component-level overrides (future direction)
+## 6. Component-level token pattern
 
-### Current limitation
+Components use a **three-layer indirection** pattern for CSS custom properties. This allows consumers to customize individual components without affecting the global design system.
 
-Component CSS references global semantic tokens directly. Overriding `--color-primary` affects **every** component that uses it:
+### Three-layer flow
+
+```
+Global semantic token → Component override token → Private token
+--color-primary       → --vers-comp-button-primary-bg → --_bg
+```
+
+1. **Private tokens** (`--_bg`, `--_color`, `--_border-color`, etc.) — scoped to the component's base class. All property declarations reference these. The `--_` prefix makes them component-local by convention.
+2. **Component override tokens** (`--vers-comp-button-*`) — the public API for consumers. Each private token defaults to its override token via `var(--vers-comp-button-*, <fallback>)`.
+3. **Global semantic tokens** (`--color-primary`, `--spacing-4`, etc.) — the fallback values when no override is set.
+
+### How it works in practice
+
+The base class declares private tokens with the override → fallback chain:
 
 ```css
-/* Current: button.module.css uses global tokens directly */
-.button[data-variant="primary"] {
-  background-color: var(--color-primary);     /* ← global */
-  border-color: var(--color-primary);         /* ← global */
+.button {
+  --_bg: var(--vers-comp-button-bg, var(--color-primary));
+  --_color: var(--vers-comp-button-color, #ffffff);
+  --_border-color: var(--vers-comp-button-border-color, var(--color-primary));
+
+  background-color: var(--_bg);
+  color: var(--_color);
+  border: 1px solid var(--_border-color);
 }
 ```
 
-### Proposed pattern
-
-Introduce a component-scoped indirection layer — local tokens that default to semantic tokens but can be overridden per-component:
+Each variant overrides the private tokens with variant-specific override tokens:
 
 ```css
-/* Future: component-level tokens referencing semantic tokens */
-.button[data-variant="primary"] {
-  --button-bg: var(--color-primary);
-  --button-bg-hover: var(--color-primary-hover);
-  --button-border: var(--color-primary);
-  --button-text: var(--color-primary-text);
-
-  background-color: var(--button-bg);
-  border-color: var(--button-border);
-  color: var(--button-text);
-}
-
-.button[data-variant="primary"]:hover:not([data-disabled]):not([data-loading]) {
-  background-color: var(--button-bg-hover);
+.button[data-variant="secondary"] {
+  --_bg: var(--vers-comp-button-secondary-bg, var(--color-secondary));
+  --_color: var(--vers-comp-button-secondary-color, #ffffff);
+  --_border-color: var(--vers-comp-button-secondary-border-color, transparent);
 }
 ```
 
 ### Consumer override
 
-With component-level tokens in place, consumers can override a single component without affecting the global design system:
+Consumers can customize a single component without affecting the global design system by setting component override tokens:
 
 ```css
-/* Consumer stylesheet — only changes button, not other components */
-[data-variant="primary"] {
-  --button-bg: #8b5cf6;
-  --button-bg-hover: #7c3aed;
+/* Only changes button — no effect on other components */
+.my-custom-button {
+  --vers-comp-button-primary-bg: #8b5cf6;
+  --vers-comp-button-primary-hover-bg: #7c3aed;
 }
 ```
 
 ### Naming convention
 
-Component-level tokens follow the pattern `--<component>-<property>`:
+Component override tokens follow the pattern `--vers-comp-<component>-<variant?>-<state?>-<property>`:
 
-| Token | Component | Purpose |
-|---|---|---|
-| `--button-bg` | Button | Background color |
-| `--button-border` | Button | Border color |
-| `--input-border` | TextInput | Border color |
-| `--input-bg` | TextInput | Background color |
-
-### Status
-
-This pattern is **not yet implemented**. It is documented here as the planned direction for granular per-component customization without forking the global token layer.
+| Token | Purpose |
+|---|---|
+| `--vers-comp-button-bg` | Default background |
+| `--vers-comp-button-primary-bg` | Primary variant background |
+| `--vers-comp-button-primary-hover-bg` | Primary variant hover background |
+| `--vers-comp-button-sm-height` | Small size height |
+| `--vers-comp-button-focus-ring-color` | Default focus ring color |
+| `--vers-comp-button-primary-focus-ring-color` | Primary variant focus ring color |
 
 ## 7. Component CSS module pattern
 
@@ -255,21 +265,39 @@ The base class sets layout, typography, sizing defaults, transitions, and resets
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-2);
 
   font-family: var(--font-sans);
   font-weight: var(--font-weight-medium);
 
-  height: 2.5rem;
-  padding: 0 var(--spacing-4);
-  font-size: var(--font-size-sm);
+  /* Sizing — private tokens default to medium */
+  --_height: var(--vers-comp-button-height, 2.5rem);
+  --_px: var(--vers-comp-button-padding-x, var(--spacing-4));
+  --_font-size: var(--vers-comp-button-font-size, var(--font-size-sm));
+  --_gap: var(--vers-comp-button-gap, var(--spacing-2));
 
-  border: 1px solid transparent;
-  border-radius: var(--radius-md);
+  height: var(--_height);
+  padding: 0 var(--_px);
+  font-size: var(--_font-size);
+  gap: var(--_gap);
+
+  /* Color — private tokens default to primary */
+  --_bg: var(--vers-comp-button-bg, var(--color-primary));
+  --_color: var(--vers-comp-button-color, #ffffff);
+  --_border-color: var(--vers-comp-button-border-color, var(--color-primary));
+
+  /* Focus ring */
+  --_focus-ring-width: var(--vers-comp-button-focus-ring-width, var(--focus-ring-width));
+  --_focus-ring-offset: var(--vers-comp-button-focus-ring-offset, var(--focus-ring-offset));
+  --_focus-ring-color: var(--vers-comp-button-focus-ring-color, var(--focus-ring-color));
+
+  background-color: var(--_bg);
+  color: var(--_color);
+  border: 1px solid var(--_border-color);
+  border-radius: var(--_radius);
   cursor: pointer;
 
-  transition-property: background-color, border-color, color, transform, box-shadow;
-  transition-duration: var(--transition-fast);
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: var(--transition-base);
 
   outline: none;
 }
@@ -277,13 +305,14 @@ The base class sets layout, typography, sizing defaults, transitions, and resets
 
 ### Enumerated variants
 
-Each variant sets background, text color, and border using semantic tokens:
+Each variant overrides private tokens with variant-specific values via the three-layer token pattern:
 
 ```css
 .button[data-variant="primary"] {
-  background-color: var(--color-primary);
-  color: var(--color-primary-text);
-  border-color: var(--color-primary);
+  --_bg: var(--vers-comp-button-primary-bg, var(--color-primary));
+  --_color: var(--vers-comp-button-primary-color, #ffffff);
+  --_border-color: var(--vers-comp-button-primary-border-color, transparent);
+  --_focus-ring-color: var(--vers-comp-button-primary-focus-ring-color, var(--color-primary));
 }
 ```
 
@@ -293,14 +322,13 @@ Interactive states **must** exclude disabled and loading states:
 
 ```css
 .button[data-variant="primary"]:hover:not([data-disabled]):not([data-loading]) {
-  background-color: var(--color-primary-hover);
-  border-color: var(--color-primary-hover);
+  --_bg: var(--vers-comp-button-primary-hover-bg, var(--color-primary-hover));
+  --_border-color: var(--vers-comp-button-primary-hover-border-color, transparent);
 }
 
 .button[data-variant="primary"]:active:not([data-disabled]):not([data-loading]) {
-  background-color: var(--color-primary-active);
-  border-color: var(--color-primary-active);
-  transform: scale(0.98);
+  --_bg: var(--vers-comp-button-primary-active-bg, var(--color-primary-active));
+  --_border-color: var(--vers-comp-button-primary-active-border-color, transparent);
 }
 ```
 
@@ -324,27 +352,44 @@ Disabled and loading are boolean data-attributes (present/absent):
 .button[data-disabled] {
   opacity: 0.5;
   cursor: not-allowed;
-  pointer-events: none;
 }
 
 .button[data-loading] {
   position: relative;
-  color: transparent;
-  cursor: wait;
   pointer-events: none;
 }
 ```
 
+> **Note:** The disabled state intentionally omits `pointer-events: none` so that `cursor: not-allowed` is visible to the user. Click prevention is handled by the framework wrapper (JS), not CSS. The loading state uses `pointer-events: none` since the cursor style is not relevant during loading.
+
 ### Focus ring
 
-All interactive components use `:focus-visible` with token variables:
+All interactive components use `:focus-visible` with private token variables:
 
 ```css
 .button:focus-visible {
-  outline: var(--focus-ring-width) solid var(--focus-ring-color);
-  outline-offset: var(--focus-ring-offset);
+  outline: var(--_focus-ring-width) solid var(--_focus-ring-color);
+  outline-offset: var(--_focus-ring-offset);
 }
 ```
+
+#### Per-variant focus ring colors
+
+Each variant overrides `--_focus-ring-color` with its own base color so focus rings visually match the variant:
+
+```css
+.button[data-variant="primary"] {
+  --_focus-ring-color: var(--vers-comp-button-primary-focus-ring-color, var(--color-primary));
+}
+.button[data-variant="secondary"] {
+  --_focus-ring-color: var(--vers-comp-button-secondary-focus-ring-color, var(--color-secondary));
+}
+.button[data-variant="danger"] {
+  --_focus-ring-color: var(--vers-comp-button-danger-focus-ring-color, var(--color-danger));
+}
+```
+
+This ensures the focus ring color always matches the visual weight of the variant, improving accessibility cues.
 
 ## 8. CSS module scoping
 
