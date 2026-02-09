@@ -48,6 +48,10 @@
       "source": "./src/components/button-icon/button-icon.module.css",
       "import": "./dist/components/button-icon/button-icon.module.css"
     },
+    "./no-results.css": {
+      "source": "./src/components/no-results/no-results.module.css",
+      "import": "./dist/components/no-results/no-results.module.css"
+    },
     "./components/*": {
       "source": "./src/components/*/index.ts",
       "import": "./dist/components/*/index.js"

@@ -28,6 +28,9 @@
       ],
       "button-icon": [
         "./dist/button-icon.d.ts"
+      ],
+      "no-results": [
+        "./dist/no-results.d.ts"
       ]
     }
   },
@@ -71,6 +74,11 @@
       "source": "./src/components/button-icon/index.ts",
       "types": "./dist/button-icon.d.ts",
       "import": "./dist/button-icon.js"
+    },
+    "./no-results": {
+      "source": "./src/components/no-results/index.ts",
+      "types": "./dist/no-results.d.ts",
+      "import": "./dist/no-results.js"
     }
   },
   "files": [

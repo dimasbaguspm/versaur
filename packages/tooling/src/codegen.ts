@@ -29,7 +29,8 @@ export function generateTypesFile(parsed: ParsedComponent): string {
   // Enumerated type aliases
   const enumTypeNames: { attrName: string; typeName: string }[] = [];
   for (const [attrName, values] of parsed.enumeratedAttrs) {
-    const typeName = `${pascal}${capitalize(attrName)}`;
+    const pascalAttr = toPascalCase(attrName);
+    const typeName = `${pascal}${pascalAttr}`;
     const union = [...values]
       .sort()
       .map((v) => `'${v}'`)
@@ -56,7 +57,8 @@ export function generateTypesFile(parsed: ParsedComponent): string {
   // Namespace
   lines.push(`export namespace ${pascal} {`);
   for (const { attrName, typeName } of enumTypeNames) {
-    lines.push(`  export type ${capitalize(attrName)} = ${typeName};`);
+    const pascalAttr = toPascalCase(attrName);
+    lines.push(`  export type ${pascalAttr} = ${typeName};`);
   }
   lines.push(`  export type DataAttrs = ${pascal}DataAttrs;`);
   lines.push("}");

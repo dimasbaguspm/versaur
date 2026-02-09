@@ -56,3 +56,6 @@ export type {
 
 export { ButtonIcon } from "./components/button-icon";
 export type { ButtonIconProps } from "./components/button-icon";
+
+export { NoResults } from "./components/no-results";
+export type { NoResultsProps } from "./components/no-results";

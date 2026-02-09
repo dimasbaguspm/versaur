@@ -6,6 +6,7 @@ import { TextDocPage } from "./pages/text-doc-page";
 import { AvatarDocPage } from "./pages/avatar-doc-page";
 import { HrDocPage } from "./pages/hr-doc-page";
 import { TabsDocPage } from "./pages/tabs-doc-page";
+import { NoResultsDocPage } from "./pages/no-results-doc-page";
 
 export type ComponentCategory =
   | "Primitives"
@@ -68,6 +69,13 @@ export const previewRegistry: Record<string, RegistryEntry> = {
     title: "Tabs",
     description:
       "A controlled compound component for managing tab selection with accessible triggers and custom panel support",
+    category: "Primitives",
+  },
+  "no-results": {
+    component: NoResultsDocPage,
+    title: "NoResults",
+    description:
+      "A flexible empty state component for displaying when no content is available in lists, search results, or filtered data",
     category: "Primitives",
   },
 };
