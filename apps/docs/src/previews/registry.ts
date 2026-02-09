@@ -15,6 +15,7 @@ import { BadgeGroupDocPage } from "./pages/badge-group-doc-page";
 import { ButtonGroupDocPage } from "./pages/button-group-doc-page";
 import { CardDocPage } from "./pages/card-doc-page";
 import { TableDocPage } from "./pages/table-doc-page";
+import { TopBarDocPage } from "./pages/top-bar-doc-page";
 
 export type ComponentCategory =
   | "Primitives"
@@ -140,5 +141,12 @@ export const previewRegistry: Record<string, RegistryEntry> = {
     description:
       "A container component for grouping multiple avatars with overlapping display, customizable direction, alignment, and wrap behavior",
     category: "Layouts",
+  },
+  "top-bar": {
+    component: TopBarDocPage,
+    title: "TopBar",
+    description:
+      "A semantic navigation header component with compound pattern, polymorphic NavItem support, and mobile menu toggle",
+    category: "Navigations",
   },
 };

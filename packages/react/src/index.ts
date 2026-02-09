@@ -128,3 +128,14 @@ export type {
   ButtonGroupAlign,
   ButtonGroupWrap,
 } from "./components/button-group";
+export { TopBar } from "./components/top-bar";
+export type {
+  TopBarProps,
+  TopBarLeadingProps,
+  TopBarTrailingProps,
+  TopBarNavProps,
+  TopBarNavItemProps,
+  TopBarActionsProps,
+  TopBarMobileToggleProps,
+  TopBarComponent,
+} from "./components/top-bar";

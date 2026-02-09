@@ -55,6 +55,9 @@
       ],
       "table": [
         "./dist/table.d.ts"
+      ],
+      "top-bar": [
+        "./dist/top-bar.d.ts"
       ]
     }
   },
@@ -143,6 +146,11 @@
       "source": "./src/components/table/index.ts",
       "types": "./dist/table.d.ts",
       "import": "./dist/table.js"
+    },
+    "./top-bar": {
+      "source": "./src/components/top-bar/index.ts",
+      "types": "./dist/top-bar.d.ts",
+      "import": "./dist/top-bar.js"
     }
   },
   "files": [

@@ -15,6 +15,7 @@ export * from "./components/attribute-list";
 export * from "./components/badge";
 export * from "./components/card";
 export * from "./components/table";
+export * from "./components/top-bar";
 
 // Export groups
 export * from "./components/avatar-group";
