@@ -3,14 +3,20 @@
 
 export type AvatarGroupDirection = 'horizontal' | 'vertical';
 export type AvatarGroupSize = 'lg' | 'md' | 'sm' | 'xl' | 'xs';
+export type AvatarGroupAlign = 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly' | 'start';
+export type AvatarGroupWrap = 'nowrap' | 'wrap';
 
 export interface AvatarGroupDataAttrs {
   direction?: AvatarGroupDirection;
   size?: AvatarGroupSize;
+  align?: AvatarGroupAlign;
+  wrap?: AvatarGroupWrap;
 };
 
 export namespace AvatarGroup {
   export type Direction = AvatarGroupDirection;
   export type Size = AvatarGroupSize;
+  export type Align = AvatarGroupAlign;
+  export type Wrap = AvatarGroupWrap;
   export type DataAttrs = AvatarGroupDataAttrs;
 }

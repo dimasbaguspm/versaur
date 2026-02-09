@@ -33,8 +33,8 @@
       "import": "./dist/components/avatar/avatar.module.css"
     },
     "./avatar-group.css": {
-      "source": "./src/components/avatar/avatar-group.module.css",
-      "import": "./dist/components/avatar/avatar-group.module.css"
+      "source": "./src/components/avatar-group/avatar-group.module.css",
+      "import": "./dist/components/avatar-group/avatar-group.module.css"
     },
     "./hr.css": {
       "source": "./src/components/hr/hr.module.css",
@@ -63,6 +63,14 @@
     "./badge.css": {
       "source": "./src/components/badge/badge.module.css",
       "import": "./dist/components/badge/badge.module.css"
+    },
+    "./badge-group.css": {
+      "source": "./src/components/badge-group/badge-group.module.css",
+      "import": "./dist/components/badge-group/badge-group.module.css"
+    },
+    "./button-group.css": {
+      "source": "./src/components/button-group/button-group.module.css",
+      "import": "./dist/components/button-group/button-group.module.css"
     },
     "./components/*": {
       "source": "./src/components/*/index.ts",

@@ -1,0 +1,99 @@
+/* Base ButtonGroup Styles */
+.button-group {
+  /* Layout */
+  display: flex;
+  align-items: center;
+
+  /* Abstraction layer: component-specific spacing mapping to unified tokens */
+  --_button-group-xs: var(--spacing-1);
+  --_button-group-sm: var(--spacing-2);
+  --_button-group-md: var(--spacing-3);
+  --_button-group-lg: var(--spacing-4);
+
+  /* Default gap: medium */
+  --_gap: var(--vers-comp-button-group-gap, var(--_button-group-md));
+  --_direction: var(--vers-comp-button-group-direction, row);
+  --_align: var(--vers-comp-button-group-align, center);
+  --_wrap: var(--vers-comp-button-group-wrap, nowrap);
+
+  gap: var(--_gap);
+  flex-direction: var(--_direction);
+  align-items: var(--_align);
+  flex-wrap: var(--_wrap);
+}
+
+/* ============================================
+   GAP VARIANTS — xs, sm, md, lg
+   ============================================ */
+
+.button-group[data-gap="xs"] {
+  --_gap: var(--vers-comp-button-group-xs-gap, var(--_button-group-xs));
+}
+
+.button-group[data-gap="sm"] {
+  --_gap: var(--vers-comp-button-group-sm-gap, var(--_button-group-sm));
+}
+
+.button-group[data-gap="md"] {
+  --_gap: var(--vers-comp-button-group-md-gap, var(--_button-group-md));
+}
+
+.button-group[data-gap="lg"] {
+  --_gap: var(--vers-comp-button-group-lg-gap, var(--_button-group-lg));
+}
+
+/* ============================================
+   DIRECTION VARIANTS — horizontal, vertical
+   ============================================ */
+
+.button-group[data-direction="horizontal"] {
+  --_direction: row;
+}
+
+.button-group[data-direction="vertical"] {
+  --_direction: column;
+}
+
+/* ============================================
+   ALIGNMENT VARIANTS — flex alignment + justify-content
+   start, center, end, space-between, space-around, space-evenly
+   ============================================ */
+
+.button-group[data-align="start"] {
+  --_align: flex-start;
+}
+
+.button-group[data-align="center"] {
+  --_align: center;
+}
+
+.button-group[data-align="end"] {
+  --_align: flex-end;
+}
+
+.button-group[data-align="space-between"] {
+  justify-content: space-between;
+  --_align: center;
+}
+
+.button-group[data-align="space-around"] {
+  justify-content: space-around;
+  --_align: center;
+}
+
+.button-group[data-align="space-evenly"] {
+  justify-content: space-evenly;
+  --_align: center;
+}
+
+/* ============================================
+   WRAP VARIANTS — wrap, nowrap
+   ============================================ */
+
+.button-group[data-wrap="wrap"] {
+  --_wrap: wrap;
+}
+
+.button-group[data-wrap="nowrap"] {
+  --_wrap: nowrap;
+}

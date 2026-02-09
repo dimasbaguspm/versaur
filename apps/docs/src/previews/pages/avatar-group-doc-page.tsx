@@ -1,8 +1,8 @@
 import {
-  avatarSections,
-  avatarInstallation,
-  avatarProps,
-} from "@versaur/react/avatar";
+  avatarGroupSections,
+  avatarGroupInstallation,
+  avatarGroupProps,
+} from "@versaur/react/avatar-group";
 import { ComponentPreview } from "../../components/component-preview";
 import { PropsTable } from "../../components/props-table";
 
@@ -14,10 +14,10 @@ function makeExamples(section: { code: string; language: string }) {
   };
 }
 
-export function AvatarDocPage() {
+export function AvatarGroupDocPage() {
   return (
     <>
-      {avatarSections.map((section) => (
+      {avatarGroupSections.map((section) => (
         <div key={section.key}>
           <h3>{section.title}</h3>
           <section.preview />
@@ -25,11 +25,13 @@ export function AvatarDocPage() {
         </div>
       ))}
 
-      <h2>Avatar API Reference</h2>
-      <PropsTable props={avatarProps} />
+      <h2>API Reference</h2>
+
+      <h3>AvatarGroup Props</h3>
+      <PropsTable props={avatarGroupProps} />
 
       <h2>Installation</h2>
-      <ComponentPreview examples={makeExamples(avatarInstallation)} />
+      <ComponentPreview examples={makeExamples(avatarGroupInstallation)} />
     </>
   );
 }

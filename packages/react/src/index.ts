@@ -27,16 +27,22 @@ export type {
   TextIntent,
 } from "./components/text";
 
-export { Avatar, AvatarGroup } from "./components/avatar";
+export { Avatar } from "./components/avatar";
 export type {
   AvatarProps,
-  AvatarGroupProps,
   AvatarVariant,
   AvatarSize,
   AvatarShape,
+} from "./components/avatar";
+
+export { AvatarGroup } from "./components/avatar-group";
+export type {
+  AvatarGroupProps,
   AvatarGroupDirection,
   AvatarGroupSize,
-} from "./components/avatar";
+  AvatarGroupAlign,
+  AvatarGroupWrap,
+} from "./components/avatar-group";
 
 export { Hr } from "./components/hr";
 export type {
@@ -76,3 +82,20 @@ export type {
   BadgeSize,
   BadgeShape,
 } from "./components/badge";
+export { BadgeGroup } from "./components/badge-group";
+export type {
+  BadgeGroupProps,
+  BadgeGroupGap,
+  BadgeGroupDirection,
+  BadgeGroupAlign,
+  BadgeGroupWrap,
+} from "./components/badge-group";
+
+export { ButtonGroup } from "./components/button-group";
+export type {
+  ButtonGroupProps,
+  ButtonGroupGap,
+  ButtonGroupDirection,
+  ButtonGroupAlign,
+  ButtonGroupWrap,
+} from "./components/button-group";

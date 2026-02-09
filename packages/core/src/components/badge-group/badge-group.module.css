@@ -1,0 +1,99 @@
+/* Base BadgeGroup Styles */
+.badge-group {
+  /* Layout */
+  display: flex;
+  align-items: center;
+
+  /* Abstraction layer: component-specific spacing mapping to unified tokens */
+  --_badge-group-xs: var(--spacing-1);
+  --_badge-group-sm: var(--spacing-2);
+  --_badge-group-md: var(--spacing-3);
+  --_badge-group-lg: var(--spacing-4);
+
+  /* Default gap: medium */
+  --_gap: var(--vers-comp-badge-group-gap, var(--_badge-group-md));
+  --_direction: var(--vers-comp-badge-group-direction, row);
+  --_align: var(--vers-comp-badge-group-align, center);
+  --_wrap: var(--vers-comp-badge-group-wrap, nowrap);
+
+  gap: var(--_gap);
+  flex-direction: var(--_direction);
+  align-items: var(--_align);
+  flex-wrap: var(--_wrap);
+}
+
+/* ============================================
+   GAP VARIANTS — xs, sm, md, lg
+   ============================================ */
+
+.badge-group[data-gap="xs"] {
+  --_gap: var(--vers-comp-badge-group-xs-gap, var(--_badge-group-xs));
+}
+
+.badge-group[data-gap="sm"] {
+  --_gap: var(--vers-comp-badge-group-sm-gap, var(--_badge-group-sm));
+}
+
+.badge-group[data-gap="md"] {
+  --_gap: var(--vers-comp-badge-group-md-gap, var(--_badge-group-md));
+}
+
+.badge-group[data-gap="lg"] {
+  --_gap: var(--vers-comp-badge-group-lg-gap, var(--_badge-group-lg));
+}
+
+/* ============================================
+   DIRECTION VARIANTS — horizontal, vertical
+   ============================================ */
+
+.badge-group[data-direction="horizontal"] {
+  --_direction: row;
+}
+
+.badge-group[data-direction="vertical"] {
+  --_direction: column;
+}
+
+/* ============================================
+   ALIGNMENT VARIANTS — flex alignment + justify-content
+   start, center, end, space-between, space-around, space-evenly
+   ============================================ */
+
+.badge-group[data-align="start"] {
+  --_align: flex-start;
+}
+
+.badge-group[data-align="center"] {
+  --_align: center;
+}
+
+.badge-group[data-align="end"] {
+  --_align: flex-end;
+}
+
+.badge-group[data-align="space-between"] {
+  justify-content: space-between;
+  --_align: center;
+}
+
+.badge-group[data-align="space-around"] {
+  justify-content: space-around;
+  --_align: center;
+}
+
+.badge-group[data-align="space-evenly"] {
+  justify-content: space-evenly;
+  --_align: center;
+}
+
+/* ============================================
+   WRAP VARIANTS — wrap, nowrap
+   ============================================ */
+
+.badge-group[data-wrap="wrap"] {
+  --_wrap: wrap;
+}
+
+.badge-group[data-wrap="nowrap"] {
+  --_wrap: nowrap;
+}

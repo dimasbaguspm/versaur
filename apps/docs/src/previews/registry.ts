@@ -4,12 +4,15 @@ import { ButtonIconDocPage } from "./pages/button-icon-doc-page";
 import { HeadingDocPage } from "./pages/heading-doc-page";
 import { TextDocPage } from "./pages/text-doc-page";
 import { AvatarDocPage } from "./pages/avatar-doc-page";
+import { AvatarGroupDocPage } from "./pages/avatar-group-doc-page";
 import { HrDocPage } from "./pages/hr-doc-page";
 import { TabsDocPage } from "./pages/tabs-doc-page";
 import { NoResultsDocPage } from "./pages/no-results-doc-page";
 import { PageLoaderDocPage } from "./pages/page-loader-doc-page";
 import { AttributeListDocPage } from "./pages/attribute-list-doc-page";
 import { BadgeDocPage } from "./pages/badge-doc-page";
+import { BadgeGroupDocPage } from "./pages/badge-group-doc-page";
+import { ButtonGroupDocPage } from "./pages/button-group-doc-page";
 
 export type ComponentCategory =
   | "Primitives"
@@ -101,5 +104,26 @@ export const previewRegistry: Record<string, RegistryEntry> = {
     description:
       "A badge component for displaying labels, tags, or status indicators with customizable variants, sizes, and shapes",
     category: "Primitives",
+  },
+  "badge-group": {
+    component: BadgeGroupDocPage,
+    title: "BadgeGroup",
+    description:
+      "A container component for grouping multiple badges with customizable gap, direction, alignment, and wrap behavior",
+    category: "Layouts",
+  },
+  "button-group": {
+    component: ButtonGroupDocPage,
+    title: "ButtonGroup",
+    description:
+      "A container component for grouping multiple buttons with customizable gap, direction, alignment, and wrap behavior",
+    category: "Layouts",
+  },
+  "avatar-group": {
+    component: AvatarGroupDocPage,
+    title: "AvatarGroup",
+    description:
+      "A container component for grouping multiple avatars with overlapping display, customizable direction, alignment, and wrap behavior",
+    category: "Layouts",
   },
 };

@@ -4,11 +4,21 @@
   display: inline-flex;
   align-items: center;
 
+  /* Abstraction layer: component-specific spacing mapping to unified tokens */
+  --_avatar-group-xs: var(--spacing-1);
+  --_avatar-group-sm: var(--spacing-2);
+  --_avatar-group-md: var(--spacing-3);
+  --_avatar-group-lg: var(--spacing-4);
+
   /* Default direction: horizontal */
   --_direction: var(--vers-comp-avatar-group-direction, row);
   --_overlap: var(--vers-comp-avatar-group-overlap, -0.625rem);
+  --_align: var(--vers-comp-avatar-group-align, center);
+  --_wrap: var(--vers-comp-avatar-group-wrap, nowrap);
 
   flex-direction: var(--_direction);
+  align-items: var(--_align);
+  flex-wrap: var(--_wrap);
 }
 
 /* Overlap for horizontal children */
@@ -56,4 +66,47 @@
 
 .avatar-group[data-size="xl"] {
   --_overlap: var(--vers-comp-avatar-group-xl-overlap, -1rem);
+}
+/* ============================================
+   ALIGNMENT VARIANTS — flex alignment + justify-content
+   start, center, end, space-between, space-around, space-evenly
+   ============================================ */
+
+.avatar-group[data-align="start"] {
+  --_align: flex-start;
+}
+
+.avatar-group[data-align="center"] {
+  --_align: center;
+}
+
+.avatar-group[data-align="end"] {
+  --_align: flex-end;
+}
+
+.avatar-group[data-align="space-between"] {
+  justify-content: space-between;
+  --_align: center;
+}
+
+.avatar-group[data-align="space-around"] {
+  justify-content: space-around;
+  --_align: center;
+}
+
+.avatar-group[data-align="space-evenly"] {
+  justify-content: space-evenly;
+  --_align: center;
+}
+
+/* ============================================
+   WRAP VARIANTS — wrap, nowrap
+   ============================================ */
+
+.avatar-group[data-wrap="wrap"] {
+  --_wrap: wrap;
+}
+
+.avatar-group[data-wrap="nowrap"] {
+  --_wrap: nowrap;
 }

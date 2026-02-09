@@ -1,6 +1,5 @@
 import type { ComponentType } from "react";
 import { Avatar } from "./avatar";
-import { AvatarGroup } from "./avatar-group";
 
 export interface AvatarSection {
   key: string;
@@ -13,11 +12,21 @@ export interface AvatarSection {
 function VariantsPreview() {
   return (
     <div className="button-group">
-      <Avatar variant="primary" name="Primary">P</Avatar>
-      <Avatar variant="secondary" name="Secondary">S</Avatar>
-      <Avatar variant="outline" name="Outline">O</Avatar>
-      <Avatar variant="ghost" name="Ghost">G</Avatar>
-      <Avatar variant="danger" name="Danger">D</Avatar>
+      <Avatar variant="primary" name="Primary">
+        P
+      </Avatar>
+      <Avatar variant="secondary" name="Secondary">
+        S
+      </Avatar>
+      <Avatar variant="outline" name="Outline">
+        O
+      </Avatar>
+      <Avatar variant="ghost" name="Ghost">
+        G
+      </Avatar>
+      <Avatar variant="danger" name="Danger">
+        D
+      </Avatar>
     </div>
   );
 }
@@ -49,41 +58,6 @@ function FallbackPreview() {
       <Avatar name="John Doe" />
       <Avatar name="Alice" />
       <Avatar />
-    </div>
-  );
-}
-
-function GroupPreview() {
-  return (
-    <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start" }}>
-      <AvatarGroup>
-        <Avatar name="Alice Brown" />
-        <Avatar name="Bob Chen" variant="secondary" />
-        <Avatar name="Carol Davis" variant="outline" />
-        <Avatar name="Dan Evans" variant="ghost" />
-      </AvatarGroup>
-      <AvatarGroup direction="vertical">
-        <Avatar name="Alice Brown" />
-        <Avatar name="Bob Chen" variant="secondary" />
-        <Avatar name="Carol Davis" variant="outline" />
-      </AvatarGroup>
-    </div>
-  );
-}
-
-function GroupSizesPreview() {
-  return (
-    <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
-      <AvatarGroup size="sm">
-        <Avatar size="sm" name="Alice Brown" />
-        <Avatar size="sm" name="Bob Chen" variant="secondary" />
-        <Avatar size="sm" name="Carol Davis" variant="outline" />
-      </AvatarGroup>
-      <AvatarGroup size="lg">
-        <Avatar size="lg" name="Alice Brown" />
-        <Avatar size="lg" name="Bob Chen" variant="secondary" />
-        <Avatar size="lg" name="Carol Davis" variant="outline" />
-      </AvatarGroup>
     </div>
   );
 }
@@ -149,43 +123,6 @@ export const avatarSections: AvatarSection[] = [
     language: "tsx",
   },
   {
-    key: "group",
-    title: "Group",
-    preview: GroupPreview,
-    code: `{/* Horizontal (default) */}
-<AvatarGroup>
-  <Avatar name="Alice Brown" />
-  <Avatar name="Bob Chen" variant="secondary" />
-  <Avatar name="Carol Davis" variant="outline" />
-  <Avatar name="Dan Evans" variant="ghost" />
-</AvatarGroup>
-
-{/* Vertical */}
-<AvatarGroup direction="vertical">
-  <Avatar name="Alice Brown" />
-  <Avatar name="Bob Chen" variant="secondary" />
-  <Avatar name="Carol Davis" variant="outline" />
-</AvatarGroup>`,
-    language: "tsx",
-  },
-  {
-    key: "group-sizes",
-    title: "Group Sizes",
-    preview: GroupSizesPreview,
-    code: `<AvatarGroup size="sm">
-  <Avatar size="sm" name="Alice Brown" />
-  <Avatar size="sm" name="Bob Chen" variant="secondary" />
-  <Avatar size="sm" name="Carol Davis" variant="outline" />
-</AvatarGroup>
-
-<AvatarGroup size="lg">
-  <Avatar size="lg" name="Alice Brown" />
-  <Avatar size="lg" name="Bob Chen" variant="secondary" />
-  <Avatar size="lg" name="Carol Davis" variant="outline" />
-</AvatarGroup>`,
-    language: "tsx",
-  },
-  {
     key: "customization",
     title: "CSS Customization",
     preview: CustomizationPreview,
@@ -240,27 +177,6 @@ export const avatarProps = [
     type: "ReactNode",
     default: "—",
     description: "Custom fallback content (overrides initials and icon)",
-  },
-];
-
-export const avatarGroupProps = [
-  {
-    name: "direction",
-    type: "'horizontal' | 'vertical'",
-    default: "'horizontal'",
-    description: "Direction of the avatar stack",
-  },
-  {
-    name: "size",
-    type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
-    default: "'md'",
-    description: "Size controls the overlap amount between avatars",
-  },
-  {
-    name: "children",
-    type: "ReactNode",
-    default: "—",
-    description: "Avatar children",
   },
 ];
 
