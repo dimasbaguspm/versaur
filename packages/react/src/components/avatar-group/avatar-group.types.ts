@@ -1,5 +1,5 @@
-import type { HTMLAttributes, ReactNode } from 'react';
-import type { AvatarGroup } from '@versaur/core';
+import type { HTMLAttributes } from "react";
+import type { AvatarGroup } from "@versaur/core";
 
 export interface AvatarGroupProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -31,5 +31,4 @@ export interface AvatarGroupProps extends HTMLAttributes<HTMLDivElement> {
    * @default 'Avatar group'
    */
   "aria-label"?: string;
-
-  /**
+}

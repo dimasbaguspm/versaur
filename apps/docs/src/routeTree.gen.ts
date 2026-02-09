@@ -9,11 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as IconsRouteImport } from './routes/icons'
 import { Route as DocsRouteRouteImport } from './routes/docs/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DocsIndexRouteImport } from './routes/docs/index'
 import { Route as DocsComponentsComponentRouteImport } from './routes/docs/components/$component'
 
+const IconsRoute = IconsRouteImport.update({
+  id: '/icons',
+  path: '/icons',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DocsRouteRoute = DocsRouteRouteImport.update({
   id: '/docs',
   path: '/docs',
@@ -38,11 +44,13 @@ const DocsComponentsComponentRoute = DocsComponentsComponentRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/docs': typeof DocsRouteRouteWithChildren
+  '/icons': typeof IconsRoute
   '/docs/': typeof DocsIndexRoute
   '/docs/components/$component': typeof DocsComponentsComponentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/icons': typeof IconsRoute
   '/docs': typeof DocsIndexRoute
   '/docs/components/$component': typeof DocsComponentsComponentRoute
 }
@@ -50,24 +58,39 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/docs': typeof DocsRouteRouteWithChildren
+  '/icons': typeof IconsRoute
   '/docs/': typeof DocsIndexRoute
   '/docs/components/$component': typeof DocsComponentsComponentRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/docs' | '/docs/' | '/docs/components/$component'
+  fullPaths: '/' | '/docs' | '/icons' | '/docs/' | '/docs/components/$component'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/docs' | '/docs/components/$component'
-  id: '__root__' | '/' | '/docs' | '/docs/' | '/docs/components/$component'
+  to: '/' | '/icons' | '/docs' | '/docs/components/$component'
+  id:
+    | '__root__'
+    | '/'
+    | '/docs'
+    | '/icons'
+    | '/docs/'
+    | '/docs/components/$component'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DocsRouteRoute: typeof DocsRouteRouteWithChildren
+  IconsRoute: typeof IconsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/icons': {
+      id: '/icons'
+      path: '/icons'
+      fullPath: '/icons'
+      preLoaderRoute: typeof IconsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/docs': {
       id: '/docs'
       path: '/docs'
@@ -116,6 +139,7 @@ const DocsRouteRouteWithChildren = DocsRouteRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DocsRouteRoute: DocsRouteRouteWithChildren,
+  IconsRoute: IconsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

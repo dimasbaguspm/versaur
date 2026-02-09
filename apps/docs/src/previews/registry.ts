@@ -18,8 +18,7 @@ export type ComponentCategory =
   | "Primitives"
   | "Layouts"
   | "Navigations"
-  | "Forms"
-  | "Icons";
+  | "Forms";
 
 export interface RegistryEntry {
   component: ComponentType;
