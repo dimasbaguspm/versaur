@@ -7,6 +7,7 @@ import { AvatarDocPage } from "./pages/avatar-doc-page";
 import { HrDocPage } from "./pages/hr-doc-page";
 import { TabsDocPage } from "./pages/tabs-doc-page";
 import { NoResultsDocPage } from "./pages/no-results-doc-page";
+import { PageLoaderDocPage } from "./pages/page-loader-doc-page";
 
 export type ComponentCategory =
   | "Primitives"
@@ -76,6 +77,13 @@ export const previewRegistry: Record<string, RegistryEntry> = {
     title: "NoResults",
     description:
       "A flexible empty state component for displaying when no content is available in lists, search results, or filtered data",
+    category: "Primitives",
+  },
+  "page-loader": {
+    component: PageLoaderDocPage,
+    title: "PageLoader",
+    description:
+      "A loading indicator component with spinner and bar variants, customizable sizes, and animation control",
     category: "Primitives",
   },
 };

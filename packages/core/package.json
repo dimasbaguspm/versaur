@@ -52,6 +52,10 @@
       "source": "./src/components/no-results/no-results.module.css",
       "import": "./dist/components/no-results/no-results.module.css"
     },
+    "./page-loader.css": {
+      "source": "./src/components/page-loader/page-loader.module.css",
+      "import": "./dist/components/page-loader/page-loader.module.css"
+    },
     "./components/*": {
       "source": "./src/components/*/index.ts",
       "import": "./dist/components/*/index.js"

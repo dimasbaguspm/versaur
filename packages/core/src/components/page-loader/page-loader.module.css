@@ -1,0 +1,102 @@
+/* Base PageLoader Styles */
+.pageLoader {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: var(--spacing-3);
+
+  /* Sizing — private tokens default to medium */
+  --_size: var(--vers-comp-page-loader-size, 2.5rem);
+  --_color: var(--vers-comp-page-loader-color, var(--color-primary));
+  --_duration: var(--vers-comp-page-loader-duration, 1s);
+
+  /* Text styling */
+  font-size: var(--font-size-sm);
+  color: var(--_color);
+  user-select: none;
+}
+
+/* ============================================
+   TYPE VARIANTS — spinner | bar
+   ============================================ */
+
+/* Spinner variant — rotating circle */
+.pageLoader[data-type="spinner"] {
+  --_stroke-width: 3px;
+}
+
+.pageLoader[data-type="spinner"]::before {
+  content: "";
+  display: block;
+  width: var(--_size);
+  height: var(--_size);
+  border: var(--_stroke-width) solid transparent;
+  border-top-color: var(--_color);
+  border-right-color: var(--_color);
+  border-radius: 50%;
+  animation: spin-loader var(--_duration) linear infinite;
+}
+
+/* Bar variant — horizontal progress bar */
+.pageLoader[data-type="bar"] {
+  width: 100%;
+  max-width: 300px;
+}
+
+.pageLoader[data-type="bar"]::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: var(--_size);
+  background: linear-gradient(
+    90deg,
+    var(--_color) 0%,
+    var(--_color) 50%,
+    transparent 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  border-radius: var(--radius-md);
+  animation: slide-loader var(--_duration) ease-in-out infinite;
+}
+
+/* ============================================
+   SIZE VARIANTS — sm=20px  md=40px  lg=60px
+   ============================================ */
+.pageLoader[data-size="sm"] {
+  --_size: var(--vers-comp-page-loader-sm-size, 1.25rem);
+  --_duration: var(--vers-comp-page-loader-sm-duration, 0.8s);
+  font-size: var(--font-size-xs);
+  gap: var(--spacing-2);
+}
+
+.pageLoader[data-size="lg"] {
+  --_size: var(--vers-comp-page-loader-lg-size, 3.75rem);
+  --_duration: var(--vers-comp-page-loader-lg-duration, 1.2s);
+  font-size: var(--font-size-md);
+  gap: var(--spacing-4);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes spin-loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slide-loader {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

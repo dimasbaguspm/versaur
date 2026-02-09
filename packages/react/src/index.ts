@@ -59,3 +59,6 @@ export type { ButtonIconProps } from "./components/button-icon";
 
 export { NoResults } from "./components/no-results";
 export type { NoResultsProps } from "./components/no-results";
+
+export { PageLoader } from "./components/page-loader";
+export type { PageLoaderProps } from "./components/page-loader";

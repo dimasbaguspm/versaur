@@ -31,6 +31,9 @@
       ],
       "no-results": [
         "./dist/no-results.d.ts"
+      ],
+      "page-loader": [
+        "./dist/page-loader.d.ts"
       ]
     }
   },
@@ -79,6 +82,11 @@
       "source": "./src/components/no-results/index.ts",
       "types": "./dist/no-results.d.ts",
       "import": "./dist/no-results.js"
+    },
+    "./page-loader": {
+      "source": "./src/components/page-loader/index.ts",
+      "types": "./dist/page-loader.d.ts",
+      "import": "./dist/page-loader.js"
     }
   },
   "files": [
