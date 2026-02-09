@@ -13,6 +13,7 @@ export * from "./components/no-results";
 export * from "./components/page-loader";
 export * from "./components/attribute-list";
 export * from "./components/badge";
+export * from "./components/card";
 
 // Export groups
 export * from "./components/avatar-group";

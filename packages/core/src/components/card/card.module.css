@@ -1,0 +1,210 @@
+.card {
+  /* Private tokens - component-scoped */
+  --_padding: var(--vers-comp-card-padding, var(--spacing-4));
+  --_gap: var(--vers-comp-card-gap, var(--spacing-3));
+  --_border-radius: var(--vers-comp-card-border-radius, var(--radius-lg));
+  --_border: var(--vers-comp-card-border, 1px solid var(--color-border));
+  --_bg: var(--vers-comp-card-bg, var(--color-surface));
+  --_shadow: var(--vers-comp-card-shadow, var(--shadow-sm));
+
+  /* Interactive states - only applied when data-interactive="true" */
+  --_cursor: var(--vers-comp-card-cursor, pointer);
+  --_hover-bg: var(--vers-comp-card-hover-bg, var(--color-surface-hover));
+  --_transition: var(
+    --vers-comp-card-transition,
+    color 200ms,
+    background-color 200ms
+  );
+  --_focus-ring: var(
+    --vers-comp-card-focus-ring,
+    2px solid var(--color-primary)
+  );
+
+  display: flex;
+  flex-direction: column;
+  background-color: var(--_bg);
+  border-radius: var(--_border-radius);
+  box-shadow: var(--_shadow);
+  padding: var(--_padding);
+  border: var(--_border);
+  outline: none;
+}
+
+/* Size variants */
+.card[data-size="xs"] {
+  --_padding: var(--vers-comp-card-xs-padding, var(--spacing-2));
+}
+
+.card[data-size="sm"] {
+  --_padding: var(--vers-comp-card-sm-padding, var(--spacing-3));
+}
+
+.card[data-size="md"] {
+  --_padding: var(--vers-comp-card-md-padding, var(--spacing-4));
+}
+
+.card[data-size="lg"] {
+  --_padding: var(--vers-comp-card-lg-padding, var(--spacing-6));
+}
+
+.card[data-size="xl"] {
+  --_padding: var(--vers-comp-card-xl-padding, var(--spacing-8));
+}
+
+/* Shape variants */
+.card[data-shape="rounded"] {
+  --_border-radius: var(
+    --vers-comp-card-rounded-border-radius,
+    var(--radius-lg)
+  );
+}
+
+.card[data-shape="square"] {
+  --_border-radius: var(--vers-comp-card-square-border-radius, 0);
+}
+
+/* Bordered variant */
+.card[data-bordered="false"] {
+  --_border: var(--vers-comp-card-no-border, none);
+}
+
+.card[data-bordered="true"] {
+  --_border: var(--vers-comp-card-border, 1px solid var(--color-border));
+}
+
+/* Non-interactive state (div rendering) */
+.card[data-interactive="false"] {
+  cursor: default;
+}
+
+/* Interactive state (button rendering) */
+.card[data-interactive="true"] {
+  cursor: var(--_cursor);
+  transition: var(--_transition);
+}
+
+.card[data-interactive="true"]:hover {
+  background-color: var(--_hover-bg);
+}
+
+.card[data-interactive="true"]:focus-visible {
+  outline: var(--_focus-ring);
+  outline-offset: 2px;
+}
+
+/* Card container - layout wrapper inside card */
+.card-container {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--_gap);
+}
+
+/* Avatar - left side, fixed size */
+.card-avatar {
+  flex-shrink: 0;
+}
+
+/* Content wrapper - grows to fill space */
+.card-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header section */
+.card-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--spacing-2);
+}
+
+/* Title styling */
+.card-title {
+  word-break: break-words;
+  line-height: 1.2;
+}
+
+/* Subtitle styling */
+.card-subtitle {
+  margin-top: var(--spacing-1);
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* Footer section - contains badge and supplementary info */
+.card-footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+/* Badge container */
+.card-badge {
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* Badge group - handles spacing of multiple badges */
+.card-badge-group {
+  display: flex;
+  gap: var(--spacing-2);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Supplementary info - often price, status, etc */
+.card-supplementary {
+  flex-shrink: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* List styling */
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0;
+  min-width: 0;
+  overflow: hidden;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* List item - with separator dot */
+.card-list-item {
+  /* Private tokens for separator styling */
+  --_separator-width: var(--vers-comp-card-list-item-separator-width, 4px);
+  --_separator-height: var(--vers-comp-card-list-item-separator-height, 4px);
+  --_separator-color: var(
+    --vers-comp-card-list-item-separator-color,
+    var(--color-border)
+  );
+  --_separator-margin-x: var(
+    --vers-comp-card-list-item-separator-margin-x,
+    var(--spacing-1)
+  );
+
+  display: inline;
+  white-space: nowrap;
+}
+
+/* Separator dot between list items */
+.card-list-item::after {
+  content: "";
+  display: inline-block;
+  width: var(--_separator-width);
+  height: var(--_separator-height);
+  border-radius: 50%;
+  background-color: var(--_separator-color);
+  margin: 0 var(--_separator-margin-x);
+}
+
+/* Remove separator from last item */
+.card-list-item:last-child::after {
+  display: none;
+}

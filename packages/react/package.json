@@ -49,6 +49,9 @@
       ],
       "avatar-group": [
         "./dist/avatar-group.d.ts"
+      ],
+      "card": [
+        "./dist/card.d.ts"
       ]
     }
   },
@@ -127,6 +130,11 @@
       "source": "./src/components/avatar-group/index.ts",
       "types": "./dist/avatar-group.d.ts",
       "import": "./dist/avatar-group.js"
+    },
+    "./card": {
+      "source": "./src/components/card/index.ts",
+      "types": "./dist/card.d.ts",
+      "import": "./dist/card.js"
     }
   },
   "files": [

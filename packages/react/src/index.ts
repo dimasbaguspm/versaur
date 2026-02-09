@@ -91,6 +91,22 @@ export type {
   BadgeGroupWrap,
 } from "./components/badge-group";
 
+export { Card } from "./components/card";
+export type {
+  CardRootProps,
+  CardButtonProps,
+  CardHeaderProps,
+  CardTitleProps,
+  CardSubtitleProps,
+  CardFooterProps,
+  CardBadgeGroupProps,
+  CardSupplementaryProps,
+  CardListProps,
+  CardListItemProps,
+  CardSize,
+  CardShape,
+} from "./components/card";
+
 export { ButtonGroup } from "./components/button-group";
 export type {
   ButtonGroupProps,

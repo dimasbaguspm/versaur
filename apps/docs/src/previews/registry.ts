@@ -13,6 +13,7 @@ import { AttributeListDocPage } from "./pages/attribute-list-doc-page";
 import { BadgeDocPage } from "./pages/badge-doc-page";
 import { BadgeGroupDocPage } from "./pages/badge-group-doc-page";
 import { ButtonGroupDocPage } from "./pages/button-group-doc-page";
+import { CardDocPage } from "./pages/card-doc-page";
 
 export type ComponentCategory =
   | "Primitives"
@@ -102,6 +103,13 @@ export const previewRegistry: Record<string, RegistryEntry> = {
     title: "Badge",
     description:
       "A badge component for displaying labels, tags, or status indicators with customizable variants, sizes, and shapes",
+    category: "Primitives",
+  },
+  card: {
+    component: CardDocPage,
+    title: "Card",
+    description:
+      "A flexible container component with composable sub-parts (avatar, title, subtitle, badges, list) supporting multiple variants and interactive states",
     category: "Primitives",
   },
   "badge-group": {

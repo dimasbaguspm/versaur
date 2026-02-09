@@ -72,6 +72,10 @@
       "source": "./src/components/button-group/button-group.module.css",
       "import": "./dist/components/button-group/button-group.module.css"
     },
+    "./card.css": {
+      "source": "./src/components/card/card.module.css",
+      "import": "./dist/components/card/card.module.css"
+    },
     "./components/*": {
       "source": "./src/components/*/index.ts",
       "import": "./dist/components/*/index.js"
