@@ -44,6 +44,10 @@
       "source": "./src/components/tabs/tabs.module.css",
       "import": "./dist/components/tabs/tabs.module.css"
     },
+    "./button-icon.css": {
+      "source": "./src/components/button-icon/button-icon.module.css",
+      "import": "./dist/components/button-icon/button-icon.module.css"
+    },
     "./components/*": {
       "source": "./src/components/*/index.ts",
       "import": "./dist/components/*/index.js"

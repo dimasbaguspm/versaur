@@ -53,3 +53,6 @@ export type {
   TabsTriggerProps,
   TabsPanelAttributes,
 } from "./components/tabs";
+
+export { ButtonIcon } from "./components/button-icon";
+export type { ButtonIconProps } from "./components/button-icon";

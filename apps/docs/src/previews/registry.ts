@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import { ButtonDocPage } from "./pages/button-doc-page";
+import { ButtonIconDocPage } from "./pages/button-icon-doc-page";
 import { HeadingDocPage } from "./pages/heading-doc-page";
 import { TextDocPage } from "./pages/text-doc-page";
 import { AvatarDocPage } from "./pages/avatar-doc-page";
@@ -18,6 +19,12 @@ export const previewRegistry: Record<string, RegistryEntry> = {
     title: "Button",
     description:
       "A versatile button component with multiple variants, sizes, and states",
+  },
+  "button-icon": {
+    component: ButtonIconDocPage,
+    title: "ButtonIcon",
+    description:
+      "An icon-only button component with multiple variants, sizes, and states for iconographic actions",
   },
   heading: {
     component: HeadingDocPage,

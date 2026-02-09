@@ -8,3 +8,4 @@ export * from "./components/text";
 export * from "./components/avatar";
 export * from "./components/hr";
 export * from "./components/tabs";
+export * from "./components/button-icon";

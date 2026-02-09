@@ -25,6 +25,9 @@
       ],
       "tabs": [
         "./dist/tabs.d.ts"
+      ],
+      "button-icon": [
+        "./dist/button-icon.d.ts"
       ]
     }
   },
@@ -63,6 +66,11 @@
       "source": "./src/components/tabs/index.ts",
       "types": "./dist/tabs.d.ts",
       "import": "./dist/tabs.js"
+    },
+    "./button-icon": {
+      "source": "./src/components/button-icon/index.ts",
+      "types": "./dist/button-icon.d.ts",
+      "import": "./dist/button-icon.js"
     }
   },
   "files": [
