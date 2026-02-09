@@ -39,8 +39,42 @@
 .docs-sidebar-nav {
   display: flex;
   flex-direction: column;
+  gap: 0;
+  padding: 0;
+}
+
+.docs-sidebar-category-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.docs-sidebar-category {
+  padding: var(--spacing-4) var(--spacing-6);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-top: 1px solid var(--color-border);
+}
+
+.docs-sidebar-category:first-of-type {
+  border-top: none;
+}
+
+.docs-sidebar-category-items {
+  display: flex;
+  flex-direction: column;
   gap: var(--spacing-1);
-  padding: 0 var(--spacing-3);
+  padding: 0 var(--spacing-3) var(--spacing-2) var(--spacing-3);
+}
+
+.docs-sidebar-category-empty {
+  padding: var(--spacing-2) var(--spacing-6);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  font-style: italic;
 }
 
 .docs-sidebar-link {
