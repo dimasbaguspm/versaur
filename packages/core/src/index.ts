@@ -11,3 +11,4 @@ export * from "./components/tabs";
 export * from "./components/button-icon";
 export * from "./components/no-results";
 export * from "./components/page-loader";
+export * from "./components/attribute-list";

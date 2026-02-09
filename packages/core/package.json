@@ -56,6 +56,10 @@
       "source": "./src/components/page-loader/page-loader.module.css",
       "import": "./dist/components/page-loader/page-loader.module.css"
     },
+    "./attribute-list.css": {
+      "source": "./src/components/attribute-list/attribute-list.module.css",
+      "import": "./dist/components/attribute-list/attribute-list.module.css"
+    },
     "./components/*": {
       "source": "./src/components/*/index.ts",
       "import": "./dist/components/*/index.js"

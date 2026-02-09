@@ -62,3 +62,9 @@ export type { NoResultsProps } from "./components/no-results";
 
 export { PageLoader } from "./components/page-loader";
 export type { PageLoaderProps } from "./components/page-loader";
+
+export { AttributeList } from "./components/attribute-list";
+export type {
+  AttributeListProps,
+  AttributeListItemProps,
+} from "./components/attribute-list";

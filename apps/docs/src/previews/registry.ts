@@ -8,6 +8,7 @@ import { HrDocPage } from "./pages/hr-doc-page";
 import { TabsDocPage } from "./pages/tabs-doc-page";
 import { NoResultsDocPage } from "./pages/no-results-doc-page";
 import { PageLoaderDocPage } from "./pages/page-loader-doc-page";
+import { AttributeListDocPage } from "./pages/attribute-list-doc-page";
 
 export type ComponentCategory =
   | "Primitives"
@@ -84,6 +85,13 @@ export const previewRegistry: Record<string, RegistryEntry> = {
     title: "PageLoader",
     description:
       "A loading indicator component with spinner and bar variants, customizable sizes, and animation control",
+    category: "Primitives",
+  },
+  "attribute-list": {
+    component: AttributeListDocPage,
+    title: "AttributeList",
+    description:
+      "A semantic key-value display component with flexible grid layout, column spanning, and support for mixed content types",
     category: "Primitives",
   },
 };

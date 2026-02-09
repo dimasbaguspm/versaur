@@ -34,6 +34,9 @@
       ],
       "page-loader": [
         "./dist/page-loader.d.ts"
+      ],
+      "attribute-list": [
+        "./dist/attribute-list.d.ts"
       ]
     }
   },
@@ -87,6 +90,11 @@
       "source": "./src/components/page-loader/index.ts",
       "types": "./dist/page-loader.d.ts",
       "import": "./dist/page-loader.js"
+    },
+    "./attribute-list": {
+      "source": "./src/components/attribute-list/index.ts",
+      "types": "./dist/attribute-list.d.ts",
+      "import": "./dist/attribute-list.js"
     }
   },
   "files": [
