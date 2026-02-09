@@ -26,7 +26,12 @@ export function TopBarDocPage() {
       ))}
 
       <h2>TopBar API Reference</h2>
-      <PropsTable props={topBarProps} />
+      {topBarProps.map((component) => (
+        <div key={component.name}>
+          <h3>{component.name} Props</h3>
+          <PropsTable props={component.props} />
+        </div>
+      ))}
 
       <h2>Installation</h2>
       <ComponentPreview examples={makeExamples(topBarInstallation)} />

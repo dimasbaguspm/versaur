@@ -52,6 +52,7 @@ export default defineConfig({
         ),
         card: resolve(__dirname, "src/components/card/index.ts"),
         table: resolve(__dirname, "src/components/table/index.ts"),
+        "top-bar": resolve(__dirname, "src/components/top-bar/index.ts"),
       },
       formats: ["es"],
     },

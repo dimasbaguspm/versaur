@@ -311,5 +311,14 @@ export const topBarProps = [
   },
 ];
 
-export const topBarInstallation = `import { TopBar } from '@versaur/react';
-import '@versaur/core/top-bar.css';`;
+export const topBarInstallation = {
+  code: `// Using npm
+npm install @versaur/react @versaur/core
+
+// Using pnpm
+pnpm add @versaur/react @versaur/core
+
+// Using yarn
+yarn add @versaur/react @versaur/core`,
+  language: "bash" as const,
+};
