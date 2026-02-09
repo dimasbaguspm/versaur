@@ -11,7 +11,7 @@ export interface TextDataAttrs {
   size?: TextSize;
   weight?: TextWeight;
   intent?: TextIntent;
-}
+};
 
 export namespace Text {
   export type As = TextAs;

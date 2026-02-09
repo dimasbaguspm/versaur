@@ -7,10 +7,12 @@ function capitalize(s: string): string {
 }
 
 function toPascalCase(s: string): string {
-  return s
-    .split(/[-_]/)
-    .map(capitalize)
-    .join("");
+  return s.split(/[-_]/).map(capitalize).join("");
+}
+
+function toCamelCase(s: string): string {
+  const parts = s.split(/[-_]/);
+  return parts[0] + parts.slice(1).map(capitalize).join("");
 }
 
 /**
@@ -41,12 +43,14 @@ export function generateTypesFile(parsed: ParsedComponent): string {
   // DataAttrs interface
   lines.push(`export interface ${pascal}DataAttrs {`);
   for (const { attrName, typeName } of enumTypeNames) {
-    lines.push(`  ${attrName}?: ${typeName};`);
+    const propName = toCamelCase(attrName);
+    lines.push(`  ${propName}?: ${typeName};`);
   }
   for (const attrName of [...parsed.booleanAttrs].sort()) {
-    lines.push(`  ${attrName}?: boolean;`);
+    const propName = toCamelCase(attrName);
+    lines.push(`  ${propName}?: boolean;`);
   }
-  lines.push("}");
+  lines.push("};");
   lines.push("");
 
   // Namespace

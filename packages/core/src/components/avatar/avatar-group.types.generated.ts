@@ -7,7 +7,7 @@ export type AvatarGroupSize = 'lg' | 'md' | 'sm' | 'xl' | 'xs';
 export interface AvatarGroupDataAttrs {
   direction?: AvatarGroupDirection;
   size?: AvatarGroupSize;
-}
+};
 
 export namespace AvatarGroup {
   export type Direction = AvatarGroupDirection;

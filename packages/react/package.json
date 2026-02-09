@@ -22,6 +22,9 @@
       ],
       "hr": [
         "./dist/hr.d.ts"
+      ],
+      "tabs": [
+        "./dist/tabs.d.ts"
       ]
     }
   },
@@ -55,6 +58,11 @@
       "source": "./src/components/hr/index.ts",
       "types": "./dist/hr.d.ts",
       "import": "./dist/hr.js"
+    },
+    "./tabs": {
+      "source": "./src/components/tabs/index.ts",
+      "types": "./dist/tabs.d.ts",
+      "import": "./dist/tabs.js"
     }
   },
   "files": [

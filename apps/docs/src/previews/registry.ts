@@ -4,6 +4,7 @@ import { HeadingDocPage } from "./pages/heading-doc-page";
 import { TextDocPage } from "./pages/text-doc-page";
 import { AvatarDocPage } from "./pages/avatar-doc-page";
 import { HrDocPage } from "./pages/hr-doc-page";
+import { TabsDocPage } from "./pages/tabs-doc-page";
 
 export interface RegistryEntry {
   component: ComponentType;
@@ -39,7 +40,12 @@ export const previewRegistry: Record<string, RegistryEntry> = {
   hr: {
     component: HrDocPage,
     title: "Hr",
+    description: "A divider component for visually separating content sections",
+  },
+  tabs: {
+    component: TabsDocPage,
+    title: "Tabs",
     description:
-      "A divider component for visually separating content sections",
+      "A controlled compound component for managing tab selection with accessible triggers and custom panel support",
   },
 };

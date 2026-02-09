@@ -11,7 +11,7 @@ export interface HeadingDataAttrs {
   size?: HeadingSize;
   weight?: HeadingWeight;
   intent?: HeadingIntent;
-}
+};
 
 export namespace Heading {
   export type As = HeadingAs;

@@ -9,7 +9,7 @@ export interface AvatarDataAttrs {
   size?: AvatarSize;
   shape?: AvatarShape;
   variant?: AvatarVariant;
-}
+};
 
 export namespace Avatar {
   export type Size = AvatarSize;

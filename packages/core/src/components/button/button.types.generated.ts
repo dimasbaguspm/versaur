@@ -11,7 +11,7 @@ export interface ButtonDataAttrs {
   icon?: ButtonIcon;
   disabled?: boolean;
   loading?: boolean;
-}
+};
 
 export namespace Button {
   export type Size = ButtonSize;

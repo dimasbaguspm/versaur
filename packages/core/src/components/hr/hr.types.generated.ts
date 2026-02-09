@@ -11,7 +11,7 @@ export interface HrDataAttrs {
   variant?: HrVariant;
   size?: HrSize;
   spacing?: HrSpacing;
-}
+};
 
 export namespace Hr {
   export type Orientation = HrOrientation;
