@@ -68,3 +68,11 @@ export type {
   AttributeListProps,
   AttributeListItemProps,
 } from "./components/attribute-list";
+
+export { Badge } from "./components/badge";
+export type {
+  BadgeProps,
+  BadgeVariant,
+  BadgeSize,
+  BadgeShape,
+} from "./components/badge";

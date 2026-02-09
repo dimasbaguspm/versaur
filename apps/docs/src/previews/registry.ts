@@ -9,6 +9,7 @@ import { TabsDocPage } from "./pages/tabs-doc-page";
 import { NoResultsDocPage } from "./pages/no-results-doc-page";
 import { PageLoaderDocPage } from "./pages/page-loader-doc-page";
 import { AttributeListDocPage } from "./pages/attribute-list-doc-page";
+import { BadgeDocPage } from "./pages/badge-doc-page";
 
 export type ComponentCategory =
   | "Primitives"
@@ -92,6 +93,13 @@ export const previewRegistry: Record<string, RegistryEntry> = {
     title: "AttributeList",
     description:
       "A semantic key-value display component with flexible grid layout, column spanning, and support for mixed content types",
+    category: "Primitives",
+  },
+  badge: {
+    component: BadgeDocPage,
+    title: "Badge",
+    description:
+      "A badge component for displaying labels, tags, or status indicators with customizable variants, sizes, and shapes",
     category: "Primitives",
   },
 };

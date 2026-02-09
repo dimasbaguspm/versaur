@@ -60,6 +60,10 @@
       "source": "./src/components/attribute-list/attribute-list.module.css",
       "import": "./dist/components/attribute-list/attribute-list.module.css"
     },
+    "./badge.css": {
+      "source": "./src/components/badge/badge.module.css",
+      "import": "./dist/components/badge/badge.module.css"
+    },
     "./components/*": {
       "source": "./src/components/*/index.ts",
       "import": "./dist/components/*/index.js"

@@ -1,0 +1,104 @@
+/* Base Badge Styles */
+.badge {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Typography */
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  white-space: nowrap;
+
+  /* Sizing — private tokens default to medium */
+  --_height: var(--vers-comp-badge-height, 1.5rem);
+  --_px: var(--vers-comp-badge-padding-x, var(--spacing-2));
+  --_font-size: var(--vers-comp-badge-font-size, var(--font-size-xs));
+  --_gap: var(--vers-comp-badge-gap, var(--spacing-1));
+
+  height: var(--_height);
+  padding: 0 var(--_px);
+  font-size: var(--_font-size);
+  gap: var(--_gap);
+
+  /* Border radius — default rounded, can be overridden by shape */
+  --_radius: var(--vers-comp-badge-radius, var(--radius-sm));
+
+  /* Color — private tokens default to primary */
+  --_bg: var(--vers-comp-badge-bg, var(--color-primary));
+  --_color: var(--vers-comp-badge-color, #ffffff);
+
+  background-color: var(--_bg);
+  color: var(--_color);
+  border-radius: var(--_radius);
+}
+
+/* ============================================
+   SIZE VARIANTS — small, medium, large
+   ============================================ */
+
+.badge[data-size="small"] {
+  --_height: 1.25rem;
+  --_px: var(--spacing-1-5);
+  --_font-size: var(--font-size-xs);
+}
+
+.badge[data-size="medium"] {
+  --_height: 1.5rem;
+  --_px: var(--spacing-2);
+  --_font-size: var(--font-size-xs);
+}
+
+.badge[data-size="large"] {
+  --_height: 1.75rem;
+  --_px: var(--spacing-3);
+  --_font-size: var(--font-size-sm);
+}
+
+/* ============================================
+   VARIANT STYLES — primary, secondary, success, danger, warning, info
+   ============================================ */
+
+.badge[data-variant="primary"] {
+  --_bg: var(--color-primary);
+  --_color: #ffffff;
+}
+
+.badge[data-variant="secondary"] {
+  --_bg: var(--color-secondary);
+  --_color: #ffffff;
+}
+
+.badge[data-variant="success"] {
+  --_bg: var(--color-success);
+  --_color: #ffffff;
+}
+
+.badge[data-variant="danger"] {
+  --_bg: var(--color-danger);
+  --_color: #ffffff;
+}
+
+.badge[data-variant="warning"] {
+  --_bg: var(--color-warning);
+  --_color: #ffffff;
+}
+
+.badge[data-variant="info"] {
+  --_bg: var(--color-info);
+  --_color: #ffffff;
+}
+
+/* ============================================
+   SHAPE VARIANTS — rounded, pill
+   Shape overrides border-radius
+   ============================================ */
+
+.badge[data-shape="rounded"] {
+  --_radius: var(--radius-sm);
+}
+
+.badge[data-shape="pill"] {
+  --_radius: 9999px;
+}
