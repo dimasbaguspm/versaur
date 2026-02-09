@@ -52,6 +52,9 @@
       ],
       "card": [
         "./dist/card.d.ts"
+      ],
+      "table": [
+        "./dist/table.d.ts"
       ]
     }
   },
@@ -135,6 +138,11 @@
       "source": "./src/components/card/index.ts",
       "types": "./dist/card.d.ts",
       "import": "./dist/card.js"
+    },
+    "./table": {
+      "source": "./src/components/table/index.ts",
+      "types": "./dist/table.d.ts",
+      "import": "./dist/table.js"
     }
   },
   "files": [

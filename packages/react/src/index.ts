@@ -107,6 +107,19 @@ export type {
   CardShape,
 } from "./components/card";
 
+export { Table } from "./components/table";
+export type {
+  TableRootProps,
+  TableWrapperProps,
+  TableHeaderProps,
+  TableBodyProps,
+  TableFooterProps,
+  TableRowProps,
+  TableHeadProps,
+  TableCellProps,
+  TableComponent,
+} from "./components/table";
+
 export { ButtonGroup } from "./components/button-group";
 export type {
   ButtonGroupProps,

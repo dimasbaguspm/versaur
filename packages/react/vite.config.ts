@@ -51,6 +51,7 @@ export default defineConfig({
           "src/components/badge-group/index.ts",
         ),
         card: resolve(__dirname, "src/components/card/index.ts"),
+        table: resolve(__dirname, "src/components/table/index.ts"),
       },
       formats: ["es"],
     },

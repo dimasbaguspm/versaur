@@ -76,6 +76,10 @@
       "source": "./src/components/card/card.module.css",
       "import": "./dist/components/card/card.module.css"
     },
+    "./table.css": {
+      "source": "./src/components/table/table.module.css",
+      "import": "./dist/components/table/table.module.css"
+    },
     "./components/*": {
       "source": "./src/components/*/index.ts",
       "import": "./dist/components/*/index.js"

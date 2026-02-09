@@ -14,6 +14,7 @@ import { BadgeDocPage } from "./pages/badge-doc-page";
 import { BadgeGroupDocPage } from "./pages/badge-group-doc-page";
 import { ButtonGroupDocPage } from "./pages/button-group-doc-page";
 import { CardDocPage } from "./pages/card-doc-page";
+import { TableDocPage } from "./pages/table-doc-page";
 
 export type ComponentCategory =
   | "Primitives"
@@ -110,6 +111,13 @@ export const previewRegistry: Record<string, RegistryEntry> = {
     title: "Card",
     description:
       "A flexible container component with composable sub-parts (avatar, title, subtitle, badges, list) supporting multiple variants and interactive states",
+    category: "Primitives",
+  },
+  table: {
+    component: TableDocPage,
+    title: "Table",
+    description:
+      "A semantic table component with flexible cell-level styling variants for displaying structured data",
     category: "Primitives",
   },
   "badge-group": {
