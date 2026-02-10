@@ -7,6 +7,8 @@ import ChevronLeftIcon from "../assets/chevron-left.svg?react";
 import ChevronRightIcon from "../assets/chevron-right.svg?react";
 import LayoutDashboardIcon from "../assets/layout-dashboard.svg?react";
 import FileCodeIcon from "../assets/file-code.svg?react";
+import HomeIcon from "../assets/home.svg?react";
+import SearchIcon from "../assets/search.svg?react";
 
 export type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 
@@ -58,6 +60,16 @@ export const icons: Record<string, IconMetadata> = {
     component: FileCodeIcon,
     tags: ["file", "code", "document", "programming"],
   },
+  home: {
+    name: "Home",
+    component: HomeIcon,
+    tags: ["home", "house", "dashboard", "navigation"],
+  },
+  search: {
+    name: "Search",
+    component: SearchIcon,
+    tags: ["search", "find", "magnifying", "glass"],
+  },
 };
 
 // Named exports for direct imports
@@ -70,6 +82,8 @@ export {
   ChevronRightIcon,
   LayoutDashboardIcon,
   FileCodeIcon,
+  HomeIcon,
+  SearchIcon,
 };
 
 // Utility to get all icon names

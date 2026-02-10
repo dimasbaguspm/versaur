@@ -17,6 +17,7 @@ import { CardDocPage } from "./pages/card-doc-page";
 import { TableDocPage } from "./pages/table-doc-page";
 import { TopBarDocPage } from "./pages/top-bar-doc-page";
 import { SidebarDocPage } from "./pages/sidebar-doc-page";
+import { BottomBarDocPage } from "./pages/bottom-bar-doc-page";
 
 export type ComponentCategory =
   | "Primitives"
@@ -155,6 +156,13 @@ export const previewRegistry: Record<string, RegistryEntry> = {
     title: "Sidebar",
     description:
       "An expandable/collapsible navigation sidebar with compound pattern, polymorphic items, keyboard navigation (arrow up/down), and grouped items support",
+    category: "Navigations",
+  },
+  "bottom-bar": {
+    component: BottomBarDocPage,
+    title: "BottomBar",
+    description:
+      "A horizontal bottom navigation bar with icon-focused items and optional text labels, designed for mobile-first interfaces",
     category: "Navigations",
   },
 };

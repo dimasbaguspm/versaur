@@ -150,3 +150,9 @@ export type {
   SidebarItemProps,
   SidebarDividerProps,
 } from "./components/sidebar";
+
+export { BottomBar } from "./components/bottom-bar";
+export type {
+  BottomBarRootProps,
+  BottomBarItemProps,
+} from "./components/bottom-bar";

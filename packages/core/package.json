@@ -88,6 +88,10 @@
       "source": "./src/components/sidebar/sidebar.module.css",
       "import": "./dist/components/sidebar/sidebar.module.css"
     },
+    "./bottom-bar.css": {
+      "source": "./src/components/bottom-bar/bottom-bar.module.css",
+      "import": "./dist/components/bottom-bar/bottom-bar.module.css"
+    },
     "./components/*": {
       "source": "./src/components/*/index.ts",
       "import": "./dist/components/*/index.js"

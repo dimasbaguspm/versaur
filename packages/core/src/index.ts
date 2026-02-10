@@ -22,3 +22,4 @@ export * from "./components/avatar-group";
 export * from "./components/badge-group";
 export * from "./components/button-group";
 export * from "./components/sidebar";
+export * from "./components/bottom-bar";

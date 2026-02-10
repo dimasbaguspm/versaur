@@ -2,6 +2,26 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import dts from "vite-plugin-dts";
 import { resolve } from "path";
+import { readFileSync } from "fs";
+
+// Read package.json and extract entry points from exports
+const packageJson = JSON.parse(
+  readFileSync(resolve(__dirname, "package.json"), "utf-8"),
+);
+
+const entry: Record<string, string> = {};
+
+// Build entry object from package.json exports
+for (const [exportPath, config] of Object.entries(packageJson.exports)) {
+  // Convert export path to entry key (e.g., "." -> "index", "./button" -> "button")
+  const entryKey = exportPath === "." ? "index" : exportPath.slice(2);
+
+  // Get source path from export config
+  const sourceFile = (config as Record<string, string>).source;
+  if (sourceFile) {
+    entry[entryKey] = resolve(__dirname, sourceFile);
+  }
+}
 
 export default defineConfig({
   plugins: [
@@ -16,44 +36,7 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: {
-        index: resolve(__dirname, "src/index.ts"),
-        button: resolve(__dirname, "src/components/button/index.ts"),
-        "button-icon": resolve(
-          __dirname,
-          "src/components/button-icon/index.ts",
-        ),
-        "button-group": resolve(
-          __dirname,
-          "src/components/button-group/index.ts",
-        ),
-        heading: resolve(__dirname, "src/components/heading/index.ts"),
-        text: resolve(__dirname, "src/components/text/index.ts"),
-        avatar: resolve(__dirname, "src/components/avatar/index.ts"),
-        "avatar-group": resolve(
-          __dirname,
-          "src/components/avatar-group/index.ts",
-        ),
-        hr: resolve(__dirname, "src/components/hr/index.ts"),
-        tabs: resolve(__dirname, "src/components/tabs/index.ts"),
-        "no-results": resolve(__dirname, "src/components/no-results/index.ts"),
-        "page-loader": resolve(
-          __dirname,
-          "src/components/page-loader/index.ts",
-        ),
-        "attribute-list": resolve(
-          __dirname,
-          "src/components/attribute-list/index.ts",
-        ),
-        badge: resolve(__dirname, "src/components/badge/index.ts"),
-        "badge-group": resolve(
-          __dirname,
-          "src/components/badge-group/index.ts",
-        ),
-        card: resolve(__dirname, "src/components/card/index.ts"),
-        table: resolve(__dirname, "src/components/table/index.ts"),
-        "top-bar": resolve(__dirname, "src/components/top-bar/index.ts"),
-      },
+      entry,
       formats: ["es"],
     },
     rollupOptions: {

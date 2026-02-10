@@ -1,0 +1,109 @@
+/* Base BottomBar Styles */
+.bottom-bar {
+  /* Layout */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+
+  /* Sizing — private tokens */
+  --_height: var(--vers-comp-bottom-bar-height, 4rem);
+  --_bg: var(--vers-comp-bottom-bar-bg, var(--color-neutral-soft));
+  --_text-color: var(--vers-comp-bottom-bar-text-color, var(--color-ghost));
+  --_border-color: var(
+    --vers-comp-bottom-bar-border-color,
+    var(--color-neutral-hover)
+  );
+  --_transition-duration: var(
+    --vers-comp-bottom-bar-transition-duration,
+    var(--transition-base)
+  );
+  --_item-padding: var(--vers-comp-bottom-bar-item-padding, var(--spacing-3));
+  --_item-gap: var(--vers-comp-bottom-bar-item-gap, var(--spacing-2));
+  --_icon-size: var(--vers-comp-bottom-bar-icon-size, 1.25rem);
+  --_focus-bg: var(--vers-comp-bottom-bar-focus-bg, var(--color-neutral-light));
+  --_active-bg: var(
+    --vers-comp-bottom-bar-active-bg,
+    var(--color-primary-soft)
+  );
+  --_active-text: var(--vers-comp-bottom-bar-active-text, var(--color-primary));
+  --_disabled-opacity: var(--vers-comp-bottom-bar-disabled-opacity, 0.5);
+
+  min-height: var(--_height);
+  background-color: var(--_bg);
+  color: var(--_text-color);
+  border-top: 1px solid var(--_border-color);
+  transition: background-color var(--_transition-duration) ease-in-out;
+}
+
+/* ============================================
+   BOTTOM BAR ITEMS
+   ============================================ */
+
+/* Bottom Bar Item — polymorphic button or link */
+.bottom-bar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--_item-gap);
+  flex: 1;
+  padding: var(--_item-padding);
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: var(--font-size-xs);
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-normal);
+  user-select: none;
+  transition-property: background-color, color;
+  transition-duration: var(--_transition-duration);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  position: relative;
+}
+
+/* Bottom Bar Item states */
+.bottom-bar-item[data-disabled=""] {
+  opacity: var(--_disabled-opacity);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.bottom-bar-item[data-active=""] {
+  background-color: var(--_active-bg);
+  color: var(--_active-text);
+  font-weight: var(--font-weight-semibold);
+}
+
+.bottom-bar-item[data-focused=""] {
+  background-color: var(--_focus-bg);
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+.bottom-bar-item:hover:not([data-disabled=""]):not([data-active=""]) {
+  background-color: var(--_focus-bg);
+}
+
+.bottom-bar-item-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--_icon-size);
+  height: var(--_icon-size);
+}
+
+.bottom-bar-item-text {
+  flex-shrink: 0;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
