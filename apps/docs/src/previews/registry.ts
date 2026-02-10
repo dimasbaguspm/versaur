@@ -18,6 +18,7 @@ import { TableDocPage } from "./pages/table-doc-page";
 import { TopBarDocPage } from "./pages/top-bar-doc-page";
 import { SidebarDocPage } from "./pages/sidebar-doc-page";
 import { BottomBarDocPage } from "./pages/bottom-bar-doc-page";
+import { AppLayoutDocPage } from "./pages/app-layout-doc-page";
 
 export type ComponentCategory =
   | "Primitives"
@@ -164,5 +165,12 @@ export const previewRegistry: Record<string, RegistryEntry> = {
     description:
       "A horizontal bottom navigation bar with icon-focused items and optional text labels, designed for mobile-first interfaces",
     category: "Navigations",
+  },
+  "app-layout": {
+    component: AppLayoutDocPage,
+    title: "AppLayout",
+    description:
+      "A high-level layout system for managing page regions including header, sidebars, main content, and bottom navigation with responsive variants",
+    category: "Layouts",
   },
 };

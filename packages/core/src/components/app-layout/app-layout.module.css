@@ -1,0 +1,221 @@
+/* Base AppLayout Styles */
+.app-layout {
+  /* Layout */
+  display: grid;
+
+  /* Component-specific custom properties */
+  --_height: var(--vers-comp-app-layout-height, 100vh);
+  --_header-height: var(--vers-comp-app-layout-header-height, 3.5rem);
+  --_bottom-height: var(--vers-comp-app-layout-bottom-height, 4rem);
+  --_sidebar-width: var(--vers-comp-app-layout-sidebar-width, 15rem);
+  --_gap: var(--vers-comp-app-layout-gap, 0);
+  --_transition: all var(--vers-transition-base) ease-out;
+
+  /* Grid setup */
+  grid-template-areas:
+    "header   header     header      header      header"
+    "side-left main       main        main        side-right"
+    "bottom   bottom     bottom      bottom      bottom";
+  grid-template-columns: var(--_sidebar-width) 1fr auto var(
+      --_sidebar-width
+    ) 1px;
+  grid-template-rows: var(--_header-height) 1fr var(--_bottom-height);
+  gap: var(--_gap);
+  height: var(--_height);
+
+  /* Styling */
+  background-color: var(--vers-color-background, #ffffff);
+  color: var(--vers-color-text-primary);
+  font-family: var(--vers-typography-body-font-family);
+  font-size: var(--vers-typography-body-size);
+  line-height: var(--vers-typography-body-line-height);
+}
+
+/* ============================================
+   VARIANT: mobile - single column layout
+   ============================================ */
+.app-layout[data-variant="mobile"] {
+  grid-template-areas:
+    "header"
+    "main"
+    "bottom";
+  grid-template-columns: 1fr;
+}
+
+/* ============================================
+   VARIANT: split - two sidebars with main
+   ============================================ */
+.app-layout[data-variant="split"] {
+  grid-template-areas:
+    "header   header      header      header      header"
+    "side-left main       main        side-right  side-right"
+    "bottom   bottom      bottom      bottom      bottom";
+  grid-template-columns: var(--_sidebar-width) 1fr auto var(
+      --_sidebar-width
+    ) 1px;
+}
+
+/* ============================================
+   VARIANT: full - main content only
+   ============================================ */
+.app-layout[data-variant="full"] {
+  grid-template-areas:
+    "header"
+    "main"
+    "bottom";
+  grid-template-columns: 1fr;
+}
+
+/* ============================================
+   VARIANT: classic - left sidebar + main (default)
+   ============================================ */
+.app-layout[data-variant="classic"] {
+  grid-template-areas:
+    "header   header     header      header      header"
+    "side-left main       main        main        side-right"
+    "bottom   bottom     bottom      bottom      bottom";
+  grid-template-columns: var(--_sidebar-width) 1fr auto var(
+      --_sidebar-width
+    ) 1px;
+}
+
+/* ============================================
+   REGIONS: Header
+   ============================================ */
+.app-layout-header {
+  grid-area: header;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid var(--vers-color-border, #e5e5e5);
+  background-color: var(--vers-color-background, #ffffff);
+  transition: var(--_transition);
+}
+
+/* ============================================
+   REGIONS: Main content - scrollable
+   ============================================ */
+.app-layout-main {
+  grid-area: main;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  transition: var(--_transition);
+}
+
+/* Custom scrollbar for main content */
+.app-layout-main::-webkit-scrollbar {
+  width: 8px;
+}
+
+.app-layout-main::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.app-layout-main::-webkit-scrollbar-thumb {
+  background: var(--vers-color-border, #e5e5e5);
+  border-radius: 4px;
+  transition: background-color var(--vers-transition-fast);
+}
+
+.app-layout-main::-webkit-scrollbar-thumb:hover {
+  background: var(--vers-color-text-tertiary, #999);
+}
+
+/* ============================================
+   REGIONS: Side left
+   ============================================ */
+.app-layout-side-left {
+  grid-area: side-left;
+  position: sticky;
+  top: var(--_header-height);
+  height: calc(var(--_height) - var(--_header-height));
+  overflow-y: auto;
+  border-right: 1px solid var(--vers-color-border, #e5e5e5);
+  background-color: var(--vers-color-background-secondary, #f9f9f9);
+  transition: var(--_transition);
+}
+
+/* ============================================
+   REGIONS: Side right
+   ============================================ */
+.app-layout-side-right {
+  grid-area: side-right;
+  position: sticky;
+  top: var(--_header-height);
+  height: calc(var(--_height) - var(--_header-height));
+  overflow-y: auto;
+  border-left: 1px solid var(--vers-color-border, #e5e5e5);
+  background-color: var(--vers-color-background-secondary, #f9f9f9);
+  transition: var(--_transition);
+}
+
+/* ============================================
+   REGIONS: Bottom navigation
+   ============================================ */
+.app-layout-bottom {
+  grid-area: bottom;
+  position: sticky;
+  bottom: 0;
+  z-index: 9;
+  border-top: 1px solid var(--vers-color-border, #e5e5e5);
+  background-color: var(--vers-color-background, #ffffff);
+  transition: var(--_transition);
+}
+
+/* ============================================
+   VISIBILITY: Hide regions based on data-attributes
+   ============================================ */
+.app-layout[data-show-header="false"] .app-layout-header {
+  display: none;
+}
+
+.app-layout[data-show-side-left="false"] .app-layout-side-left {
+  display: none;
+}
+
+.app-layout[data-show-side-right="false"] .app-layout-side-right {
+  display: none;
+}
+
+.app-layout[data-show-bottom="false"] .app-layout-bottom {
+  display: none;
+}
+
+/* ============================================
+   RESPONSIVE: Tablet and up (1024px+)
+   ============================================ */
+@media (min-width: 1024px) {
+  .app-layout[data-variant="mobile"] {
+    grid-template-areas:
+      "header   header      header      header      header"
+      "side-left main       main        side-right  side-right"
+      "bottom   bottom      bottom      bottom      bottom";
+    grid-template-columns: var(--_sidebar-width) 1fr auto var(
+        --_sidebar-width
+      ) 1px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE: Large screens (1280px+)
+   ============================================ */
+@media (min-width: 1280px) {
+  .app-layout {
+    --_sidebar-width: 16rem;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY: Reduced motion support
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .app-layout,
+  .app-layout-header,
+  .app-layout-main,
+  .app-layout-side-left,
+  .app-layout-side-right,
+  .app-layout-bottom {
+    transition: none;
+  }
+}

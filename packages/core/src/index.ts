@@ -23,3 +23,6 @@ export * from "./components/badge-group";
 export * from "./components/button-group";
 export * from "./components/sidebar";
 export * from "./components/bottom-bar";
+
+// Export layouts
+export * from "./components/app-layout";

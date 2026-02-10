@@ -64,6 +64,9 @@
       ],
       "bottom-bar": [
         "./dist/bottom-bar.d.ts"
+      ],
+      "app-layout": [
+        "./dist/app-layout.d.ts"
       ]
     }
   },
@@ -167,6 +170,11 @@
       "source": "./src/components/bottom-bar/index.ts",
       "types": "./dist/bottom-bar.d.ts",
       "import": "./dist/bottom-bar.js"
+    },
+    "./app-layout": {
+      "source": "./src/components/app-layout/index.ts",
+      "types": "./dist/app-layout.d.ts",
+      "import": "./dist/app-layout.js"
     }
   },
   "files": [

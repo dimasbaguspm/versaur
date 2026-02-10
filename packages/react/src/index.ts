@@ -156,3 +156,16 @@ export type {
   BottomBarRootProps,
   BottomBarItemProps,
 } from "./components/bottom-bar";
+
+export { AppLayout } from "./components/app-layout";
+export type {
+  AppLayoutRootProps,
+  AppLayoutRegionProps,
+} from "./components/app-layout";
+export {
+  LAYOUT_TEMPLATES,
+  getLayoutTemplate,
+  getAllLayoutTemplates,
+  getResponsiveVariant,
+} from "./components/app-layout/layout-templates";
+export type { LayoutTemplate } from "./components/app-layout/layout-templates";
