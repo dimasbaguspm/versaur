@@ -8,6 +8,7 @@
   --_header-height: var(--vers-comp-app-layout-header-height, 3.5rem);
   --_bottom-height: var(--vers-comp-app-layout-bottom-height, 4rem);
   --_sidebar-width: var(--vers-comp-app-layout-sidebar-width, 15rem);
+  --_main-max-width: var(--vers-comp-app-layout-main-max-width, 1200px);
   --_gap: var(--vers-comp-app-layout-gap, 0);
   --_transition: all var(--vers-transition-base) ease-out;
 
@@ -16,9 +17,9 @@
     "header   header     header      header      header"
     "side-left main       main        main        side-right"
     "bottom   bottom     bottom      bottom      bottom";
-  grid-template-columns: var(--_sidebar-width) 1fr auto var(
-      --_sidebar-width
-    ) 1px;
+  grid-template-columns:
+    var(--_sidebar-width) 1fr auto var(--_sidebar-width)
+    1px;
   grid-template-rows: var(--_header-height) 1fr var(--_bottom-height);
   gap: var(--_gap);
   height: var(--_height);
@@ -50,9 +51,9 @@
     "header   header      header      header      header"
     "side-left main       main        side-right  side-right"
     "bottom   bottom      bottom      bottom      bottom";
-  grid-template-columns: var(--_sidebar-width) 1fr auto var(
-      --_sidebar-width
-    ) 1px;
+  grid-template-columns:
+    var(--_sidebar-width) 1fr auto var(--_sidebar-width)
+    1px;
 }
 
 /* ============================================
@@ -74,9 +75,9 @@
     "header   header     header      header      header"
     "side-left main       main        main        side-right"
     "bottom   bottom     bottom      bottom      bottom";
-  grid-template-columns: var(--_sidebar-width) 1fr auto var(
-      --_sidebar-width
-    ) 1px;
+  grid-template-columns:
+    var(--_sidebar-width) 1fr auto var(--_sidebar-width)
+    1px;
 }
 
 /* ============================================
@@ -120,6 +121,31 @@
 
 .app-layout-main::-webkit-scrollbar-thumb:hover {
   background: var(--vers-color-text-tertiary, #999);
+}
+
+/* ============================================
+   PLACEMENT: full-width vs centred
+   ============================================ */
+
+/* Full-width (default): Uses entire main area */
+.app-layout-main[data-placement="full-width"] {
+  /* No additional styles needed - default behavior */
+}
+
+/* Centred: Constrain width and center content */
+.app-layout-main[data-placement="centred"] {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: var(--_main-max-width);
+  width: 100%;
+  padding: 0 var(--vers-spacing-4, 1rem);
+}
+
+@media (min-width: 768px) {
+  .app-layout-main[data-placement="centred"] {
+    padding: 0 var(--vers-spacing-6, 1.5rem);
+  }
 }
 
 /* ============================================
@@ -191,9 +217,9 @@
       "header   header      header      header      header"
       "side-left main       main        side-right  side-right"
       "bottom   bottom      bottom      bottom      bottom";
-    grid-template-columns: var(--_sidebar-width) 1fr auto var(
-        --_sidebar-width
-      ) 1px;
+    grid-template-columns:
+      var(--_sidebar-width) 1fr auto var(--_sidebar-width)
+      1px;
   }
 }
 

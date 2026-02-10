@@ -2,6 +2,7 @@
 // Source: app-layout.module.css
 
 export type AppLayoutVariant = 'classic' | 'full' | 'mobile' | 'split';
+export type AppLayoutPlacement = 'centred' | 'full-width';
 export type AppLayoutShowHeader = 'false';
 export type AppLayoutShowSideLeft = 'false';
 export type AppLayoutShowSideRight = 'false';
@@ -9,6 +10,7 @@ export type AppLayoutShowBottom = 'false';
 
 export interface AppLayoutDataAttrs {
   variant?: AppLayoutVariant;
+  placement?: AppLayoutPlacement;
   showHeader?: AppLayoutShowHeader;
   showSideLeft?: AppLayoutShowSideLeft;
   showSideRight?: AppLayoutShowSideRight;
@@ -17,6 +19,7 @@ export interface AppLayoutDataAttrs {
 
 export namespace AppLayout {
   export type Variant = AppLayoutVariant;
+  export type Placement = AppLayoutPlacement;
   export type ShowHeader = AppLayoutShowHeader;
   export type ShowSideLeft = AppLayoutShowSideLeft;
   export type ShowSideRight = AppLayoutShowSideRight;

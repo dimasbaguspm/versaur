@@ -56,14 +56,15 @@ function ClassicLayoutPreview() {
           </div>
         </AppLayout.SideLeft>
 
-        <AppLayout.Main>
+        <AppLayout.Main placement="centred">
           <div style={{ padding: "2rem" }}>
             <Heading as="h2" style={{ marginBottom: "1rem" }}>
               Main Content
             </Heading>
             <Text>
               This is the main content area that scrolls independently from the
-              header and sidebar.
+              header and sidebar. Content is centered with a constrained
+              max-width.
             </Text>
           </div>
         </AppLayout.Main>
@@ -368,6 +369,16 @@ export const appLayoutProps = [
     type: "string",
     default: '""',
     description: "Additional CSS class names for the root element",
+  },
+];
+
+export const appLayoutMainProps = [
+  {
+    name: "placement",
+    type: '"full-width" | "centred"',
+    default: '"full-width"',
+    description:
+      "Content width constraint and alignment. full-width uses the entire main area; centred constrains width and centers the content",
   },
 ];
 

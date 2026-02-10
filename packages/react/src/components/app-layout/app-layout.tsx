@@ -4,6 +4,7 @@ import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type {
   AppLayoutRootProps,
   AppLayoutRegionProps,
+  AppLayoutMainProps,
 } from "./app-layout.types";
 
 const AppLayoutRoot = forwardRef<HTMLDivElement, AppLayoutRootProps>(
@@ -54,15 +55,22 @@ const AppLayoutHeader = forwardRef<HTMLDivElement, AppLayoutRegionProps>(
 
 AppLayoutHeader.displayName = "AppLayout.Header";
 
-const AppLayoutMain = forwardRef<HTMLDivElement, AppLayoutRegionProps>(
-  ({ className = "", children }, ref) => (
-    <main
-      ref={ref}
-      className={`${appLayoutStyles["app-layout-main"]} ${className}`.trim()}
-    >
-      {children}
-    </main>
-  ),
+const AppLayoutMain = forwardRef<HTMLDivElement, AppLayoutMainProps>(
+  ({ className = "", placement = "full-width", children }, ref) => {
+    const attrs = useDataAttrs({
+      placement,
+    });
+
+    return (
+      <main
+        ref={ref}
+        className={`${appLayoutStyles["app-layout-main"]} ${className}`.trim()}
+        {...attrs}
+      >
+        {children}
+      </main>
+    );
+  },
 );
 
 AppLayoutMain.displayName = "AppLayout.Main";

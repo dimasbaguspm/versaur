@@ -1,6 +1,3 @@
-export type {
-  AppLayoutProps,
-  AppLayoutVariant,
-  AppLayoutRegionProps,
-} from "./app-layout.types";
+// Export generated types
+export * from "./app-layout.types.generated";
 export { default as appLayoutStyles } from "./app-layout.module.css";
