@@ -1,6 +1,6 @@
-import type { AppLayout, AppLayoutDataAttrs } from "@versaur/core";
+import type { AppLayout } from "@versaur/core";
 
-export interface AppLayoutRootProps extends AppLayoutDataAttrs {
+export interface AppLayoutRootProps extends AppLayout.DataAttrs {
   className?: string;
   children?: React.ReactNode;
 }
