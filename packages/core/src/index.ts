@@ -21,3 +21,4 @@ export * from "./components/top-bar";
 export * from "./components/avatar-group";
 export * from "./components/badge-group";
 export * from "./components/button-group";
+export * from "./components/sidebar";

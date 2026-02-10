@@ -84,6 +84,10 @@
       "source": "./src/components/top-bar/top-bar.module.css",
       "import": "./dist/components/top-bar/top-bar.module.css"
     },
+    "./sidebar.css": {
+      "source": "./src/components/sidebar/sidebar.module.css",
+      "import": "./dist/components/sidebar/sidebar.module.css"
+    },
     "./components/*": {
       "source": "./src/components/*/index.ts",
       "import": "./dist/components/*/index.js"

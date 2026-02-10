@@ -16,6 +16,7 @@ import { ButtonGroupDocPage } from "./pages/button-group-doc-page";
 import { CardDocPage } from "./pages/card-doc-page";
 import { TableDocPage } from "./pages/table-doc-page";
 import { TopBarDocPage } from "./pages/top-bar-doc-page";
+import { SidebarDocPage } from "./pages/sidebar-doc-page";
 
 export type ComponentCategory =
   | "Primitives"
@@ -147,6 +148,13 @@ export const previewRegistry: Record<string, RegistryEntry> = {
     title: "TopBar",
     description:
       "A semantic navigation header component with compound pattern, polymorphic NavItem support, and mobile menu toggle",
+    category: "Navigations",
+  },
+  sidebar: {
+    component: SidebarDocPage,
+    title: "Sidebar",
+    description:
+      "An expandable/collapsible navigation sidebar with compound pattern, polymorphic items, keyboard navigation (arrow up/down), and grouped items support",
     category: "Navigations",
   },
 };

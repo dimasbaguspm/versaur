@@ -139,3 +139,14 @@ export type {
   TopBarMobileToggleProps,
   TopBarComponent,
 } from "./components/top-bar";
+
+export { Sidebar } from "./components/sidebar";
+export type {
+  SidebarRootProps,
+  SidebarHeaderProps,
+  SidebarBodyProps,
+  SidebarFooterProps,
+  SidebarGroupProps,
+  SidebarItemProps,
+  SidebarDividerProps,
+} from "./components/sidebar";
