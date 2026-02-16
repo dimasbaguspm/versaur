@@ -12,29 +12,24 @@ export interface TabsProps {
   onChange: (value: string) => void;
 
   /**
-   * Whether tabs should stretch to fill available width
-   */
-  fullWidth?: boolean;
-
-  /**
    * The content of the tabs component
    */
   children: ReactNode;
 }
 
-export interface TabsTriggerProps {
+export interface TabsItemProps {
   /**
-   * The unique identifier for this trigger
+   * The unique identifier for this item
    */
   value: string;
 
   /**
-   * Whether the trigger is disabled
+   * Whether the item is disabled
    */
   disabled?: boolean;
 
   /**
-   * The content of the trigger
+   * The content of the item
    */
   children: ReactNode;
 }

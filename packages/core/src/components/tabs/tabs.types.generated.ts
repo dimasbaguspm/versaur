@@ -5,7 +5,6 @@ export type TabsState = 'active' | 'disabled';
 
 export interface TabsDataAttrs {
   state?: TabsState;
-  fullWidth?: boolean;
 };
 
 export namespace Tabs {

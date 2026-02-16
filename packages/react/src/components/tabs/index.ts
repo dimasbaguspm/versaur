@@ -1,7 +1,7 @@
 import { Tabs } from "./tabs";
 import type {
   TabsProps,
-  TabsTriggerProps,
+  TabsItemProps,
   TabsPanelAttributes,
 } from "./tabs.types";
 
@@ -10,19 +10,13 @@ import type {
  */
 declare namespace Tabs {
   export type Props = TabsProps;
-  export type TriggerProps = TabsTriggerProps;
+  export type ItemProps = TabsItemProps;
   export type PanelAttributes = TabsPanelAttributes;
 }
 
 export { Tabs };
-export type { TabsProps, TabsTriggerProps, TabsPanelAttributes };
+export type { TabsProps, TabsItemProps, TabsPanelAttributes };
 
 // Preview exports
-export {
-  TabsPreview,
-  tabsSections,
-  tabsInstallation,
-  tabsProps,
-  tabsTriggerProps,
-} from "./preview";
+export { TabsPreview, tabsSections, tabsProps, tabsItemProps } from "./preview";
 export type { TabsSection } from "./preview";

@@ -1,10 +1,5 @@
 import type { TabsSection } from "@versaur/react/tabs";
-import {
-  tabsSections,
-  tabsInstallation,
-  tabsProps,
-  tabsTriggerProps,
-} from "@versaur/react/tabs";
+import { tabsSections, tabsProps, tabsItemProps } from "@versaur/react/tabs";
 import { ComponentPreview } from "../../components/component-preview";
 import { PropsTable } from "../../components/props-table";
 
@@ -32,8 +27,8 @@ export function TabsDocPage() {
       <h3>Tabs (Root)</h3>
       <PropsTable props={tabsProps} />
 
-      <h3>Tabs.Trigger</h3>
-      <PropsTable props={tabsTriggerProps} />
+      <h3>Tabs.Item</h3>
+      <PropsTable props={tabsItemProps} />
 
       <h3>Helper Functions</h3>
       <p>
@@ -44,9 +39,6 @@ export function TabsDocPage() {
         <code>aria-labelledby</code> attributes for creating accessible tabpanel
         elements. Use this on the container that holds your tab panel content.
       </p>
-
-      <h2>Installation</h2>
-      <ComponentPreview examples={makeExamples(tabsInstallation)} />
     </>
   );
 }

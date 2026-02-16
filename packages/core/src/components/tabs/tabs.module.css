@@ -4,8 +4,13 @@
    ROOT CONTAINER (nav)
    ============================================ */
 .tabs {
+  position: relative;
   display: flex;
   align-items: stretch;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding-top: var(--focus-ring-offset);
+  padding-bottom: var(--focus-ring-offset);
 
   /* Private tokens */
   --_gap: var(--vers-comp-tabs-gap, var(--spacing-2));
@@ -17,15 +22,6 @@
 
   gap: var(--_gap);
   border-bottom: var(--_border-bottom-width) solid var(--_border-bottom-color);
-}
-
-/* Full-width variant: triggers stretch to fill available space */
-.tabs[data-full-width] {
-  --_trigger-flex: 1;
-}
-
-.tabs[data-full-width] .trigger {
-  flex: var(--_trigger-flex, 0 0 auto);
 }
 
 /* ============================================
@@ -60,6 +56,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex: 1;
   padding: 0;
   border: none;
   background: none;
@@ -131,17 +128,6 @@
     var(--color-primary)
   );
   --_trigger-bg: var(--vers-comp-tabs-trigger-active-bg, transparent);
-  --_trigger-border-color: var(
-    --vers-comp-tabs-trigger-active-border-color,
-    var(--color-primary)
-  );
-  --_trigger-border-width: var(
-    --vers-comp-tabs-trigger-active-border-width,
-    2px
-  );
-
-  border-bottom-width: var(--_trigger-border-width);
-  border-bottom-color: var(--_trigger-border-color);
 }
 
 /* ============================================
@@ -184,5 +170,17 @@
   );
 
   outline: var(--_focus-ring-width) solid var(--_focus-ring-color);
-  outline-offset: var(--_focus-ring-offset);
+}
+
+/* ============================================
+   THUMB (underline indicator)
+   ============================================ */
+.tabs-thumb {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  width: 0;
+  z-index: 1;
 }

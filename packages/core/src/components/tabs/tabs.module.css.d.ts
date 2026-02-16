@@ -3,6 +3,7 @@ declare const styles: {
   readonly tabitem: string;
   readonly tablist: string;
   readonly tabs: string;
+  readonly 'tabs-thumb': string;
   readonly trigger: string;
 };
 export default styles;

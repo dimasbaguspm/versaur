@@ -10,73 +10,43 @@ export interface TabsSection {
 }
 
 /**
- * Basic Tabs Example
+ * Disabled Items Example
  */
-function BasicPreview() {
-  const [value, setValue] = useState("tab1");
-
-  return (
-    <Tabs value={value} onChange={setValue}>
-      <Tabs.Trigger value="tab1">Tab 1</Tabs.Trigger>
-      <Tabs.Trigger value="tab2">Tab 2</Tabs.Trigger>
-      <Tabs.Trigger value="tab3">Tab 3</Tabs.Trigger>
-    </Tabs>
-  );
-}
-
-/**
- * Full Width Tabs Example
- */
-function FullWidthPreview() {
-  const [value, setValue] = useState("home");
-
-  return (
-    <Tabs value={value} onChange={setValue} fullWidth>
-      <Tabs.Trigger value="home">Home</Tabs.Trigger>
-      <Tabs.Trigger value="profile">Profile</Tabs.Trigger>
-      <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
-    </Tabs>
-  );
-}
-
-/**
- * Disabled Triggers Example
- */
-function DisabledPreview() {
+function DisabledItemsPreview() {
   const [value, setValue] = useState("enabled1");
 
   return (
     <Tabs value={value} onChange={setValue}>
-      <Tabs.Trigger value="enabled1">Enabled 1</Tabs.Trigger>
-      <Tabs.Trigger value="disabled" disabled>
+      <Tabs.Item value="enabled1">Enabled 1</Tabs.Item>
+      <Tabs.Item value="disabled" disabled>
         Disabled
-      </Tabs.Trigger>
-      <Tabs.Trigger value="enabled2">Enabled 2</Tabs.Trigger>
+      </Tabs.Item>
+      <Tabs.Item value="enabled2">Enabled 2</Tabs.Item>
     </Tabs>
   );
 }
 
 /**
- * With Tabpanel Example
+ * With Tab Panels Example
  */
-function WithPanelPreview() {
+function WithPanelsPreview() {
   const [value, setValue] = useState("tab1");
 
   return (
     <div>
       <Tabs value={value} onChange={setValue}>
-        <Tabs.Trigger value="tab1">Tab 1</Tabs.Trigger>
-        <Tabs.Trigger value="tab2">Tab 2</Tabs.Trigger>
-        <Tabs.Trigger value="tab3">Tab 3</Tabs.Trigger>
+        <Tabs.Item value="tab1">Tab 1</Tabs.Item>
+        <Tabs.Item value="tab2">Tab 2</Tabs.Item>
+        <Tabs.Item value="tab3">Tab 3</Tabs.Item>
       </Tabs>
 
-      <div {...Tabs.getPanelAttribute("tab1")}>
+      <div {...Tabs.getPanelAttribute("tab1")} style={{ marginTop: "1rem" }}>
         {value === "tab1" && <p>Content for Tab 1</p>}
       </div>
-      <div {...Tabs.getPanelAttribute("tab2")}>
+      <div {...Tabs.getPanelAttribute("tab2")} style={{ marginTop: "1rem" }}>
         {value === "tab2" && <p>Content for Tab 2</p>}
       </div>
-      <div {...Tabs.getPanelAttribute("tab3")}>
+      <div {...Tabs.getPanelAttribute("tab3")} style={{ marginTop: "1rem" }}>
         {value === "tab3" && <p>Content for Tab 3</p>}
       </div>
     </div>
@@ -85,53 +55,9 @@ function WithPanelPreview() {
 
 export const tabsSections: TabsSection[] = [
   {
-    key: "basic",
-    title: "Basic Usage",
-    preview: BasicPreview,
-    code: `import { useState } from "react";
-import { Tabs } from "@versaur/react";
-
-export function MyTabs() {
-  const [value, setValue] = useState("tab1");
-
-  return (
-    <Tabs value={value} onChange={setValue}>
-      <Tabs.Trigger value="tab1">Tab 1</Tabs.Trigger>
-      <Tabs.Trigger value="tab2">Tab 2</Tabs.Trigger>
-      <Tabs.Trigger value="tab3">Tab 3</Tabs.Trigger>
-    </Tabs>
-  );
-}`,
-    language: "tsx",
-  },
-  {
-    key: "full-width",
-    title: "Full Width",
-    preview: FullWidthPreview,
-    code: `<Tabs value={value} onChange={setValue} fullWidth>
-  <Tabs.Trigger value="home">Home</Tabs.Trigger>
-  <Tabs.Trigger value="profile">Profile</Tabs.Trigger>
-  <Tabs.Trigger value="settings">Settings</Tabs.Trigger>
-</Tabs>`,
-    language: "tsx",
-  },
-  {
-    key: "disabled",
-    title: "Disabled Triggers",
-    preview: DisabledPreview,
-    code: `<Tabs value={value} onChange={setValue}>
-  <Tabs.Trigger value="enabled1">Enabled 1</Tabs.Trigger>
-  <Tabs.Trigger value="disabled" disabled>
-    Disabled
-  </Tabs.Trigger>
-  <Tabs.Trigger value="enabled2">Enabled 2</Tabs.Trigger>
-</Tabs>`,
-    language: "tsx",
-  },
-  {
-    key: "with-panel",
-    title: "With Tab Panels",
-    preview: WithPanelPreview,
+    key: "with-panels",
+    title: "With Panels",
+    preview: WithPanelsPreview,
     code: `import { useState } from "react";
 import { Tabs } from "@versaur/react";
 
@@ -141,21 +67,43 @@ export function TabbedContent() {
   return (
     <div>
       <Tabs value={value} onChange={setValue}>
-        <Tabs.Trigger value="tab1">Tab 1</Tabs.Trigger>
-        <Tabs.Trigger value="tab2">Tab 2</Tabs.Trigger>
-        <Tabs.Trigger value="tab3">Tab 3</Tabs.Trigger>
+        <Tabs.Item value="tab1">Tab 1</Tabs.Item>
+        <Tabs.Item value="tab2">Tab 2</Tabs.Item>
+        <Tabs.Item value="tab3">Tab 3</Tabs.Item>
       </Tabs>
 
-      <div {...Tabs.getPanelAttribute("tab1")}>
+      <div {...Tabs.getPanelAttribute("tab1")} style={{ marginTop: "1rem" }}>
         {value === "tab1" && <p>Content for Tab 1</p>}
       </div>
-      <div {...Tabs.getPanelAttribute("tab2")}>
+      <div {...Tabs.getPanelAttribute("tab2")} style={{ marginTop: "1rem" }}>
         {value === "tab2" && <p>Content for Tab 2</p>}
       </div>
-      <div {...Tabs.getPanelAttribute("tab3")}>
+      <div {...Tabs.getPanelAttribute("tab3")} style={{ marginTop: "1rem" }}>
         {value === "tab3" && <p>Content for Tab 3</p>}
       </div>
     </div>
+  );
+}`,
+    language: "tsx",
+  },
+  {
+    key: "disabled-items",
+    title: "Disabled Items",
+    preview: DisabledItemsPreview,
+    code: `import { useState } from "react";
+import { Tabs } from "@versaur/react";
+
+export function MyTabs() {
+  const [value, setValue] = useState("enabled1");
+
+  return (
+    <Tabs value={value} onChange={setValue}>
+      <Tabs.Item value="enabled1">Enabled 1</Tabs.Item>
+      <Tabs.Item value="disabled" disabled>
+        Disabled
+      </Tabs.Item>
+      <Tabs.Item value="enabled2">Enabled 2</Tabs.Item>
+    </Tabs>
   );
 }`,
     language: "tsx",
@@ -173,47 +121,36 @@ export const tabsProps = [
     name: "onChange",
     type: "(value: string) => void",
     default: "—",
-    description: "Callback fired when a tab trigger is clicked. Required.",
-  },
-  {
-    name: "fullWidth",
-    type: "boolean",
-    default: "false",
-    description: "Whether tab triggers should stretch to fill available width.",
+    description: "Callback fired when a tab item is clicked. Required.",
   },
   {
     name: "children",
     type: "ReactNode",
     default: "—",
-    description: "Tab trigger elements. Required.",
+    description: "Tab item elements. Required.",
   },
 ];
 
-export const tabsTriggerProps = [
+export const tabsItemProps = [
   {
     name: "value",
     type: "string",
     default: "—",
-    description: "The unique identifier for this tab trigger. Required.",
+    description: "The unique identifier for this tab item. Required.",
   },
   {
     name: "disabled",
     type: "boolean",
     default: "false",
-    description: "Whether the tab trigger is disabled.",
+    description: "Whether the tab item is disabled.",
   },
   {
     name: "children",
     type: "ReactNode",
     default: "—",
-    description: "The label or content of the tab trigger. Required.",
+    description: "The label or content of the tab item. Required.",
   },
 ];
-
-export const tabsInstallation = {
-  code: `npm install @versaur/react @versaur/core`,
-  language: "bash" as const,
-};
 
 export function TabsPreview() {
   return (
