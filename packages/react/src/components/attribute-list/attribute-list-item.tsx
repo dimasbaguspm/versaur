@@ -8,23 +8,24 @@ import type { AttributeListItemProps } from "./attribute-list.types";
  *
  * @example
  * ```tsx
- * <AttributeList.Item span="2" title="Email">
+ * <AttributeList.Item columnSpan="2" title="Email">
  *   john.doe@example.com
  * </AttributeList.Item>
  * ```
  */
 export const AttributeListItem = forwardRef<
-  HTMLElement,
+  HTMLDivElement,
   AttributeListItemProps
->(({ title, span = "1", children }) => {
+>(({ title, columnSpan = "1", contentLineClamp = "2", children }, ref) => {
   useAttributeListContext();
 
   const dataAttrs = useDataAttrs({
-    span,
+    "column-span": columnSpan,
+    "content-line-clamp": contentLineClamp,
   });
 
   return (
-    <div style={{ display: "contents" }} {...dataAttrs}>
+    <div ref={ref} {...dataAttrs}>
       <dt>{title}</dt>
       <dd>{children}</dd>
     </div>

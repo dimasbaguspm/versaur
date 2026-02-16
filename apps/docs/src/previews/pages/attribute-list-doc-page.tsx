@@ -1,6 +1,5 @@
 import {
   attributeListSections,
-  attributeListInstallation,
   attributeListProps,
   attributeListItemProps,
 } from "@versaur/react/attribute-list";
@@ -33,9 +32,6 @@ export function AttributeListDocPage() {
 
       <h3>AttributeList.Item Props</h3>
       <PropsTable props={attributeListItemProps} />
-
-      <h2>Installation</h2>
-      <ComponentPreview examples={makeExamples(attributeListInstallation)} />
     </>
   );
 }

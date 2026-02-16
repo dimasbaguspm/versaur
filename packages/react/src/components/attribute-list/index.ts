@@ -10,7 +10,8 @@ import React from "react";
 // Extend AttributeList namespace
 export namespace AttributeList {
   export type Columns = AttributeListCore.Columns;
-  export type Span = AttributeListCore.Span;
+  export type ColumnSpan = AttributeListCore.ColumnSpan;
+  export type ContentLineClamp = AttributeListCore.ContentLineClamp;
   export type Props = AttributeListProps;
   export type ItemProps = AttributeListItemProps;
 }
@@ -32,6 +33,5 @@ export {
   attributeListSections,
   attributeListProps,
   attributeListItemProps,
-  attributeListInstallation,
   AttributeListPreview,
 } from "./preview";

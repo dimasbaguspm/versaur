@@ -31,13 +31,13 @@ export const useAttributeListContext = () => {
  * @example
  * ```tsx
  * <AttributeList columns="4">
- *   <AttributeList.Item span="4" title="Bio">
+ *   <AttributeList.Item columnSpan="4" title="Bio">
  *     Full-stack developer with 8+ years of experience
  *   </AttributeList.Item>
- *   <AttributeList.Item span="2" title="Name">
+ *   <AttributeList.Item columnSpan="2" title="Name">
  *     John Doe
  *   </AttributeList.Item>
- *   <AttributeList.Item span="2" title="Email">
+ *   <AttributeList.Item columnSpan="2" title="Email">
  *     john.doe@example.com
  *   </AttributeList.Item>
  * </AttributeList>

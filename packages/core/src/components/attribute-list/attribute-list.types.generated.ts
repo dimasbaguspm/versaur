@@ -2,15 +2,18 @@
 // Source: attribute-list.module.css
 
 export type AttributeListColumns = '1' | '2' | '3' | '4' | '5' | '6';
-export type AttributeListSpan = '1' | '2' | '3' | '4' | '5' | '6';
+export type AttributeListColumnSpan = '1' | '2' | '3' | '4' | '5' | '6';
+export type AttributeListContentLineClamp = '1' | '2' | '3' | '4' | '5';
 
 export interface AttributeListDataAttrs {
   columns?: AttributeListColumns;
-  span?: AttributeListSpan;
+  columnSpan?: AttributeListColumnSpan;
+  contentLineClamp?: AttributeListContentLineClamp;
 };
 
 export namespace AttributeList {
   export type Columns = AttributeListColumns;
-  export type Span = AttributeListSpan;
+  export type ColumnSpan = AttributeListColumnSpan;
+  export type ContentLineClamp = AttributeListContentLineClamp;
   export type DataAttrs = AttributeListDataAttrs;
 }

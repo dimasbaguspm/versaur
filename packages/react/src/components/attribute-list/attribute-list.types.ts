@@ -14,17 +14,23 @@ export interface AttributeListProps extends HTMLAttributes<HTMLDListElement> {
   children?: ReactNode;
 }
 
-export interface AttributeListItemProps extends HTMLAttributes<HTMLElement> {
+export interface AttributeListItemProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * The title/label for this attribute
    */
   title: string;
 
   /**
-   * Number of columns to span (1-6, auto-clamped to columns count)
+   * Number of columns to span in the grid (1-6, auto-clamped to columns count)
    * @default '1'
    */
-  span?: AttributeList.Span;
+  columnSpan?: AttributeList.ColumnSpan;
+
+  /**
+   * Number of lines to display before truncating with ellipsis (1-5)
+   * @default '2'
+   */
+  contentLineClamp?: AttributeList.ContentLineClamp;
 
   /**
    * The value content (can be text, links, badges, etc.)

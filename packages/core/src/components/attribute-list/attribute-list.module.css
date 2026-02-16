@@ -5,7 +5,7 @@
 
   /* Spacing — private tokens */
   --_gap: var(--vers-comp-attribute-list-gap, var(--spacing-3));
-  --_item-gap: var(--vers-comp-attribute-list-item-gap, var(--spacing-2));
+  --_item-gap: var(--vers-comp-attribute-list-item-gap, var(--spacing-1));
   --_columns: var(--vers-comp-attribute-list-columns, 3);
 
   grid-template-columns: repeat(var(--_columns), 1fr);
@@ -46,30 +46,30 @@
 }
 
 /* ============================================
-   SPAN VARIANTS — 1-6 columns
+   COLUMN-SPAN VARIANTS — 1-6 columns
    ============================================ */
 
-.attribute-list > *[data-span="1"] {
+.attribute-list > *[data-column-span="1"] {
   --_span: 1;
 }
 
-.attribute-list > *[data-span="2"] {
+.attribute-list > *[data-column-span="2"] {
   --_span: 2;
 }
 
-.attribute-list > *[data-span="3"] {
+.attribute-list > *[data-column-span="3"] {
   --_span: 3;
 }
 
-.attribute-list > *[data-span="4"] {
+.attribute-list > *[data-column-span="4"] {
   --_span: 4;
 }
 
-.attribute-list > *[data-span="5"] {
+.attribute-list > *[data-column-span="5"] {
   --_span: 5;
 }
 
-.attribute-list > *[data-span="6"] {
+.attribute-list > *[data-column-span="6"] {
   --_span: 6;
 }
 
@@ -82,6 +82,9 @@
   display: flex;
   flex-direction: column;
   gap: var(--_item-gap);
+
+  /* Content line-clamp control — defaults to 2 lines */
+  --_line-clamp: var(--vers-comp-attribute-list-content-line-clamp, 2);
 
   /* Grid spanning — clamped to column count */
   grid-column: span min(var(--_span, 1), var(--_columns));
@@ -97,18 +100,45 @@
   padding: 0;
 }
 
+/* ============================================
+   CONTENT LINE-CLAMP VARIANTS — 1-5 lines
+   ============================================ */
+
+.attribute-list > *[data-content-line-clamp="1"] {
+  --_line-clamp: 1;
+}
+
+.attribute-list > *[data-content-line-clamp="2"] {
+  --_line-clamp: 2;
+}
+
+.attribute-list > *[data-content-line-clamp="3"] {
+  --_line-clamp: 3;
+}
+
+.attribute-list > *[data-content-line-clamp="4"] {
+  --_line-clamp: 4;
+}
+
+.attribute-list > *[data-content-line-clamp="5"] {
+  --_line-clamp: 5;
+}
+
 .attribute-list > * > dd {
-  /* Value styling */
-  font-size: var(--font-size-sm);
+  /* Value styling — larger than title */
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-normal);
   color: var(--color-text-primary);
   margin: 0;
   padding: 0;
 
-  /* Support mixed content (text, links, badges, etc.) */
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: var(--spacing-2);
+  /* Text truncation with ellipsis (configurable via --_line-clamp) */
+  display: -webkit-box;
+  -webkit-line-clamp: var(--_line-clamp);
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal;
 }
