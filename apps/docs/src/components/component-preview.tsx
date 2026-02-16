@@ -11,7 +11,7 @@ interface ComponentPreviewProps {
 
 export function ComponentPreview({
   examples,
-  defaultExpanded = false,
+  defaultExpanded = true,
 }: ComponentPreviewProps) {
   const { selectedFramework, isClient } = useFrameworkSelection();
   const { highlightCode, isReady } = useShikiHighlighter();
