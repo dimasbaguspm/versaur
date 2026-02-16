@@ -1,8 +1,4 @@
-import {
-  buttonSections,
-  buttonInstallation,
-  buttonProps,
-} from "@versaur/react/button";
+import { buttonSections, buttonProps } from "@versaur/react/button";
 import { ComponentPreview } from "../../components/component-preview";
 import { PropsTable } from "../../components/props-table";
 
@@ -27,9 +23,6 @@ export function ButtonDocPage() {
 
       <h2>API Reference</h2>
       <PropsTable props={buttonProps} />
-
-      <h2>Installation</h2>
-      <ComponentPreview examples={makeExamples(buttonInstallation)} />
     </>
   );
 }

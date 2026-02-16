@@ -15,10 +15,5 @@ export { Button };
 export type { ButtonProps };
 export type { ButtonVariant, ButtonSize } from "@versaur/core";
 
-export {
-  ButtonPreview,
-  buttonSections,
-  buttonInstallation,
-  buttonProps,
-} from "./preview";
+export { ButtonPreview, buttonSections, buttonProps } from "./preview";
 export type { ButtonSection } from "./preview";

@@ -18,10 +18,6 @@ import type { ButtonProps } from "./button.types";
  * <Button variant="ghost" size="small" loading>
  *   Loading...
  * </Button>
- *
- * <Button variant="outline">
- *   Outline Button
- * </Button>
  * ```
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -67,7 +63,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         onClick={handleClick}
       >
         {loading ? (
-          <Icon as={LoaderIcon} aria-label="Loading" data-icon="loader" />
+          <Icon
+            as={LoaderIcon}
+            aria-label="Loading"
+            data-loading-icon="loader"
+          />
         ) : null}
         {children}
       </button>

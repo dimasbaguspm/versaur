@@ -89,15 +89,6 @@
   --_radius: var(--vers-comp-button-md-radius, var(--radius-md));
 }
 
-.button[data-size="large"] {
-  --_height: var(--vers-comp-button-lg-height, 3rem);
-  --_px: var(--vers-comp-button-lg-padding-x, var(--spacing-5));
-  --_font-size: var(--vers-comp-button-lg-font-size, var(--font-size-base));
-  --_icon-size: var(--vers-comp-button-lg-icon-size, 1.5rem);
-  --_gap: var(--vers-comp-button-lg-gap, var(--spacing-2));
-  --_radius: var(--vers-comp-button-lg-radius, var(--radius-lg));
-}
-
 /* ============================================
    PRIMARY VARIANT - Filled Coral Button
    ============================================ */
@@ -193,50 +184,6 @@
 }
 
 /* ============================================
-   OUTLINE VARIANT - Outlined Mist Button
-   ============================================ */
-.button[data-variant="outline"] {
-  --_bg: var(--vers-comp-button-outline-bg, var(--color-outline-soft));
-  --_color: var(--vers-comp-button-outline-color, var(--color-outline-bold));
-  --_border-color: var(
-    --vers-comp-button-outline-border-color,
-    var(--color-outline)
-  );
-  --_focus-ring-color: var(
-    --vers-comp-button-outline-focus-ring-color,
-    var(--color-outline)
-  );
-}
-
-.button[data-variant="outline"]:hover:not([data-disabled]):not([data-loading]) {
-  --_bg: var(--vers-comp-button-outline-hover-bg, var(--color-outline-light));
-  --_border-color: var(
-    --vers-comp-button-outline-hover-border-color,
-    var(--color-outline-hover)
-  );
-}
-
-.button[data-variant="outline"]:active:not([data-disabled]):not(
-    [data-loading]
-  ) {
-  --_bg: var(--vers-comp-button-outline-active-bg, var(--color-outline-hover));
-  --_border-color: var(
-    --vers-comp-button-outline-active-border-color,
-    var(--color-outline-bold)
-  );
-}
-
-.button[data-variant="outline"][aria-pressed="true"] {
-  --_bg: var(--vers-comp-button-outline-pressed-bg, var(--color-outline));
-  --_color: var(--vers-comp-button-outline-pressed-color, #ffffff);
-  --_border-color: var(
-    --vers-comp-button-outline-pressed-border-color,
-    var(--color-outline-bold)
-  );
-  box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.1);
-}
-
-/* ============================================
    GHOST VARIANT - Ghost Slate Button
    ============================================ */
 .button[data-variant="ghost"] {
@@ -312,7 +259,7 @@
 /* State - Loading */
 .button[data-loading] {
   position: relative;
-  pointer-events: none;
+  cursor: wait;
 }
 
 .button[data-loading] svg[data-loading-icon="loader"] {
