@@ -20,5 +20,4 @@ export {
   BadgePreview,
   badgeSections,
   badgeProps,
-  badgeInstallation,
 } from "./preview";

@@ -1,8 +1,4 @@
-import {
-  badgeSections,
-  badgeInstallation,
-  badgeProps,
-} from "@versaur/react/badge";
+import { badgeSections, badgeProps } from "@versaur/react/badge";
 import { ComponentPreview } from "../../components/component-preview";
 import { PropsTable } from "../../components/props-table";
 
@@ -29,9 +25,6 @@ export function BadgeDocPage() {
 
       <h3>Badge Props</h3>
       <PropsTable props={badgeProps} />
-
-      <h2>Installation</h2>
-      <ComponentPreview examples={makeExamples(badgeInstallation)} />
     </>
   );
 }

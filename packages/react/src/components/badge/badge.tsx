@@ -24,6 +24,8 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
       variant = "primary",
       size = "medium",
       shape = "rounded",
+      iconLeft,
+      iconRight,
       children,
       ...rest
     },
@@ -37,7 +39,9 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
 
     return (
       <div ref={ref} className={badgeStyles["badge"]} {...dataAttrs} {...rest}>
+        {iconLeft}
         {children}
+        {iconRight}
       </div>
     );
   },

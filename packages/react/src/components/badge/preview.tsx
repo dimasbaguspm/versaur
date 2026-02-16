@@ -1,4 +1,10 @@
 import { Badge } from "./badge";
+import { Icon } from "../icon";
+import {
+  CheckCircleIcon,
+  AlertCircleIcon,
+  ZapIcon,
+} from "@versaur/icons";
 
 export const badgeProps = [
   {
@@ -6,13 +12,13 @@ export const badgeProps = [
     type: "BadgeVariant",
     default: "primary",
     description:
-      "Visual style variant: primary, secondary, success, danger, warning, or info",
+      "Visual style variant: primary, secondary, success, danger, warning, info, outline, accent-1, accent-2, or accent-3",
   },
   {
     name: "size",
     type: "BadgeSize",
     default: "medium",
-    description: "Size of the badge: small, medium, or large",
+    description: "Size of the badge: small or medium",
   },
   {
     name: "shape",
@@ -22,7 +28,20 @@ export const badgeProps = [
       "Shape of the badge: rounded (medium border-radius) or pill (full rounded)",
   },
   {
+    name: "iconLeft",
+    type: "ReactNode",
+    default: "undefined",
+    description: "Icon to display on the left side of the badge",
+  },
+  {
+    name: "iconRight",
+    type: "ReactNode",
+    default: "undefined",
+    description: "Icon to display on the right side of the badge",
+  },
+  {
     name: "children",
+    default: "",
     type: "ReactNode",
     description: "Badge content (text, icons, or mixed content)",
   },
@@ -37,6 +56,10 @@ function VariantsSection() {
       <Badge variant="danger">Danger</Badge>
       <Badge variant="warning">Warning</Badge>
       <Badge variant="info">Info</Badge>
+      <Badge variant="outline">Outline</Badge>
+      <Badge variant="accent-1">Accent 1</Badge>
+      <Badge variant="accent-2">Accent 2</Badge>
+      <Badge variant="accent-3">Accent 3</Badge>
     </div>
   );
 }
@@ -53,7 +76,6 @@ function SizesSection() {
     >
       <Badge size="small">Small</Badge>
       <Badge size="medium">Medium</Badge>
-      <Badge size="large">Large</Badge>
     </div>
   );
 }
@@ -67,14 +89,27 @@ function ShapesSection() {
   );
 }
 
-function CustomContent() {
+function IconsSection() {
   return (
     <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
-      <Badge>New</Badge>
-      <Badge variant="success">Active</Badge>
-      <Badge variant="danger">Critical</Badge>
-      <Badge variant="warning" shape="pill">
-        Pending
+      <Badge
+        variant="success"
+        iconLeft={<Icon as={CheckCircleIcon} color="inherit" />}
+      >
+        Complete
+      </Badge>
+      <Badge
+        variant="warning"
+        iconRight={<Icon as={AlertCircleIcon} color="inherit" />}
+      >
+        Warning
+      </Badge>
+      <Badge
+        variant="primary"
+        iconLeft={<Icon as={ZapIcon} color="inherit" />}
+        iconRight={<Icon as={ZapIcon} color="inherit" />}
+      >
+        Zapped
       </Badge>
     </div>
   );
@@ -90,7 +125,11 @@ export const badgeSections = [
 <Badge variant="success">Success</Badge>
 <Badge variant="danger">Danger</Badge>
 <Badge variant="warning">Warning</Badge>
-<Badge variant="info">Info</Badge>`,
+<Badge variant="info">Info</Badge>
+<Badge variant="outline">Outline</Badge>
+<Badge variant="accent-1">Accent 1</Badge>
+<Badge variant="accent-2">Accent 2</Badge>
+<Badge variant="accent-3">Accent 3</Badge>`,
     language: "tsx",
   },
   {
@@ -98,8 +137,7 @@ export const badgeSections = [
     title: "Sizes",
     preview: SizesSection,
     code: `<Badge size="small">Small</Badge>
-<Badge size="medium">Medium</Badge>
-<Badge size="large">Large</Badge>`,
+<Badge size="medium">Medium</Badge>`,
     language: "tsx",
   },
   {
@@ -111,31 +149,36 @@ export const badgeSections = [
     language: "tsx",
   },
   {
-    key: "custom",
-    title: "Custom Content",
-    preview: CustomContent,
-    code: `<Badge>New</Badge>
-<Badge variant="success">Active</Badge>
-<Badge variant="danger">Critical</Badge>
-<Badge variant="warning" shape="pill">
-  Pending
+    key: "icons",
+    title: "With Icons",
+    preview: IconsSection,
+    code: `import { Icon } from "@versaur/react";
+import { CheckCircleIcon, AlertCircleIcon, ZapIcon } from "@versaur/icons";
+
+<Badge
+  variant="success"
+  iconLeft={<Icon as={CheckCircleIcon} color="inherit" />}
+>
+  Complete
+</Badge>
+
+<Badge
+  variant="warning"
+  iconRight={<Icon as={AlertCircleIcon} color="inherit" />}
+>
+  Warning
+</Badge>
+
+<Badge
+  variant="primary"
+  iconLeft={<Icon as={ZapIcon} color="inherit" />}
+  iconRight={<Icon as={ZapIcon} color="inherit" />}
+>
+  Zapped
 </Badge>`,
     language: "tsx",
   },
 ];
-
-export const badgeInstallation = {
-  code: `import { Badge } from "@versaur/react";
-
-export function App() {
-  return (
-    <Badge variant="primary" size="medium" shape="rounded">
-      Badge
-    </Badge>
-  );
-}`,
-  language: "tsx",
-};
 
 export function BadgePreview() {
   return (

@@ -63,6 +63,14 @@
   --color-warning-bold: #854f22;
   --color-warning-soft: #fff1e4;
 
+  /* Info Color - Blue */
+  --color-info: #6b8fad;
+  --color-info-light: #b9e1ff;
+  --color-info-hover: #5a7a9a;
+  --color-info-active: #4a6a8a;
+  --color-info-bold: #3c5a7a;
+  --color-info-soft: #f0f8ff;
+
   /* Neutral Colors - White, Black, Gray */
   --color-white: #ffffff;
   --color-black: #000000;

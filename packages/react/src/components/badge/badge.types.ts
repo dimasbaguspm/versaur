@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 import type { Badge } from "@versaur/core";
 
 export interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
@@ -19,6 +19,16 @@ export interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
    * @default 'rounded'
    */
   shape?: Badge.Shape;
+
+  /**
+   * Icon to display on the left side of the badge
+   */
+  iconLeft?: ReactNode;
+
+  /**
+   * Icon to display on the right side of the badge
+   */
+  iconRight?: ReactNode;
 
   /**
    * Badge content (text, icons, etc.)

@@ -7,7 +7,7 @@
 
   /* Typography */
   font-family: var(--font-sans);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-semibold);
   text-decoration: none;
   white-space: nowrap;
 
@@ -31,28 +31,32 @@
 
   background-color: var(--_bg);
   color: var(--_color);
+  border: 1px solid transparent;
   border-radius: var(--_radius);
 }
 
+/* Icon styling */
+.badge svg {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  color: currentColor;
+}
+
 /* ============================================
-   SIZE VARIANTS — small, medium, large
+   SIZE VARIANTS — small, medium
    ============================================ */
 
 .badge[data-size="small"] {
   --_height: 1.25rem;
-  --_px: var(--spacing-1-5);
+  --_px: var(--spacing-2);
   --_font-size: var(--font-size-xs);
 }
 
 .badge[data-size="medium"] {
   --_height: 1.5rem;
   --_px: var(--spacing-2);
-  --_font-size: var(--font-size-xs);
-}
-
-.badge[data-size="large"] {
-  --_height: 1.75rem;
-  --_px: var(--spacing-3);
   --_font-size: var(--font-size-sm);
 }
 
@@ -88,6 +92,28 @@
 .badge[data-variant="info"] {
   --_bg: var(--color-info);
   --_color: #ffffff;
+}
+
+.badge[data-variant="outline"] {
+  --_bg: transparent;
+  --_color: var(--color-outline);
+  --_border-color: var(--color-outline);
+  border-color: var(--_border-color);
+}
+
+.badge[data-variant="accent-1"] {
+  --_bg: var(--color-primary-soft);
+  --_color: var(--color-primary-bold);
+}
+
+.badge[data-variant="accent-2"] {
+  --_bg: var(--color-secondary-soft);
+  --_color: var(--color-secondary-bold);
+}
+
+.badge[data-variant="accent-3"] {
+  --_bg: var(--color-outline-soft);
+  --_color: var(--color-outline-bold);
 }
 
 /* ============================================
