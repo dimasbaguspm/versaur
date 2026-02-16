@@ -1,5 +1,5 @@
-import type { HTMLAttributes, ReactNode } from 'react';
-import type { Text } from '@versaur/core';
+import type { HTMLAttributes, ReactNode } from "react";
+import type { Text } from "@versaur/core";
 
 export interface TextProps extends HTMLAttributes<HTMLElement> {
   /**
@@ -24,12 +24,17 @@ export interface TextProps extends HTMLAttributes<HTMLElement> {
   intent?: Text.Intent;
 
   /**
+   * Text transform case
+   */
+  case?: Text.Case;
+
+  /**
+   * Text decoration transform
+   */
+  transform?: Text.Transform;
+
+  /**
    * Text content
    */
   children: ReactNode;
-
-  /**
-   * Associated form element ID (only applies when as="label")
-   */
-  htmlFor?: string;
 }

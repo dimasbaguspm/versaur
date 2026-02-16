@@ -1,8 +1,4 @@
-import {
-  textSections,
-  textInstallation,
-  textProps,
-} from "@versaur/react/text";
+import { textSections, textProps } from "@versaur/react/text";
 import { ComponentPreview } from "../../components/component-preview";
 import { PropsTable } from "../../components/props-table";
 
@@ -27,9 +23,6 @@ export function TextDocPage() {
 
       <h2>API Reference</h2>
       <PropsTable props={textProps} />
-
-      <h2>Installation</h2>
-      <ComponentPreview examples={makeExamples(textInstallation)} />
     </>
   );
 }

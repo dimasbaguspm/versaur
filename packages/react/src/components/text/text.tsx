@@ -5,15 +5,33 @@ import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type { TextProps } from "./text.types";
 
 export const Text = forwardRef<HTMLElement, TextProps>(
-  ({ as = "p", size, weight, intent, htmlFor, children, ...rest }, ref) => {
+  (
+    {
+      as = "p",
+      size,
+      weight,
+      intent,
+      case: caseVal,
+      transform,
+      children,
+      ...rest
+    },
+    ref,
+  ) => {
     const Tag = as;
-    const dataAttrs = useDataAttrs({ as, size, weight, intent });
+    const dataAttrs = useDataAttrs({
+      as,
+      size,
+      weight,
+      intent,
+      case: caseVal,
+      transform,
+    });
 
     return (
       <Tag
         ref={ref as any}
         className={textStyles.text}
-        {...(as === "label" && htmlFor ? { htmlFor } : {})}
         {...dataAttrs}
         {...rest}
       >

@@ -17,7 +17,6 @@ function AsElementsPreview() {
       <Text as="small">Small text</Text>
       <Text as="strong">Strong text</Text>
       <Text as="em">Emphasized text</Text>
-      <Text as="label">Label text</Text>
     </div>
   );
 }
@@ -45,29 +44,42 @@ function WeightsPreview() {
     </div>
   );
 }
-
-function IntentsPreview() {
+function CasePreview() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-      <Text intent="default">Default Intent</Text>
-      <Text intent="muted">Muted Intent</Text>
-      <Text intent="danger">Danger Intent</Text>
-      <Text intent="success">Success Intent</Text>
-      <Text intent="warning">Warning Intent</Text>
+      <Text case="upper">uppercase text transform</Text>
+      <Text case="lower">LOWERCASE TEXT TRANSFORM</Text>
+      <Text case="capitalize">capitalize text transform</Text>
     </div>
   );
 }
 
-function CombinedPreview() {
+function TransformPreview() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-      <Text as="small" intent="muted">Muted small text</Text>
-      <Text as="strong" size="lg" intent="danger">
-        Large danger strong text
+      <Text transform="underline">Underlined Text</Text>
+      <Text transform="line-through">Line Through Text</Text>
+      <Text transform="overline">Overlined Text</Text>
+    </div>
+  );
+}
+function IntentsPreview() {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+      <Text intent="default">Default Intent</Text>
+      <Text intent="gray">Gray Intent</Text>
+      <Text intent="primary">Primary Intent</Text>
+      <Text intent="secondary">Secondary Intent</Text>
+      <Text intent="danger">Danger Intent</Text>
+      <Text intent="success">Success Intent</Text>
+      <Text intent="warning">Warning Intent</Text>
+      <Text
+        intent="white"
+        style={{ backgroundColor: "#333", padding: "0.5rem" }}
+      >
+        White Intent
       </Text>
-      <Text as="label" weight="bold" htmlFor="example">
-        Bold label
-      </Text>
+      <Text intent="black">Black Intent</Text>
     </div>
   );
 }
@@ -81,8 +93,7 @@ export const textSections: TextSection[] = [
 <Text as="span">Span text</Text>
 <Text as="small">Small text</Text>
 <Text as="strong">Strong text</Text>
-<Text as="em">Emphasized text</Text>
-<Text as="label">Label text</Text>`,
+<Text as="em">Emphasized text</Text>`,
     language: "tsx",
   },
   {
@@ -112,19 +123,32 @@ export const textSections: TextSection[] = [
     title: "Intents",
     preview: IntentsPreview,
     code: `<Text intent="default">Default Intent</Text>
-<Text intent="muted">Muted Intent</Text>
+<Text intent="gray">Gray Intent</Text>
+<Text intent="primary">Primary Intent</Text>
+<Text intent="secondary">Secondary Intent</Text>
 <Text intent="danger">Danger Intent</Text>
 <Text intent="success">Success Intent</Text>
-<Text intent="warning">Warning Intent</Text>`,
+<Text intent="warning">Warning Intent</Text>
+<Text intent="white">White Intent</Text>
+<Text intent="black">Black Intent</Text>`,
     language: "tsx",
   },
   {
-    key: "combined",
-    title: "Combined Examples",
-    preview: CombinedPreview,
-    code: `<Text as="small" intent="muted">Muted small text</Text>
-<Text as="strong" size="lg" intent="danger">Large danger strong text</Text>
-<Text as="label" weight="bold" htmlFor="example">Bold label</Text>`,
+    key: "case",
+    title: "Case",
+    preview: CasePreview,
+    code: `<Text case="upper">uppercase text transform</Text>
+<Text case="lower">LOWERCASE TEXT TRANSFORM</Text>
+<Text case="capitalize">capitalize text transform</Text>`,
+    language: "tsx",
+  },
+  {
+    key: "transform",
+    title: "Transform",
+    preview: TransformPreview,
+    code: `<Text transform="underline">Underlined Text</Text>
+<Text transform="line-through">Line Through Text</Text>
+<Text transform="overline">Overlined Text</Text>`,
     language: "tsx",
   },
 ];
@@ -132,7 +156,7 @@ export const textSections: TextSection[] = [
 export const textProps = [
   {
     name: "as",
-    type: "'p' | 'span' | 'small' | 'strong' | 'em' | 'label'",
+    type: "'p' | 'span' | 'small' | 'strong' | 'em'",
     default: "'p'",
     description: "The HTML element to render",
   },
@@ -150,29 +174,23 @@ export const textProps = [
   },
   {
     name: "intent",
-    type: "'default' | 'muted' | 'danger' | 'success' | 'warning'",
+    type: "'default' | 'gray' | 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'white' | 'black'",
     default: "—",
     description: "Text color intent",
   },
   {
-    name: "htmlFor",
-    type: "string",
+    name: "case",
+    type: "'upper' | 'lower' | 'capitalize'",
     default: "—",
-    description: "Associated form element ID (only applies when as=\"label\")",
+    description: "Text transform case",
+  },
+  {
+    name: "transform",
+    type: "'underline' | 'line-through' | 'overline'",
+    default: "—",
+    description: "Text decoration transform",
   },
 ];
-
-export const textInstallation = {
-  code: `# Using npm
-npm install @versaur/react @versaur/core
-
-# Using pnpm
-pnpm add @versaur/react @versaur/core
-
-# Using yarn
-yarn add @versaur/react @versaur/core`,
-  language: "bash" as const,
-};
 
 export function TextPreview() {
   return (
