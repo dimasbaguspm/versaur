@@ -41,6 +41,9 @@
       "badge": [
         "./dist/badge.d.ts"
       ],
+      "dot": [
+        "./dist/dot.d.ts"
+      ],
       "badge-group": [
         "./dist/badge-group.d.ts"
       ],
@@ -166,6 +169,11 @@
       "source": "./src/components/badge/index.ts",
       "types": "./dist/badge.d.ts",
       "import": "./dist/badge.js"
+    },
+    "./dot": {
+      "source": "./src/components/dot/index.ts",
+      "types": "./dist/dot.d.ts",
+      "import": "./dist/dot.js"
     },
     "./badge-group": {
       "source": "./src/components/badge-group/index.ts",

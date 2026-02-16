@@ -11,6 +11,7 @@ import { NoResultsDocPage } from "./pages/no-results-doc-page";
 import { LoaderDocPage } from "./pages/loader-doc-page";
 import { AttributeListDocPage } from "./pages/attribute-list-doc-page";
 import { BadgeDocPage } from "./pages/badge-doc-page";
+import { DotDocPage } from "./pages/dot-doc-page";
 import { BadgeGroupDocPage } from "./pages/badge-group-doc-page";
 import { ButtonGroupDocPage } from "./pages/button-group-doc-page";
 import { CardDocPage } from "./pages/card-doc-page";
@@ -121,6 +122,13 @@ export const previewRegistry: Record<string, RegistryEntry> = {
     title: "Badge",
     description:
       "A badge component for displaying labels, tags, or status indicators with customizable variants, sizes, and shapes",
+    category: "Primitives",
+  },
+  dot: {
+    component: DotDocPage,
+    title: "Dot",
+    description:
+      "A simple circular visual indicator for status, decorative markers, or visual accents with multiple color variants",
     category: "Primitives",
   },
   card: {

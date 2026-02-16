@@ -68,6 +68,10 @@
       "source": "./src/components/badge-group/badge-group.module.css",
       "import": "./dist/components/badge-group/badge-group.module.css"
     },
+    "./dot.css": {
+      "source": "./src/components/dot/dot.module.css",
+      "import": "./dist/components/dot/dot.module.css"
+    },
     "./button-group.css": {
       "source": "./src/components/button-group/button-group.module.css",
       "import": "./dist/components/button-group/button-group.module.css"

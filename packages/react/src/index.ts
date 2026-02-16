@@ -82,6 +82,14 @@ export type {
   BadgeSize,
   BadgeShape,
 } from "./components/badge";
+
+export { Dot } from "./components/dot";
+export type {
+  DotProps,
+  DotVariant,
+  DotSize,
+} from "./components/dot";
+
 export { BadgeGroup } from "./components/badge-group";
 export type {
   BadgeGroupProps,
