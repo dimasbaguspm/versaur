@@ -1,6 +1,6 @@
 import { type ComponentType } from "react";
 import { ButtonIcon } from "./button-icon";
-import { LoaderIcon } from "@versaur/icons";
+import { MenuIcon } from "@versaur/icons";
 
 export interface ButtonIconSection {
   key: string;
@@ -16,11 +16,10 @@ export interface ButtonIconSection {
 function VariantsPreview() {
   return (
     <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-      <ButtonIcon as={LoaderIcon} aria-label="Primary" variant="primary" />
-      <ButtonIcon as={LoaderIcon} aria-label="Secondary" variant="secondary" />
-      <ButtonIcon as={LoaderIcon} aria-label="Outline" variant="outline" />
-      <ButtonIcon as={LoaderIcon} aria-label="Ghost" variant="ghost" />
-      <ButtonIcon as={LoaderIcon} aria-label="Danger" variant="danger" />
+      <ButtonIcon as={MenuIcon} aria-label="Primary" variant="primary" />
+      <ButtonIcon as={MenuIcon} aria-label="Secondary" variant="secondary" />
+      <ButtonIcon as={MenuIcon} aria-label="Ghost" variant="ghost" />
+      <ButtonIcon as={MenuIcon} aria-label="Danger" variant="danger" />
     </div>
   );
 }
@@ -31,9 +30,8 @@ function VariantsPreview() {
 function SizesPreview() {
   return (
     <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-      <ButtonIcon as={LoaderIcon} aria-label="Small" size="small" />
-      <ButtonIcon as={LoaderIcon} aria-label="Medium" size="medium" />
-      <ButtonIcon as={LoaderIcon} aria-label="Large" size="large" />
+      <ButtonIcon as={MenuIcon} aria-label="Small" size="small" />
+      <ButtonIcon as={MenuIcon} aria-label="Medium" size="medium" />
     </div>
   );
 }
@@ -44,9 +42,9 @@ function SizesPreview() {
 function StatesPreview() {
   return (
     <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-      <ButtonIcon as={LoaderIcon} aria-label="Loading" loading />
-      <ButtonIcon as={LoaderIcon} aria-label="Disabled" disabled />
-      <ButtonIcon as={LoaderIcon} aria-label="Pressed" pressed />
+      <ButtonIcon as={MenuIcon} aria-label="Loading" loading />
+      <ButtonIcon as={MenuIcon} aria-label="Disabled" disabled />
+      <ButtonIcon as={MenuIcon} aria-label="Pressed" pressed />
     </div>
   );
 }
@@ -56,29 +54,27 @@ export const buttonIconSections: ButtonIconSection[] = [
     key: "variants",
     title: "Variants",
     preview: VariantsPreview,
-    code: `<ButtonIcon as={LoaderIcon} aria-label="Primary" variant="primary" />
-<ButtonIcon as={LoaderIcon} aria-label="Secondary" variant="secondary" />
-<ButtonIcon as={LoaderIcon} aria-label="Outline" variant="outline" />
-<ButtonIcon as={LoaderIcon} aria-label="Ghost" variant="ghost" />
-<ButtonIcon as={LoaderIcon} aria-label="Danger" variant="danger" />`,
+    code: `<ButtonIcon as={MenuIcon} aria-label="Primary" variant="primary" />
+<ButtonIcon as={MenuIcon} aria-label="Secondary" variant="secondary" />
+<ButtonIcon as={MenuIcon} aria-label="Ghost" variant="ghost" />
+<ButtonIcon as={MenuIcon} aria-label="Danger" variant="danger" />`,
     language: "tsx",
   },
   {
     key: "sizes",
     title: "Sizes",
     preview: SizesPreview,
-    code: `<ButtonIcon as={LoaderIcon} aria-label="Small" size="small" />
-<ButtonIcon as={LoaderIcon} aria-label="Medium" size="medium" />
-<ButtonIcon as={LoaderIcon} aria-label="Large" size="large" />`,
+    code: `<ButtonIcon as={MenuIcon} aria-label="Small" size="small" />
+<ButtonIcon as={MenuIcon} aria-label="Medium" size="medium" />`,
     language: "tsx",
   },
   {
     key: "states",
     title: "States",
     preview: StatesPreview,
-    code: `<ButtonIcon as={LoaderIcon} aria-label="Loading" loading />
-<ButtonIcon as={LoaderIcon} aria-label="Disabled" disabled />
-<ButtonIcon as={LoaderIcon} aria-label="Pressed" pressed />`,
+    code: `<ButtonIcon as={MenuIcon} aria-label="Loading" loading />
+<ButtonIcon as={MenuIcon} aria-label="Disabled" disabled />
+<ButtonIcon as={MenuIcon} aria-label="Pressed" pressed />`,
     language: "tsx",
   },
 ];
@@ -99,13 +95,13 @@ export const buttonIconProps = [
   },
   {
     name: "variant",
-    type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'danger'",
+    type: "'primary' | 'secondary' | 'ghost' | 'danger'",
     default: "'primary'",
     description: "Visual variant of the button.",
   },
   {
     name: "size",
-    type: "'small' | 'medium' | 'large'",
+    type: "'small' | 'medium'",
     default: "'medium'",
     description: "Size of the button.",
   },
@@ -135,11 +131,6 @@ export const buttonIconProps = [
     description: "Additional props to pass to the icon.",
   },
 ];
-
-export const buttonIconInstallation = {
-  code: `npm install @versaur/react @versaur/core @versaur/icons`,
-  language: "bash" as const,
-};
 
 export function ButtonIconPreview() {
   return (

@@ -1,7 +1,5 @@
 import {
-  ButtonIcon,
   buttonIconSections,
-  buttonIconInstallation,
   buttonIconProps,
 } from "@versaur/react/button-icon";
 import { ComponentPreview } from "../../components/component-preview";
@@ -28,9 +26,6 @@ export function ButtonIconDocPage() {
 
       <h2>API Reference</h2>
       <PropsTable props={buttonIconProps} />
-
-      <h2>Installation</h2>
-      <ComponentPreview examples={makeExamples(buttonIconInstallation)} />
     </>
   );
 }

@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 import { buttonIconStyles } from "@versaur/core";
 import "@versaur/core/button-icon.css";
+import { LoaderIcon } from "@versaur/icons";
 import { Icon } from "../icon";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type { ButtonIconProps } from "./button-icon.types";
@@ -63,7 +64,18 @@ export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
         {...rest}
         onClick={handleClick}
       >
-        <Icon as={IconComponent} {...(iconProps as Record<string, unknown>)} />
+        {loading ? (
+          <Icon
+            as={LoaderIcon}
+            aria-label="Loading"
+            data-loading-icon="loader"
+          />
+        ) : (
+          <Icon
+            as={IconComponent}
+            {...(iconProps as Record<string, unknown>)}
+          />
+        )}
       </button>
     );
   },

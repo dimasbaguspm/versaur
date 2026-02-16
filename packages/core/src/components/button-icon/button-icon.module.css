@@ -91,14 +91,6 @@
   --_radius: var(--vers-comp-button-icon-md-radius, var(--radius-md));
 }
 
-.button-icon[data-size="large"] {
-  --_height: var(--vers-comp-button-icon-lg-height, 3rem);
-  --_width: var(--vers-comp-button-icon-lg-width, 3rem);
-  --_padding: var(--vers-comp-button-icon-lg-padding, 0.625rem);
-  --_icon-size: var(--vers-comp-button-icon-lg-icon-size, 1.5rem);
-  --_radius: var(--vers-comp-button-icon-lg-radius, var(--radius-md));
-}
-
 /* ============================================
    VARIANT: PRIMARY
    ============================================ */
@@ -109,6 +101,10 @@
     --vers-comp-button-icon-primary-border-color,
     var(--color-primary)
   );
+  --_focus-ring-color: var(
+    --vers-comp-button-icon-primary-focus-ring-color,
+    var(--color-primary)
+  );
 }
 
 .button-icon[data-variant="primary"]:hover:not([data-disabled]):not(
@@ -116,11 +112,11 @@
   ) {
   --_bg: var(
     --vers-comp-button-icon-primary-hover-bg,
-    var(--color-primary-dark)
+    var(--color-primary-hover)
   );
   --_border-color: var(
     --vers-comp-button-icon-primary-hover-border-color,
-    var(--color-primary-dark)
+    var(--color-primary-hover)
   );
 }
 
@@ -129,7 +125,7 @@
   ) {
   --_bg: var(
     --vers-comp-button-icon-primary-active-bg,
-    var(--color-primary-darker)
+    var(--color-primary-active)
   );
 }
 
@@ -143,6 +139,10 @@
     --vers-comp-button-icon-secondary-border-color,
     var(--color-secondary)
   );
+  --_focus-ring-color: var(
+    --vers-comp-button-icon-secondary-focus-ring-color,
+    var(--color-secondary)
+  );
 }
 
 .button-icon[data-variant="secondary"]:hover:not([data-disabled]):not(
@@ -150,32 +150,20 @@
   ) {
   --_bg: var(
     --vers-comp-button-icon-secondary-hover-bg,
-    var(--color-secondary-dark)
+    var(--color-secondary-hover)
   );
   --_border-color: var(
     --vers-comp-button-icon-secondary-hover-border-color,
-    var(--color-secondary-dark)
+    var(--color-secondary-hover)
   );
 }
 
-/* ============================================
-   VARIANT: OUTLINE
-   ============================================ */
-.button-icon[data-variant="outline"] {
-  --_bg: var(--vers-comp-button-icon-outline-bg, transparent);
-  --_color: var(--vers-comp-button-icon-outline-color, var(--color-primary));
-  --_border-color: var(
-    --vers-comp-button-icon-outline-border-color,
-    var(--color-primary)
-  );
-}
-
-.button-icon[data-variant="outline"]:hover:not([data-disabled]):not(
+.button-icon[data-variant="secondary"]:active:not([data-disabled]):not(
     [data-loading]
   ) {
   --_bg: var(
-    --vers-comp-button-icon-outline-hover-bg,
-    var(--color-bg-secondary)
+    --vers-comp-button-icon-secondary-active-bg,
+    var(--color-secondary-active)
   );
 }
 
@@ -186,12 +174,16 @@
   --_bg: var(--vers-comp-button-icon-ghost-bg, transparent);
   --_color: var(--vers-comp-button-icon-ghost-color, var(--color-text));
   --_border-color: var(--vers-comp-button-icon-ghost-border-color, transparent);
+  --_focus-ring-color: var(
+    --vers-comp-button-icon-ghost-focus-ring-color,
+    var(--color-ghost)
+  );
 }
 
 .button-icon[data-variant="ghost"]:hover:not([data-disabled]):not(
     [data-loading]
   ) {
-  --_bg: var(--vers-comp-button-icon-ghost-hover-bg, var(--color-bg-secondary));
+  --_bg: var(--vers-comp-button-icon-ghost-hover-bg, var(--color-surface));
 }
 
 /* ============================================
@@ -204,49 +196,52 @@
     --vers-comp-button-icon-danger-border-color,
     var(--color-danger)
   );
+  --_focus-ring-color: var(
+    --vers-comp-button-icon-danger-focus-ring-color,
+    var(--color-danger)
+  );
 }
 
 .button-icon[data-variant="danger"]:hover:not([data-disabled]):not(
     [data-loading]
   ) {
-  --_bg: var(--vers-comp-button-icon-danger-hover-bg, var(--color-danger-dark));
+  --_bg: var(
+    --vers-comp-button-icon-danger-hover-bg,
+    var(--color-danger-hover)
+  );
   --_border-color: var(
     --vers-comp-button-icon-danger-hover-border-color,
-    var(--color-danger-dark)
+    var(--color-danger-hover)
+  );
+}
+
+.button-icon[data-variant="danger"]:active:not([data-disabled]):not(
+    [data-loading]
+  ) {
+  --_bg: var(
+    --vers-comp-button-icon-danger-active-bg,
+    var(--color-danger-active)
   );
 }
 
 /* ============================================
    DISABLED STATE
    ============================================ */
+/* State - Disabled */
 .button-icon[data-disabled] {
-  --_bg: var(--vers-comp-button-icon-disabled-bg, var(--color-bg-secondary));
-  --_color: var(
-    --vers-comp-button-icon-disabled-color,
-    var(--color-text-disabled)
-  );
-  --_border-color: var(
-    --vers-comp-button-icon-disabled-border-color,
-    var(--color-border)
-  );
-
+  opacity: 0.5;
   cursor: not-allowed;
-  opacity: 0.6;
-}
-
-.button-icon[data-disabled]:hover {
-  --_bg: var(--vers-comp-button-icon-disabled-bg, var(--color-bg-secondary));
-  --_color: var(
-    --vers-comp-button-icon-disabled-color,
-    var(--color-text-disabled)
-  );
 }
 
 /* ============================================
    LOADING STATE
    ============================================ */
 .button-icon[data-loading] {
-  cursor: not-allowed;
+  cursor: wait;
+}
+
+.button-icon[data-loading] svg[data-loading-icon="loader"] {
+  animation: spin 0.6s linear infinite;
 }
 
 /* ============================================
@@ -255,4 +250,14 @@
 .button-icon:focus-visible {
   outline: var(--_focus-ring-width) solid var(--_focus-ring-color);
   outline-offset: var(--_focus-ring-offset);
+}
+
+/* Animations */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
