@@ -1,0 +1,32 @@
+/*
+ * Label component
+ * Internal primitive for form field labels
+ */
+
+.label {
+  /* Typography */
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-text);
+
+  /* Spacing */
+  display: inline-block;
+  margin-bottom: var(--spacing-1);
+
+  /* Cursor */
+  cursor: pointer;
+}
+
+/* Required indicator (red asterisk) */
+.label[data-required]::after {
+  content: ' *';
+  color: var(--color-danger);
+  margin-left: 0.125rem;
+}
+
+/* Disabled state */
+.label[data-disabled] {
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}

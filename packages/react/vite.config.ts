@@ -46,6 +46,7 @@ export default defineConfig({
         "react/jsx-runtime",
         "@versaur/core",
         /^@versaur\/core\//,
+        "@versaur/icons",
       ],
       output: {
         preserveModules: true,

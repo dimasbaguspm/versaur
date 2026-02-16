@@ -26,3 +26,13 @@ export * from "./components/bottom-bar";
 
 // Export layouts
 export * from "./components/app-layout";
+
+// Export internal primitives (for form components)
+export * from "./components/label";
+export * from "./components/helper-text";
+export * from "./components/error-text";
+
+// Export form inputs
+export * from "./components/text-input";
+export * from "./components/text-area";
+export * from "./components/select";

@@ -19,6 +19,9 @@ import { TopBarDocPage } from "./pages/top-bar-doc-page";
 import { SidebarDocPage } from "./pages/sidebar-doc-page";
 import { BottomBarDocPage } from "./pages/bottom-bar-doc-page";
 import { AppLayoutDocPage } from "./pages/app-layout-doc-page";
+import { TextInputDocPage } from "./pages/text-input-doc-page";
+import { TextAreaDocPage } from "./pages/text-area-doc-page";
+import { SelectDocPage } from "./pages/select-doc-page";
 
 export type ComponentCategory =
   | "Primitives"
@@ -172,5 +175,26 @@ export const previewRegistry: Record<string, RegistryEntry> = {
     description:
       "A high-level layout system for managing page regions including header, sidebars, main content, and bottom navigation with responsive variants",
     category: "Layouts",
+  },
+  "text-input": {
+    component: TextInputDocPage,
+    title: "TextInput",
+    description:
+      "Text input with label, icons, validation states, and helper text",
+    category: "Forms",
+  },
+  "text-area": {
+    component: TextAreaDocPage,
+    title: "TextArea",
+    description:
+      "Multi-line text input with label, validation states, and resize control",
+    category: "Forms",
+  },
+  select: {
+    component: SelectDocPage,
+    title: "Select",
+    description:
+      "Native select dropdown with label, validation states, and custom styling",
+    category: "Forms",
   },
 };

@@ -92,6 +92,30 @@
       "source": "./src/components/bottom-bar/bottom-bar.module.css",
       "import": "./dist/components/bottom-bar/bottom-bar.module.css"
     },
+    "./label.css": {
+      "source": "./src/components/label/label.module.css",
+      "import": "./dist/components/label/label.module.css"
+    },
+    "./helper-text.css": {
+      "source": "./src/components/helper-text/helper-text.module.css",
+      "import": "./dist/components/helper-text/helper-text.module.css"
+    },
+    "./error-text.css": {
+      "source": "./src/components/error-text/error-text.module.css",
+      "import": "./dist/components/error-text/error-text.module.css"
+    },
+    "./text-input.css": {
+      "source": "./src/components/text-input/text-input.module.css",
+      "import": "./dist/components/text-input/text-input.module.css"
+    },
+    "./text-area.css": {
+      "source": "./src/components/text-area/text-area.module.css",
+      "import": "./dist/components/text-area/text-area.module.css"
+    },
+    "./select.css": {
+      "source": "./src/components/select/select.module.css",
+      "import": "./dist/components/select/select.module.css"
+    },
     "./components/*": {
       "source": "./src/components/*/index.ts",
       "import": "./dist/components/*/index.js"

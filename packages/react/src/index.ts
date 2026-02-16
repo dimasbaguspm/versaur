@@ -162,3 +162,13 @@ export type {
   AppLayoutRootProps,
   AppLayoutRegionProps,
 } from "./components/app-layout";
+
+// Form inputs
+export { TextInput } from "./components/text-input";
+export type { TextInputProps } from "./components/text-input";
+
+export { TextArea } from "./components/text-area";
+export type { TextAreaProps } from "./components/text-area";
+
+export { Select } from "./components/select";
+export type { SelectProps } from "./components/select";

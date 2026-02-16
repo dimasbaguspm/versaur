@@ -1,0 +1,15 @@
+/*
+ * HelperText component
+ * Internal primitive for form field helper text
+ */
+
+.helper {
+  /* Typography */
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+  color: var(--color-text-muted);
+
+  /* Spacing */
+  display: block;
+  margin-top: var(--spacing-1);
+}

@@ -67,6 +67,15 @@
       ],
       "app-layout": [
         "./dist/app-layout.d.ts"
+      ],
+      "text-input": [
+        "./dist/text-input.d.ts"
+      ],
+      "text-area": [
+        "./dist/text-area.d.ts"
+      ],
+      "select": [
+        "./dist/select.d.ts"
       ]
     }
   },
@@ -175,6 +184,21 @@
       "source": "./src/components/app-layout/index.ts",
       "types": "./dist/app-layout.d.ts",
       "import": "./dist/app-layout.js"
+    },
+    "./text-input": {
+      "source": "./src/components/text-input/index.ts",
+      "types": "./dist/text-input.d.ts",
+      "import": "./dist/text-input.js"
+    },
+    "./text-area": {
+      "source": "./src/components/text-area/index.ts",
+      "types": "./dist/text-area.d.ts",
+      "import": "./dist/text-area.js"
+    },
+    "./select": {
+      "source": "./src/components/select/index.ts",
+      "types": "./dist/select.d.ts",
+      "import": "./dist/select.js"
     }
   },
   "files": [

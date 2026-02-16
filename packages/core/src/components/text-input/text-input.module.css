@@ -1,0 +1,167 @@
+/*
+ * TextInput component
+ * Native text input with label, icons, validation states, and helper text
+ */
+
+/* Field wrapper (contains label, input wrapper, helper/error) */
+.field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Input wrapper (contains input and icon slots) */
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Base input styles */
+.input {
+  /* Sizing — three-layer token pattern, defaults to medium */
+  --_height: var(--vers-comp-input-height, 2.5rem);
+  --_px: var(--vers-comp-input-padding-x, var(--spacing-3));
+  --_py: var(--vers-comp-input-padding-y, 0);
+  --_font-size: var(--vers-comp-input-font-size, var(--font-size-base));
+  --_icon-size: var(--vers-comp-input-icon-size, 1.25rem);
+  --_icon-gap: var(--vers-comp-input-icon-gap, var(--spacing-2));
+
+  /* Border radius */
+  --_radius: var(--vers-comp-input-radius, var(--radius-md));
+
+  /* Colors — three-layer token pattern, defaults to outline variant */
+  --_bg: var(--vers-comp-input-bg, transparent);
+  --_border: var(--vers-comp-input-border, var(--color-border));
+  --_text: var(--vers-comp-input-text, var(--color-text));
+  --_placeholder: var(--vers-comp-input-placeholder, var(--color-text-muted));
+
+  /* Focus ring */
+  --_focus-ring-width: var(
+    --vers-comp-input-focus-ring-width,
+    var(--focus-ring-width)
+  );
+  --_focus-ring-offset: var(
+    --vers-comp-input-focus-ring-offset,
+    var(--focus-ring-offset)
+  );
+  --_focus-ring-color: var(
+    --vers-comp-input-focus-ring-color,
+    var(--color-border-focus)
+  );
+
+  /* Layout */
+  width: 100%;
+  height: var(--_height);
+  padding: var(--_py) var(--_px);
+
+  /* Typography */
+  font-family: var(--font-sans);
+  font-size: var(--_font-size);
+  line-height: 1.5;
+  color: var(--_text);
+
+  /* Visual */
+  background-color: var(--_bg);
+  border: 1px solid var(--_border);
+  border-radius: var(--_radius);
+
+  /* Interaction */
+  outline: none;
+  transition-property: border-color, box-shadow, background-color;
+  transition-duration: var(--transition-base);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input::placeholder {
+  color: var(--_placeholder);
+  opacity: 1;
+}
+
+/* Focus state */
+.input:focus {
+  border-color: var(--_focus-ring-color);
+  box-shadow: 0 0 0 var(--_focus-ring-width) var(--_focus-ring-color);
+}
+
+/* Size variants */
+.input[data-size="small"] {
+  --_height: 2rem;
+  --_px: var(--spacing-2);
+  --_font-size: var(--font-size-sm);
+  --_icon-size: 1rem;
+}
+
+.input[data-size="large"] {
+  --_height: 3rem;
+  --_px: var(--spacing-4);
+  --_font-size: var(--font-size-lg);
+  --_icon-size: 1.5rem;
+}
+
+/* Visual variants */
+.input[data-variant="outline"] {
+  --_bg: transparent;
+  --_border: var(--color-border);
+  --_focus-ring-color: var(--color-border-focus);
+}
+
+.input[data-variant="filled"] {
+  --_bg: var(--color-surface);
+  --_border: transparent;
+  --_focus-ring-color: var(--color-border-focus);
+}
+
+.input[data-variant="ghost"] {
+  --_bg: transparent;
+  --_border: transparent;
+  --_focus-ring-color: var(--color-border-focus);
+}
+
+/* Invalid state (error) */
+.input[data-invalid] {
+  --_border: var(--color-danger);
+  --_focus-ring-color: var(--color-danger);
+}
+
+/* Disabled state */
+.input[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Icon slots */
+.leading,
+.trailing {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  color: var(--color-text-muted);
+}
+
+.leading {
+  left: var(--_px);
+}
+
+.trailing {
+  right: var(--_px);
+}
+
+/* Icon sizing */
+.leading svg,
+.trailing svg {
+  width: var(--_icon-size);
+  height: var(--_icon-size);
+}
+
+/* Adjust padding when icons are present */
+.input[data-has-leading] {
+  padding-left: calc(var(--_px) + var(--_icon-size) + var(--_icon-gap));
+}
+
+.input[data-has-trailing] {
+  padding-right: calc(var(--_px) + var(--_icon-size) + var(--_icon-gap));
+}
