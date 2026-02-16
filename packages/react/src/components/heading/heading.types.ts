@@ -1,5 +1,5 @@
-import type { HTMLAttributes, ReactNode } from 'react';
-import type { Heading } from '@versaur/core';
+import type { HTMLAttributes, ReactNode } from "react";
+import type { Heading } from "@versaur/core";
 
 export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
   /**
@@ -22,6 +22,16 @@ export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
    * Text color intent
    */
   intent?: Heading.Intent;
+
+  /**
+   * Text transform case
+   */
+  case?: Heading.Case;
+
+  /**
+   * Text decoration transform
+   */
+  transform?: Heading.Transform;
 
   /**
    * Heading content

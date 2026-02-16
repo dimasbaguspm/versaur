@@ -3,7 +3,10 @@
   /* Typography — private tokens default to h2 preset */
   --_font-size: var(--vers-comp-heading-font-size, 1.875rem);
   --_font-weight: var(--vers-comp-heading-font-weight, var(--font-weight-bold));
-  --_line-height: var(--vers-comp-heading-line-height, var(--line-height-tight));
+  --_line-height: var(
+    --vers-comp-heading-line-height,
+    var(--line-height-tight)
+  );
   --_color: var(--vers-comp-heading-color, inherit);
 
   font-family: var(--font-sans);
@@ -19,38 +22,74 @@
    ============================================ */
 .heading[data-as="h1"] {
   --_font-size: var(--vers-comp-heading-h1-font-size, 2.25rem);
-  --_font-weight: var(--vers-comp-heading-h1-font-weight, var(--font-weight-bold));
-  --_line-height: var(--vers-comp-heading-h1-line-height, var(--line-height-tight));
+  --_font-weight: var(
+    --vers-comp-heading-h1-font-weight,
+    var(--font-weight-bold)
+  );
+  --_line-height: var(
+    --vers-comp-heading-h1-line-height,
+    var(--line-height-tight)
+  );
 }
 
 .heading[data-as="h2"] {
   --_font-size: var(--vers-comp-heading-h2-font-size, 1.875rem);
-  --_font-weight: var(--vers-comp-heading-h2-font-weight, var(--font-weight-bold));
-  --_line-height: var(--vers-comp-heading-h2-line-height, var(--line-height-tight));
+  --_font-weight: var(
+    --vers-comp-heading-h2-font-weight,
+    var(--font-weight-bold)
+  );
+  --_line-height: var(
+    --vers-comp-heading-h2-line-height,
+    var(--line-height-tight)
+  );
 }
 
 .heading[data-as="h3"] {
   --_font-size: var(--vers-comp-heading-h3-font-size, var(--font-size-2xl));
-  --_font-weight: var(--vers-comp-heading-h3-font-weight, var(--font-weight-semibold));
-  --_line-height: var(--vers-comp-heading-h3-line-height, var(--line-height-tight));
+  --_font-weight: var(
+    --vers-comp-heading-h3-font-weight,
+    var(--font-weight-semibold)
+  );
+  --_line-height: var(
+    --vers-comp-heading-h3-line-height,
+    var(--line-height-tight)
+  );
 }
 
 .heading[data-as="h4"] {
   --_font-size: var(--vers-comp-heading-h4-font-size, var(--font-size-xl));
-  --_font-weight: var(--vers-comp-heading-h4-font-weight, var(--font-weight-semibold));
-  --_line-height: var(--vers-comp-heading-h4-line-height, var(--line-height-tight));
+  --_font-weight: var(
+    --vers-comp-heading-h4-font-weight,
+    var(--font-weight-semibold)
+  );
+  --_line-height: var(
+    --vers-comp-heading-h4-line-height,
+    var(--line-height-tight)
+  );
 }
 
 .heading[data-as="h5"] {
   --_font-size: var(--vers-comp-heading-h5-font-size, var(--font-size-lg));
-  --_font-weight: var(--vers-comp-heading-h5-font-weight, var(--font-weight-medium));
-  --_line-height: var(--vers-comp-heading-h5-line-height, var(--line-height-normal));
+  --_font-weight: var(
+    --vers-comp-heading-h5-font-weight,
+    var(--font-weight-medium)
+  );
+  --_line-height: var(
+    --vers-comp-heading-h5-line-height,
+    var(--line-height-normal)
+  );
 }
 
 .heading[data-as="h6"] {
   --_font-size: var(--vers-comp-heading-h6-font-size, var(--font-size-base));
-  --_font-weight: var(--vers-comp-heading-h6-font-weight, var(--font-weight-medium));
-  --_line-height: var(--vers-comp-heading-h6-line-height, var(--line-height-normal));
+  --_font-weight: var(
+    --vers-comp-heading-h6-font-weight,
+    var(--font-weight-medium)
+  );
+  --_line-height: var(
+    --vers-comp-heading-h6-line-height,
+    var(--line-height-normal)
+  );
 }
 
 /* ============================================
@@ -84,19 +123,31 @@
    WEIGHT OVERRIDES — override preset font-weight
    ============================================ */
 .heading[data-weight="normal"] {
-  --_font-weight: var(--vers-comp-heading-normal-font-weight, var(--font-weight-normal));
+  --_font-weight: var(
+    --vers-comp-heading-normal-font-weight,
+    var(--font-weight-normal)
+  );
 }
 
 .heading[data-weight="medium"] {
-  --_font-weight: var(--vers-comp-heading-medium-font-weight, var(--font-weight-medium));
+  --_font-weight: var(
+    --vers-comp-heading-medium-font-weight,
+    var(--font-weight-medium)
+  );
 }
 
 .heading[data-weight="semibold"] {
-  --_font-weight: var(--vers-comp-heading-semibold-font-weight, var(--font-weight-semibold));
+  --_font-weight: var(
+    --vers-comp-heading-semibold-font-weight,
+    var(--font-weight-semibold)
+  );
 }
 
 .heading[data-weight="bold"] {
-  --_font-weight: var(--vers-comp-heading-bold-font-weight, var(--font-weight-bold));
+  --_font-weight: var(
+    --vers-comp-heading-bold-font-weight,
+    var(--font-weight-bold)
+  );
 }
 
 /* ============================================
@@ -106,8 +157,19 @@
   --_color: var(--vers-comp-heading-default-color, var(--color-text-primary));
 }
 
-.heading[data-intent="muted"] {
-  --_color: var(--vers-comp-heading-muted-color, var(--color-text-secondary));
+.heading[data-intent="gray"] {
+  --_color: var(--vers-comp-heading-gray-color, var(--color-gray));
+}
+
+.heading[data-intent="primary"] {
+  --_color: var(--vers-comp-heading-primary-color, var(--color-primary-bold));
+}
+
+.heading[data-intent="secondary"] {
+  --_color: var(
+    --vers-comp-heading-secondary-color,
+    var(--color-secondary-bold)
+  );
 }
 
 .heading[data-intent="danger"] {
@@ -120,4 +182,42 @@
 
 .heading[data-intent="warning"] {
   --_color: var(--vers-comp-heading-warning-color, var(--color-warning-bold));
+}
+
+.heading[data-intent="white"] {
+  --_color: var(--vers-comp-heading-white-color, var(--color-white));
+}
+
+.heading[data-intent="black"] {
+  --_color: var(--vers-comp-heading-black-color, var(--color-black));
+}
+
+/* ============================================
+   CASE VARIANTS — text transform
+   ============================================ */
+.heading[data-case="upper"] {
+  text-transform: uppercase;
+}
+
+.heading[data-case="lower"] {
+  text-transform: lowercase;
+}
+
+.heading[data-case="capitalize"] {
+  text-transform: capitalize;
+}
+
+/* ============================================
+   TRANSFORM VARIANTS — text decoration
+   ============================================ */
+.heading[data-transform="underline"] {
+  text-decoration: underline;
+}
+
+.heading[data-transform="line-through"] {
+  text-decoration: line-through;
+}
+
+.heading[data-transform="overline"] {
+  text-decoration: overline;
 }

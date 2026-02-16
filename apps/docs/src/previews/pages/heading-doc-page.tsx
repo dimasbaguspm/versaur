@@ -1,8 +1,4 @@
-import {
-  headingSections,
-  headingInstallation,
-  headingProps,
-} from "@versaur/react/heading";
+import { headingSections, headingProps } from "@versaur/react/heading";
 import { ComponentPreview } from "../../components/component-preview";
 import { PropsTable } from "../../components/props-table";
 
@@ -27,9 +23,6 @@ export function HeadingDocPage() {
 
       <h2>API Reference</h2>
       <PropsTable props={headingProps} />
-
-      <h2>Installation</h2>
-      <ComponentPreview examples={makeExamples(headingInstallation)} />
     </>
   );
 }

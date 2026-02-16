@@ -25,12 +25,24 @@ function AsLevelsPreview() {
 function SizesPreview() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-      <Heading as="h3" size="xs">Extra Small</Heading>
-      <Heading as="h3" size="sm">Small</Heading>
-      <Heading as="h3" size="base">Base</Heading>
-      <Heading as="h3" size="lg">Large</Heading>
-      <Heading as="h3" size="xl">Extra Large</Heading>
-      <Heading as="h3" size="2xl">2X Large</Heading>
+      <Heading as="h3" size="xs">
+        Extra Small
+      </Heading>
+      <Heading as="h3" size="sm">
+        Small
+      </Heading>
+      <Heading as="h3" size="base">
+        Base
+      </Heading>
+      <Heading as="h3" size="lg">
+        Large
+      </Heading>
+      <Heading as="h3" size="xl">
+        Extra Large
+      </Heading>
+      <Heading as="h3" size="2xl">
+        2X Large
+      </Heading>
     </div>
   );
 }
@@ -38,10 +50,18 @@ function SizesPreview() {
 function WeightsPreview() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-      <Heading as="h3" weight="normal">Normal Weight</Heading>
-      <Heading as="h3" weight="medium">Medium Weight</Heading>
-      <Heading as="h3" weight="semibold">Semibold Weight</Heading>
-      <Heading as="h3" weight="bold">Bold Weight</Heading>
+      <Heading as="h3" weight="normal">
+        Normal Weight
+      </Heading>
+      <Heading as="h3" weight="medium">
+        Medium Weight
+      </Heading>
+      <Heading as="h3" weight="semibold">
+        Semibold Weight
+      </Heading>
+      <Heading as="h3" weight="bold">
+        Bold Weight
+      </Heading>
     </div>
   );
 }
@@ -49,11 +69,69 @@ function WeightsPreview() {
 function IntentsPreview() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-      <Heading as="h3" intent="default">Default Intent</Heading>
-      <Heading as="h3" intent="muted">Muted Intent</Heading>
-      <Heading as="h3" intent="danger">Danger Intent</Heading>
-      <Heading as="h3" intent="success">Success Intent</Heading>
-      <Heading as="h3" intent="warning">Warning Intent</Heading>
+      <Heading as="h3" intent="default">
+        Default Intent
+      </Heading>
+      <Heading as="h3" intent="gray">
+        Gray Intent
+      </Heading>
+      <Heading as="h3" intent="primary">
+        Primary Intent
+      </Heading>
+      <Heading as="h3" intent="secondary">
+        Secondary Intent
+      </Heading>
+      <Heading as="h3" intent="danger">
+        Danger Intent
+      </Heading>
+      <Heading as="h3" intent="success">
+        Success Intent
+      </Heading>
+      <Heading as="h3" intent="warning">
+        Warning Intent
+      </Heading>
+      <Heading
+        as="h3"
+        intent="white"
+        style={{ backgroundColor: "#333", padding: "0.5rem" }}
+      >
+        White Intent
+      </Heading>
+      <Heading as="h3" intent="black">
+        Black Intent
+      </Heading>
+    </div>
+  );
+}
+
+function CasePreview() {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+      <Heading as="h3" case="upper">
+        uppercase text transform
+      </Heading>
+      <Heading as="h3" case="lower">
+        LOWERCASE TEXT TRANSFORM
+      </Heading>
+      <Heading as="h3" case="capitalize">
+        capitalize text transform
+      </Heading>
+    </div>
+  );
+}
+
+function TransformPreview() {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+      <Heading as="h3" transform="underline">
+        Underlined Text
+      </Heading>
+      <Heading as="h3" transform="line-through">
+        Line Through Text
+      </Heading>
+      <Heading as="h3" transform="overline">
+        Overlined Text
+      </Heading>
     </div>
   );
 }
@@ -61,12 +139,14 @@ function IntentsPreview() {
 function CombinedPreview() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-      <Heading as="h1" intent="danger">Large Danger Heading</Heading>
+      <Heading as="h1" intent="danger">
+        Large Danger Heading
+      </Heading>
       <Heading as="h4" size="2xl" weight="bold">
         H4 with 2XL Size
       </Heading>
-      <Heading as="h2" weight="normal" intent="muted">
-        Muted Lightweight H2
+      <Heading as="h2" weight="normal" intent="gray">
+        Gray Lightweight H2
       </Heading>
     </div>
   );
@@ -112,19 +192,32 @@ export const headingSections: HeadingSection[] = [
     title: "Intents",
     preview: IntentsPreview,
     code: `<Heading as="h3" intent="default">Default Intent</Heading>
-<Heading as="h3" intent="muted">Muted Intent</Heading>
+<Heading as="h3" intent="gray">Gray Intent</Heading>
+<Heading as="h3" intent="primary">Primary Intent</Heading>
+<Heading as="h3" intent="secondary">Secondary Intent</Heading>
 <Heading as="h3" intent="danger">Danger Intent</Heading>
 <Heading as="h3" intent="success">Success Intent</Heading>
-<Heading as="h3" intent="warning">Warning Intent</Heading>`,
+<Heading as="h3" intent="warning">Warning Intent</Heading>
+<Heading as="h3" intent="white">White Intent</Heading>
+<Heading as="h3" intent="black">Black Intent</Heading>`,
     language: "tsx",
   },
   {
-    key: "combined",
-    title: "Combined Examples",
-    preview: CombinedPreview,
-    code: `<Heading as="h1" intent="danger">Large Danger Heading</Heading>
-<Heading as="h4" size="2xl" weight="bold">H4 with 2XL Size</Heading>
-<Heading as="h2" weight="normal" intent="muted">Muted Lightweight H2</Heading>`,
+    key: "case",
+    title: "Case",
+    preview: CasePreview,
+    code: `<Heading as="h3" case="upper">uppercase text transform</Heading>
+<Heading as="h3" case="lower">LOWERCASE TEXT TRANSFORM</Heading>
+<Heading as="h3" case="capitalize">capitalize text transform</Heading>`,
+    language: "tsx",
+  },
+  {
+    key: "transform",
+    title: "Transform",
+    preview: TransformPreview,
+    code: `<Heading as="h3" transform="underline">Underlined Text</Heading>
+<Heading as="h3" transform="line-through">Line Through Text</Heading>
+<Heading as="h3" transform="overline">Overlined Text</Heading>`,
     language: "tsx",
   },
 ];
@@ -150,23 +243,23 @@ export const headingProps = [
   },
   {
     name: "intent",
-    type: "'default' | 'muted' | 'danger' | 'success' | 'warning'",
+    type: "'default' | 'gray' | 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'white' | 'black'",
     default: "—",
     description: "Text color intent",
   },
+  {
+    name: "case",
+    type: "'upper' | 'lower' | 'capitalize'",
+    default: "—",
+    description: "Text transform case",
+  },
+  {
+    name: "transform",
+    type: "'underline' | 'line-through' | 'overline'",
+    default: "—",
+    description: "Text decoration transform",
+  },
 ];
-
-export const headingInstallation = {
-  code: `# Using npm
-npm install @versaur/react @versaur/core
-
-# Using pnpm
-pnpm add @versaur/react @versaur/core
-
-# Using yarn
-yarn add @versaur/react @versaur/core`,
-  language: "bash" as const,
-};
 
 export function HeadingPreview() {
   return (

@@ -3,10 +3,12 @@
 
 export type ButtonIconSize = 'medium' | 'small';
 export type ButtonIconVariant = 'danger' | 'ghost' | 'primary' | 'secondary';
+export type ButtonIconLoadingIcon = 'loader';
 
 export interface ButtonIconDataAttrs {
   size?: ButtonIconSize;
   variant?: ButtonIconVariant;
+  loadingIcon?: ButtonIconLoadingIcon;
   disabled?: boolean;
   loading?: boolean;
 };
@@ -14,5 +16,6 @@ export interface ButtonIconDataAttrs {
 export namespace ButtonIcon {
   export type Size = ButtonIconSize;
   export type Variant = ButtonIconVariant;
+  export type LoadingIcon = ButtonIconLoadingIcon;
   export type DataAttrs = ButtonIconDataAttrs;
 }

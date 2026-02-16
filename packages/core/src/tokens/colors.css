@@ -63,6 +63,11 @@
   --color-warning-bold: #854f22;
   --color-warning-soft: #fff1e4;
 
+  /* Neutral Colors - White, Black, Gray */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-gray: #4b5563;
+
   /* Background & Text */
   --color-text-primary: #2d3748;
   --color-text-secondary: #4b5563;

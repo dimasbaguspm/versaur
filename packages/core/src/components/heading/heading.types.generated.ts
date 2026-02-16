@@ -4,13 +4,17 @@
 export type HeadingAs = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 export type HeadingSize = '2xl' | 'base' | 'lg' | 'sm' | 'xl' | 'xs';
 export type HeadingWeight = 'bold' | 'medium' | 'normal' | 'semibold';
-export type HeadingIntent = 'danger' | 'default' | 'muted' | 'success' | 'warning';
+export type HeadingIntent = 'black' | 'danger' | 'default' | 'gray' | 'primary' | 'secondary' | 'success' | 'warning' | 'white';
+export type HeadingCase = 'capitalize' | 'lower' | 'upper';
+export type HeadingTransform = 'line-through' | 'overline' | 'underline';
 
 export interface HeadingDataAttrs {
   as?: HeadingAs;
   size?: HeadingSize;
   weight?: HeadingWeight;
   intent?: HeadingIntent;
+  case?: HeadingCase;
+  transform?: HeadingTransform;
 };
 
 export namespace Heading {
@@ -18,5 +22,7 @@ export namespace Heading {
   export type Size = HeadingSize;
   export type Weight = HeadingWeight;
   export type Intent = HeadingIntent;
+  export type Case = HeadingCase;
+  export type Transform = HeadingTransform;
   export type DataAttrs = HeadingDataAttrs;
 }
