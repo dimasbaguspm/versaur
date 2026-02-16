@@ -3,7 +3,7 @@
 
 export type AvatarSize = 'lg' | 'md' | 'sm' | 'xl' | 'xs';
 export type AvatarShape = 'circle' | 'square';
-export type AvatarVariant = 'danger' | 'ghost' | 'outline' | 'primary' | 'secondary';
+export type AvatarVariant = 'danger' | 'ghost' | 'primary' | 'secondary';
 
 export interface AvatarDataAttrs {
   size?: AvatarSize;

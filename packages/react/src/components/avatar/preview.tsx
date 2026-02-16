@@ -12,21 +12,10 @@ export interface AvatarSection {
 function VariantsPreview() {
   return (
     <div className="button-group">
-      <Avatar variant="primary" name="Primary">
-        P
-      </Avatar>
-      <Avatar variant="secondary" name="Secondary">
-        S
-      </Avatar>
-      <Avatar variant="outline" name="Outline">
-        O
-      </Avatar>
-      <Avatar variant="ghost" name="Ghost">
-        G
-      </Avatar>
-      <Avatar variant="danger" name="Danger">
-        D
-      </Avatar>
+      <Avatar variant="primary">P</Avatar>
+      <Avatar variant="secondary">S</Avatar>
+      <Avatar variant="ghost">G</Avatar>
+      <Avatar variant="danger">D</Avatar>
     </div>
   );
 }
@@ -34,11 +23,11 @@ function VariantsPreview() {
 function SizesPreview() {
   return (
     <div className="button-group" style={{ alignItems: "center" }}>
-      <Avatar size="xs" name="Extra Small" />
-      <Avatar size="sm" name="Small" />
-      <Avatar size="md" name="Medium" />
-      <Avatar size="lg" name="Large" />
-      <Avatar size="xl" name="Extra Large" />
+      <Avatar size="xs">XS</Avatar>
+      <Avatar size="sm">SM</Avatar>
+      <Avatar size="md">MD</Avatar>
+      <Avatar size="lg">LG</Avatar>
+      <Avatar size="xl">XL</Avatar>
     </div>
   );
 }
@@ -46,35 +35,33 @@ function SizesPreview() {
 function ShapesPreview() {
   return (
     <div className="button-group">
-      <Avatar shape="circle" name="Circle" />
-      <Avatar shape="square" name="Square" />
+      <Avatar shape="circle">C</Avatar>
+      <Avatar shape="square">S</Avatar>
     </div>
   );
 }
 
-function FallbackPreview() {
+function ImagePreview() {
   return (
-    <div className="button-group">
-      <Avatar name="John Doe" />
-      <Avatar name="Alice" />
-      <Avatar />
-    </div>
-  );
-}
-
-function CustomizationPreview() {
-  return (
-    <div className="button-group">
-      <div
-        style={
-          {
-            "--vers-comp-avatar-primary-bg": "#8b5cf6",
-            "--vers-comp-avatar-primary-color": "#ffffff",
-          } as React.CSSProperties
-        }
-      >
-        <Avatar variant="primary" name="Custom Purple" />
-      </div>
+    <div className="button-group" style={{ alignItems: "center" }}>
+      <Avatar variant="primary" size="md">
+        <Avatar.Image
+          src="https://api.dicebear.com/7.x/avataaars/svg?seed=John"
+          alt="John Doe"
+        />
+      </Avatar>
+      <Avatar variant="secondary" size="lg">
+        <Avatar.Image
+          src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jane"
+          alt="Jane Smith"
+        />
+      </Avatar>
+      <Avatar variant="ghost" size="sm">
+        <Avatar.Image
+          src="https://api.dicebear.com/7.x/avataaars/svg?seed=Bob"
+          alt="Bob Wilson"
+        />
+      </Avatar>
     </div>
   );
 }
@@ -86,7 +73,6 @@ export const avatarSections: AvatarSection[] = [
     preview: VariantsPreview,
     code: `<Avatar variant="primary">P</Avatar>
 <Avatar variant="secondary">S</Avatar>
-<Avatar variant="outline">O</Avatar>
 <Avatar variant="ghost">G</Avatar>
 <Avatar variant="danger">D</Avatar>`,
     language: "tsx",
@@ -95,68 +81,45 @@ export const avatarSections: AvatarSection[] = [
     key: "sizes",
     title: "Sizes",
     preview: SizesPreview,
-    code: `<Avatar size="xs" name="Extra Small" />
-<Avatar size="sm" name="Small" />
-<Avatar size="md" name="Medium" />
-<Avatar size="lg" name="Large" />
-<Avatar size="xl" name="Extra Large" />`,
+    code: `<Avatar size="xs">XS</Avatar>
+<Avatar size="sm">SM</Avatar>
+<Avatar size="md">MD</Avatar>
+<Avatar size="lg">LG</Avatar>
+<Avatar size="xl">XL</Avatar>`,
     language: "tsx",
   },
   {
     key: "shapes",
     title: "Shapes",
     preview: ShapesPreview,
-    code: `<Avatar shape="circle" name="Circle" />
-<Avatar shape="square" name="Square" />`,
+    code: `<Avatar shape="circle">C</Avatar>
+<Avatar shape="square">S</Avatar>`,
     language: "tsx",
   },
   {
-    key: "fallback",
-    title: "Fallback",
-    preview: FallbackPreview,
-    code: `{/* Full name → two initials */}
-<Avatar name="John Doe" />
-{/* Single name → one initial */}
-<Avatar name="Alice" />
-{/* No name → user icon */}
-<Avatar />`,
+    key: "image",
+    title: "Image",
+    preview: ImagePreview,
+    code: `<Avatar variant="primary" size="md">
+  <Avatar.Image
+    src="https://api.dicebear.com/7.x/avataaars/svg?seed=John"
+    alt="John Doe"
+  />
+</Avatar>
+<Avatar variant="secondary" size="lg">
+  <Avatar.Image
+    src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jane"
+    alt="Jane Smith"
+  />
+</Avatar>`,
     language: "tsx",
-  },
-  {
-    key: "customization",
-    title: "CSS Customization",
-    preview: CustomizationPreview,
-    code: `/* Override component tokens to customize */
-.my-custom-avatar {
-  --vers-comp-avatar-primary-bg: #8b5cf6;
-  --vers-comp-avatar-primary-color: #ffffff;
-}`,
-    language: "css",
   },
 ];
 
 export const avatarProps = [
   {
-    name: "src",
-    type: "string",
-    default: "—",
-    description: "Image source URL",
-  },
-  {
-    name: "alt",
-    type: "string",
-    default: "—",
-    description: "Alt text for the image",
-  },
-  {
-    name: "name",
-    type: "string",
-    default: "—",
-    description: "Name used to generate initials fallback",
-  },
-  {
     name: "variant",
-    type: "'primary' | 'secondary' | 'outline' | 'ghost' | 'danger'",
+    type: "'primary' | 'secondary' | 'ghost' | 'danger'",
     default: "'primary'",
     description: "Visual variant of the avatar",
   },
@@ -174,23 +137,11 @@ export const avatarProps = [
   },
   {
     name: "children",
-    type: "ReactNode",
-    default: "—",
-    description: "Custom fallback content (overrides initials and icon)",
+    type: "string",
+    default: "undefined",
+    description: "Avatar content (text initials or Avatar.Image component)",
   },
 ];
-
-export const avatarInstallation = {
-  code: `# Using npm
-npm install @versaur/react @versaur/core
-
-# Using pnpm
-pnpm add @versaur/react @versaur/core
-
-# Using yarn
-yarn add @versaur/react @versaur/core`,
-  language: "bash" as const,
-};
 
 export function AvatarPreview() {
   return (

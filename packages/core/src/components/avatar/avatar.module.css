@@ -112,15 +112,6 @@
 }
 
 /* ============================================
-   OUTLINE VARIANT - Outlined Mist
-   ============================================ */
-.avatar[data-variant="outline"] {
-  --_bg: var(--vers-comp-avatar-outline-bg, var(--color-outline-soft));
-  --_color: var(--vers-comp-avatar-outline-color, var(--color-outline-bold));
-  --_border: var(--vers-comp-avatar-outline-border, 1px solid var(--color-outline));
-}
-
-/* ============================================
    GHOST VARIANT - Ghost Slate
    ============================================ */
 .avatar[data-variant="ghost"] {

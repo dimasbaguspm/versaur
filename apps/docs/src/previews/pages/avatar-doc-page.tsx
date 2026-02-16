@@ -1,8 +1,4 @@
-import {
-  avatarSections,
-  avatarInstallation,
-  avatarProps,
-} from "@versaur/react/avatar";
+import { avatarSections, avatarProps } from "@versaur/react/avatar";
 import { ComponentPreview } from "../../components/component-preview";
 import { PropsTable } from "../../components/props-table";
 
@@ -27,9 +23,6 @@ export function AvatarDocPage() {
 
       <h2>Avatar API Reference</h2>
       <PropsTable props={avatarProps} />
-
-      <h2>Installation</h2>
-      <ComponentPreview examples={makeExamples(avatarInstallation)} />
     </>
   );
 }
