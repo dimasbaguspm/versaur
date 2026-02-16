@@ -1,8 +1,4 @@
-import {
-  pageLoaderSections,
-  pageLoaderInstallation,
-  pageLoaderProps,
-} from "@versaur/react/page-loader";
+import { loaderSections, loaderProps } from "@versaur/react/loader";
 import { ComponentPreview } from "../../components/component-preview";
 import { PropsTable } from "../../components/props-table";
 
@@ -14,10 +10,10 @@ function makeExamples(section: { code: string; language: string }) {
   };
 }
 
-export function PageLoaderDocPage() {
+export function LoaderDocPage() {
   return (
     <>
-      {pageLoaderSections.map((section) => (
+      {loaderSections.map((section) => (
         <div key={section.key}>
           <h3>{section.title}</h3>
           <section.preview />
@@ -26,10 +22,7 @@ export function PageLoaderDocPage() {
       ))}
 
       <h2>API Reference</h2>
-      <PropsTable props={pageLoaderProps} />
-
-      <h2>Installation</h2>
-      <ComponentPreview examples={makeExamples(pageLoaderInstallation)} />
+      <PropsTable props={loaderProps} />
     </>
   );
 }

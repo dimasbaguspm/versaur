@@ -56,7 +56,7 @@ export type {
 export { Tabs } from "./components/tabs";
 export type {
   TabsProps,
-  TabsTriggerProps,
+  TabsItemProps,
   TabsPanelAttributes,
 } from "./components/tabs";
 
@@ -66,8 +66,8 @@ export type { ButtonIconProps } from "./components/button-icon";
 export { NoResults } from "./components/no-results";
 export type { NoResultsProps } from "./components/no-results";
 
-export { PageLoader } from "./components/page-loader";
-export type { PageLoaderProps } from "./components/page-loader";
+export { Loader } from "./components/loader";
+export type { LoaderProps } from "./components/loader";
 
 export { AttributeList } from "./components/attribute-list";
 export type {

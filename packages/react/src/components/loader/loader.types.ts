@@ -1,18 +1,18 @@
 import type { HTMLAttributes, ReactNode } from "react";
-import type { PageLoader } from "@versaur/core";
+import type { Loader } from "@versaur/core";
 
-export interface PageLoaderProps extends HTMLAttributes<HTMLDivElement> {
+export interface LoaderProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * The type of loading indicator to display
    * @default 'spinner'
    */
-  type?: PageLoader.Type;
+  type?: Loader.Type;
 
   /**
    * Size of the loading indicator
    * @default 'sm'
    */
-  size?: PageLoader.Size;
+  size?: Loader.Size;
 
   /**
    * Loading status text to display below the indicator

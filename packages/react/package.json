@@ -32,8 +32,8 @@
       "no-results": [
         "./dist/no-results.d.ts"
       ],
-      "page-loader": [
-        "./dist/page-loader.d.ts"
+      "loader": [
+        "./dist/loader.d.ts"
       ],
       "attribute-list": [
         "./dist/attribute-list.d.ts"
@@ -152,10 +152,10 @@
       "types": "./dist/no-results.d.ts",
       "import": "./dist/no-results.js"
     },
-    "./page-loader": {
-      "source": "./src/components/page-loader/index.ts",
-      "types": "./dist/page-loader.d.ts",
-      "import": "./dist/page-loader.js"
+    "./loader": {
+      "source": "./src/components/loader/index.ts",
+      "types": "./dist/loader.d.ts",
+      "import": "./dist/loader.js"
     },
     "./attribute-list": {
       "source": "./src/components/attribute-list/index.ts",

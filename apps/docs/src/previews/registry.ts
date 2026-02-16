@@ -8,7 +8,7 @@ import { AvatarGroupDocPage } from "./pages/avatar-group-doc-page";
 import { HrDocPage } from "./pages/hr-doc-page";
 import { TabsDocPage } from "./pages/tabs-doc-page";
 import { NoResultsDocPage } from "./pages/no-results-doc-page";
-import { PageLoaderDocPage } from "./pages/page-loader-doc-page";
+import { LoaderDocPage } from "./pages/loader-doc-page";
 import { AttributeListDocPage } from "./pages/attribute-list-doc-page";
 import { BadgeDocPage } from "./pages/badge-doc-page";
 import { BadgeGroupDocPage } from "./pages/badge-group-doc-page";
@@ -102,9 +102,9 @@ export const previewRegistry: Record<string, RegistryEntry> = {
       "A flexible empty state component for displaying when no content is available in lists, search results, or filtered data",
     category: "Primitives",
   },
-  "page-loader": {
-    component: PageLoaderDocPage,
-    title: "PageLoader",
+  loader: {
+    component: LoaderDocPage,
+    title: "Loader",
     description:
       "A loading indicator component with spinner and bar variants, customizable sizes, and animation control",
     category: "Primitives",

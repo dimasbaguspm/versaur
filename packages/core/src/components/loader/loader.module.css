@@ -1,0 +1,97 @@
+/* Base Loader Styles */
+.loader {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: var(--spacing-3);
+
+  /* Sizing — private tokens default to medium */
+  --_size: var(--vers-comp-loader-size, 2.5rem);
+  --_icon-color: var(--vers-comp-loader-color, var(--color-primary));
+
+  /* Text styling — default color, no override */
+  font-size: var(--font-size-sm);
+  user-select: none;
+}
+
+/* ============================================
+   TYPE VARIANTS — spinner | bar
+   ============================================ */
+
+/* Spinner variant — rotating icon */
+.loader[data-type="spinner"] svg {
+  width: var(--_size);
+  height: var(--_size);
+  color: var(--_icon-color);
+  animation: spin-loader 1s linear infinite;
+}
+
+/* Bar variant — horizontal progress bar with fixed height */
+.loader[data-type="bar"] {
+  width: 100%;
+  max-width: 300px;
+}
+
+.loader[data-type="bar"]::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0.5rem;
+  background: linear-gradient(
+    90deg,
+    var(--_icon-color) 0%,
+    var(--_icon-color) 40%,
+    transparent 70%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  border-radius: var(--radius-md);
+  animation: slide-loader 2s ease-in-out infinite;
+}
+
+/* ============================================
+   SIZE VARIANTS — sm | lg
+   ============================================ */
+.loader[data-size="sm"] {
+  --_size: var(--vers-comp-loader-sm-size, 1.25rem);
+  font-size: var(--font-size-xs);
+  gap: var(--spacing-2);
+}
+
+.loader[data-size="sm"][data-type="bar"]::before {
+  height: 0.375rem;
+}
+
+.loader[data-size="lg"] {
+  --_size: var(--vers-comp-loader-lg-size, 3.75rem);
+  font-size: var(--font-size-md);
+  gap: var(--spacing-4);
+}
+
+.loader[data-size="lg"][data-type="bar"]::before {
+  height: 0.625rem;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes spin-loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slide-loader {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

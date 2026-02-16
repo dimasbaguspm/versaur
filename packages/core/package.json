@@ -52,9 +52,9 @@
       "source": "./src/components/no-results/no-results.module.css",
       "import": "./dist/components/no-results/no-results.module.css"
     },
-    "./page-loader.css": {
-      "source": "./src/components/page-loader/page-loader.module.css",
-      "import": "./dist/components/page-loader/page-loader.module.css"
+    "./loader.css": {
+      "source": "./src/components/loader/loader.module.css",
+      "import": "./dist/components/loader/loader.module.css"
     },
     "./attribute-list.css": {
       "source": "./src/components/attribute-list/attribute-list.module.css",
