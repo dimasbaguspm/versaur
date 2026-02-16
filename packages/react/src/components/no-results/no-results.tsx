@@ -35,7 +35,7 @@ export const NoResults = forwardRef<HTMLElement, NoResultsProps>(
       >
         <header className={noResultsStyles["no-results-header"]}>
           <div className={noResultsStyles["no-results-icon"]}>
-            <Icon as={IconComponent} color="ghost" aria-hidden="true" />
+            <Icon as={IconComponent} color="inherit" aria-hidden="true" />
           </div>
           <h5 className={noResultsStyles["no-results-title"]}>{title}</h5>
         </header>

@@ -11,6 +11,7 @@ import LayoutDashboardIcon from "../assets/layout-dashboard.svg?react";
 import FileCodeIcon from "../assets/file-code.svg?react";
 import HomeIcon from "../assets/home.svg?react";
 import SearchIcon from "../assets/search.svg?react";
+import SearchXIcon from "../assets/search-x.svg?react";
 import MenuIcon from "../assets/menu.svg?react";
 import MenuOpenIcon from "../assets/menu-open.svg?react";
 import SettingsIcon from "../assets/settings.svg?react";
@@ -174,6 +175,11 @@ export const icons: Record<string, IconMetadata> = {
     name: "Search",
     component: SearchIcon,
     tags: ["search", "find", "magnifying", "glass"],
+  },
+  "search-x": {
+    name: "SearchX",
+    component: SearchXIcon,
+    tags: ["search", "clear", "close", "no results"],
   },
   menu: {
     name: "Menu",
@@ -624,6 +630,7 @@ export {
   FileCodeIcon,
   HomeIcon,
   SearchIcon,
+  SearchXIcon,
   MenuIcon,
   MenuOpenIcon,
   SettingsIcon,

@@ -1,8 +1,4 @@
-import {
-  noResultsSections,
-  noResultsInstallation,
-  noResultsProps,
-} from "@versaur/react/no-results";
+import { noResultsSections, noResultsProps } from "@versaur/react/no-results";
 import { ComponentPreview } from "../../components/component-preview";
 import { PropsTable } from "../../components/props-table";
 
@@ -27,9 +23,6 @@ export function NoResultsDocPage() {
 
       <h2>API Reference</h2>
       <PropsTable props={noResultsProps} />
-
-      <h2>Installation</h2>
-      <ComponentPreview examples={makeExamples(noResultsInstallation)} />
     </>
   );
 }

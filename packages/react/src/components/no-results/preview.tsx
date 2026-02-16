@@ -1,6 +1,6 @@
 import { type ComponentType } from "react";
 import { NoResults } from "./no-results";
-import { LoaderIcon, UserIcon } from "@versaur/icons";
+import { SearchXIcon } from "@versaur/icons";
 import { Button } from "../button";
 
 export interface NoResultsSection {
@@ -12,85 +12,46 @@ export interface NoResultsSection {
 }
 
 /**
- * Default Preview
+ * Search No Results Preview
  */
-function DefaultPreview() {
-  return <NoResults icon={LoaderIcon} title="No data available" />;
+function SearchNoResultsPreview() {
+  return <NoResults icon={SearchXIcon} title="No results found" />;
 }
 
 /**
- * With Subtitle and Action Preview
+ * Search No Results with Action Preview
  */
-function WithSubtitleAndActionPreview() {
+function SearchNoResultsWithActionPreview() {
   return (
     <NoResults
-      icon={LoaderIcon}
-      title="Loading your content"
-      subtitle="Please wait while we fetch the data for you."
-      action={<Button variant="primary">Retry</Button>}
+      icon={SearchXIcon}
+      title="No results found"
+      subtitle="Try adjusting your search terms or filters."
+      action={<Button variant="primary">Clear Search</Button>}
     />
-  );
-}
-
-/**
- * Different Use Cases Preview
- */
-function UseCasesPreview() {
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
-      <NoResults
-        icon={UserIcon}
-        title="No users found"
-        subtitle="Start inviting team members to get started."
-        action={<Button variant="primary">Invite Users</Button>}
-      />
-      <NoResults
-        icon={LoaderIcon}
-        title="Nothing to see here"
-        subtitle="This section is currently empty."
-      />
-    </div>
   );
 }
 
 export const noResultsSections: NoResultsSection[] = [
   {
-    key: "default",
-    title: "Default",
-    preview: DefaultPreview,
+    key: "search-no-results",
+    title: "Search No Results",
+    preview: SearchNoResultsPreview,
     code: `<NoResults
-  icon={LoaderIcon}
-  title="No data available"
+  icon={SearchXIcon}
+  title="No results found"
 />`,
     language: "tsx",
   },
   {
-    key: "with-subtitle-action",
-    title: "With Subtitle and Action",
-    preview: WithSubtitleAndActionPreview,
+    key: "search-with-action",
+    title: "Search with Action",
+    preview: SearchNoResultsWithActionPreview,
     code: `<NoResults
-  icon={LoaderIcon}
-  title="Loading your content"
-  subtitle="Please wait while we fetch the data for you."
-  action={<Button variant="primary">Retry</Button>}
-/>`,
-    language: "tsx",
-  },
-  {
-    key: "use-cases",
-    title: "Use Cases",
-    preview: UseCasesPreview,
-    code: `<NoResults
-  icon={UserIcon}
-  title="No users found"
-  subtitle="Start inviting team members to get started."
-  action={<Button variant="primary">Invite Users</Button>}
-/>
-
-<NoResults
-  icon={LoaderIcon}
-  title="Nothing to see here"
-  subtitle="This section is currently empty."
+  icon={SearchXIcon}
+  title="No results found"
+  subtitle="Try adjusting your search terms or filters."
+  action={<Button variant="primary">Clear Search</Button>}
 />`,
     language: "tsx",
   },
@@ -122,11 +83,6 @@ export const noResultsProps = [
     description: "Action element to render (typically a Button). Optional.",
   },
 ];
-
-export const noResultsInstallation = {
-  code: `npm install @versaur/react @versaur/core @versaur/icons`,
-  language: "bash" as const,
-};
 
 export function NoResultsPreview() {
   return (

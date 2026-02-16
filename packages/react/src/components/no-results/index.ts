@@ -12,10 +12,5 @@ export { NoResults };
 export type { NoResultsProps };
 
 // Preview exports
-export {
-  NoResultsPreview,
-  noResultsSections,
-  noResultsInstallation,
-  noResultsProps,
-} from "./preview";
+export { NoResultsPreview, noResultsSections, noResultsProps } from "./preview";
 export type { NoResultsSection } from "./preview";
