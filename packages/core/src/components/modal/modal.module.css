@@ -1,0 +1,99 @@
+.modal {
+  /* Reset + positioning */
+  position: fixed;
+  margin: auto;
+  padding: 0;
+  border: none;
+
+  /* Sizing */
+  --_width: var(--vers-comp-modal-width, 600px);
+  --_max-height: var(--vers-comp-modal-max-height, 90vh);
+  width: var(--_width);
+  max-width: calc(100vw - 2rem);
+  max-height: var(--_max-height);
+
+  /* Styling */
+  --_bg: var(--vers-comp-modal-bg, var(--color-background));
+  --_shadow: var(--vers-comp-modal-shadow, var(--shadow-2xl));
+  --_radius: var(--vers-comp-modal-radius, var(--radius-lg));
+  background-color: var(--_bg);
+  box-shadow: var(--_shadow);
+  border-radius: var(--_radius);
+
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  /* Z-index */
+  z-index: 100;
+}
+
+/* Enter animation */
+.modal[data-open] {
+  animation: scaleIn var(--transition-slow);
+}
+
+/* Exit animation */
+.modal[data-closing] {
+  animation: scaleOut var(--transition-slow);
+}
+
+/* Backdrop */
+.modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: fadeIn var(--transition-base);
+}
+
+.modal[data-closing]::backdrop {
+  animation: fadeOut var(--transition-base);
+}
+
+/* Keyframes */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .modal,
+  .modal::backdrop {
+    animation: none !important;
+  }
+}

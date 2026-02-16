@@ -28,12 +28,16 @@ import { RadioGroupDocPage } from "./pages/radio-group-doc-page";
 import { CheckboxGroupDocPage } from "./pages/checkbox-group-doc-page";
 import { ChipSingleInputDocPage } from "./pages/chip-single-input-doc-page";
 import { ChipMultipleInputDocPage } from "./pages/chip-multiple-input-doc-page";
+import { DrawerDocPage } from "./pages/drawer-doc-page";
+import { ModalDocPage } from "./pages/modal-doc-page";
+import { BottomSheetDocPage } from "./pages/bottom-sheet-doc-page";
 
 export type ComponentCategory =
   | "Primitives"
   | "Layouts"
   | "Navigations"
-  | "Forms";
+  | "Forms"
+  | "Overlays";
 
 export interface RegistryEntry {
   component: ComponentType;
@@ -242,5 +246,26 @@ export const previewRegistry: Record<string, RegistryEntry> = {
     description:
       "Multi-selection chip input - modern alternative to checkbox groups with interactive pill UI",
     category: "Forms",
+  },
+  drawer: {
+    component: DrawerDocPage,
+    title: "Drawer",
+    description:
+      "A side panel that slides in from left or right with native dialog accessibility and animated transitions",
+    category: "Overlays",
+  },
+  modal: {
+    component: ModalDocPage,
+    title: "Modal",
+    description:
+      "A centered dialog box for focused user interactions with backdrop dimming and smooth animations",
+    category: "Overlays",
+  },
+  "bottom-sheet": {
+    component: BottomSheetDocPage,
+    title: "BottomSheet",
+    description:
+      "A mobile-friendly panel that slides up from the bottom with native dialog support and accessibility",
+    category: "Overlays",
   },
 };

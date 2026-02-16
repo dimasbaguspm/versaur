@@ -1,0 +1,49 @@
+.header {
+  --_padding: var(--vers-comp-overlay-header-padding, var(--spacing-4));
+  --_border: var(--vers-comp-overlay-border, var(--color-border));
+
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--_padding);
+  border-bottom: 1px solid var(--_border);
+  flex-shrink: 0;
+}
+
+.title {
+  flex: 1;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.closeButton {
+  margin-left: auto;
+}
+
+.body {
+  --_padding: var(--vers-comp-overlay-body-padding, var(--spacing-4));
+
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--_padding);
+}
+
+.footer {
+  --_padding: var(--vers-comp-overlay-footer-padding, var(--spacing-4));
+  --_border: var(--vers-comp-overlay-border, var(--color-border));
+
+  display: flex;
+  gap: var(--spacing-3);
+  padding: var(--_padding);
+  border-top: 1px solid var(--_border);
+  flex-shrink: 0;
+}
+
+.content {
+  /* Inner wrapper prevents backdrop click on padding */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}

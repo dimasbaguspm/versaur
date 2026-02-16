@@ -1,0 +1,132 @@
+.drawer {
+  /* Reset dialog defaults */
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  border: none;
+  max-width: none;
+  max-height: none;
+
+  /* Positioning */
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+
+  /* Sizing */
+  --_width: var(--vers-comp-drawer-width, 400px);
+  width: var(--_width);
+
+  /* Styling */
+  --_bg: var(--vers-comp-drawer-bg, var(--color-background));
+  --_shadow: var(--vers-comp-drawer-shadow, var(--shadow-xl));
+  background-color: var(--_bg);
+  box-shadow: var(--_shadow);
+
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  /* Z-index */
+  z-index: 100;
+}
+
+/* Placement variants */
+.drawer[data-placement="left"] {
+  left: 0;
+}
+
+.drawer[data-placement="right"] {
+  right: 0;
+}
+
+/* Enter animations */
+.drawer[data-placement="left"][data-open] {
+  animation: slideInLeft var(--transition-slow);
+}
+
+.drawer[data-placement="right"][data-open] {
+  animation: slideInRight var(--transition-slow);
+}
+
+/* Exit animations */
+.drawer[data-placement="left"][data-closing] {
+  animation: slideOutLeft var(--transition-slow);
+}
+
+.drawer[data-placement="right"][data-closing] {
+  animation: slideOutRight var(--transition-slow);
+}
+
+/* Backdrop */
+.drawer::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: fadeIn var(--transition-base);
+}
+
+.drawer[data-closing]::backdrop {
+  animation: fadeOut var(--transition-base);
+}
+
+/* Keyframes */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .drawer,
+  .drawer::backdrop {
+    animation: none !important;
+  }
+}

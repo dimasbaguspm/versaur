@@ -140,6 +140,22 @@
       "source": "./src/components/chip-multiple-input/chip-multiple-input.module.css",
       "import": "./dist/components/chip-multiple-input/chip-multiple-input.module.css"
     },
+    "./overlay-parts.css": {
+      "source": "./src/components/overlay-parts/overlay-parts.module.css",
+      "import": "./dist/components/overlay-parts/overlay-parts.module.css"
+    },
+    "./drawer.css": {
+      "source": "./src/components/drawer/drawer.module.css",
+      "import": "./dist/components/drawer/drawer.module.css"
+    },
+    "./modal.css": {
+      "source": "./src/components/modal/modal.module.css",
+      "import": "./dist/components/modal/modal.module.css"
+    },
+    "./bottom-sheet.css": {
+      "source": "./src/components/bottom-sheet/bottom-sheet.module.css",
+      "import": "./dist/components/bottom-sheet/bottom-sheet.module.css"
+    },
     "./components/*": {
       "source": "./src/components/*/index.ts",
       "import": "./dist/components/*/index.js"

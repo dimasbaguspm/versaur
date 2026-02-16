@@ -42,3 +42,9 @@ export * from "./components/radio-group";
 export * from "./components/checkbox-group";
 export * from "./components/chip-single-input";
 export * from "./components/chip-multiple-input";
+
+// Export overlays
+export * from "./components/overlay-parts";
+export * from "./components/drawer";
+export * from "./components/modal";
+export * from "./components/bottom-sheet";

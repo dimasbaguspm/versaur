@@ -1,0 +1,96 @@
+.bottomSheet {
+  /* Reset + positioning */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+
+  /* Sizing */
+  --_max-height: var(--vers-comp-bottom-sheet-max-height, 80vh);
+  max-height: var(--_max-height);
+
+  /* Styling */
+  --_bg: var(--vers-comp-bottom-sheet-bg, var(--color-background));
+  --_shadow: var(--vers-comp-bottom-sheet-shadow, var(--shadow-2xl));
+  --_radius: var(--vers-comp-bottom-sheet-radius, var(--radius-lg));
+  background-color: var(--_bg);
+  box-shadow: var(--_shadow);
+  border-top-left-radius: var(--_radius);
+  border-top-right-radius: var(--_radius);
+
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  /* Z-index */
+  z-index: 100;
+}
+
+/* Enter animation */
+.bottomSheet[data-open] {
+  animation: slideUp var(--transition-slow);
+}
+
+/* Exit animation */
+.bottomSheet[data-closing] {
+  animation: slideDown var(--transition-slow);
+}
+
+/* Backdrop */
+.bottomSheet::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: fadeIn var(--transition-base);
+}
+
+.bottomSheet[data-closing]::backdrop {
+  animation: fadeOut var(--transition-base);
+}
+
+/* Keyframes */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .bottomSheet,
+  .bottomSheet::backdrop {
+    animation: none !important;
+  }
+}

@@ -94,6 +94,15 @@
       ],
       "chip-multiple-input": [
         "./dist/chip-multiple-input.d.ts"
+      ],
+      "drawer": [
+        "./dist/drawer.d.ts"
+      ],
+      "modal": [
+        "./dist/modal.d.ts"
+      ],
+      "bottom-sheet": [
+        "./dist/bottom-sheet.d.ts"
       ]
     }
   },
@@ -247,6 +256,21 @@
       "source": "./src/components/chip-multiple-input/index.ts",
       "types": "./dist/chip-multiple-input.d.ts",
       "import": "./dist/chip-multiple-input.js"
+    },
+    "./drawer": {
+      "source": "./src/components/drawer/index.ts",
+      "types": "./dist/drawer.d.ts",
+      "import": "./dist/drawer.js"
+    },
+    "./modal": {
+      "source": "./src/components/modal/index.ts",
+      "types": "./dist/modal.d.ts",
+      "import": "./dist/modal.js"
+    },
+    "./bottom-sheet": {
+      "source": "./src/components/bottom-sheet/index.ts",
+      "types": "./dist/bottom-sheet.d.ts",
+      "import": "./dist/bottom-sheet.js"
     }
   },
   "files": [

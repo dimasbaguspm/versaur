@@ -10,7 +10,7 @@ const CATEGORIES: ComponentCategory[] = [
   "Layouts",
   "Navigations",
   "Forms",
-  "Icons",
+  "Overlays",
 ];
 
 export function DocsSidebar(props: DocsSidebarProps) {
