@@ -116,6 +116,30 @@
       "source": "./src/components/select/select.module.css",
       "import": "./dist/components/select/select.module.css"
     },
+    "./radio.css": {
+      "source": "./src/components/radio/radio.module.css",
+      "import": "./dist/components/radio/radio.module.css"
+    },
+    "./checkbox.css": {
+      "source": "./src/components/checkbox/checkbox.module.css",
+      "import": "./dist/components/checkbox/checkbox.module.css"
+    },
+    "./radio-group.css": {
+      "source": "./src/components/radio-group/radio-group.module.css",
+      "import": "./dist/components/radio-group/radio-group.module.css"
+    },
+    "./checkbox-group.css": {
+      "source": "./src/components/checkbox-group/checkbox-group.module.css",
+      "import": "./dist/components/checkbox-group/checkbox-group.module.css"
+    },
+    "./chip-single-input.css": {
+      "source": "./src/components/chip-single-input/chip-single-input.module.css",
+      "import": "./dist/components/chip-single-input/chip-single-input.module.css"
+    },
+    "./chip-multiple-input.css": {
+      "source": "./src/components/chip-multiple-input/chip-multiple-input.module.css",
+      "import": "./dist/components/chip-multiple-input/chip-multiple-input.module.css"
+    },
     "./components/*": {
       "source": "./src/components/*/index.ts",
       "import": "./dist/components/*/index.js"

@@ -76,6 +76,24 @@
       ],
       "select": [
         "./dist/select.d.ts"
+      ],
+      "radio": [
+        "./dist/radio.d.ts"
+      ],
+      "checkbox": [
+        "./dist/checkbox.d.ts"
+      ],
+      "radio-group": [
+        "./dist/radio-group.d.ts"
+      ],
+      "checkbox-group": [
+        "./dist/checkbox-group.d.ts"
+      ],
+      "chip-single-input": [
+        "./dist/chip-single-input.d.ts"
+      ],
+      "chip-multiple-input": [
+        "./dist/chip-multiple-input.d.ts"
       ]
     }
   },
@@ -199,6 +217,36 @@
       "source": "./src/components/select/index.ts",
       "types": "./dist/select.d.ts",
       "import": "./dist/select.js"
+    },
+    "./radio": {
+      "source": "./src/components/radio/index.ts",
+      "types": "./dist/radio.d.ts",
+      "import": "./dist/radio.js"
+    },
+    "./checkbox": {
+      "source": "./src/components/checkbox/index.ts",
+      "types": "./dist/checkbox.d.ts",
+      "import": "./dist/checkbox.js"
+    },
+    "./radio-group": {
+      "source": "./src/components/radio-group/index.ts",
+      "types": "./dist/radio-group.d.ts",
+      "import": "./dist/radio-group.js"
+    },
+    "./checkbox-group": {
+      "source": "./src/components/checkbox-group/index.ts",
+      "types": "./dist/checkbox-group.d.ts",
+      "import": "./dist/checkbox-group.js"
+    },
+    "./chip-single-input": {
+      "source": "./src/components/chip-single-input/index.ts",
+      "types": "./dist/chip-single-input.d.ts",
+      "import": "./dist/chip-single-input.js"
+    },
+    "./chip-multiple-input": {
+      "source": "./src/components/chip-multiple-input/index.ts",
+      "types": "./dist/chip-multiple-input.d.ts",
+      "import": "./dist/chip-multiple-input.js"
     }
   },
   "files": [

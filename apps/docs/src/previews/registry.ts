@@ -22,6 +22,12 @@ import { AppLayoutDocPage } from "./pages/app-layout-doc-page";
 import { TextInputDocPage } from "./pages/text-input-doc-page";
 import { TextAreaDocPage } from "./pages/text-area-doc-page";
 import { SelectDocPage } from "./pages/select-doc-page";
+import { RadioDocPage } from "./pages/radio-doc-page";
+import { CheckboxDocPage } from "./pages/checkbox-doc-page";
+import { RadioGroupDocPage } from "./pages/radio-group-doc-page";
+import { CheckboxGroupDocPage } from "./pages/checkbox-group-doc-page";
+import { ChipSingleInputDocPage } from "./pages/chip-single-input-doc-page";
+import { ChipMultipleInputDocPage } from "./pages/chip-multiple-input-doc-page";
 
 export type ComponentCategory =
   | "Primitives"
@@ -195,6 +201,46 @@ export const previewRegistry: Record<string, RegistryEntry> = {
     title: "Select",
     description:
       "Native select dropdown with label, validation states, and custom styling",
+    category: "Forms",
+  },
+  radio: {
+    component: RadioDocPage,
+    title: "Radio",
+    description: "Native radio input with custom styling",
+    category: "Forms",
+  },
+  checkbox: {
+    component: CheckboxDocPage,
+    title: "Checkbox",
+    description: "Native checkbox input with custom styling",
+    category: "Forms",
+  },
+  "radio-group": {
+    component: RadioGroupDocPage,
+    title: "RadioGroup",
+    description:
+      "Grouped radio inputs with coordinated state management and built-in form integration",
+    category: "Forms",
+  },
+  "checkbox-group": {
+    component: CheckboxGroupDocPage,
+    title: "CheckboxGroup",
+    description:
+      "Grouped checkboxes for multi-selection with array state management",
+    category: "Forms",
+  },
+  "chip-single-input": {
+    component: ChipSingleInputDocPage,
+    title: "ChipSingleInput",
+    description:
+      "Single-selection chip input - modern alternative to radio groups with interactive pill UI",
+    category: "Forms",
+  },
+  "chip-multiple-input": {
+    component: ChipMultipleInputDocPage,
+    title: "ChipMultipleInput",
+    description:
+      "Multi-selection chip input - modern alternative to checkbox groups with interactive pill UI",
     category: "Forms",
   },
 };
