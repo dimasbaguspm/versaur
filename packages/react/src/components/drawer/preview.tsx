@@ -23,7 +23,7 @@ function BasicDrawerPreview() {
         Open Drawer
       </Button>
 
-      <Drawer open={isOpen} onClose={() => setIsOpen(false)} placement="right">
+      <Drawer open={isOpen} onOpenChange={setIsOpen} placement="right">
         <Drawer.Header>
           <Drawer.Title>Drawer Title</Drawer.Title>
           <Drawer.CloseButton />
@@ -53,7 +53,7 @@ function LeftPlacementPreview() {
         Open Left Drawer
       </Button>
 
-      <Drawer open={isOpen} onClose={() => setIsOpen(false)} placement="left">
+      <Drawer open={isOpen} onOpenChange={setIsOpen} placement="left">
         <Drawer.Header>
           <Drawer.Title>Left Drawer</Drawer.Title>
           <Drawer.CloseButton />
@@ -72,8 +72,7 @@ export const DrawerSections: DrawerSection[] = [
     title: "Basic Drawer",
     preview: BasicDrawerPreview,
     code: `import { useState } from 'react';
-import { Drawer } from '@versaur/react';
-import { Button } from '@versaur/react';
+import { Drawer, Button } from '@versaur/react';
 
 export function MyDrawer() {
   const [isOpen, setIsOpen] = useState(false);
@@ -81,7 +80,7 @@ export function MyDrawer() {
   return (
     <div>
       <Button onClick={() => setIsOpen(true)}>Open Drawer</Button>
-      <Drawer open={isOpen} onClose={() => setIsOpen(false)}>
+      <Drawer open={isOpen} onOpenChange={setIsOpen} placement="right">
         <Drawer.Header>
           <Drawer.Title>Title</Drawer.Title>
           <Drawer.CloseButton />
@@ -102,7 +101,7 @@ export function MyDrawer() {
     preview: LeftPlacementPreview,
     code: `<Drawer
   open={isOpen}
-  onClose={() => setIsOpen(false)}
+  onOpenChange={setIsOpen}
   placement="left"
 >
   <Drawer.Header>
@@ -117,14 +116,15 @@ export const drawerProps = [
   {
     name: "open",
     type: "boolean",
-    default: "false",
-    description: "Whether the drawer is open",
+    default: "required",
+    description: "Controlled open state - syncs with native dialog element",
   },
   {
-    name: "onClose",
-    type: "(reason: 'esc' | 'backdrop' | 'closeButton' | 'programmatic') => void",
-    default: "required",
-    description: "Callback when the drawer closes, includes the close reason",
+    name: "onOpenChange",
+    type: "(open: boolean) => void",
+    default: "optional",
+    description:
+      "Callback when drawer closes (ESC key, backdrop click, or close button)",
   },
   {
     name: "placement",
@@ -135,17 +135,27 @@ export const drawerProps = [
 ];
 
 export const drawerInstallation = {
-  code: `import { Drawer } from '@versaur/react';
+  code: `import { Drawer, Button } from '@versaur/react';
+import { useState } from 'react';
 
-<Drawer open={isOpen} onClose={handleClose} placement="right">
-  <Drawer.Header>
-    <Drawer.Title>Title</Drawer.Title>
-    <Drawer.CloseButton />
-  </Drawer.Header>
-  <Drawer.Body>Content</Drawer.Body>
-  <Drawer.Footer>
-    <Button>Action</Button>
-  </Drawer.Footer>
-</Drawer>`,
+function MyDrawer() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>Open Drawer</Button>
+      <Drawer open={isOpen} onOpenChange={setIsOpen} placement="right">
+        <Drawer.Header>
+          <Drawer.Title>Title</Drawer.Title>
+          <Drawer.CloseButton />
+        </Drawer.Header>
+        <Drawer.Body>Content</Drawer.Body>
+        <Drawer.Footer>
+          <Button onClick={() => setIsOpen(false)}>Close</Button>
+        </Drawer.Footer>
+      </Drawer>
+    </>
+  );
+}`,
   language: "typescript" as const,
 };

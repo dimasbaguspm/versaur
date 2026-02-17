@@ -5,8 +5,6 @@ export type DrawerPlacement = 'left' | 'right';
 
 export interface DrawerDataAttrs {
   placement?: DrawerPlacement;
-  closing?: boolean;
-  open?: boolean;
 };
 
 export namespace Drawer {

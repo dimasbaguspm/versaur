@@ -1,26 +1,19 @@
 import type { DialogHTMLAttributes, ReactNode } from "react";
 import type { Drawer as DrawerCore } from "@versaur/core";
 
-export type DrawerCloseReason =
-  | "esc"
-  | "backdrop"
-  | "closeButton"
-  | "programmatic";
-
 export interface DrawerRootProps extends Omit<
   DialogHTMLAttributes<HTMLDialogElement>,
   "onClose"
 > {
   /**
-   * Whether the drawer is open
+   * Whether the drawer is open (controlled state)
    */
   open: boolean;
 
   /**
-   * Callback when the drawer closes
-   * Includes the reason for closing
+   * Callback when drawer closes (ESC key, backdrop click, or close button)
    */
-  onClose: (reason: DrawerCloseReason) => void;
+  onOpenChange?: (open: boolean) => void;
 
   /**
    * Placement of the drawer

@@ -1,16 +1,9 @@
-import {
-  createContext,
-  useContext,
-  forwardRef,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { createContext, useContext, forwardRef, useId } from "react";
 import { drawerStyles, overlayPartsStyles } from "@versaur/core";
 import "@versaur/core/drawer.css";
 import "@versaur/core/overlay-parts.css";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
-import { combineRefs } from "../../utils/combine-refs";
+import { Dialog } from "../dialog";
 import {
   OverlayHeader,
   OverlayTitle,
@@ -19,14 +12,10 @@ import {
 } from "../overlay-parts/overlay-parts";
 import { ButtonIcon } from "../button-icon";
 import { XIcon } from "@versaur/icons";
-import type {
-  DrawerRootProps,
-  DrawerCloseReason,
-  DrawerCloseButtonProps,
-} from "./drawer.types";
+import type { DrawerRootProps, DrawerCloseButtonProps } from "./drawer.types";
 
 interface DrawerContextType {
-  onClose: (reason: DrawerCloseReason) => void;
+  onClose: () => void;
 }
 
 const DrawerContext = createContext<DrawerContextType | undefined>(undefined);
@@ -39,85 +28,42 @@ const useDrawerContext = () => {
   return context;
 };
 
+/**
+ * Drawer - A controlled side panel component
+ *
+ * Built on Dialog with placement and container styling
+ *
+ * @example
+ * ```tsx
+ * const [isOpen, setIsOpen] = useState(false);
+ *
+ * <Drawer open={isOpen} onOpenChange={setIsOpen}>
+ *   Content here
+ * </Drawer>
+ * ```
+ */
 const DrawerRoot = forwardRef<HTMLDialogElement, DrawerRootProps>(
-  ({ open, onClose, placement = "right", children, ...props }, ref) => {
-    const dialogRef = useRef<HTMLDialogElement>(null);
-    const [isClosing, setIsClosing] = useState(false);
-    const [closedBy, setClosedBy] = useState<DrawerCloseReason | null>(null);
-    const prevOpenRef = useRef(open);
-
-    // Sync open prop with dialog.showModal()
-    useEffect(() => {
-      const dialog = dialogRef.current;
-      if (!dialog) return;
-
-      if (open && !dialog.open) {
-        dialog.showModal();
-        // Lock body scroll
-        document.body.style.overflow = "hidden";
-      }
-
-      // Programmatic close
-      if (!open && prevOpenRef.current) {
-        initiateClose("programmatic");
-      }
-
-      prevOpenRef.current = open;
-    }, [open]);
-
-    // Handle ESC key
-    useEffect(() => {
-      const dialog = dialogRef.current;
-      if (!dialog) return;
-
-      const handleCancel = (e: Event) => {
-        e.preventDefault();
-        initiateClose("esc");
-      };
-
-      dialog.addEventListener("cancel", handleCancel);
-      return () => dialog.removeEventListener("cancel", handleCancel);
-    }, []);
-
-    const initiateClose = (reason: DrawerCloseReason) => {
-      setClosedBy(reason);
-      setIsClosing(true);
-    };
-
-    const handleAnimationEnd = () => {
-      if (isClosing && dialogRef.current) {
-        dialogRef.current.close();
-        document.body.style.overflow = "";
-        onClose(closedBy!);
-        setIsClosing(false);
-        setClosedBy(null);
-      }
-    };
-
-    const handleDialogClick = (e: React.MouseEvent<HTMLDialogElement>) => {
-      if (e.target === dialogRef.current) {
-        initiateClose("backdrop");
-      }
-    };
-
+  ({ open, onOpenChange, placement = "right", children, ...props }, ref) => {
+    const id = useId();
     const dataAttrs = useDataAttrs({
       placement,
-      open: open && !isClosing,
-      closing: isClosing,
     });
 
     return (
-      <DrawerContext.Provider value={{ onClose: initiateClose }}>
-        <dialog
-          ref={combineRefs(dialogRef, ref)}
-          className={drawerStyles.drawer}
-          onClick={handleDialogClick}
-          onAnimationEnd={handleAnimationEnd}
-          {...dataAttrs}
-          {...props}
+      <DrawerContext.Provider value={{ onClose: () => onOpenChange?.(false) }}>
+        <Dialog
+          id={id}
+          ref={ref}
+          isOpen={open}
+          onOpenChange={onOpenChange}
+          dialogProps={{
+            className: open ? drawerStyles.drawer : "",
+            ...dataAttrs,
+            ...props,
+          }}
         >
           <div className={overlayPartsStyles.content}>{children}</div>
-        </dialog>
+        </Dialog>
       </DrawerContext.Provider>
     );
   },
@@ -130,7 +76,7 @@ const DrawerCloseButton = forwardRef<HTMLButtonElement, DrawerCloseButtonProps>(
     const { onClose } = useDrawerContext();
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-      onClose("closeButton");
+      onClose();
       onClick?.(e);
     };
 
