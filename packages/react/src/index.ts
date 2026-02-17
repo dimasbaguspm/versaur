@@ -134,11 +134,8 @@ export { TopBar } from "./components/top-bar";
 export type {
   TopBarProps,
   TopBarLeadingProps,
+  TopBarCentredProps,
   TopBarTrailingProps,
-  TopBarNavProps,
-  TopBarNavItemProps,
-  TopBarActionsProps,
-  TopBarMobileToggleProps,
   TopBarComponent,
 } from "./components/top-bar";
 

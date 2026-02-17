@@ -184,11 +184,11 @@
 }
 
 /* ============================================
-   GHOST VARIANT - Ghost Slate Button
+   GHOST VARIANT - Transparent Background
    ============================================ */
 .button[data-variant="ghost"] {
-  --_bg: var(--vers-comp-button-ghost-bg, var(--color-ghost-soft));
-  --_color: var(--vers-comp-button-ghost-color, var(--color-ghost-bold));
+  --_bg: var(--vers-comp-button-ghost-bg, transparent);
+  --_color: var(--vers-comp-button-ghost-color, var(--color-text));
   --_border-color: var(--vers-comp-button-ghost-border-color, transparent);
   --_focus-ring-color: var(
     --vers-comp-button-ghost-focus-ring-color,
@@ -197,19 +197,18 @@
 }
 
 .button[data-variant="ghost"]:hover:not([data-disabled]):not([data-loading]) {
-  --_bg: var(--vers-comp-button-ghost-hover-bg, var(--color-ghost-light));
-  --_color: var(--vers-comp-button-ghost-hover-color, var(--color-ghost-bold));
+  --_bg: var(--vers-comp-button-ghost-hover-bg, var(--color-surface));
+  --_color: var(--vers-comp-button-ghost-hover-color, var(--color-text));
 }
 
 .button[data-variant="ghost"]:active:not([data-disabled]):not([data-loading]) {
-  --_bg: var(--vers-comp-button-ghost-active-bg, var(--color-ghost));
-  --_color: var(--vers-comp-button-ghost-active-color, #ffffff);
+  --_bg: var(--vers-comp-button-ghost-active-bg, var(--color-surface));
+  --_color: var(--vers-comp-button-ghost-active-color, var(--color-text));
 }
 
 .button[data-variant="ghost"][aria-pressed="true"] {
-  --_bg: var(--vers-comp-button-ghost-pressed-bg, var(--color-ghost));
-  --_color: var(--vers-comp-button-ghost-pressed-color, #ffffff);
-  box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.1);
+  --_bg: var(--vers-comp-button-ghost-pressed-bg, var(--color-surface));
+  --_color: var(--vers-comp-button-ghost-pressed-color, var(--color-text));
 }
 
 /* ============================================

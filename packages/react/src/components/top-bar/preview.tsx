@@ -1,95 +1,110 @@
 "use client";
 
-import React from "react";
+import { useState } from "react";
 import { TopBar } from "./top-bar";
 import { Avatar } from "../avatar";
+import { Button } from "../button";
 import { ButtonIcon } from "../button-icon";
-import { LoaderIcon, UserIcon } from "@versaur/icons";
+import { Nav } from "../nav";
+import { BellIcon, ChevronDownIcon } from "@versaur/icons";
 
 /**
- * Example 1: Basic TopBar with nav and actions
+ * Example 1: TopBar with Nav navigation and trailing actions
  */
-function BasicTopBar() {
+function TopBarBasic() {
+  const [activeNav, setActiveNav] = useState<string>("home");
+
   return (
-    <TopBar variant="primary">
+    <TopBar>
       <TopBar.Leading>
-        <div style={{ fontWeight: "bold" }}>Logo</div>
-        <TopBar.Nav>
-          <TopBar.NavItem active>Home</TopBar.NavItem>
-          <TopBar.NavItem>Docs</TopBar.NavItem>
-          <TopBar.NavItem>Pricing</TopBar.NavItem>
-        </TopBar.Nav>
+        <div style={{ fontWeight: "bold", marginRight: "1rem" }}>Logo</div>
+        <Nav
+          value={activeNav}
+          onChange={(value) => setActiveNav(String(value))}
+          direction="horizontal"
+        >
+          <Nav.Item value="home">Home</Nav.Item>
+          <Nav.Item value="docs">Docs</Nav.Item>
+          <Nav.Item value="pricing">Pricing</Nav.Item>
+        </Nav>
       </TopBar.Leading>
       <TopBar.Trailing>
-        <TopBar.Actions>
-          <ButtonIcon as={UserIcon} aria-label="User Profile" />
-          <ButtonIcon as={LoaderIcon} aria-label="Settings" />
-        </TopBar.Actions>
-        <Avatar size="sm">DM</Avatar>
+        <ButtonIcon variant="ghost" as={BellIcon} aria-label="Notifications" />
+        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <Avatar size="md">DM</Avatar>
+          <ButtonIcon
+            variant="ghost"
+            as={ChevronDownIcon}
+            size="small"
+            aria-label="User menu"
+          />
+        </div>
       </TopBar.Trailing>
     </TopBar>
   );
 }
 
 /**
- * Example 2: TopBar with NavItem as anchor links
+ * Example 2: TopBar with Nav and centred content
  */
-function TopBarWithLinks() {
-  const handleNavigation = (path: string) => {
-    window.location.href = path;
-  };
+function TopBarWithSearch() {
+  const [activeNav, setActiveNav] = useState<string>("dashboard");
 
   return (
-    <TopBar variant="secondary">
+    <TopBar>
       <TopBar.Leading>
-        <div style={{ fontWeight: "bold" }}>Brand</div>
-        <TopBar.Nav>
-          {/* NavItem works with button (default) - use onClick for navigation */}
-          <TopBar.NavItem active onClick={() => handleNavigation("/")}>
-            Home
-          </TopBar.NavItem>
-          <TopBar.NavItem onClick={() => handleNavigation("/docs")}>
-            Docs
-          </TopBar.NavItem>
-          <TopBar.NavItem onClick={() => handleNavigation("/pricing")}>
-            Pricing
-          </TopBar.NavItem>
-        </TopBar.Nav>
+        <div style={{ fontWeight: "bold", marginRight: "2rem" }}>App</div>
+        <Nav
+          value={activeNav}
+          onChange={(value) => setActiveNav(String(value))}
+          direction="horizontal"
+        >
+          <Nav.Item value="dashboard">Dashboard</Nav.Item>
+          <Nav.Item value="analytics">Analytics</Nav.Item>
+          <Nav.Item value="settings">Settings</Nav.Item>
+        </Nav>
       </TopBar.Leading>
-      <TopBar.Trailing>
-        <TopBar.Actions>
-          <Avatar size="sm">AB</Avatar>
-        </TopBar.Actions>
-      </TopBar.Trailing>
-    </TopBar>
-  );
-}
-
-/**
- * Example 3: TopBar with mobile menu toggle
- */
-function TopBarWithMobileToggle() {
-  const [isOpen, setIsOpen] = React.useState(false);
-
-  return (
-    <TopBar variant="primary">
-      <TopBar.Leading>
-        <div style={{ fontWeight: "bold" }}>Logo</div>
-        <TopBar.Nav>
-          <TopBar.NavItem active>Home</TopBar.NavItem>
-          <TopBar.NavItem>Docs</TopBar.NavItem>
-        </TopBar.Nav>
-      </TopBar.Leading>
-      <TopBar.Trailing>
-        <TopBar.Actions>
-          <ButtonIcon as={UserIcon} aria-label="User Profile" />
-        </TopBar.Actions>
-        <TopBar.MobileToggle
-          icon={LoaderIcon}
-          isOpen={isOpen}
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle navigation menu"
+      <TopBar.Centred>
+        <input
+          placeholder="Search..."
+          style={{
+            padding: "0.5rem 0.75rem",
+            border: "1px solid #e5e7eb",
+            borderRadius: "0.375rem",
+            fontSize: "0.875rem",
+            width: "250px",
+          }}
         />
+      </TopBar.Centred>
+      <TopBar.Trailing>
+        <Button variant="ghost">Docs</Button>
+        <Button variant="ghost">Support</Button>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <Avatar size="md">DM</Avatar>
+          <ButtonIcon
+            variant="ghost"
+            as={ChevronDownIcon}
+            size="small"
+            aria-label="User menu"
+          />
+        </div>
+      </TopBar.Trailing>
+    </TopBar>
+  );
+}
+
+/**
+ * Example 3: Simple TopBar with ghost buttons only
+ */
+function TopBarGhost() {
+  return (
+    <TopBar>
+      <TopBar.Leading>
+        <div style={{ fontWeight: "bold" }}>Products</div>
+      </TopBar.Leading>
+      <TopBar.Trailing>
+        <Button variant="ghost">Sign In</Button>
+        <Button variant="primary">Get Started</Button>
       </TopBar.Trailing>
     </TopBar>
   );
@@ -98,30 +113,34 @@ function TopBarWithMobileToggle() {
 export const topBarSections = [
   {
     key: "basic",
-    title: "Basic TopBar",
-    preview: BasicTopBar,
-    code: `import { TopBar } from '@versaur/react';
+    title: "TopBar with Nav Navigation",
+    preview: TopBarBasic,
+    code: `import { useState } from 'react';
+import { TopBar } from '@versaur/react';
+import { Nav } from '@versaur/react';
 import { Avatar } from '@versaur/react';
 import { ButtonIcon } from '@versaur/react';
-import { BellIcon, SettingsIcon } from '@versaur/icons';
+import { BellIcon, ChevronDownIcon } from '@versaur/icons';
 
-export function BasicTopBar() {
+export function TopBarBasic() {
+  const [activeNav, setActiveNav] = useState<string>('home');
+
   return (
-    <TopBar variant="primary">
+    <TopBar>
       <TopBar.Leading>
-        <div>Logo</div>
-        <TopBar.Nav>
-          <TopBar.NavItem active>Home</TopBar.NavItem>
-          <TopBar.NavItem>Docs</TopBar.NavItem>
-          <TopBar.NavItem>Pricing</TopBar.NavItem>
-        </TopBar.Nav>
+        <div style={{ fontWeight: 'bold', marginRight: '1rem' }}>Logo</div>
+        <Nav value={activeNav} onChange={setActiveNav} direction="horizontal">
+          <Nav.Item value="home">Home</Nav.Item>
+          <Nav.Item value="docs">Docs</Nav.Item>
+          <Nav.Item value="pricing">Pricing</Nav.Item>
+        </Nav>
       </TopBar.Leading>
       <TopBar.Trailing>
-        <TopBar.Actions>
-          <ButtonIcon as={BellIcon} aria-label="Notifications" />
-          <ButtonIcon as={SettingsIcon} aria-label="Settings" />
-        </TopBar.Actions>
-        <Avatar size="sm">DM</Avatar>
+        <ButtonIcon as={BellIcon} aria-label="Notifications" />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <Avatar size="sm">DM</Avatar>
+          <ButtonIcon as={ChevronDownIcon} aria-label="User menu" />
+        </div>
       </TopBar.Trailing>
     </TopBar>
   );
@@ -129,38 +148,40 @@ export function BasicTopBar() {
     language: "tsx",
   },
   {
-    key: "with-links",
-    title: "TopBar with Links",
-    preview: TopBarWithLinks,
-    code: `import { TopBar } from '@versaur/react';
+    key: "with-search",
+    title: "TopBar with Search & Ghost Buttons",
+    preview: TopBarWithSearch,
+    code: `import { useState } from 'react';
+import { TopBar } from '@versaur/react';
+import { Nav } from '@versaur/react';
 import { Avatar } from '@versaur/react';
+import { Button } from '@versaur/react';
+import { ButtonIcon } from '@versaur/react';
+import { ChevronDownIcon } from '@versaur/icons';
 
-export function TopBarWithLinks() {
-  const handleNavigation = (path: string) => {
-    window.location.href = path;
-  };
+export function TopBarWithSearch() {
+  const [activeNav, setActiveNav] = useState<string>('dashboard');
 
   return (
-    <TopBar variant="secondary">
+    <TopBar>
       <TopBar.Leading>
-        <div>Brand</div>
-        <TopBar.Nav>
-          {/* NavItem with onClick for navigation */}
-          <TopBar.NavItem active onClick={() => handleNavigation("/")}>
-            Home
-          </TopBar.NavItem>
-          <TopBar.NavItem onClick={() => handleNavigation("/docs")}>
-            Docs
-          </TopBar.NavItem>
-          <TopBar.NavItem onClick={() => handleNavigation("/pricing")}>
-            Pricing
-          </TopBar.NavItem>
-        </TopBar.Nav>
+        <div style={{ fontWeight: 'bold', marginRight: '2rem' }}>App</div>
+        <Nav value={activeNav} onChange={setActiveNav} direction="horizontal">
+          <Nav.Item value="dashboard">Dashboard</Nav.Item>
+          <Nav.Item value="analytics">Analytics</Nav.Item>
+          <Nav.Item value="settings">Settings</Nav.Item>
+        </Nav>
       </TopBar.Leading>
+      <TopBar.Centred>
+        <input placeholder="Search..." />
+      </TopBar.Centred>
       <TopBar.Trailing>
-        <TopBar.Actions>
-          <Avatar size="sm">AB</Avatar>
-        </TopBar.Actions>
+        <Button variant="ghost">Docs</Button>
+        <Button variant="ghost">Support</Button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <Avatar size="sm">JS</Avatar>
+          <ButtonIcon as={ChevronDownIcon} aria-label="Account menu" />
+        </div>
       </TopBar.Trailing>
     </TopBar>
   );
@@ -168,31 +189,21 @@ export function TopBarWithLinks() {
     language: "tsx",
   },
   {
-    key: "with-mobile-toggle",
-    title: "TopBar with Mobile Toggle",
-    preview: TopBarWithMobileToggle,
+    key: "ghost-buttons",
+    title: "TopBar with Ghost Buttons",
+    preview: TopBarGhost,
     code: `import { TopBar } from '@versaur/react';
-import { ButtonIcon } from '@versaur/react';
-import { BellIcon, MenuIcon } from '@versaur/icons';
-import React from 'react';
+import { Button } from '@versaur/react';
 
-export function TopBarWithMobileToggle() {
-  const [isOpen, setIsOpen] = React.useState(false);
-
+export function TopBarGhost() {
   return (
-    <TopBar variant="primary">
+    <TopBar>
       <TopBar.Leading>
-        <div>Logo</div>
+        <div style={{ fontWeight: 'bold' }}>Products</div>
       </TopBar.Leading>
       <TopBar.Trailing>
-        <TopBar.Actions>
-          <ButtonIcon as={BellIcon} aria-label="Notifications" />
-        </TopBar.Actions>
-        <TopBar.MobileToggle
-          icon={MenuIcon}
-          isOpen={isOpen}
-          onClick={() => setIsOpen(!isOpen)}
-        />
+        <Button variant="ghost">Sign In</Button>
+        <Button variant="primary">Get Started</Button>
       </TopBar.Trailing>
     </TopBar>
   );
@@ -206,15 +217,9 @@ export const topBarProps = [
     name: "TopBar",
     props: [
       {
-        name: "variant",
-        type: '"primary" | "secondary"',
-        description: "Background and text color variant",
-        default: "primary",
-      },
-      {
         name: "children",
         type: "ReactNode",
-        description: "TopBar.Leading and TopBar.Trailing components",
+        description: "TopBar.Leading, TopBar.Centred, and/or TopBar.Trailing",
         default: "-",
       },
     ],
@@ -225,7 +230,18 @@ export const topBarProps = [
       {
         name: "children",
         type: "ReactNode",
-        description: "Logo, brand, TopBar.Nav navigation content",
+        description: "Logo, brand, or left-aligned content",
+        default: "-",
+      },
+    ],
+  },
+  {
+    name: "TopBar.Centred",
+    props: [
+      {
+        name: "children",
+        type: "ReactNode",
+        description: "Center-aligned content (search, title, etc)",
         default: "-",
       },
     ],
@@ -236,76 +252,8 @@ export const topBarProps = [
       {
         name: "children",
         type: "ReactNode",
-        description: "TopBar.Actions, Avatar, TopBar.MobileToggle",
+        description: "Right-aligned content (actions, avatar, etc)",
         default: "-",
-      },
-    ],
-  },
-  {
-    name: "TopBar.Nav",
-    props: [
-      {
-        name: "children",
-        type: "ReactNode",
-        description: "TopBar.NavItem components",
-        default: "-",
-      },
-    ],
-  },
-  {
-    name: "TopBar.NavItem",
-    props: [
-      {
-        name: "as",
-        type: 'ElementType | "button" | "a"',
-        description: "Polymorphic element (button, a, Link, custom)",
-        default: "button",
-      },
-      {
-        name: "active",
-        type: "boolean",
-        description: 'Indicates current page (sets aria-current="page")',
-        default: "false",
-      },
-      {
-        name: "children",
-        type: "ReactNode",
-        description: "Nav item label or content",
-        default: "-",
-      },
-    ],
-  },
-  {
-    name: "TopBar.Actions",
-    props: [
-      {
-        name: "children",
-        type: "ReactNode",
-        description: "Icon buttons (ButtonIcon), Avatar, etc",
-        default: "-",
-      },
-    ],
-  },
-  {
-    name: "TopBar.MobileToggle",
-    props: [
-      {
-        name: "icon",
-        type: "ComponentType<SVGProps>",
-        description: "Icon component (MenuIcon, HamburgerIcon, etc)",
-        default: "-",
-      },
-      {
-        name: "isOpen",
-        type: "boolean",
-        description: "Whether mobile menu is open (sets aria-expanded)",
-        default: "false",
-      },
-      {
-        name: "aria-label",
-        type: "string",
-        description: "Accessibility label for the toggle button",
-        default: '"Toggle menu"',
       },
     ],
   },

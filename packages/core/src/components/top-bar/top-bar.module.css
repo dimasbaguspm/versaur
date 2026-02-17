@@ -1,137 +1,38 @@
-/* TopBar Root - Semantic navigation header */
+/* TopBar Root - Pure layout with CSS Grid */
 .top-bar {
   width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: "leading centred trailing";
   align-items: center;
   padding: 1rem 1.5rem;
-  background-color: white;
   border-bottom: 1px solid #e5e7eb;
   gap: 1rem;
-
-  /* CSS variables for theming */
-  --top-bar-bg: var(--vers-comp-top-bar-bg, white);
-  --top-bar-text-color: var(--vers-comp-top-bar-text-color, #1f2937);
-  --top-bar-border-color: var(--vers-comp-top-bar-border-color, #e5e7eb);
-  --top-bar-nav-item-bg: var(--vers-comp-top-bar-nav-item-bg, transparent);
-  --top-bar-nav-item-bg-hover: var(
-    --vers-comp-top-bar-nav-item-bg-hover,
-    #f3f4f6
-  );
-  --top-bar-nav-item-active-bg: var(
-    --vers-comp-top-bar-nav-item-active-bg,
-    #dbeafe
-  );
-  --top-bar-nav-item-active-text: var(
-    --vers-comp-top-bar-nav-item-active-text,
-    #1e40af
-  );
-  --top-bar-transition: color 0.15s ease, background-color 0.15s ease;
 }
 
-/* Variant: Primary */
-.top-bar[data-variant="primary"] {
-  --top-bar-bg: var(--vers-comp-top-bar-primary-bg, #ffffff);
-  --top-bar-text-color: var(--vers-comp-top-bar-primary-text-color, #1f2937);
-  --top-bar-nav-item-bg-hover: var(
-    --vers-comp-top-bar-primary-nav-item-bg-hover,
-    #f0f9ff
-  );
-  --top-bar-nav-item-active-bg: var(
-    --vers-comp-top-bar-primary-nav-item-active-bg,
-    #dbeafe
-  );
-  --top-bar-nav-item-active-text: var(
-    --vers-comp-top-bar-primary-nav-item-active-text,
-    #0c4a6e
-  );
-  background-color: var(--top-bar-bg);
-  color: var(--top-bar-text-color);
-}
-
-/* Variant: Secondary */
-.top-bar[data-variant="secondary"] {
-  --top-bar-bg: var(--vers-comp-top-bar-secondary-bg, #f9fafb);
-  --top-bar-text-color: var(--vers-comp-top-bar-secondary-text-color, #374151);
-  --top-bar-nav-item-bg-hover: var(
-    --vers-comp-top-bar-secondary-nav-item-bg-hover,
-    #f3f4f6
-  );
-  --top-bar-nav-item-active-bg: var(
-    --vers-comp-top-bar-secondary-nav-item-active-bg,
-    #e5e7eb
-  );
-  --top-bar-nav-item-active-text: var(
-    --vers-comp-top-bar-secondary-nav-item-active-text,
-    #1f2937
-  );
-  background-color: var(--top-bar-bg);
-  color: var(--top-bar-text-color);
-}
-
-/* Leading section - Left side with flex-1 growth */
+/* Leading section - Left grid area */
 .top-bar-leading {
+  grid-area: leading;
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  flex: 1;
-  min-width: 0;
 }
 
-/* Trailing section - Right side pushed to right */
+/* Centred section - Center grid area */
+.top-bar-centred {
+  grid-area: centred;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Trailing section - Right grid area */
 .top-bar-trailing {
+  grid-area: trailing;
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-left: auto;
-}
-
-/* Navigation container - Semantic nav element */
-.top-bar-nav {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* Navigation item - Button or link styled as nav item */
-.top-bar-nav-item {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 0.875rem;
-  background-color: var(--top-bar-nav-item-bg);
-  color: var(--top-bar-text-color);
-  border: none;
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: var(--top-bar-transition);
-  text-decoration: none;
-  white-space: nowrap;
-  font-family: inherit;
-}
-
-.top-bar-nav-item:hover {
-  background-color: var(--top-bar-nav-item-bg-hover);
-}
-
-/* Active state - Sets background and text color */
-.top-bar-nav-item[data-active] {
-  background-color: var(--top-bar-nav-item-active-bg);
-  color: var(--top-bar-nav-item-active-text);
-  font-weight: 600;
-}
-
-/* Actions container - For icon buttons, avatars, etc */
-.top-bar-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-/* Mobile toggle button */
-.top-bar-mobile-toggle {
-  display: none;
 }
 
 /* Responsive design - Mobile breakpoint */
@@ -145,21 +46,11 @@
     gap: 1rem;
   }
 
-  .top-bar-nav-item {
-    padding: 0.5rem 0.625rem;
-    font-size: 0.8125rem;
+  .top-bar-centred {
+    gap: 0.75rem;
   }
 
-  .top-bar-actions {
-    gap: 0.5rem;
-  }
-
-  .top-bar-mobile-toggle {
-    display: inline-flex;
-  }
-
-  /* Hide nav on mobile by default */
-  .top-bar-nav {
-    display: none;
+  .top-bar-trailing {
+    gap: 0.75rem;
   }
 }
