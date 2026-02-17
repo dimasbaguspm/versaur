@@ -1,49 +1,57 @@
-/* Table Root - Wrapper div for overflow handling */
+/* Table Root - Wrapper div for overflow handling with Grid support */
 .table {
   position: relative;
   width: 100%;
   overflow-x: auto;
   border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  background: white;
+  background: transparent;
+
+  /* CSS Grid column definition from parent */
+  --table-grid-columns: auto;
 }
 
 /* Semantic table element */
 .table table {
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
+  display: grid;
+  grid-template-columns: var(--table-grid-columns);
   font-size: 0.875rem;
   line-height: 1.6;
-  table-layout: auto;
+  grid-auto-rows: min-content;
 
-  /* Private tokens for styling */
-  --table-border-color: var(--vers-comp-table-border-color, #d1d5db);
+  /* Private tokens for styling - using ghost variant */
+  --table-border-color: var(--vers-comp-table-border-color, #e3e4ea);
   --table-cell-padding-x: var(--vers-comp-table-cell-padding-x, 1rem);
   --table-cell-padding-y: var(--vers-comp-table-cell-padding-y, 0.75rem);
-  --table-bg-row: var(--vers-comp-table-bg-row, white);
-  --table-bg-row-alt: var(--vers-comp-table-bg-row-alt, #fafafa);
-  --table-bg-row-hover: var(--vers-comp-table-bg-row-hover, #f0f4f8);
-  --table-text-color: var(--vers-comp-table-text-color, #1f2937);
+  --table-bg-row: var(--vers-comp-table-bg-row, transparent);
+  --table-bg-row-alt: var(--vers-comp-table-bg-row-alt, transparent);
+  --table-bg-row-hover: var(--vers-comp-table-bg-row-hover, #e3e4ea);
+  --table-text-color: var(--vers-comp-table-text-color, #3d405b);
   --table-text-secondary: var(--vers-comp-table-text-secondary, #6b7280);
-  --table-header-bg: var(--vers-comp-table-header-bg, #f3f4f6);
-  --table-header-border: var(--vers-comp-table-header-border, #d1d5db);
-  --table-header-text-color: var(--vers-comp-table-header-text-color, #111827);
+  --table-header-bg: var(--vers-comp-table-header-bg, transparent);
+  --table-header-border: var(--vers-comp-table-header-border, #b6b8db);
+  --table-header-text-color: var(--vers-comp-table-header-text-color, #3d405b);
   --table-header-font-weight: var(--vers-comp-table-header-font-weight, 600);
   --table-header-font-size: var(--vers-comp-table-header-font-size, 0.8125rem);
-  --table-footer-bg: var(--vers-comp-table-footer-bg, #f3f4f6);
-  --table-footer-border: var(--vers-comp-table-footer-border, #d1d5db);
-  --table-footer-text-color: var(--vers-comp-table-footer-text-color, #111827);
+  --table-footer-bg: var(--vers-comp-table-footer-bg, transparent);
+  --table-footer-border: var(--vers-comp-table-footer-border, #b6b8db);
+  --table-footer-text-color: var(--vers-comp-table-footer-text-color, #3d405b);
   --table-footer-font-weight: var(--vers-comp-table-footer-font-weight, 600);
-  --table-col-width: auto;
 }
 
-/* Table Header */
+/* ============================================
+   TABLE HEADER SECTION
+   ============================================ */
 .table-header {
-  background-color: var(--table-header-bg);
+  display: contents;
 }
 
-.table-header th {
+.table-header tr {
+  display: contents;
+}
+
+/* Table Header Cell (th) */
+.table-head {
   padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
   text-align: left;
   text-transform: uppercase;
@@ -51,99 +59,105 @@
   font-size: var(--table-header-font-size);
   font-weight: var(--table-header-font-weight);
   color: var(--table-header-text-color);
+  background-color: var(--table-header-bg);
   border-bottom: 2px solid var(--table-header-border);
   white-space: nowrap;
   position: sticky;
   top: 0;
   z-index: 10;
-  width: var(--table-col-width);
+  cursor: default;
 }
 
-.table-header th:first-child {
-  border-top-left-radius: 0.5rem;
+.table-head[data-sortable="true"] {
+  cursor: pointer;
+  user-select: none;
 }
 
-.table-header th:last-child {
-  border-top-right-radius: 0.5rem;
+.table-head[data-sortable="true"]:hover {
+  background-color: #d8d9e0;
+  color: #2d3f56;
 }
 
-/* Table Body */
+/* ============================================
+   TABLE BODY SECTION
+   ============================================ */
 .table-body {
-  background-color: var(--table-bg-row);
+  display: contents;
 }
 
 .table-body tr {
+  display: contents;
+}
+
+/* Body cells - apply grid-column to ensure proper wrapping */
+.table-body tr > * {
   border-bottom: 1px solid var(--table-border-color);
   transition: background-color 0.15s ease;
   background-color: var(--table-bg-row);
+  padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
+  color: var(--table-text-color);
+  vertical-align: middle;
+  min-height: 2.5rem;
 }
 
-.table-body tr:nth-child(even) {
+/* Alternating row colors - uses nth-child on cells to determine row */
+.table-body tr:nth-child(odd) > * {
+  background-color: var(--table-bg-row);
+  border-bottom-color: var(--table-border-color);
+}
+
+.table-body tr:nth-child(even) > * {
   background-color: var(--table-bg-row-alt);
+  border-bottom-color: var(--table-border-color);
 }
 
-.table-body tr:hover {
+/* Row hover effect */
+.table-body tr:hover > * {
   background-color: var(--table-bg-row-hover);
 }
 
-.table-body tr:last-child {
-  border-bottom: 1px solid var(--table-border-color);
-}
-
-.table-body td {
-  padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
-  color: var(--table-text-color);
-  width: var(--table-col-width);
-  vertical-align: middle;
-}
-
-/* Table Footer */
+/* ============================================
+   TABLE FOOTER SECTION
+   ============================================ */
 .table-footer {
+  display: contents;
+}
+
+.table-footer tr {
+  display: contents;
+}
+
+.table-footer tr > * {
+  padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
+  border-top: 2px solid var(--table-footer-border);
+  font-weight: var(--table-footer-font-weight);
+  color: var(--table-footer-text-color);
   background-color: var(--table-footer-bg);
 }
 
-.table-footer th,
-.table-footer td {
-  padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
-  border-top: 2px solid var(--table-footer-border);
-  border-bottom: none;
-  font-weight: var(--table-footer-font-weight);
-  color: var(--table-footer-text-color);
-  width: var(--table-col-width);
-}
-
-.table-footer tr:first-child th:first-child,
-.table-footer tr:first-child td:first-child {
-  border-bottom-left-radius: 0.5rem;
-}
-
-.table-footer tr:last-child th:last-child,
-.table-footer tr:last-child td:last-child {
-  border-bottom-right-radius: 0.5rem;
-}
-
-/* Table Row */
-.table-row {
-  display: table-row;
-}
-
-/* Table Head Cell (th) */
-.table-head {
-  display: table-cell;
-}
-
-/* Table Cell (td) - with variant support */
+/* ============================================
+   TABLE CELL ALIGNMENT
+   ============================================ */
 .table-cell {
-  display: table-cell;
-}
-
-/* Cell variants for different content types */
-.table-cell[data-table-cell-variant="basic"] {
-  /* Default text content */
+  /* Default: left aligned */
   text-align: left;
-  font-variant-numeric: normal;
 }
 
+.table-cell[data-align="left"] {
+  text-align: left;
+}
+
+.table-cell[data-align="center"] {
+  text-align: center;
+}
+
+.table-cell[data-align="right"] {
+  text-align: right;
+}
+
+/* ============================================
+   TABLE CELL VARIANTS
+   ============================================ */
 .table-cell[data-table-cell-variant="numeric"] {
   /* Numeric content - right aligned with monospace */
   text-align: right;
@@ -167,11 +181,36 @@
   border-left: 4px solid var(--vers-comp-table-cell-highlight-border, #f59e0b);
 }
 
-/* Responsive overflow handling */
+/* Built-in column types */
+.table-cell[data-table-cell-variant="checkbox"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--table-cell-padding-y) calc(var(--table-cell-padding-x) / 2);
+  width: auto;
+  min-width: 3rem;
+}
+
+.table-cell[data-table-cell-variant="double-line"] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.table-cell[data-table-cell-variant="action"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--table-cell-padding-y) calc(var(--table-cell-padding-x) / 2);
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
 @media (max-width: 768px) {
   .table {
     border-radius: 0;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   }
 
   .table table {
@@ -179,15 +218,13 @@
   }
 
   .table-head,
-  .table-header th {
+  .table-cell {
     padding: calc(var(--table-cell-padding-y) * 0.75)
       calc(var(--table-cell-padding-x) * 0.75);
     font-size: 0.75rem;
   }
 
-  .table-cell,
-  .table-body td {
-    padding: calc(var(--table-cell-padding-y) * 0.75)
-      calc(var(--table-cell-padding-x) * 0.75);
+  .table-head {
+    font-size: 0.75rem;
   }
 }

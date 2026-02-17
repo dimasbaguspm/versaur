@@ -1,139 +1,40 @@
 "use client";
 
 import { Table } from "./table.js";
-
-/**
- * Section Interface for table documentation
- */
-export interface TableSection {
-  key: string;
-  title: string;
-  preview: () => JSX.Element;
-  code: string;
-  language: string;
-}
-
-/**
- * Prop Definition Interface
- */
-export interface PropGroup {
-  name: string;
-  props: PropDefinition[];
-}
-
-export interface PropDefinition {
-  name: string;
-  type: string;
-  description: string;
-  default: string;
-}
+import { useState } from "react";
 
 /* ============================================================================
-   Basic Table Example - Simple invoice layout
+   Basic Table Example - Simple 4-column table with CSS Grid
    ========================================================================= */
 function BasicInvoiceTable() {
   return (
-    <Table>
+    <Table columns="2fr 1fr 1fr 1fr">
       <Table.Header>
         <Table.Row>
-          <Table.Head width="30%">Item</Table.Head>
-          <Table.Head width="40%">Description</Table.Head>
-          <Table.Head width="15%">Quantity</Table.Head>
-          <Table.Head width="15%">Price</Table.Head>
+          <Table.HeaderCell>Item</Table.HeaderCell>
+          <Table.HeaderCell align="center">Qty</Table.HeaderCell>
+          <Table.HeaderCell align="right">Price</Table.HeaderCell>
+          <Table.HeaderCell align="right">Total</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>
         <Table.Row>
-          <Table.Cell width="30%">SKU-001</Table.Cell>
-          <Table.Cell width="40%">Premium Widget</Table.Cell>
-          <Table.Cell width="15%">5</Table.Cell>
-          <Table.Cell width="15%">$29.99</Table.Cell>
+          <Table.BodyCell>Premium Widget</Table.BodyCell>
+          <Table.BodyCell align="center">5</Table.BodyCell>
+          <Table.BodyCell align="right">$29.99</Table.BodyCell>
+          <Table.BodyCell align="right">$149.95</Table.BodyCell>
         </Table.Row>
         <Table.Row>
-          <Table.Cell width="30%">SKU-002</Table.Cell>
-          <Table.Cell width="40%">Standard Component</Table.Cell>
-          <Table.Cell width="15%">10</Table.Cell>
-          <Table.Cell width="15%">$14.99</Table.Cell>
+          <Table.BodyCell>Standard Component</Table.BodyCell>
+          <Table.BodyCell align="center">10</Table.BodyCell>
+          <Table.BodyCell align="right">$14.99</Table.BodyCell>
+          <Table.BodyCell align="right">$149.90</Table.BodyCell>
         </Table.Row>
         <Table.Row>
-          <Table.Cell width="30%">SKU-003</Table.Cell>
-          <Table.Cell width="40%">Basic Item</Table.Cell>
-          <Table.Cell width="15%">3</Table.Cell>
-          <Table.Cell width="15%">$9.99</Table.Cell>
-        </Table.Row>
-      </Table.Body>
-      <Table.Footer>
-        <Table.Row>
-          <Table.Cell colSpan={3} width="85%">
-            Total
-          </Table.Cell>
-          <Table.Cell width="15%">$249.85</Table.Cell>
-        </Table.Row>
-      </Table.Footer>
-    </Table>
-  );
-}
-
-/* ============================================================================
-   Numeric Data Table - Right-aligned numeric values
-   ========================================================================= */
-function NumericDataTable() {
-  return (
-    <Table>
-      <Table.Header>
-        <Table.Row>
-          <Table.Head width="25%">Metric</Table.Head>
-          <Table.Head width="18.75%">Q1</Table.Head>
-          <Table.Head width="18.75%">Q2</Table.Head>
-          <Table.Head width="18.75%">Q3</Table.Head>
-          <Table.Head width="18.75%">Total</Table.Head>
-        </Table.Row>
-      </Table.Header>
-      <Table.Body>
-        <Table.Row>
-          <Table.Cell width="25%">Revenue</Table.Cell>
-          <Table.Cell width="18.75%" variant="numeric">
-            $125,400
-          </Table.Cell>
-          <Table.Cell width="18.75%" variant="numeric">
-            $142,800
-          </Table.Cell>
-          <Table.Cell width="18.75%" variant="numeric">
-            $159,200
-          </Table.Cell>
-          <Table.Cell width="18.75%" variant="numeric">
-            $427,400
-          </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell width="25%">Growth Rate</Table.Cell>
-          <Table.Cell width="18.75%" variant="numeric">
-            5.2%
-          </Table.Cell>
-          <Table.Cell width="18.75%" variant="numeric">
-            6.8%
-          </Table.Cell>
-          <Table.Cell width="18.75%" variant="numeric">
-            7.3%
-          </Table.Cell>
-          <Table.Cell width="18.75%" variant="numeric">
-            6.4%
-          </Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell width="25%">Users</Table.Cell>
-          <Table.Cell width="18.75%" variant="numeric">
-            8,250
-          </Table.Cell>
-          <Table.Cell width="18.75%" variant="numeric">
-            10,120
-          </Table.Cell>
-          <Table.Cell width="18.75%" variant="numeric">
-            12,890
-          </Table.Cell>
-          <Table.Cell width="18.75%" variant="numeric">
-            31,260
-          </Table.Cell>
+          <Table.BodyCell>Basic Item</Table.BodyCell>
+          <Table.BodyCell align="center">3</Table.BodyCell>
+          <Table.BodyCell align="right">$9.99</Table.BodyCell>
+          <Table.BodyCell align="right">$29.97</Table.BodyCell>
         </Table.Row>
       </Table.Body>
     </Table>
@@ -141,47 +42,135 @@ function NumericDataTable() {
 }
 
 /* ============================================================================
-   Mixed Variant Table - Combining different cell variants
+   Sortable Table - Table with sortable headers
    ========================================================================= */
-function MixedVariantTable() {
+function SortableTable() {
+  const [sortCol, setSortCol] = useState<string | null>(null);
+  const [sortDir, setSortDir] = useState<"asc" | "desc" | null>(null);
+
+  const handleSort = (column: string) => {
+    return (direction: "asc" | "desc" | null) => {
+      setSortCol(column);
+      setSortDir(direction);
+    };
+  };
+
   return (
-    <Table>
+    <Table columns="2fr 1fr 1fr">
       <Table.Header>
         <Table.Row>
-          <Table.Head width="30%">Task</Table.Head>
-          <Table.Head width="20%">Status</Table.Head>
-          <Table.Head width="15%">Priority</Table.Head>
-          <Table.Head width="35%">Owner</Table.Head>
+          <Table.HeaderCell
+            sortable
+            sortDirection={sortCol === "task" ? sortDir : null}
+            onSort={handleSort("task")}
+          >
+            Task
+          </Table.HeaderCell>
+          <Table.HeaderCell
+            sortable
+            sortDirection={sortCol === "status" ? sortDir : null}
+            onSort={handleSort("status")}
+            align="center"
+          >
+            Status
+          </Table.HeaderCell>
+          <Table.HeaderCell
+            sortable
+            sortDirection={sortCol === "priority" ? sortDir : null}
+            onSort={handleSort("priority")}
+            align="right"
+          >
+            Priority
+          </Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>
         <Table.Row>
-          <Table.Cell width="30%" variant="highlight">
-            Implement API
-          </Table.Cell>
-          <Table.Cell width="20%">In Progress</Table.Cell>
-          <Table.Cell width="15%" variant="numeric">
-            1
-          </Table.Cell>
-          <Table.Cell width="35%">Alice Chen</Table.Cell>
+          <Table.BodyCell>Implement API</Table.BodyCell>
+          <Table.BodyCell align="center">In Progress</Table.BodyCell>
+          <Table.BodyCell align="right">High</Table.BodyCell>
         </Table.Row>
         <Table.Row>
-          <Table.Cell width="30%">Design System</Table.Cell>
-          <Table.Cell width="20%">Completed</Table.Cell>
-          <Table.Cell width="15%" variant="numeric">
-            2
-          </Table.Cell>
-          <Table.Cell width="35%">Bob Smith</Table.Cell>
+          <Table.BodyCell>Design System</Table.BodyCell>
+          <Table.BodyCell align="center">Completed</Table.BodyCell>
+          <Table.BodyCell align="right">Medium</Table.BodyCell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+  );
+}
+
+/* ============================================================================
+   Table with Built-in Column Components - Checkbox, DoubleLine, Action
+   ========================================================================= */
+function TableWithBuiltins() {
+  const [selectedRows, setSelectedRows] = useState<Set<string | number>>(
+    new Set(),
+  );
+
+  const handleRowSelect = (rowId: string, checked: boolean) => {
+    const newSelected = new Set(selectedRows);
+    if (checked) {
+      newSelected.add(rowId);
+    } else {
+      newSelected.delete(rowId);
+    }
+    setSelectedRows(newSelected);
+  };
+
+  return (
+    <Table
+      columns="min-content 1fr 1fr min-content"
+      selectedRows={selectedRows}
+    >
+      <Table.Header>
+        <Table.Row>
+          <Table.HeaderCell>Select</Table.HeaderCell>
+          <Table.HeaderCell>Name</Table.HeaderCell>
+          <Table.HeaderCell>Info</Table.HeaderCell>
+          <Table.HeaderCell>Action</Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
+        <Table.Row>
+          <Table.BodyCell variant="checkbox">
+            <Table.Checkbox
+              rowId="user-1"
+              checked={selectedRows.has("user-1")}
+              onChange={(checked) => handleRowSelect("user-1", checked)}
+            />
+          </Table.BodyCell>
+          <Table.BodyCell>
+            <Table.DoubleLine
+              title="Alice Chen"
+              subtitle="alice@company.com"
+              size="md"
+            />
+          </Table.BodyCell>
+          <Table.BodyCell>Senior Product Designer</Table.BodyCell>
+          <Table.BodyCell variant="action">
+            <Table.Action onClick={() => console.log("Action clicked")} />
+          </Table.BodyCell>
         </Table.Row>
         <Table.Row>
-          <Table.Cell width="30%" variant="highlight">
-            Security Audit
-          </Table.Cell>
-          <Table.Cell width="20%">Pending</Table.Cell>
-          <Table.Cell width="15%" variant="numeric">
-            1
-          </Table.Cell>
-          <Table.Cell width="35%">Carol Davis</Table.Cell>
+          <Table.BodyCell variant="checkbox">
+            <Table.Checkbox
+              rowId="user-2"
+              checked={selectedRows.has("user-2")}
+              onChange={(checked) => handleRowSelect("user-2", checked)}
+            />
+          </Table.BodyCell>
+          <Table.BodyCell>
+            <Table.DoubleLine
+              title="Bob Smith"
+              subtitle="bob@company.com"
+              size="md"
+            />
+          </Table.BodyCell>
+          <Table.BodyCell>Software Engineer</Table.BodyCell>
+          <Table.BodyCell variant="action">
+            <Table.Action onClick={() => console.log("Action clicked")} />
+          </Table.BodyCell>
         </Table.Row>
       </Table.Body>
     </Table>
@@ -191,7 +180,7 @@ function MixedVariantTable() {
 /* ============================================================================
    Export sections, props, and installation
    ========================================================================= */
-export const tableSections: TableSection[] = [
+export const tableSections = [
   {
     key: "basic-invoice",
     title: "Basic Invoice Table",
@@ -200,57 +189,21 @@ export const tableSections: TableSection[] = [
 
 export function BasicInvoiceTable() {
   return (
-    <Table>
+    <Table columns="2fr 1fr 1fr 1fr">
       <Table.Header>
         <Table.Row>
-          <Table.Head>Item</Table.Head>
-          <Table.Head>Description</Table.Head>
-          <Table.Head>Quantity</Table.Head>
-          <Table.Head>Price</Table.Head>
+          <Table.HeaderCell>Item</Table.HeaderCell>
+          <Table.HeaderCell align="center">Qty</Table.HeaderCell>
+          <Table.HeaderCell align="right">Price</Table.HeaderCell>
+          <Table.HeaderCell align="right">Total</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>
         <Table.Row>
-          <Table.Cell>SKU-001</Table.Cell>
-          <Table.Cell>Premium Widget</Table.Cell>
-          <Table.Cell>5</Table.Cell>
-          <Table.Cell>$29.99</Table.Cell>
-        </Table.Row>
-      </Table.Body>
-      <Table.Footer>
-        <Table.Row>
-          <Table.Cell colSpan={3}>Total</Table.Cell>
-          <Table.Cell>$249.85</Table.Cell>
-        </Table.Row>
-      </Table.Footer>
-    </Table>
-  );
-}`,
-    language: "tsx",
-  },
-  {
-    key: "numeric-data",
-    title: "Numeric Data Table",
-    preview: NumericDataTable,
-    code: `import { Table } from '@versaur/react/table';
-
-export function NumericDataTable() {
-  return (
-    <Table>
-      <Table.Header>
-        <Table.Row>
-          <Table.Head>Metric</Table.Head>
-          <Table.Head>Q1</Table.Head>
-          <Table.Head>Q2</Table.Head>
-          <Table.Head>Q3</Table.Head>
-        </Table.Row>
-      </Table.Header>
-      <Table.Body>
-        <Table.Row>
-          <Table.Cell>Revenue</Table.Cell>
-          <Table.Cell variant="numeric">$125,400</Table.Cell>
-          <Table.Cell variant="numeric">$142,800</Table.Cell>
-          <Table.Cell variant="numeric">$159,200</Table.Cell>
+          <Table.BodyCell>Premium Widget</Table.BodyCell>
+          <Table.BodyCell align="center">5</Table.BodyCell>
+          <Table.BodyCell align="right">$29.99</Table.BodyCell>
+          <Table.BodyCell align="right">$149.95</Table.BodyCell>
         </Table.Row>
       </Table.Body>
     </Table>
@@ -259,28 +212,86 @@ export function NumericDataTable() {
     language: "tsx",
   },
   {
-    key: "mixed-variant",
-    title: "Mixed Variant Table",
-    preview: MixedVariantTable,
+    key: "sortable-table",
+    title: "Sortable Table",
+    preview: SortableTable,
     code: `import { Table } from '@versaur/react/table';
+import { useState } from 'react';
 
-export function MixedVariantTable() {
+export function SortableTable() {
+  const [sortCol, setSortCol] = useState<string | null>(null);
+
   return (
-    <Table>
+    <Table columns="2fr 1fr 1fr">
       <Table.Header>
         <Table.Row>
-          <Table.Head>Task</Table.Head>
-          <Table.Head>Status</Table.Head>
-          <Table.Head>Priority</Table.Head>
-          <Table.Head>Owner</Table.Head>
+          <Table.HeaderCell
+            sortable
+            sortDirection={sortCol === 'task' ? 'asc' : null}
+            onSort={(dir) => setSortCol(dir ? 'task' : null)}
+          >
+            Task
+          </Table.HeaderCell>
+          <Table.HeaderCell align="center">Status</Table.HeaderCell>
+          <Table.HeaderCell align="right">Priority</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>
         <Table.Row>
-          <Table.Cell variant="highlight">Implement API</Table.Cell>
-          <Table.Cell>In Progress</Table.Cell>
-          <Table.Cell variant="numeric">1</Table.Cell>
-          <Table.Cell>Alice Chen</Table.Cell>
+          <Table.BodyCell>Implement API</Table.BodyCell>
+          <Table.BodyCell align="center">In Progress</Table.BodyCell>
+          <Table.BodyCell align="right">High</Table.BodyCell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+  );
+}`,
+    language: "tsx",
+  },
+  {
+    key: "table-with-builtins",
+    title: "Table with Built-in Components",
+    preview: TableWithBuiltins,
+    code: `import { Table } from '@versaur/react/table';
+import { useState } from 'react';
+
+export function TableWithBuiltins() {
+  const [selectedRows, setSelectedRows] = useState<Set<string>>(new Set());
+
+  return (
+    <Table columns="min-content 1fr 1fr min-content" selectedRows={selectedRows}>
+      <Table.Header>
+        <Table.Row>
+          <Table.HeaderCell>Select</Table.HeaderCell>
+          <Table.HeaderCell>Name</Table.HeaderCell>
+          <Table.HeaderCell>Info</Table.HeaderCell>
+          <Table.HeaderCell>Action</Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
+        <Table.Row>
+          <Table.BodyCell variant="checkbox">
+            <Table.Checkbox
+              rowId="user-1"
+              checked={selectedRows.has('user-1')}
+              onChange={(checked) => {
+                const newSet = new Set(selectedRows);
+                if (checked) newSet.add('user-1');
+                else newSet.delete('user-1');
+                setSelectedRows(newSet);
+              }}
+            />
+          </Table.BodyCell>
+          <Table.BodyCell>
+            <Table.DoubleLine
+              title="Alice Chen"
+              subtitle="alice@company.com"
+            />
+          </Table.BodyCell>
+          <Table.BodyCell>Senior Designer</Table.BodyCell>
+          <Table.BodyCell variant="action">
+            <Table.Action onClick={() => {}} />
+          </Table.BodyCell>
         </Table.Row>
       </Table.Body>
     </Table>
@@ -290,10 +301,23 @@ export function MixedVariantTable() {
   },
 ];
 
-export const tableProps: PropGroup[] = [
+export const tableProps = [
   {
     name: "Table",
     props: [
+      {
+        name: "columns",
+        type: "string",
+        description:
+          'CSS Grid columns string (e.g., "2fr 1fr 1fr min-content")',
+        default: "required",
+      },
+      {
+        name: "selectedRows",
+        type: "Set<string | number>",
+        description: "Controlled set of selected row IDs",
+        default: "undefined",
+      },
       {
         name: "children",
         type: "ReactNode",
@@ -308,7 +332,7 @@ export const tableProps: PropGroup[] = [
       {
         name: "children",
         type: "ReactNode",
-        description: "Header rows with head cells",
+        description: "Header rows with HeaderCell elements",
         default: "-",
       },
     ],
@@ -319,7 +343,7 @@ export const tableProps: PropGroup[] = [
       {
         name: "children",
         type: "ReactNode",
-        description: "Body rows with data cells",
+        description: "Body rows with BodyCell elements",
         default: "-",
       },
     ],
@@ -330,7 +354,7 @@ export const tableProps: PropGroup[] = [
       {
         name: "children",
         type: "ReactNode",
-        description: "Footer rows with summary cells",
+        description: "Footer rows with BodyCell elements",
         default: "-",
       },
     ],
@@ -341,13 +365,13 @@ export const tableProps: PropGroup[] = [
       {
         name: "children",
         type: "ReactNode",
-        description: "Row cells (Head or Cell)",
+        description: "Row cells (HeaderCell or BodyCell)",
         default: "-",
       },
     ],
   },
   {
-    name: "Table.Head",
+    name: "Table.HeaderCell",
     props: [
       {
         name: "children",
@@ -356,15 +380,33 @@ export const tableProps: PropGroup[] = [
         default: "-",
       },
       {
-        name: "width",
-        type: "string",
-        description: 'Column width (e.g., "30%", "200px")',
-        default: "auto",
+        name: "sortable",
+        type: "boolean",
+        description: "Enable sorting on this column",
+        default: "false",
+      },
+      {
+        name: "sortDirection",
+        type: "'asc' | 'desc' | null",
+        description: "Current sort direction (controlled)",
+        default: "null",
+      },
+      {
+        name: "onSort",
+        type: "(direction: 'asc' | 'desc' | null) => void",
+        description: "Sort direction change handler",
+        default: "-",
+      },
+      {
+        name: "align",
+        type: "'left' | 'center' | 'right'",
+        description: "Text alignment",
+        default: "left",
       },
     ],
   },
   {
-    name: "Table.Cell",
+    name: "Table.BodyCell",
     props: [
       {
         name: "children",
@@ -374,15 +416,90 @@ export const tableProps: PropGroup[] = [
       },
       {
         name: "variant",
-        type: '"basic" | "numeric" | "highlight"',
-        description: "Cell styling variant (optional)",
-        default: "basic",
+        type: "'checkbox' | 'double-line' | 'action'",
+        description: "Cell styling variant for built-in components",
+        default: "undefined",
       },
       {
-        name: "width",
-        type: "string",
-        description: 'Column width (e.g., "30%", "200px")',
-        default: "auto",
+        name: "align",
+        type: "'left' | 'center' | 'right'",
+        description: "Text alignment",
+        default: "left",
+      },
+    ],
+  },
+  {
+    name: "Table.Checkbox",
+    props: [
+      {
+        name: "rowId",
+        type: "string | number",
+        description: "Unique identifier for the row",
+        default: "-",
+      },
+      {
+        name: "checked",
+        type: "boolean",
+        description: "Checkbox checked state",
+        default: "false",
+      },
+      {
+        name: "indeterminate",
+        type: "boolean",
+        description: "Indeterminate state (partial selection)",
+        default: "false",
+      },
+      {
+        name: "onChange",
+        type: "(checked: boolean) => void",
+        description: "Change handler",
+        default: "-",
+      },
+    ],
+  },
+  {
+    name: "Table.DoubleLine",
+    props: [
+      {
+        name: "title",
+        type: "ReactNode",
+        description: "Primary text (bold)",
+        default: "-",
+      },
+      {
+        name: "subtitle",
+        type: "ReactNode",
+        description: "Secondary text (gray, smaller)",
+        default: "-",
+      },
+      {
+        name: "size",
+        type: "'sm' | 'md' | 'lg'",
+        description: "Component size",
+        default: "md",
+      },
+    ],
+  },
+  {
+    name: "Table.Action",
+    props: [
+      {
+        name: "icon",
+        type: "React.ComponentType<SVGProps>",
+        description: "Icon component from @versaur/icons",
+        default: "-",
+      },
+      {
+        name: "onClick",
+        type: "() => void",
+        description: "Click handler (optional, click propagation is stopped)",
+        default: "-",
+      },
+      {
+        name: "disabled",
+        type: "boolean",
+        description: "Disable the button",
+        default: "false",
       },
     ],
   },

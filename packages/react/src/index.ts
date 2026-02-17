@@ -111,15 +111,16 @@ export type {
 
 export { Table } from "./components/table";
 export type {
-  TableRootProps,
   TableWrapperProps,
   TableHeaderProps,
   TableBodyProps,
   TableFooterProps,
   TableRowProps,
-  TableHeadProps,
-  TableCellProps,
-  TableComponent,
+  TableHeaderCellProps,
+  TableBodyCellProps,
+  TableCheckboxProps,
+  TableDoubleLineProps,
+  TableActionProps,
 } from "./components/table";
 
 export { ButtonGroup } from "./components/button-group";
@@ -132,7 +133,6 @@ export type {
 } from "./components/button-group";
 
 export { Kbd } from "./components/kbd";
-export type { KbdProps, KbdVariant, KbdSize } from "./components/kbd";
 
 export { TopBar } from "./components/top-bar";
 export type {

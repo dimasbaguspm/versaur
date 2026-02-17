@@ -6,6 +6,5 @@ declare const styles: {
   readonly 'table-footer': string;
   readonly 'table-head': string;
   readonly 'table-header': string;
-  readonly 'table-row': string;
 };
 export default styles;
