@@ -30,74 +30,89 @@ function BasicPreview() {
   );
 }
 
-function VariantsPreview() {
-  const [value1, setValue1] = useState<string>("option1");
-  const [value2, setValue2] = useState<string>("option1");
+function OverflowPreview() {
+  const [value, setValue] = useState<string>("option1");
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-      <ChipSingleInput
-        value={value1}
-        onChange={setValue1}
-        label="Outline variant"
-        variant="outline"
-      >
-        <ChipSingleInput.Option value="option1">
-          Option 1
-        </ChipSingleInput.Option>
-        <ChipSingleInput.Option value="option2">
-          Option 2
-        </ChipSingleInput.Option>
-        <ChipSingleInput.Option value="option3">
-          Option 3
-        </ChipSingleInput.Option>
-      </ChipSingleInput>
-
-      <ChipSingleInput
-        value={value2}
-        onChange={setValue2}
-        label="Filled variant"
-        variant="filled"
-      >
-        <ChipSingleInput.Option value="option1">
-          Option 1
-        </ChipSingleInput.Option>
-        <ChipSingleInput.Option value="option2">
-          Option 2
-        </ChipSingleInput.Option>
-        <ChipSingleInput.Option value="option3">
-          Option 3
-        </ChipSingleInput.Option>
-      </ChipSingleInput>
-    </div>
+    <ChipSingleInput
+      value={value}
+      onChange={setValue}
+      label="Overflow with nowrap"
+      helper="Options wrap by default, disable with wrap={false}"
+      wrap={false}
+    >
+      <ChipSingleInput.Option value="option1">
+        Very Long Option Text
+      </ChipSingleInput.Option>
+      <ChipSingleInput.Option value="option2">
+        Another Very Long Option
+      </ChipSingleInput.Option>
+      <ChipSingleInput.Option value="option3">
+        One More Long Option
+      </ChipSingleInput.Option>
+      <ChipSingleInput.Option value="option4">
+        Yet Another Very Long Option
+      </ChipSingleInput.Option>
+    </ChipSingleInput>
   );
 }
 
-function SizesPreview() {
-  const [value, setValue] = useState<string>("medium");
+function CustomGapPreview() {
+  const [value4, setValue4] = useState<string>();
+  const [value3, setValue3] = useState<string>();
+  const [value1, setValue1] = useState<string>();
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       <ChipSingleInput
-        value={value}
-        onChange={setValue}
-        label="Small"
-        size="small"
+        value={value4}
+        onChange={setValue4}
+        label="Large gap (gap='4')"
+        gap="4"
       >
-        <ChipSingleInput.Option value="small">Small</ChipSingleInput.Option>
-        <ChipSingleInput.Option value="medium">Medium</ChipSingleInput.Option>
-        <ChipSingleInput.Option value="large">Large</ChipSingleInput.Option>
+        <ChipSingleInput.Option value="option1">
+          Option 1
+        </ChipSingleInput.Option>
+        <ChipSingleInput.Option value="option2">
+          Option 2
+        </ChipSingleInput.Option>
+        <ChipSingleInput.Option value="option3">
+          Option 3
+        </ChipSingleInput.Option>
       </ChipSingleInput>
 
       <ChipSingleInput
-        value={value}
-        onChange={setValue}
-        label="Large"
-        size="large"
+        value={value3}
+        onChange={setValue3}
+        label="Normal gap (gap='2')"
+        gap="2"
       >
-        <ChipSingleInput.Option value="small">Small</ChipSingleInput.Option>
-        <ChipSingleInput.Option value="medium">Medium</ChipSingleInput.Option>
-        <ChipSingleInput.Option value="large">Large</ChipSingleInput.Option>
+        <ChipSingleInput.Option value="option1">
+          Option 1
+        </ChipSingleInput.Option>
+        <ChipSingleInput.Option value="option2">
+          Option 2
+        </ChipSingleInput.Option>
+        <ChipSingleInput.Option value="option3">
+          Option 3
+        </ChipSingleInput.Option>
+      </ChipSingleInput>
+
+      <ChipSingleInput
+        value={value1}
+        onChange={setValue1}
+        label="Small gap (gap='1')"
+        gap="1"
+      >
+        <ChipSingleInput.Option value="option1">
+          Option 1
+        </ChipSingleInput.Option>
+        <ChipSingleInput.Option value="option2">
+          Option 2
+        </ChipSingleInput.Option>
+        <ChipSingleInput.Option value="option3">
+          Option 3
+        </ChipSingleInput.Option>
       </ChipSingleInput>
     </div>
   );
@@ -151,23 +166,35 @@ export const chipSingleInputSections: ChipSingleInputSection[] = [
     language: "tsx",
   },
   {
-    key: "variants",
-    title: "Variants",
-    preview: VariantsPreview,
-    code: `<ChipSingleInput variant="outline">
-  {/* options */}
-</ChipSingleInput>
-
-<ChipSingleInput variant="filled">
-  {/* options */}
+    key: "overflow",
+    title: "Overflow Handling",
+    preview: OverflowPreview,
+    code: `<ChipSingleInput
+  value={value}
+  onChange={setValue}
+  label="Overflow with nowrap"
+  wrap={false}
+>
+  <ChipSingleInput.Option value="option1">
+    Very Long Option Text
+  </ChipSingleInput.Option>
+  {/* more options */}
 </ChipSingleInput>`,
     language: "tsx",
   },
   {
-    key: "sizes",
-    title: "Sizes",
-    preview: SizesPreview,
-    code: `<ChipSingleInput size="small">
+    key: "customGap",
+    title: "Custom Gap",
+    preview: CustomGapPreview,
+    code: `<ChipSingleInput gap="4">
+  {/* options */}
+</ChipSingleInput>
+
+<ChipSingleInput gap="2">
+  {/* options */}
+</ChipSingleInput>
+
+<ChipSingleInput gap="1">
   {/* options */}
 </ChipSingleInput>`,
     language: "tsx",

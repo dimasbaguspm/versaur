@@ -10,8 +10,6 @@ import type {
   ChipSingleInputOptionProps,
 } from "./chip-single-input.types";
 
-import type { ChipSingleInput as ChipSingleInputCore } from "@versaur/core";
-
 /**
  * Private context for managing chip single input state
  */
@@ -20,8 +18,6 @@ interface ChipSingleInputContextType {
   onChange: (value: string) => void;
   name?: string;
   disabled?: boolean;
-  variant?: ChipSingleInputCore.Variant;
-  size?: ChipSingleInputCore.Size;
 }
 
 const ChipSingleInputContext = createContext<
@@ -32,7 +28,7 @@ function useChipSingleInputContext() {
   const context = useContext(ChipSingleInputContext);
   if (!context) {
     throw new Error(
-      "ChipSingleInput.Option must be used within ChipSingleInput"
+      "ChipSingleInput.Option must be used within ChipSingleInput",
     );
   }
   return context;
@@ -69,8 +65,6 @@ const ChipSingleInputRoot = forwardRef<
       value,
       onChange,
       name,
-      variant = "outline",
-      size = "medium",
       label,
       helper,
       error,
@@ -81,7 +75,7 @@ const ChipSingleInputRoot = forwardRef<
       children,
       ...rest
     },
-    ref
+    ref,
   ) => {
     const generatedId = useId();
     const groupId = rest.id || generatedId;
@@ -118,8 +112,6 @@ const ChipSingleInputRoot = forwardRef<
             onChange: handleChange,
             name,
             disabled,
-            variant,
-            size: size as ChipSingleInputCore.Size,
           }}
         >
           <div
@@ -138,7 +130,7 @@ const ChipSingleInputRoot = forwardRef<
         {!error && helper && <HelperText id={helperId}>{helper}</HelperText>}
       </div>
     );
-  }
+  },
 );
 
 ChipSingleInputRoot.displayName = "ChipSingleInput";
@@ -168,8 +160,6 @@ const ChipSingleInputOption = forwardRef<
   };
 
   const dataAttrs = useDataAttrs({
-    variant: context.variant,
-    size: context.size,
     selected: isSelected,
     disabled: isDisabled,
   });

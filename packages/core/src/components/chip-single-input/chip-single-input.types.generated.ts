@@ -3,14 +3,10 @@
 
 export type ChipSingleInputGap = '1' | '3' | '4';
 export type ChipSingleInputWrap = 'false';
-export type ChipSingleInputSize = 'large' | 'small';
-export type ChipSingleInputVariant = 'filled' | 'outline';
 
 export interface ChipSingleInputDataAttrs {
   gap?: ChipSingleInputGap;
   wrap?: ChipSingleInputWrap;
-  size?: ChipSingleInputSize;
-  variant?: ChipSingleInputVariant;
   disabled?: boolean;
   invalid?: boolean;
   selected?: boolean;
@@ -19,7 +15,5 @@ export interface ChipSingleInputDataAttrs {
 export namespace ChipSingleInput {
   export type Gap = ChipSingleInputGap;
   export type Wrap = ChipSingleInputWrap;
-  export type Size = ChipSingleInputSize;
-  export type Variant = ChipSingleInputVariant;
   export type DataAttrs = ChipSingleInputDataAttrs;
 }

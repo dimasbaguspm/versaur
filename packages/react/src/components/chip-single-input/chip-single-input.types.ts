@@ -1,8 +1,9 @@
 import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
-import type { ChipSingleInput as ChipSingleInputCore } from "@versaur/core";
 
-export interface ChipSingleInputRootProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
+export interface ChipSingleInputRootProps extends Omit<
+  HTMLAttributes<HTMLDivElement>,
+  "onChange"
+> {
   /**
    * Selected chip value
    */
@@ -17,18 +18,6 @@ export interface ChipSingleInputRootProps
    * Name attribute for the input group
    */
   name?: string;
-
-  /**
-   * Visual variant
-   * @default "outline"
-   */
-  variant?: ChipSingleInputCore.Variant;
-
-  /**
-   * Size variant
-   * @default "medium"
-   */
-  size?: ChipSingleInputCore.Size;
 
   /**
    * Label for the chip group
@@ -68,8 +57,10 @@ export interface ChipSingleInputRootProps
   wrap?: boolean;
 }
 
-export interface ChipSingleInputOptionProps
-  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "value"> {
+export interface ChipSingleInputOptionProps extends Omit<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  "value"
+> {
   /**
    * Chip value
    */

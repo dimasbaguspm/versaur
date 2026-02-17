@@ -16,6 +16,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-2);
+  width: 100%;
 }
 
 .options[data-gap="1"] {
@@ -32,6 +33,8 @@
 
 .options[data-wrap="false"] {
   flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 /* Individual chip option button */
@@ -104,49 +107,6 @@
 .option[data-selected]:hover:not([data-disabled]) {
   --_bg: var(--color-primary-hover);
   --_border: var(--color-primary-hover);
-}
-
-/* Size variants */
-.option[data-size="small"] {
-  --_height: 1.75rem;
-  --_px: var(--spacing-2);
-  --_font-size: var(--font-size-xs);
-  --_gap: var(--spacing-1);
-}
-
-.option[data-size="large"] {
-  --_height: 2.5rem;
-  --_px: var(--spacing-4);
-  --_font-size: var(--font-size-base);
-  --_gap: var(--spacing-2);
-}
-
-/* Variant: outline (default) */
-.option[data-variant="outline"] {
-  --_bg: transparent;
-  --_border: var(--color-border);
-  --_text: var(--color-text);
-  --_focus-ring-color: var(--color-border-focus);
-}
-
-.option[data-variant="outline"][data-selected] {
-  --_bg: var(--color-primary);
-  --_border: var(--color-primary);
-  --_text: var(--color-white);
-}
-
-/* Variant: filled */
-.option[data-variant="filled"] {
-  --_bg: var(--color-surface);
-  --_border: transparent;
-  --_text: var(--color-text);
-  --_focus-ring-color: var(--color-border-focus);
-}
-
-.option[data-variant="filled"][data-selected] {
-  --_bg: var(--color-primary);
-  --_border: var(--color-primary);
-  --_text: var(--color-white);
 }
 
 /* Invalid state on field */
