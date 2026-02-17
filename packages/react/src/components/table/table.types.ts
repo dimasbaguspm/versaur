@@ -41,17 +41,13 @@ export type TableHeaderCellProps = ThHTMLAttributes<HTMLTableCellElement> & {
    */
   sortable?: boolean;
   /**
-   * Current sort direction ('asc' | 'desc' | null for no sort)
+   * Current sort direction ('asc' | 'desc' | null for no sort, chevron always visible when sortable)
    */
   sortDirection?: "asc" | "desc" | null;
   /**
    * Callback when user clicks sortable header
    */
   onSort?: (direction: "asc" | "desc" | null) => void;
-  /**
-   * Text alignment: left (default), center, right
-   */
-  align?: "left" | "center" | "right";
 };
 
 /**
@@ -60,10 +56,6 @@ export type TableHeaderCellProps = ThHTMLAttributes<HTMLTableCellElement> & {
  */
 export type TableBodyCellProps = TdHTMLAttributes<HTMLTableCellElement> & {
   variant?: TableCellVariant;
-  /**
-   * Text alignment: left (default), center, right
-   */
-  align?: "left" | "center" | "right";
 };
 
 /**

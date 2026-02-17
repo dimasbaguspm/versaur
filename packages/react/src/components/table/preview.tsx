@@ -12,29 +12,29 @@ function BasicInvoiceTable() {
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell>Item</Table.HeaderCell>
-          <Table.HeaderCell align="center">Qty</Table.HeaderCell>
-          <Table.HeaderCell align="right">Price</Table.HeaderCell>
-          <Table.HeaderCell align="right">Total</Table.HeaderCell>
+          <Table.HeaderCell>Qty</Table.HeaderCell>
+          <Table.HeaderCell>Price</Table.HeaderCell>
+          <Table.HeaderCell>Total</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>
         <Table.Row>
           <Table.BodyCell>Premium Widget</Table.BodyCell>
-          <Table.BodyCell align="center">5</Table.BodyCell>
-          <Table.BodyCell align="right">$29.99</Table.BodyCell>
-          <Table.BodyCell align="right">$149.95</Table.BodyCell>
+          <Table.BodyCell>5</Table.BodyCell>
+          <Table.BodyCell>$29.99</Table.BodyCell>
+          <Table.BodyCell>$149.95</Table.BodyCell>
         </Table.Row>
         <Table.Row>
           <Table.BodyCell>Standard Component</Table.BodyCell>
-          <Table.BodyCell align="center">10</Table.BodyCell>
-          <Table.BodyCell align="right">$14.99</Table.BodyCell>
-          <Table.BodyCell align="right">$149.90</Table.BodyCell>
+          <Table.BodyCell>10</Table.BodyCell>
+          <Table.BodyCell>$14.99</Table.BodyCell>
+          <Table.BodyCell>$149.90</Table.BodyCell>
         </Table.Row>
         <Table.Row>
           <Table.BodyCell>Basic Item</Table.BodyCell>
-          <Table.BodyCell align="center">3</Table.BodyCell>
-          <Table.BodyCell align="right">$9.99</Table.BodyCell>
-          <Table.BodyCell align="right">$29.97</Table.BodyCell>
+          <Table.BodyCell>3</Table.BodyCell>
+          <Table.BodyCell>$9.99</Table.BodyCell>
+          <Table.BodyCell>$29.97</Table.BodyCell>
         </Table.Row>
       </Table.Body>
     </Table>
@@ -70,7 +70,7 @@ function SortableTable() {
             sortable
             sortDirection={sortCol === "status" ? sortDir : null}
             onSort={handleSort("status")}
-            align="center"
+           
           >
             Status
           </Table.HeaderCell>
@@ -78,7 +78,7 @@ function SortableTable() {
             sortable
             sortDirection={sortCol === "priority" ? sortDir : null}
             onSort={handleSort("priority")}
-            align="right"
+           
           >
             Priority
           </Table.HeaderCell>
@@ -87,13 +87,13 @@ function SortableTable() {
       <Table.Body>
         <Table.Row>
           <Table.BodyCell>Implement API</Table.BodyCell>
-          <Table.BodyCell align="center">In Progress</Table.BodyCell>
-          <Table.BodyCell align="right">High</Table.BodyCell>
+          <Table.BodyCell>In Progress</Table.BodyCell>
+          <Table.BodyCell>High</Table.BodyCell>
         </Table.Row>
         <Table.Row>
           <Table.BodyCell>Design System</Table.BodyCell>
-          <Table.BodyCell align="center">Completed</Table.BodyCell>
-          <Table.BodyCell align="right">Medium</Table.BodyCell>
+          <Table.BodyCell>Completed</Table.BodyCell>
+          <Table.BodyCell>Medium</Table.BodyCell>
         </Table.Row>
       </Table.Body>
     </Table>
@@ -193,17 +193,17 @@ export function BasicInvoiceTable() {
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell>Item</Table.HeaderCell>
-          <Table.HeaderCell align="center">Qty</Table.HeaderCell>
-          <Table.HeaderCell align="right">Price</Table.HeaderCell>
-          <Table.HeaderCell align="right">Total</Table.HeaderCell>
+          <Table.HeaderCell>Qty</Table.HeaderCell>
+          <Table.HeaderCell>Price</Table.HeaderCell>
+          <Table.HeaderCell>Total</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>
         <Table.Row>
           <Table.BodyCell>Premium Widget</Table.BodyCell>
-          <Table.BodyCell align="center">5</Table.BodyCell>
-          <Table.BodyCell align="right">$29.99</Table.BodyCell>
-          <Table.BodyCell align="right">$149.95</Table.BodyCell>
+          <Table.BodyCell>5</Table.BodyCell>
+          <Table.BodyCell>$29.99</Table.BodyCell>
+          <Table.BodyCell>$149.95</Table.BodyCell>
         </Table.Row>
       </Table.Body>
     </Table>
@@ -232,15 +232,15 @@ export function SortableTable() {
           >
             Task
           </Table.HeaderCell>
-          <Table.HeaderCell align="center">Status</Table.HeaderCell>
-          <Table.HeaderCell align="right">Priority</Table.HeaderCell>
+          <Table.HeaderCell>Status</Table.HeaderCell>
+          <Table.HeaderCell>Priority</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
       <Table.Body>
         <Table.Row>
           <Table.BodyCell>Implement API</Table.BodyCell>
-          <Table.BodyCell align="center">In Progress</Table.BodyCell>
-          <Table.BodyCell align="right">High</Table.BodyCell>
+          <Table.BodyCell>In Progress</Table.BodyCell>
+          <Table.BodyCell>High</Table.BodyCell>
         </Table.Row>
       </Table.Body>
     </Table>

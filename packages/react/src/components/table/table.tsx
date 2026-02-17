@@ -58,11 +58,18 @@ const TableFooter = forwardRef<HTMLTableSectionElement, TableFooterProps>(
 TableFooter.displayName = "Table.Footer";
 
 /**
- * TableRow - tr wrapper
+ * TableRow - tr wrapper with click-to-select support
  */
 const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
-  (props, ref) => {
-    return <tr ref={ref} {...props} />;
+  ({ onClick, ...props }, ref) => {
+    return (
+      <tr
+        ref={ref}
+        data-clickable={onClick ? "true" : undefined}
+        onClick={onClick}
+        {...props}
+      />
+    );
   },
 );
 
@@ -72,7 +79,7 @@ TableRow.displayName = "Table.Row";
  * TableHeaderCell - th wrapper with sortable support (renamed from TableHead)
  */
 const TableHeaderCell = forwardRef<HTMLTableCellElement, TableHeaderCellProps>(
-  ({ sortable, sortDirection, onSort, align, children, ...props }, ref) => {
+  ({ sortable, sortDirection, onSort, children, ...props }, ref) => {
     const handleClick = () => {
       if (!sortable || !onSort) return;
 
@@ -86,7 +93,6 @@ const TableHeaderCell = forwardRef<HTMLTableCellElement, TableHeaderCellProps>(
 
     const dataAttrs = useDataAttrs({
       sortable: sortable ? "true" : undefined,
-      align: align || "left",
     });
 
     return (
@@ -102,24 +108,33 @@ const TableHeaderCell = forwardRef<HTMLTableCellElement, TableHeaderCellProps>(
             display: "flex",
             alignItems: "center",
             gap: "0.5rem",
-            justifyContent:
-              align === "right"
-                ? "flex-end"
-                : align === "center"
-                  ? "center"
-                  : "flex-start",
+            justifyContent: "flex-start",
           }}
         >
           {children}
-          {sortable && sortDirection === "asc" && (
-            <ChevronUpIcon
-              style={{ width: "1em", height: "1em", flexShrink: 0 }}
-            />
-          )}
-          {sortable && sortDirection === "desc" && (
-            <ChevronDownIcon
-              style={{ width: "1em", height: "1em", flexShrink: 0 }}
-            />
+          {sortable && (
+            <>
+              {sortDirection === "asc" && (
+                <ChevronUpIcon
+                  style={{ width: "1em", height: "1em", flexShrink: 0 }}
+                />
+              )}
+              {sortDirection === "desc" && (
+                <ChevronDownIcon
+                  style={{ width: "1em", height: "1em", flexShrink: 0 }}
+                />
+              )}
+              {!sortDirection && (
+                <ChevronDownIcon
+                  style={{
+                    width: "1em",
+                    height: "1em",
+                    flexShrink: 0,
+                    opacity: 0.5,
+                  }}
+                />
+              )}
+            </>
           )}
         </div>
       </th>
@@ -133,17 +148,12 @@ TableHeaderCell.displayName = "Table.HeaderCell";
  * TableBodyCell - td wrapper (renamed from TableCell)
  */
 const TableBodyCell = forwardRef<HTMLTableCellElement, TableBodyCellProps>(
-  ({ variant, align = "left", ...props }, ref) => {
-    const dataAttrs = useDataAttrs({
-      align,
-    });
-
+  ({ variant, ...props }, ref) => {
     return (
       <td
         ref={ref}
         className={tableStyles["table-cell"]}
         data-table-cell-variant={variant}
-        {...dataAttrs}
         {...props}
       />
     );

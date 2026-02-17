@@ -2,18 +2,18 @@
 // Source: table.module.css
 
 export type TableSortable = 'true';
-export type TableAlign = 'center' | 'left' | 'right';
+export type TableClickable = 'true';
 export type TableTableCellVariant = 'action' | 'checkbox' | 'double-line' | 'highlight' | 'numeric';
 
 export interface TableDataAttrs {
   sortable?: TableSortable;
-  align?: TableAlign;
+  clickable?: TableClickable;
   tableCellVariant?: TableTableCellVariant;
 };
 
 export namespace Table {
   export type Sortable = TableSortable;
-  export type Align = TableAlign;
+  export type Clickable = TableClickable;
   export type TableCellVariant = TableTableCellVariant;
   export type DataAttrs = TableDataAttrs;
 }

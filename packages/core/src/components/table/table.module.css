@@ -20,22 +20,43 @@
   grid-auto-rows: min-content;
 
   /* Private tokens for styling - using ghost variant */
-  --table-border-color: var(--vers-comp-table-border-color, #e3e4ea);
+  --table-border-color: var(
+    --vers-comp-table-border-color,
+    var(--color-ghost-soft)
+  );
   --table-cell-padding-x: var(--vers-comp-table-cell-padding-x, 1rem);
   --table-cell-padding-y: var(--vers-comp-table-cell-padding-y, 0.75rem);
   --table-bg-row: var(--vers-comp-table-bg-row, transparent);
   --table-bg-row-alt: var(--vers-comp-table-bg-row-alt, transparent);
-  --table-bg-row-hover: var(--vers-comp-table-bg-row-hover, #e3e4ea);
-  --table-text-color: var(--vers-comp-table-text-color, #3d405b);
-  --table-text-secondary: var(--vers-comp-table-text-secondary, #6b7280);
+  --table-bg-row-hover: var(
+    --vers-comp-table-bg-row-hover,
+    var(--color-ghost-soft)
+  );
+  --table-text-color: var(--vers-comp-table-text-color, var(--color-ghost));
+  --table-text-secondary: var(
+    --vers-comp-table-text-secondary,
+    var(--color-text-secondary)
+  );
   --table-header-bg: var(--vers-comp-table-header-bg, transparent);
-  --table-header-border: var(--vers-comp-table-header-border, #b6b8db);
-  --table-header-text-color: var(--vers-comp-table-header-text-color, #3d405b);
+  --table-header-border: var(
+    --vers-comp-table-header-border,
+    var(--color-ghost-light)
+  );
+  --table-header-text-color: var(
+    --vers-comp-table-header-text-color,
+    var(--color-ghost)
+  );
   --table-header-font-weight: var(--vers-comp-table-header-font-weight, 600);
   --table-header-font-size: var(--vers-comp-table-header-font-size, 0.8125rem);
   --table-footer-bg: var(--vers-comp-table-footer-bg, transparent);
-  --table-footer-border: var(--vers-comp-table-footer-border, #b6b8db);
-  --table-footer-text-color: var(--vers-comp-table-footer-text-color, #3d405b);
+  --table-footer-border: var(
+    --vers-comp-table-footer-border,
+    var(--color-ghost-light)
+  );
+  --table-footer-text-color: var(
+    --vers-comp-table-footer-text-color,
+    var(--color-ghost)
+  );
   --table-footer-font-weight: var(--vers-comp-table-footer-font-weight, 600);
 }
 
@@ -74,8 +95,8 @@
 }
 
 .table-head[data-sortable="true"]:hover {
-  background-color: #d8d9e0;
-  color: #2d3f56;
+  background-color: var(--color-ghost-soft);
+  color: var(--color-ghost);
 }
 
 /* ============================================
@@ -111,9 +132,16 @@
   border-bottom-color: var(--table-border-color);
 }
 
-/* Row hover effect */
-.table-body tr:hover > * {
+/* Row hover effect - only when row is clickable */
+.table-body tr[data-clickable="true"]:hover > * {
   background-color: var(--table-bg-row-hover);
+}
+
+/* Checkbox border darkens on row hover when clickable */
+.table-body
+  tr[data-clickable="true"]:hover
+  [data-table-cell-variant="checkbox"] {
+  /* Checkbox input will receive darker border via native styling */
 }
 
 /* ============================================
@@ -136,23 +164,10 @@
 }
 
 /* ============================================
-   TABLE CELL ALIGNMENT
+   TABLE CELL - DEFAULT CENTERED
    ============================================ */
 .table-cell {
-  /* Default: left aligned */
-  text-align: left;
-}
-
-.table-cell[data-align="left"] {
-  text-align: left;
-}
-
-.table-cell[data-align="center"] {
-  text-align: center;
-}
-
-.table-cell[data-align="right"] {
-  text-align: right;
+  /* Default: content handles its own alignment */
 }
 
 /* ============================================
@@ -174,11 +189,15 @@
 .table-cell[data-table-cell-variant="highlight"] {
   /* Highlighted/important content */
   font-weight: 600;
-  background-color: var(--vers-comp-table-cell-highlight-bg, #fef3c7);
-  color: var(--vers-comp-table-cell-highlight-color, #78350f);
+  background-color: var(
+    --vers-comp-table-cell-highlight-bg,
+    var(--color-warning-soft)
+  );
+  color: var(--vers-comp-table-cell-highlight-color, var(--color-warning-bold));
   padding-left: calc(var(--table-cell-padding-x) - 2px);
   padding-right: calc(var(--table-cell-padding-x) - 2px);
-  border-left: 4px solid var(--vers-comp-table-cell-highlight-border, #f59e0b);
+  border-left: 4px solid
+    var(--vers-comp-table-cell-highlight-border, var(--color-warning));
 }
 
 /* Built-in column types */
@@ -189,6 +208,17 @@
   padding: var(--table-cell-padding-y) calc(var(--table-cell-padding-x) / 2);
   width: auto;
   min-width: 3rem;
+}
+
+/* Checkbox input border darkens on row hover */
+.table-body
+  tr[data-clickable="true"]:hover
+  .table-cell[data-table-cell-variant="checkbox"]
+  input {
+  border-color: var(
+    --vers-comp-checkbox-border-hover,
+    var(--color-ghost-active)
+  );
 }
 
 .table-cell[data-table-cell-variant="double-line"] {
