@@ -98,7 +98,7 @@
 .option[data-selected] {
   --_bg: var(--color-primary);
   --_border: var(--color-primary);
-  --_text: #ffffff;
+  --_text: var(--color-white);
 }
 
 .option[data-selected]:hover:not([data-disabled]) {
@@ -132,7 +132,7 @@
 .option[data-variant="outline"][data-selected] {
   --_bg: var(--color-primary);
   --_border: var(--color-primary);
-  --_text: #ffffff;
+  --_text: var(--color-white);
 }
 
 /* Variant: filled */
@@ -146,7 +146,7 @@
 .option[data-variant="filled"][data-selected] {
   --_bg: var(--color-primary);
   --_border: var(--color-primary);
-  --_text: #ffffff;
+  --_text: var(--color-white);
 }
 
 /* Invalid state on field */

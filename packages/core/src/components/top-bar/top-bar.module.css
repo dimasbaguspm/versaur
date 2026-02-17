@@ -5,9 +5,9 @@
   grid-template-columns: auto 1fr auto;
   grid-template-areas: "leading centred trailing";
   align-items: center;
-  padding: 1rem 1.5rem;
-  border-bottom: 1px solid #e5e7eb;
-  gap: 1rem;
+  padding: var(--spacing-4) var(--spacing-6);
+  border-bottom: 1px solid var(--color-border);
+  gap: var(--spacing-4);
 }
 
 /* Leading section - Left grid area */
@@ -15,7 +15,7 @@
   grid-area: leading;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: var(--spacing-6);
 }
 
 /* Centred section - Center grid area */
@@ -24,7 +24,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: var(--spacing-4);
 }
 
 /* Trailing section - Right grid area */
@@ -32,25 +32,25 @@
   grid-area: trailing;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--spacing-4);
 }
 
 /* Responsive design - Mobile breakpoint */
 @media (max-width: 768px) {
   .top-bar {
-    padding: 0.75rem 1rem;
-    gap: 0.75rem;
+    padding: var(--spacing-3) var(--spacing-4);
+    gap: var(--spacing-3);
   }
 
   .top-bar-leading {
-    gap: 1rem;
+    gap: var(--spacing-4);
   }
 
   .top-bar-centred {
-    gap: 0.75rem;
+    gap: var(--spacing-3);
   }
 
   .top-bar-trailing {
-    gap: 0.75rem;
+    gap: var(--spacing-3);
   }
 }

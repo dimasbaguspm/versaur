@@ -14,8 +14,14 @@
   --_border: var(--vers-comp-radio-border, var(--color-border));
   --_bg: var(--vers-comp-radio-bg, transparent);
   --_checked-bg: var(--vers-comp-radio-checked-bg, var(--color-primary));
-  --_checked-border: var(--vers-comp-radio-checked-border, var(--color-primary));
-  --_indicator-color: var(--vers-comp-radio-indicator-color, #ffffff);
+  --_checked-border: var(
+    --vers-comp-radio-checked-border,
+    var(--color-primary)
+  );
+  --_indicator-color: var(
+    --vers-comp-radio-indicator-color,
+    var(--color-white)
+  );
 
   /* Focus ring */
   --_focus-ring-width: var(
@@ -64,7 +70,7 @@
 
 /* Checked state - inner circle */
 .input:checked + .indicator::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 50%;
   height: 50%;

@@ -28,7 +28,7 @@
 
   /* Color — private tokens default to primary */
   --_bg: var(--vers-comp-button-bg, var(--color-primary));
-  --_color: var(--vers-comp-button-color, #ffffff);
+  --_color: var(--vers-comp-button-color, var(--color-white));
   --_border-color: var(--vers-comp-button-border-color, var(--color-primary));
 
   /* Focus ring */
@@ -94,7 +94,7 @@
    ============================================ */
 .button[data-variant="primary"] {
   --_bg: var(--vers-comp-button-primary-bg, var(--color-primary));
-  --_color: var(--vers-comp-button-primary-color, #ffffff);
+  --_color: var(--vers-comp-button-primary-color, var(--color-white));
   --_border-color: var(--vers-comp-button-primary-border-color, transparent);
   --_focus-ring-color: var(
     --vers-comp-button-primary-focus-ring-color,
@@ -129,7 +129,7 @@
     --vers-comp-button-primary-pressed-border-color,
     transparent
   );
-  box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.1);
+  box-shadow: var(--shadow-sm);
 }
 
 /* ============================================
@@ -137,7 +137,7 @@
    ============================================ */
 .button[data-variant="secondary"] {
   --_bg: var(--vers-comp-button-secondary-bg, var(--color-secondary));
-  --_color: var(--vers-comp-button-secondary-color, #ffffff);
+  --_color: var(--vers-comp-button-secondary-color, var(--color-white));
   --_border-color: var(--vers-comp-button-secondary-border-color, transparent);
   --_focus-ring-color: var(
     --vers-comp-button-secondary-focus-ring-color,
@@ -180,7 +180,7 @@
     --vers-comp-button-secondary-pressed-border-color,
     transparent
   );
-  box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.1);
+  box-shadow: var(--shadow-sm);
 }
 
 /* ============================================
@@ -209,6 +209,7 @@
 .button[data-variant="ghost"][aria-pressed="true"] {
   --_bg: var(--vers-comp-button-ghost-pressed-bg, var(--color-surface));
   --_color: var(--vers-comp-button-ghost-pressed-color, var(--color-text));
+  box-shadow: var(--shadow-sm);
 }
 
 /* ============================================
@@ -216,7 +217,7 @@
    ============================================ */
 .button[data-variant="danger"] {
   --_bg: var(--vers-comp-button-danger-bg, var(--color-danger));
-  --_color: var(--vers-comp-button-danger-color, #ffffff);
+  --_color: var(--vers-comp-button-danger-color, var(--color-white));
   --_border-color: var(--vers-comp-button-danger-border-color, transparent);
   --_focus-ring-color: var(
     --vers-comp-button-danger-focus-ring-color,
@@ -246,7 +247,7 @@
     --vers-comp-button-danger-pressed-border-color,
     transparent
   );
-  box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.1);
+  box-shadow: var(--shadow-sm);
 }
 
 /* State - Disabled */

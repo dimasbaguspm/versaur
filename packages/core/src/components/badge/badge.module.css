@@ -66,32 +66,32 @@
 
 .badge[data-variant="primary"] {
   --_bg: var(--color-primary);
-  --_color: #ffffff;
+  --_color: var(--color-white);
 }
 
 .badge[data-variant="secondary"] {
   --_bg: var(--color-secondary);
-  --_color: #ffffff;
+  --_color: var(--color-white);
 }
 
 .badge[data-variant="success"] {
   --_bg: var(--color-success);
-  --_color: #ffffff;
+  --_color: var(--color-white);
 }
 
 .badge[data-variant="danger"] {
   --_bg: var(--color-danger);
-  --_color: #ffffff;
+  --_color: var(--color-white);
 }
 
 .badge[data-variant="warning"] {
   --_bg: var(--color-warning);
-  --_color: #ffffff;
+  --_color: var(--color-white);
 }
 
 .badge[data-variant="info"] {
   --_bg: var(--color-info);
-  --_color: #ffffff;
+  --_color: var(--color-white);
 }
 
 .badge[data-variant="outline"] {

@@ -18,7 +18,10 @@
     --vers-comp-checkbox-checked-border,
     var(--color-primary)
   );
-  --_checkmark-color: var(--vers-comp-checkbox-checkmark-color, #ffffff);
+  --_checkmark-color: var(
+    --vers-comp-checkbox-checkmark-color,
+    var(--color-white)
+  );
 
   /* Focus ring */
   --_focus-ring-width: var(
@@ -67,7 +70,7 @@
 
 /* Checked state - checkmark */
 .input:checked + .indicator::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 40%;
   height: 70%;
@@ -83,7 +86,7 @@
 
 /* Indeterminate state */
 .input:indeterminate + .indicator::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 60%;
   height: 2px;

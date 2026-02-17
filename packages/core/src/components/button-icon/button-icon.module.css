@@ -31,7 +31,7 @@
 
   /* Color — private tokens default to primary */
   --_bg: var(--vers-comp-button-icon-bg, var(--color-primary));
-  --_color: var(--vers-comp-button-icon-color, #ffffff);
+  --_color: var(--vers-comp-button-icon-color, var(--color-white));
   --_border-color: var(
     --vers-comp-button-icon-border-color,
     var(--color-primary)
@@ -96,7 +96,7 @@
    ============================================ */
 .button-icon[data-variant="primary"] {
   --_bg: var(--vers-comp-button-icon-primary-bg, var(--color-primary));
-  --_color: var(--vers-comp-button-icon-primary-color, #ffffff);
+  --_color: var(--vers-comp-button-icon-primary-color, var(--color-white));
   --_border-color: var(
     --vers-comp-button-icon-primary-border-color,
     var(--color-primary)
@@ -134,7 +134,7 @@
    ============================================ */
 .button-icon[data-variant="secondary"] {
   --_bg: var(--vers-comp-button-icon-secondary-bg, var(--color-secondary));
-  --_color: var(--vers-comp-button-icon-secondary-color, #ffffff);
+  --_color: var(--vers-comp-button-icon-secondary-color, var(--color-white));
   --_border-color: var(
     --vers-comp-button-icon-secondary-border-color,
     var(--color-secondary)
@@ -191,7 +191,7 @@
    ============================================ */
 .button-icon[data-variant="danger"] {
   --_bg: var(--vers-comp-button-icon-danger-bg, var(--color-danger));
-  --_color: var(--vers-comp-button-icon-danger-color, #ffffff);
+  --_color: var(--vers-comp-button-icon-danger-color, var(--color-white));
   --_border-color: var(
     --vers-comp-button-icon-danger-border-color,
     var(--color-danger)
