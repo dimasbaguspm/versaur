@@ -33,17 +33,24 @@
   justify-content: flex-start;
 }
 
-/* Base NavItem */
+/* Base NavItem — aligned with Button sizing for consistency */
 .nav-item {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--vers-comp-nav-item-gap, var(--spacing-2));
 
-  padding: var(--vers-comp-nav-item-py, var(--spacing-2))
-    var(--vers-comp-nav-item-px, var(--spacing-3));
+  /* Sizing — aligned with Button.medium */
+  --_height: var(--vers-comp-nav-item-height, 2.5rem);
+  --_px: var(--vers-comp-nav-item-px, var(--spacing-4));
+  --_font-size: var(--vers-comp-nav-item-font-size, var(--font-size-sm));
+  --_icon-size: var(--vers-comp-nav-item-icon-size, 1.25rem);
 
+  height: var(--_height);
+  padding: 0 var(--_px);
+  font-size: var(--_font-size);
   font-weight: var(--vers-comp-nav-item-font-weight, var(--font-weight-medium));
+
   background-color: var(--vers-comp-nav-item-bg, transparent);
   color: var(--vers-comp-nav-item-text, var(--color-text-primary));
   border: none;
@@ -97,13 +104,13 @@
   cursor: wait;
 }
 
-/* Icon sizing */
+/* Icon sizing — aligned with Button */
 .nav-item-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--vers-comp-nav-item-icon-size, 1.25rem);
-  height: var(--vers-comp-nav-item-icon-size, 1.25rem);
+  width: var(--_icon-size);
+  height: var(--_icon-size);
 }
 
 .nav-item-icon svg {
