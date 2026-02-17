@@ -136,6 +136,13 @@ export { Kbd } from "./components/kbd";
 export { Tooltip } from "./components/tooltip";
 export type { TooltipProps } from "./components/tooltip";
 
+export { Menu } from "./components/menu";
+export type {
+  MenuProps,
+  MenuItemProps,
+  MenuPlacement,
+} from "./components/menu";
+
 export { TopBar } from "./components/top-bar";
 export type {
   TopBarProps,

@@ -115,6 +115,9 @@
       ],
       "tooltip": [
         "./dist/tooltip.d.ts"
+      ],
+      "menu": [
+        "./dist/menu.d.ts"
       ]
     }
   },
@@ -303,6 +306,11 @@
       "source": "./src/components/tooltip/index.ts",
       "types": "./dist/tooltip.d.ts",
       "import": "./dist/tooltip.js"
+    },
+    "./menu": {
+      "source": "./src/components/menu/index.ts",
+      "types": "./dist/menu.d.ts",
+      "import": "./dist/menu.js"
     }
   },
   "files": [

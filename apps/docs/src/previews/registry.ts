@@ -14,6 +14,7 @@ import { BadgeDocPage } from "./pages/badge-doc-page";
 import { DotDocPage } from "./pages/dot-doc-page";
 import { KbdDocPage } from "./pages/kbd-doc-page";
 import { TooltipDocPage } from "./pages/tooltip-doc-page";
+import { MenuDocPage } from "./pages/menu-doc-page";
 import { BadgeGroupDocPage } from "./pages/badge-group-doc-page";
 import { ButtonGroupDocPage } from "./pages/button-group-doc-page";
 import { CardDocPage } from "./pages/card-doc-page";
@@ -146,6 +147,13 @@ export const previewRegistry: Record<string, RegistryEntry> = {
     title: "Tooltip",
     description:
       "A popover-based tooltip component that uses the browser Popover API with flexible placement options and line clamping support",
+    category: "Primitives",
+  },
+  menu: {
+    component: MenuDocPage,
+    title: "Menu",
+    description:
+      "A popover-based menu component with external triggers, selectable items, and programmatic close support",
     category: "Primitives",
   },
   card: {

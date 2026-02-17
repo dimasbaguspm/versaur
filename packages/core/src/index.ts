@@ -20,6 +20,7 @@ export * from "./components/top-bar";
 export * from "./components/nav";
 export * from "./components/kbd";
 export * from "./components/tooltip";
+export * from "./components/menu";
 
 // Export groups
 export * from "./components/avatar-group";
