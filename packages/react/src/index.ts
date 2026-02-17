@@ -218,7 +218,10 @@ export type {
   ChipMultipleInputOptionProps,
 } from "./components/chip-multiple-input";
 
-// Overlays
+// Overlays & Primitives
+export { Dialog } from "./components/dialog";
+export type { DialogRootProps } from "./components/dialog";
+
 export { Drawer } from "./components/drawer";
 export type {
   DrawerRootProps,

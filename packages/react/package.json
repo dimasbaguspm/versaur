@@ -110,6 +110,9 @@
       "bottom-sheet": [
         "./dist/bottom-sheet.d.ts"
       ],
+      "dialog": [
+        "./dist/dialog.d.ts"
+      ],
       "kbd": [
         "./dist/kbd.d.ts"
       ],
@@ -296,6 +299,11 @@
       "source": "./src/components/bottom-sheet/index.ts",
       "types": "./dist/bottom-sheet.d.ts",
       "import": "./dist/bottom-sheet.js"
+    },
+    "./dialog": {
+      "source": "./src/components/dialog/index.ts",
+      "types": "./dist/dialog.d.ts",
+      "import": "./dist/dialog.js"
     },
     "./kbd": {
       "source": "./src/components/kbd/index.ts",

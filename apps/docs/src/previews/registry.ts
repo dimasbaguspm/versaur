@@ -36,6 +36,7 @@ import { ChipMultipleInputDocPage } from "./pages/chip-multiple-input-doc-page";
 import { DrawerDocPage } from "./pages/drawer-doc-page";
 import { ModalDocPage } from "./pages/modal-doc-page";
 import { BottomSheetDocPage } from "./pages/bottom-sheet-doc-page";
+import { DialogDocPage } from "./pages/dialog-doc-page";
 
 export type ComponentCategory =
   | "Primitives"
@@ -306,6 +307,13 @@ export const previewRegistry: Record<string, RegistryEntry> = {
     title: "BottomSheet",
     description:
       "A mobile-friendly panel that slides up from the bottom with native dialog support and accessibility",
+    category: "Overlays",
+  },
+  dialog: {
+    component: DialogDocPage,
+    title: "Dialog",
+    description:
+      "A controlled headless dialog component for overlays, portaled rendering, and imperative control via static methods",
     category: "Overlays",
   },
 };
