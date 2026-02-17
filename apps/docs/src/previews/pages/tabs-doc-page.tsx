@@ -1,25 +1,12 @@
-import type { TabsSection } from "@versaur/react/tabs";
 import { tabsSections, tabsProps, tabsItemProps } from "@versaur/react/tabs";
-import { ComponentPreview } from "../../components/component-preview";
+import { SectionBlock } from "../../components/section-block";
 import { PropsTable } from "../../components/props-table";
-
-function makeExamples(section: { code: string; language: string }) {
-  return {
-    react: { code: section.code, language: section.language },
-    vue: { code: "", language: "vue" },
-    angular: { code: "", language: "angular" },
-  };
-}
 
 export function TabsDocPage() {
   return (
     <>
-      {tabsSections.map((section: TabsSection) => (
-        <div key={section.key}>
-          <h3>{section.title}</h3>
-          <section.preview />
-          <ComponentPreview examples={makeExamples(section)} />
-        </div>
+      {tabsSections.map((section) => (
+        <SectionBlock key={section.key} section={section} />
       ))}
 
       <h2>API Reference</h2>

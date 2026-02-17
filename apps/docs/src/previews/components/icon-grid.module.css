@@ -10,15 +10,15 @@
   flex-direction: column;
   gap: 0.75rem;
   padding: 1rem;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--color-neutral-light);
   border-radius: 0.5rem;
   transition: all 0.2s ease;
 }
 
 .icon-grid-item:hover {
-  border-color: #3b82f6;
-  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.1);
-  background-color: #f0f9ff;
+  border-color: var(--color-info);
+  box-shadow: 0 4px 6px rgba(107, 143, 173, 0.1);
+  background-color: var(--color-info-light);
 }
 
 .icon-grid-display {
@@ -26,14 +26,14 @@
   align-items: center;
   justify-content: center;
   min-height: 80px;
-  background-color: #f9fafb;
+  background-color: var(--color-neutral-soft);
   border-radius: 0.375rem;
 }
 
 .icon-svg {
   width: 48px;
   height: 48px;
-  color: #1f2937;
+  color: var(--color-text-primary);
 }
 
 .icon-grid-info {
@@ -45,18 +45,18 @@
 .icon-name {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #1f2937;
+  color: var(--color-text-primary);
   margin: 0;
 }
 
 .icon-id {
   font-size: 0.75rem;
-  color: #6b7280;
+  color: var(--color-text-secondary);
   margin: 0;
 }
 
 .icon-id code {
-  background-color: #f3f4f6;
+  background-color: var(--color-neutral-light);
   padding: 0.125rem 0.375rem;
   border-radius: 0.25rem;
   font-family: "Monaco", "Courier New", monospace;
@@ -71,8 +71,8 @@
 .tag {
   display: inline-block;
   font-size: 0.625rem;
-  background-color: #dbeafe;
-  color: #1e40af;
+  background-color: var(--color-info-light);
+  color: var(--color-info);
   padding: 0.125rem 0.5rem;
   border-radius: 0.25rem;
   font-weight: 500;

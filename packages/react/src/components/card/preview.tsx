@@ -11,10 +11,10 @@ import { Dot } from "../dot";
  */
 export function CardFeaturedPreview() {
   return (
-    <Card size="md" shape="rounded" bordered>
+    <Card size="md">
       <Card.Header gap="md" justify="between">
         <div style={{ display: "flex", gap: "var(--spacing-3)" }}>
-          <Avatar shape="circle" size="lg" variant="primary">
+          <Avatar shape="circle" size="md" variant="primary">
             AC
           </Avatar>
           <div>
@@ -49,7 +49,7 @@ export function CardFeaturedPreview() {
  */
 export function CardWithListPreview() {
   return (
-    <Card size="md" shape="rounded">
+    <Card size="md">
       <Card.Header>
         <Heading as="h3" size="lg">
           Job Details
@@ -96,7 +96,7 @@ export function CardWithListPreview() {
  */
 export function CardComplexPreview() {
   return (
-    <Card size="lg" shape="rounded" bordered>
+    <Card size="lg">
       <Card.Header gap="md" justify="start">
         <Avatar shape="circle" size="lg" variant="primary">
           AC
@@ -142,6 +142,103 @@ export function CardComplexPreview() {
 }
 
 /**
+ * Card with Header, Body, and Footer
+ */
+export function CardWithFooterPreview() {
+  return (
+    <Card size="md">
+      <Card.Header>
+        <Heading as="h3">Task Summary</Heading>
+      </Card.Header>
+      <Card.Body gap="sm">
+        <Text>
+          Complete the project requirements and submit for review by end of
+          week.
+        </Text>
+      </Card.Body>
+      <Card.Footer gap="md" justify="between">
+        <Text size="sm" intent="secondary">
+          Due: March 15, 2024
+        </Text>
+        <Badge variant="warning">In Progress</Badge>
+      </Card.Footer>
+    </Card>
+  );
+}
+
+/**
+ * Interactive Card (button) - with Header, Body, Footer
+ */
+export function CardInteractivePreview() {
+  return (
+    <Card as="button" size="md" onClick={() => {}}>
+      <Card.Header>
+        <Heading as="h3">Click Me</Heading>
+      </Card.Header>
+      <Card.Body gap="sm">
+        <Text>
+          This card is interactive and can be clicked. It will highlight on
+          hover.
+        </Text>
+      </Card.Body>
+      <Card.Footer>
+        <Text size="sm" intent="secondary">
+          Interactive Button Card
+        </Text>
+      </Card.Footer>
+    </Card>
+  );
+}
+
+/**
+ * Card with Border Variants
+ */
+export function CardBorderVariantsPreview() {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "var(--spacing-6)",
+      }}
+    >
+      <Card size="md" border="all-rounded">
+        <Card.Header>
+          <Heading as="h4" size="sm">
+            All Rounded Border
+          </Heading>
+        </Card.Header>
+        <Card.Body gap="sm">
+          <Text size="sm">Full border with rounded corners</Text>
+        </Card.Body>
+      </Card>
+
+      <Card size="md" border="vertical">
+        <Card.Header>
+          <Heading as="h4" size="sm">
+            Vertical Border
+          </Heading>
+        </Card.Header>
+        <Card.Body gap="sm">
+          <Text size="sm">Left and right borders only</Text>
+        </Card.Body>
+      </Card>
+
+      <Card size="md" border="horizontal">
+        <Card.Header>
+          <Heading as="h4" size="sm">
+            Horizontal Border
+          </Heading>
+        </Card.Header>
+        <Card.Body gap="sm">
+          <Text size="sm">Top and bottom borders only</Text>
+        </Card.Body>
+      </Card>
+    </div>
+  );
+}
+
+/**
  * Card Sections for documentation
  */
 export interface CardSection {
@@ -157,7 +254,7 @@ export const cardSections: CardSection[] = [
     key: "featured",
     title: "Featured Example",
     preview: CardFeaturedPreview,
-    code: `<Card size="md" shape="rounded" bordered>
+    code: `<Card size="md">
   <Card.Header gap="md" justify="between">
     <div style={{ display: "flex", gap: "var(--spacing-3)" }}>
       <Avatar shape="circle" size="lg" variant="primary">AC</Avatar>
@@ -185,7 +282,7 @@ export const cardSections: CardSection[] = [
     key: "list",
     title: "Card with List",
     preview: CardWithListPreview,
-    code: `<Card size="md" shape="rounded">
+    code: `<Card size="md">
   <Card.Header>
     <Heading as="h3" size="lg">
       Job Details
@@ -208,7 +305,7 @@ export const cardSections: CardSection[] = [
     key: "complex",
     title: "Complex Card (Full Example)",
     preview: CardComplexPreview,
-    code: `<Card size="lg" shape="rounded" bordered>
+    code: `<Card size="lg">
   <Card.Header gap="md" justify="start">
     <Avatar shape="circle" size="lg" variant="primary">AC</Avatar>
     <div style={{ flex: 1 }}>
@@ -224,6 +321,61 @@ export const cardSections: CardSection[] = [
       <Badge variant="success">Online</Badge>
     </BadgeGroup>
   </Card.Body>
+</Card>`,
+    language: "tsx",
+  },
+  {
+    key: "with-footer",
+    title: "Card with Header, Body, and Footer",
+    preview: CardWithFooterPreview,
+    code: `<Card size="md">
+  <Card.Header>
+    <Heading as="h3" size="md">Task Summary</Heading>
+  </Card.Header>
+  <Card.Body gap="sm">
+    <Text>Complete the project requirements and submit for review by end of week.</Text>
+  </Card.Body>
+  <Card.Footer gap="md" justify="between">
+    <Text size="sm" intent="secondary">Due: March 15, 2024</Text>
+    <Badge variant="warning">In Progress</Badge>
+  </Card.Footer>
+</Card>`,
+    language: "tsx",
+  },
+  {
+    key: "interactive",
+    title: "Interactive Card (Button)",
+    preview: CardInteractivePreview,
+    code: `<Card as="button" size="md" onClick={() => {}}>
+  <Card.Header>
+    <Heading as="h3" size="md">Click Me</Heading>
+  </Card.Header>
+  <Card.Body gap="sm">
+    <Text>This card is interactive and can be clicked. It will highlight on hover.</Text>
+  </Card.Body>
+  <Card.Footer>
+    <Text size="sm" intent="secondary">Interactive Button Card</Text>
+  </Card.Footer>
+</Card>`,
+    language: "tsx",
+  },
+  {
+    key: "border-variants",
+    title: "Border Variants",
+    preview: CardBorderVariantsPreview,
+    code: `<Card size="md" border="all-rounded" bordered>
+  <Card.Header><Heading as="h4" size="sm">All Rounded</Heading></Card.Header>
+  <Card.Body gap="sm"><Text size="sm">Full border with rounded corners</Text></Card.Body>
+</Card>
+
+<Card size="md" border="vertical" bordered>
+  <Card.Header><Heading as="h4" size="sm">Vertical Border</Heading></Card.Header>
+  <Card.Body gap="sm"><Text size="sm">Left and right borders only</Text></Card.Body>
+</Card>
+
+<Card size="md" border="horizontal" bordered>
+  <Card.Header><Heading as="h4" size="sm">Horizontal Border</Heading></Card.Header>
+  <Card.Body gap="sm"><Text size="sm">Top and bottom borders only</Text></Card.Body>
 </Card>`,
     language: "tsx",
   },
@@ -254,16 +406,10 @@ export const cardProps: CardPropDoc[] = [
     description: "Card padding size (applied to root container)",
   },
   {
-    name: "shape",
-    type: "'rounded' | 'square'",
-    default: "'rounded'",
-    description: "Card border radius style",
-  },
-  {
-    name: "bordered",
-    type: "boolean",
-    default: "false",
-    description: "Whether to show a border around the card",
+    name: "border",
+    type: "'all-rounded' | 'vertical' | 'horizontal'",
+    default: "undefined",
+    description: "Border style variant for custom border styling",
   },
   {
     name: "Header.justify",

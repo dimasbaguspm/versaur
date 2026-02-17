@@ -188,7 +188,7 @@
    ============================================ */
 .button[data-variant="ghost"] {
   --_bg: var(--vers-comp-button-ghost-bg, transparent);
-  --_color: var(--vers-comp-button-ghost-color, var(--color-text));
+  --_color: var(--vers-comp-button-ghost-color, var(--color-ghost));
   --_border-color: var(--vers-comp-button-ghost-border-color, transparent);
   --_focus-ring-color: var(
     --vers-comp-button-ghost-focus-ring-color,
@@ -198,17 +198,17 @@
 
 .button[data-variant="ghost"]:hover:not([data-disabled]):not([data-loading]) {
   --_bg: var(--vers-comp-button-ghost-hover-bg, var(--color-surface));
-  --_color: var(--vers-comp-button-ghost-hover-color, var(--color-text));
+  --_color: var(--vers-comp-button-ghost-hover-color, var(--color-ghost));
 }
 
 .button[data-variant="ghost"]:active:not([data-disabled]):not([data-loading]) {
   --_bg: var(--vers-comp-button-ghost-active-bg, var(--color-surface));
-  --_color: var(--vers-comp-button-ghost-active-color, var(--color-text));
+  --_color: var(--vers-comp-button-ghost-active-color, var(--color-ghost));
 }
 
 .button[data-variant="ghost"][aria-pressed="true"] {
   --_bg: var(--vers-comp-button-ghost-pressed-bg, var(--color-surface));
-  --_color: var(--vers-comp-button-ghost-pressed-color, var(--color-text));
+  --_color: var(--vers-comp-button-ghost-pressed-color, var(--color-ghost));
   box-shadow: var(--shadow-sm);
 }
 

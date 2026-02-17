@@ -2,8 +2,7 @@
 // Source: card.module.css
 
 export type CardSize = 'lg' | 'md' | 'sm' | 'xl' | 'xs';
-export type CardShape = 'rounded' | 'square';
-export type CardBordered = 'false' | 'true';
+export type CardBorder = 'all-rounded' | 'horizontal' | 'vertical';
 export type CardInteractive = 'false' | 'true';
 export type CardJustify = 'around' | 'between' | 'center' | 'end' | 'start';
 export type CardGap = 'lg' | 'md' | 'none' | 'sm' | 'xs';
@@ -11,8 +10,7 @@ export type CardAlign = 'center' | 'left' | 'right';
 
 export interface CardDataAttrs {
   size?: CardSize;
-  shape?: CardShape;
-  bordered?: CardBordered;
+  border?: CardBorder;
   interactive?: CardInteractive;
   justify?: CardJustify;
   gap?: CardGap;
@@ -21,8 +19,7 @@ export interface CardDataAttrs {
 
 export namespace Card {
   export type Size = CardSize;
-  export type Shape = CardShape;
-  export type Bordered = CardBordered;
+  export type Border = CardBorder;
   export type Interactive = CardInteractive;
   export type Justify = CardJustify;
   export type Gap = CardGap;

@@ -80,26 +80,16 @@
   --color-text-primary: #2d3748;
   --color-text-secondary: #4b5563;
   --color-text-disabled: #9ca3af;
+  --color-text-tertiary: #9ca3af;
 
   --color-border: #e0e0e0;
   --color-border-focus: #60a5fa;
 
   --color-background: #ffffff;
-  --color-surface: #f8f9fa;
-}
+  --color-surface: #ececec;
 
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Adjust for dark mode - slight adjustments to contrast */
-    --color-text-primary: #f0f1f3;
-    --color-text-secondary: #b6b8db;
-    --color-text-disabled: #6b7280;
-
-    --color-border: #4b5563;
-    --color-border-focus: #a95a3a;
-
-    --color-background: #1a1a1a;
-    --color-surface: #2d2d2d;
-  }
+  /* Code & Editor Colors */
+  --color-code-bg: #1e1e1e;
+  --color-code-text: #d4d4d4;
+  --color-code-bg-light: #1a1a1a;
 }

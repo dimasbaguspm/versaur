@@ -1,7 +1,7 @@
 .wrapper {
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-neutral-light);
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-  background: var(--color-background);
+  background: var(--color-white);
   display: flex;
   align-items: stretch;
   justify-content: stretch;
@@ -18,15 +18,15 @@
 
 /* Background variants */
 .wrapper[data-background="default"] {
-  background: var(--color-background);
+  background: var(--color-white);
 }
 
 .wrapper[data-background="muted"] {
-  background: var(--color-surface);
+  background: var(--color-neutral-soft);
 }
 
 .wrapper[data-background="dark"] {
-  background: #1a1a1a;
+  background: var(--color-code-bg-light);
 }
 
 .wrapper[data-background="none"] {

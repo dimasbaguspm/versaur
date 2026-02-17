@@ -16,7 +16,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 1rem;
-  background: #1a1a1a;
+  background: var(--color-code-bg-light);
 }
 
 .toggleButton {
@@ -67,14 +67,14 @@
 
 .codeContent {
   overflow-x: auto;
-  background: #1e1e1e;
+  background: var(--color-code-bg);
 }
 
 .codeContent pre {
   margin: 0;
   padding: 1rem;
   background: transparent;
-  color: #d4d4d4;
+  color: var(--color-code-text);
   font-family: var(--font-mono);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-relaxed);

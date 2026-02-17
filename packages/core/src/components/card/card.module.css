@@ -2,19 +2,13 @@
   /* Private tokens - component-scoped */
   --_padding: var(--vers-comp-card-padding, var(--spacing-4));
   --_gap: var(--vers-comp-card-gap, var(--spacing-3));
-  --_border-radius: var(--vers-comp-card-border-radius, var(--radius-lg));
+  --_border-radius: var(--vers-comp-card-border-radius, 0);
   --_border: var(--vers-comp-card-border, 1px solid var(--color-border));
-  --_bg: var(--vers-comp-card-bg, var(--color-surface));
-  --_shadow: var(--vers-comp-card-shadow, var(--shadow-sm));
+  --_bg: var(--vers-comp-card-bg, var(--color-background));
 
   /* Interactive states - only applied when data-interactive="true" */
   --_cursor: var(--vers-comp-card-cursor, pointer);
-  --_hover-bg: var(--vers-comp-card-hover-bg, var(--color-surface-hover));
-  --_transition: var(
-    --vers-comp-card-transition,
-    color 200ms,
-    background-color 200ms
-  );
+  --_hover-bg: var(--vers-comp-card-hover-bg, var(--color-surface));
   --_focus-ring: var(
     --vers-comp-card-focus-ring,
     2px solid var(--color-primary)
@@ -25,7 +19,6 @@
   gap: var(--_gap);
   background-color: var(--_bg);
   border-radius: var(--_border-radius);
-  box-shadow: var(--_shadow);
   padding: var(--_padding);
   border: var(--_border);
   outline: none;
@@ -52,25 +45,37 @@
   --_padding: var(--vers-comp-card-xl-padding, var(--spacing-8));
 }
 
-/* Shape variants */
-.card[data-shape="rounded"] {
-  --_border-radius: var(
-    --vers-comp-card-rounded-border-radius,
-    var(--radius-lg)
+/* Border style variants */
+.card[data-border="all-rounded"] {
+  --_border: var(
+    --vers-comp-card-border-all-rounded,
+    1px solid var(--color-border)
   );
+  border-radius: var(--_border-radius);
 }
 
-.card[data-shape="square"] {
-  --_border-radius: var(--vers-comp-card-square-border-radius, 0);
+.card[data-border="vertical"] {
+  --_border: var(
+    --vers-comp-card-border-vertical,
+    1px solid var(--color-border)
+  );
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  border-top: none;
+  border-bottom: none;
+  border-radius: 0;
 }
 
-/* Bordered variant */
-.card[data-bordered="false"] {
-  --_border: var(--vers-comp-card-no-border, none);
-}
-
-.card[data-bordered="true"] {
-  --_border: var(--vers-comp-card-border, 1px solid var(--color-border));
+.card[data-border="horizontal"] {
+  --_border: var(
+    --vers-comp-card-border-horizontal,
+    1px solid var(--color-border)
+  );
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
 }
 
 /* Non-interactive state (div rendering) */
@@ -81,7 +86,6 @@
 /* Interactive state (button rendering) */
 .card[data-interactive="true"] {
   cursor: var(--_cursor);
-  transition: var(--_transition);
 }
 
 .card[data-interactive="true"]:hover {
@@ -89,7 +93,7 @@
 }
 
 .card[data-interactive="true"]:focus-visible {
-  outline: var(--_focus-ring);
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 

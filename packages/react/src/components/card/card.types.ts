@@ -1,5 +1,7 @@
 import type { ReactNode, HTMLAttributes, ButtonHTMLAttributes } from "react";
-import type { CardSize, CardShape, CardAlign, CardJustify, CardGap } from "@versaur/core";
+import type { CardSize, CardAlign, CardJustify, CardGap } from "@versaur/core";
+
+export type CardBorder = "all-rounded" | "vertical" | "horizontal";
 
 /* Card Root Props */
 export interface CardRootProps extends Omit<
@@ -10,10 +12,8 @@ export interface CardRootProps extends Omit<
   as?: "div" | "button";
   /** Card size variant */
   size?: CardSize;
-  /** Card shape variant */
-  shape?: CardShape;
-  /** Whether to show border */
-  bordered?: boolean;
+  /** Border style variant */
+  border?: CardBorder;
   /** Children to render inside card */
   children?: ReactNode;
 }
@@ -21,10 +21,8 @@ export interface CardRootProps extends Omit<
 export interface CardButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** Card size variant */
   size?: CardSize;
-  /** Card shape variant */
-  shape?: CardShape;
-  /** Whether to show border */
-  bordered?: boolean;
+  /** Border style variant */
+  border?: CardBorder;
   /** Children to render inside card */
   children?: ReactNode;
 }

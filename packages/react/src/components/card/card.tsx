@@ -30,8 +30,7 @@ function CardRootInternal(
   {
     as = "div",
     size = "md",
-    shape = "rounded",
-    bordered = false,
+    border,
     children,
     ...rest
   }: CardRootProps & CardButtonProps,
@@ -39,9 +38,8 @@ function CardRootInternal(
 ) {
   const dataAttrs = useDataAttrs({
     size,
-    shape,
-    bordered,
-    interactive: as === "button",
+    border,
+    interactive: as === "button" ? "true" : "false",
   });
 
   const Element = as === "button" ? "button" : "div";
