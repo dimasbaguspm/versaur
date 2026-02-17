@@ -3,26 +3,14 @@ import {
   attributeListProps,
   attributeListItemProps,
 } from "@versaur/react/attribute-list";
-import { ComponentPreview } from "../../components/component-preview";
+import { SectionBlock } from "../../components/section-block";
 import { PropsTable } from "../../components/props-table";
-
-function makeExamples(section: { code: string; language: string }) {
-  return {
-    react: { code: section.code, language: section.language },
-    vue: { code: "", language: "vue" },
-    angular: { code: "", language: "angular" },
-  };
-}
 
 export function AttributeListDocPage() {
   return (
     <>
       {attributeListSections.map((section) => (
-        <div key={section.key}>
-          <h3>{section.title}</h3>
-          <section.preview />
-          <ComponentPreview examples={makeExamples(section)} />
-        </div>
+        <SectionBlock key={section.key} section={section} />
       ))}
 
       <h2>API Reference</h2>

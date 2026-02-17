@@ -1,13 +1,5 @@
 import { chipSingleInputSections } from "@versaur/react/chip-single-input";
-import { ComponentPreview } from "../../components/component-preview";
-
-function makeExamples(section: { code: string; language: string }) {
-  return {
-    react: { code: section.code, language: section.language },
-    vue: { code: "", language: "vue" },
-    angular: { code: "", language: "angular" },
-  };
-}
+import { SectionBlock } from "../../components/section-block";
 
 export function ChipSingleInputDocPage() {
   return (
@@ -19,11 +11,7 @@ export function ChipSingleInputDocPage() {
       </p>
 
       {chipSingleInputSections.map((section) => (
-        <div key={section.key}>
-          <h3>{section.title}</h3>
-          <section.preview />
-          <ComponentPreview examples={makeExamples(section)} />
-        </div>
+        <SectionBlock key={section.key} section={section} />
       ))}
     </>
   );

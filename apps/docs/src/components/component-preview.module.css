@@ -5,6 +5,12 @@
   margin: 1rem 0;
 }
 
+.wrapper[data-docked] {
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  margin-top: 0;
+  border-top: none;
+}
+
 .toolbar {
   display: flex;
   justify-content: space-between;

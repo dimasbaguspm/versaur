@@ -7,11 +7,13 @@ import styles from "./component-preview.module.css";
 interface ComponentPreviewProps {
   examples: Record<string, { code: string; language: string }>;
   defaultExpanded?: boolean;
+  docked?: boolean;
 }
 
 export function ComponentPreview({
   examples,
   defaultExpanded = true,
+  docked = false,
 }: ComponentPreviewProps) {
   const { selectedFramework, isClient } = useFrameworkSelection();
   const { highlightCode, isReady } = useShikiHighlighter();
@@ -35,7 +37,7 @@ export function ComponentPreview({
   const codeHtml = isReady ? highlightCode(code, language) : null;
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} {...(docked ? { "data-docked": "" } : {})}>
       <div className={styles.toolbar}>
         <button
           className={styles.toggleButton}

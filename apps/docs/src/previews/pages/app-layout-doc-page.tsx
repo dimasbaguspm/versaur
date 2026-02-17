@@ -3,26 +3,20 @@ import {
   appLayoutInstallation,
   appLayoutProps,
 } from "@versaur/react/app-layout";
+import { SectionBlock } from "../../components/section-block";
+import { makeExamples } from "../../utils/make-examples";
 import { ComponentPreview } from "../../components/component-preview";
 import { PropsTable } from "../../components/props-table";
-
-function makeExamples(section: { code: string; language: string }) {
-  return {
-    react: { code: section.code, language: section.language },
-    vue: { code: "", language: "vue" },
-    angular: { code: "", language: "angular" },
-  };
-}
 
 export function AppLayoutDocPage() {
   return (
     <>
       {appLayoutSections.map((section) => (
-        <div key={section.title}>
-          <h3>{section.title}</h3>
-          <section.preview />
-          <ComponentPreview examples={makeExamples(section)} />
-        </div>
+        <SectionBlock
+          key={section.title}
+          section={section}
+          canvas={{ padding: "none" }}
+        />
       ))}
 
       <h2>API Reference</h2>
