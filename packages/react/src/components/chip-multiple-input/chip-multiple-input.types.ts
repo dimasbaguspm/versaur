@@ -1,8 +1,9 @@
 import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
-import type { ChipMultipleInput as ChipMultipleInputCore } from "@versaur/core";
 
-export interface ChipMultipleInputRootProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
+export interface ChipMultipleInputRootProps extends Omit<
+  HTMLAttributes<HTMLDivElement>,
+  "onChange"
+> {
   /**
    * Array of selected chip values
    */
@@ -17,18 +18,6 @@ export interface ChipMultipleInputRootProps
    * Name attribute for the input group
    */
   name?: string;
-
-  /**
-   * Visual variant
-   * @default "outline"
-   */
-  variant?: ChipMultipleInputCore.Variant;
-
-  /**
-   * Size variant
-   * @default "medium"
-   */
-  size?: ChipMultipleInputCore.Size;
 
   /**
    * Label for the chip group
@@ -68,8 +57,10 @@ export interface ChipMultipleInputRootProps
   wrap?: boolean;
 }
 
-export interface ChipMultipleInputOptionProps
-  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "value"> {
+export interface ChipMultipleInputOptionProps extends Omit<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  "value"
+> {
   /**
    * Chip value
    */

@@ -10,8 +10,6 @@ import type {
   ChipMultipleInputOptionProps,
 } from "./chip-multiple-input.types";
 
-import type { ChipMultipleInput as ChipMultipleInputCore } from "@versaur/core";
-
 /**
  * Private context for managing chip multiple input state
  */
@@ -20,8 +18,6 @@ interface ChipMultipleInputContextType {
   onChange: (value: string[]) => void;
   name?: string;
   disabled?: boolean;
-  variant?: ChipMultipleInputCore.Variant;
-  size?: ChipMultipleInputCore.Size;
 }
 
 const ChipMultipleInputContext = createContext<
@@ -69,8 +65,6 @@ const ChipMultipleInputRoot = forwardRef<
       value,
       onChange,
       name,
-      variant = "outline",
-      size = "medium",
       label,
       helper,
       error,
@@ -118,8 +112,6 @@ const ChipMultipleInputRoot = forwardRef<
             onChange: handleChange,
             name,
             disabled,
-            variant,
-            size: size as ChipMultipleInputCore.Size,
           }}
         >
           <div
@@ -171,8 +163,6 @@ const ChipMultipleInputOption = forwardRef<
   };
 
   const dataAttrs = useDataAttrs({
-    variant: context.variant,
-    size: context.size,
     selected: isSelected,
     disabled: isDisabled,
   });

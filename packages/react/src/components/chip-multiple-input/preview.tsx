@@ -36,78 +36,82 @@ function BasicPreview() {
   );
 }
 
-function VariantsPreview() {
-  const [values1, setValues1] = useState<string[]>(["option1"]);
-  const [values2, setValues2] = useState<string[]>(["option1"]);
+function OverflowPreview() {
+  const [values, setValues] = useState<string[]>([]);
+
+  return (
+    <ChipMultipleInput
+      value={values}
+      onChange={setValues}
+      label="Horizontal scroll (wrap disabled)"
+      wrap={false}
+    >
+      <ChipMultipleInput.Option value="opt1">
+        Very long option text number one
+      </ChipMultipleInput.Option>
+      <ChipMultipleInput.Option value="opt2">
+        Very long option text number two
+      </ChipMultipleInput.Option>
+      <ChipMultipleInput.Option value="opt3">
+        Very long option text number three
+      </ChipMultipleInput.Option>
+      <ChipMultipleInput.Option value="opt4">
+        Very long option text number four
+      </ChipMultipleInput.Option>
+    </ChipMultipleInput>
+  );
+}
+
+function CustomGapPreview() {
+  const [values1, setValues1] = useState<string[]>([]);
+  const [values2, setValues2] = useState<string[]>([]);
+  const [values3, setValues3] = useState<string[]>([]);
+  const [values4, setValues4] = useState<string[]>([]);
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       <ChipMultipleInput
         value={values1}
         onChange={setValues1}
-        label="Outline variant"
-        variant="outline"
+        label="Gap 1"
+        gap="1"
       >
-        <ChipMultipleInput.Option value="option1">
-          Option 1
-        </ChipMultipleInput.Option>
-        <ChipMultipleInput.Option value="option2">
-          Option 2
-        </ChipMultipleInput.Option>
-        <ChipMultipleInput.Option value="option3">
-          Option 3
-        </ChipMultipleInput.Option>
+        <ChipMultipleInput.Option value="a">Option A</ChipMultipleInput.Option>
+        <ChipMultipleInput.Option value="b">Option B</ChipMultipleInput.Option>
+        <ChipMultipleInput.Option value="c">Option C</ChipMultipleInput.Option>
       </ChipMultipleInput>
 
       <ChipMultipleInput
         value={values2}
         onChange={setValues2}
-        label="Filled variant"
-        variant="filled"
+        label="Gap 2 (default)"
+        gap="2"
       >
-        <ChipMultipleInput.Option value="option1">
-          Option 1
-        </ChipMultipleInput.Option>
-        <ChipMultipleInput.Option value="option2">
-          Option 2
-        </ChipMultipleInput.Option>
-        <ChipMultipleInput.Option value="option3">
-          Option 3
-        </ChipMultipleInput.Option>
-      </ChipMultipleInput>
-    </div>
-  );
-}
-
-function SizesPreview() {
-  const [values, setValues] = useState<string[]>(["medium"]);
-
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-      <ChipMultipleInput
-        value={values}
-        onChange={setValues}
-        label="Small"
-        size="small"
-      >
-        <ChipMultipleInput.Option value="small">Small</ChipMultipleInput.Option>
-        <ChipMultipleInput.Option value="medium">
-          Medium
-        </ChipMultipleInput.Option>
-        <ChipMultipleInput.Option value="large">Large</ChipMultipleInput.Option>
+        <ChipMultipleInput.Option value="a">Option A</ChipMultipleInput.Option>
+        <ChipMultipleInput.Option value="b">Option B</ChipMultipleInput.Option>
+        <ChipMultipleInput.Option value="c">Option C</ChipMultipleInput.Option>
       </ChipMultipleInput>
 
       <ChipMultipleInput
-        value={values}
-        onChange={setValues}
-        label="Large"
-        size="large"
+        value={values3}
+        onChange={setValues3}
+        label="Gap 3"
+        gap="3"
       >
-        <ChipMultipleInput.Option value="small">Small</ChipMultipleInput.Option>
-        <ChipMultipleInput.Option value="medium">
-          Medium
-        </ChipMultipleInput.Option>
-        <ChipMultipleInput.Option value="large">Large</ChipMultipleInput.Option>
+        <ChipMultipleInput.Option value="a">Option A</ChipMultipleInput.Option>
+        <ChipMultipleInput.Option value="b">Option B</ChipMultipleInput.Option>
+        <ChipMultipleInput.Option value="c">Option C</ChipMultipleInput.Option>
+      </ChipMultipleInput>
+
+      <ChipMultipleInput
+        value={values4}
+        onChange={setValues4}
+        label="Gap 4"
+        gap="4"
+      >
+        <ChipMultipleInput.Option value="a">Option A</ChipMultipleInput.Option>
+        <ChipMultipleInput.Option value="b">Option B</ChipMultipleInput.Option>
+        <ChipMultipleInput.Option value="c">Option C</ChipMultipleInput.Option>
       </ChipMultipleInput>
     </div>
   );
@@ -160,23 +164,36 @@ export const chipMultipleInputSections: ChipMultipleInputSection[] = [
     language: "tsx",
   },
   {
-    key: "variants",
-    title: "Variants",
-    preview: VariantsPreview,
-    code: `<ChipMultipleInput variant="outline">
-  {/* options */}
-</ChipMultipleInput>
-
-<ChipMultipleInput variant="filled">
-  {/* options */}
+    key: "overflow",
+    title: "Horizontal Scroll",
+    preview: OverflowPreview,
+    code: `<ChipMultipleInput wrap={false}>
+  <ChipMultipleInput.Option value="opt1">
+    Very long option text number one
+  </ChipMultipleInput.Option>
+  <ChipMultipleInput.Option value="opt2">
+    Very long option text number two
+  </ChipMultipleInput.Option>
 </ChipMultipleInput>`,
     language: "tsx",
   },
   {
-    key: "sizes",
-    title: "Sizes",
-    preview: SizesPreview,
-    code: `<ChipMultipleInput size="small">
+    key: "gap",
+    title: "Custom Gap",
+    preview: CustomGapPreview,
+    code: `<ChipMultipleInput gap="1">
+  {/* options */}
+</ChipMultipleInput>
+
+<ChipMultipleInput gap="2">
+  {/* options */}
+</ChipMultipleInput>
+
+<ChipMultipleInput gap="3">
+  {/* options */}
+</ChipMultipleInput>
+
+<ChipMultipleInput gap="4">
   {/* options */}
 </ChipMultipleInput>`,
     language: "tsx",

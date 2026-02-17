@@ -16,6 +16,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-2);
+  width: 100%;
 }
 
 .options[data-gap="1"] {
@@ -32,30 +33,26 @@
 
 .options[data-wrap="false"] {
   flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 /* Individual chip option button */
 .option {
-  /* Sizing — private tokens default to medium */
-  --_height: var(--vers-comp-chip-height, 2rem);
-  --_px: var(--vers-comp-chip-padding-x, var(--spacing-3));
-  --_font-size: var(--vers-comp-chip-font-size, var(--font-size-sm));
-  --_gap: var(--vers-comp-chip-gap, var(--spacing-1-5));
+  /* Sizing — locked to medium */
+  --_height: 2rem;
+  --_px: var(--spacing-3);
+  --_font-size: var(--font-size-sm);
+  --_gap: var(--spacing-1-5);
 
-  /* Colors — private tokens default to outline variant */
-  --_bg: var(--vers-comp-chip-bg, transparent);
-  --_border: var(--vers-comp-chip-border, var(--color-border));
-  --_text: var(--vers-comp-chip-text, var(--color-text));
+  /* Colors — locked to outline variant */
+  --_bg: transparent;
+  --_border: var(--color-border);
+  --_text: var(--color-text);
 
   /* Focus ring */
-  --_focus-ring-width: var(
-    --vers-comp-chip-focus-ring-width,
-    var(--focus-ring-width)
-  );
-  --_focus-ring-color: var(
-    --vers-comp-chip-focus-ring-color,
-    var(--color-border-focus)
-  );
+  --_focus-ring-width: var(--focus-ring-width);
+  --_focus-ring-color: var(--color-border-focus);
 
   /* Layout */
   display: inline-flex;
@@ -104,61 +101,6 @@
 .option[data-selected]:hover:not([data-disabled]) {
   --_bg: var(--color-primary-hover);
   --_border: var(--color-primary-hover);
-}
-
-/* Size variants */
-.option[data-size="small"] {
-  --_height: 1.75rem;
-  --_px: var(--spacing-2);
-  --_font-size: var(--font-size-xs);
-  --_gap: var(--spacing-1);
-}
-
-.option[data-size="large"] {
-  --_height: 2.5rem;
-  --_px: var(--spacing-4);
-  --_font-size: var(--font-size-base);
-  --_gap: var(--spacing-2);
-}
-
-/* Variant: outline (default) */
-.option[data-variant="outline"] {
-  --_bg: transparent;
-  --_border: var(--color-border);
-  --_text: var(--color-text);
-  --_focus-ring-color: var(--color-border-focus);
-}
-
-.option[data-variant="outline"][data-selected] {
-  --_bg: var(--color-primary);
-  --_border: var(--color-primary);
-  --_text: #ffffff;
-}
-
-/* Variant: filled */
-.option[data-variant="filled"] {
-  --_bg: var(--color-surface);
-  --_border: transparent;
-  --_text: var(--color-text);
-  --_focus-ring-color: var(--color-border-focus);
-}
-
-.option[data-variant="filled"][data-selected] {
-  --_bg: var(--color-primary);
-  --_border: var(--color-primary);
-  --_text: #ffffff;
-}
-
-/* Invalid state on field */
-.field[data-invalid] .option {
-  --_border: var(--color-danger);
-  --_focus-ring-color: var(--color-danger);
-}
-
-.field[data-invalid] .option[data-selected] {
-  --_bg: var(--color-danger);
-  --_border: var(--color-danger);
-  --_text: #ffffff;
 }
 
 /* Disabled state */
