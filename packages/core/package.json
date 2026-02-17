@@ -96,6 +96,10 @@
       "source": "./src/components/kbd/kbd.module.css",
       "import": "./dist/components/kbd/kbd.module.css"
     },
+    "./tooltip.css": {
+      "source": "./src/components/tooltip/tooltip.module.css",
+      "import": "./dist/components/tooltip/tooltip.module.css"
+    },
     "./sidebar.css": {
       "source": "./src/components/sidebar/sidebar.module.css",
       "import": "./dist/components/sidebar/sidebar.module.css"

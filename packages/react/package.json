@@ -112,6 +112,9 @@
       ],
       "kbd": [
         "./dist/kbd.d.ts"
+      ],
+      "tooltip": [
+        "./dist/tooltip.d.ts"
       ]
     }
   },
@@ -295,6 +298,11 @@
       "source": "./src/components/kbd/index.ts",
       "types": "./dist/kbd.d.ts",
       "import": "./dist/kbd.js"
+    },
+    "./tooltip": {
+      "source": "./src/components/tooltip/index.ts",
+      "types": "./dist/tooltip.d.ts",
+      "import": "./dist/tooltip.js"
     }
   },
   "files": [

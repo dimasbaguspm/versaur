@@ -103,7 +103,6 @@ export type {
   CardBodyProps,
   CardFooterProps,
   CardSize,
-  CardShape,
   CardAlign,
   CardJustify,
   CardGap,
@@ -133,6 +132,9 @@ export type {
 } from "./components/button-group";
 
 export { Kbd } from "./components/kbd";
+
+export { Tooltip } from "./components/tooltip";
+export type { TooltipProps } from "./components/tooltip";
 
 export { TopBar } from "./components/top-bar";
 export type {

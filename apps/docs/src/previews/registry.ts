@@ -13,6 +13,7 @@ import { AttributeListDocPage } from "./pages/attribute-list-doc-page";
 import { BadgeDocPage } from "./pages/badge-doc-page";
 import { DotDocPage } from "./pages/dot-doc-page";
 import { KbdDocPage } from "./pages/kbd-doc-page";
+import { TooltipDocPage } from "./pages/tooltip-doc-page";
 import { BadgeGroupDocPage } from "./pages/badge-group-doc-page";
 import { ButtonGroupDocPage } from "./pages/button-group-doc-page";
 import { CardDocPage } from "./pages/card-doc-page";
@@ -138,6 +139,13 @@ export const previewRegistry: Record<string, RegistryEntry> = {
     title: "Kbd",
     description:
       "A keyboard key display component for showing keyboard shortcuts and modifier keys with filled or outline variants",
+    category: "Primitives",
+  },
+  tooltip: {
+    component: TooltipDocPage,
+    title: "Tooltip",
+    description:
+      "A popover-based tooltip component that uses the browser Popover API with flexible placement options and line clamping support",
     category: "Primitives",
   },
   card: {
