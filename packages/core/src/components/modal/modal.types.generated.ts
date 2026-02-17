@@ -2,8 +2,6 @@
 // Source: modal.module.css
 
 export interface ModalDataAttrs {
-  closing?: boolean;
-  open?: boolean;
 };
 
 export namespace Modal {

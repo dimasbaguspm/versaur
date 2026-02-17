@@ -25,68 +25,23 @@
   flex-direction: column;
   overflow: hidden;
 
-  /* Z-index */
-  z-index: 100;
-}
-
-/* Enter animation */
-.modal[data-open] {
-  animation: scaleIn var(--transition-slow);
-}
-
-/* Exit animation */
-.modal[data-closing] {
-  animation: scaleOut var(--transition-slow);
+  /* Animation */
+  animation: fadeIn 300ms ease-out;
 }
 
 /* Backdrop */
 .modal::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
-  animation: fadeIn var(--transition-base);
-}
-
-.modal[data-closing]::backdrop {
-  animation: fadeOut var(--transition-base);
+  animation: fadeIn 300ms ease-out;
 }
 
 /* Keyframes */
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes scaleOut {
-  from {
-    opacity: 1;
-    transform: scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
   }
 }
 

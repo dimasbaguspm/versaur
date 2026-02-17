@@ -23,7 +23,7 @@ function BasicModalPreview() {
         Open Modal
       </Button>
 
-      <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+      <Modal open={isOpen} onOpenChange={(open) => setIsOpen(open)}>
         <Modal.Header>
           <Modal.Title>Modal Title</Modal.Title>
           <Modal.CloseButton />
@@ -53,7 +53,7 @@ function ConfirmModalPreview() {
         Delete Item
       </Button>
 
-      <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+      <Modal open={isOpen} onOpenChange={(open) => setIsOpen(open)}>
         <Modal.Header>
           <Modal.Title>Confirm Delete</Modal.Title>
           <Modal.CloseButton />

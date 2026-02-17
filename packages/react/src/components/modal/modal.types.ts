@@ -1,25 +1,18 @@
 import type { DialogHTMLAttributes, ReactNode } from "react";
 
-export type ModalCloseReason =
-  | "esc"
-  | "backdrop"
-  | "closeButton"
-  | "programmatic";
-
 export interface ModalRootProps extends Omit<
   DialogHTMLAttributes<HTMLDialogElement>,
   "onClose"
 > {
   /**
-   * Whether the modal is open
+   * Whether the modal is open - controlled state
    */
   open: boolean;
 
   /**
-   * Callback when the modal closes
-   * Includes the reason for closing
+   * Callback when modal closes
    */
-  onClose: (reason: ModalCloseReason) => void;
+  onOpenChange?: (open: boolean) => void;
 
   children?: ReactNode;
 }
