@@ -22,6 +22,7 @@
 
   display: flex;
   flex-direction: column;
+  gap: var(--_gap);
   background-color: var(--_bg);
   border-radius: var(--_border-radius);
   box-shadow: var(--_shadow);
@@ -92,119 +93,154 @@
   outline-offset: 2px;
 }
 
-/* Card container - layout wrapper inside card */
-.card-container {
+/* Header region - flexible layout container */
+.header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+
+  --_justify: flex-start;
+  --_gap: var(--spacing-3);
+
+  justify-content: var(--_justify);
   gap: var(--_gap);
 }
 
-/* Avatar - left side, fixed size */
-.card-avatar {
-  flex-shrink: 0;
+/* Header justify-content variants */
+.header[data-justify="start"] {
+  --_justify: flex-start;
 }
 
-/* Content wrapper - grows to fill space */
-.card-content {
+.header[data-justify="center"] {
+  --_justify: center;
+}
+
+.header[data-justify="end"] {
+  --_justify: flex-end;
+}
+
+.header[data-justify="between"] {
+  --_justify: space-between;
+}
+
+.header[data-justify="around"] {
+  --_justify: space-around;
+}
+
+/* Header gap variants */
+.header[data-gap="none"] {
+  --_gap: 0;
+}
+
+.header[data-gap="xs"] {
+  --_gap: var(--spacing-1);
+}
+
+.header[data-gap="sm"] {
+  --_gap: var(--spacing-2);
+}
+
+.header[data-gap="md"] {
+  --_gap: var(--spacing-3);
+}
+
+.header[data-gap="lg"] {
+  --_gap: var(--spacing-4);
+}
+
+/* Body region - flexible column layout container */
+.body {
+  display: flex;
+  flex-direction: column;
   flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
+
+  --_gap: var(--spacing-2);
+  gap: var(--_gap);
 }
 
-/* Header section */
-.card-header {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: var(--spacing-2);
+/* Body alignment variants */
+.body[data-align="left"] {
+  align-items: flex-start;
 }
 
-/* Title styling */
-.card-title {
-  word-break: break-words;
-  line-height: 1.2;
-}
-
-/* Subtitle styling */
-.card-subtitle {
-  margin-top: var(--spacing-1);
-  min-width: 0;
-  overflow: hidden;
-}
-
-/* Footer section - contains badge and supplementary info */
-.card-footer {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-2);
-}
-
-/* Badge container */
-.card-badge {
-  min-width: 0;
-  overflow: hidden;
-}
-
-/* Badge group - handles spacing of multiple badges */
-.card-badge-group {
-  display: flex;
-  gap: var(--spacing-2);
-  flex-wrap: wrap;
+.body[data-align="center"] {
   align-items: center;
 }
 
-/* Supplementary info - often price, status, etc */
-.card-supplementary {
-  flex-shrink: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.body[data-align="right"] {
+  align-items: flex-end;
 }
 
-/* List styling */
-.card-list {
+/* Body gap variants */
+.body[data-gap="none"] {
+  --_gap: 0;
+}
+
+.body[data-gap="xs"] {
+  --_gap: var(--spacing-1);
+}
+
+.body[data-gap="sm"] {
+  --_gap: var(--spacing-2);
+}
+
+.body[data-gap="md"] {
+  --_gap: var(--spacing-3);
+}
+
+.body[data-gap="lg"] {
+  --_gap: var(--spacing-4);
+}
+
+/* Footer region - flexible layout container */
+.footer {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 0;
-  min-width: 0;
-  overflow: hidden;
-  width: 100%;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+
+  --_justify: flex-start;
+  --_gap: var(--spacing-3);
+
+  justify-content: var(--_justify);
+  gap: var(--_gap);
 }
 
-/* List item - with separator dot */
-.card-list-item {
-  /* Private tokens for separator styling */
-  --_separator-width: var(--vers-comp-card-list-item-separator-width, 4px);
-  --_separator-height: var(--vers-comp-card-list-item-separator-height, 4px);
-  --_separator-color: var(
-    --vers-comp-card-list-item-separator-color,
-    var(--color-border)
-  );
-  --_separator-margin-x: var(
-    --vers-comp-card-list-item-separator-margin-x,
-    var(--spacing-1)
-  );
-
-  display: inline;
-  white-space: nowrap;
+/* Footer justify-content variants */
+.footer[data-justify="start"] {
+  --_justify: flex-start;
 }
 
-/* Separator dot between list items */
-.card-list-item::after {
-  content: "";
-  display: inline-block;
-  width: var(--_separator-width);
-  height: var(--_separator-height);
-  border-radius: 50%;
-  background-color: var(--_separator-color);
-  margin: 0 var(--_separator-margin-x);
+.footer[data-justify="center"] {
+  --_justify: center;
 }
 
-/* Remove separator from last item */
-.card-list-item:last-child::after {
-  display: none;
+.footer[data-justify="end"] {
+  --_justify: flex-end;
+}
+
+.footer[data-justify="between"] {
+  --_justify: space-between;
+}
+
+.footer[data-justify="around"] {
+  --_justify: space-around;
+}
+
+/* Footer gap variants */
+.footer[data-gap="none"] {
+  --_gap: 0;
+}
+
+.footer[data-gap="xs"] {
+  --_gap: var(--spacing-1);
+}
+
+.footer[data-gap="sm"] {
+  --_gap: var(--spacing-2);
+}
+
+.footer[data-gap="md"] {
+  --_gap: var(--spacing-3);
+}
+
+.footer[data-gap="lg"] {
+  --_gap: var(--spacing-4);
 }

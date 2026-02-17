@@ -1,242 +1,142 @@
 import { Card } from "./card";
+import { Avatar } from "../avatar";
 import { Badge } from "../badge";
+import { BadgeGroup } from "../badge-group/badge-group";
+import { Heading } from "../heading";
+import { Text } from "../text";
+import { Dot } from "../dot";
 
 /**
- * Basic Card - Simple div-based card
+ * Featured Example - Full card with avatar, info, badges, and price
  */
-export function BasicCardPreview() {
+export function CardFeaturedPreview() {
   return (
-    <Card size="md" shape="rounded">
-      <Card.Header>
-        <Card.Title>Simple Card</Card.Title>
+    <Card size="md" shape="rounded" bordered>
+      <Card.Header gap="md" justify="between">
+        <div style={{ display: "flex", gap: "var(--spacing-3)" }}>
+          <Avatar shape="circle" size="lg" variant="primary">
+            AC
+          </Avatar>
+          <div>
+            <Heading as="h3" size="lg">
+              Alice Cooper
+            </Heading>
+            <Text size="sm" intent="secondary">
+              Software Engineer • San Francisco
+            </Text>
+          </div>
+        </div>
+        <div style={{ textAlign: "right" }}>
+          <Text size="lg" weight="semibold">
+            $2,847.32
+          </Text>
+        </div>
       </Card.Header>
+      <Card.Body gap="sm">
+        <BadgeGroup>
+          <Badge variant="success">Active</Badge>
+          <Badge variant="warning">Admin</Badge>
+          <Badge variant="info">Verified</Badge>
+          <Badge variant="success">Online</Badge>
+        </BadgeGroup>
+      </Card.Body>
     </Card>
   );
 }
 
 /**
- * Card Button - Button-based card with interactive styling
- */
-export function CardButtonPreview() {
-  return (
-    <Card
-      as="button"
-      size="md"
-      shape="rounded"
-      onClick={() => alert("Card clicked!")}
-    >
-      <Card.Header>
-        <Card.Title>Clickable Card</Card.Title>
-        <Card.Subtitle>As button element with hover effects</Card.Subtitle>
-      </Card.Header>
-    </Card>
-  );
-}
-
-/**
- * Card with Avatar
- */
-export function CardWithAvatarPreview() {
-  return (
-    <Card size="md" shape="rounded">
-      <Card.Header avatar="AC" avatarProps={{ shape: "circle", size: "lg" }}>
-        <Card.Title>Alice Cooper</Card.Title>
-      </Card.Header>
-    </Card>
-  );
-}
-
-/**
- * Card with Badges
- */
-export function CardWithBadgesPreview() {
-  return (
-    <Card size="md" shape="rounded">
-      <Card.Header>
-        <Card.Title>User Status</Card.Title>
-      </Card.Header>
-      <Card.Footer>
-        <Card.BadgeGroup>
-          <Badge color="secondary">Active</Badge>
-          <Badge color="primary">Admin</Badge>
-          <Badge color="success">Online</Badge>
-        </Card.BadgeGroup>
-      </Card.Footer>
-    </Card>
-  );
-}
-
-/**
- * Card with List
+ * Card with List using Dot and Text
  */
 export function CardWithListPreview() {
   return (
     <Card size="md" shape="rounded">
       <Card.Header>
-        <Card.Title>Job Details</Card.Title>
+        <Heading as="h3" size="lg">
+          Job Details
+        </Heading>
       </Card.Header>
-      <Card.List>
-        <Card.ListItem>Software Engineer</Card.ListItem>
-        <Card.ListItem>San Francisco</Card.ListItem>
-        <Card.ListItem>Full-time</Card.ListItem>
-      </Card.List>
+      <Card.Body gap="sm">
+        <div
+          style={{
+            display: "flex",
+            gap: "var(--spacing-2)",
+            alignItems: "center",
+          }}
+        >
+          <Dot variant="secondary" size="small" />
+          <span>Software Engineer</span>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            gap: "var(--spacing-2)",
+            alignItems: "center",
+          }}
+        >
+          <Dot variant="secondary" size="small" />
+          <span>San Francisco</span>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            gap: "var(--spacing-2)",
+            alignItems: "center",
+          }}
+        >
+          <Dot variant="secondary" size="small" />
+          <span>Full-time</span>
+        </div>
+      </Card.Body>
     </Card>
   );
 }
 
 /**
- * Complex Card - Full example combining all elements
+ * Complex Card - Full example with avatar, heading, badges, and list
  */
 export function CardComplexPreview() {
   return (
     <Card size="lg" shape="rounded" bordered>
-      <Card.Header avatar="AC" avatarProps={{ shape: "circle", size: "lg" }}>
-        <div>
-          <Card.Title>Alice Cooper</Card.Title>
-          <Card.Subtitle>
-            <Card.List>
-              <Card.ListItem>Software Engineer</Card.ListItem>
-              <Card.ListItem>San Francisco</Card.ListItem>
-            </Card.List>
-          </Card.Subtitle>
-        </div>
-      </Card.Header>
-      <Card.Footer>
-        <Card.BadgeGroup>
-          <Badge color="secondary">Active</Badge>
-          <Badge color="primary">Admin</Badge>
-          <Badge color="accent_1">Verified</Badge>
-          <Badge color="success">Online</Badge>
-        </Card.BadgeGroup>
-        <Card.Supplementary>$2,847.32</Card.Supplementary>
-      </Card.Footer>
-    </Card>
-  );
-}
-
-/**
- * Card Size Variants
- */
-export function CardSizeVariantsPreview() {
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-      <Card size="xs">
-        <Card.Title>Extra Small</Card.Title>
-      </Card>
-      <Card size="sm">
-        <Card.Title>Small</Card.Title>
-      </Card>
-      <Card size="md">
-        <Card.Title>Medium</Card.Title>
-      </Card>
-      <Card size="lg">
-        <Card.Title>Large</Card.Title>
-      </Card>
-      <Card size="xl">
-        <Card.Title>Extra Large</Card.Title>
-      </Card>
-    </div>
-  );
-}
-
-/**
- * Card Shape Variants
- */
-export function CardShapeVariantsPreview() {
-  return (
-    <div style={{ display: "flex", gap: "16px" }}>
-      <Card shape="rounded" size="md">
-        <Card.Title>Rounded</Card.Title>
-      </Card>
-      <Card shape="square" size="md">
-        <Card.Title>Square</Card.Title>
-      </Card>
-    </div>
-  );
-}
-
-/**
- * Card Bordered Variants
- */
-export function CardBorderedVariantsPreview() {
-  return (
-    <div style={{ display: "flex", gap: "16px" }}>
-      <Card bordered={false} size="md">
-        <Card.Title>No Border</Card.Title>
-      </Card>
-      <Card bordered={true} size="md">
-        <Card.Title>Bordered</Card.Title>
-      </Card>
-    </div>
-  );
-}
-
-/**
- * Card with Avatar in Header - Avatar embedded in header via props
- */
-export function CardWithAvatarInHeaderPreview() {
-  return (
-    <Card size="md" shape="rounded">
-      <Card.Header avatar="AC" avatarProps={{ shape: "circle", size: "lg" }}>
-        <div>
-          <Card.Title>Alice Cooper</Card.Title>
-          <Card.Subtitle>Senior Software Engineer</Card.Subtitle>
-        </div>
-      </Card.Header>
-    </Card>
-  );
-}
-
-/**
- * Card with Avatar and Badge in Header - Flexible placement
- */
-export function CardWithHeaderBadgePreview() {
-  return (
-    <Card size="md" shape="rounded" bordered>
-      <Card.Header avatar="AC" avatarProps={{ shape: "circle", size: "md" }}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-            width: "100%",
-          }}
-        >
-          <div>
-            <Card.Title>Alice Cooper</Card.Title>
-            <Card.Subtitle>Active Now</Card.Subtitle>
+      <Card.Header gap="md" justify="start">
+        <Avatar shape="circle" size="lg" variant="primary">
+          AC
+        </Avatar>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <Heading as="h3" size="lg">
+            Alice Cooper
+          </Heading>
+          <div style={{ display: "flex", gap: "var(--spacing-2)" }}>
+            <div
+              style={{
+                display: "flex",
+                gap: "var(--spacing-2)",
+                alignItems: "center",
+              }}
+            >
+              <Dot variant="secondary" size="small" />
+              <span style={{ fontSize: "0.875rem" }}>Software Engineer</span>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                gap: "var(--spacing-2)",
+                alignItems: "center",
+              }}
+            >
+              <Dot variant="secondary" size="small" />
+              <span style={{ fontSize: "0.875rem" }}>San Francisco</span>
+            </div>
           </div>
-          <Card.Badge variant="success" size="small">
-            Active
-          </Card.Badge>
         </div>
       </Card.Header>
-    </Card>
-  );
-}
-
-/**
- * Card with Avatar Footer Badges - Separate Avatar usage
- */
-export function CardWithAvatarFooterPreview() {
-  return (
-    <Card size="lg" shape="rounded" bordered>
-      <Card.Header
-        avatar="AC"
-        avatarProps={{ shape: "circle", size: "lg", variant: "primary" }}
-      >
-        <div>
-          <Card.Title>Alice Cooper</Card.Title>
-          <Card.Subtitle>Software Engineer</Card.Subtitle>
-        </div>
-      </Card.Header>
-      <Card.Footer>
-        <Card.BadgeGroup>
-          <Card.Badge variant="success">Online</Card.Badge>
-          <Card.Badge variant="primary">Admin</Card.Badge>
-          <Card.Badge variant="info">Verified</Card.Badge>
-        </Card.BadgeGroup>
-      </Card.Footer>
+      <Card.Body gap="sm">
+        <BadgeGroup>
+          <Badge variant="secondary">Active</Badge>
+          <Badge variant="primary">Admin</Badge>
+          <Badge variant="accent-1">Verified</Badge>
+          <Badge variant="success">Online</Badge>
+        </BadgeGroup>
+      </Card.Body>
     </Card>
   );
 }
@@ -254,106 +154,30 @@ export interface CardSection {
 
 export const cardSections: CardSection[] = [
   {
-    key: "basic",
-    title: "Basic Card",
-    preview: BasicCardPreview,
-    code: `<Card size="md" shape="rounded">
-  <Card.Header>
-    <Card.Title>Simple Card</Card.Title>
-  </Card.Header>
-</Card>`,
-    language: "tsx",
-  },
-  {
-    key: "button",
-    title: "Card as Button",
-    preview: CardButtonPreview,
-    code: `<Card as="button" size="md" shape="rounded" onClick={() => alert("Card clicked!")}>
-  <Card.Header>
-    <Card.Title>Clickable Card</Card.Title>
-    <Card.Subtitle>As button element with hover effects</Card.Subtitle>
-  </Card.Header>
-</Card>`,
-    language: "tsx",
-  },
-  {
-    key: "avatar-header",
-    title: "Card with Avatar in Header",
-    preview: CardWithAvatarInHeaderPreview,
-    code: `<Card size="md" shape="rounded">
-  <Card.Header avatar="AC" avatarProps={{ shape: "circle", size: "lg" }}>
-    <div>
-      <Card.Title>Alice Cooper</Card.Title>
-      <Card.Subtitle>Senior Software Engineer</Card.Subtitle>
-    </div>
-  </Card.Header>
-</Card>`,
-    language: "tsx",
-  },
-  {
-    key: "avatar-header-badge",
-    title: "Card with Avatar and Header Badge",
-    preview: CardWithHeaderBadgePreview,
+    key: "featured",
+    title: "Featured Example",
+    preview: CardFeaturedPreview,
     code: `<Card size="md" shape="rounded" bordered>
-  <Card.Header avatar="AC" avatarProps={{ shape: "circle", size: "md" }}>
-    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", width: "100%" }}>
+  <Card.Header gap="md" justify="between">
+    <div style={{ display: "flex", gap: "var(--spacing-3)" }}>
+      <Avatar shape="circle" size="lg" variant="primary">AC</Avatar>
       <div>
-        <Card.Title>Alice Cooper</Card.Title>
-        <Card.Subtitle>Active Now</Card.Subtitle>
+        <Heading as="h3" size="lg">Alice Cooper</Heading>
+        <Text size="sm" intent="secondary">
+          Software Engineer • San Francisco
+        </Text>
       </div>
-      <Card.Badge variant="success" size="small">Active</Card.Badge>
     </div>
+    <Text size="lg" weight="semibold">$2,847.32</Text>
   </Card.Header>
-</Card>`,
-    language: "tsx",
-  },
-  {
-    key: "avatar-footer",
-    title: "Card with Avatar and Footer Badges",
-    preview: CardWithAvatarFooterPreview,
-    code: `<Card size="lg" shape="rounded" bordered>
-  <Card.Header avatar="AC" avatarProps={{ shape: "circle", size: "lg", variant: "primary" }}>
-    <div>
-      <Card.Title>Alice Cooper</Card.Title>
-      <Card.Subtitle>Software Engineer</Card.Subtitle>
-    </div>
-  </Card.Header>
-  <Card.Footer>
-    <Card.BadgeGroup>
-      <Card.Badge variant="success">Online</Card.Badge>
-      <Card.Badge variant="primary">Admin</Card.Badge>
-      <Card.Badge variant="info">Verified</Card.Badge>
-    </Card.BadgeGroup>
-  </Card.Footer>
-</Card>`,
-    language: "tsx",
-  },
-  {
-    key: "avatar",
-    title: "Card with Avatar (Header Pattern)",
-    preview: CardWithAvatarPreview,
-    code: `<Card size="md" shape="rounded">
-  <Card.Header avatar="AC" avatarProps={{ shape: "circle", size: "lg" }}>
-    <Card.Title>Alice Cooper</Card.Title>
-  </Card.Header>
-</Card>`,
-    language: "tsx",
-  },
-  {
-    key: "badges",
-    title: "Card with Badges",
-    preview: CardWithBadgesPreview,
-    code: `<Card size="md" shape="rounded">
-  <Card.Header>
-    <Card.Title>User Status</Card.Title>
-  </Card.Header>
-  <Card.Footer>
-    <Card.BadgeGroup>
-      <Badge color="secondary">Active</Badge>
-      <Badge color="primary">Admin</Badge>
-      <Badge color="success">Online</Badge>
-    </Card.BadgeGroup>
-  </Card.Footer>
+  <Card.Body gap="sm">
+    <BadgeGroup>
+      <Badge variant="success">Active</Badge>
+      <Badge variant="warning">Admin</Badge>
+      <Badge variant="info">Verified</Badge>
+      <Badge variant="success">Online</Badge>
+    </BadgeGroup>
+  </Card.Body>
 </Card>`,
     language: "tsx",
   },
@@ -363,13 +187,20 @@ export const cardSections: CardSection[] = [
     preview: CardWithListPreview,
     code: `<Card size="md" shape="rounded">
   <Card.Header>
-    <Card.Title>Job Details</Card.Title>
+    <Heading as="h3" size="lg">
+      Job Details
+    </Heading>
   </Card.Header>
-  <Card.List>
-    <Card.ListItem>Software Engineer</Card.ListItem>
-    <Card.ListItem>San Francisco</Card.ListItem>
-    <Card.ListItem>Full-time</Card.ListItem>
-  </Card.List>
+  <Card.Body gap="sm">
+    <div style={{ display: "flex", gap: "var(--spacing-2)", alignItems: "center" }}>
+      <Dot variant="secondary" size="small" />
+      <span>Software Engineer</span>
+    </div>
+    <div style={{ display: "flex", gap: "var(--spacing-2)", alignItems: "center" }}>
+      <Dot variant="secondary" size="small" />
+      <span>San Francisco</span>
+    </div>
+  </Card.Body>
 </Card>`,
     language: "tsx",
   },
@@ -378,54 +209,22 @@ export const cardSections: CardSection[] = [
     title: "Complex Card (Full Example)",
     preview: CardComplexPreview,
     code: `<Card size="lg" shape="rounded" bordered>
-  <Card.Header avatar="AC" avatarProps={{ shape: "circle", size: "lg" }}>
-    <div>
-      <Card.Title>Alice Cooper</Card.Title>
-      <Card.Subtitle>
-        <Card.List>
-          <Card.ListItem>Software Engineer</Card.ListItem>
-          <Card.ListItem>San Francisco</Card.ListItem>
-        </Card.List>
-      </Card.Subtitle>
+  <Card.Header gap="md" justify="start">
+    <Avatar shape="circle" size="lg" variant="primary">AC</Avatar>
+    <div style={{ flex: 1 }}>
+      <Heading as="h3" size="lg">Alice Cooper</Heading>
+      {/* Additional content */}
     </div>
   </Card.Header>
-  <Card.Footer>
-    <Card.BadgeGroup>
-      <Badge color="secondary">Active</Badge>
-      <Badge color="primary">Admin</Badge>
-      <Badge color="accent_1">Verified</Badge>
-      <Badge color="success">Online</Badge>
-    </Card.BadgeGroup>
-    <Card.Supplementary>$2,847.32</Card.Supplementary>
-  </Card.Footer>
+  <Card.Body gap="sm">
+    <BadgeGroup>
+      <Badge variant="secondary">Active</Badge>
+      <Badge variant="primary">Admin</Badge>
+      <Badge variant="accent-1">Verified</Badge>
+      <Badge variant="success">Online</Badge>
+    </BadgeGroup>
+  </Card.Body>
 </Card>`,
-    language: "tsx",
-  },
-  {
-    key: "sizes",
-    title: "Size Variants",
-    preview: CardSizeVariantsPreview,
-    code: `<Card size="xs">...</Card>
-<Card size="sm">...</Card>
-<Card size="md">...</Card>
-<Card size="lg">...</Card>
-<Card size="xl">...</Card>`,
-    language: "tsx",
-  },
-  {
-    key: "shapes",
-    title: "Shape Variants",
-    preview: CardShapeVariantsPreview,
-    code: `<Card shape="rounded">...</Card>
-<Card shape="square">...</Card>`,
-    language: "tsx",
-  },
-  {
-    key: "bordered",
-    title: "Bordered Variants",
-    preview: CardBorderedVariantsPreview,
-    code: `<Card bordered={false}>...</Card>
-<Card bordered={true}>...</Card>`,
     language: "tsx",
   },
 ];
@@ -446,13 +245,13 @@ export const cardProps: CardPropDoc[] = [
     type: "'div' | 'button'",
     default: "'div'",
     description:
-      "Rendering element. Button variant includes interactive styling (hover, cursor, focus ring). Div variant has no interactive styles.",
+      "Root element type. Button variant includes interactive styling (hover, cursor, focus ring). Div variant has no interactive styles.",
   },
   {
     name: "size",
     type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
     default: "'md'",
-    description: "Card padding size variant",
+    description: "Card padding size (applied to root container)",
   },
   {
     name: "shape",
@@ -466,6 +265,42 @@ export const cardProps: CardPropDoc[] = [
     default: "false",
     description: "Whether to show a border around the card",
   },
+  {
+    name: "Header.justify",
+    type: "'start' | 'center' | 'end' | 'between' | 'around'",
+    default: "'start'",
+    description: "Flex justify-content alignment for Header items",
+  },
+  {
+    name: "Header.gap",
+    type: "'none' | 'xs' | 'sm' | 'md' | 'lg'",
+    default: "'md'",
+    description: "Internal spacing between Header items",
+  },
+  {
+    name: "Body.align",
+    type: "'left' | 'center' | 'right'",
+    default: "'left'",
+    description: "Horizontal alignment of Body items (align-items)",
+  },
+  {
+    name: "Body.gap",
+    type: "'none' | 'xs' | 'sm' | 'md' | 'lg'",
+    default: "'sm'",
+    description: "Internal spacing between Body items",
+  },
+  {
+    name: "Footer.justify",
+    type: "'start' | 'center' | 'end' | 'between' | 'around'",
+    default: "'start'",
+    description: "Flex justify-content alignment for Footer items",
+  },
+  {
+    name: "Footer.gap",
+    type: "'none' | 'xs' | 'sm' | 'md' | 'lg'",
+    default: "'md'",
+    description: "Internal spacing between Footer items",
+  },
 ];
 
 /**
@@ -473,10 +308,14 @@ export const cardProps: CardPropDoc[] = [
  */
 export const cardInstallation = {
   code: `import { Card } from "@versaur/react";
-
-// Also import related components as needed
 import { Avatar } from "@versaur/react";
-import { Badge } from "@versaur/react";`,
+import { Badge } from "@versaur/react";
+import { BadgeGroup } from "@versaur/react";
+import { Heading } from "@versaur/react";
+import { Text } from "@versaur/react";
+import { Dot } from "@versaur/react";
+
+// Use these components for composable card content`,
   language: "tsx" as const,
 };
 

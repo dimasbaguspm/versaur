@@ -104,15 +104,13 @@ export type {
   CardRootProps,
   CardButtonProps,
   CardHeaderProps,
-  CardTitleProps,
-  CardSubtitleProps,
+  CardBodyProps,
   CardFooterProps,
-  CardBadgeGroupProps,
-  CardSupplementaryProps,
-  CardListProps,
-  CardListItemProps,
   CardSize,
   CardShape,
+  CardAlign,
+  CardJustify,
+  CardGap,
 } from "./components/card";
 
 export { Table } from "./components/table";
