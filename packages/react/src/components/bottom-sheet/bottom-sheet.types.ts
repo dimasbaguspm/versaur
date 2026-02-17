@@ -1,25 +1,18 @@
 import type { DialogHTMLAttributes, ReactNode } from "react";
 
-export type BottomSheetCloseReason =
-  | "esc"
-  | "backdrop"
-  | "closeButton"
-  | "programmatic";
-
 export interface BottomSheetRootProps extends Omit<
   DialogHTMLAttributes<HTMLDialogElement>,
   "onClose"
 > {
   /**
-   * Whether the bottom sheet is open
+   * Whether the bottom sheet is open - controlled state
    */
   open: boolean;
 
   /**
-   * Callback when the bottom sheet closes
-   * Includes the reason for closing
+   * Callback when bottom sheet closes
    */
-  onClose: (reason: BottomSheetCloseReason) => void;
+  onOpenChange?: (open: boolean) => void;
 
   children?: ReactNode;
 }

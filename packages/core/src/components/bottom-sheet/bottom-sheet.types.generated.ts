@@ -2,8 +2,6 @@
 // Source: bottom-sheet.module.css
 
 export interface BottomSheetDataAttrs {
-  closing?: boolean;
-  open?: boolean;
 };
 
 export namespace BottomSheet {

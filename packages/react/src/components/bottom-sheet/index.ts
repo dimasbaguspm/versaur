@@ -1,7 +1,6 @@
 export { BottomSheet } from "./bottom-sheet";
 export type {
   BottomSheetRootProps,
-  BottomSheetCloseReason,
   BottomSheetCloseButtonProps,
 } from "./bottom-sheet.types";
 export {

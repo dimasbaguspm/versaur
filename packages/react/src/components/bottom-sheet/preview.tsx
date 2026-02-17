@@ -23,7 +23,7 @@ function BasicBottomSheetPreview() {
         Open Bottom Sheet
       </Button>
 
-      <BottomSheet open={isOpen} onClose={() => setIsOpen(false)}>
+      <BottomSheet open={isOpen} onOpenChange={(open) => setIsOpen(open)}>
         <BottomSheet.Header>
           <BottomSheet.Title>Bottom Sheet Title</BottomSheet.Title>
           <BottomSheet.CloseButton />
@@ -56,7 +56,7 @@ function MobileMenuPreview() {
         Menu
       </Button>
 
-      <BottomSheet open={isOpen} onClose={() => setIsOpen(false)}>
+      <BottomSheet open={isOpen} onOpenChange={(open) => setIsOpen(open)}>
         <BottomSheet.Header>
           <BottomSheet.Title>Menu</BottomSheet.Title>
         </BottomSheet.Header>
