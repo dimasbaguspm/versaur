@@ -12,7 +12,7 @@
 
 /* Base select styles */
 .select {
-  /* Sizing — three-layer token pattern, defaults to medium */
+  /* Sizing — three-layer token pattern, defaults to medium/outline */
   --_height: var(--vers-comp-select-height, 2.5rem);
   --_px: var(--vers-comp-select-padding-x, var(--spacing-3));
   --_py: var(--vers-comp-select-padding-y, 0);
@@ -23,24 +23,16 @@
   /* Border radius */
   --_radius: var(--vers-comp-select-radius, var(--radius-md));
 
-  /* Colors — three-layer token pattern, defaults to outline variant */
+  /* Colors — three-layer token pattern, defaults to outline */
   --_bg: var(--vers-comp-select-bg, transparent);
   --_border: var(--vers-comp-select-border, var(--color-border));
   --_text: var(--vers-comp-select-text, var(--color-text));
   --_arrow-color: var(--vers-comp-select-arrow-color, var(--color-text-muted));
 
   /* Focus ring */
-  --_focus-ring-width: var(
-    --vers-comp-select-focus-ring-width,
-    var(--focus-ring-width)
-  );
-  --_focus-ring-offset: var(
-    --vers-comp-select-focus-ring-offset,
-    var(--focus-ring-offset)
-  );
   --_focus-ring-color: var(
     --vers-comp-select-focus-ring-color,
-    var(--color-border-focus)
+    var(--color-primary)
   );
 
   /* Layout */
@@ -70,49 +62,14 @@
   /* Interaction */
   cursor: pointer;
   outline: none;
-  transition-property: border-color, box-shadow, background-color;
+  transition-property: border-color, background-color;
   transition-duration: var(--transition-base);
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Focus state */
-.select:focus {
+/* Focus visible state */
+.select:focus-visible {
   border-color: var(--_focus-ring-color);
-  box-shadow: 0 0 0 var(--_focus-ring-width) var(--_focus-ring-color);
-}
-
-/* Size variants */
-.select[data-size="small"] {
-  --_height: 2rem;
-  --_px: var(--spacing-2);
-  --_font-size: var(--font-size-sm);
-  --_arrow-size: 1rem;
-}
-
-.select[data-size="large"] {
-  --_height: 3rem;
-  --_px: var(--spacing-4);
-  --_font-size: var(--font-size-lg);
-  --_arrow-size: 1.5rem;
-}
-
-/* Visual variants */
-.select[data-variant="outline"] {
-  --_bg: transparent;
-  --_border: var(--color-border);
-  --_focus-ring-color: var(--color-border-focus);
-}
-
-.select[data-variant="filled"] {
-  --_bg: var(--color-surface);
-  --_border: transparent;
-  --_focus-ring-color: var(--color-border-focus);
-}
-
-.select[data-variant="ghost"] {
-  --_bg: transparent;
-  --_border: transparent;
-  --_focus-ring-color: var(--color-border-focus);
 }
 
 /* Invalid state (error) */

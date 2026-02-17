@@ -1,21 +1,61 @@
-import { forwardRef, useId } from "react";
+import {
+  forwardRef,
+  useId,
+  ForwardRefExoticComponent,
+  RefAttributes,
+} from "react";
 import { selectStyles } from "@versaur/core";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import { Label } from "../label";
 import { HelperText } from "../helper-text";
 import { ErrorText } from "../error-text";
-import type { SelectProps } from "./select.types";
+import type {
+  SelectProps,
+  SelectOptionProps,
+  SelectOptionGroupProps,
+} from "./select.types";
 import "@versaur/core/select.css";
+
+/**
+ * SelectOption component
+ * An option within a Select dropdown
+ */
+export const SelectOption = forwardRef<HTMLOptionElement, SelectOptionProps>(
+  ({ children, ...rest }, ref) => {
+    return (
+      <option ref={ref} {...rest}>
+        {children}
+      </option>
+    );
+  },
+);
+
+SelectOption.displayName = "Select.Option";
+
+/**
+ * SelectOptionGroup component
+ * A grouped set of options within a Select dropdown
+ */
+export const SelectOptionGroup = forwardRef<
+  HTMLOptGroupElement,
+  SelectOptionGroupProps
+>(({ label, children, ...rest }, ref) => {
+  return (
+    <optgroup ref={ref} label={label} {...rest}>
+      {children}
+    </optgroup>
+  );
+});
+
+SelectOptionGroup.displayName = "Select.OptionGroup";
 
 /**
  * Select component
  * Native select dropdown with label, validation states, and helper text
  */
-export const Select = forwardRef<HTMLSelectElement, SelectProps>(
+const SelectComponent = forwardRef<HTMLSelectElement, SelectProps>(
   (
     {
-      variant = "outline",
-      size = "medium",
       label,
       helper,
       error,
@@ -26,7 +66,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
       id: providedId,
       ...rest
     },
-    ref
+    ref,
   ) => {
     // Generate unique IDs for accessibility
     const generatedId = useId();
@@ -37,8 +77,6 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 
     // Convert props to data attributes
     const dataAttrs = useDataAttrs({
-      variant: size === "medium" ? variant : undefined,
-      size: size === "medium" ? undefined : size,
       invalid: !!error,
       disabled,
     });
@@ -75,7 +113,18 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         {!error && helper && <HelperText id={helperId}>{helper}</HelperText>}
       </div>
     );
-  }
+  },
 );
 
-Select.displayName = "Select";
+SelectComponent.displayName = "Select";
+
+interface SelectComponent extends ForwardRefExoticComponent<
+  SelectProps & RefAttributes<HTMLSelectElement>
+> {
+  Option: typeof SelectOption;
+  OptionGroup: typeof SelectOptionGroup;
+}
+
+export const Select = SelectComponent as SelectComponent;
+Select.Option = SelectOption;
+Select.OptionGroup = SelectOptionGroup;

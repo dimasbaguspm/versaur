@@ -9,141 +9,61 @@ export interface SelectSection {
   language: string;
 }
 
-function VariantsPreview() {
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <Select variant="outline" label="Outline" placeholder="Select an option">
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-      </Select>
-      <Select variant="filled" label="Filled" placeholder="Select an option">
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-      </Select>
-      <Select variant="ghost" label="Ghost" placeholder="Select an option">
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-      </Select>
-    </div>
-  );
-}
-
-function SizesPreview() {
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <Select size="small" label="Small" placeholder="Select an option">
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-      </Select>
-      <Select size="medium" label="Medium" placeholder="Select an option">
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-      </Select>
-      <Select size="large" label="Large" placeholder="Select an option">
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-      </Select>
-    </div>
-  );
-}
-
 function StatesPreview() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
       <Select label="Default" placeholder="Select an option">
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
+        <Select.Option value="1">Option 1</Select.Option>
+        <Select.Option value="2">Option 2</Select.Option>
+        <Select.Option value="3">Option 3</Select.Option>
       </Select>
       <Select
         label="Invalid"
         placeholder="Select an option"
         error="This field is required"
+        required
       >
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
+        <Select.Option value="1">Option 1</Select.Option>
+        <Select.Option value="2">Option 2</Select.Option>
+        <Select.Option value="3">Option 3</Select.Option>
       </Select>
       <Select label="Disabled" disabled defaultValue="1">
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
+        <Select.Option value="1">Option 1</Select.Option>
+        <Select.Option value="2">Option 2</Select.Option>
+        <Select.Option value="3">Option 3</Select.Option>
       </Select>
       <Select
         label="With Helper"
         placeholder="Select an option"
         helper="Choose your preferred option"
       >
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
+        <Select.Option value="1">Option 1</Select.Option>
+        <Select.Option value="2">Option 2</Select.Option>
+        <Select.Option value="3">Option 3</Select.Option>
       </Select>
     </div>
   );
 }
 
-function CompleteExamplesPreview() {
+function OptionGroupsPreview() {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-      <Select
-        label="Country"
-        placeholder="Select a country"
-        helper="Choose your country of residence"
-        required
-      >
-        <option value="us">United States</option>
-        <option value="ca">Canada</option>
-        <option value="uk">United Kingdom</option>
-        <option value="au">Australia</option>
-        <option value="de">Germany</option>
-      </Select>
-      <Select
-        label="Language"
-        placeholder="Select a language"
-        variant="filled"
-      >
-        <option value="en">English</option>
-        <option value="es">Spanish</option>
-        <option value="fr">French</option>
-        <option value="de">German</option>
-        <option value="ja">Japanese</option>
-      </Select>
-      <Select
-        label="Priority"
-        placeholder="Select priority"
-        error="Priority is required"
-        required
-      >
-        <option value="low">Low</option>
-        <option value="medium">Medium</option>
-        <option value="high">High</option>
-        <option value="urgent">Urgent</option>
-      </Select>
-    </div>
-  );
-}
-
-function CustomizationPreview() {
-  return (
-    <div
-      style={
-        {
-          "--vers-comp-select-bg": "#f0fdf4",
-          "--vers-comp-select-border": "#10b981",
-          "--vers-comp-select-focus-ring-color": "#10b981",
-        } as React.CSSProperties
-      }
-    >
-      <Select label="Custom Select" placeholder="Select an option">
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
+    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <Select label="With Option Groups" placeholder="Select a country">
+        <Select.OptionGroup label="North America">
+          <Select.Option value="us">United States</Select.Option>
+          <Select.Option value="ca">Canada</Select.Option>
+          <Select.Option value="mx">Mexico</Select.Option>
+        </Select.OptionGroup>
+        <Select.OptionGroup label="Europe">
+          <Select.Option value="uk">United Kingdom</Select.Option>
+          <Select.Option value="de">Germany</Select.Option>
+          <Select.Option value="fr">France</Select.Option>
+        </Select.OptionGroup>
+        <Select.OptionGroup label="Asia">
+          <Select.Option value="jp">Japan</Select.Option>
+          <Select.Option value="cn">China</Select.Option>
+          <Select.Option value="in">India</Select.Option>
+        </Select.OptionGroup>
       </Select>
     </div>
   );
@@ -151,128 +71,56 @@ function CustomizationPreview() {
 
 export const selectSections: SelectSection[] = [
   {
-    key: "variants",
-    title: "Variants",
-    preview: VariantsPreview,
-    code: `<Select variant="outline" label="Outline" placeholder="Select an option">
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3</option>
-</Select>
-<Select variant="filled" label="Filled" placeholder="Select an option">
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3</option>
-</Select>
-<Select variant="ghost" label="Ghost" placeholder="Select an option">
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3</option>
-</Select>`,
-    language: "tsx",
-  },
-  {
-    key: "sizes",
-    title: "Sizes",
-    preview: SizesPreview,
-    code: `<Select size="small" label="Small" placeholder="Select an option">
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3</option>
-</Select>
-<Select size="medium" label="Medium" placeholder="Select an option">
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3</option>
-</Select>
-<Select size="large" label="Large" placeholder="Select an option">
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3</option>
-</Select>`,
-    language: "tsx",
-  },
-  {
     key: "states",
     title: "States",
     preview: StatesPreview,
     code: `<Select label="Default" placeholder="Select an option">
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3</option>
+  <Select.Option value="1">Option 1</Select.Option>
+  <Select.Option value="2">Option 2</Select.Option>
+  <Select.Option value="3">Option 3</Select.Option>
 </Select>
 <Select
   label="Invalid"
   placeholder="Select an option"
   error="This field is required"
 >
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3</option>
+  <Select.Option value="1">Option 1</Select.Option>
+  <Select.Option value="2">Option 2</Select.Option>
+  <Select.Option value="3">Option 3</Select.Option>
 </Select>
 <Select label="Disabled" disabled defaultValue="1">
-  <option value="1">Option 1</option>
-  <option value="2">Option 2</option>
-  <option value="3">Option 3</option>
+  <Select.Option value="1">Option 1</Select.Option>
+  <Select.Option value="2">Option 2</Select.Option>
+  <Select.Option value="3">Option 3</Select.Option>
 </Select>`,
     language: "tsx",
   },
   {
-    key: "complete",
-    title: "Complete Examples",
-    preview: CompleteExamplesPreview,
-    code: `<Select
-  label="Country"
-  placeholder="Select a country"
-  helper="Choose your country of residence"
-  required
->
-  <option value="us">United States</option>
-  <option value="ca">Canada</option>
-  <option value="uk">United Kingdom</option>
-  <option value="au">Australia</option>
-  <option value="de">Germany</option>
-</Select>
-<Select
-  label="Language"
-  placeholder="Select a language"
-  variant="filled"
->
-  <option value="en">English</option>
-  <option value="es">Spanish</option>
-  <option value="fr">French</option>
-  <option value="de">German</option>
-  <option value="ja">Japanese</option>
+    key: "groups",
+    title: "Option Groups",
+    preview: OptionGroupsPreview,
+    code: `<Select label="With Option Groups" placeholder="Select a country">
+  <Select.OptionGroup label="North America">
+    <Select.Option value="us">United States</Select.Option>
+    <Select.Option value="ca">Canada</Select.Option>
+    <Select.Option value="mx">Mexico</Select.Option>
+  </Select.OptionGroup>
+  <Select.OptionGroup label="Europe">
+    <Select.Option value="uk">United Kingdom</Select.Option>
+    <Select.Option value="de">Germany</Select.Option>
+    <Select.Option value="fr">France</Select.Option>
+  </Select.OptionGroup>
+  <Select.OptionGroup label="Asia">
+    <Select.Option value="jp">Japan</Select.Option>
+    <Select.Option value="cn">China</Select.Option>
+    <Select.Option value="in">India</Select.Option>
+  </Select.OptionGroup>
 </Select>`,
     language: "tsx",
-  },
-  {
-    key: "customization",
-    title: "CSS Customization",
-    preview: CustomizationPreview,
-    code: `/* Override component tokens to customize */
-.custom-select {
-  --vers-comp-select-bg: #f0fdf4;
-  --vers-comp-select-border: #10b981;
-  --vers-comp-select-focus-ring-color: #10b981;
-}`,
-    language: "css",
   },
 ];
 
 export const selectProps = [
-  {
-    name: "variant",
-    type: "'outline' | 'filled' | 'ghost'",
-    default: "'outline'",
-    description: "Visual variant of the select",
-  },
-  {
-    name: "size",
-    type: "'small' | 'medium' | 'large'",
-    default: "'medium'",
-    description: "Size of the select",
-  },
   {
     name: "label",
     type: "string",
@@ -310,28 +158,3 @@ export const selectProps = [
     description: "Whether the select is disabled",
   },
 ];
-
-export const selectInstallation = {
-  code: `# Using npm
-npm install @versaur/react @versaur/core
-
-# Using pnpm
-pnpm add @versaur/react @versaur/core
-
-# Using yarn
-yarn add @versaur/react @versaur/core`,
-  language: "bash" as const,
-};
-
-export function SelectPreview() {
-  return (
-    <>
-      {selectSections.map((s) => (
-        <div key={s.key}>
-          <h3>{s.title}</h3>
-          <s.preview />
-        </div>
-      ))}
-    </>
-  );
-}

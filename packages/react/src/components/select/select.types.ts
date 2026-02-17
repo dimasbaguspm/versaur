@@ -1,19 +1,10 @@
-import type { SelectHTMLAttributes } from "react";
-import type { Select } from "@versaur/core";
+import type {
+  SelectHTMLAttributes,
+  OptionHTMLAttributes,
+  OptgroupHTMLAttributes,
+} from "react";
 
 export interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
-  /**
-   * Visual variant
-   * @default "outline"
-   */
-  variant?: Select.Variant;
-
-  /**
-   * Size variant
-   * @default "medium"
-   */
-  size?: Select.Size | "medium";
-
   /**
    * Label text displayed above select
    */
@@ -35,8 +26,16 @@ export interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   placeholder?: string;
 }
 
-declare module "@versaur/core" {
-  export namespace Select {
-    export { SelectProps as Props };
-  }
+export interface SelectOptionProps extends OptionHTMLAttributes<HTMLOptionElement> {
+  /**
+   * The option label/value text
+   */
+  children?: string;
+}
+
+export interface SelectOptionGroupProps extends OptgroupHTMLAttributes<HTMLOptGroupElement> {
+  /**
+   * The group label
+   */
+  label: string;
 }
