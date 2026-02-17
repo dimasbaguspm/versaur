@@ -58,8 +58,6 @@ const CheckboxGroupRoot = forwardRef<HTMLDivElement, CheckboxGroupRootProps>(
       value,
       onChange,
       name,
-      variant = "outline",
-      size = "medium",
       label,
       helper,
       error,
@@ -69,7 +67,7 @@ const CheckboxGroupRoot = forwardRef<HTMLDivElement, CheckboxGroupRootProps>(
       children,
       ...rest
     },
-    ref
+    ref,
   ) => {
     const generatedId = useId();
     const groupId = rest.id || generatedId;
@@ -84,8 +82,6 @@ const CheckboxGroupRoot = forwardRef<HTMLDivElement, CheckboxGroupRootProps>(
     };
 
     const dataAttrs = useDataAttrs({
-      variant: size === "medium" ? variant : undefined,
-      size: size === "medium" ? undefined : size,
       invalid: !!error,
       disabled,
     });
@@ -121,7 +117,7 @@ const CheckboxGroupRoot = forwardRef<HTMLDivElement, CheckboxGroupRootProps>(
         {!error && helper && <HelperText id={helperId}>{helper}</HelperText>}
       </div>
     );
-  }
+  },
 );
 
 CheckboxGroupRoot.displayName = "CheckboxGroup";
@@ -130,49 +126,76 @@ CheckboxGroupRoot.displayName = "CheckboxGroup";
  * CheckboxGroup.Option Component
  *
  * Individual checkbox option within a CheckboxGroup
+ * Each option can have its own required indicator
  *
  * @example
  * ```tsx
- * <CheckboxGroup.Option value="analytics">Advanced Analytics</CheckboxGroup.Option>
+ * <CheckboxGroup.Option value="analytics" required>Advanced Analytics</CheckboxGroup.Option>
  * ```
  */
 const CheckboxGroupOption = forwardRef<
   HTMLInputElement,
   CheckboxGroupOptionProps
->(({ value, children, disabled: optionDisabled, ...rest }, ref) => {
-  const context = useCheckboxGroupContext();
-  const isChecked = context.value.includes(value);
-  const isDisabled = context.disabled || optionDisabled;
+>(
+  (
+    {
+      value,
+      children,
+      disabled: optionDisabled,
+      required: optionRequired = false,
+      ...rest
+    },
+    ref,
+  ) => {
+    const generatedId = useId();
+    const context = useCheckboxGroupContext();
+    const isChecked = context.value.includes(value);
+    const isDisabled = context.disabled || optionDisabled;
 
-  const handleChange = () => {
-    if (!isDisabled) {
-      const newValue = isChecked
-        ? context.value.filter((v) => v !== value)
-        : [...context.value, value];
-      context.onChange(newValue);
-    }
-  };
+    const handleChange = () => {
+      if (!isDisabled) {
+        const newValue = isChecked
+          ? context.value.filter((v) => v !== value)
+          : [...context.value, value];
+        context.onChange(newValue);
+      }
+    };
 
-  return (
-    <label className={checkboxGroupStyles.option}>
-      <input
-        ref={ref}
-        type="checkbox"
-        name={context.name}
-        value={value}
-        checked={isChecked}
-        disabled={isDisabled}
-        onChange={handleChange}
-        className={checkboxGroupStyles.input}
-        {...rest}
-      />
-      <span className={checkboxGroupStyles.indicator} />
-      {children && (
-        <span className={checkboxGroupStyles.optionLabel}>{children}</span>
-      )}
-    </label>
-  );
-});
+    const dataAttrs = useDataAttrs({
+      disabled: isDisabled,
+      required: optionRequired,
+    });
+
+    return (
+      <label className={checkboxGroupStyles.option} {...dataAttrs}>
+        <input
+          ref={ref}
+          type="checkbox"
+          name={context.name}
+          value={value}
+          checked={isChecked}
+          disabled={isDisabled}
+          required={optionRequired}
+          onChange={handleChange}
+          className={checkboxGroupStyles.input}
+          aria-required={optionRequired || undefined}
+          {...rest}
+          id={generatedId}
+        />
+        <span className={checkboxGroupStyles.indicator} />
+        {children && (
+          <Label
+            required={optionRequired}
+            disabled={isDisabled}
+            htmlFor={generatedId}
+          >
+            {children}
+          </Label>
+        )}
+      </label>
+    );
+  },
+);
 
 CheckboxGroupOption.displayName = "CheckboxGroup.Option";
 

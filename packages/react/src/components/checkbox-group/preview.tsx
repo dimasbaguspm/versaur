@@ -90,6 +90,31 @@ function StatesPreview() {
   );
 }
 
+function RequiredPreview() {
+  const [values, setValues] = useState<string[]>([]);
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      <CheckboxGroup
+        value={values}
+        onChange={setValues}
+        label="Select required features"
+        helper="Mark individual required options"
+      >
+        <CheckboxGroup.Option value="notifications" required>
+          Enable Notifications
+        </CheckboxGroup.Option>
+        <CheckboxGroup.Option value="analytics">
+          Enable Analytics
+        </CheckboxGroup.Option>
+        <CheckboxGroup.Option value="support" required>
+          Request Support
+        </CheckboxGroup.Option>
+      </CheckboxGroup>
+    </div>
+  );
+}
+
 export const checkboxGroupSections: CheckboxGroupSection[] = [
   {
     key: "basic",
@@ -128,6 +153,20 @@ export const checkboxGroupSections: CheckboxGroupSection[] = [
 
 <CheckboxGroup disabled>
   {/* options */}
+</CheckboxGroup>`,
+    language: "tsx",
+  },
+  {
+    key: "required",
+    title: "Required Options",
+    preview: RequiredPreview,
+    code: `<CheckboxGroup label="Select required options">
+  <CheckboxGroup.Option value="notifications" required>
+    Enable Notifications *
+  </CheckboxGroup.Option>
+  <CheckboxGroup.Option value="analytics">
+    Enable Analytics
+  </CheckboxGroup.Option>
 </CheckboxGroup>`,
     language: "tsx",
   },

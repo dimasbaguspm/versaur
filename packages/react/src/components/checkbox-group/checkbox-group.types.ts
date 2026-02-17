@@ -1,8 +1,9 @@
 import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from "react";
-import type { CheckboxGroup as CheckboxGroupCore } from "@versaur/core";
 
-export interface CheckboxGroupRootProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
+export interface CheckboxGroupRootProps extends Omit<
+  HTMLAttributes<HTMLDivElement>,
+  "onChange"
+> {
   /**
    * Array of selected checkbox values
    */
@@ -17,18 +18,6 @@ export interface CheckboxGroupRootProps
    * Name attribute for all checkbox inputs
    */
   name?: string;
-
-  /**
-   * Visual variant
-   * @default "outline"
-   */
-  variant?: CheckboxGroupCore.Variant;
-
-  /**
-   * Size variant
-   * @default "medium"
-   */
-  size?: CheckboxGroupCore.Size;
 
   /**
    * Label for the checkbox group
@@ -62,8 +51,10 @@ export interface CheckboxGroupRootProps
   direction?: "row" | "column";
 }
 
-export interface CheckboxGroupOptionProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "size"> {
+export interface CheckboxGroupOptionProps extends Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  "type" | "size"
+> {
   /**
    * Checkbox value
    */
@@ -73,6 +64,11 @@ export interface CheckboxGroupOptionProps
    * Label text (children)
    */
   children?: ReactNode;
+
+  /**
+   * Required indicator for this specific option
+   */
+  required?: boolean;
 
   /**
    * Disabled state for this specific option

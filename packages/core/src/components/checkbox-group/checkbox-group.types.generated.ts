@@ -2,20 +2,14 @@
 // Source: checkbox-group.module.css
 
 export type CheckboxGroupDirection = 'row';
-export type CheckboxGroupSize = 'large' | 'small';
-export type CheckboxGroupVariant = 'filled' | 'outline';
 
 export interface CheckboxGroupDataAttrs {
   direction?: CheckboxGroupDirection;
-  size?: CheckboxGroupSize;
-  variant?: CheckboxGroupVariant;
   disabled?: boolean;
   invalid?: boolean;
 };
 
 export namespace CheckboxGroup {
   export type Direction = CheckboxGroupDirection;
-  export type Size = CheckboxGroupSize;
-  export type Variant = CheckboxGroupVariant;
   export type DataAttrs = CheckboxGroupDataAttrs;
 }

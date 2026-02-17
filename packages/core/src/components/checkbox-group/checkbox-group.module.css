@@ -48,7 +48,7 @@
   );
   --_focus-ring-color: var(
     --vers-comp-checkbox-focus-ring-color,
-    var(--color-border-focus)
+    var(--color-primary)
   );
 
   /* Layout */
@@ -84,11 +84,12 @@
   background-color: var(--_bg);
   flex-shrink: 0;
   transition: all var(--transition-base);
+  margin: 0;
 }
 
 /* Checked state - checkmark */
 .input:checked + .indicator::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 40%;
   height: 70%;
@@ -105,43 +106,7 @@
 /* Focus state */
 .input:focus-visible + .indicator {
   outline: none;
-  box-shadow: 0 0 0 var(--_focus-ring-width) var(--_focus-ring-color);
-}
-
-/* Hover state */
-.option:hover .indicator:not([data-disabled]) {
-  border-color: var(--color-border-hover);
-}
-
-/* Size variants */
-.field[data-size="small"] .option {
-  --_size: 1rem;
-  --_gap: var(--spacing-1-5);
-  --_font-size: var(--font-size-sm);
-}
-
-.field[data-size="large"] .option {
-  --_size: 1.5rem;
-  --_gap: var(--spacing-3);
-  --_font-size: var(--font-size-lg);
-}
-
-/* Variant: outline (default) */
-.field[data-variant="outline"] .option {
-  --_border: var(--color-border);
-  --_bg: transparent;
-  --_checked-bg: var(--color-primary);
-  --_checked-border: var(--color-primary);
-  --_focus-ring-color: var(--color-border-focus);
-}
-
-/* Variant: filled */
-.field[data-variant="filled"] .option {
-  --_border: var(--color-surface);
-  --_bg: var(--color-surface);
-  --_checked-bg: var(--color-primary);
-  --_checked-border: var(--color-primary);
-  --_focus-ring-color: var(--color-border-focus);
+  border-color: var(--_focus-ring-color);
 }
 
 /* Invalid state */
@@ -160,9 +125,4 @@
 
 .input:disabled + .indicator {
   cursor: not-allowed;
-}
-
-/* Label text */
-.optionLabel {
-  flex: 1;
 }

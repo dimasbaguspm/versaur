@@ -4,7 +4,6 @@ declare const styles: {
   readonly indicator: string;
   readonly input: string;
   readonly option: string;
-  readonly optionLabel: string;
   readonly options: string;
 };
 export default styles;
