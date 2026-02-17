@@ -130,6 +130,10 @@ export type {
   ButtonGroupAlign,
   ButtonGroupWrap,
 } from "./components/button-group";
+
+export { Kbd } from "./components/kbd";
+export type { KbdProps, KbdVariant, KbdSize } from "./components/kbd";
+
 export { TopBar } from "./components/top-bar";
 export type {
   TopBarProps,

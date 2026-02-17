@@ -92,6 +92,10 @@
       "source": "./src/components/nav/nav.module.css",
       "import": "./dist/components/nav/nav.module.css"
     },
+    "./kbd.css": {
+      "source": "./src/components/kbd/kbd.module.css",
+      "import": "./dist/components/kbd/kbd.module.css"
+    },
     "./sidebar.css": {
       "source": "./src/components/sidebar/sidebar.module.css",
       "import": "./dist/components/sidebar/sidebar.module.css"

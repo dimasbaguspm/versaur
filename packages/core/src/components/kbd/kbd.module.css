@@ -1,0 +1,114 @@
+/* Kbd Component - Semantic keyboard key styling */
+
+/* ============================================
+   ROOT CONTAINER (kbd)
+   ============================================ */
+.kbd {
+  display: inline-block;
+  font-family: var(--font-mono);
+
+  /* Sizing — private tokens default to medium */
+  --_height: auto;
+  --_px: var(--vers-comp-kbd-padding-x, var(--spacing-2));
+  --_py: var(--vers-comp-kbd-padding-y, var(--spacing-1));
+  --_font-size: var(--vers-comp-kbd-font-size, var(--font-size-sm));
+  --_font-weight: var(--vers-comp-kbd-font-weight, var(--font-weight-medium));
+
+  padding: var(--_py) var(--_px);
+  font-size: var(--_font-size);
+  font-weight: var(--_font-weight);
+  line-height: var(--line-height-tight);
+
+  /* Border radius */
+  --_radius: var(--vers-comp-kbd-radius, var(--radius-sm));
+  border-radius: var(--_radius);
+
+  /* Color — private tokens default to filled */
+  --_bg: var(--vers-comp-kbd-bg, var(--color-neutral));
+  --_color: var(--vers-comp-kbd-color, var(--color-white));
+  --_border-color: var(--vers-comp-kbd-border-color, var(--color-neutral));
+  --_shadow: var(--vers-comp-kbd-shadow, inset 0 -2px 0 0 rgb(0 0 0 / 0.2));
+
+  background-color: var(--_bg);
+  color: var(--_color);
+  border: 1px solid var(--_border-color);
+  box-shadow: var(--_shadow);
+
+  /* Transitions */
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: var(--transition-base);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Accessibility */
+  outline: none;
+}
+
+/* ============================================
+   SIZE VARIANTS
+   ============================================ */
+.kbd[data-size="xs"] {
+  --_px: var(--vers-comp-kbd-xs-padding-x, var(--spacing-1));
+  --_py: var(--vers-comp-kbd-xs-padding-y, calc(var(--spacing-1) / 2));
+  --_font-size: var(--vers-comp-kbd-xs-font-size, var(--font-size-xs));
+  --_radius: var(--vers-comp-kbd-xs-radius, var(--radius-base));
+}
+
+.kbd[data-size="sm"] {
+  --_px: var(--vers-comp-kbd-sm-padding-x, var(--spacing-2));
+  --_py: var(--vers-comp-kbd-sm-padding-y, var(--spacing-1));
+  --_font-size: var(--vers-comp-kbd-sm-font-size, var(--font-size-sm));
+  --_radius: var(--vers-comp-kbd-sm-radius, var(--radius-base));
+}
+
+.kbd[data-size="md"] {
+  --_px: var(--vers-comp-kbd-md-padding-x, var(--spacing-2));
+  --_py: var(--vers-comp-kbd-md-padding-y, var(--spacing-1));
+  --_font-size: var(--vers-comp-kbd-md-font-size, var(--font-size-sm));
+  --_radius: var(--vers-comp-kbd-md-radius, var(--radius-sm));
+}
+
+.kbd[data-size="lg"] {
+  --_px: var(--vers-comp-kbd-lg-padding-x, var(--spacing-3));
+  --_py: var(--vers-comp-kbd-lg-padding-y, var(--spacing-2));
+  --_font-size: var(--vers-comp-kbd-lg-font-size, var(--font-size-base));
+  --_radius: var(--vers-comp-kbd-lg-radius, var(--radius-md));
+}
+
+/* ============================================
+   VARIANT: FILLED — Light primary background with dark text
+   ============================================ */
+.kbd[data-variant="filled"] {
+  --_bg: var(--vers-comp-kbd-filled-bg, var(--color-primary-light));
+  --_color: var(--vers-comp-kbd-filled-color, var(--color-primary));
+  --_border-color: var(
+    --vers-comp-kbd-filled-border-color,
+    var(--color-primary-light)
+  );
+  --_shadow: var(
+    --vers-comp-kbd-filled-shadow,
+    inset 0 -2px 0 0 rgb(0 0 0 / 0.1)
+  );
+}
+
+/* ============================================
+   VARIANT: OUTLINE — Border only, light background on hover
+   ============================================ */
+.kbd[data-variant="outline"] {
+  --_bg: var(--vers-comp-kbd-outline-bg, transparent);
+  --_color: var(--vers-comp-kbd-outline-color, var(--color-text-primary));
+  --_border-color: var(
+    --vers-comp-kbd-outline-border-color,
+    var(--color-border)
+  );
+  --_shadow: var(--vers-comp-kbd-outline-shadow, none);
+}
+
+/* ============================================
+   VARIANT: GHOST — No border, text color only
+   ============================================ */
+.kbd[data-variant="ghost"] {
+  --_bg: var(--vers-comp-kbd-ghost-bg, transparent);
+  --_color: var(--vers-comp-kbd-ghost-color, var(--color-text-primary));
+  --_border-color: var(--vers-comp-kbd-ghost-border-color, transparent);
+  --_shadow: var(--vers-comp-kbd-ghost-shadow, none);
+}
