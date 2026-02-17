@@ -84,11 +84,7 @@ export type {
 } from "./components/badge";
 
 export { Dot } from "./components/dot";
-export type {
-  DotProps,
-  DotVariant,
-  DotSize,
-} from "./components/dot";
+export type { DotProps, DotVariant, DotSize } from "./components/dot";
 
 export { BadgeGroup } from "./components/badge-group";
 export type {
@@ -145,6 +141,9 @@ export type {
   TopBarMobileToggleProps,
   TopBarComponent,
 } from "./components/top-bar";
+
+export { Nav, NavItem } from "./components/nav";
+export type { NavProps, NavItemProps } from "./components/nav";
 
 export { Sidebar } from "./components/sidebar";
 export type {

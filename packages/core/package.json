@@ -88,6 +88,10 @@
       "source": "./src/components/top-bar/top-bar.module.css",
       "import": "./dist/components/top-bar/top-bar.module.css"
     },
+    "./nav.css": {
+      "source": "./src/components/nav/nav.module.css",
+      "import": "./dist/components/nav/nav.module.css"
+    },
     "./sidebar.css": {
       "source": "./src/components/sidebar/sidebar.module.css",
       "import": "./dist/components/sidebar/sidebar.module.css"

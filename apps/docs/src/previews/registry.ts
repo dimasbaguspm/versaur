@@ -17,6 +17,7 @@ import { ButtonGroupDocPage } from "./pages/button-group-doc-page";
 import { CardDocPage } from "./pages/card-doc-page";
 import { TableDocPage } from "./pages/table-doc-page";
 import { TopBarDocPage } from "./pages/top-bar-doc-page";
+import { NavDocPage } from "./pages/nav-doc-page";
 import { SidebarDocPage } from "./pages/sidebar-doc-page";
 import { BottomBarDocPage } from "./pages/bottom-bar-doc-page";
 import { AppLayoutDocPage } from "./pages/app-layout-doc-page";
@@ -172,6 +173,13 @@ export const previewRegistry: Record<string, RegistryEntry> = {
     description:
       "A semantic navigation header component with compound pattern, polymorphic NavItem support, and mobile menu toggle",
     category: "Navigations",
+  },
+  nav: {
+    component: NavDocPage,
+    title: "Nav",
+    description:
+      "A primitive navigation container with polymorphic items, horizontal/vertical layout support, and flexible icon placement",
+    category: "Primitives",
   },
   sidebar: {
     component: SidebarDocPage,

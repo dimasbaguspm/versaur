@@ -17,6 +17,7 @@ export * from "./components/dot";
 export * from "./components/card";
 export * from "./components/table";
 export * from "./components/top-bar";
+export * from "./components/nav";
 
 // Export groups
 export * from "./components/avatar-group";

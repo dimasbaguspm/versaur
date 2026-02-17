@@ -62,6 +62,9 @@
       "top-bar": [
         "./dist/top-bar.d.ts"
       ],
+      "nav": [
+        "./dist/nav.d.ts"
+      ],
       "sidebar": [
         "./dist/sidebar.d.ts"
       ],
@@ -204,6 +207,11 @@
       "source": "./src/components/top-bar/index.ts",
       "types": "./dist/top-bar.d.ts",
       "import": "./dist/top-bar.js"
+    },
+    "./nav": {
+      "source": "./src/components/nav/index.ts",
+      "types": "./dist/nav.d.ts",
+      "import": "./dist/nav.js"
     },
     "./sidebar": {
       "source": "./src/components/sidebar/index.ts",
