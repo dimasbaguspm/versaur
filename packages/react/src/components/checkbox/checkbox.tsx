@@ -19,21 +19,13 @@ import type { CheckboxProps } from "./checkbox.types";
  */
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
-    {
-      variant = "outline",
-      size = "medium",
-      invalid = false,
-      disabled = false,
-      children,
-      ...rest
-    },
-    ref
+    { invalid = false, disabled = false, required = false, children, ...rest },
+    ref,
   ) => {
     const dataAttrs = useDataAttrs({
-      variant,
-      size,
       invalid,
       disabled,
+      required,
     });
 
     return (
@@ -43,14 +35,23 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           type="checkbox"
           className={checkboxStyles.input}
           disabled={disabled}
+          required={required}
           aria-invalid={invalid || undefined}
+          aria-required={required || undefined}
           {...rest}
         />
         <span className={checkboxStyles.indicator} />
-        {children && <span className={checkboxStyles.label}>{children}</span>}
+        {children && (
+          <span
+            className={checkboxStyles.label}
+            data-required={required || undefined}
+          >
+            {children}
+          </span>
+        )}
       </label>
     );
-  }
+  },
 );
 
 Checkbox.displayName = "Checkbox";

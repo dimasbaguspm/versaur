@@ -1,20 +1,9 @@
 import type { InputHTMLAttributes, ReactNode } from "react";
-import type { Checkbox as CheckboxCore } from "@versaur/core";
 
-export interface CheckboxProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "size"> {
-  /**
-   * Visual variant of the checkbox
-   * @default "outline"
-   */
-  variant?: CheckboxCore.Variant;
-
-  /**
-   * Size of the checkbox
-   * @default "medium"
-   */
-  size?: CheckboxCore.Size;
-
+export interface CheckboxProps extends Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  "type" | "size"
+> {
   /**
    * Label text (children)
    */
@@ -24,4 +13,9 @@ export interface CheckboxProps
    * Invalid/error state
    */
   invalid?: boolean;
+
+  /**
+   * Required field indicator
+   */
+  required?: boolean;
 }
