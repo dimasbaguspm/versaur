@@ -15,12 +15,14 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(
       disabled,
     });
 
+    console.log("Label data attributes:", dataAttrs);
+
     return (
       <label ref={ref} className={labelStyles.label} {...dataAttrs} {...rest}>
         {children}
       </label>
     );
-  }
+  },
 );
 
 Label.displayName = "Label";

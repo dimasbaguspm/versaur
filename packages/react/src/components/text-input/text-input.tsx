@@ -14,19 +14,18 @@ import "@versaur/core/text-input.css";
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   (
     {
-      variant = "outline",
-      size = "medium",
       label,
       helper,
       error,
       required = false,
       disabled = false,
-      leading,
-      trailing,
+      readOnly = false,
+      leftIcon,
+      rightIcon,
       id: providedId,
       ...rest
     },
-    ref
+    ref,
   ) => {
     // Generate unique IDs for accessibility
     const generatedId = useId();
@@ -37,12 +36,11 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 
     // Convert props to data attributes
     const dataAttrs = useDataAttrs({
-      variant: size === "medium" ? variant : undefined,
-      size: size === "medium" ? undefined : size,
       invalid: !!error,
       disabled,
-      hasLeading: !!leading,
-      hasTrailing: !!trailing,
+      readOnly,
+      hasLeftIcon: !!leftIcon,
+      hasRightIcon: !!rightIcon,
     });
 
     return (
@@ -53,8 +51,10 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           </Label>
         )}
 
-        <div className={textInputStyles.wrapper}>
-          {leading && <span className={textInputStyles.leading}>{leading}</span>}
+        <div className={textInputStyles.wrapper} {...dataAttrs}>
+          {leftIcon && (
+            <span className={textInputStyles["left-icon"]}>{leftIcon}</span>
+          )}
 
           <input
             ref={ref}
@@ -62,16 +62,16 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             type="text"
             className={textInputStyles.input}
             disabled={disabled}
+            readOnly={readOnly}
             required={required}
             aria-invalid={error ? "true" : undefined}
             aria-disabled={disabled ? "true" : undefined}
             aria-describedby={describedBy || undefined}
-            {...dataAttrs}
             {...rest}
           />
 
-          {trailing && (
-            <span className={textInputStyles.trailing}>{trailing}</span>
+          {rightIcon && (
+            <span className={textInputStyles["right-icon"]}>{rightIcon}</span>
           )}
         </div>
 
@@ -79,7 +79,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         {!error && helper && <HelperText id={helperId}>{helper}</HelperText>}
       </div>
     );
-  }
+  },
 );
 
 TextInput.displayName = "TextInput";

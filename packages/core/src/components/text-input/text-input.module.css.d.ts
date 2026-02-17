@@ -2,8 +2,8 @@
 declare const styles: {
   readonly field: string;
   readonly input: string;
-  readonly leading: string;
-  readonly trailing: string;
+  readonly 'left-icon': string;
+  readonly 'right-icon': string;
   readonly wrapper: string;
 };
 export default styles;

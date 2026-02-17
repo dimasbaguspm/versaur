@@ -1,20 +1,10 @@
 import type { InputHTMLAttributes, ReactNode } from "react";
 import type { TextInput } from "@versaur/core";
 
-export interface TextInputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
-  /**
-   * Visual variant
-   * @default "outline"
-   */
-  variant?: TextInput.Variant;
-
-  /**
-   * Size variant
-   * @default "medium"
-   */
-  size?: TextInput.Size | "medium";
-
+export interface TextInputProps extends Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  "size"
+> {
   /**
    * Label text displayed above input
    */
@@ -33,12 +23,17 @@ export interface TextInputProps
   /**
    * Icon or element displayed on the left side of input
    */
-  leading?: ReactNode;
+  leftIcon?: ReactNode;
 
   /**
    * Icon or element displayed on the right side of input
    */
-  trailing?: ReactNode;
+  rightIcon?: ReactNode;
+
+  /**
+   * Whether the input is read-only
+   */
+  readOnly?: boolean;
 }
 
 declare module "@versaur/core" {
