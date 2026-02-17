@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import type { DialogRootProps } from "./dialog.types";
 
 /**
@@ -14,23 +14,17 @@ import type { DialogRootProps } from "./dialog.types";
  * ```
  */
 const DialogRoot = React.forwardRef<HTMLDialogElement, DialogRootProps>(
-  ({ isOpen, onOpenChange, children, dialogProps = {} }, forwardedRef) => {
+  ({ isOpen, onOpenChange, children, onClick, ...rest }, forwardedRef) => {
     const internalRef = useRef<HTMLDialogElement>(null);
-    const ref = (forwardedRef as React.Ref<HTMLDialogElement>) || internalRef;
-    const dialogElement =
-      (typeof ref === "object" && ref?.current) ||
-      (typeof ref === "function"
-        ? null
-        : (ref as unknown as HTMLDialogElement));
+    const dialogRef =
+      (forwardedRef as React.MutableRefObject<HTMLDialogElement | null>) ||
+      internalRef;
 
+    // Sync React state with native dialog
     useEffect(() => {
-      const dialog =
-        typeof ref === "object"
-          ? ref.current
-          : (dialogElement as HTMLDialogElement);
+      const dialog = dialogRef.current;
       if (!dialog) return;
 
-      // Sync React state with native dialog
       if (isOpen) {
         try {
           dialog.showModal();
@@ -40,19 +34,14 @@ const DialogRoot = React.forwardRef<HTMLDialogElement, DialogRootProps>(
       } else {
         dialog.close();
       }
-    }, [isOpen, ref, dialogElement]);
+    }, [isOpen, dialogRef]);
 
+    // Handle backdrop click and native events
     useEffect(() => {
-      const dialog =
-        typeof ref === "object"
-          ? ref.current
-          : (dialogElement as HTMLDialogElement);
+      const dialog = dialogRef.current;
       if (!dialog) return;
 
-      const handleClose = () => {
-        onOpenChange?.(false);
-      };
-
+      const handleClose = () => onOpenChange?.(false);
       const handleCancel = (e: Event) => {
         e.preventDefault();
         onOpenChange?.(false);
@@ -65,20 +54,20 @@ const DialogRoot = React.forwardRef<HTMLDialogElement, DialogRootProps>(
         dialog.removeEventListener("close", handleClose);
         dialog.removeEventListener("cancel", handleCancel);
       };
-    }, [ref, dialogElement, onOpenChange]);
+    }, [onOpenChange, dialogRef]);
+
+    const handleClick = useCallback(
+      (e: React.MouseEvent<HTMLDialogElement>) => {
+        if (e.target === e.currentTarget) {
+          onOpenChange?.(false);
+        }
+        onClick?.(e);
+      },
+      [onOpenChange, onClick],
+    );
 
     return (
-      <dialog
-        {...dialogProps}
-        ref={ref as React.Ref<HTMLDialogElement>}
-        onClick={(e) => {
-          // Handle backdrop click
-          if (e.target === e.currentTarget) {
-            onOpenChange?.(false);
-          }
-          dialogProps.onClick?.(e);
-        }}
-      >
+      <dialog {...rest} ref={dialogRef} onClick={handleClick}>
         {children}
       </dialog>
     );
@@ -87,7 +76,4 @@ const DialogRoot = React.forwardRef<HTMLDialogElement, DialogRootProps>(
 
 DialogRoot.displayName = "Dialog";
 
-/**
- * Export Dialog as the main component
- */
 export const Dialog = DialogRoot;

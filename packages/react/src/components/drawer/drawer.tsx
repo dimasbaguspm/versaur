@@ -1,4 +1,4 @@
-import { createContext, useContext, forwardRef, useId } from "react";
+import { createContext, useContext, forwardRef } from "react";
 import { drawerStyles, overlayPartsStyles } from "@versaur/core";
 import "@versaur/core/drawer.css";
 import "@versaur/core/overlay-parts.css";
@@ -44,7 +44,6 @@ const useDrawerContext = () => {
  */
 const DrawerRoot = forwardRef<HTMLDialogElement, DrawerRootProps>(
   ({ open, onOpenChange, placement = "right", children, ...props }, ref) => {
-    const id = useId();
     const dataAttrs = useDataAttrs({
       placement,
     });
@@ -52,15 +51,12 @@ const DrawerRoot = forwardRef<HTMLDialogElement, DrawerRootProps>(
     return (
       <DrawerContext.Provider value={{ onClose: () => onOpenChange?.(false) }}>
         <Dialog
-          id={id}
           ref={ref}
           isOpen={open}
           onOpenChange={onOpenChange}
-          dialogProps={{
-            className: open ? drawerStyles.drawer : "",
-            ...dataAttrs,
-            ...props,
-          }}
+          className={open ? drawerStyles.drawer : ""}
+          {...dataAttrs}
+          {...props}
         >
           <div className={overlayPartsStyles.content}>{children}</div>
         </Dialog>

@@ -1,4 +1,4 @@
-import { createContext, useContext, forwardRef, useId } from "react";
+import { createContext, useContext, forwardRef } from "react";
 import { modalStyles, overlayPartsStyles } from "@versaur/core";
 import "@versaur/core/modal.css";
 import "@versaur/core/overlay-parts.css";
@@ -29,18 +29,14 @@ const useModalContext = () => {
 
 const ModalRoot = forwardRef<HTMLDialogElement, ModalRootProps>(
   ({ open, onOpenChange, children, ...props }, ref) => {
-    const id = useId();
     return (
       <ModalContext.Provider value={{ onClose: () => onOpenChange?.(false) }}>
         <Dialog
-          id={id}
           ref={ref}
           isOpen={open}
           onOpenChange={onOpenChange}
-          dialogProps={{
-            className: open ? modalStyles.modal : "",
-            ...props,
-          }}
+          className={open ? modalStyles.modal : ""}
+          {...props}
         >
           <div className={overlayPartsStyles.content}>{children}</div>
         </Dialog>

@@ -1,4 +1,4 @@
-import { createContext, useContext, forwardRef, useId } from "react";
+import { createContext, useContext, forwardRef } from "react";
 import { bottomSheetStyles, overlayPartsStyles } from "@versaur/core";
 import "@versaur/core/bottom-sheet.css";
 import "@versaur/core/overlay-parts.css";
@@ -36,20 +36,16 @@ const useBottomSheetContext = () => {
 
 const BottomSheetRoot = forwardRef<HTMLDialogElement, BottomSheetRootProps>(
   ({ open, onOpenChange, children, ...props }, ref) => {
-    const id = useId();
     return (
       <BottomSheetContext.Provider
         value={{ onClose: () => onOpenChange?.(false) }}
       >
         <Dialog
-          id={id}
           ref={ref}
           isOpen={open}
           onOpenChange={onOpenChange}
-          dialogProps={{
-            className: bottomSheetStyles.bottomSheet,
-            ...props,
-          }}
+          className={bottomSheetStyles.bottomSheet}
+          {...props}
         >
           <div className={overlayPartsStyles.content}>{children}</div>
         </Dialog>
