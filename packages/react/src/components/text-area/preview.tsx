@@ -9,56 +9,18 @@ export interface TextAreaSection {
   language: string;
 }
 
-function VariantsPreview() {
+function ResizablePreview() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
       <TextArea
-        variant="outline"
-        placeholder="Outline variant"
-        label="Outline"
+        resizable={false}
+        placeholder="Not resizable"
+        label="Resizable: False"
       />
       <TextArea
-        variant="filled"
-        placeholder="Filled variant"
-        label="Filled"
-      />
-      <TextArea variant="ghost" placeholder="Ghost variant" label="Ghost" />
-    </div>
-  );
-}
-
-function SizesPreview() {
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <TextArea size="small" placeholder="Small textarea" label="Small" />
-      <TextArea size="medium" placeholder="Medium textarea" label="Medium" />
-      <TextArea size="large" placeholder="Large textarea" label="Large" />
-    </div>
-  );
-}
-
-function ResizePreview() {
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <TextArea
-        resize="none"
-        placeholder="No resize"
-        label="Resize: None"
-      />
-      <TextArea
-        resize="vertical"
-        placeholder="Vertical resize only"
-        label="Resize: Vertical"
-      />
-      <TextArea
-        resize="horizontal"
-        placeholder="Horizontal resize only"
-        label="Resize: Horizontal"
-      />
-      <TextArea
-        resize="both"
-        placeholder="Resize both directions"
-        label="Resize: Both"
+        resizable={true}
+        placeholder="Resizable"
+        label="Resizable: True"
       />
     </div>
   );
@@ -80,6 +42,12 @@ function StatesPreview() {
         value="Disabled value"
       />
       <TextArea
+        placeholder="Read-only state"
+        label="Read-only"
+        readOnly
+        value="Read-only value"
+      />
+      <TextArea
         placeholder="With helper text"
         label="With Helper"
         helper="Maximum 500 characters"
@@ -88,50 +56,21 @@ function StatesPreview() {
   );
 }
 
-function CompleteExamplesPreview() {
+function ReadOnlyPreview() {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
       <TextArea
-        label="Biography"
-        placeholder="Tell us about yourself"
-        helper="Maximum 500 characters"
-        rows={4}
+        label="Read-only feedback"
+        placeholder="This is read-only"
+        readOnly
+        value="You can select this text but cannot edit it"
+      />
+      <TextArea
+        label="Required & Read-only"
+        placeholder="Combined states"
+        readOnly
         required
-      />
-      <TextArea
-        label="Comments"
-        placeholder="Add your comments..."
-        variant="filled"
-        resize="none"
-        rows={3}
-      />
-      <TextArea
-        label="Feedback"
-        placeholder="Share your feedback"
-        error="Feedback must be at least 10 characters"
-        required
-        rows={4}
-      />
-    </div>
-  );
-}
-
-function CustomizationPreview() {
-  return (
-    <div
-      style={
-        {
-          "--vers-comp-textarea-bg": "#fef3c7",
-          "--vers-comp-textarea-border": "#f59e0b",
-          "--vers-comp-textarea-focus-ring-color": "#f59e0b",
-        } as React.CSSProperties
-      }
-    >
-      <TextArea
-        variant="outline"
-        placeholder="Custom amber theme"
-        label="Custom TextArea"
-        rows={3}
+        value="Read-only with required indicator"
       />
     </div>
   );
@@ -139,31 +78,11 @@ function CustomizationPreview() {
 
 export const textAreaSections: TextAreaSection[] = [
   {
-    key: "variants",
-    title: "Variants",
-    preview: VariantsPreview,
-    code: `<TextArea variant="outline" placeholder="Outline variant" label="Outline" />
-<TextArea variant="filled" placeholder="Filled variant" label="Filled" />
-<TextArea variant="ghost" placeholder="Ghost variant" label="Ghost" />`,
-    language: "tsx",
-  },
-  {
-    key: "sizes",
-    title: "Sizes",
-    preview: SizesPreview,
-    code: `<TextArea size="small" placeholder="Small textarea" label="Small" />
-<TextArea size="medium" placeholder="Medium textarea" label="Medium" />
-<TextArea size="large" placeholder="Large textarea" label="Large" />`,
-    language: "tsx",
-  },
-  {
-    key: "resize",
-    title: "Resize Control",
-    preview: ResizePreview,
-    code: `<TextArea resize="none" placeholder="No resize" label="Resize: None" />
-<TextArea resize="vertical" placeholder="Vertical resize only" label="Resize: Vertical" />
-<TextArea resize="horizontal" placeholder="Horizontal resize only" label="Resize: Horizontal" />
-<TextArea resize="both" placeholder="Resize both directions" label="Resize: Both" />`,
+    key: "resizable",
+    title: "Resizable Control",
+    preview: ResizablePreview,
+    code: `<TextArea resizable={false} placeholder="Not resizable" label="Resizable: False" />
+<TextArea resizable={true} placeholder="Resizable" label="Resizable: True" />`,
     language: "tsx",
   },
   {
@@ -183,6 +102,12 @@ export const textAreaSections: TextAreaSection[] = [
   value="Disabled value"
 />
 <TextArea
+  placeholder="Read-only state"
+  label="Read-only"
+  readOnly
+  value="Read-only value"
+/>
+<TextArea
   placeholder="With helper text"
   label="With Helper"
   helper="Maximum 500 characters"
@@ -190,59 +115,27 @@ export const textAreaSections: TextAreaSection[] = [
     language: "tsx",
   },
   {
-    key: "complete",
-    title: "Complete Examples",
-    preview: CompleteExamplesPreview,
+    key: "readonly",
+    title: "Read-only",
+    preview: ReadOnlyPreview,
     code: `<TextArea
-  label="Biography"
-  placeholder="Tell us about yourself"
-  helper="Maximum 500 characters"
-  rows={4}
-  required
+  label="Read-only feedback"
+  placeholder="This is read-only"
+  readOnly
+  value="You can select this text but cannot edit it"
 />
 <TextArea
-  label="Comments"
-  placeholder="Add your comments..."
-  variant="filled"
-  resize="none"
-  rows={3}
-/>
-<TextArea
-  label="Feedback"
-  placeholder="Share your feedback"
-  error="Feedback must be at least 10 characters"
+  label="Required & Read-only"
+  placeholder="Combined states"
+  readOnly
   required
-  rows={4}
+  value="Read-only with required indicator"
 />`,
     language: "tsx",
-  },
-  {
-    key: "customization",
-    title: "CSS Customization",
-    preview: CustomizationPreview,
-    code: `/* Override component tokens to customize */
-.custom-textarea {
-  --vers-comp-textarea-bg: #fef3c7;
-  --vers-comp-textarea-border: #f59e0b;
-  --vers-comp-textarea-focus-ring-color: #f59e0b;
-}`,
-    language: "css",
   },
 ];
 
 export const textAreaProps = [
-  {
-    name: "variant",
-    type: "'outline' | 'filled' | 'ghost'",
-    default: "'outline'",
-    description: "Visual variant of the textarea",
-  },
-  {
-    name: "size",
-    type: "'small' | 'medium' | 'large'",
-    default: "'medium'",
-    description: "Size of the textarea",
-  },
   {
     name: "label",
     type: "string",
@@ -262,16 +155,28 @@ export const textAreaProps = [
     description: "Error message displayed below textarea (replaces helper)",
   },
   {
-    name: "resize",
-    type: "'none' | 'vertical' | 'horizontal' | 'both'",
-    default: "'vertical'",
-    description: "Resize behavior of the textarea",
+    name: "readOnly",
+    type: "boolean",
+    default: "false",
+    description: "Whether the textarea is read-only (cannot be edited)",
   },
   {
-    name: "rows",
+    name: "resizable",
+    type: "boolean",
+    default: "true",
+    description: "Whether the textarea can be resized by the user",
+  },
+  {
+    name: "minRows",
     type: "number",
-    default: "undefined",
-    description: "Number of visible text lines",
+    default: "3",
+    description: "Minimum number of visible rows",
+  },
+  {
+    name: "maxRows",
+    type: "number",
+    default: "5",
+    description: "Maximum number of rows before scrolling",
   },
   {
     name: "required",

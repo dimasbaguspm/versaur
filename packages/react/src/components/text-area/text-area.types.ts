@@ -1,20 +1,6 @@
 import type { TextareaHTMLAttributes } from "react";
-import type { TextArea } from "@versaur/core";
 
-export interface TextAreaProps
-  extends TextareaHTMLAttributes<HTMLTextAreaElement> {
-  /**
-   * Visual variant
-   * @default "outline"
-   */
-  variant?: TextArea.Variant;
-
-  /**
-   * Size variant
-   * @default "medium"
-   */
-  size?: TextArea.Size | "medium";
-
+export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   /**
    * Label text displayed above textarea
    */
@@ -31,10 +17,28 @@ export interface TextAreaProps
   error?: string;
 
   /**
-   * Resize behavior
-   * @default "vertical"
+   * Whether the textarea is read-only
+   * @default false
    */
-  resize?: TextArea.Resize;
+  readOnly?: boolean;
+
+  /**
+   * Whether the textarea is resizable
+   * @default true
+   */
+  resizable?: boolean;
+
+  /**
+   * Minimum number of visible rows
+   * @default 3
+   */
+  minRows?: number;
+
+  /**
+   * Maximum number of rows before scrolling
+   * @default 5
+   */
+  maxRows?: number;
 }
 
 declare module "@versaur/core" {

@@ -14,18 +14,19 @@ import "@versaur/core/text-area.css";
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (
     {
-      variant = "outline",
-      size = "medium",
       label,
       helper,
       error,
       required = false,
       disabled = false,
-      resize = "vertical",
+      readOnly = false,
+      resizable = true,
+      minRows = 3,
+      maxRows = 5,
       id: providedId,
       ...rest
     },
-    ref
+    ref,
   ) => {
     // Generate unique IDs for accessibility
     const generatedId = useId();
@@ -36,11 +37,10 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 
     // Convert props to data attributes
     const dataAttrs = useDataAttrs({
-      variant: size === "medium" ? variant : undefined,
-      size: size === "medium" ? undefined : size,
       invalid: !!error,
       disabled,
-      resize,
+      readOnly,
+      resizable: resizable ? "true" : "false",
     });
 
     return (
@@ -56,7 +56,9 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           id={textareaId}
           className={textAreaStyles.textarea}
           disabled={disabled}
+          readOnly={readOnly}
           required={required}
+          rows={minRows}
           aria-invalid={error ? "true" : undefined}
           aria-disabled={disabled ? "true" : undefined}
           aria-describedby={describedBy || undefined}
@@ -68,7 +70,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         {!error && helper && <HelperText id={helperId}>{helper}</HelperText>}
       </div>
     );
-  }
+  },
 );
 
 TextArea.displayName = "TextArea";

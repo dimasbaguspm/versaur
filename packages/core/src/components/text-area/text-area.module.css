@@ -12,8 +12,7 @@
 
 /* Base textarea styles */
 .textarea {
-  /* Sizing — three-layer token pattern, defaults to medium */
-  --_min-height: var(--vers-comp-textarea-min-height, 5rem);
+  /* Sizing — three-layer token pattern, defaults to medium/outline */
   --_px: var(--vers-comp-textarea-padding-x, var(--spacing-3));
   --_py: var(--vers-comp-textarea-padding-y, var(--spacing-2));
   --_font-size: var(--vers-comp-textarea-font-size, var(--font-size-base));
@@ -21,7 +20,7 @@
   /* Border radius */
   --_radius: var(--vers-comp-textarea-radius, var(--radius-md));
 
-  /* Colors — three-layer token pattern, defaults to outline variant */
+  /* Colors — three-layer token pattern, defaults to outline */
   --_bg: var(--vers-comp-textarea-bg, transparent);
   --_border: var(--vers-comp-textarea-border, var(--color-border));
   --_text: var(--vers-comp-textarea-text, var(--color-text));
@@ -31,22 +30,15 @@
   );
 
   /* Focus ring */
-  --_focus-ring-width: var(
-    --vers-comp-textarea-focus-ring-width,
-    var(--focus-ring-width)
-  );
-  --_focus-ring-offset: var(
-    --vers-comp-textarea-focus-ring-offset,
-    var(--focus-ring-offset)
-  );
+  --_focus-ring-width: var(--vers-comp-textarea-focus-ring-width, 1px);
+  --_focus-ring-offset: var(--vers-comp-textarea-focus-ring-offset, 0);
   --_focus-ring-color: var(
     --vers-comp-textarea-focus-ring-color,
-    var(--color-border-focus)
+    var(--color-primary)
   );
 
   /* Layout */
   width: 100%;
-  min-height: var(--_min-height);
   padding: var(--_py) var(--_px);
 
   /* Typography */
@@ -62,8 +54,8 @@
 
   /* Interaction */
   outline: none;
-  resize: vertical; /* Default resize behavior */
-  transition-property: border-color, box-shadow, background-color;
+  resize: vertical; /* Default - controlled by data-resizable */
+  transition-property: border-color, background-color;
   transition-duration: var(--transition-base);
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -76,41 +68,15 @@
 /* Focus state */
 .textarea:focus {
   border-color: var(--_focus-ring-color);
-  box-shadow: 0 0 0 var(--_focus-ring-width) var(--_focus-ring-color);
 }
 
-/* Size variants */
-.textarea[data-size="small"] {
-  --_min-height: 4rem;
-  --_px: var(--spacing-2);
-  --_py: var(--spacing-1-5);
-  --_font-size: var(--font-size-sm);
+/* Resizable toggle */
+.textarea[data-resizable="false"] {
+  resize: none;
 }
 
-.textarea[data-size="large"] {
-  --_min-height: 6rem;
-  --_px: var(--spacing-4);
-  --_py: var(--spacing-3);
-  --_font-size: var(--font-size-lg);
-}
-
-/* Visual variants */
-.textarea[data-variant="outline"] {
-  --_bg: transparent;
-  --_border: var(--color-border);
-  --_focus-ring-color: var(--color-border-focus);
-}
-
-.textarea[data-variant="filled"] {
-  --_bg: var(--color-surface);
-  --_border: transparent;
-  --_focus-ring-color: var(--color-border-focus);
-}
-
-.textarea[data-variant="ghost"] {
-  --_bg: transparent;
-  --_border: transparent;
-  --_focus-ring-color: var(--color-border-focus);
+.textarea[data-resizable="true"] {
+  resize: vertical;
 }
 
 /* Invalid state (error) */
@@ -125,19 +91,8 @@
   cursor: not-allowed;
 }
 
-/* Resize control */
-.textarea[data-resize="none"] {
-  resize: none;
-}
-
-.textarea[data-resize="vertical"] {
-  resize: vertical;
-}
-
-.textarea[data-resize="horizontal"] {
-  resize: horizontal;
-}
-
-.textarea[data-resize="both"] {
-  resize: both;
+/* ReadOnly state */
+.textarea[data-read-only] {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
