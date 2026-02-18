@@ -1,10 +1,4 @@
-import type {
-  ForwardRefExoticComponent,
-  HTMLAttributes,
-  MouseEvent,
-  ReactNode,
-  RefAttributes,
-} from "react";
+import type { ForwardRefExoticComponent, HTMLAttributes, MouseEvent, ReactNode, RefAttributes } from "react"
 
 export type MenuPlacement =
   | "top"
@@ -18,18 +12,18 @@ export type MenuPlacement =
   | "left-end"
   | "right"
   | "right-start"
-  | "right-end";
+  | "right-end"
 
 /**
  * Menu Context for managing selected value across items
  */
 export interface MenuContextValue {
   /** Currently selected item value */
-  value?: string | number;
+  value?: string | number
   /** Callback when an item is selected */
-  onChange?: (value: string | number) => void;
+  onChange?: (value: string | number) => void
   /** Close the menu programmatically */
-  close?: (options: { id: string }) => void;
+  close?: (options: { id: string }) => void
 }
 
 /**
@@ -39,7 +33,7 @@ export interface MenuGetTriggerPropsOptions {
   /**
    * Unique identifier matching the Menu's id
    */
-  id: string;
+  id: string
 }
 
 /**
@@ -49,52 +43,52 @@ export interface MenuProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChang
   /**
    * Unique identifier for the menu (used with Menu.close())
    */
-  id: string;
+  id: string
 
   /**
    * Menu content (Menu.Item components)
    */
-  children: ReactNode;
+  children: ReactNode
 
   /**
    * Placement relative to trigger button
    * @default "bottom"
    */
-  placement?: MenuPlacement;
+  placement?: MenuPlacement
 
   /**
    * Maximum height of the menu list in pixels
    * @default 400
    */
-  maxHeight?: number;
+  maxHeight?: number
 
   /**
    * Minimum width of the menu list in pixels
    * @default 160
    */
-  minWidth?: number;
+  minWidth?: number
 
   /**
    * Maximum width of the menu list in pixels
    * @default 320
    */
-  maxWidth?: number;
+  maxWidth?: number
 
   /**
    * Gap between trigger and menu in pixels
    * @default 8
    */
-  gap?: number;
+  gap?: number
 
   /**
    * Controlled value - which menu item is currently selected
    */
-  value?: string | number;
+  value?: string | number
 
   /**
    * Callback when a menu item is selected
    */
-  onChange?: (value: string | number) => void;
+  onChange?: (value: string | number) => void
 }
 
 /**
@@ -105,33 +99,33 @@ export interface MenuItemProps extends Omit<HTMLAttributes<HTMLButtonElement>, "
    * Unique identifier for this menu item
    * Used to determine active state when Menu has value/onChange
    */
-  value?: string | number;
+  value?: string | number
 
   /**
    * Item label/content
    */
-  children: ReactNode;
+  children: ReactNode
 
   /**
    * Optional left icon/content
    */
-  leftIcon?: ReactNode;
+  leftIcon?: ReactNode
 
   /**
    * Optional right icon/content
    */
-  rightIcon?: ReactNode;
+  rightIcon?: ReactNode
 
   /**
    * Whether this item is disabled
    */
-  disabled?: boolean;
+  disabled?: boolean
 
   /**
    * Click handler for the item
    * Fired in addition to Menu's onChange if using controlled mode
    */
-  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
 /**
@@ -141,16 +135,16 @@ export interface MenuStatic {
   /**
    * Menu.Item component
    */
-  Item: ForwardRefExoticComponent<MenuItemProps & RefAttributes<HTMLButtonElement>>;
+  Item: ForwardRefExoticComponent<MenuItemProps & RefAttributes<HTMLButtonElement>>
 
   /**
    * Close a menu programmatically
    * @example Menu.close({ id: "my-menu" })
    */
-  close: (options: { id: string }) => void;
+  close: (options: { id: string }) => void
 
   /**
    * Get the required attributes for a trigger element
    */
-  getTriggerProps(options: MenuGetTriggerPropsOptions): Record<string, string>;
+  getTriggerProps(options: MenuGetTriggerPropsOptions): Record<string, string>
 }

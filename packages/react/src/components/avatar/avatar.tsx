@@ -1,52 +1,51 @@
-import { forwardRef, useState } from "react";
-import { avatarStyles } from "@versaur/core";
-import { UserIcon } from "@versaur/icons";
-import { Icon } from "../icon";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import type { AvatarImageProps, AvatarProps } from "./avatar.types";
+import { avatarStyles } from "@versaur/core"
+import { UserIcon } from "@versaur/icons"
+import { forwardRef, useState } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import { Icon } from "../icon"
+import type { AvatarImageProps, AvatarProps } from "./avatar.types"
 
 const AvatarRoot = forwardRef<HTMLSpanElement, AvatarProps>(
   ({ variant = "primary", size = "md", shape = "circle", children, ...rest }, ref) => {
-    const dataAttrs = useDataAttrs({ shape, size, variant });
+    const dataAttrs = useDataAttrs({ shape, size, variant })
 
-    const fallback = children || <Icon as={UserIcon} />;
+    const fallback = children || <Icon as={UserIcon} />
 
     return (
       <span ref={ref} className={avatarStyles.avatar} role="img" {...dataAttrs} {...rest}>
         {fallback}
       </span>
-    );
+    )
   },
-);
+)
 
-AvatarRoot.displayName = "Avatar";
+AvatarRoot.displayName = "Avatar"
 
-const AvatarImage = forwardRef<HTMLImageElement, AvatarImageProps>(
-  ({ src, alt, onError, ...rest }, ref) => {
-    const [imgError, setImgError] = useState(false);
+const AvatarImage = forwardRef<HTMLImageElement, AvatarImageProps>(({ src, alt, onError, ...rest }, ref) => {
+  const [imgError, setImgError] = useState(false)
 
-    if (imgError) {
-      return null;
-    }
+  if (imgError) {
+    return null
+  }
 
-    return (
-      <img
-        ref={ref}
-        className={avatarStyles["avatar-image"]}
-        src={src}
-        alt={alt}
-        onError={(e) => {
-          setImgError(true);
-          onError?.(e);
-        }}
-        {...rest}
-      />
-    );
-  },
-);
+  return (
+    <img
+      ref={ref}
+      className={avatarStyles["avatar-image"]}
+      src={src}
+      alt={alt}
+      onError={(e) => {
+        setImgError(true)
+        onError?.(e)
+      }}
+      {...rest}
+    />
+  )
+})
 
-AvatarImage.displayName = "Avatar.Image";
+AvatarImage.displayName = "Avatar.Image"
 
 export const Avatar = Object.assign(AvatarRoot, {
   Image: AvatarImage,
-});
+})

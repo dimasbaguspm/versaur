@@ -1,17 +1,18 @@
-import { useState } from "react";
-import type { ComponentType } from "react";
-import { ChipSingleInput } from "./chip-single-input";
+import { useState } from "react"
+import type { ComponentType } from "react"
+
+import { ChipSingleInput } from "./chip-single-input"
 
 export interface ChipSingleInputSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 function BasicPreview() {
-  const [size, setSize] = useState<string>();
+  const [size, setSize] = useState<string>()
 
   return (
     <ChipSingleInput
@@ -27,11 +28,11 @@ function BasicPreview() {
       <ChipSingleInput.Option value="l">L</ChipSingleInput.Option>
       <ChipSingleInput.Option value="xl">XL</ChipSingleInput.Option>
     </ChipSingleInput>
-  );
+  )
 }
 
 function OverflowPreview() {
-  const [value, setValue] = useState<string>("option1");
+  const [value, setValue] = useState<string>("option1")
 
   return (
     <ChipSingleInput
@@ -46,13 +47,13 @@ function OverflowPreview() {
       <ChipSingleInput.Option value="option3">One More Long Option</ChipSingleInput.Option>
       <ChipSingleInput.Option value="option4">Yet Another Very Long Option</ChipSingleInput.Option>
     </ChipSingleInput>
-  );
+  )
 }
 
 function CustomGapPreview() {
-  const [value4, setValue4] = useState<string>();
-  const [value3, setValue3] = useState<string>();
-  const [value1, setValue1] = useState<string>();
+  const [value4, setValue4] = useState<string>()
+  const [value3, setValue3] = useState<string>()
+  const [value1, setValue1] = useState<string>()
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
@@ -74,20 +75,15 @@ function CustomGapPreview() {
         <ChipSingleInput.Option value="option3">Option 3</ChipSingleInput.Option>
       </ChipSingleInput>
     </div>
-  );
+  )
 }
 
 function StatesPreview() {
-  const [value, setValue] = useState<string>();
+  const [value, setValue] = useState<string>()
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-      <ChipSingleInput
-        value={value}
-        onChange={setValue}
-        label="With error"
-        error="Please select an option"
-      >
+      <ChipSingleInput value={value} onChange={setValue} label="With error" error="Please select an option">
         <ChipSingleInput.Option value="1">Option 1</ChipSingleInput.Option>
         <ChipSingleInput.Option value="2">Option 2</ChipSingleInput.Option>
       </ChipSingleInput>
@@ -97,7 +93,7 @@ function StatesPreview() {
         <ChipSingleInput.Option value="2">Option 2</ChipSingleInput.Option>
       </ChipSingleInput>
     </div>
-  );
+  )
 }
 
 export const chipSingleInputSections: ChipSingleInputSection[] = [
@@ -166,4 +162,4 @@ export const chipSingleInputSections: ChipSingleInputSection[] = [
     preview: StatesPreview,
     title: "States",
   },
-];
+]

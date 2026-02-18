@@ -1,11 +1,12 @@
-import { forwardRef } from "react";
-import { headingStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import type { HeadingProps } from "./heading.types";
+import { headingStyles } from "@versaur/core"
+import { forwardRef } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import type { HeadingProps } from "./heading.types"
 
 export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
   ({ as = "h2", size, weight, intent, case: caseVal, transform, children, ...rest }, ref) => {
-    const Tag = as;
+    const Tag = as
     const dataAttrs = useDataAttrs({
       as,
       case: caseVal,
@@ -13,14 +14,14 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
       size,
       transform,
       weight,
-    });
+    })
 
     return (
       <Tag ref={ref} className={headingStyles.heading} {...dataAttrs} {...rest}>
         {children}
       </Tag>
-    );
+    )
   },
-);
+)
 
-Heading.displayName = "Heading";
+Heading.displayName = "Heading"

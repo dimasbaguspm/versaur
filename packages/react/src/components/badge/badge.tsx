@@ -1,7 +1,8 @@
-import { forwardRef } from "react";
-import { badgeStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import type { BadgeProps } from "./badge.types";
+import { badgeStyles } from "@versaur/core"
+import { forwardRef } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import type { BadgeProps } from "./badge.types"
 
 /**
  * Badge component for displaying labels, tags, or status indicators
@@ -18,23 +19,12 @@ import type { BadgeProps } from "./badge.types";
  * ```
  */
 export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
-  (
-    {
-      variant = "primary",
-      size = "medium",
-      shape = "rounded",
-      iconLeft,
-      iconRight,
-      children,
-      ...rest
-    },
-    ref,
-  ) => {
+  ({ variant = "primary", size = "medium", shape = "rounded", iconLeft, iconRight, children, ...rest }, ref) => {
     const dataAttrs = useDataAttrs({
       shape,
       size,
       variant,
-    });
+    })
 
     return (
       <div ref={ref} className={badgeStyles["badge"]} {...dataAttrs} {...rest}>
@@ -42,8 +32,8 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
         {children}
         {iconRight}
       </div>
-    );
+    )
   },
-);
+)
 
-Badge.displayName = "Badge";
+Badge.displayName = "Badge"

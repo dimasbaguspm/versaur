@@ -1,21 +1,22 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import type { ComponentType } from "react";
-import { Drawer } from "./drawer";
-import { Button } from "../button/button";
-import { ButtonGroup } from "../button-group/button-group";
+import { useState } from "react"
+import type { ComponentType } from "react"
+
+import { ButtonGroup } from "../button-group/button-group"
+import { Button } from "../button/button"
+import { Drawer } from "./drawer"
 
 export interface DrawerSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 function BasicDrawerPreview() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <div>
@@ -41,11 +42,11 @@ function BasicDrawerPreview() {
         </Drawer.Footer>
       </Drawer>
     </div>
-  );
+  )
 }
 
 function LeftPlacementPreview() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <div>
@@ -63,7 +64,7 @@ function LeftPlacementPreview() {
         </Drawer.Body>
       </Drawer>
     </div>
-  );
+  )
 }
 
 export const DrawerSections: DrawerSection[] = [
@@ -110,7 +111,7 @@ export function MyDrawer() {
     preview: LeftPlacementPreview,
     title: "Placement",
   },
-];
+]
 
 export const drawerProps = [
   {
@@ -131,7 +132,7 @@ export const drawerProps = [
     name: "placement",
     type: "'left' | 'right'",
   },
-];
+]
 
 export const drawerInstallation = {
   code: `import { Drawer, Button } from '@versaur/react';
@@ -157,4 +158,4 @@ function MyDrawer() {
   );
 }`,
   language: "typescript" as const,
-};
+}

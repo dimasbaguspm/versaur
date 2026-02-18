@@ -1,17 +1,18 @@
-import { useState } from "react";
-import type { ComponentType } from "react";
-import { RadioGroup } from "./radio-group";
+import { useState } from "react"
+import type { ComponentType } from "react"
+
+import { RadioGroup } from "./radio-group"
 
 export interface RadioGroupSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 function BasicPreview() {
-  const [plan, setPlan] = useState<string>("basic");
+  const [plan, setPlan] = useState<string>("basic")
 
   return (
     <RadioGroup
@@ -25,11 +26,11 @@ function BasicPreview() {
       <RadioGroup.Option value="pro">Pro Plan - $25/month</RadioGroup.Option>
       <RadioGroup.Option value="enterprise">Enterprise - Custom pricing</RadioGroup.Option>
     </RadioGroup>
-  );
+  )
 }
 
 function DirectionPreview() {
-  const [direction, setDirection] = useState<string>("horizontal");
+  const [direction, setDirection] = useState<string>("horizontal")
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
@@ -44,22 +45,16 @@ function DirectionPreview() {
         <RadioGroup.Option value="option2">Option 2</RadioGroup.Option>
       </RadioGroup>
 
-      <RadioGroup
-        name="direction-row"
-        value={direction}
-        onChange={setDirection}
-        label="Row direction"
-        direction="row"
-      >
+      <RadioGroup name="direction-row" value={direction} onChange={setDirection} label="Row direction" direction="row">
         <RadioGroup.Option value="option1">Option 1</RadioGroup.Option>
         <RadioGroup.Option value="option2">Option 2</RadioGroup.Option>
       </RadioGroup>
     </div>
-  );
+  )
 }
 
 function StatesPreview() {
-  const [value, setValue] = useState<string>("option1");
+  const [value, setValue] = useState<string>("option1")
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
@@ -79,7 +74,7 @@ function StatesPreview() {
         <RadioGroup.Option value="option2">Option 2</RadioGroup.Option>
       </RadioGroup>
     </div>
-  );
+  )
 }
 
 export const radioGroupSections: RadioGroupSection[] = [
@@ -124,4 +119,4 @@ export const radioGroupSections: RadioGroupSection[] = [
     preview: StatesPreview,
     title: "States",
   },
-];
+]

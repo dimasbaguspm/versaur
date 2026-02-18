@@ -1,3 +1,3 @@
-export { default as navStyles } from "./nav.module.css";
+export { default as navStyles } from "./nav.module.css"
 
-export * from "./nav.types.generated";
+export * from "./nav.types.generated"

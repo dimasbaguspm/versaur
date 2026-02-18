@@ -1,10 +1,11 @@
-"use client";
+"use client"
 
-import { forwardRef, useContext } from "react";
-import { menuStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import { MenuContext } from "./menu";
-import type { MenuItemProps } from "./menu.types";
+import { menuStyles } from "@versaur/core"
+import { forwardRef, useContext } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import { MenuContext } from "./menu"
+import type { MenuItemProps } from "./menu.types"
 
 /**
  * Menu.Item - Individual menu item
@@ -25,31 +26,30 @@ import type { MenuItemProps } from "./menu.types";
  */
 const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
   ({ value, disabled = false, leftIcon, rightIcon, children, onClick, ...props }, ref) => {
-    const menuContext = useContext(MenuContext);
+    const menuContext = useContext(MenuContext)
 
     // Determine if this item is active
-    const isActive =
-      menuContext?.onChange && value !== undefined ? menuContext.value === value : false;
+    const isActive = menuContext?.onChange && value !== undefined ? menuContext.value === value : false
 
     const dataAttrs = useDataAttrs({
       active: isActive,
       disabled,
-    });
+    })
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       if (disabled) {
-        e.preventDefault();
-        return;
+        e.preventDefault()
+        return
       }
 
       // If in controlled mode, call Menu's onChange
       if (menuContext?.onChange && value !== undefined) {
-        menuContext.onChange(value);
+        menuContext.onChange(value)
       }
 
       // Also call the item's onClick if provided
-      onClick?.(e);
-    };
+      onClick?.(e)
+    }
 
     return (
       <button
@@ -64,10 +64,10 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
         <span className={menuStyles["menu-item-label"]}>{children}</span>
         {rightIcon ? <span className={menuStyles["menu-item-icon"]}>{rightIcon}</span> : null}
       </button>
-    );
+    )
   },
-);
+)
 
-MenuItem.displayName = "Menu.Item";
+MenuItem.displayName = "Menu.Item"
 
-export { MenuItem };
+export { MenuItem }

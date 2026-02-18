@@ -1,8 +1,9 @@
-import { AppLayout } from "./app-layout";
-import { Button } from "../button";
-import { Text } from "../text";
-import { Heading } from "../heading";
-import { HomeIcon, LayoutDashboardIcon, UserIcon } from "@versaur/icons";
+import { HomeIcon, LayoutDashboardIcon, UserIcon } from "@versaur/icons"
+
+import { Button } from "../button"
+import { Heading } from "../heading"
+import { Text } from "../text"
+import { AppLayout } from "./app-layout"
 
 function ClassicLayoutPreview() {
   return (
@@ -56,8 +57,8 @@ function ClassicLayoutPreview() {
               Main Content
             </Heading>
             <Text>
-              This is the main content area that scrolls independently from the header and sidebar.
-              Content is centered with a constrained max-width.
+              This is the main content area that scrolls independently from the header and sidebar. Content is centered
+              with a constrained max-width.
             </Text>
           </div>
         </AppLayout.Main>
@@ -84,7 +85,7 @@ function ClassicLayoutPreview() {
         </AppLayout.Bottom>
       </AppLayout>
     </div>
-  );
+  )
 }
 
 function MobileLayoutPreview() {
@@ -143,7 +144,7 @@ function MobileLayoutPreview() {
         </AppLayout.Bottom>
       </AppLayout>
     </div>
-  );
+  )
 }
 
 function SplitLayoutPreview() {
@@ -224,7 +225,7 @@ function SplitLayoutPreview() {
         </AppLayout.Bottom>
       </AppLayout>
     </div>
-  );
+  )
 }
 
 function FullWidthLayoutPreview() {
@@ -252,15 +253,12 @@ function FullWidthLayoutPreview() {
             <Heading as="h2" style={{ marginBottom: "1rem" }}>
               Maximized Content
             </Heading>
-            <Text>
-              This layout provides maximum space for content by hiding all sidebars and bottom
-              navigation.
-            </Text>
+            <Text>This layout provides maximum space for content by hiding all sidebars and bottom navigation.</Text>
           </div>
         </AppLayout.Main>
       </AppLayout>
     </div>
-  );
+  )
 }
 
 export const appLayoutSections = [
@@ -283,8 +281,7 @@ export const appLayoutSections = [
   <AppLayout.Main>{/* Full width content */}</AppLayout.Main>
   <AppLayout.Bottom>{/* Bottom navigation */}</AppLayout.Bottom>
 </AppLayout>`,
-    description:
-      "Single column layout optimized for mobile with bottom navigation for primary actions.",
+    description: "Single column layout optimized for mobile with bottom navigation for primary actions.",
     language: "tsx",
     preview: MobileLayoutPreview,
     title: "Mobile Layout",
@@ -297,8 +294,7 @@ export const appLayoutSections = [
   <AppLayout.SideRight>{/* Right panel */}</AppLayout.SideRight>
   <AppLayout.Bottom>{/* Bottom nav */}</AppLayout.Bottom>
 </AppLayout>`,
-    description:
-      "Header with both left and right sidebars for complex dashboards with multiple panels.",
+    description: "Header with both left and right sidebars for complex dashboards with multiple panels.",
     language: "tsx",
     preview: SplitLayoutPreview,
     title: "Split Layout",
@@ -313,7 +309,7 @@ export const appLayoutSections = [
     preview: FullWidthLayoutPreview,
     title: "Full Width Layout",
   },
-];
+]
 
 export const appLayoutProps = [
   {
@@ -353,7 +349,7 @@ export const appLayoutProps = [
     name: "className",
     type: "string",
   },
-];
+]
 
 export const appLayoutMainProps = [
   {
@@ -363,7 +359,7 @@ export const appLayoutMainProps = [
     name: "placement",
     type: '"full-width" | "centred"',
   },
-];
+]
 
 export const appLayoutInstallation = {
   code: `import { AppLayout } from '@versaur/react';
@@ -390,4 +386,4 @@ export function Dashboard() {
   );
 }`,
   language: "tsx",
-};
+}

@@ -1,21 +1,22 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import type { ComponentType } from "react";
-import { BottomSheet } from "./bottom-sheet";
-import { Button } from "../button/button";
-import { ButtonGroup } from "../button-group/button-group";
+import { useState } from "react"
+import type { ComponentType } from "react"
+
+import { ButtonGroup } from "../button-group/button-group"
+import { Button } from "../button/button"
+import { BottomSheet } from "./bottom-sheet"
 
 export interface BottomSheetSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 function BasicBottomSheetPreview() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <div>
@@ -29,9 +30,7 @@ function BasicBottomSheetPreview() {
           <BottomSheet.CloseButton />
         </BottomSheet.Header>
         <BottomSheet.Body>
-          <p>
-            This is the bottom sheet content. Mobile-friendly panel that slides up from the bottom.
-          </p>
+          <p>This is the bottom sheet content. Mobile-friendly panel that slides up from the bottom.</p>
         </BottomSheet.Body>
         <BottomSheet.Footer>
           <ButtonGroup align="end">
@@ -43,11 +42,11 @@ function BasicBottomSheetPreview() {
         </BottomSheet.Footer>
       </BottomSheet>
     </div>
-  );
+  )
 }
 
 function MobileMenuPreview() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <div>
@@ -77,7 +76,7 @@ function MobileMenuPreview() {
         </BottomSheet.Body>
       </BottomSheet>
     </div>
-  );
+  )
 }
 
 export const BottomSheetSections: BottomSheetSection[] = [
@@ -126,7 +125,7 @@ export function MyBottomSheet() {
     preview: MobileMenuPreview,
     title: "Mobile Menu",
   },
-];
+]
 
 export const bottomSheetProps = [
   {
@@ -141,7 +140,7 @@ export const bottomSheetProps = [
     name: "onClose",
     type: "(reason: 'esc' | 'backdrop' | 'closeButton' | 'programmatic') => void",
   },
-];
+]
 
 export const bottomSheetInstallation = {
   code: `import { BottomSheet } from '@versaur/react';
@@ -157,4 +156,4 @@ export const bottomSheetInstallation = {
   </BottomSheet.Footer>
 </BottomSheet>`,
   language: "typescript" as const,
-};
+}

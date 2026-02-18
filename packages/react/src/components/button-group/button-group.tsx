@@ -1,7 +1,8 @@
-import { forwardRef } from "react";
-import { buttonGroupStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import type { ButtonGroupProps } from "./button-group.types";
+import { buttonGroupStyles } from "@versaur/core"
+import { forwardRef } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import type { ButtonGroupProps } from "./button-group.types"
 
 /**
  * ButtonGroup component for grouping multiple buttons with customizable spacing and layout
@@ -32,7 +33,7 @@ export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
       direction,
       gap,
       wrap,
-    });
+    })
 
     return (
       <div
@@ -45,8 +46,8 @@ export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
       >
         {children}
       </div>
-    );
+    )
   },
-);
+)
 
-ButtonGroup.displayName = "ButtonGroup";
+ButtonGroup.displayName = "ButtonGroup"

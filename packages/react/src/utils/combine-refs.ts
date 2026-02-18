@@ -1,4 +1,4 @@
-import type { Ref } from "react";
+import type { Ref } from "react"
 
 /**
  * Combines multiple refs into a single ref callback
@@ -8,15 +8,15 @@ export function combineRefs<T>(...refs: (Ref<T> | undefined)[]): (value: T | nul
   return (value: T | null) => {
     refs.forEach((ref) => {
       if (typeof ref === "function") {
-        ref(value);
+        ref(value)
       } else if (ref && "current" in ref) {
         // Only assign if ref is a mutable ref
         try {
-          (ref as React.MutableRefObject<T | null>).current = value;
+          ;(ref as React.MutableRefObject<T | null>).current = value
         } catch {
           // Ignore if ref.current is read-only
         }
       }
-    });
-  };
+    })
+  }
 }

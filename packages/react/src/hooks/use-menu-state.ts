@@ -1,31 +1,31 @@
-import { useEffect } from "react";
-import type { MutableRefObject } from "react";
+import { useEffect } from "react"
+import type { MutableRefObject } from "react"
 
 // Singleton map to track open menus
-const openMenus = new Map<string, HTMLElement>();
+const openMenus = new Map<string, HTMLElement>()
 
 /**
  * Register a menu as open
  */
 export function registerMenu(id: string, element: HTMLElement) {
-  openMenus.set(id, element);
+  openMenus.set(id, element)
 }
 
 /**
  * Unregister a menu as open
  */
 export function unregisterMenu(id: string) {
-  openMenus.delete(id);
+  openMenus.delete(id)
 }
 
 /**
  * Close a menu programmatically
  */
 export function closeMenu(options: { id: string }) {
-  const { id } = options;
-  const menuElement = openMenus.get(id);
+  const { id } = options
+  const menuElement = openMenus.get(id)
   if (menuElement && "hidePopover" in menuElement) {
-    (menuElement as any).hidePopover();
+    ;(menuElement as any).hidePopover()
   }
 }
 
@@ -34,15 +34,15 @@ export function closeMenu(options: { id: string }) {
  */
 export function useMenuState(id: string, menuRef: MutableRefObject<HTMLElement | null>) {
   useEffect(() => {
-    const menuEl = menuRef.current;
+    const menuEl = menuRef.current
     if (!menuEl || !id) {
-      return;
+      return
     }
 
-    registerMenu(id, menuEl);
+    registerMenu(id, menuEl)
 
     return () => {
-      unregisterMenu(id);
-    };
-  }, [id, menuRef]);
+      unregisterMenu(id)
+    }
+  }, [id, menuRef])
 }

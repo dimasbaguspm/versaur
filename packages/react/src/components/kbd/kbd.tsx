@@ -1,9 +1,10 @@
-"use client";
+"use client"
 
-import { forwardRef } from "react";
-import { kbdStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import type { KbdProps } from "./kbd.types";
+import { kbdStyles } from "@versaur/core"
+import { forwardRef } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import type { KbdProps } from "./kbd.types"
 
 /**
  * Kbd - Semantic keyboard key component
@@ -15,17 +16,15 @@ import type { KbdProps } from "./kbd.types";
  * <Kbd variant="outline" size="sm">Cmd</Kbd>
  * ```
  */
-const Kbd = forwardRef<HTMLElement, KbdProps>(
-  ({ variant = "filled", size = "md", children, ...props }, ref) => {
-    const dataAttrs = useDataAttrs({ size, variant });
+const Kbd = forwardRef<HTMLElement, KbdProps>(({ variant = "filled", size = "md", children, ...props }, ref) => {
+  const dataAttrs = useDataAttrs({ size, variant })
 
-    return (
-      <kbd ref={ref} className={kbdStyles.kbd} {...dataAttrs} {...props}>
-        {children}
-      </kbd>
-    );
-  },
-);
-Kbd.displayName = "Kbd";
+  return (
+    <kbd ref={ref} className={kbdStyles.kbd} {...dataAttrs} {...props}>
+      {children}
+    </kbd>
+  )
+})
+Kbd.displayName = "Kbd"
 
-export { Kbd };
+export { Kbd }

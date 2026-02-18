@@ -91,10 +91,7 @@
 
 .button-icon[data-variant="primary"]:hover:not([data-disabled]):not([data-loading]) {
   --_bg: var(--vers-comp-button-icon-primary-hover-bg, var(--color-primary-hover));
-  --_border-color: var(
-    --vers-comp-button-icon-primary-hover-border-color,
-    var(--color-primary-hover)
-  );
+  --_border-color: var(--vers-comp-button-icon-primary-hover-border-color, var(--color-primary-hover));
 }
 
 .button-icon[data-variant="primary"]:active:not([data-disabled]):not([data-loading]) {
@@ -108,18 +105,12 @@
   --_bg: var(--vers-comp-button-icon-secondary-bg, var(--color-secondary));
   --_color: var(--vers-comp-button-icon-secondary-color, var(--color-white));
   --_border-color: var(--vers-comp-button-icon-secondary-border-color, var(--color-secondary));
-  --_focus-ring-color: var(
-    --vers-comp-button-icon-secondary-focus-ring-color,
-    var(--color-secondary)
-  );
+  --_focus-ring-color: var(--vers-comp-button-icon-secondary-focus-ring-color, var(--color-secondary));
 }
 
 .button-icon[data-variant="secondary"]:hover:not([data-disabled]):not([data-loading]) {
   --_bg: var(--vers-comp-button-icon-secondary-hover-bg, var(--color-secondary-hover));
-  --_border-color: var(
-    --vers-comp-button-icon-secondary-hover-border-color,
-    var(--color-secondary-hover)
-  );
+  --_border-color: var(--vers-comp-button-icon-secondary-hover-border-color, var(--color-secondary-hover));
 }
 
 .button-icon[data-variant="secondary"]:active:not([data-disabled]):not([data-loading]) {
@@ -153,10 +144,7 @@
 
 .button-icon[data-variant="danger"]:hover:not([data-disabled]):not([data-loading]) {
   --_bg: var(--vers-comp-button-icon-danger-hover-bg, var(--color-danger-hover));
-  --_border-color: var(
-    --vers-comp-button-icon-danger-hover-border-color,
-    var(--color-danger-hover)
-  );
+  --_border-color: var(--vers-comp-button-icon-danger-hover-border-color, var(--color-danger-hover));
 }
 
 .button-icon[data-variant="danger"]:active:not([data-disabled]):not([data-loading]) {

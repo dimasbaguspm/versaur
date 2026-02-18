@@ -1,78 +1,72 @@
-import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
+import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react"
 
-export interface ChipMultipleInputRootProps extends Omit<
-  HTMLAttributes<HTMLDivElement>,
-  "onChange"
-> {
+export interface ChipMultipleInputRootProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
   /**
    * Array of selected chip values
    */
-  value: string[];
+  value: string[]
 
   /**
    * Change handler
    */
-  onChange: (value: string[]) => void;
+  onChange: (value: string[]) => void
 
   /**
    * Name attribute for the input group
    */
-  name?: string;
+  name?: string
 
   /**
    * Label for the chip group
    */
-  label?: ReactNode;
+  label?: ReactNode
 
   /**
    * Helper text shown below the group
    */
-  helper?: ReactNode;
+  helper?: ReactNode
 
   /**
    * Error message shown below the group
    */
-  error?: ReactNode;
+  error?: ReactNode
 
   /**
    * Required indicator
    */
-  required?: boolean;
+  required?: boolean
 
   /**
    * Disabled state for all chips
    */
-  disabled?: boolean;
+  disabled?: boolean
 
   /**
    * Gap between chips
    * @default "2"
    */
-  gap?: "1" | "2" | "3" | "4";
+  gap?: "1" | "2" | "3" | "4"
 
   /**
    * Enable wrapping
    * @default true
    */
-  wrap?: boolean;
+  wrap?: boolean
 }
 
-export interface ChipMultipleInputOptionProps extends Omit<
-  ButtonHTMLAttributes<HTMLButtonElement>,
-  "value"
-> {
+export interface ChipMultipleInputOptionProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "value"> {
   /**
    * Chip value
    */
-  value: string;
+  value: string
 
   /**
    * Label text (children)
    */
-  children?: ReactNode;
+  children?: ReactNode
 
   /**
    * Disabled state for this specific chip
    */
-  disabled?: boolean;
+  disabled?: boolean
 }

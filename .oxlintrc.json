@@ -3,13 +3,19 @@
   "plugins": ["react", "typescript", "jsx-a11y", "import"],
   "rules": {
     "no-console": "error",
-    "no-unused-vars": "warn",
+    "no-unused-vars": "error",
     "prefer-const": "warn",
     "no-var": "error",
     "no-debugger": "warn",
     "max-params": ["warn", { "max": 4 }],
     "max-lines": ["warn", { "max": 400 }],
-    "import/no-cycle": "error",
+    "no-nested-ternary": "error", // simplify ternaries
+    "prefer-template": "error", // use template literals
+    "no-lonely-if": "warn", // combine nested if
+    "guard-for-in": "warn", // check own properties before iterating
+    "no-implicit-coercion": "warn", // explicit type conversions
+    "prefer-object-spread": "warn", // use spread over Object.assign
+    "import/no-cycle": ["error", { "maxDepth": 999999 }],
     "import/no-default-export": "warn",
     "import/no-self-import": "warn",
     "jsx-a11y/alt-text": "warn",
@@ -19,9 +25,19 @@
     "jsx-a11y/no-noninteractive-tabindex": "warn",
     "jsx-a11y/no-aria-hidden-on-focusable": "warn",
     "jsx-a11y/label-has-associated-control": "warn",
+    "jsx-a11y/click-events-have-key-events": "warn", // click handlers need keyboard
+    "jsx-a11y/no-static-element-interactions": ["error", { "allowExpressionValues": true }], // static elements shouldn't have onClick
+    "jsx-a11y/role-has-required-aria-props": "error", // ARIA roles need required props
+    "jsx-a11y/role-supports-aria-props": "warn", // ARIA props validity
     "no-const-enum": "warn",
     "react/exhaustive-deps": "warn",
-    "react/display-name": "warn"
+    "react/display-name": "warn",
+    "react/jsx-key": "error",
+    "react/jsx-no-useless-fragments": "warn",
+    "react/self-closing-comp": "warn",
+    "react/no-unstable-nested-components": "warn",
+    "react/require-render-return": "error",
+    "react/jsx-no-comment-textnodes": "warn"
   },
   "settings": {
     "react": {

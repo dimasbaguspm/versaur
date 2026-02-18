@@ -1,6 +1,7 @@
-import type { ComponentType, SVGProps } from "react";
-import type { ButtonProps } from "../button/button.types";
-import type { ButtonIcon } from "@versaur/core";
+import type { ButtonIcon } from "@versaur/core"
+import type { ComponentType, SVGProps } from "react"
+
+import type { ButtonProps } from "../button/button.types"
 
 /**
  * ButtonIconProps combines Button props (without children) and Icon props
@@ -13,19 +14,19 @@ export interface ButtonIconProps extends Omit<ButtonProps, "children"> {
    * The SVG icon component to render
    * @required
    */
-  as: ComponentType<SVGProps<SVGSVGElement>>;
+  as: ComponentType<SVGProps<SVGSVGElement>>
 
   /**
    * Accessible label for the icon button
    * Required for screen readers since there's no text content
    * @required
    */
-  "aria-label": string;
+  "aria-label": string
 
   /**
    * Additional props to pass to the icon
    */
-  iconProps?: SVGProps<SVGSVGElement>;
+  iconProps?: SVGProps<SVGSVGElement>
 }
 
-export type { ButtonIcon as ButtonIconType };
+export type { ButtonIcon as ButtonIconType }

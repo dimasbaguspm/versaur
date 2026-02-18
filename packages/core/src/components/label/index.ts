@@ -1,4 +1,4 @@
-import labelStyles from "./label.module.css";
+import labelStyles from "./label.module.css"
 
-export { labelStyles };
-export * from "./label.types.generated";
+export { labelStyles }
+export * from "./label.types.generated"

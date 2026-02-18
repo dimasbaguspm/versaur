@@ -1,13 +1,14 @@
-import { useState } from "react";
-import type { ComponentType } from "react";
-import { Checkbox } from "./checkbox";
+import { useState } from "react"
+import type { ComponentType } from "react"
+
+import { Checkbox } from "./checkbox"
 
 export interface CheckboxSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 function StatesPreview() {
@@ -22,11 +23,11 @@ function StatesPreview() {
       </Checkbox>
       <Checkbox invalid>Invalid</Checkbox>
     </div>
-  );
+  )
 }
 
 function IntermediatePreview() {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(false)
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
@@ -35,7 +36,7 @@ function IntermediatePreview() {
         onChange={(e) => setChecked(e.target.checked)}
         ref={(el) => {
           if (el) {
-            el.indeterminate = !checked;
+            el.indeterminate = !checked
           }
         }}
       >
@@ -54,7 +55,7 @@ function IntermediatePreview() {
         <Checkbox>Option 3</Checkbox>
       </div>
     </div>
-  );
+  )
 }
 
 export const checkboxSections: CheckboxSection[] = [
@@ -84,4 +85,4 @@ export const checkboxSections: CheckboxSection[] = [
     preview: IntermediatePreview,
     title: "Indeterminate",
   },
-];
+]

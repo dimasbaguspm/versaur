@@ -1,28 +1,29 @@
-"use client";
+"use client"
 
-import type { ReactNode } from "react";
-import { forwardRef } from "react";
-import { bottomBarStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import { isComponentType } from "../../utils/polymorphic";
+import { bottomBarStyles } from "@versaur/core"
+import type { ReactNode } from "react"
+import { forwardRef } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import { isComponentType } from "../../utils/polymorphic"
 
 /**
  * BottomBar.Item Props
  */
 interface BottomBarItemProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  as?: "button" | "a" | React.ComponentType<any>;
-  href?: string;
-  active?: boolean;
-  disabled?: boolean;
-  icon?: ReactNode;
-  children?: ReactNode;
+  as?: "button" | "a" | React.ComponentType<any>
+  href?: string
+  active?: boolean
+  disabled?: boolean
+  icon?: ReactNode
+  children?: ReactNode
 }
 
 /**
  * BottomBar.Root Props
  */
 interface BottomBarRootProps extends React.HTMLAttributes<HTMLElement> {
-  children?: ReactNode;
+  children?: ReactNode
 }
 
 /**
@@ -32,40 +33,28 @@ const BottomBarRoot = forwardRef<HTMLElement, BottomBarRootProps>(({ children, .
   <nav ref={ref} className={bottomBarStyles["bottom-bar"]} {...props}>
     {children}
   </nav>
-));
-BottomBarRoot.displayName = "BottomBar";
+))
+BottomBarRoot.displayName = "BottomBar"
 
 /**
  * BottomBar.Item - Polymorphic navigation item (button or link)
  */
 const BottomBarItem = forwardRef<HTMLElement, BottomBarItemProps>(
-  (
-    {
-      as: Component = "button",
-      href,
-      active = false,
-      disabled = false,
-      icon,
-      children,
-      onClick,
-      ...props
-    },
-    ref,
-  ) => {
-    const isLink = isComponentType(Component, "a");
+  ({ as: Component = "button", href, active = false, disabled = false, icon, children, onClick, ...props }, ref) => {
+    const isLink = isComponentType(Component, "a")
 
     const dataAttrs = useDataAttrs({
       active,
       disabled,
-    });
+    })
 
     const handleClick = (e: React.MouseEvent<HTMLElement>) => {
       if (disabled) {
-        e.preventDefault();
-        return;
+        e.preventDefault()
+        return
       }
-      onClick?.(e as any);
-    };
+      onClick?.(e as any)
+    }
 
     const itemProps: Record<string, any> = {
       className: bottomBarStyles["bottom-bar-item"],
@@ -73,29 +62,29 @@ const BottomBarItem = forwardRef<HTMLElement, BottomBarItemProps>(
       ref,
       ...dataAttrs,
       ...props,
-    };
-
-    if (isLink) {
-      itemProps.href = href;
     }
 
-    const ItemComponent = (Component as any) || "button";
+    if (isLink) {
+      itemProps.href = href
+    }
+
+    const ItemComponent = (Component as any) || "button"
 
     return (
       <ItemComponent {...itemProps}>
         {icon && <span className={bottomBarStyles["bottom-bar-item-icon"]}>{icon}</span>}
         {children && <span className={bottomBarStyles["bottom-bar-item-text"]}>{children}</span>}
       </ItemComponent>
-    );
+    )
   },
-);
-BottomBarItem.displayName = "BottomBar.Item";
+)
+BottomBarItem.displayName = "BottomBar.Item"
 
 /**
  * Compound BottomBar component with sub-components
  */
 const BottomBar = Object.assign(BottomBarRoot, {
   Item: BottomBarItem,
-});
+})
 
-export { BottomBar, BottomBarRoot, BottomBarItem };
+export { BottomBar, BottomBarRoot, BottomBarItem }

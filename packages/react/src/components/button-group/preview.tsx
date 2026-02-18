@@ -1,5 +1,5 @@
-import { Button } from "../button/button";
-import { ButtonGroup } from "./button-group";
+import { Button } from "../button/button"
+import { ButtonGroup } from "./button-group"
 
 export const buttonGroupProps = [
   {
@@ -16,8 +16,7 @@ export const buttonGroupProps = [
   },
   {
     default: "center",
-    description:
-      "Alignment of items: start, center, end, space-between, space-around, or space-evenly",
+    description: "Alignment of items: start, center, end, space-between, space-around, or space-evenly",
     name: "align",
     type: "ButtonGroupAlign",
   },
@@ -38,7 +37,7 @@ export const buttonGroupProps = [
     name: "children",
     type: "ReactNode",
   },
-];
+]
 
 function GapSection() {
   return (
@@ -88,7 +87,7 @@ function GapSection() {
         </ButtonGroup>
       </div>
     </div>
-  );
+  )
 }
 
 function DirectionSection() {
@@ -109,7 +108,7 @@ function DirectionSection() {
         </ButtonGroup>
       </div>
     </div>
-  );
+  )
 }
 
 function AlignmentSection() {
@@ -200,7 +199,7 @@ function AlignmentSection() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 function WrapSection() {
@@ -225,7 +224,7 @@ function WrapSection() {
         </ButtonGroup>
       </div>
     </div>
-  );
+  )
 }
 
 function CustomSpacingSection() {
@@ -247,7 +246,7 @@ function CustomSpacingSection() {
         </ButtonGroup>
       </div>
     </div>
-  );
+  )
 }
 
 export const buttonGroupSections = [
@@ -339,7 +338,7 @@ export const buttonGroupSections = [
     preview: CustomSpacingSection,
     title: "Custom Spacing Override",
   },
-];
+]
 
 export const buttonGroupInstallation = {
   code: `import { Button, ButtonGroup } from "@versaur/react";
@@ -353,16 +352,16 @@ export function App() {
   );
 }`,
   language: "tsx",
-};
+}
 
 export function ButtonGroupPreview() {
   return (
     <div>
       <h2>ButtonGroup Component</h2>
       <p>
-        Container component for grouping multiple buttons with customizable spacing, direction,
-        alignment, and wrap behavior.
+        Container component for grouping multiple buttons with customizable spacing, direction, alignment, and wrap
+        behavior.
       </p>
     </div>
-  );
+  )
 }

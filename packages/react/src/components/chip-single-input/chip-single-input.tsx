@@ -1,32 +1,30 @@
-import { createContext, forwardRef, useContext, useId } from "react";
-import { chipSingleInputStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import { Label } from "../label";
-import { HelperText } from "../helper-text";
-import { ErrorText } from "../error-text";
-import type {
-  ChipSingleInputOptionProps,
-  ChipSingleInputRootProps,
-} from "./chip-single-input.types";
+import { chipSingleInputStyles } from "@versaur/core"
+import { createContext, forwardRef, useContext, useId } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import { ErrorText } from "../error-text"
+import { HelperText } from "../helper-text"
+import { Label } from "../label"
+import type { ChipSingleInputOptionProps, ChipSingleInputRootProps } from "./chip-single-input.types"
 
 /**
  * Private context for managing chip single input state
  */
 interface ChipSingleInputContextType {
-  value: string | undefined;
-  onChange: (value: string) => void;
-  name?: string;
-  disabled?: boolean;
+  value: string | undefined
+  onChange: (value: string) => void
+  name?: string
+  disabled?: boolean
 }
 
-const ChipSingleInputContext = createContext<ChipSingleInputContextType | undefined>(undefined);
+const ChipSingleInputContext = createContext<ChipSingleInputContextType | undefined>(undefined)
 
 function useChipSingleInputContext() {
-  const context = useContext(ChipSingleInputContext);
+  const context = useContext(ChipSingleInputContext)
   if (!context) {
-    throw new Error("ChipSingleInput.Option must be used within ChipSingleInput");
+    throw new Error("ChipSingleInput.Option must be used within ChipSingleInput")
   }
-  return context;
+  return context
 }
 
 /**
@@ -69,21 +67,21 @@ const ChipSingleInputRoot = forwardRef<HTMLDivElement, ChipSingleInputRootProps>
     },
     ref,
   ) => {
-    const generatedId = useId();
-    const groupId = rest.id || generatedId;
-    const helperId = helper ? `${groupId}-helper` : undefined;
-    const errorId = error ? `${groupId}-error` : undefined;
-    const describedBy = [helperId, errorId].filter(Boolean).join(" ");
+    const generatedId = useId()
+    const groupId = rest.id || generatedId
+    const helperId = helper ? `${groupId}-helper` : undefined
+    const errorId = error ? `${groupId}-error` : undefined
+    const describedBy = [helperId, errorId].filter(Boolean).join(" ")
 
     const handleChange = (newValue: string) => {
       if (!disabled && onChange) {
-        onChange(newValue);
+        onChange(newValue)
       }
-    };
+    }
 
     const dataAttrs = useDataAttrs({
       invalid: Boolean(error),
-    });
+    })
 
     return (
       <div ref={ref} className={chipSingleInputStyles.field} {...dataAttrs} {...rest}>
@@ -116,11 +114,11 @@ const ChipSingleInputRoot = forwardRef<HTMLDivElement, ChipSingleInputRootProps>
         {error && <ErrorText id={errorId}>{error}</ErrorText>}
         {!error && helper && <HelperText id={helperId}>{helper}</HelperText>}
       </div>
-    );
+    )
   },
-);
+)
 
-ChipSingleInputRoot.displayName = "ChipSingleInput";
+ChipSingleInputRoot.displayName = "ChipSingleInput"
 
 /**
  * ChipSingleInput.Option Component
@@ -134,20 +132,20 @@ ChipSingleInputRoot.displayName = "ChipSingleInput";
  */
 const ChipSingleInputOption = forwardRef<HTMLButtonElement, ChipSingleInputOptionProps>(
   ({ value, children, disabled: optionDisabled, ...rest }, ref) => {
-    const context = useChipSingleInputContext();
-    const isSelected = context.value === value;
-    const isDisabled = context.disabled || optionDisabled;
+    const context = useChipSingleInputContext()
+    const isSelected = context.value === value
+    const isDisabled = context.disabled || optionDisabled
 
     const handleClick = () => {
       if (!isDisabled && context.onChange) {
-        context.onChange(value);
+        context.onChange(value)
       }
-    };
+    }
 
     const dataAttrs = useDataAttrs({
       disabled: isDisabled,
       selected: isSelected,
-    });
+    })
 
     return (
       <button
@@ -162,15 +160,15 @@ const ChipSingleInputOption = forwardRef<HTMLButtonElement, ChipSingleInputOptio
       >
         {children}
       </button>
-    );
+    )
   },
-);
+)
 
-ChipSingleInputOption.displayName = "ChipSingleInput.Option";
+ChipSingleInputOption.displayName = "ChipSingleInput.Option"
 
 /**
  * ChipSingleInput compound component with Option subcomponent
  */
 export const ChipSingleInput = Object.assign(ChipSingleInputRoot, {
   Option: ChipSingleInputOption,
-});
+})

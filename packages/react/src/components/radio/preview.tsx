@@ -1,18 +1,19 @@
-import { useState } from "react";
-import type { ComponentType } from "react";
-import { Radio } from "./radio";
+import { useState } from "react"
+import type { ComponentType } from "react"
+
+import { Radio } from "./radio"
 
 export interface RadioSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 function VariantsPreview() {
-  const [variant1, setVariant1] = useState("option1");
-  const [variant2, setVariant2] = useState("option1");
+  const [variant1, setVariant1] = useState("option1")
+  const [variant2, setVariant2] = useState("option1")
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
@@ -41,11 +42,11 @@ function VariantsPreview() {
         </Radio>
       </div>
     </div>
-  );
+  )
 }
 
 function SizesPreview() {
-  const [size, setSize] = useState("medium");
+  const [size, setSize] = useState("medium")
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
@@ -77,7 +78,7 @@ function SizesPreview() {
         Large radio
       </Radio>
     </div>
-  );
+  )
 }
 
 function StatesPreview() {
@@ -99,7 +100,7 @@ function StatesPreview() {
         Invalid
       </Radio>
     </div>
-  );
+  )
 }
 
 export const radioSections: RadioSection[] = [
@@ -130,4 +131,4 @@ export const radioSections: RadioSection[] = [
     preview: StatesPreview,
     title: "States",
   },
-];
+]

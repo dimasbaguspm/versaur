@@ -1,7 +1,8 @@
-import { forwardRef } from "react";
-import { radioStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import type { RadioProps } from "./radio.types";
+import { radioStyles } from "@versaur/core"
+import { forwardRef } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import type { RadioProps } from "./radio.types"
 
 /**
  * Radio - Native radio input with custom styling
@@ -19,16 +20,13 @@ import type { RadioProps } from "./radio.types";
  * ```
  */
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  (
-    { variant = "outline", size = "medium", invalid = false, disabled = false, children, ...rest },
-    ref,
-  ) => {
+  ({ variant = "outline", size = "medium", invalid = false, disabled = false, children, ...rest }, ref) => {
     const dataAttrs = useDataAttrs({
       disabled,
       invalid,
       size,
       variant,
-    });
+    })
 
     return (
       <label className={radioStyles.radio} {...dataAttrs}>
@@ -43,8 +41,8 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         <span className={radioStyles.indicator} />
         {children && <span className={radioStyles.label}>{children}</span>}
       </label>
-    );
+    )
   },
-);
+)
 
-Radio.displayName = "Radio";
+Radio.displayName = "Radio"

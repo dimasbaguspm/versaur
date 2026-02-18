@@ -1,12 +1,13 @@
-import type { ComponentType } from "react";
-import { Heading } from "./heading";
+import type { ComponentType } from "react"
+
+import { Heading } from "./heading"
 
 export interface HeadingSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 function AsLevelsPreview() {
@@ -19,7 +20,7 @@ function AsLevelsPreview() {
       <Heading as="h5">Heading 5</Heading>
       <Heading as="h6">Heading 6</Heading>
     </div>
-  );
+  )
 }
 
 function SizesPreview() {
@@ -44,7 +45,7 @@ function SizesPreview() {
         2X Large
       </Heading>
     </div>
-  );
+  )
 }
 
 function WeightsPreview() {
@@ -63,7 +64,7 @@ function WeightsPreview() {
         Bold Weight
       </Heading>
     </div>
-  );
+  )
 }
 
 function IntentsPreview() {
@@ -97,7 +98,7 @@ function IntentsPreview() {
         Black Intent
       </Heading>
     </div>
-  );
+  )
 }
 
 function CasePreview() {
@@ -113,7 +114,7 @@ function CasePreview() {
         capitalize text transform
       </Heading>
     </div>
-  );
+  )
 }
 
 function TransformPreview() {
@@ -129,23 +130,7 @@ function TransformPreview() {
         Overlined Text
       </Heading>
     </div>
-  );
-}
-
-function CombinedPreview() {
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-      <Heading as="h1" intent="danger">
-        Large Danger Heading
-      </Heading>
-      <Heading as="h4" size="2xl" weight="bold">
-        H4 with 2XL Size
-      </Heading>
-      <Heading as="h2" weight="normal" intent="gray">
-        Gray Lightweight H2
-      </Heading>
-    </div>
-  );
+  )
 }
 
 export const headingSections: HeadingSection[] = [
@@ -216,7 +201,7 @@ export const headingSections: HeadingSection[] = [
     preview: TransformPreview,
     title: "Transform",
   },
-];
+]
 
 export const headingProps = [
   {
@@ -255,7 +240,7 @@ export const headingProps = [
     name: "transform",
     type: "'underline' | 'line-through' | 'overline'",
   },
-];
+]
 
 export function HeadingPreview() {
   return (
@@ -267,5 +252,5 @@ export function HeadingPreview() {
         </div>
       ))}
     </>
-  );
+  )
 }

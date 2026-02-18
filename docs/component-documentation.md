@@ -16,17 +16,17 @@ Each section pairs a live preview component with its code string:
 
 ```tsx
 export interface ButtonSection {
-  key: string; // URL-friendly identifier
-  title: string; // Section heading
-  preview: ComponentType; // Live demo component
-  code: string; // Code snippet for display
-  language: string; // Syntax highlighting language
+  key: string // URL-friendly identifier
+  title: string // Section heading
+  preview: ComponentType // Live demo component
+  code: string // Code snippet for display
+  language: string // Syntax highlighting language
 }
 
 export const buttonSections: ButtonSection[] = [
   { key: "variants", title: "Variants", preview: VariantsPreview, code: `...`, language: "tsx" },
   // ...
-];
+]
 ```
 
 ### Props metadata
@@ -42,7 +42,7 @@ export const buttonProps = [
     description: "...",
   },
   // ...
-];
+]
 ```
 
 ### Installation
@@ -51,7 +51,7 @@ export const buttonProps = [
 export const buttonInstallation = {
   code: `npm install @versaur/react @versaur/core`,
   language: "bash" as const,
-};
+}
 ```
 
 ### Convenience preview

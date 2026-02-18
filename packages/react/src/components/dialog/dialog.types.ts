@@ -3,9 +3,9 @@
  */
 export interface DialogRootProps extends React.DialogHTMLAttributes<HTMLDialogElement> {
   /** Controlled open state */
-  isOpen: boolean;
+  isOpen: boolean
   /** Called when dialog should close (e.g., ESC key) */
-  onOpenChange?: (isOpen: boolean) => void;
+  onOpenChange?: (isOpen: boolean) => void
   /** Dialog content */
-  children: React.ReactNode;
+  children: React.ReactNode
 }

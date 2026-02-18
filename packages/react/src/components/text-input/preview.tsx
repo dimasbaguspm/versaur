@@ -1,14 +1,15 @@
-import type { ComponentType } from "react";
-import { TextInput } from "./text-input";
-import { CheckCircleIcon, MailIcon, SearchIcon } from "@versaur/icons";
-import { Icon } from "../icon";
+import { CheckCircleIcon, MailIcon, SearchIcon } from "@versaur/icons"
+import type { ComponentType } from "react"
+
+import { Icon } from "../icon"
+import { TextInput } from "./text-input"
 
 export interface TextInputSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 function WithIconsPreview() {
@@ -23,27 +24,18 @@ function WithIconsPreview() {
         rightIcon={<Icon as={CheckCircleIcon} />}
       />
     </div>
-  );
+  )
 }
 
 function StatesPreview() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
       <TextInput placeholder="Default state" label="Default" />
-      <TextInput
-        placeholder="Invalid state"
-        label="Invalid"
-        error="This field is required"
-        required
-      />
+      <TextInput placeholder="Invalid state" label="Invalid" error="This field is required" required />
       <TextInput placeholder="Disabled state" label="Disabled" disabled value="Disabled value" />
-      <TextInput
-        placeholder="With helper text"
-        label="With Helper"
-        helper="This is helpful information"
-      />
+      <TextInput placeholder="With helper text" label="With Helper" helper="This is helpful information" />
     </div>
-  );
+  )
 }
 
 function ReadOnlyPreview() {
@@ -58,7 +50,7 @@ function ReadOnlyPreview() {
         rightIcon={<Icon as={CheckCircleIcon} />}
       />
     </div>
-  );
+  )
 }
 
 export const textInputSections: TextInputSection[] = [
@@ -126,7 +118,7 @@ export const textInputSections: TextInputSection[] = [
     preview: ReadOnlyPreview,
     title: "Read Only",
   },
-];
+]
 
 export const textInputProps = [
   {
@@ -177,7 +169,7 @@ export const textInputProps = [
     name: "disabled",
     type: "boolean",
   },
-];
+]
 
 export const textInputInstallation = {
   code: `# Using npm
@@ -189,7 +181,7 @@ pnpm add @versaur/react @versaur/core
 # Using yarn
 yarn add @versaur/react @versaur/core`,
   language: "bash" as const,
-};
+}
 
 export function TextInputPreview() {
   return (
@@ -201,5 +193,5 @@ export function TextInputPreview() {
         </div>
       ))}
     </>
-  );
+  )
 }

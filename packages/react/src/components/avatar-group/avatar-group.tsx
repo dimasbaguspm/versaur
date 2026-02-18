@@ -1,7 +1,8 @@
-import { forwardRef } from "react";
-import { avatarGroupStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import type { AvatarGroupProps } from "./avatar-group.types";
+import { avatarGroupStyles } from "@versaur/core"
+import { forwardRef } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import type { AvatarGroupProps } from "./avatar-group.types"
 
 export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
   (
@@ -16,7 +17,7 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
     },
     ref,
   ) => {
-    const dataAttrs = useDataAttrs({ align, direction, size, wrap });
+    const dataAttrs = useDataAttrs({ align, direction, size, wrap })
 
     return (
       <div
@@ -29,8 +30,8 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
       >
         {children}
       </div>
-    );
+    )
   },
-);
+)
 
-AvatarGroup.displayName = "AvatarGroup";
+AvatarGroup.displayName = "AvatarGroup"

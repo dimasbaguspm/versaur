@@ -1,9 +1,10 @@
-import { forwardRef } from "react";
-import { buttonIconStyles } from "@versaur/core";
-import { LoaderIcon } from "@versaur/icons";
-import { Icon } from "../icon";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import type { ButtonIconProps } from "./button-icon.types";
+import { buttonIconStyles } from "@versaur/core"
+import { LoaderIcon } from "@versaur/icons"
+import { forwardRef } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import { Icon } from "../icon"
+import type { ButtonIconProps } from "./button-icon.types"
 
 /**
  * ButtonIcon component - an icon-only button with full Button styling
@@ -40,15 +41,15 @@ export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
       loading,
       size,
       variant,
-    });
+    })
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       if (disabled || loading) {
-        e.preventDefault();
-        return;
+        e.preventDefault()
+        return
       }
-      onClick?.(e);
-    };
+      onClick?.(e)
+    }
 
     return (
       <button
@@ -69,8 +70,8 @@ export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
           <Icon as={IconComponent} {...(iconProps as Record<string, unknown>)} />
         )}
       </button>
-    );
+    )
   },
-);
+)
 
-ButtonIcon.displayName = "ButtonIcon";
+ButtonIcon.displayName = "ButtonIcon"

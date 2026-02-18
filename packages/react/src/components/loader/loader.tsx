@@ -1,9 +1,10 @@
-import { forwardRef } from "react";
-import { loaderStyles } from "@versaur/core";
-import { LoaderIcon } from "@versaur/icons";
-import { Icon } from "../icon";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import type { LoaderProps } from "./loader.types";
+import { loaderStyles } from "@versaur/core"
+import { LoaderIcon } from "@versaur/icons"
+import { forwardRef } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import { Icon } from "../icon"
+import type { LoaderProps } from "./loader.types"
 
 /**
  * Loader component for displaying loading states with spinner or bar variants
@@ -24,15 +25,15 @@ export const Loader = forwardRef<HTMLDivElement, LoaderProps>(
     const dataAttrs = useDataAttrs({
       size,
       type,
-    });
+    })
 
     return (
       <div ref={ref} className={loaderStyles.loader} {...dataAttrs} {...rest}>
         {type === "spinner" && <Icon as={LoaderIcon} aria-hidden="true" />}
         {children}
       </div>
-    );
+    )
   },
-);
+)
 
-Loader.displayName = "Loader";
+Loader.displayName = "Loader"

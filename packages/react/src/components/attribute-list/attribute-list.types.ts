@@ -1,39 +1,39 @@
-import type { HTMLAttributes, ReactNode } from "react";
-import type { AttributeList } from "@versaur/core";
+import type { AttributeList } from "@versaur/core"
+import type { HTMLAttributes, ReactNode } from "react"
 
 export interface AttributeListProps extends HTMLAttributes<HTMLDListElement> {
   /**
    * Number of columns for the grid layout
    * @default '3'
    */
-  columns?: AttributeList.Columns;
+  columns?: AttributeList.Columns
 
   /**
    * AttributeList.Item components
    */
-  children?: ReactNode;
+  children?: ReactNode
 }
 
 export interface AttributeListItemProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * The title/label for this attribute
    */
-  title: string;
+  title: string
 
   /**
    * Number of columns to span in the grid (1-6, auto-clamped to columns count)
    * @default '1'
    */
-  columnSpan?: AttributeList.ColumnSpan;
+  columnSpan?: AttributeList.ColumnSpan
 
   /**
    * Number of lines to display before truncating with ellipsis (1-5)
    * @default '2'
    */
-  contentLineClamp?: AttributeList.ContentLineClamp;
+  contentLineClamp?: AttributeList.ContentLineClamp
 
   /**
    * The value content (can be text, links, badges, etc.)
    */
-  children?: ReactNode;
+  children?: ReactNode
 }

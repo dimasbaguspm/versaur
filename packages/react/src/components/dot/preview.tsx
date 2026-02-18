@@ -1,4 +1,4 @@
-import { Dot } from "./dot";
+import { Dot } from "./dot"
 
 export const dotProps = [
   {
@@ -14,7 +14,7 @@ export const dotProps = [
     name: "size",
     type: "DotSize",
   },
-];
+]
 
 function VariantsSection() {
   return (
@@ -29,7 +29,7 @@ function VariantsSection() {
       <Dot variant="accent-2" />
       <Dot variant="accent-3" />
     </div>
-  );
+  )
 }
 
 function SizesSection() {
@@ -38,7 +38,7 @@ function SizesSection() {
       <Dot size="small" variant="primary" />
       <Dot size="medium" variant="primary" />
     </div>
-  );
+  )
 }
 
 function UsageSections() {
@@ -57,7 +57,7 @@ function UsageSections() {
         <span>Error</span>
       </div>
     </div>
-  );
+  )
 }
 
 export const dotSections = [
@@ -104,7 +104,7 @@ export const dotSections = [
     preview: UsageSections,
     title: "Usage with Text",
   },
-];
+]
 
 export function DotPreview() {
   return (
@@ -112,5 +112,5 @@ export function DotPreview() {
       <h2>Dot Component</h2>
       <p>A simple, circular visual indicator for status, decorative markers, or visual accents.</p>
     </div>
-  );
+  )
 }

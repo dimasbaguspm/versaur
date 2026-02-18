@@ -1,12 +1,13 @@
-import type { ComponentType } from "react";
-import { Text } from "./text";
+import type { ComponentType } from "react"
+
+import { Text } from "./text"
 
 export interface TextSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 function AsElementsPreview() {
@@ -18,7 +19,7 @@ function AsElementsPreview() {
       <Text as="strong">Strong text</Text>
       <Text as="em">Emphasized text</Text>
     </div>
-  );
+  )
 }
 
 function SizesPreview() {
@@ -31,7 +32,7 @@ function SizesPreview() {
       <Text size="xl">Extra Large</Text>
       <Text size="2xl">2X Large</Text>
     </div>
-  );
+  )
 }
 
 function WeightsPreview() {
@@ -42,7 +43,7 @@ function WeightsPreview() {
       <Text weight="semibold">Semibold Weight</Text>
       <Text weight="bold">Bold Weight</Text>
     </div>
-  );
+  )
 }
 function CasePreview() {
   return (
@@ -51,7 +52,7 @@ function CasePreview() {
       <Text case="lower">LOWERCASE TEXT TRANSFORM</Text>
       <Text case="capitalize">capitalize text transform</Text>
     </div>
-  );
+  )
 }
 
 function TransformPreview() {
@@ -61,7 +62,7 @@ function TransformPreview() {
       <Text transform="line-through">Line Through Text</Text>
       <Text transform="overline">Overlined Text</Text>
     </div>
-  );
+  )
 }
 function IntentsPreview() {
   return (
@@ -78,7 +79,7 @@ function IntentsPreview() {
       </Text>
       <Text intent="black">Black Intent</Text>
     </div>
-  );
+  )
 }
 
 export const textSections: TextSection[] = [
@@ -148,7 +149,7 @@ export const textSections: TextSection[] = [
     preview: TransformPreview,
     title: "Transform",
   },
-];
+]
 
 export const textProps = [
   {
@@ -187,7 +188,7 @@ export const textProps = [
     name: "transform",
     type: "'underline' | 'line-through' | 'overline'",
   },
-];
+]
 
 export function TextPreview() {
   return (
@@ -199,5 +200,5 @@ export function TextPreview() {
         </div>
       ))}
     </>
-  );
+  )
 }

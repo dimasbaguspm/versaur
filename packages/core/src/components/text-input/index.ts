@@ -1,4 +1,4 @@
-import textInputStyles from "./text-input.module.css";
+import textInputStyles from "./text-input.module.css"
 
-export { textInputStyles };
-export * from "./text-input.types.generated";
+export { textInputStyles }
+export * from "./text-input.types.generated"

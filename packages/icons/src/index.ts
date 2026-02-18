@@ -1,126 +1,117 @@
-import type { ComponentType, SVGProps } from "react";
+import type { ComponentType, SVGProps } from "react"
 
-// Navigation & UI
-import LoaderIcon from "../assets/loader.svg?react";
-import UserIcon from "../assets/user.svg?react";
-import ChevronDownIcon from "../assets/chevron-down.svg?react";
-import ChevronUpIcon from "../assets/chevron-up.svg?react";
-import ChevronLeftIcon from "../assets/chevron-left.svg?react";
-import ChevronRightIcon from "../assets/chevron-right.svg?react";
-import LayoutDashboardIcon from "../assets/layout-dashboard.svg?react";
-import FileCodeIcon from "../assets/file-code.svg?react";
-import HomeIcon from "../assets/home.svg?react";
-import SearchIcon from "../assets/search.svg?react";
-import SearchXIcon from "../assets/search-x.svg?react";
-import MenuIcon from "../assets/menu.svg?react";
-import MenuOpenIcon from "../assets/menu-open.svg?react";
-import SettingsIcon from "../assets/settings.svg?react";
-import GridIcon from "../assets/grid-2x2.svg?react";
-import Grid3x3Icon from "../assets/grid-3x3.svg?react";
-import Columns2Icon from "../assets/columns-2.svg?react";
-import Columns3Icon from "../assets/columns-3.svg?react";
-import ListIcon from "../assets/list.svg?react";
-import ListChecksIcon from "../assets/list-checks.svg?react";
-import ListOrderedIcon from "../assets/list-ordered.svg?react";
-import SlidersIcon from "../assets/sliders.svg?react";
-
-// Financial & Analytics
-import TrendingUpIcon from "../assets/trending-up.svg?react";
-import TrendingDownIcon from "../assets/trending-down.svg?react";
-import BarChartIcon from "../assets/bar-chart.svg?react";
-import BarChart2Icon from "../assets/bar-chart-2.svg?react";
-import LineChartIcon from "../assets/line-chart.svg?react";
-import AreaChartIcon from "../assets/area-chart.svg?react";
-import PieChartIcon from "../assets/pie-chart.svg?react";
-import DonutChartIcon from "../assets/donut-chart.svg?react";
-import WalletIcon from "../assets/wallet.svg?react";
-import CreditCardIcon from "../assets/credit-card.svg?react";
-import DollarSignIcon from "../assets/dollar-sign.svg?react";
-import PercentIcon from "../assets/percent.svg?react";
-import GaugeIcon from "../assets/gauge.svg?react";
-import GaugeCircleIcon from "../assets/gauge-circle.svg?react";
-
-// Business & Operations
-import BuildingIcon from "../assets/building.svg?react";
-import Building2Icon from "../assets/building-2.svg?react";
-import BriefcaseIcon from "../assets/briefcase.svg?react";
-import Briefcase2Icon from "../assets/briefcase-2.svg?react";
-import TargetIcon from "../assets/target.svg?react";
-import TargetCircleIcon from "../assets/target-circle.svg?react";
-import ZapIcon from "../assets/zap.svg?react";
-import Zap2Icon from "../assets/zap-2.svg?react";
-import ShieldIcon from "../assets/shield.svg?react";
-import ShieldAlertIcon from "../assets/shield-alert.svg?react";
-import ArchiveIcon from "../assets/archive.svg?react";
-import ArchiveXIcon from "../assets/archive-x.svg?react";
-
+import ActivitySquareIcon from "../assets/activity-square.svg?react"
+import ActivityIcon from "../assets/activity.svg?react"
+import AlertCircleIcon from "../assets/alert-circle.svg?react"
+import AlertTriangleIcon from "../assets/alert-triangle.svg?react"
+import ArchiveXIcon from "../assets/archive-x.svg?react"
+import ArchiveIcon from "../assets/archive.svg?react"
+import AreaChartIcon from "../assets/area-chart.svg?react"
+import AwardIcon from "../assets/award.svg?react"
+import BarChart2Icon from "../assets/bar-chart-2.svg?react"
+import BarChartIcon from "../assets/bar-chart.svg?react"
+import BellOffIcon from "../assets/bell-off.svg?react"
 // Notifications & Communication
-import BellIcon from "../assets/bell.svg?react";
-import BellOffIcon from "../assets/bell-off.svg?react";
-import MailIcon from "../assets/mail.svg?react";
-import MailOpenIcon from "../assets/mail-open.svg?react";
-import MessageCircleIcon from "../assets/message-circle.svg?react";
-import MessageSquareIcon from "../assets/message-square.svg?react";
-import InboxIcon from "../assets/inbox.svg?react";
-
+import BellIcon from "../assets/bell.svg?react"
+import Briefcase2Icon from "../assets/briefcase-2.svg?react"
+import BriefcaseIcon from "../assets/briefcase.svg?react"
+import Building2Icon from "../assets/building-2.svg?react"
+// Business & Operations
+import BuildingIcon from "../assets/building.svg?react"
+import CalendarCheckIcon from "../assets/calendar-check.svg?react"
 // Date & Time
-import CalendarIcon from "../assets/calendar.svg?react";
-import CalendarCheckIcon from "../assets/calendar-check.svg?react";
-import ClockIcon from "../assets/clock.svg?react";
-import ClockAlertIcon from "../assets/clock-alert.svg?react";
-
-// Location
-import MapPinIcon from "../assets/map-pin.svg?react";
-import MapPinCheckIcon from "../assets/map-pin-check.svg?react";
-
-// Data & Analytics
-import LayersIcon from "../assets/layers.svg?react";
-import ActivityIcon from "../assets/activity.svg?react";
-import ActivitySquareIcon from "../assets/activity-square.svg?react";
-import DataIcon from "../assets/data.svg?react";
-import FunnelIcon from "../assets/funnel.svg?react";
-import FilterIcon from "../assets/filter.svg?react";
-import AwardIcon from "../assets/award.svg?react";
-import StarIcon from "../assets/star.svg?react";
-
+import CalendarIcon from "../assets/calendar.svg?react"
+import CheckCircleIcon from "../assets/check-circle.svg?react"
+import CheckIcon from "../assets/check.svg?react"
+import ChevronDownIcon from "../assets/chevron-down.svg?react"
+import ChevronLeftIcon from "../assets/chevron-left.svg?react"
+import ChevronRightIcon from "../assets/chevron-right.svg?react"
+import ChevronUpIcon from "../assets/chevron-up.svg?react"
+import ClipboardIcon from "../assets/clipboard.svg?react"
+import ClockAlertIcon from "../assets/clock-alert.svg?react"
+import ClockIcon from "../assets/clock.svg?react"
+import Columns2Icon from "../assets/columns-2.svg?react"
+import Columns3Icon from "../assets/columns-3.svg?react"
+import CopyIcon from "../assets/copy.svg?react"
+import CreditCardIcon from "../assets/credit-card.svg?react"
+import DataIcon from "../assets/data.svg?react"
+import DollarSignIcon from "../assets/dollar-sign.svg?react"
+import DonutChartIcon from "../assets/donut-chart.svg?react"
+import DownloadCloudIcon from "../assets/download-cloud.svg?react"
 // Actions
-import DownloadIcon from "../assets/download.svg?react";
-import DownloadCloudIcon from "../assets/download-cloud.svg?react";
-import UploadIcon from "../assets/upload.svg?react";
-import UploadCloudIcon from "../assets/upload-cloud.svg?react";
-import ShareIcon from "../assets/share.svg?react";
-import Share2Icon from "../assets/share-2.svg?react";
-import CopyIcon from "../assets/copy.svg?react";
-import ClipboardIcon from "../assets/clipboard.svg?react";
-import RepeatIcon from "../assets/repeat.svg?react";
-import TrashIcon from "../assets/trash.svg?react";
-
-// Security
-import LockIcon from "../assets/lock.svg?react";
-import UnlockIcon from "../assets/unlock.svg?react";
-import GlobeIcon from "../assets/globe.svg?react";
-
+import DownloadIcon from "../assets/download.svg?react"
+import FileCodeIcon from "../assets/file-code.svg?react"
+import FilterIcon from "../assets/filter.svg?react"
+import FrownIcon from "../assets/frown.svg?react"
+import FunnelIcon from "../assets/funnel.svg?react"
+import GaugeCircleIcon from "../assets/gauge-circle.svg?react"
+import GaugeIcon from "../assets/gauge.svg?react"
+import GlobeIcon from "../assets/globe.svg?react"
+import GridIcon from "../assets/grid-2x2.svg?react"
+import Grid3x3Icon from "../assets/grid-3x3.svg?react"
 // Utilities
-import HelpCircleIcon from "../assets/help-circle.svg?react";
-import PlusCircleIcon from "../assets/plus-circle.svg?react";
-import PlusIcon from "../assets/plus.svg?react";
-import MinusIcon from "../assets/minus.svg?react";
-import SmileIcon from "../assets/smile.svg?react";
-import FrownIcon from "../assets/frown.svg?react";
-import AlertCircleIcon from "../assets/alert-circle.svg?react";
-import AlertTriangleIcon from "../assets/alert-triangle.svg?react";
-import CheckIcon from "../assets/check.svg?react";
-import CheckCircleIcon from "../assets/check-circle.svg?react";
-import XIcon from "../assets/x.svg?react";
-import XCircleIcon from "../assets/x-circle.svg?react";
-import Search2Icon from "../assets/search-2.svg?react";
+import HelpCircleIcon from "../assets/help-circle.svg?react"
+import HomeIcon from "../assets/home.svg?react"
+import InboxIcon from "../assets/inbox.svg?react"
+// Data & Analytics
+import LayersIcon from "../assets/layers.svg?react"
+import LayoutDashboardIcon from "../assets/layout-dashboard.svg?react"
+import LineChartIcon from "../assets/line-chart.svg?react"
+import ListChecksIcon from "../assets/list-checks.svg?react"
+import ListOrderedIcon from "../assets/list-ordered.svg?react"
+import ListIcon from "../assets/list.svg?react"
+// Navigation & UI
+import LoaderIcon from "../assets/loader.svg?react"
+// Security
+import LockIcon from "../assets/lock.svg?react"
+import MailOpenIcon from "../assets/mail-open.svg?react"
+import MailIcon from "../assets/mail.svg?react"
+import MapPinCheckIcon from "../assets/map-pin-check.svg?react"
+// Location
+import MapPinIcon from "../assets/map-pin.svg?react"
+import MenuOpenIcon from "../assets/menu-open.svg?react"
+import MenuIcon from "../assets/menu.svg?react"
+import MessageCircleIcon from "../assets/message-circle.svg?react"
+import MessageSquareIcon from "../assets/message-square.svg?react"
+import MinusIcon from "../assets/minus.svg?react"
+import PercentIcon from "../assets/percent.svg?react"
+import PieChartIcon from "../assets/pie-chart.svg?react"
+import PlusCircleIcon from "../assets/plus-circle.svg?react"
+import PlusIcon from "../assets/plus.svg?react"
+import RepeatIcon from "../assets/repeat.svg?react"
+import Search2Icon from "../assets/search-2.svg?react"
+import SearchXIcon from "../assets/search-x.svg?react"
+import SearchIcon from "../assets/search.svg?react"
+import SettingsIcon from "../assets/settings.svg?react"
+import Share2Icon from "../assets/share-2.svg?react"
+import ShareIcon from "../assets/share.svg?react"
+import ShieldAlertIcon from "../assets/shield-alert.svg?react"
+import ShieldIcon from "../assets/shield.svg?react"
+import SlidersIcon from "../assets/sliders.svg?react"
+import SmileIcon from "../assets/smile.svg?react"
+import StarIcon from "../assets/star.svg?react"
+import TargetCircleIcon from "../assets/target-circle.svg?react"
+import TargetIcon from "../assets/target.svg?react"
+import TrashIcon from "../assets/trash.svg?react"
+import TrendingDownIcon from "../assets/trending-down.svg?react"
+// Financial & Analytics
+import TrendingUpIcon from "../assets/trending-up.svg?react"
+import UnlockIcon from "../assets/unlock.svg?react"
+import UploadCloudIcon from "../assets/upload-cloud.svg?react"
+import UploadIcon from "../assets/upload.svg?react"
+import UserIcon from "../assets/user.svg?react"
+import WalletIcon from "../assets/wallet.svg?react"
+import XCircleIcon from "../assets/x-circle.svg?react"
+import XIcon from "../assets/x.svg?react"
+import Zap2Icon from "../assets/zap-2.svg?react"
+import ZapIcon from "../assets/zap.svg?react"
 
-export type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
+export type IconComponent = ComponentType<SVGProps<SVGSVGElement>>
 
 export interface IconMetadata {
-  name: string;
-  component: IconComponent;
-  tags: string[];
+  name: string
+  component: IconComponent
+  tags: string[]
 }
 
 // Icon registry with metadata (60 icons)
@@ -615,122 +606,122 @@ export const icons: Record<string, IconMetadata> = {
     name: "Search2",
     tags: ["search", "find", "magnifying"],
   },
-};
+}
 
 // Named exports for direct imports
 export {
-  // Navigation & UI
-  LoaderIcon,
-  UserIcon,
-  ChevronDownIcon,
-  ChevronUpIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  LayoutDashboardIcon,
-  FileCodeIcon,
-  HomeIcon,
-  SearchIcon,
-  SearchXIcon,
-  MenuIcon,
-  MenuOpenIcon,
-  SettingsIcon,
-  GridIcon,
-  Grid3x3Icon,
-  Columns2Icon,
-  Columns3Icon,
-  ListIcon,
-  ListChecksIcon,
-  ListOrderedIcon,
-  SlidersIcon,
-  // Financial & Analytics
-  TrendingUpIcon,
-  TrendingDownIcon,
-  BarChartIcon,
-  BarChart2Icon,
-  LineChartIcon,
-  AreaChartIcon,
-  PieChartIcon,
-  DonutChartIcon,
-  WalletIcon,
-  CreditCardIcon,
-  DollarSignIcon,
-  PercentIcon,
-  GaugeIcon,
-  GaugeCircleIcon,
-  // Business & Operations
-  BuildingIcon,
-  Building2Icon,
-  BriefcaseIcon,
-  Briefcase2Icon,
-  TargetIcon,
-  TargetCircleIcon,
-  ZapIcon,
-  Zap2Icon,
-  ShieldIcon,
-  ShieldAlertIcon,
+  ActivityIcon,
+  ActivitySquareIcon,
+  AlertCircleIcon,
+  AlertTriangleIcon,
   ArchiveIcon,
   ArchiveXIcon,
+  AreaChartIcon,
+  AwardIcon,
+  BarChart2Icon,
+  BarChartIcon,
   // Notifications & Communication
   BellIcon,
   BellOffIcon,
-  MailIcon,
-  MailOpenIcon,
-  MessageCircleIcon,
-  MessageSquareIcon,
-  InboxIcon,
+  Briefcase2Icon,
+  BriefcaseIcon,
+  Building2Icon,
+  // Business & Operations
+  BuildingIcon,
+  CalendarCheckIcon,
   // Date & Time
   CalendarIcon,
-  CalendarCheckIcon,
-  ClockIcon,
+  CheckCircleIcon,
+  CheckIcon,
+  ChevronDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  ChevronUpIcon,
+  ClipboardIcon,
   ClockAlertIcon,
-  // Location
-  MapPinIcon,
-  MapPinCheckIcon,
-  // Data & Analytics
-  LayersIcon,
-  ActivityIcon,
-  ActivitySquareIcon,
+  ClockIcon,
+  Columns2Icon,
+  Columns3Icon,
+  CopyIcon,
+  CreditCardIcon,
   DataIcon,
-  FunnelIcon,
-  FilterIcon,
-  AwardIcon,
-  StarIcon,
+  DollarSignIcon,
+  DonutChartIcon,
+  DownloadCloudIcon,
   // Actions
   DownloadIcon,
-  DownloadCloudIcon,
-  UploadIcon,
-  UploadCloudIcon,
-  ShareIcon,
-  Share2Icon,
-  CopyIcon,
-  ClipboardIcon,
-  RepeatIcon,
-  TrashIcon,
-  // Security
-  LockIcon,
-  UnlockIcon,
+  FileCodeIcon,
+  FilterIcon,
+  FrownIcon,
+  FunnelIcon,
+  GaugeCircleIcon,
+  GaugeIcon,
   GlobeIcon,
+  Grid3x3Icon,
+  GridIcon,
   // Utilities
   HelpCircleIcon,
+  HomeIcon,
+  InboxIcon,
+  // Data & Analytics
+  LayersIcon,
+  LayoutDashboardIcon,
+  LineChartIcon,
+  ListChecksIcon,
+  ListIcon,
+  ListOrderedIcon,
+  // Navigation & UI
+  LoaderIcon,
+  // Security
+  LockIcon,
+  MailIcon,
+  MailOpenIcon,
+  MapPinCheckIcon,
+  // Location
+  MapPinIcon,
+  MenuIcon,
+  MenuOpenIcon,
+  MessageCircleIcon,
+  MessageSquareIcon,
+  MinusIcon,
+  PercentIcon,
+  PieChartIcon,
   PlusCircleIcon,
   PlusIcon,
-  MinusIcon,
-  SmileIcon,
-  FrownIcon,
-  AlertCircleIcon,
-  AlertTriangleIcon,
-  CheckIcon,
-  CheckCircleIcon,
-  XIcon,
-  XCircleIcon,
+  RepeatIcon,
   Search2Icon,
-};
+  SearchIcon,
+  SearchXIcon,
+  SettingsIcon,
+  Share2Icon,
+  ShareIcon,
+  ShieldAlertIcon,
+  ShieldIcon,
+  SlidersIcon,
+  SmileIcon,
+  StarIcon,
+  TargetCircleIcon,
+  TargetIcon,
+  TrashIcon,
+  TrendingDownIcon,
+  // Financial & Analytics
+  TrendingUpIcon,
+  UnlockIcon,
+  UploadCloudIcon,
+  UploadIcon,
+  UserIcon,
+  WalletIcon,
+  XCircleIcon,
+  XIcon,
+  Zap2Icon,
+  ZapIcon,
+}
 
 // Utility to get all icon names
-export const getIconNames = (): string[] => Object.keys(icons);
+export const getIconNames = (): string[] => Object.keys(icons)
 
 // Utility to get icon by name
-export const getIcon = (name: string): IconMetadata | undefined => icons[name];
+export const getIcon = (name: string): IconMetadata | undefined => icons[name]
 
 // Default export with all icons
-export default icons;
+export default icons

@@ -1,5 +1,5 @@
-import type { RefObject } from "react";
-import { useEffect } from "react";
+import type { RefObject } from "react"
+import { useEffect } from "react"
 
 /**
  * Hook for observing resize events on a DOM element
@@ -18,14 +18,14 @@ import { useEffect } from "react";
 export function useResizeObserver(ref: RefObject<HTMLElement>, callback: () => void): void {
   useEffect(() => {
     if (!ref.current) {
-      return;
+      return
     }
 
-    const resizeObserver = new ResizeObserver(callback);
-    resizeObserver.observe(ref.current);
+    const resizeObserver = new ResizeObserver(callback)
+    resizeObserver.observe(ref.current)
 
     return () => {
-      resizeObserver.disconnect();
-    };
-  }, [ref, callback]);
+      resizeObserver.disconnect()
+    }
+  }, [ref, callback])
 }

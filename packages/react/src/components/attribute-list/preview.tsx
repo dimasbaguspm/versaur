@@ -1,6 +1,6 @@
 import type { ComponentType } from "react"
 
-import { AttributeList } from "."
+import { AttributeList } from "./index"
 
 export interface AttributeListSection {
   key: string

@@ -1,10 +1,11 @@
-"use client";
+"use client"
 
-import { Tooltip } from "./tooltip.js";
-import { Card } from "../card/card";
-import { Avatar } from "../avatar";
-import { Text } from "../text";
-import type { ComponentType } from "react";
+import type { ComponentType } from "react"
+
+import { Avatar } from "../avatar"
+import { Card } from "../card/card"
+import { Text } from "../text"
+import { Tooltip } from "./tooltip.js"
 
 /**
  * Basic tooltip example
@@ -24,7 +25,7 @@ function BasicTooltipPreview() {
         <Tooltip.Text>This is a helpful tooltip</Tooltip.Text>
       </Tooltip>
     </div>
-  );
+  )
 }
 
 /**
@@ -57,7 +58,7 @@ function PlacementsPreview() {
     "right",
     "right-start",
     "right-end",
-  ];
+  ]
 
   return (
     <div
@@ -72,16 +73,14 @@ function PlacementsPreview() {
     >
       {placements.map((placement) => (
         <div key={placement} style={{ position: "relative" }}>
-          <button {...Tooltip.getTooltipTriggerProps({ id: `tooltip-${placement}` })}>
-            {placement}
-          </button>
+          <button {...Tooltip.getTooltipTriggerProps({ id: `tooltip-${placement}` })}>{placement}</button>
           <Tooltip id={`tooltip-${placement}`} placement={placement}>
             <Tooltip.Text>Tooltip at {placement}</Tooltip.Text>
           </Tooltip>
         </div>
       ))}
     </div>
-  );
+  )
 }
 
 /**
@@ -100,12 +99,11 @@ function CustomMaxWidthPreview() {
       <button {...Tooltip.getTooltipTriggerProps({ id: "wide-tooltip" })}>Wide tooltip</button>
       <Tooltip id="wide-tooltip" placement="top">
         <Tooltip.Text maxWidth="400px">
-          This tooltip has a custom maximum width of 400 pixels and will wrap text across multiple
-          lines if needed.
+          This tooltip has a custom maximum width of 400 pixels and will wrap text across multiple lines if needed.
         </Tooltip.Text>
       </Tooltip>
     </div>
-  );
+  )
 }
 
 /**
@@ -123,9 +121,7 @@ function LineClampPreview() {
       }}
     >
       <div>
-        <button {...Tooltip.getTooltipTriggerProps({ id: "clamped-2-lines" })}>
-          2 lines (default)
-        </button>
+        <button {...Tooltip.getTooltipTriggerProps({ id: "clamped-2-lines" })}>2 lines (default)</button>
         <Tooltip id="clamped-2-lines" placement="top">
           <Tooltip.Text maxWidth="200px">
             Line one is here. Line two is here. Line three will be cut off and hidden with ellipsis.
@@ -142,7 +138,7 @@ function LineClampPreview() {
         </Tooltip>
       </div>
     </div>
-  );
+  )
 }
 
 /**
@@ -194,7 +190,7 @@ function TriggerTypePreview() {
         </Tooltip>
       </div>
     </div>
-  );
+  )
 }
 
 /**
@@ -257,7 +253,7 @@ function CustomUIPreview() {
         </Card>
       </Tooltip>
     </div>
-  );
+  )
 }
 
 /* ============================================================================
@@ -265,11 +261,11 @@ function CustomUIPreview() {
    ========================================================================= */
 
 export interface TooltipSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 export const tooltipSections: TooltipSection[] = [
@@ -412,7 +408,7 @@ export const tooltipSections: TooltipSection[] = [
     preview: CustomUIPreview,
     title: "Custom UI Content",
   },
-];
+]
 
 /**
  * Props metadata for API reference table
@@ -472,4 +468,4 @@ export const tooltipProps = [
     required: false,
     type: "number",
   },
-];
+]

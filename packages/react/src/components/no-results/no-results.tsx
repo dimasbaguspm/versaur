@@ -1,7 +1,8 @@
-import { forwardRef } from "react";
-import { noResultsStyles } from "@versaur/core";
-import { Icon } from "../icon";
-import type { NoResultsProps } from "./no-results.types";
+import { noResultsStyles } from "@versaur/core"
+import { forwardRef } from "react"
+
+import { Icon } from "../icon"
+import type { NoResultsProps } from "./no-results.types"
 
 /**
  * NoResults component - displays an empty state with icon, title, subtitle, and optional action
@@ -24,13 +25,7 @@ import type { NoResultsProps } from "./no-results.types";
  */
 export const NoResults = forwardRef<HTMLElement, NoResultsProps>(
   ({ icon: IconComponent, title, subtitle, action, ...props }, ref) => (
-    <section
-      ref={ref}
-      className={noResultsStyles["no-results"]}
-      role="status"
-      aria-label={title}
-      {...props}
-    >
+    <section ref={ref} className={noResultsStyles["no-results"]} role="status" aria-label={title} {...props}>
       <header className={noResultsStyles["no-results-header"]}>
         <div className={noResultsStyles["no-results-icon"]}>
           <Icon as={IconComponent} color="inherit" aria-hidden="true" />
@@ -41,16 +36,12 @@ export const NoResults = forwardRef<HTMLElement, NoResultsProps>(
       {subtitle && <p className={noResultsStyles["no-results-subtitle"]}>{subtitle}</p>}
 
       {action && (
-        <div
-          className={noResultsStyles["no-results-action"]}
-          role="group"
-          aria-label="Available actions"
-        >
+        <div className={noResultsStyles["no-results-action"]} role="group" aria-label="Available actions">
           {action}
         </div>
       )}
     </section>
   ),
-);
+)
 
-NoResults.displayName = "NoResults";
+NoResults.displayName = "NoResults"

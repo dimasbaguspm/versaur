@@ -1,72 +1,58 @@
-import { createContext, forwardRef, useContext } from "react";
-import { modalStyles, overlayPartsStyles } from "@versaur/core";
-import { Dialog } from "../dialog";
-import {
-  OverlayBody,
-  OverlayFooter,
-  OverlayHeader,
-  OverlayTitle,
-} from "../overlay-parts/overlay-parts";
-import { ButtonIcon } from "../button-icon";
-import { XIcon } from "@versaur/icons";
-import type { ModalCloseButtonProps, ModalRootProps } from "./modal.types";
+import { modalStyles, overlayPartsStyles } from "@versaur/core"
+import { XIcon } from "@versaur/icons"
+import { createContext, forwardRef, useContext } from "react"
+
+import { ButtonIcon } from "../button-icon"
+import { Dialog } from "../dialog"
+import { OverlayBody, OverlayFooter, OverlayHeader, OverlayTitle } from "../overlay-parts/overlay-parts"
+import type { ModalCloseButtonProps, ModalRootProps } from "./modal.types"
 
 interface ModalContextType {
-  onClose: () => void;
+  onClose: () => void
 }
 
-const ModalContext = createContext<ModalContextType | undefined>(undefined);
+const ModalContext = createContext<ModalContextType | undefined>(undefined)
 
 const useModalContext = () => {
-  const context = useContext(ModalContext);
+  const context = useContext(ModalContext)
   if (!context) {
-    throw new Error("Modal subcomponents must be used within Modal");
+    throw new Error("Modal subcomponents must be used within Modal")
   }
-  return context;
-};
+  return context
+}
 
-const ModalRoot = forwardRef<HTMLDialogElement, ModalRootProps>(
-  ({ open, onOpenChange, children, ...props }, ref) => (
-    <ModalContext.Provider value={{ onClose: () => onOpenChange?.(false) }}>
-      <Dialog
-        ref={ref}
-        isOpen={open}
-        onOpenChange={onOpenChange}
-        className={open ? modalStyles.modal : ""}
-        {...props}
-      >
-        <div className={overlayPartsStyles.content}>{children}</div>
-      </Dialog>
-    </ModalContext.Provider>
-  ),
-);
+const ModalRoot = forwardRef<HTMLDialogElement, ModalRootProps>(({ open, onOpenChange, children, ...props }, ref) => (
+  <ModalContext.Provider value={{ onClose: () => onOpenChange?.(false) }}>
+    <Dialog ref={ref} isOpen={open} onOpenChange={onOpenChange} className={open ? modalStyles.modal : ""} {...props}>
+      <div className={overlayPartsStyles.content}>{children}</div>
+    </Dialog>
+  </ModalContext.Provider>
+))
 
-ModalRoot.displayName = "Modal";
+ModalRoot.displayName = "Modal"
 
-const ModalCloseButton = forwardRef<HTMLButtonElement, ModalCloseButtonProps>(
-  ({ onClick, ...props }, ref) => {
-    const { onClose } = useModalContext();
+const ModalCloseButton = forwardRef<HTMLButtonElement, ModalCloseButtonProps>(({ onClick, ...props }, ref) => {
+  const { onClose } = useModalContext()
 
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-      onClose();
-      onClick?.(e);
-    };
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    onClose()
+    onClick?.(e)
+  }
 
-    return (
-      <ButtonIcon
-        ref={ref}
-        variant="ghost"
-        as={XIcon}
-        aria-label="Close"
-        onClick={handleClick}
-        className={overlayPartsStyles.closeButton}
-        {...props}
-      />
-    );
-  },
-);
+  return (
+    <ButtonIcon
+      ref={ref}
+      variant="ghost"
+      as={XIcon}
+      aria-label="Close"
+      onClick={handleClick}
+      className={overlayPartsStyles.closeButton}
+      {...props}
+    />
+  )
+})
 
-ModalCloseButton.displayName = "Modal.CloseButton";
+ModalCloseButton.displayName = "Modal.CloseButton"
 
 export const Modal = Object.assign(ModalRoot, {
   Body: OverlayBody,
@@ -74,4 +60,4 @@ export const Modal = Object.assign(ModalRoot, {
   Footer: OverlayFooter,
   Header: OverlayHeader,
   Title: OverlayTitle,
-});
+})

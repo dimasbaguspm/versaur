@@ -1,10 +1,11 @@
-import { forwardRef, useId } from "react";
-import { textAreaStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import { Label } from "../label";
-import { HelperText } from "../helper-text";
-import { ErrorText } from "../error-text";
-import type { TextAreaProps } from "./text-area.types";
+import { textAreaStyles } from "@versaur/core"
+import { forwardRef, useId } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import { ErrorText } from "../error-text"
+import { HelperText } from "../helper-text"
+import { Label } from "../label"
+import type { TextAreaProps } from "./text-area.types"
 
 /**
  * TextArea component
@@ -21,26 +22,25 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       readOnly = false,
       resizable = true,
       minRows = 3,
-      maxRows = 5,
       id: providedId,
       ...rest
     },
     ref,
   ) => {
     // Generate unique IDs for accessibility
-    const generatedId = useId();
-    const textareaId = providedId || generatedId;
-    const helperId = helper ? `${textareaId}-helper` : undefined;
-    const errorId = error ? `${textareaId}-error` : undefined;
-    const describedBy = [helperId, errorId].filter(Boolean).join(" ");
+    const generatedId = useId()
+    const textareaId = providedId || generatedId
+    const helperId = helper ? `${textareaId}-helper` : undefined
+    const errorId = error ? `${textareaId}-error` : undefined
+    const describedBy = [helperId, errorId].filter(Boolean).join(" ")
 
     // Convert props to data attributes
     const dataAttrs = useDataAttrs({
       disabled,
-      invalid: !!error,
+      invalid: Boolean(error),
       readOnly,
       resizable: resizable ? "true" : "false",
-    });
+    })
 
     return (
       <div className={textAreaStyles.field}>
@@ -68,8 +68,8 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         {error && <ErrorText id={errorId}>{error}</ErrorText>}
         {!error && helper && <HelperText id={helperId}>{helper}</HelperText>}
       </div>
-    );
+    )
   },
-);
+)
 
-TextArea.displayName = "TextArea";
+TextArea.displayName = "TextArea"

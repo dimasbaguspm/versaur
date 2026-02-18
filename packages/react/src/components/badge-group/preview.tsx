@@ -1,5 +1,5 @@
-import { Badge } from "../badge/badge";
-import { BadgeGroup } from "./badge-group";
+import { Badge } from "../badge/badge"
+import { BadgeGroup } from "./badge-group"
 
 export const badgeGroupProps = [
   {
@@ -16,8 +16,7 @@ export const badgeGroupProps = [
   },
   {
     default: "center",
-    description:
-      "Alignment of items: start, center, end, space-between, space-around, or space-evenly",
+    description: "Alignment of items: start, center, end, space-between, space-around, or space-evenly",
     name: "align",
     type: "BadgeGroupAlign",
   },
@@ -38,7 +37,7 @@ export const badgeGroupProps = [
     name: "children",
     type: "ReactNode",
   },
-];
+]
 
 function GapSection() {
   return (
@@ -76,7 +75,7 @@ function GapSection() {
         </BadgeGroup>
       </div>
     </div>
-  );
+  )
 }
 
 function DirectionSection() {
@@ -97,7 +96,7 @@ function DirectionSection() {
         </BadgeGroup>
       </div>
     </div>
-  );
+  )
 }
 
 function AlignmentSection() {
@@ -172,7 +171,7 @@ function AlignmentSection() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 function WrapSection() {
@@ -197,7 +196,7 @@ function WrapSection() {
         </BadgeGroup>
       </div>
     </div>
-  );
+  )
 }
 
 function CustomSpacingSection() {
@@ -219,7 +218,7 @@ function CustomSpacingSection() {
         </BadgeGroup>
       </div>
     </div>
-  );
+  )
 }
 
 export const badgeGroupSections = [
@@ -312,7 +311,7 @@ export const badgeGroupSections = [
     preview: CustomSpacingSection,
     title: "Custom Spacing Override",
   },
-];
+]
 
 export const badgeGroupInstallation = {
   code: `import { Badge, BadgeGroup } from "@versaur/react";
@@ -327,16 +326,16 @@ export function App() {
   );
 }`,
   language: "tsx",
-};
+}
 
 export function BadgeGroupPreview() {
   return (
     <div>
       <h2>BadgeGroup Component</h2>
       <p>
-        Container component for grouping multiple badges with customizable spacing, direction,
-        alignment, and wrap behavior.
+        Container component for grouping multiple badges with customizable spacing, direction, alignment, and wrap
+        behavior.
       </p>
     </div>
-  );
+  )
 }

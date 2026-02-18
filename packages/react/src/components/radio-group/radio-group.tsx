@@ -1,29 +1,30 @@
-import { createContext, forwardRef, useContext, useId } from "react";
-import { radioGroupStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import { Label } from "../label";
-import { HelperText } from "../helper-text";
-import { ErrorText } from "../error-text";
-import type { RadioGroupOptionProps, RadioGroupRootProps } from "./radio-group.types";
+import { radioGroupStyles } from "@versaur/core"
+import { createContext, forwardRef, useContext, useId } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import { ErrorText } from "../error-text"
+import { HelperText } from "../helper-text"
+import { Label } from "../label"
+import type { RadioGroupOptionProps, RadioGroupRootProps } from "./radio-group.types"
 
 /**
  * Private context for managing radio group state
  */
 interface RadioGroupContextType {
-  value: string | undefined;
-  onChange: (value: string) => void;
-  name?: string;
-  disabled?: boolean;
+  value: string | undefined
+  onChange: (value: string) => void
+  name?: string
+  disabled?: boolean
 }
 
-const RadioGroupContext = createContext<RadioGroupContextType | undefined>(undefined);
+const RadioGroupContext = createContext<RadioGroupContextType | undefined>(undefined)
 
 function useRadioGroupContext() {
-  const context = useContext(RadioGroupContext);
+  const context = useContext(RadioGroupContext)
   if (!context) {
-    throw new Error("RadioGroup.Option must be used within RadioGroup");
+    throw new Error("RadioGroup.Option must be used within RadioGroup")
   }
-  return context;
+  return context
 }
 
 /**
@@ -66,24 +67,24 @@ const RadioGroupRoot = forwardRef<HTMLDivElement, RadioGroupRootProps>(
     },
     ref,
   ) => {
-    const generatedId = useId();
-    const groupId = rest.id || generatedId;
-    const helperId = helper ? `${groupId}-helper` : undefined;
-    const errorId = error ? `${groupId}-error` : undefined;
-    const describedBy = [helperId, errorId].filter(Boolean).join(" ");
+    const generatedId = useId()
+    const groupId = rest.id || generatedId
+    const helperId = helper ? `${groupId}-helper` : undefined
+    const errorId = error ? `${groupId}-error` : undefined
+    const describedBy = [helperId, errorId].filter(Boolean).join(" ")
 
     const handleChange = (newValue: string) => {
       if (!disabled && onChange) {
-        onChange(newValue);
+        onChange(newValue)
       }
-    };
+    }
 
     const dataAttrs = useDataAttrs({
       disabled,
-      invalid: !!error,
+      invalid: Boolean(error),
       size: size === "medium" ? undefined : size,
       variant: size === "medium" ? variant : undefined,
-    });
+    })
 
     return (
       <div ref={ref} className={radioGroupStyles.field} {...dataAttrs} {...rest}>
@@ -108,11 +109,11 @@ const RadioGroupRoot = forwardRef<HTMLDivElement, RadioGroupRootProps>(
         {error && <ErrorText id={errorId}>{error}</ErrorText>}
         {!error && helper && <HelperText id={helperId}>{helper}</HelperText>}
       </div>
-    );
+    )
   },
-);
+)
 
-RadioGroupRoot.displayName = "RadioGroup";
+RadioGroupRoot.displayName = "RadioGroup"
 
 /**
  * RadioGroup.Option Component
@@ -126,15 +127,15 @@ RadioGroupRoot.displayName = "RadioGroup";
  */
 const RadioGroupOption = forwardRef<HTMLInputElement, RadioGroupOptionProps>(
   ({ value, children, disabled: optionDisabled, ...rest }, ref) => {
-    const context = useRadioGroupContext();
-    const isChecked = context.value === value;
-    const isDisabled = context.disabled || optionDisabled;
+    const context = useRadioGroupContext()
+    const isChecked = context.value === value
+    const isDisabled = context.disabled || optionDisabled
 
     const handleChange = () => {
       if (!isDisabled) {
-        context.onChange(value);
+        context.onChange(value)
       }
-    };
+    }
 
     return (
       <label className={radioGroupStyles.option}>
@@ -152,15 +153,15 @@ const RadioGroupOption = forwardRef<HTMLInputElement, RadioGroupOptionProps>(
         <span className={radioGroupStyles.indicator} />
         {children && <span className={radioGroupStyles.optionLabel}>{children}</span>}
       </label>
-    );
+    )
   },
-);
+)
 
-RadioGroupOption.displayName = "RadioGroup.Option";
+RadioGroupOption.displayName = "RadioGroup.Option"
 
 /**
  * RadioGroup compound component with Option subcomponent
  */
 export const RadioGroup = Object.assign(RadioGroupRoot, {
   Option: RadioGroupOption,
-});
+})

@@ -1,12 +1,13 @@
-"use client";
+"use client"
 
-import type { ElementType } from "react";
-import { forwardRef, useContext } from "react";
-import { navStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import { Icon } from "../icon";
-import { NavContext } from "./nav";
-import type { NavItemProps } from "./nav.types";
+import { navStyles } from "@versaur/core"
+import type { ElementType } from "react"
+import { forwardRef, useContext } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import { Icon } from "../icon"
+import { NavContext } from "./nav"
+import type { NavItemProps } from "./nav.types"
 
 /**
  * NavItem - Polymorphic navigation item
@@ -54,34 +55,33 @@ export const NavItem = forwardRef<HTMLButtonElement | HTMLAnchorElement, NavItem
     },
     ref,
   ) => {
-    const navContext = useContext(NavContext);
+    const navContext = useContext(NavContext)
 
     // Determine if this item is active
     // If Nav provides onChange, use controlled value logic
     // Otherwise use uncontrolled active prop
-    const isActive =
-      navContext?.onChange && value !== undefined ? navContext.value === value : activeProp;
+    const isActive = navContext?.onChange && value !== undefined ? navContext.value === value : activeProp
 
     const dataAttrs = useDataAttrs({
       active: isActive,
       disabled: disabled || loading,
       loading,
-    });
+    })
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
       if (disabled || loading) {
-        e.preventDefault();
-        return;
+        e.preventDefault()
+        return
       }
 
       // If in controlled mode, call Nav's onChange
       if (navContext?.onChange && value !== undefined) {
-        navContext.onChange(value);
+        navContext.onChange(value)
       }
 
       // Also call the item's onClick if provided (for custom handlers)
-      onClick?.(e as any);
-    };
+      onClick?.(e as any)
+    }
 
     return (
       <Component
@@ -106,8 +106,8 @@ export const NavItem = forwardRef<HTMLButtonElement | HTMLAnchorElement, NavItem
           </span>
         )}
       </Component>
-    );
+    )
   },
-);
+)
 
-NavItem.displayName = "NavItem";
+NavItem.displayName = "NavItem"

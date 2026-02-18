@@ -1,6 +1,7 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import { resolve } from "path";
+import { resolve } from "path"
+
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
 
 export default defineConfig({
   css: {
@@ -16,4 +17,4 @@ export default defineConfig({
       "@versaur/icons": resolve(__dirname, "../../packages/icons/src"),
     },
   },
-});
+})

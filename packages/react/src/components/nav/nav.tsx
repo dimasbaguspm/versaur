@@ -1,14 +1,15 @@
-"use client";
+"use client"
 
-import { createContext, forwardRef } from "react";
-import { navStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import type { NavContextValue, NavProps } from "./nav.types";
+import { navStyles } from "@versaur/core"
+import { createContext, forwardRef } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import type { NavContextValue, NavProps } from "./nav.types"
 
 /**
  * Nav Context - provides controlled state to NavItems
  */
-export const NavContext = createContext<NavContextValue | undefined>(undefined);
+export const NavContext = createContext<NavContextValue | undefined>(undefined)
 
 /**
  * Nav - Semantic navigation container
@@ -38,19 +39,19 @@ export const NavContext = createContext<NavContextValue | undefined>(undefined);
  */
 export const Nav = forwardRef<HTMLElement, NavProps>(
   ({ direction = "horizontal", gap, value, onChange, children, ...props }, ref) => {
-    const dataAttrs = useDataAttrs({ direction });
+    const dataAttrs = useDataAttrs({ direction })
 
     const spacingMap: Record<string, string> = {
       lg: "var(--spacing-4)",
       md: "var(--spacing-3)",
       sm: "var(--spacing-2)",
       xs: "var(--spacing-1)",
-    };
+    }
 
     const contextValue: NavContextValue = {
       onChange,
       value,
-    };
+    }
 
     return (
       <NavContext.Provider value={contextValue}>
@@ -69,10 +70,10 @@ export const Nav = forwardRef<HTMLElement, NavProps>(
           {children}
         </nav>
       </NavContext.Provider>
-    );
+    )
   },
-);
+)
 
-Nav.displayName = "Nav";
+Nav.displayName = "Nav"
 
-Nav.displayName = "Nav";
+Nav.displayName = "Nav"

@@ -1,29 +1,30 @@
-import { createContext, forwardRef, useContext, useId } from "react";
-import { checkboxGroupStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import { Label } from "../label";
-import { HelperText } from "../helper-text";
-import { ErrorText } from "../error-text";
-import type { CheckboxGroupOptionProps, CheckboxGroupRootProps } from "./checkbox-group.types";
+import { checkboxGroupStyles } from "@versaur/core"
+import { createContext, forwardRef, useContext, useId } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import { ErrorText } from "../error-text"
+import { HelperText } from "../helper-text"
+import { Label } from "../label"
+import type { CheckboxGroupOptionProps, CheckboxGroupRootProps } from "./checkbox-group.types"
 
 /**
  * Private context for managing checkbox group state
  */
 interface CheckboxGroupContextType {
-  value: string[];
-  onChange: (value: string[]) => void;
-  name?: string;
-  disabled?: boolean;
+  value: string[]
+  onChange: (value: string[]) => void
+  name?: string
+  disabled?: boolean
 }
 
-const CheckboxGroupContext = createContext<CheckboxGroupContextType | undefined>(undefined);
+const CheckboxGroupContext = createContext<CheckboxGroupContextType | undefined>(undefined)
 
 function useCheckboxGroupContext() {
-  const context = useContext(CheckboxGroupContext);
+  const context = useContext(CheckboxGroupContext)
   if (!context) {
-    throw new Error("CheckboxGroup.Option must be used within CheckboxGroup");
+    throw new Error("CheckboxGroup.Option must be used within CheckboxGroup")
   }
-  return context;
+  return context
 }
 
 /**
@@ -63,22 +64,22 @@ const CheckboxGroupRoot = forwardRef<HTMLDivElement, CheckboxGroupRootProps>(
     },
     ref,
   ) => {
-    const generatedId = useId();
-    const groupId = rest.id || generatedId;
-    const helperId = helper ? `${groupId}-helper` : undefined;
-    const errorId = error ? `${groupId}-error` : undefined;
-    const describedBy = [helperId, errorId].filter(Boolean).join(" ");
+    const generatedId = useId()
+    const groupId = rest.id || generatedId
+    const helperId = helper ? `${groupId}-helper` : undefined
+    const errorId = error ? `${groupId}-error` : undefined
+    const describedBy = [helperId, errorId].filter(Boolean).join(" ")
 
     const handleChange = (newValue: string[]) => {
       if (!disabled && onChange) {
-        onChange(newValue);
+        onChange(newValue)
       }
-    };
+    }
 
     const dataAttrs = useDataAttrs({
       disabled,
-      invalid: !!error,
-    });
+      invalid: Boolean(error),
+    })
 
     return (
       <div ref={ref} className={checkboxGroupStyles.field} {...dataAttrs} {...rest}>
@@ -103,11 +104,11 @@ const CheckboxGroupRoot = forwardRef<HTMLDivElement, CheckboxGroupRootProps>(
         {error && <ErrorText id={errorId}>{error}</ErrorText>}
         {!error && helper && <HelperText id={helperId}>{helper}</HelperText>}
       </div>
-    );
+    )
   },
-);
+)
 
-CheckboxGroupRoot.displayName = "CheckboxGroup";
+CheckboxGroupRoot.displayName = "CheckboxGroup"
 
 /**
  * CheckboxGroup.Option Component
@@ -121,28 +122,23 @@ CheckboxGroupRoot.displayName = "CheckboxGroup";
  * ```
  */
 const CheckboxGroupOption = forwardRef<HTMLInputElement, CheckboxGroupOptionProps>(
-  (
-    { value, children, disabled: optionDisabled, required: optionRequired = false, ...rest },
-    ref,
-  ) => {
-    const generatedId = useId();
-    const context = useCheckboxGroupContext();
-    const isChecked = context.value.includes(value);
-    const isDisabled = context.disabled || optionDisabled;
+  ({ value, children, disabled: optionDisabled, required: optionRequired = false, ...rest }, ref) => {
+    const generatedId = useId()
+    const context = useCheckboxGroupContext()
+    const isChecked = context.value.includes(value)
+    const isDisabled = context.disabled || optionDisabled
 
     const handleChange = () => {
       if (!isDisabled) {
-        const newValue = isChecked
-          ? context.value.filter((v) => v !== value)
-          : [...context.value, value];
-        context.onChange(newValue);
+        const newValue = isChecked ? context.value.filter((v) => v !== value) : [...context.value, value]
+        context.onChange(newValue)
       }
-    };
+    }
 
     const dataAttrs = useDataAttrs({
       disabled: isDisabled,
       required: optionRequired,
-    });
+    })
 
     return (
       <label className={checkboxGroupStyles.option} {...dataAttrs}>
@@ -167,15 +163,15 @@ const CheckboxGroupOption = forwardRef<HTMLInputElement, CheckboxGroupOptionProp
           </Label>
         )}
       </label>
-    );
+    )
   },
-);
+)
 
-CheckboxGroupOption.displayName = "CheckboxGroup.Option";
+CheckboxGroupOption.displayName = "CheckboxGroup.Option"
 
 /**
  * CheckboxGroup compound component with Option subcomponent
  */
 export const CheckboxGroup = Object.assign(CheckboxGroupRoot, {
   Option: CheckboxGroupOption,
-});
+})

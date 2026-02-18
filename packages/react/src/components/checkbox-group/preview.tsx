@@ -1,44 +1,35 @@
-import { useState } from "react";
-import type { ComponentType } from "react";
-import { CheckboxGroup } from "./checkbox-group";
+import { useState } from "react"
+import type { ComponentType } from "react"
+
+import { CheckboxGroup } from "./checkbox-group"
 
 export interface CheckboxGroupSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 function BasicPreview() {
-  const [features, setFeatures] = useState<string[]>(["analytics"]);
+  const [features, setFeatures] = useState<string[]>(["analytics"])
 
   return (
-    <CheckboxGroup
-      value={features}
-      onChange={setFeatures}
-      label="Select features"
-      helper="Choose all that apply"
-    >
+    <CheckboxGroup value={features} onChange={setFeatures} label="Select features" helper="Choose all that apply">
       <CheckboxGroup.Option value="analytics">Advanced Analytics</CheckboxGroup.Option>
       <CheckboxGroup.Option value="api">API Access</CheckboxGroup.Option>
       <CheckboxGroup.Option value="support">Priority Support</CheckboxGroup.Option>
       <CheckboxGroup.Option value="customization">Custom Branding</CheckboxGroup.Option>
     </CheckboxGroup>
-  );
+  )
 }
 
 function DirectionPreview() {
-  const [values, setValues] = useState<string[]>(["option1"]);
+  const [values, setValues] = useState<string[]>(["option1"])
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-      <CheckboxGroup
-        value={values}
-        onChange={setValues}
-        label="Column direction"
-        direction="column"
-      >
+      <CheckboxGroup value={values} onChange={setValues} label="Column direction" direction="column">
         <CheckboxGroup.Option value="option1">Option 1</CheckboxGroup.Option>
         <CheckboxGroup.Option value="option2">Option 2</CheckboxGroup.Option>
       </CheckboxGroup>
@@ -48,20 +39,15 @@ function DirectionPreview() {
         <CheckboxGroup.Option value="option2">Option 2</CheckboxGroup.Option>
       </CheckboxGroup>
     </div>
-  );
+  )
 }
 
 function StatesPreview() {
-  const [values, setValues] = useState<string[]>([]);
+  const [values, setValues] = useState<string[]>([])
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-      <CheckboxGroup
-        value={values}
-        onChange={setValues}
-        label="With error"
-        error="Please select at least one option"
-      >
+      <CheckboxGroup value={values} onChange={setValues} label="With error" error="Please select at least one option">
         <CheckboxGroup.Option value="option1">Option 1</CheckboxGroup.Option>
         <CheckboxGroup.Option value="option2">Option 2</CheckboxGroup.Option>
       </CheckboxGroup>
@@ -71,11 +57,11 @@ function StatesPreview() {
         <CheckboxGroup.Option value="option2">Option 2</CheckboxGroup.Option>
       </CheckboxGroup>
     </div>
-  );
+  )
 }
 
 function RequiredPreview() {
-  const [values, setValues] = useState<string[]>([]);
+  const [values, setValues] = useState<string[]>([])
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
@@ -94,7 +80,7 @@ function RequiredPreview() {
         </CheckboxGroup.Option>
       </CheckboxGroup>
     </div>
-  );
+  )
 }
 
 export const checkboxGroupSections: CheckboxGroupSection[] = [
@@ -152,4 +138,4 @@ export const checkboxGroupSections: CheckboxGroupSection[] = [
     preview: RequiredPreview,
     title: "Required Options",
   },
-];
+]

@@ -1,4 +1,4 @@
-import type { ComponentType, HTMLAttributes, ReactNode, SVGProps } from "react";
+import type { ComponentType, HTMLAttributes, ReactNode, SVGProps } from "react"
 
 /**
  * NoResults component props
@@ -12,24 +12,24 @@ export interface NoResultsProps extends HTMLAttributes<HTMLElement> {
    * Icon component to render
    * @required
    */
-  icon: ComponentType<SVGProps<SVGSVGElement>>;
+  icon: ComponentType<SVGProps<SVGSVGElement>>
 
   /**
    * Main heading text for the empty state
    * @required
    */
-  title: string;
+  title: string
 
   /**
    * Secondary descriptive text
    * @optional
    */
-  subtitle?: string | ReactNode;
+  subtitle?: string | ReactNode
 
   /**
    * Action element to render below content
    * Typically a Button component
    * @optional
    */
-  action?: ReactNode;
+  action?: ReactNode
 }

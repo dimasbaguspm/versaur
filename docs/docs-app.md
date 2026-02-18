@@ -86,7 +86,7 @@ The iframe body has `overflow: hidden` (in `preview.css`) so scrolling is handle
 // apps/docs/src/previews/registry.ts
 export const previewRegistry: Record<string, ComponentType> = {
   button: ButtonDocPage,
-};
+}
 ```
 
 Maps component name strings (from the URL query param) to React components. Add new entries here when adding component documentation.
@@ -113,7 +113,7 @@ function makeExamples(section: { code: string; language: string }) {
     react: { code: section.code, language: section.language },
     vue: { code: "", language: "vue" }, // placeholder
     angular: { code: "", language: "angular" }, // placeholder
-  };
+  }
 }
 ```
 

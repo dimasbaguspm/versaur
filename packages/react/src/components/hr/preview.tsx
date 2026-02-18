@@ -1,16 +1,17 @@
-import type { ComponentType } from "react";
-import { Hr } from "./hr";
+import type { ComponentType } from "react"
+
+import { Hr } from "./hr"
 
 export interface HrSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 function DefaultPreview() {
-  return <Hr />;
+  return <Hr />
 }
 
 function VariantsPreview() {
@@ -20,7 +21,7 @@ function VariantsPreview() {
       <Hr variant="dashed" />
       <Hr variant="dotted" />
     </div>
-  );
+  )
 }
 
 function SizesPreview() {
@@ -30,7 +31,7 @@ function SizesPreview() {
       <Hr size="md" />
       <Hr size="lg" />
     </div>
-  );
+  )
 }
 
 function SpacingPreview() {
@@ -48,7 +49,7 @@ function SpacingPreview() {
       <Hr spacing="xl" />
       <p>End</p>
     </div>
-  );
+  )
 }
 
 function VerticalPreview() {
@@ -67,7 +68,7 @@ function VerticalPreview() {
       <Hr orientation="vertical" spacing="md" />
       <span>Right</span>
     </div>
-  );
+  )
 }
 
 function CustomizationPreview() {
@@ -82,7 +83,7 @@ function CustomizationPreview() {
     >
       <Hr />
     </div>
-  );
+  )
 }
 
 export const hrSections: HrSection[] = [
@@ -146,7 +147,7 @@ export const hrSections: HrSection[] = [
     preview: CustomizationPreview,
     title: "CSS Customization",
   },
-];
+]
 
 export const hrProps = [
   {
@@ -173,7 +174,7 @@ export const hrProps = [
     name: "spacing",
     type: "'none' | 'sm' | 'md' | 'lg' | 'xl'",
   },
-];
+]
 
 export const hrInstallation = {
   code: `# Using npm
@@ -185,7 +186,7 @@ pnpm add @versaur/react @versaur/core
 # Using yarn
 yarn add @versaur/react @versaur/core`,
   language: "bash" as const,
-};
+}
 
 export function HrPreview() {
   return (
@@ -197,5 +198,5 @@ export function HrPreview() {
         </div>
       ))}
     </>
-  );
+  )
 }

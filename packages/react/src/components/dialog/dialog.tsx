@@ -1,5 +1,6 @@
-import React, { useCallback, useEffect, useRef } from "react";
-import type { DialogRootProps } from "./dialog.types";
+import React, { useCallback, useEffect, useRef } from "react"
+
+import type { DialogRootProps } from "./dialog.types"
 
 /**
  * Dialog - A controlled headless dialog component
@@ -15,68 +16,67 @@ import type { DialogRootProps } from "./dialog.types";
  */
 const DialogRoot = React.forwardRef<HTMLDialogElement, DialogRootProps>(
   ({ isOpen, onOpenChange, children, onClick, ...rest }, forwardedRef) => {
-    const internalRef = useRef<HTMLDialogElement>(null);
-    const dialogRef =
-      (forwardedRef as React.MutableRefObject<HTMLDialogElement | null>) || internalRef;
+    const internalRef = useRef<HTMLDialogElement>(null)
+    const dialogRef = (forwardedRef as React.MutableRefObject<HTMLDialogElement | null>) || internalRef
 
     // Sync React state with native dialog
     useEffect(() => {
-      const dialog = dialogRef.current;
+      const dialog = dialogRef.current
       if (!dialog) {
-        return;
+        return
       }
 
       if (isOpen) {
         try {
-          dialog.showModal();
+          dialog.showModal()
         } catch {
           // Already open
         }
       } else {
-        dialog.close();
+        dialog.close()
       }
-    }, [isOpen, dialogRef]);
+    }, [isOpen, dialogRef])
 
     // Handle backdrop click and native events
     useEffect(() => {
-      const dialog = dialogRef.current;
+      const dialog = dialogRef.current
       if (!dialog) {
-        return;
+        return
       }
 
-      const handleClose = () => onOpenChange?.(false);
+      const handleClose = () => onOpenChange?.(false)
       const handleCancel = (e: Event) => {
-        e.preventDefault();
-        onOpenChange?.(false);
-      };
+        e.preventDefault()
+        onOpenChange?.(false)
+      }
 
-      dialog.addEventListener("close", handleClose);
-      dialog.addEventListener("cancel", handleCancel);
+      dialog.addEventListener("close", handleClose)
+      dialog.addEventListener("cancel", handleCancel)
 
       return () => {
-        dialog.removeEventListener("close", handleClose);
-        dialog.removeEventListener("cancel", handleCancel);
-      };
-    }, [onOpenChange, dialogRef]);
+        dialog.removeEventListener("close", handleClose)
+        dialog.removeEventListener("cancel", handleCancel)
+      }
+    }, [onOpenChange, dialogRef])
 
     const handleClick = useCallback(
       (e: React.MouseEvent<HTMLDialogElement>) => {
         if (e.target === e.currentTarget) {
-          onOpenChange?.(false);
+          onOpenChange?.(false)
         }
-        onClick?.(e);
+        onClick?.(e)
       },
       [onOpenChange, onClick],
-    );
+    )
 
     return (
       <dialog {...rest} ref={dialogRef} onClick={handleClick}>
         {children}
       </dialog>
-    );
+    )
   },
-);
+)
 
-DialogRoot.displayName = "Dialog";
+DialogRoot.displayName = "Dialog"
 
-export const Dialog = DialogRoot;
+export const Dialog = DialogRoot

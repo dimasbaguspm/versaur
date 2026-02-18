@@ -1,4 +1,4 @@
-import textAreaStyles from "./text-area.module.css";
+import textAreaStyles from "./text-area.module.css"
 
-export { textAreaStyles };
-export * from "./text-area.types.generated";
+export { textAreaStyles }
+export * from "./text-area.types.generated"

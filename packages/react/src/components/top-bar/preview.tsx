@@ -1,28 +1,25 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { TopBar } from "./top-bar";
-import { Avatar } from "../avatar";
-import { Button } from "../button";
-import { ButtonIcon } from "../button-icon";
-import { Nav } from "../nav";
-import { BellIcon, ChevronDownIcon } from "@versaur/icons";
+import { BellIcon, ChevronDownIcon } from "@versaur/icons"
+import { useState } from "react"
+
+import { Avatar } from "../avatar"
+import { Button } from "../button"
+import { ButtonIcon } from "../button-icon"
+import { Nav } from "../nav"
+import { TopBar } from "./top-bar"
 
 /**
  * Example 1: TopBar with Nav navigation and trailing actions
  */
 function TopBarBasic() {
-  const [activeNav, setActiveNav] = useState<string>("home");
+  const [activeNav, setActiveNav] = useState<string>("home")
 
   return (
     <TopBar>
       <TopBar.Leading>
         <div style={{ fontWeight: "bold", marginRight: "1rem" }}>Logo</div>
-        <Nav
-          value={activeNav}
-          onChange={(value) => setActiveNav(String(value))}
-          direction="horizontal"
-        >
+        <Nav value={activeNav} onChange={(value) => setActiveNav(String(value))} direction="horizontal">
           <Nav.Item value="home">Home</Nav.Item>
           <Nav.Item value="docs">Docs</Nav.Item>
           <Nav.Item value="pricing">Pricing</Nav.Item>
@@ -36,24 +33,20 @@ function TopBarBasic() {
         </div>
       </TopBar.Trailing>
     </TopBar>
-  );
+  )
 }
 
 /**
  * Example 2: TopBar with Nav and centred content
  */
 function TopBarWithSearch() {
-  const [activeNav, setActiveNav] = useState<string>("dashboard");
+  const [activeNav, setActiveNav] = useState<string>("dashboard")
 
   return (
     <TopBar>
       <TopBar.Leading>
         <div style={{ fontWeight: "bold", marginRight: "2rem" }}>App</div>
-        <Nav
-          value={activeNav}
-          onChange={(value) => setActiveNav(String(value))}
-          direction="horizontal"
-        >
+        <Nav value={activeNav} onChange={(value) => setActiveNav(String(value))} direction="horizontal">
           <Nav.Item value="dashboard">Dashboard</Nav.Item>
           <Nav.Item value="analytics">Analytics</Nav.Item>
           <Nav.Item value="settings">Settings</Nav.Item>
@@ -80,7 +73,7 @@ function TopBarWithSearch() {
         </div>
       </TopBar.Trailing>
     </TopBar>
-  );
+  )
 }
 
 /**
@@ -97,7 +90,7 @@ function TopBarGhost() {
         <Button variant="primary">Get Started</Button>
       </TopBar.Trailing>
     </TopBar>
-  );
+  )
 }
 
 export const topBarSections = [
@@ -200,7 +193,7 @@ export function TopBarGhost() {
     preview: TopBarGhost,
     title: "TopBar with Ghost Buttons",
   },
-];
+]
 
 export const topBarProps = [
   {
@@ -247,7 +240,7 @@ export const topBarProps = [
       },
     ],
   },
-];
+]
 
 export const topBarInstallation = {
   code: `// Using npm
@@ -259,4 +252,4 @@ pnpm add @versaur/react @versaur/core
 // Using yarn
 yarn add @versaur/react @versaur/core`,
   language: "bash" as const,
-};
+}

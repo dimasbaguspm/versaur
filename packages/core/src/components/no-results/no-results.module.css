@@ -30,39 +30,21 @@
 
 .no-results-title {
   margin: 0;
-  font-size: var(
-    --_title-font-size,
-    var(--vers-comp-no-results-title-font-size, var(--font-size-lg))
-  );
-  font-weight: var(
-    --_title-font-weight,
-    var(--vers-comp-no-results-title-font-weight, var(--font-weight-semibold))
-  );
+  font-size: var(--_title-font-size, var(--vers-comp-no-results-title-font-size, var(--font-size-lg)));
+  font-weight: var(--_title-font-weight, var(--vers-comp-no-results-title-font-weight, var(--font-weight-semibold)));
   color: var(--_title-color, var(--vers-comp-no-results-title-color, var(--color-gray)));
 }
 
 .no-results-subtitle {
   margin: 0;
-  margin-bottom: var(
-    --_subtitle-margin-bottom,
-    var(--vers-comp-no-results-subtitle-margin-bottom, var(--spacing-2))
-  );
-  font-size: var(
-    --_subtitle-font-size,
-    var(--vers-comp-no-results-subtitle-font-size, var(--font-size-base))
-  );
-  color: var(
-    --_subtitle-color,
-    var(--vers-comp-no-results-subtitle-color, var(--color-text-secondary))
-  );
+  margin-bottom: var(--_subtitle-margin-bottom, var(--vers-comp-no-results-subtitle-margin-bottom, var(--spacing-2)));
+  font-size: var(--_subtitle-font-size, var(--vers-comp-no-results-subtitle-font-size, var(--font-size-base)));
+  color: var(--_subtitle-color, var(--vers-comp-no-results-subtitle-color, var(--color-text-secondary)));
   max-width: 28rem;
 }
 
 .no-results-action {
   display: flex;
   gap: var(--_action-gap, var(--vers-comp-no-results-action-gap, var(--spacing-2)));
-  margin-top: var(
-    --_action-margin-top,
-    var(--vers-comp-no-results-action-margin-top, var(--spacing-2))
-  );
+  margin-top: var(--_action-margin-top, var(--vers-comp-no-results-action-margin-top, var(--spacing-2)));
 }

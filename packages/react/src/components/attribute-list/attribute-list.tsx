@@ -1,24 +1,25 @@
-import { createContext, forwardRef, useContext } from "react";
-import { attributeListStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import type { AttributeListProps } from "./attribute-list.types";
+import { attributeListStyles } from "@versaur/core"
+import { createContext, forwardRef, useContext } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import type { AttributeListProps } from "./attribute-list.types"
 
 /**
  * Context for passing column configuration to Item children
  */
 interface AttributeListContextType {
-  columns: string;
+  columns: string
 }
 
-const AttributeListContext = createContext<AttributeListContextType | undefined>(undefined);
+const AttributeListContext = createContext<AttributeListContextType | undefined>(undefined)
 
 export const useAttributeListContext = () => {
-  const context = useContext(AttributeListContext);
+  const context = useContext(AttributeListContext)
   if (!context) {
-    throw new Error("AttributeList.Item must be used within an AttributeList component");
+    throw new Error("AttributeList.Item must be used within an AttributeList component")
   }
-  return context;
-};
+  return context
+}
 
 /**
  * AttributeList root component for displaying key-value pairs in a grid layout
@@ -42,7 +43,7 @@ export const AttributeList = forwardRef<HTMLDListElement, AttributeListProps>(
   ({ columns = "3", children, ...rest }, ref) => {
     const dataAttrs = useDataAttrs({
       columns,
-    });
+    })
 
     return (
       <AttributeListContext.Provider value={{ columns }}>
@@ -50,8 +51,8 @@ export const AttributeList = forwardRef<HTMLDListElement, AttributeListProps>(
           {children}
         </dl>
       </AttributeListContext.Provider>
-    );
+    )
   },
-);
+)
 
-AttributeList.displayName = "AttributeList";
+AttributeList.displayName = "AttributeList"

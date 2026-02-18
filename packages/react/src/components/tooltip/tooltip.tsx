@@ -1,22 +1,18 @@
-"use client";
+"use client"
 
-import type { CSSProperties } from "react";
-import { forwardRef, useRef } from "react";
-import { tooltipStyles } from "@versaur/core";
-import { combineRefs } from "../../utils/combine-refs";
-import { useTooltipPositioning } from "../../hooks/use-tooltip-positioning";
-import type {
-  TooltipGetTriggerPropsOptions,
-  TooltipProps,
-  TooltipStatic,
-  TooltipTextProps,
-} from "./tooltip.types";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
+import { tooltipStyles } from "@versaur/core"
+import type { CSSProperties } from "react"
+import { forwardRef, useRef } from "react"
 
-const DEFAULT_GAP = 8;
-const ARROW_SIZE = 4;
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import { useTooltipPositioning } from "../../hooks/use-tooltip-positioning"
+import { combineRefs } from "../../utils/combine-refs"
+import type { TooltipGetTriggerPropsOptions, TooltipProps, TooltipStatic, TooltipTextProps } from "./tooltip.types"
 
-type Placement = TooltipProps["placement"];
+const DEFAULT_GAP = 8
+const ARROW_SIZE = 4
+
+type Placement = TooltipProps["placement"]
 
 /**
  * Calculate tooltip position relative to trigger element
@@ -28,95 +24,95 @@ function calculatePosition(
   gap: number = DEFAULT_GAP,
 ) {
   if (!trigger || !tooltip) {
-    return;
+    return
   }
 
   // Mark as positioned before rendering
-  tooltip.setAttribute("data-positioned", "true");
+  tooltip.setAttribute("data-positioned", "true")
 
-  const triggerRect = trigger.getBoundingClientRect();
-  const tooltipRect = tooltip.getBoundingClientRect();
+  const triggerRect = trigger.getBoundingClientRect()
+  const tooltipRect = tooltip.getBoundingClientRect()
 
-  let top = 0;
-  let left = 0;
-  const offset = gap + ARROW_SIZE / 2;
+  let top = 0
+  let left = 0
+  const offset = gap + ARROW_SIZE / 2
 
   switch (placement) {
     // Top placements
     case "top": {
-      top = triggerRect.top - tooltipRect.height - offset;
-      left = triggerRect.left + triggerRect.width / 2 - tooltipRect.width / 2;
-      break;
+      top = triggerRect.top - tooltipRect.height - offset
+      left = triggerRect.left + triggerRect.width / 2 - tooltipRect.width / 2
+      break
     }
     case "top-start": {
-      top = triggerRect.top - tooltipRect.height - offset;
-      left = triggerRect.left;
-      break;
+      top = triggerRect.top - tooltipRect.height - offset
+      left = triggerRect.left
+      break
     }
     case "top-end": {
-      top = triggerRect.top - tooltipRect.height - offset;
-      left = triggerRect.right - tooltipRect.width;
-      break;
+      top = triggerRect.top - tooltipRect.height - offset
+      left = triggerRect.right - tooltipRect.width
+      break
     }
 
     // Bottom placements
     case "bottom": {
-      top = triggerRect.bottom + offset;
-      left = triggerRect.left + triggerRect.width / 2 - tooltipRect.width / 2;
-      break;
+      top = triggerRect.bottom + offset
+      left = triggerRect.left + triggerRect.width / 2 - tooltipRect.width / 2
+      break
     }
     case "bottom-start": {
-      top = triggerRect.bottom + offset;
-      left = triggerRect.left;
-      break;
+      top = triggerRect.bottom + offset
+      left = triggerRect.left
+      break
     }
     case "bottom-end": {
-      top = triggerRect.bottom + offset;
-      left = triggerRect.right - tooltipRect.width;
-      break;
+      top = triggerRect.bottom + offset
+      left = triggerRect.right - tooltipRect.width
+      break
     }
 
     // Left placements
     case "left": {
-      top = triggerRect.top + triggerRect.height / 2 - tooltipRect.height / 2;
-      left = triggerRect.left - tooltipRect.width - offset;
-      break;
+      top = triggerRect.top + triggerRect.height / 2 - tooltipRect.height / 2
+      left = triggerRect.left - tooltipRect.width - offset
+      break
     }
     case "left-start": {
-      top = triggerRect.top;
-      left = triggerRect.left - tooltipRect.width - offset;
-      break;
+      top = triggerRect.top
+      left = triggerRect.left - tooltipRect.width - offset
+      break
     }
     case "left-end": {
-      top = triggerRect.bottom - tooltipRect.height;
-      left = triggerRect.left - tooltipRect.width - offset;
-      break;
+      top = triggerRect.bottom - tooltipRect.height
+      left = triggerRect.left - tooltipRect.width - offset
+      break
     }
 
     // Right placements
     case "right": {
-      top = triggerRect.top + triggerRect.height / 2 - tooltipRect.height / 2;
-      left = triggerRect.right + offset;
-      break;
+      top = triggerRect.top + triggerRect.height / 2 - tooltipRect.height / 2
+      left = triggerRect.right + offset
+      break
     }
     case "right-start": {
-      top = triggerRect.top;
-      left = triggerRect.right + offset;
-      break;
+      top = triggerRect.top
+      left = triggerRect.right + offset
+      break
     }
     case "right-end": {
-      top = triggerRect.bottom - tooltipRect.height;
-      left = triggerRect.right + offset;
-      break;
+      top = triggerRect.bottom - tooltipRect.height
+      left = triggerRect.right + offset
+      break
     }
   }
 
   // Add scroll offset
-  const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
-  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const scrollLeft = window.scrollX || document.documentElement.scrollLeft
+  const scrollTop = window.scrollY || document.documentElement.scrollTop
 
-  tooltip.style.top = `${top + scrollTop}px`;
-  tooltip.style.left = `${left + scrollLeft}px`;
+  tooltip.style.top = `${top + scrollTop}px`
+  tooltip.style.left = `${left + scrollLeft}px`
 }
 
 /**
@@ -152,14 +148,11 @@ function calculatePosition(
  * ```
  */
 const TooltipRoot = forwardRef<HTMLDivElement, TooltipProps>(
-  (
-    { id, children, placement = "top", gap = DEFAULT_GAP, triggerType = "all", style, ...props },
-    ref,
-  ) => {
-    const tooltipRef = useRef<HTMLDivElement | null>(null);
+  ({ id, children, placement = "top", gap = DEFAULT_GAP, triggerType = "all", style, ...props }, ref) => {
+    const tooltipRef = useRef<HTMLDivElement | null>(null)
     const dataAttrs = useDataAttrs({
       placement,
-    });
+    })
 
     useTooltipPositioning({
       calculatePosition,
@@ -168,7 +161,7 @@ const TooltipRoot = forwardRef<HTMLDivElement, TooltipProps>(
       placement,
       tooltipRef,
       triggerType,
-    });
+    })
 
     return (
       <div
@@ -182,11 +175,11 @@ const TooltipRoot = forwardRef<HTMLDivElement, TooltipProps>(
       >
         {children}
       </div>
-    );
+    )
   },
-);
+)
 
-TooltipRoot.displayName = "Tooltip";
+TooltipRoot.displayName = "Tooltip"
 
 /**
  * Tooltip.Text - Styled text content variant for tooltips
@@ -197,7 +190,7 @@ const TooltipText = forwardRef<HTMLDivElement, TooltipTextProps>(
       "--_lines": maxLines,
       "--_max-width": maxWidth,
       ...style,
-    } as CSSProperties;
+    } as CSSProperties
 
     return (
       <div
@@ -208,35 +201,35 @@ const TooltipText = forwardRef<HTMLDivElement, TooltipTextProps>(
       >
         {children}
       </div>
-    );
+    )
   },
-);
+)
 
-TooltipText.displayName = "Tooltip.Text";
+TooltipText.displayName = "Tooltip.Text"
 
 /**
  * Get required attributes for the trigger element
  */
 function getTooltipTriggerProps(options: TooltipGetTriggerPropsOptions): Record<string, string> {
-  const { id, triggerType = "all", ...rest } = options;
+  const { id, triggerType = "all", ...rest } = options
   // Always add data-tooltip-trigger for finding the trigger in the hook
   const result: Record<string, string> = {
     "data-tooltip-trigger": id,
     ...Object.fromEntries(Object.entries(rest).map(([k, v]) => [k, String(v)])),
-  };
+  }
 
   // Only use popoverTarget for non-focus trigger types (hover and all)
   // For focus triggers, JavaScript event handlers manage the popover
   if (triggerType !== "focus") {
-    result.popoverTarget = id;
+    result.popoverTarget = id
   }
 
-  return result;
+  return result
 }
 
 /**
  * Attach static methods to component
  */
-export const Tooltip = TooltipRoot as typeof TooltipRoot & TooltipStatic;
-Tooltip.Text = TooltipText;
-Tooltip.getTooltipTriggerProps = getTooltipTriggerProps;
+export const Tooltip = TooltipRoot as typeof TooltipRoot & TooltipStatic
+Tooltip.Text = TooltipText
+Tooltip.getTooltipTriggerProps = getTooltipTriggerProps

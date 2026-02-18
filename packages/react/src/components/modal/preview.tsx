@@ -1,21 +1,22 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import type { ComponentType } from "react";
-import { Modal } from "./modal";
-import { Button } from "../button/button";
-import { ButtonGroup } from "../button-group/button-group";
+import { useState } from "react"
+import type { ComponentType } from "react"
+
+import { ButtonGroup } from "../button-group/button-group"
+import { Button } from "../button/button"
+import { Modal } from "./modal"
 
 export interface ModalSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 function BasicModalPreview() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <div>
@@ -41,11 +42,11 @@ function BasicModalPreview() {
         </Modal.Footer>
       </Modal>
     </div>
-  );
+  )
 }
 
 function ConfirmModalPreview() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <div>
@@ -71,7 +72,7 @@ function ConfirmModalPreview() {
         </Modal.Footer>
       </Modal>
     </div>
-  );
+  )
 }
 
 export const ModalSections: ModalSection[] = [
@@ -122,7 +123,7 @@ export function MyModal() {
     preview: ConfirmModalPreview,
     title: "Confirmation Modal",
   },
-];
+]
 
 export const modalProps = [
   {
@@ -137,7 +138,7 @@ export const modalProps = [
     name: "onClose",
     type: "(reason: 'esc' | 'backdrop' | 'closeButton' | 'programmatic') => void",
   },
-];
+]
 
 export const modalInstallation = {
   code: `import { Modal } from '@versaur/react';
@@ -153,4 +154,4 @@ export const modalInstallation = {
   </Modal.Footer>
 </Modal>`,
   language: "typescript" as const,
-};
+}

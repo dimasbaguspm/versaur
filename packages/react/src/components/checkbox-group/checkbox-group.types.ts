@@ -1,74 +1,71 @@
-import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from "react"
 
 export interface CheckboxGroupRootProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
   /**
    * Array of selected checkbox values
    */
-  value: string[];
+  value: string[]
 
   /**
    * Change handler
    */
-  onChange: (value: string[]) => void;
+  onChange: (value: string[]) => void
 
   /**
    * Name attribute for all checkbox inputs
    */
-  name?: string;
+  name?: string
 
   /**
    * Label for the checkbox group
    */
-  label?: ReactNode;
+  label?: ReactNode
 
   /**
    * Helper text shown below the group
    */
-  helper?: ReactNode;
+  helper?: ReactNode
 
   /**
    * Error message shown below the group
    */
-  error?: ReactNode;
+  error?: ReactNode
 
   /**
    * Required indicator
    */
-  required?: boolean;
+  required?: boolean
 
   /**
    * Disabled state for all checkboxes
    */
-  disabled?: boolean;
+  disabled?: boolean
 
   /**
    * Layout direction
    * @default "column"
    */
-  direction?: "row" | "column";
+  direction?: "row" | "column"
 }
 
-export interface CheckboxGroupOptionProps extends Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  "type" | "size"
-> {
+export interface CheckboxGroupOptionProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "size"> {
   /**
    * Checkbox value
    */
-  value: string;
+  value: string
 
   /**
    * Label text (children)
    */
-  children?: ReactNode;
+  children?: ReactNode
 
   /**
    * Required indicator for this specific option
    */
-  required?: boolean;
+  required?: boolean
 
   /**
    * Disabled state for this specific option
    */
-  disabled?: boolean;
+  disabled?: boolean
 }

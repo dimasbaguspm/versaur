@@ -1,6 +1,7 @@
-import { forwardRef } from "react";
-import { labelStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
+import { labelStyles } from "@versaur/core"
+import { forwardRef } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
 
 /**
  * Label component for form fields
@@ -11,14 +12,14 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(
     const dataAttrs = useDataAttrs({
       disabled,
       required,
-    });
+    })
 
     return (
       <label ref={ref} className={labelStyles.label} {...dataAttrs} {...rest}>
         {children}
       </label>
-    );
+    )
   },
-);
+)
 
-Label.displayName = "Label";
+Label.displayName = "Label"

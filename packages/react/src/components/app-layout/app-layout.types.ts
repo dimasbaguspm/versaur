@@ -1,13 +1,13 @@
-import type { AppLayout } from "@versaur/core";
+import type { AppLayout } from "@versaur/core"
 
 export interface AppLayoutRootProps extends AppLayout.DataAttrs {
-  className?: string;
-  children?: React.ReactNode;
+  className?: string
+  children?: React.ReactNode
 }
 
 export interface AppLayoutRegionProps {
-  className?: string;
-  children?: React.ReactNode;
+  className?: string
+  children?: React.ReactNode
 }
 
 export interface AppLayoutMainProps extends AppLayoutRegionProps {
@@ -17,5 +17,5 @@ export interface AppLayoutMainProps extends AppLayoutRegionProps {
    * - 'centred': Content is constrained to max-width and centered
    * @default 'full-width'
    */
-  placement?: AppLayout.Placement;
+  placement?: AppLayout.Placement
 }

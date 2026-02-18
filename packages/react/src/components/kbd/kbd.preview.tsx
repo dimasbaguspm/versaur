@@ -1,12 +1,13 @@
-import type { ComponentType } from "react";
-import { Kbd } from "./kbd";
+import type { ComponentType } from "react"
+
+import { Kbd } from "./kbd"
 
 export interface KbdSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 function VariantsPreview() {
@@ -16,7 +17,7 @@ function VariantsPreview() {
       <Kbd variant="outline">Ctrl</Kbd>
       <Kbd variant="ghost">Ctrl</Kbd>
     </div>
-  );
+  )
 }
 
 function SizesPreview() {
@@ -42,7 +43,7 @@ function SizesPreview() {
         Lg
       </Kbd>
     </div>
-  );
+  )
 }
 
 function ShortcutPreview() {
@@ -58,7 +59,7 @@ function ShortcutPreview() {
       <span>Save file:</span>
       <Kbd variant="filled">Ctrl+S</Kbd>
     </div>
-  );
+  )
 }
 
 export const kbdSections: KbdSection[] = [
@@ -89,7 +90,7 @@ export const kbdSections: KbdSection[] = [
     preview: ShortcutPreview,
     title: "Keyboard Shortcut",
   },
-];
+]
 
 export const kbdProps = [
   {
@@ -110,4 +111,4 @@ export const kbdProps = [
     name: "children",
     type: "ReactNode",
   },
-];
+]

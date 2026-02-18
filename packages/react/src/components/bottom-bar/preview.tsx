@@ -1,15 +1,16 @@
-"use client";
+"use client"
 
-import React from "react";
-import { BottomBar } from "./bottom-bar";
-import { Icon } from "../icon";
-import { HomeIcon, SearchIcon, UserIcon } from "@versaur/icons";
+import { HomeIcon, SearchIcon, UserIcon } from "@versaur/icons"
+import React from "react"
+
+import { Icon } from "../icon"
+import { BottomBar } from "./bottom-bar"
 
 /**
  * Example 1: Icon-only BottomBar
  */
 function IconOnlyBottomBar() {
-  const [activeItem, setActiveItem] = React.useState(0);
+  const [activeItem, setActiveItem] = React.useState(0)
 
   return (
     <div style={{ border: "1px solid #e5e7eb", borderRadius: "8px" }}>
@@ -34,14 +35,14 @@ function IconOnlyBottomBar() {
         />
       </BottomBar>
     </div>
-  );
+  )
 }
 
 /**
  * Example 2: Icon with text BottomBar
  */
 function IconWithTextBottomBar() {
-  const [activeItem, setActiveItem] = React.useState(0);
+  const [activeItem, setActiveItem] = React.useState(0)
 
   return (
     <div style={{ border: "1px solid #e5e7eb", borderRadius: "8px" }}>
@@ -72,7 +73,7 @@ function IconWithTextBottomBar() {
         </BottomBar.Item>
       </BottomBar>
     </div>
-  );
+  )
 }
 
 /**
@@ -93,7 +94,7 @@ function ActiveStateBottomBar() {
         </BottomBar.Item>
       </BottomBar>
     </div>
-  );
+  )
 }
 
 /**
@@ -216,7 +217,7 @@ export function ActiveStateBottomBar() {
     preview: ActiveStateBottomBar,
     title: "Active & Disabled States",
   },
-];
+]
 
 export const bottomBarProps = [
   {
@@ -277,7 +278,7 @@ export const bottomBarProps = [
       },
     ],
   },
-];
+]
 
 export const bottomBarInstallation = {
   code: `// Using npm
@@ -289,7 +290,7 @@ pnpm add @versaur/react @versaur/core @versaur/icons
 // Using yarn
 yarn add @versaur/react @versaur/core @versaur/icons`,
   language: "bash" as const,
-};
+}
 
 export function BottomBarPreview() {
   return (
@@ -301,5 +302,5 @@ export function BottomBarPreview() {
         </section>
       ))}
     </div>
-  );
+  )
 }

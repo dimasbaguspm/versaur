@@ -1,40 +1,40 @@
-import type { HTMLAttributes, ReactNode } from "react";
-import type { Text } from "@versaur/core";
+import type { Text } from "@versaur/core"
+import type { HTMLAttributes, ReactNode } from "react"
 
 export interface TextProps extends HTMLAttributes<HTMLElement> {
   /**
    * The HTML element to render
    * @default 'p'
    */
-  as?: Text.As;
+  as?: Text.As
 
   /**
    * Override the preset font-size
    */
-  size?: Text.Size;
+  size?: Text.Size
 
   /**
    * Override the preset font-weight
    */
-  weight?: Text.Weight;
+  weight?: Text.Weight
 
   /**
    * Text color intent
    */
-  intent?: Text.Intent;
+  intent?: Text.Intent
 
   /**
    * Text transform case
    */
-  case?: Text.Case;
+  case?: Text.Case
 
   /**
    * Text decoration transform
    */
-  transform?: Text.Transform;
+  transform?: Text.Transform
 
   /**
    * Text content
    */
-  children: ReactNode;
+  children: ReactNode
 }

@@ -1,5 +1,5 @@
-import type { HTMLAttributes, ReactNode } from "react";
-import type { Kbd } from "@versaur/core";
+import type { Kbd } from "@versaur/core"
+import type { HTMLAttributes, ReactNode } from "react"
 
 /**
  * Kbd component props
@@ -9,19 +9,19 @@ export interface KbdProps extends HTMLAttributes<HTMLElement> {
    * Visual variant for the kbd element
    * @default "filled"
    */
-  variant?: Kbd.Variant;
+  variant?: Kbd.Variant
 
   /**
    * Size of the kbd element, aligned with Text component sizing
    * @default "md"
    */
-  size?: Kbd.Size;
+  size?: Kbd.Size
 
-  children?: ReactNode;
+  children?: ReactNode
 }
 
 /**
  * Re-export Kbd types from core for convenient access
  */
-export type KbdVariant = Kbd.Variant;
-export type KbdSize = Kbd.Size;
+export type KbdVariant = Kbd.Variant
+export type KbdSize = Kbd.Size

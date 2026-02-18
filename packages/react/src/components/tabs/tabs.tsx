@@ -1,27 +1,28 @@
-import { createContext, forwardRef, useContext, useLayoutEffect, useRef, useState } from "react";
-import { tabsStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import { useResizeObserver } from "../../hooks/use-resize-observer";
-import { combineRefs } from "../../utils/combine-refs";
-import type { TabsItemProps, TabsPanelAttributes, TabsProps } from "./tabs.types";
+import { tabsStyles } from "@versaur/core"
+import { createContext, forwardRef, useContext, useLayoutEffect, useRef, useState } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import { useResizeObserver } from "../../hooks/use-resize-observer"
+import { combineRefs } from "../../utils/combine-refs"
+import type { TabsItemProps, TabsPanelAttributes, TabsProps } from "./tabs.types"
 
 /**
  * Private context for managing active tab state and change handler
  */
 interface TabsContextType {
-  activeValue: string;
-  onChange: (value: string) => void;
-  registerTrigger: (value: string, ref: HTMLButtonElement | null) => void;
+  activeValue: string
+  onChange: (value: string) => void
+  registerTrigger: (value: string, ref: HTMLButtonElement | null) => void
 }
 
-const TabsContext = createContext<TabsContextType | undefined>(undefined);
+const TabsContext = createContext<TabsContextType | undefined>(undefined)
 
 function useTabsContext() {
-  const context = useContext(TabsContext);
+  const context = useContext(TabsContext)
   if (!context) {
-    throw new Error("Tabs.Item must be used within a Tabs component");
+    throw new Error("Tabs.Item must be used within a Tabs component")
   }
-  return context;
+  return context
 }
 
 /**
@@ -40,56 +41,56 @@ function useTabsContext() {
  * ```
  */
 const TabsRoot = forwardRef<HTMLDivElement, TabsProps>(({ value, onChange, children }, ref) => {
-  const navRef = useRef<HTMLDivElement>(null);
-  const triggersRef = useRef<Map<string, HTMLButtonElement>>(new Map());
-  const [thumbLeft, setThumbLeft] = useState(0);
-  const [thumbWidth, setThumbWidth] = useState(0);
+  const navRef = useRef<HTMLDivElement>(null)
+  const triggersRef = useRef<Map<string, HTMLButtonElement>>(new Map())
+  const [thumbLeft, setThumbLeft] = useState(0)
+  const [thumbWidth, setThumbWidth] = useState(0)
 
   /**
    * Measure the active trigger and update thumb position/width
    */
   const measureTabs = () => {
-    const activeTrigger = triggersRef.current.get(value);
+    const activeTrigger = triggersRef.current.get(value)
     if (!activeTrigger || !navRef.current) {
-      return;
+      return
     }
 
-    const navRect = navRef.current.getBoundingClientRect();
-    const triggerRect = activeTrigger.getBoundingClientRect();
+    const navRect = navRef.current.getBoundingClientRect()
+    const triggerRect = activeTrigger.getBoundingClientRect()
 
     // Calculate thumb position relative to nav container, accounting for scroll
-    const left = triggerRect.left - navRect.left + navRef.current.scrollLeft;
-    const { width } = triggerRect;
+    const left = triggerRect.left - navRect.left + navRef.current.scrollLeft
+    const { width } = triggerRect
 
-    setThumbLeft(left);
-    setThumbWidth(width);
+    setThumbLeft(left)
+    setThumbWidth(width)
 
     // Auto-scroll active tab into view
     activeTrigger.scrollIntoView({
       behavior: "smooth",
       block: "nearest",
       inline: "center",
-    });
-  };
+    })
+  }
 
   /**
    * Register trigger refs for measurement
    */
   const registerTrigger = (triggerValue: string, triggerRef: HTMLButtonElement | null) => {
     if (triggerRef) {
-      triggersRef.current.set(triggerValue, triggerRef);
+      triggersRef.current.set(triggerValue, triggerRef)
     }
-  };
+  }
 
   // Measure on mount and when active value changes (synchronously, no animation)
   useLayoutEffect(() => {
-    measureTabs();
-  }, [value]);
+    measureTabs()
+  }, [value])
 
   // Recalculate on resize
-  useResizeObserver(navRef, measureTabs);
+  useResizeObserver(navRef, measureTabs)
 
-  const dataAttrs = useDataAttrs({});
+  const dataAttrs = useDataAttrs({})
 
   return (
     <TabsContext.Provider value={{ activeValue: value, onChange, registerTrigger }}>
@@ -106,10 +107,10 @@ const TabsRoot = forwardRef<HTMLDivElement, TabsProps>(({ value, onChange, child
         />
       </nav>
     </TabsContext.Provider>
-  );
-});
+  )
+})
 
-TabsRoot.displayName = "Tabs";
+TabsRoot.displayName = "Tabs"
 
 /**
  * Tabs.Item Component
@@ -122,40 +123,46 @@ TabsRoot.displayName = "Tabs";
  * <Tabs.Item value="tab1">Tab 1</Tabs.Item>
  * ```
  */
-const TabsItem = forwardRef<HTMLButtonElement, TabsItemProps>(
-  ({ value, disabled = false, children }, ref) => {
-    const { activeValue, onChange, registerTrigger } = useTabsContext();
+const TabsItem = forwardRef<HTMLButtonElement, TabsItemProps>(({ value, disabled = false, children }, ref) => {
+  const { activeValue, onChange, registerTrigger } = useTabsContext()
 
-    const isActive = activeValue === value;
-    const state = disabled ? "disabled" : isActive ? "active" : "default";
+  const isActive = activeValue === value
 
-    const handleClick = () => {
-      if (!disabled) {
-        onChange(value);
-      }
-    };
+  let state: "disabled" | "active" | "default"
+  if (disabled) {
+    state = "disabled"
+  } else if (isActive) {
+    state = "active"
+  } else {
+    state = "default"
+  }
 
-    return (
-      <li className={tabsStyles.tabitem}>
-        <button
-          ref={combineRefs(ref, (element) => registerTrigger(value, element))}
-          className={tabsStyles.trigger}
-          role="tab"
-          id={`tabs-trigger-${value}`}
-          aria-selected={isActive}
-          aria-controls={`tabs-panel-${value}`}
-          data-state={state}
-          disabled={disabled}
-          onClick={handleClick}
-        >
-          {children}
-        </button>
-      </li>
-    );
-  },
-);
+  const handleClick = () => {
+    if (!disabled) {
+      onChange(value)
+    }
+  }
 
-TabsItem.displayName = "Tabs.Item";
+  return (
+    <li className={tabsStyles.tabitem}>
+      <button
+        ref={combineRefs(ref, (element) => registerTrigger(value, element))}
+        className={tabsStyles.trigger}
+        role="tab"
+        id={`tabs-trigger-${value}`}
+        aria-selected={isActive}
+        aria-controls={`tabs-panel-${value}`}
+        data-state={state}
+        disabled={disabled}
+        onClick={handleClick}
+      >
+        {children}
+      </button>
+    </li>
+  )
+})
+
+TabsItem.displayName = "Tabs.Item"
 
 /**
  * Helper function to get attributes for tabpanel elements
@@ -175,20 +182,18 @@ function getPanelAttribute(value: string): TabsPanelAttributes {
     "aria-labelledby": `tabs-trigger-${value}`,
     id: `tabs-panel-${value}`,
     role: "tabpanel",
-  };
+  }
 }
 
 // Create a compound component with typed properties
-interface TabsComponent extends React.ForwardRefExoticComponent<
-  TabsProps & React.RefAttributes<HTMLDivElement>
-> {
-  Item: typeof TabsItem;
-  getPanelAttribute: typeof getPanelAttribute;
+interface TabsComponent extends React.ForwardRefExoticComponent<TabsProps & React.RefAttributes<HTMLDivElement>> {
+  Item: typeof TabsItem
+  getPanelAttribute: typeof getPanelAttribute
 }
 
 export const Tabs = Object.assign(TabsRoot, {
   Item: TabsItem,
   getPanelAttribute,
-}) as TabsComponent;
+}) as TabsComponent
 
-export { TabsItem, getPanelAttribute };
+export { getPanelAttribute, TabsItem }

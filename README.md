@@ -79,16 +79,16 @@ pnpm add @versaur/react @versaur/core
 ```
 
 ```tsx
-import { Button } from "@versaur/react";
-import "@versaur/core/tokens";
-import "@versaur/core/button.css"; // Import component styles
+import { Button } from "@versaur/react"
+import "@versaur/core/tokens"
+import "@versaur/core/button.css" // Import component styles
 
 function App() {
   return (
     <Button variant="primary" size="large">
       Click me
     </Button>
-  );
+  )
 }
 ```
 
@@ -212,12 +212,12 @@ pnpm clean               # Remove all build artifacts
 2. **Create React wrapper in `packages/react/src/components/`**
 
    ```tsx
-   import { useDataAttrs } from "../../hooks/use-data-attrs";
-   import { componentStyles } from "@versaur/core";
+   import { useDataAttrs } from "../../hooks/use-data-attrs"
+   import { componentStyles } from "@versaur/core"
 
    export function Component({ variant, ...props }) {
-     const dataAttrs = useDataAttrs({ variant });
-     return <div className={componentStyles.component} {...dataAttrs} {...props} />;
+     const dataAttrs = useDataAttrs({ variant })
+     return <div className={componentStyles.component} {...dataAttrs} {...props} />
    }
    ```
 

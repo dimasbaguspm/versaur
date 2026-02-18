@@ -1,6 +1,6 @@
-import { defineConfig } from "vite";
-import svgr from "vite-plugin-svgr";
-import dts from "vite-plugin-dts";
+import { defineConfig } from "vite"
+import dts from "vite-plugin-dts"
+import svgr from "vite-plugin-svgr"
 
 export default defineConfig({
   build: {
@@ -19,4 +19,4 @@ export default defineConfig({
     },
   },
   plugins: [svgr(), dts({ insertTypesEntry: true })],
-});
+})

@@ -1,7 +1,8 @@
-import { forwardRef } from "react";
-import { checkboxStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import type { CheckboxProps } from "./checkbox.types";
+import { checkboxStyles } from "@versaur/core"
+import { forwardRef } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import type { CheckboxProps } from "./checkbox.types"
 
 /**
  * Checkbox - Native checkbox input with custom styling
@@ -22,7 +23,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       disabled,
       invalid,
       required,
-    });
+    })
 
     return (
       <label className={checkboxStyles.checkbox} {...dataAttrs}>
@@ -43,8 +44,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           </span>
         )}
       </label>
-    );
+    )
   },
-);
+)
 
-Checkbox.displayName = "Checkbox";
+Checkbox.displayName = "Checkbox"

@@ -1,19 +1,20 @@
-import { type ComponentType, useState } from "react";
-import { Tabs } from "./tabs";
+import { type ComponentType, useState } from "react"
+
+import { Tabs } from "./tabs"
 
 export interface TabsSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 /**
  * Disabled Items Example
  */
 function DisabledItemsPreview() {
-  const [value, setValue] = useState("enabled1");
+  const [value, setValue] = useState("enabled1")
 
   return (
     <Tabs value={value} onChange={setValue}>
@@ -23,14 +24,14 @@ function DisabledItemsPreview() {
       </Tabs.Item>
       <Tabs.Item value="enabled2">Enabled 2</Tabs.Item>
     </Tabs>
-  );
+  )
 }
 
 /**
  * With Tab Panels Example
  */
 function WithPanelsPreview() {
-  const [value, setValue] = useState("tab1");
+  const [value, setValue] = useState("tab1")
 
   return (
     <div>
@@ -50,7 +51,7 @@ function WithPanelsPreview() {
         {value === "tab3" && <p>Content for Tab 3</p>}
       </div>
     </div>
-  );
+  )
 }
 
 export const tabsSections: TabsSection[] = [
@@ -108,7 +109,7 @@ export function MyTabs() {
     preview: DisabledItemsPreview,
     title: "Disabled Items",
   },
-];
+]
 
 export const tabsProps = [
   {
@@ -129,7 +130,7 @@ export const tabsProps = [
     name: "children",
     type: "ReactNode",
   },
-];
+]
 
 export const tabsItemProps = [
   {
@@ -150,7 +151,7 @@ export const tabsItemProps = [
     name: "children",
     type: "ReactNode",
   },
-];
+]
 
 export function TabsPreview() {
   return (
@@ -162,5 +163,5 @@ export function TabsPreview() {
         </div>
       ))}
     </>
-  );
+  )
 }

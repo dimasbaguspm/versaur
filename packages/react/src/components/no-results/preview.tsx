@@ -1,21 +1,22 @@
-import { type ComponentType } from "react";
-import { NoResults } from "./no-results";
-import { SearchXIcon } from "@versaur/icons";
-import { Button } from "../button";
+import { SearchXIcon } from "@versaur/icons"
+import { type ComponentType } from "react"
+
+import { Button } from "../button"
+import { NoResults } from "./no-results"
 
 export interface NoResultsSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 /**
  * Search No Results Preview
  */
 function SearchNoResultsPreview() {
-  return <NoResults icon={SearchXIcon} title="No results found" />;
+  return <NoResults icon={SearchXIcon} title="No results found" />
 }
 
 /**
@@ -29,7 +30,7 @@ function SearchNoResultsWithActionPreview() {
       subtitle="Try adjusting your search terms or filters."
       action={<Button variant="primary">Clear Search</Button>}
     />
-  );
+  )
 }
 
 export const noResultsSections: NoResultsSection[] = [
@@ -55,7 +56,7 @@ export const noResultsSections: NoResultsSection[] = [
     preview: SearchNoResultsWithActionPreview,
     title: "Search with Action",
   },
-];
+]
 
 export const noResultsProps = [
   {
@@ -82,7 +83,7 @@ export const noResultsProps = [
     name: "action",
     type: "ReactNode",
   },
-];
+]
 
 export function NoResultsPreview() {
   return (
@@ -94,5 +95,5 @@ export function NoResultsPreview() {
         </div>
       ))}
     </>
-  );
+  )
 }

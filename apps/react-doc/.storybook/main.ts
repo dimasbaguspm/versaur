@@ -28,7 +28,7 @@ const config: StorybookConfig = {
           cssAliases[`@versaur/core/${component}.css`] = cssFile;
         }
       });
-    } catch (err) {
+    } catch {
       // Silently ignore errors in CSS alias generation
     }
 

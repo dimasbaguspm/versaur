@@ -1,5 +1,6 @@
-import React from "react";
-import type { IconProps } from "./icon.types";
+import React from "react"
+
+import type { IconProps } from "./icon.types"
 
 /**
  * Icon component for Versaur UI
@@ -18,12 +19,12 @@ import type { IconProps } from "./icon.types";
  * ```
  */
 export const Icon = React.forwardRef<SVGSVGElement, IconProps>(function Icon(
-  { color = "inherit", size = "inherit", className, as: As, ...rest },
+  { _color = "inherit", _size = "inherit", className, as: As, ...rest },
   ref,
 ) {
   // Render the SVG component passed via the 'as' prop using JSX
   // Styling is controlled by CSS selectors in the consuming component
-  return <As ref={ref} className={className} {...rest} />;
-});
+  return <As ref={ref} className={className} {...rest} />
+})
 
-Icon.displayName = "Icon";
+Icon.displayName = "Icon"

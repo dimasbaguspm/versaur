@@ -1,6 +1,7 @@
-import { Badge } from "./badge";
-import { Icon } from "../icon";
-import { AlertCircleIcon, CheckCircleIcon, ZapIcon } from "@versaur/icons";
+import { AlertCircleIcon, CheckCircleIcon, ZapIcon } from "@versaur/icons"
+
+import { Icon } from "../icon"
+import { Badge } from "./badge"
 
 export const badgeProps = [
   {
@@ -40,7 +41,7 @@ export const badgeProps = [
     name: "children",
     type: "ReactNode",
   },
-];
+]
 
 function VariantsSection() {
   return (
@@ -56,7 +57,7 @@ function VariantsSection() {
       <Badge variant="accent-2">Accent 2</Badge>
       <Badge variant="accent-3">Accent 3</Badge>
     </div>
-  );
+  )
 }
 
 function SizesSection() {
@@ -72,7 +73,7 @@ function SizesSection() {
       <Badge size="small">Small</Badge>
       <Badge size="medium">Medium</Badge>
     </div>
-  );
+  )
 }
 
 function ShapesSection() {
@@ -81,7 +82,7 @@ function ShapesSection() {
       <Badge shape="rounded">Rounded</Badge>
       <Badge shape="pill">Pill</Badge>
     </div>
-  );
+  )
 }
 
 function IconsSection() {
@@ -101,7 +102,7 @@ function IconsSection() {
         Zapped
       </Badge>
     </div>
-  );
+  )
 }
 
 export const badgeSections = [
@@ -167,7 +168,7 @@ import { CheckCircleIcon, AlertCircleIcon, ZapIcon } from "@versaur/icons";
     preview: IconsSection,
     title: "With Icons",
   },
-];
+]
 
 export function BadgePreview() {
   return (
@@ -175,5 +176,5 @@ export function BadgePreview() {
       <h2>Badge Component</h2>
       <p>Display labels, tags, or status indicators with customizable style, size, and shape.</p>
     </div>
-  );
+  )
 }

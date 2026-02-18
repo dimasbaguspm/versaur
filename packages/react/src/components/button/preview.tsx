@@ -1,12 +1,13 @@
-import type { ComponentType } from "react";
-import { Button } from "./button";
+import type { ComponentType } from "react"
+
+import { Button } from "./button"
 
 export interface ButtonSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 function VariantsPreview() {
@@ -17,7 +18,7 @@ function VariantsPreview() {
       <Button variant="ghost">Ghost</Button>
       <Button variant="danger">Danger</Button>
     </div>
-  );
+  )
 }
 
 function DisabledPreview() {
@@ -36,7 +37,7 @@ function DisabledPreview() {
         Danger
       </Button>
     </div>
-  );
+  )
 }
 
 function StatesPreview() {
@@ -46,7 +47,7 @@ function StatesPreview() {
       <Button disabled>Disabled</Button>
       <Button pressed>Pressed</Button>
     </div>
-  );
+  )
 }
 
 function SizesPreview() {
@@ -59,7 +60,7 @@ function SizesPreview() {
         Medium
       </Button>
     </div>
-  );
+  )
 }
 
 export const buttonSections: ButtonSection[] = [
@@ -100,7 +101,7 @@ export const buttonSections: ButtonSection[] = [
     preview: DisabledPreview,
     title: "Disabled State",
   },
-];
+]
 
 export const buttonProps = [
   {
@@ -133,7 +134,7 @@ export const buttonProps = [
     name: "pressed",
     type: "boolean",
   },
-];
+]
 
 export function ButtonPreview() {
   return (
@@ -145,5 +146,5 @@ export function ButtonPreview() {
         </div>
       ))}
     </>
-  );
+  )
 }

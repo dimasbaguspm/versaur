@@ -1,26 +1,26 @@
-import type { ElementType, HTMLAttributes, ReactNode } from "react";
+import type { ElementType, HTMLAttributes, ReactNode } from "react"
 
 export interface OverlayHeaderProps extends HTMLAttributes<HTMLDivElement> {
-  children?: ReactNode;
+  children?: ReactNode
 }
 
 export interface OverlayTitleProps extends HTMLAttributes<HTMLHeadingElement> {
-  children?: ReactNode;
+  children?: ReactNode
   /**
    * The HTML element to render as
    * @default 'h2'
    */
-  as?: ElementType;
+  as?: ElementType
 }
 
 export interface OverlayCloseButtonProps extends HTMLAttributes<HTMLButtonElement> {
-  children?: ReactNode;
+  children?: ReactNode
 }
 
 export interface OverlayBodyProps extends HTMLAttributes<HTMLDivElement> {
-  children?: ReactNode;
+  children?: ReactNode
 }
 
 export interface OverlayFooterProps extends HTMLAttributes<HTMLDivElement> {
-  children?: ReactNode;
+  children?: ReactNode
 }

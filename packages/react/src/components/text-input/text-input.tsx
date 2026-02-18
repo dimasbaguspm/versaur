@@ -1,10 +1,11 @@
-import { forwardRef, useId } from "react";
-import { textInputStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import { Label } from "../label";
-import { HelperText } from "../helper-text";
-import { ErrorText } from "../error-text";
-import type { TextInputProps } from "./text-input.types";
+import { textInputStyles } from "@versaur/core"
+import { forwardRef, useId } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import { ErrorText } from "../error-text"
+import { HelperText } from "../helper-text"
+import { Label } from "../label"
+import type { TextInputProps } from "./text-input.types"
 
 /**
  * TextInput component
@@ -27,20 +28,20 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     ref,
   ) => {
     // Generate unique IDs for accessibility
-    const generatedId = useId();
-    const inputId = providedId || generatedId;
-    const helperId = helper ? `${inputId}-helper` : undefined;
-    const errorId = error ? `${inputId}-error` : undefined;
-    const describedBy = [helperId, errorId].filter(Boolean).join(" ");
+    const generatedId = useId()
+    const inputId = providedId || generatedId
+    const helperId = helper ? `${inputId}-helper` : undefined
+    const errorId = error ? `${inputId}-error` : undefined
+    const describedBy = [helperId, errorId].filter(Boolean).join(" ")
 
     // Convert props to data attributes
     const dataAttrs = useDataAttrs({
       disabled,
-      hasLeftIcon: !!leftIcon,
-      hasRightIcon: !!rightIcon,
-      invalid: !!error,
+      hasLeftIcon: Boolean(leftIcon),
+      hasRightIcon: Boolean(rightIcon),
+      invalid: Boolean(error),
       readOnly,
-    });
+    })
 
     return (
       <div className={textInputStyles.field}>
@@ -73,8 +74,8 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         {error && <ErrorText id={errorId}>{error}</ErrorText>}
         {!error && helper && <HelperText id={helperId}>{helper}</HelperText>}
       </div>
-    );
+    )
   },
-);
+)
 
-TextInput.displayName = "TextInput";
+TextInput.displayName = "TextInput"

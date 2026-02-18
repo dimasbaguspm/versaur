@@ -1,21 +1,18 @@
-import type { InputHTMLAttributes, ReactNode } from "react";
+import type { InputHTMLAttributes, ReactNode } from "react"
 
-export interface CheckboxProps extends Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  "type" | "size"
-> {
+export interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "size"> {
   /**
    * Label text (children)
    */
-  children?: ReactNode;
+  children?: ReactNode
 
   /**
    * Invalid/error state
    */
-  invalid?: boolean;
+  invalid?: boolean
 
   /**
    * Required field indicator
    */
-  required?: boolean;
+  required?: boolean
 }

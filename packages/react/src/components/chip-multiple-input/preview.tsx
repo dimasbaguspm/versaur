@@ -1,17 +1,18 @@
-import { useState } from "react";
-import type { ComponentType } from "react";
-import { ChipMultipleInput } from "./chip-multiple-input";
+import { useState } from "react"
+import type { ComponentType } from "react"
+
+import { ChipMultipleInput } from "./chip-multiple-input"
 
 export interface ChipMultipleInputSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 function BasicPreview() {
-  const [interests, setInterests] = useState<string[]>(["design"]);
+  const [interests, setInterests] = useState<string[]>(["design"])
 
   return (
     <ChipMultipleInput
@@ -27,40 +28,27 @@ function BasicPreview() {
       <ChipMultipleInput.Option value="sales">Sales</ChipMultipleInput.Option>
       <ChipMultipleInput.Option value="support">Support</ChipMultipleInput.Option>
     </ChipMultipleInput>
-  );
+  )
 }
 
 function OverflowPreview() {
-  const [values, setValues] = useState<string[]>([]);
+  const [values, setValues] = useState<string[]>([])
 
   return (
-    <ChipMultipleInput
-      value={values}
-      onChange={setValues}
-      label="Horizontal scroll (wrap disabled)"
-      wrap={false}
-    >
-      <ChipMultipleInput.Option value="opt1">
-        Very long option text number one
-      </ChipMultipleInput.Option>
-      <ChipMultipleInput.Option value="opt2">
-        Very long option text number two
-      </ChipMultipleInput.Option>
-      <ChipMultipleInput.Option value="opt3">
-        Very long option text number three
-      </ChipMultipleInput.Option>
-      <ChipMultipleInput.Option value="opt4">
-        Very long option text number four
-      </ChipMultipleInput.Option>
+    <ChipMultipleInput value={values} onChange={setValues} label="Horizontal scroll (wrap disabled)" wrap={false}>
+      <ChipMultipleInput.Option value="opt1">Very long option text number one</ChipMultipleInput.Option>
+      <ChipMultipleInput.Option value="opt2">Very long option text number two</ChipMultipleInput.Option>
+      <ChipMultipleInput.Option value="opt3">Very long option text number three</ChipMultipleInput.Option>
+      <ChipMultipleInput.Option value="opt4">Very long option text number four</ChipMultipleInput.Option>
     </ChipMultipleInput>
-  );
+  )
 }
 
 function CustomGapPreview() {
-  const [values1, setValues1] = useState<string[]>([]);
-  const [values2, setValues2] = useState<string[]>([]);
-  const [values3, setValues3] = useState<string[]>([]);
-  const [values4, setValues4] = useState<string[]>([]);
+  const [values1, setValues1] = useState<string[]>([])
+  const [values2, setValues2] = useState<string[]>([])
+  const [values3, setValues3] = useState<string[]>([])
+  const [values4, setValues4] = useState<string[]>([])
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
@@ -88,11 +76,11 @@ function CustomGapPreview() {
         <ChipMultipleInput.Option value="c">Option C</ChipMultipleInput.Option>
       </ChipMultipleInput>
     </div>
-  );
+  )
 }
 
 function StatesPreview() {
-  const [values, setValues] = useState<string[]>([]);
+  const [values, setValues] = useState<string[]>([])
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
@@ -111,7 +99,7 @@ function StatesPreview() {
         <ChipMultipleInput.Option value="2">Option 2</ChipMultipleInput.Option>
       </ChipMultipleInput>
     </div>
-  );
+  )
 }
 
 export const chipMultipleInputSections: ChipMultipleInputSection[] = [
@@ -180,4 +168,4 @@ export const chipMultipleInputSections: ChipMultipleInputSection[] = [
     preview: StatesPreview,
     title: "States",
   },
-];
+]

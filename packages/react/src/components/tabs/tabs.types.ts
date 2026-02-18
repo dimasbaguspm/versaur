@@ -1,37 +1,37 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from "react"
 
 export interface TabsProps {
   /**
    * The currently active tab value
    */
-  value: string;
+  value: string
 
   /**
    * Callback fired when a tab is selected
    */
-  onChange: (value: string) => void;
+  onChange: (value: string) => void
 
   /**
    * The content of the tabs component
    */
-  children: ReactNode;
+  children: ReactNode
 }
 
 export interface TabsItemProps {
   /**
    * The unique identifier for this item
    */
-  value: string;
+  value: string
 
   /**
    * Whether the item is disabled
    */
-  disabled?: boolean;
+  disabled?: boolean
 
   /**
    * The content of the item
    */
-  children: ReactNode;
+  children: ReactNode
 }
 
 /**
@@ -39,7 +39,7 @@ export interface TabsItemProps {
  * Used with Tabs.getPanelAttribute() helper
  */
 export interface TabsPanelAttributes {
-  id: string;
-  role: "tabpanel";
-  "aria-labelledby": string;
+  id: string
+  role: "tabpanel"
+  "aria-labelledby": string
 }

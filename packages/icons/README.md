@@ -13,10 +13,9 @@ npm install @versaur/icons
 Icons are React components transformed from SVG assets at build time.
 
 ```tsx
-import { LoaderIcon } from "@versaur/icons";
-import { Icon } from "@versaur/core";
-
-<Icon as={LoaderIcon} />;
+import { LoaderIcon } from "@versaur/icons"
+import { Icon } from "@versaur/core"
+;<Icon as={LoaderIcon} />
 ```
 
 ## Icons

@@ -84,7 +84,7 @@ function safeRead(path: string): string {
 }
 
 function relative(path: string): string {
-  return path.replace(ROOT + "/", "")
+  return path.replace(`${ROOT}/`, "")
 }
 
 main().catch((error) => {

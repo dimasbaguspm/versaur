@@ -1,7 +1,8 @@
-import { forwardRef } from "react";
-import { badgeGroupStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import type { BadgeGroupProps } from "./badge-group.types";
+import { badgeGroupStyles } from "@versaur/core"
+import { forwardRef } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import type { BadgeGroupProps } from "./badge-group.types"
 
 /**
  * BadgeGroup component for grouping multiple badges with customizable spacing and layout
@@ -33,7 +34,7 @@ export const BadgeGroup = forwardRef<HTMLDivElement, BadgeGroupProps>(
       direction,
       gap,
       wrap,
-    });
+    })
 
     return (
       <div
@@ -46,8 +47,8 @@ export const BadgeGroup = forwardRef<HTMLDivElement, BadgeGroupProps>(
       >
         {children}
       </div>
-    );
+    )
   },
-);
+)
 
-BadgeGroup.displayName = "BadgeGroup";
+BadgeGroup.displayName = "BadgeGroup"

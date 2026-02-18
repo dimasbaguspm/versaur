@@ -1,30 +1,26 @@
-import { createContext, forwardRef, useContext } from "react";
-import { drawerStyles, overlayPartsStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import { Dialog } from "../dialog";
-import {
-  OverlayBody,
-  OverlayFooter,
-  OverlayHeader,
-  OverlayTitle,
-} from "../overlay-parts/overlay-parts";
-import { ButtonIcon } from "../button-icon";
-import { XIcon } from "@versaur/icons";
-import type { DrawerCloseButtonProps, DrawerRootProps } from "./drawer.types";
+import { drawerStyles, overlayPartsStyles } from "@versaur/core"
+import { XIcon } from "@versaur/icons"
+import { createContext, forwardRef, useContext } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import { ButtonIcon } from "../button-icon"
+import { Dialog } from "../dialog"
+import { OverlayBody, OverlayFooter, OverlayHeader, OverlayTitle } from "../overlay-parts/overlay-parts"
+import type { DrawerCloseButtonProps, DrawerRootProps } from "./drawer.types"
 
 interface DrawerContextType {
-  onClose: () => void;
+  onClose: () => void
 }
 
-const DrawerContext = createContext<DrawerContextType | undefined>(undefined);
+const DrawerContext = createContext<DrawerContextType | undefined>(undefined)
 
 const useDrawerContext = () => {
-  const context = useContext(DrawerContext);
+  const context = useContext(DrawerContext)
   if (!context) {
-    throw new Error("Drawer subcomponents must be used within Drawer");
+    throw new Error("Drawer subcomponents must be used within Drawer")
   }
-  return context;
-};
+  return context
+}
 
 /**
  * Drawer - A controlled side panel component
@@ -44,7 +40,7 @@ const DrawerRoot = forwardRef<HTMLDialogElement, DrawerRootProps>(
   ({ open, onOpenChange, placement = "right", children, ...props }, ref) => {
     const dataAttrs = useDataAttrs({
       placement,
-    });
+    })
 
     return (
       <DrawerContext.Provider value={{ onClose: () => onOpenChange?.(false) }}>
@@ -59,36 +55,34 @@ const DrawerRoot = forwardRef<HTMLDialogElement, DrawerRootProps>(
           <div className={overlayPartsStyles.content}>{children}</div>
         </Dialog>
       </DrawerContext.Provider>
-    );
+    )
   },
-);
+)
 
-DrawerRoot.displayName = "Drawer";
+DrawerRoot.displayName = "Drawer"
 
-const DrawerCloseButton = forwardRef<HTMLButtonElement, DrawerCloseButtonProps>(
-  ({ onClick, ...props }, ref) => {
-    const { onClose } = useDrawerContext();
+const DrawerCloseButton = forwardRef<HTMLButtonElement, DrawerCloseButtonProps>(({ onClick, ...props }, ref) => {
+  const { onClose } = useDrawerContext()
 
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-      onClose();
-      onClick?.(e);
-    };
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    onClose()
+    onClick?.(e)
+  }
 
-    return (
-      <ButtonIcon
-        ref={ref}
-        variant="ghost"
-        as={XIcon}
-        aria-label="Close"
-        onClick={handleClick}
-        className={overlayPartsStyles.closeButton}
-        {...props}
-      />
-    );
-  },
-);
+  return (
+    <ButtonIcon
+      ref={ref}
+      variant="ghost"
+      as={XIcon}
+      aria-label="Close"
+      onClick={handleClick}
+      className={overlayPartsStyles.closeButton}
+      {...props}
+    />
+  )
+})
 
-DrawerCloseButton.displayName = "Drawer.CloseButton";
+DrawerCloseButton.displayName = "Drawer.CloseButton"
 
 export const Drawer = Object.assign(DrawerRoot, {
   Body: OverlayBody,
@@ -96,4 +90,4 @@ export const Drawer = Object.assign(DrawerRoot, {
   Footer: OverlayFooter,
   Header: OverlayHeader,
   Title: OverlayTitle,
-});
+})

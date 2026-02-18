@@ -1,12 +1,13 @@
-import type { ComponentType } from "react";
-import { Loader } from "./loader";
+import type { ComponentType } from "react"
+
+import { Loader } from "./loader"
 
 export interface LoaderSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 function TypesPreview() {
@@ -25,7 +26,7 @@ function TypesPreview() {
         </Loader>
       </div>
     </div>
-  );
+  )
 }
 
 function SizesPreview() {
@@ -44,7 +45,7 @@ function SizesPreview() {
         </Loader>
       </div>
     </div>
-  );
+  )
 }
 
 function NoLabelPreview() {
@@ -73,7 +74,7 @@ function NoLabelPreview() {
         <Loader type="bar" size="sm" />
       </div>
     </div>
-  );
+  )
 }
 
 export const loaderSections: LoaderSection[] = [
@@ -101,7 +102,7 @@ export const loaderSections: LoaderSection[] = [
     preview: NoLabelPreview,
     title: "No Label",
   },
-];
+]
 
 export const loaderProps = [
   {
@@ -122,7 +123,7 @@ export const loaderProps = [
     name: "children",
     type: "ReactNode",
   },
-];
+]
 
 export function LoaderPreview() {
   return (
@@ -134,5 +135,5 @@ export function LoaderPreview() {
         </div>
       ))}
     </>
-  );
+  )
 }

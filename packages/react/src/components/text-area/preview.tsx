@@ -1,12 +1,13 @@
-import type { ComponentType } from "react";
-import { TextArea } from "./text-area";
+import type { ComponentType } from "react"
+
+import { TextArea } from "./text-area"
 
 export interface TextAreaSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 function ResizablePreview() {
@@ -15,7 +16,7 @@ function ResizablePreview() {
       <TextArea resizable={false} placeholder="Not resizable" label="Resizable: False" />
       <TextArea resizable={true} placeholder="Resizable" label="Resizable: True" />
     </div>
-  );
+  )
 }
 
 function StatesPreview() {
@@ -25,13 +26,9 @@ function StatesPreview() {
       <TextArea placeholder="Invalid state" label="Invalid" error="This field is required" />
       <TextArea placeholder="Disabled state" label="Disabled" disabled value="Disabled value" />
       <TextArea placeholder="Read-only state" label="Read-only" readOnly value="Read-only value" />
-      <TextArea
-        placeholder="With helper text"
-        label="With Helper"
-        helper="Maximum 500 characters"
-      />
+      <TextArea placeholder="With helper text" label="With Helper" helper="Maximum 500 characters" />
     </div>
-  );
+  )
 }
 
 function ReadOnlyPreview() {
@@ -51,7 +48,7 @@ function ReadOnlyPreview() {
         value="Read-only with required indicator"
       />
     </div>
-  );
+  )
 }
 
 export const textAreaSections: TextAreaSection[] = [
@@ -111,7 +108,7 @@ export const textAreaSections: TextAreaSection[] = [
     preview: ReadOnlyPreview,
     title: "Read-only",
   },
-];
+]
 
 export const textAreaProps = [
   {
@@ -168,7 +165,7 @@ export const textAreaProps = [
     name: "disabled",
     type: "boolean",
   },
-];
+]
 
 export const textAreaInstallation = {
   code: `# Using npm
@@ -180,7 +177,7 @@ pnpm add @versaur/react @versaur/core
 # Using yarn
 yarn add @versaur/react @versaur/core`,
   language: "bash" as const,
-};
+}
 
 export function TextAreaPreview() {
   return (
@@ -192,5 +189,5 @@ export function TextAreaPreview() {
         </div>
       ))}
     </>
-  );
+  )
 }

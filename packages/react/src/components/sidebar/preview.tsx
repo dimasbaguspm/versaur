@@ -1,25 +1,22 @@
-"use client";
+"use client"
 
-import React from "react";
-import { Sidebar } from "./sidebar";
-import { Icon } from "../icon";
-import { ChevronDownIcon, FileCodeIcon, LayoutDashboardIcon } from "@versaur/icons";
+import { ChevronDownIcon, FileCodeIcon, LayoutDashboardIcon } from "@versaur/icons"
+import React from "react"
+
+import { Icon } from "../icon"
+import { Sidebar } from "./sidebar"
 
 /**
  * Example 1: Expanded Sidebar
  */
 function ExpandedSidebar() {
-  const [isOpen, setIsOpen] = React.useState(true);
+  const [isOpen, setIsOpen] = React.useState(true)
 
   return (
     <div style={{ border: "1px solid #e5e7eb", display: "flex", height: "400px" }}>
       <Sidebar isOpen={isOpen} onOpenChange={setIsOpen}>
         <Sidebar.Header>
-          <Sidebar.Item
-            href="/dashboard"
-            active
-            icon={<Icon as={LayoutDashboardIcon} color="inherit" />}
-          >
+          <Sidebar.Item href="/dashboard" active icon={<Icon as={LayoutDashboardIcon} color="inherit" />}>
             Dashboard
           </Sidebar.Item>
         </Sidebar.Header>
@@ -55,24 +52,20 @@ function ExpandedSidebar() {
         <p>Toggle sidebar with button at bottom. Use arrow keys to navigate items.</p>
       </div>
     </div>
-  );
+  )
 }
 
 /**
  * Example 2: Collapsed Sidebar
  */
 function CollapsedSidebar() {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(false)
 
   return (
     <div style={{ border: "1px solid #e5e7eb", display: "flex", height: "400px" }}>
       <Sidebar isOpen={isOpen} onOpenChange={setIsOpen}>
         <Sidebar.Header>
-          <Sidebar.Item
-            href="/dashboard"
-            active
-            icon={<Icon as={LayoutDashboardIcon} color="inherit" />}
-          >
+          <Sidebar.Item href="/dashboard" active icon={<Icon as={LayoutDashboardIcon} color="inherit" />}>
             Dashboard
           </Sidebar.Item>
         </Sidebar.Header>
@@ -108,24 +101,20 @@ function CollapsedSidebar() {
         <p>Sidebar is collapsed (icons only). Click expand button to open.</p>
       </div>
     </div>
-  );
+  )
 }
 
 /**
  * Example 3: Sidebar with multiple groups and divider
  */
 function SidebarWithGroups() {
-  const [isOpen, setIsOpen] = React.useState(true);
+  const [isOpen, setIsOpen] = React.useState(true)
 
   return (
     <div style={{ border: "1px solid #e5e7eb", display: "flex", height: "500px" }}>
       <Sidebar isOpen={isOpen} onOpenChange={setIsOpen}>
         <Sidebar.Header>
-          <Sidebar.Item
-            href="/dashboard"
-            active
-            icon={<Icon as={LayoutDashboardIcon} color="inherit" />}
-          >
+          <Sidebar.Item href="/dashboard" active icon={<Icon as={LayoutDashboardIcon} color="inherit" />}>
             Dashboard
           </Sidebar.Item>
         </Sidebar.Header>
@@ -172,19 +161,19 @@ function SidebarWithGroups() {
         <p>Multiple groups with divider. Use arrow keys to navigate.</p>
       </div>
     </div>
-  );
+  )
 }
 
 /**
  * Example 4: Keyboard Navigation
  */
 function SidebarKeyboardNav() {
-  const [isOpen, setIsOpen] = React.useState(true);
-  const [activeItem, setActiveItem] = React.useState("/dashboard");
+  const [isOpen, setIsOpen] = React.useState(true)
+  const [activeItem, setActiveItem] = React.useState("/dashboard")
 
   const handleItemClick = (href: string) => {
-    setActiveItem(href);
-  };
+    setActiveItem(href)
+  }
 
   return (
     <div style={{ border: "1px solid #e5e7eb", display: "flex", height: "400px" }}>
@@ -246,7 +235,7 @@ function SidebarKeyboardNav() {
         <p>Active: {activeItem}</p>
       </div>
     </div>
-  );
+  )
 }
 
 export const sidebarSections = [
@@ -400,7 +389,7 @@ export function SidebarKeyboardNav() {
     preview: SidebarKeyboardNav,
     title: "Keyboard Navigation",
   },
-];
+]
 
 export const sidebarProps = [
   {
@@ -540,7 +529,7 @@ export const sidebarProps = [
       },
     ],
   },
-];
+]
 
 export const sidebarInstallation = {
   code: `// Using npm
@@ -552,7 +541,7 @@ pnpm add @versaur/react @versaur/core @versaur/icons
 // Using yarn
 yarn add @versaur/react @versaur/core @versaur/icons`,
   language: "bash" as const,
-};
+}
 
 export function SidebarPreview() {
   return (
@@ -574,5 +563,5 @@ export function SidebarPreview() {
         <SidebarKeyboardNav />
       </section>
     </div>
-  );
+  )
 }

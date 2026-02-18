@@ -1,34 +1,34 @@
-import type { HTMLAttributes } from "react";
-import type { AvatarGroup } from "@versaur/core";
+import type { AvatarGroup } from "@versaur/core"
+import type { HTMLAttributes } from "react"
 
 export interface AvatarGroupProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * Direction of the avatar stack
    * @default 'horizontal'
    */
-  direction?: AvatarGroup.Direction;
+  direction?: AvatarGroup.Direction
 
   /**
    * Size controls the overlap amount between avatars
    * @default 'md'
    */
-  size?: AvatarGroup.Size;
+  size?: AvatarGroup.Size
 
   /**
    * Alignment of items
    * @default 'center'
    */
-  align?: AvatarGroup.Align;
+  align?: AvatarGroup.Align
 
   /**
    * Flex wrap behavior
    * @default 'nowrap'
    */
-  wrap?: AvatarGroup.Wrap;
+  wrap?: AvatarGroup.Wrap
 
   /**
    * Accessible label for the group
    * @default 'Avatar group'
    */
-  "aria-label"?: string;
+  "aria-label"?: string
 }

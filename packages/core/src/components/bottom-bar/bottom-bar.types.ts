@@ -4,11 +4,11 @@
  */
 
 export namespace BottomBar {
-  export type DataAttrs = BottomBarDataAttrs;
+  export type DataAttrs = BottomBarDataAttrs
 }
 
 export interface BottomBarDataAttrs {
-  active?: boolean;
-  disabled?: boolean;
-  focused?: boolean;
+  active?: boolean
+  disabled?: boolean
+  focused?: boolean
 }

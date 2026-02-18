@@ -1,13 +1,8 @@
-import { forwardRef } from "react";
-import { cardStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import type {
-  CardBodyProps,
-  CardButtonProps,
-  CardFooterProps,
-  CardHeaderProps,
-  CardRootProps,
-} from "./card.types";
+import { cardStyles } from "@versaur/core"
+import { forwardRef } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import type { CardBodyProps, CardButtonProps, CardFooterProps, CardHeaderProps, CardRootProps } from "./card.types"
 
 /**
  * Card Root Component
@@ -33,71 +28,64 @@ function CardRootInternal(
     border,
     interactive: as === "button" ? "true" : "false",
     size,
-  });
+  })
 
-  const Element = as === "button" ? "button" : "div";
+  const Element = as === "button" ? "button" : "div"
 
   return (
     <Element ref={ref} className={cardStyles.card} {...dataAttrs} {...rest}>
       {children}
     </Element>
-  );
+  )
 }
 
-export const CardRoot = forwardRef<
-  HTMLDivElement | HTMLButtonElement,
-  CardRootProps & CardButtonProps
->(CardRootInternal);
+export const CardRoot = forwardRef<HTMLDivElement | HTMLButtonElement, CardRootProps & CardButtonProps>(
+  CardRootInternal,
+)
 
-CardRoot.displayName = "Card";
+CardRoot.displayName = "Card"
 
 /**
  * Card Header - Flexible layout container for top section
  * Supports alignment and spacing controls
  */
-export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
-  ({ justify, gap, children, ...rest }, ref) => {
-    const dataAttrs = useDataAttrs({ gap, justify });
-    return (
-      <div ref={ref} className={cardStyles.header} {...dataAttrs} {...rest}>
-        {children}
-      </div>
-    );
-  },
-);
-CardHeader.displayName = "Card.Header";
+export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(({ justify, gap, children, ...rest }, ref) => {
+  const dataAttrs = useDataAttrs({ gap, justify })
+  return (
+    <div ref={ref} className={cardStyles.header} {...dataAttrs} {...rest}>
+      {children}
+    </div>
+  )
+})
+CardHeader.displayName = "Card.Header"
 
 /**
  * Card Body - Flexible column layout container for main content
  * Supports alignment and spacing controls
  */
-export const CardBody = forwardRef<HTMLDivElement, CardBodyProps>(
-  ({ align, gap, children, ...rest }, ref) => {
-    const dataAttrs = useDataAttrs({ align, gap });
-    return (
-      <div ref={ref} className={cardStyles.body} {...dataAttrs} {...rest}>
-        {children}
-      </div>
-    );
-  },
-);
-CardBody.displayName = "Card.Body";
+export const CardBody = forwardRef<HTMLDivElement, CardBodyProps>(({ align, gap, children, ...rest }, ref) => {
+  const dataAttrs = useDataAttrs({ align, gap })
+  return (
+    <div ref={ref} className={cardStyles.body} {...dataAttrs} {...rest}>
+      {children}
+    </div>
+  )
+})
+CardBody.displayName = "Card.Body"
 
 /**
  * Card Footer - Flexible layout container for bottom section
  * Supports alignment and spacing controls
  */
-export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(
-  ({ justify, gap, children, ...rest }, ref) => {
-    const dataAttrs = useDataAttrs({ gap, justify });
-    return (
-      <div ref={ref} className={cardStyles.footer} {...dataAttrs} {...rest}>
-        {children}
-      </div>
-    );
-  },
-);
-CardFooter.displayName = "Card.Footer";
+export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(({ justify, gap, children, ...rest }, ref) => {
+  const dataAttrs = useDataAttrs({ gap, justify })
+  return (
+    <div ref={ref} className={cardStyles.footer} {...dataAttrs} {...rest}>
+      {children}
+    </div>
+  )
+})
+CardFooter.displayName = "Card.Footer"
 
 /**
  * Card Component - Compound component with layout regions
@@ -105,13 +93,13 @@ CardFooter.displayName = "Card.Footer";
 interface CardComponent extends React.ForwardRefExoticComponent<
   CardRootProps & React.RefAttributes<HTMLDivElement | HTMLButtonElement>
 > {
-  Header: typeof CardHeader;
-  Body: typeof CardBody;
-  Footer: typeof CardFooter;
+  Header: typeof CardHeader
+  Body: typeof CardBody
+  Footer: typeof CardFooter
 }
 
 export const Card = Object.assign(CardRoot, {
   Body: CardBody,
   Footer: CardFooter,
   Header: CardHeader,
-}) as CardComponent;
+}) as CardComponent

@@ -1,11 +1,13 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import dts from "vite-plugin-dts";
-import { resolve } from "path";
-import pkg from "./package.json";
+import { resolve } from "path"
+
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
+import dts from "vite-plugin-dts"
+
+import pkg from "./package.json"
 
 // Get external dependencies from peerDependencies + additional externals
-const external = [...Object.keys(pkg.peerDependencies || {}), "react/jsx-runtime"];
+const external = [...Object.keys(pkg.peerDependencies || {}), "react/jsx-runtime"]
 
 export default defineConfig({
   build: {
@@ -18,4 +20,4 @@ export default defineConfig({
     },
   },
   plugins: [react(), dts()],
-});
+})

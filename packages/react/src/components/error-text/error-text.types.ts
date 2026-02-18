@@ -1,15 +1,14 @@
-import type { HTMLAttributes } from "react";
-import type { ErrorText } from "@versaur/core";
+import type { HTMLAttributes } from "react"
 
 export interface ErrorTextProps extends HTMLAttributes<HTMLParagraphElement> {
   /**
    * Optional ID for linking with aria-describedby
    */
-  id?: string;
+  id?: string
 }
 
 declare module "@versaur/core" {
   export namespace ErrorText {
-    export { ErrorTextProps as Props };
+    export { ErrorTextProps as Props }
   }
 }

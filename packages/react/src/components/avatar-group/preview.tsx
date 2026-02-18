@@ -1,13 +1,14 @@
-import type { ComponentType } from "react";
-import { Avatar } from "../avatar/avatar";
-import { AvatarGroup } from "./avatar-group";
+import type { ComponentType } from "react"
+
+import { Avatar } from "../avatar/avatar"
+import { AvatarGroup } from "./avatar-group"
 
 export interface AvatarGroupSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 function GroupPreview() {
@@ -25,7 +26,7 @@ function GroupPreview() {
         <Avatar name="Carol Davis" variant="outline" />
       </AvatarGroup>
     </div>
-  );
+  )
 }
 
 function GroupSizesPreview() {
@@ -42,7 +43,7 @@ function GroupSizesPreview() {
         <Avatar size="lg" name="Carol Davis" variant="outline" />
       </AvatarGroup>
     </div>
-  );
+  )
 }
 
 function GroupAlignmentPreview() {
@@ -104,7 +105,7 @@ function GroupAlignmentPreview() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 function GroupWrapPreview() {
@@ -129,7 +130,7 @@ function GroupWrapPreview() {
         </AvatarGroup>
       </div>
     </div>
-  );
+  )
 }
 
 function CustomizationPreview() {
@@ -147,7 +148,7 @@ function CustomizationPreview() {
         <Avatar size="sm" name="Carol Davis" variant="outline" />
       </AvatarGroup>
     </div>
-  );
+  )
 }
 
 export const avatarGroupSections: AvatarGroupSection[] = [
@@ -241,7 +242,7 @@ export const avatarGroupSections: AvatarGroupSection[] = [
     preview: CustomizationPreview,
     title: "CSS Customization",
   },
-];
+]
 
 export const avatarGroupProps = [
   {
@@ -280,7 +281,7 @@ export const avatarGroupProps = [
     name: "children",
     type: "ReactNode",
   },
-];
+]
 
 export const avatarGroupInstallation = {
   code: `import { Avatar, AvatarGroup } from "@versaur/react";
@@ -295,16 +296,16 @@ export function App() {
   );
 }`,
   language: "tsx",
-};
+}
 
 export function AvatarGroupPreview() {
   return (
     <div>
       <h2>AvatarGroup Component</h2>
       <p>
-        Container component for grouping multiple avatars with customizable spacing, direction,
-        alignment, and wrap behavior.
+        Container component for grouping multiple avatars with customizable spacing, direction, alignment, and wrap
+        behavior.
       </p>
     </div>
-  );
+  )
 }

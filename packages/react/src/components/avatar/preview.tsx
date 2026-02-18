@@ -1,12 +1,13 @@
-import type { ComponentType } from "react";
-import { Avatar } from "./avatar";
+import type { ComponentType } from "react"
+
+import { Avatar } from "./avatar"
 
 export interface AvatarSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 function VariantsPreview() {
@@ -17,7 +18,7 @@ function VariantsPreview() {
       <Avatar variant="ghost">G</Avatar>
       <Avatar variant="danger">D</Avatar>
     </div>
-  );
+  )
 }
 
 function SizesPreview() {
@@ -29,7 +30,7 @@ function SizesPreview() {
       <Avatar size="lg">LG</Avatar>
       <Avatar size="xl">XL</Avatar>
     </div>
-  );
+  )
 }
 
 function ShapesPreview() {
@@ -38,7 +39,7 @@ function ShapesPreview() {
       <Avatar shape="circle">C</Avatar>
       <Avatar shape="square">S</Avatar>
     </div>
-  );
+  )
 }
 
 function ImagePreview() {
@@ -54,7 +55,7 @@ function ImagePreview() {
         <Avatar.Image src="https://api.dicebear.com/7.x/avataaars/svg?seed=Bob" alt="Bob Wilson" />
       </Avatar>
     </div>
-  );
+  )
 }
 
 export const avatarSections: AvatarSection[] = [
@@ -105,7 +106,7 @@ export const avatarSections: AvatarSection[] = [
     preview: ImagePreview,
     title: "Image",
   },
-];
+]
 
 export const avatarProps = [
   {
@@ -132,7 +133,7 @@ export const avatarProps = [
     name: "children",
     type: "string",
   },
-];
+]
 
 export function AvatarPreview() {
   return (
@@ -144,5 +145,5 @@ export function AvatarPreview() {
         </div>
       ))}
     </>
-  );
+  )
 }

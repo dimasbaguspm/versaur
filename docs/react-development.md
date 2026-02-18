@@ -53,18 +53,15 @@ For simple, single-element components (Button, Badge, Tag, etc.):
 
 ```tsx
 // button.tsx
-import { forwardRef } from "react";
-import { buttonStyles } from "@versaur/core";
-import "@versaur/core/button.css";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import type { ButtonProps } from "./button.types";
+import { forwardRef } from "react"
+import { buttonStyles } from "@versaur/core"
+import "@versaur/core/button.css"
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import type { ButtonProps } from "./button.types"
 
 export const _Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    { variant = "primary", size = "medium", loading = false, disabled = false, children, ...rest },
-    ref,
-  ) => {
-    const dataAttrs = useDataAttrs({ variant, size, loading, disabled: disabled || loading });
+  ({ variant = "primary", size = "medium", loading = false, disabled = false, children, ...rest }, ref) => {
+    const dataAttrs = useDataAttrs({ variant, size, loading, disabled: disabled || loading })
 
     return (
       <button
@@ -77,11 +74,11 @@ export const _Button = forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {children}
       </button>
-    );
+    )
   },
-);
+)
 
-_Button.displayName = "Button";
+_Button.displayName = "Button"
 ```
 
 > **Disabled/loading click prevention:** Wrappers intercept `onClick` to prevent interaction when `disabled` or `loading` is true. This is necessary because the CSS disabled state uses `cursor: not-allowed` without `pointer-events: none`, so clicks still reach the element. The wrapper's `handleClick` guards against this:
@@ -89,11 +86,11 @@ _Button.displayName = "Button";
 > ```tsx
 > const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
 >   if (disabled || loading) {
->     e.preventDefault();
->     return;
+>     e.preventDefault()
+>     return
 >   }
->   onClick?.(e);
-> };
+>   onClick?.(e)
+> }
 > ```
 
 ### Compound pattern
@@ -106,66 +103,60 @@ For multi-part components (Dialog, Select, Accordion, etc.):
 
 ```tsx
 // dialog.tsx
-import { forwardRef } from "react";
-import { dialogStyles } from "@versaur/core";
-import "@versaur/core/dialog.css";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import type { DialogRootProps, DialogTriggerProps, DialogContentProps } from "./dialog.types";
+import { forwardRef } from "react"
+import { dialogStyles } from "@versaur/core"
+import "@versaur/core/dialog.css"
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import type { DialogRootProps, DialogTriggerProps, DialogContentProps } from "./dialog.types"
 
-export const _DialogRoot = forwardRef<HTMLDivElement, DialogRootProps>(
-  ({ open = false, children, ...rest }, ref) => {
-    const dataAttrs = useDataAttrs({ open });
-    return (
-      <div ref={ref} className={dialogStyles.root} {...dataAttrs} {...rest}>
-        {children}
-      </div>
-    );
-  },
-);
-_DialogRoot.displayName = "Dialog.Root";
+export const _DialogRoot = forwardRef<HTMLDivElement, DialogRootProps>(({ open = false, children, ...rest }, ref) => {
+  const dataAttrs = useDataAttrs({ open })
+  return (
+    <div ref={ref} className={dialogStyles.root} {...dataAttrs} {...rest}>
+      {children}
+    </div>
+  )
+})
+_DialogRoot.displayName = "Dialog.Root"
 
-export const _DialogTrigger = forwardRef<HTMLButtonElement, DialogTriggerProps>(
-  ({ children, ...rest }, ref) => {
-    return (
-      <button ref={ref} className={dialogStyles.trigger} {...rest}>
-        {children}
-      </button>
-    );
-  },
-);
-_DialogTrigger.displayName = "Dialog.Trigger";
+export const _DialogTrigger = forwardRef<HTMLButtonElement, DialogTriggerProps>(({ children, ...rest }, ref) => {
+  return (
+    <button ref={ref} className={dialogStyles.trigger} {...rest}>
+      {children}
+    </button>
+  )
+})
+_DialogTrigger.displayName = "Dialog.Trigger"
 
-export const _DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
-  ({ children, ...rest }, ref) => {
-    return (
-      <div ref={ref} className={dialogStyles.content} {...rest}>
-        {children}
-      </div>
-    );
-  },
-);
-_DialogContent.displayName = "Dialog.Content";
+export const _DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(({ children, ...rest }, ref) => {
+  return (
+    <div ref={ref} className={dialogStyles.content} {...rest}>
+      {children}
+    </div>
+  )
+})
+_DialogContent.displayName = "Dialog.Content"
 ```
 
 ```tsx
 // index.ts (compound)
-import { _DialogRoot, _DialogTrigger, _DialogContent } from "./dialog";
-import type { DialogRootProps, DialogTriggerProps, DialogContentProps } from "./dialog.types";
+import { _DialogRoot, _DialogTrigger, _DialogContent } from "./dialog"
+import type { DialogRootProps, DialogTriggerProps, DialogContentProps } from "./dialog.types"
 
 declare namespace Dialog {
-  export type RootProps = DialogRootProps;
-  export type TriggerProps = DialogTriggerProps;
-  export type ContentProps = DialogContentProps;
+  export type RootProps = DialogRootProps
+  export type TriggerProps = DialogTriggerProps
+  export type ContentProps = DialogContentProps
 }
 
 const Dialog = Object.assign(_DialogRoot, {
   Root: _DialogRoot,
   Trigger: _DialogTrigger,
   Content: _DialogContent,
-});
+})
 
-export { Dialog };
-export type { DialogRootProps, DialogTriggerProps, DialogContentProps };
+export { Dialog }
+export type { DialogRootProps, DialogTriggerProps, DialogContentProps }
 ```
 
 ## 5. Namespace merging
@@ -174,23 +165,23 @@ TypeScript namespace merging allows attaching types and sub-components to the ex
 
 ```tsx
 // index.ts
-import { _Button } from "./button";
-import type { Button as CoreButton } from "@versaur/core";
-import type { ButtonProps } from "./button.types";
+import { _Button } from "./button"
+import type { Button as CoreButton } from "@versaur/core"
+import type { ButtonProps } from "./button.types"
 
 // 1. Declare the namespace with the same name as the const
 declare namespace Button {
-  export type Variant = CoreButton.Variant;
-  export type Size = CoreButton.Size;
-  export type DataAttrs = CoreButton.DataAttrs;
-  export type Props = ButtonProps;
+  export type Variant = CoreButton.Variant
+  export type Size = CoreButton.Size
+  export type DataAttrs = CoreButton.DataAttrs
+  export type Props = ButtonProps
 }
 
 // 2. Assign the internal component to the public name
-const Button = _Button;
+const Button = _Button
 
 // 3. Export the merged result
-export { Button };
+export { Button }
 ```
 
 This gives consumers access to:
@@ -211,10 +202,10 @@ Two imports are needed per component:
 
 ```tsx
 // 1. Class-name mappings (JS object with scoped class names)
-import { buttonStyles } from "@versaur/core";
+import { buttonStyles } from "@versaur/core"
 
 // 2. Pre-built CSS side-effect (passes through to consumer's bundler)
-import "@versaur/core/button.css";
+import "@versaur/core/button.css"
 ```
 
 - The class-name import (`buttonStyles`) provides the scoped class names to apply via `className`.
@@ -226,7 +217,7 @@ import "@versaur/core/button.css";
 The `useDataAttrs` hook is the bridge between React props and CSS data-attribute selectors.
 
 ```tsx
-const dataAttrs = useDataAttrs({ variant, size, loading, disabled });
+const dataAttrs = useDataAttrs({ variant, size, loading, disabled })
 // → { "data-variant": "primary", "data-size": "medium", "data-loading": "", "data-disabled": "" }
 ```
 
@@ -259,11 +250,11 @@ Each component includes a `preview.tsx` that bundles all documentation data in o
 
 ```tsx
 export interface ButtonSection {
-  key: string; // URL-safe identifier (e.g. "variants")
-  title: string; // Display heading (e.g. "Variants")
-  preview: ComponentType; // Live React component
-  code: string; // Code string for syntax highlighting
-  language: string; // Syntax language (e.g. "tsx")
+  key: string // URL-safe identifier (e.g. "variants")
+  title: string // Display heading (e.g. "Variants")
+  preview: ComponentType // Live React component
+  code: string // Code string for syntax highlighting
+  language: string // Syntax language (e.g. "tsx")
 }
 
 export const buttonSections: ButtonSection[] = [
@@ -277,7 +268,7 @@ export const buttonSections: ButtonSection[] = [
     language: "tsx",
   },
   // ...
-];
+]
 ```
 
 ### Props metadata
@@ -291,7 +282,7 @@ export const buttonProps = [
     description: "Visual variant of the button",
   },
   // ...
-];
+]
 ```
 
 ### Installation
@@ -304,7 +295,7 @@ npm install @versaur/react @versaur/core
 # Using pnpm
 pnpm add @versaur/react @versaur/core`,
   language: "bash" as const,
-};
+}
 ```
 
 ### Convenience preview component
@@ -320,7 +311,7 @@ export function ButtonPreview() {
         </div>
       ))}
     </>
-  );
+  )
 }
 ```
 
@@ -390,9 +381,9 @@ build: {
 The root `@versaur/react` entry (`src/index.ts`) re-exports the component and key types but **not** the preview data:
 
 ```tsx
-export { useDataAttrs } from "./hooks/use-data-attrs";
-export { Button } from "./components/button";
-export type { ButtonProps, ButtonVariant, ButtonSize } from "./components/button";
+export { useDataAttrs } from "./hooks/use-data-attrs"
+export { Button } from "./components/button"
+export type { ButtonProps, ButtonVariant, ButtonSize } from "./components/button"
 ```
 
 Preview data (`buttonSections`, `buttonProps`, etc.) is only available via the component subpath or by importing directly from the preview file.
@@ -439,13 +430,13 @@ Preview data (`buttonSections`, `buttonProps`, etc.) is only available via the c
 - **Props interface extends native HTML attributes**, omitting any that are overridden:
   ```tsx
   export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "disabled"> {
-    disabled?: boolean; // Re-declared with our semantics
+    disabled?: boolean // Re-declared with our semantics
   }
   ```
 - **JSDoc on prop fields** — every prop should have a JSDoc comment with `@default` where applicable.
 - **`displayName`** set on every `forwardRef` component:
   ```tsx
-  _Button.displayName = "Button";
+  _Button.displayName = "Button"
   ```
   For compound components, use dot notation: `"Dialog.Root"`, `"Dialog.Trigger"`.
 - **No default exports** — always use named exports.

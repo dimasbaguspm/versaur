@@ -1,21 +1,17 @@
-"use client";
+"use client"
 
-import { createContext, forwardRef, useRef } from "react";
-import type { CSSProperties } from "react";
-import { menuStyles } from "@versaur/core";
-import { Tooltip } from "../tooltip/tooltip";
-import { closeMenu, useMenuState } from "../../hooks/use-menu-state";
-import type {
-  MenuContextValue,
-  MenuGetTriggerPropsOptions,
-  MenuProps,
-  MenuStatic,
-} from "./menu.types";
+import { menuStyles } from "@versaur/core"
+import { createContext, forwardRef, useRef } from "react"
+import type { CSSProperties } from "react"
+
+import { closeMenu, useMenuState } from "../../hooks/use-menu-state"
+import { Tooltip } from "../tooltip/tooltip"
+import type { MenuContextValue, MenuGetTriggerPropsOptions, MenuProps, MenuStatic } from "./menu.types"
 
 /**
  * Menu Context - provides controlled state to Menu.Items
  */
-export const MenuContext = createContext<MenuContextValue | undefined>(undefined);
+export const MenuContext = createContext<MenuContextValue | undefined>(undefined)
 
 /**
  * Menu - Dropdown menu component built on Tooltip's Popover API
@@ -60,16 +56,16 @@ const MenuRoot = forwardRef<HTMLDivElement, MenuProps>(
     },
     ref,
   ) => {
-    const menuRef = useRef<HTMLDivElement>(null);
+    const menuRef = useRef<HTMLDivElement>(null)
 
     // Register menu for programmatic closing
-    useMenuState(id, menuRef);
+    useMenuState(id, menuRef)
 
     const contextValue: MenuContextValue = {
       close: closeMenu,
       onChange,
       value,
-    };
+    }
 
     return (
       <div ref={ref} {...props}>
@@ -90,11 +86,11 @@ const MenuRoot = forwardRef<HTMLDivElement, MenuProps>(
           </Tooltip>
         </MenuContext.Provider>
       </div>
-    );
+    )
   },
-);
+)
 
-MenuRoot.displayName = "Menu";
+MenuRoot.displayName = "Menu"
 
 /**
  * Get required attributes for a trigger element
@@ -103,12 +99,12 @@ function getTriggerProps(options: MenuGetTriggerPropsOptions): Record<string, st
   return Tooltip.getTooltipTriggerProps({
     id: options.id,
     triggerType: "focus",
-  });
+  })
 }
 
 /**
  * Attach static methods to component
  */
-export const Menu = MenuRoot as typeof MenuRoot & MenuStatic;
-Menu.close = closeMenu;
-Menu.getTriggerProps = getTriggerProps;
+export const Menu = MenuRoot as typeof MenuRoot & MenuStatic
+Menu.close = closeMenu
+Menu.getTriggerProps = getTriggerProps

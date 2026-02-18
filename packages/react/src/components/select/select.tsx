@@ -1,25 +1,24 @@
-import type { ForwardRefExoticComponent, RefAttributes } from "react";
-import { forwardRef, useId } from "react";
-import { selectStyles } from "@versaur/core";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import { Label } from "../label";
-import { HelperText } from "../helper-text";
-import { ErrorText } from "../error-text";
-import type { SelectOptionGroupProps, SelectOptionProps, SelectProps } from "./select.types";
+import { selectStyles } from "@versaur/core"
+import type { ForwardRefExoticComponent, RefAttributes } from "react"
+import { forwardRef, useId } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import { ErrorText } from "../error-text"
+import { HelperText } from "../helper-text"
+import { Label } from "../label"
+import type { SelectOptionGroupProps, SelectOptionProps, SelectProps } from "./select.types"
 
 /**
  * SelectOption component
  * An option within a Select dropdown
  */
-export const SelectOption = forwardRef<HTMLOptionElement, SelectOptionProps>(
-  ({ children, ...rest }, ref) => (
-    <option ref={ref} {...rest}>
-      {children}
-    </option>
-  ),
-);
+export const SelectOption = forwardRef<HTMLOptionElement, SelectOptionProps>(({ children, ...rest }, ref) => (
+  <option ref={ref} {...rest}>
+    {children}
+  </option>
+))
 
-SelectOption.displayName = "Select.Option";
+SelectOption.displayName = "Select.Option"
 
 /**
  * SelectOptionGroup component
@@ -31,9 +30,9 @@ export const SelectOptionGroup = forwardRef<HTMLOptGroupElement, SelectOptionGro
       {children}
     </optgroup>
   ),
-);
+)
 
-SelectOptionGroup.displayName = "Select.OptionGroup";
+SelectOptionGroup.displayName = "Select.OptionGroup"
 
 /**
  * Select component
@@ -41,31 +40,21 @@ SelectOptionGroup.displayName = "Select.OptionGroup";
  */
 const SelectComponent = forwardRef<HTMLSelectElement, SelectProps>(
   (
-    {
-      label,
-      helper,
-      error,
-      required = false,
-      disabled = false,
-      placeholder,
-      children,
-      id: providedId,
-      ...rest
-    },
+    { label, helper, error, required = false, disabled = false, placeholder, children, id: providedId, ...rest },
     ref,
   ) => {
     // Generate unique IDs for accessibility
-    const generatedId = useId();
-    const selectId = providedId || generatedId;
-    const helperId = helper ? `${selectId}-helper` : undefined;
-    const errorId = error ? `${selectId}-error` : undefined;
-    const describedBy = [helperId, errorId].filter(Boolean).join(" ");
+    const generatedId = useId()
+    const selectId = providedId || generatedId
+    const helperId = helper ? `${selectId}-helper` : undefined
+    const errorId = error ? `${selectId}-error` : undefined
+    const describedBy = [helperId, errorId].filter(Boolean).join(" ")
 
     // Convert props to data attributes
     const dataAttrs = useDataAttrs({
       disabled,
-      invalid: !!error,
-    });
+      invalid: Boolean(error),
+    })
 
     return (
       <div className={selectStyles.field}>
@@ -98,19 +87,17 @@ const SelectComponent = forwardRef<HTMLSelectElement, SelectProps>(
         {error && <ErrorText id={errorId}>{error}</ErrorText>}
         {!error && helper && <HelperText id={helperId}>{helper}</HelperText>}
       </div>
-    );
+    )
   },
-);
+)
 
-SelectComponent.displayName = "Select";
+SelectComponent.displayName = "Select"
 
-interface SelectComponent extends ForwardRefExoticComponent<
-  SelectProps & RefAttributes<HTMLSelectElement>
-> {
-  Option: typeof SelectOption;
-  OptionGroup: typeof SelectOptionGroup;
+interface SelectComponent extends ForwardRefExoticComponent<SelectProps & RefAttributes<HTMLSelectElement>> {
+  Option: typeof SelectOption
+  OptionGroup: typeof SelectOptionGroup
 }
 
-export const Select = SelectComponent as SelectComponent;
-Select.Option = SelectOption;
-Select.OptionGroup = SelectOptionGroup;
+export const Select = SelectComponent as SelectComponent
+Select.Option = SelectOption
+Select.OptionGroup = SelectOptionGroup

@@ -1,10 +1,10 @@
-import { Card } from "./card";
-import { Avatar } from "../avatar";
-import { Badge } from "../badge";
-import { BadgeGroup } from "../badge-group/badge-group";
-import { Heading } from "../heading";
-import { Text } from "../text";
-import { Dot } from "../dot";
+import { Avatar } from "../avatar"
+import { Badge } from "../badge"
+import { BadgeGroup } from "../badge-group/badge-group"
+import { Dot } from "../dot"
+import { Heading } from "../heading"
+import { Text } from "../text"
+import { Card } from "./card"
 
 /**
  * Featured Example - Full card with avatar, info, badges, and price
@@ -41,7 +41,7 @@ export function CardFeaturedPreview() {
         </BadgeGroup>
       </Card.Body>
     </Card>
-  );
+  )
 }
 
 /**
@@ -88,7 +88,7 @@ export function CardWithListPreview() {
         </div>
       </Card.Body>
     </Card>
-  );
+  )
 }
 
 /**
@@ -138,7 +138,7 @@ export function CardComplexPreview() {
         </BadgeGroup>
       </Card.Body>
     </Card>
-  );
+  )
 }
 
 /**
@@ -160,7 +160,7 @@ export function CardWithFooterPreview() {
         <Badge variant="warning">In Progress</Badge>
       </Card.Footer>
     </Card>
-  );
+  )
 }
 
 /**
@@ -181,7 +181,7 @@ export function CardInteractivePreview() {
         </Text>
       </Card.Footer>
     </Card>
-  );
+  )
 }
 
 /**
@@ -229,18 +229,18 @@ export function CardBorderVariantsPreview() {
         </Card.Body>
       </Card>
     </div>
-  );
+  )
 }
 
 /**
  * Card Sections for documentation
  */
 export interface CardSection {
-  key: string;
-  title: string;
-  preview: () => JSX.Element;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: () => JSX.Element
+  code: string
+  language: string
 }
 
 export const cardSections: CardSection[] = [
@@ -373,16 +373,16 @@ export const cardSections: CardSection[] = [
     preview: CardBorderVariantsPreview,
     title: "Border Variants",
   },
-];
+]
 
 /**
  * Card Props Documentation
  */
 export interface CardPropDoc {
-  name: string;
-  type: string;
-  default: string;
-  description: string;
+  name: string
+  type: string
+  default: string
+  description: string
 }
 
 export const cardProps: CardPropDoc[] = [
@@ -441,7 +441,7 @@ export const cardProps: CardPropDoc[] = [
     name: "Footer.gap",
     type: "'none' | 'xs' | 'sm' | 'md' | 'lg'",
   },
-];
+]
 
 /**
  * Installation instructions
@@ -457,7 +457,7 @@ import { Dot } from "@versaur/react";
 
 // Use these components for composable card content`,
   language: "tsx" as const,
-};
+}
 
 /**
  * Card Preview Component - Convenience export for doc pages
@@ -472,5 +472,5 @@ export function CardPreview() {
         </div>
       ))}
     </div>
-  );
+  )
 }

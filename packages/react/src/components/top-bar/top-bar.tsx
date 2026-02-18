@@ -1,14 +1,15 @@
-"use client";
+"use client"
 
-import { forwardRef } from "react";
-import { topBarStyles } from "@versaur/core";
+import { topBarStyles } from "@versaur/core"
+import { forwardRef } from "react"
+
 import type {
   TopBarCentredProps,
   TopBarComponent,
   TopBarLeadingProps,
   TopBarProps,
   TopBarTrailingProps,
-} from "./top-bar.types";
+} from "./top-bar.types"
 
 /**
  * TopBar - Pure layout component with CSS Grid
@@ -34,47 +35,41 @@ const TopBar = forwardRef<HTMLElement, TopBarProps>(({ children, ...props }, ref
   <header ref={ref} className={topBarStyles["top-bar"]} {...props}>
     {children}
   </header>
-));
-TopBar.displayName = "TopBar";
+))
+TopBar.displayName = "TopBar"
 
 /**
  * TopBar.Leading - Left grid area
  * Typically contains logo, brand, and navigation
  */
-const TopBarLeading = forwardRef<HTMLDivElement, TopBarLeadingProps>(
-  ({ children, ...props }, ref) => (
-    <div ref={ref} className={topBarStyles["top-bar-leading"]} {...props}>
-      {children}
-    </div>
-  ),
-);
-TopBarLeading.displayName = "TopBar.Leading";
+const TopBarLeading = forwardRef<HTMLDivElement, TopBarLeadingProps>(({ children, ...props }, ref) => (
+  <div ref={ref} className={topBarStyles["top-bar-leading"]} {...props}>
+    {children}
+  </div>
+))
+TopBarLeading.displayName = "TopBar.Leading"
 
 /**
  * TopBar.Centred - Center grid area
  * Typically contains search, title, or other center content
  */
-const TopBarCentred = forwardRef<HTMLDivElement, TopBarCentredProps>(
-  ({ children, ...props }, ref) => (
-    <div ref={ref} className={topBarStyles["top-bar-centred"]} {...props}>
-      {children}
-    </div>
-  ),
-);
-TopBarCentred.displayName = "TopBar.Centred";
+const TopBarCentred = forwardRef<HTMLDivElement, TopBarCentredProps>(({ children, ...props }, ref) => (
+  <div ref={ref} className={topBarStyles["top-bar-centred"]} {...props}>
+    {children}
+  </div>
+))
+TopBarCentred.displayName = "TopBar.Centred"
 
 /**
  * TopBar.Trailing - Right grid area
  * Typically contains actions, user menu, and notifications
  */
-const TopBarTrailing = forwardRef<HTMLDivElement, TopBarTrailingProps>(
-  ({ children, ...props }, ref) => (
-    <div ref={ref} className={topBarStyles["top-bar-trailing"]} {...props}>
-      {children}
-    </div>
-  ),
-);
-TopBarTrailing.displayName = "TopBar.Trailing";
+const TopBarTrailing = forwardRef<HTMLDivElement, TopBarTrailingProps>(({ children, ...props }, ref) => (
+  <div ref={ref} className={topBarStyles["top-bar-trailing"]} {...props}>
+    {children}
+  </div>
+))
+TopBarTrailing.displayName = "TopBar.Trailing"
 
 /**
  * Compound component assembly
@@ -84,7 +79,6 @@ const TopBarCompound = Object.assign(TopBar, {
   Centred: TopBarCentred,
   Leading: TopBarLeading,
   Trailing: TopBarTrailing,
-}) as React.ForwardRefExoticComponent<TopBarProps & React.RefAttributes<HTMLElement>> &
-  TopBarComponent;
+}) as React.ForwardRefExoticComponent<TopBarProps & React.RefAttributes<HTMLElement>> & TopBarComponent
 
-export { TopBarCompound as TopBar, TopBarLeading, TopBarCentred, TopBarTrailing };
+export { TopBarCompound as TopBar, TopBarLeading, TopBarCentred, TopBarTrailing }

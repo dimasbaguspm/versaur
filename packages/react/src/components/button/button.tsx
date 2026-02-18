@@ -1,9 +1,10 @@
-import { forwardRef } from "react";
-import { buttonStyles } from "@versaur/core";
-import { LoaderIcon } from "@versaur/icons";
-import { Icon } from "../icon";
-import { useDataAttrs } from "../../hooks/use-data-attrs";
-import type { ButtonProps } from "./button.types";
+import { buttonStyles } from "@versaur/core"
+import { LoaderIcon } from "@versaur/icons"
+import { forwardRef } from "react"
+
+import { useDataAttrs } from "../../hooks/use-data-attrs"
+import { Icon } from "../icon"
+import type { ButtonProps } from "./button.types"
 
 /**
  * Button component with data-attribute state machine pattern
@@ -39,15 +40,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       loading,
       size,
       variant,
-    });
+    })
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       if (disabled || loading) {
-        e.preventDefault();
-        return;
+        e.preventDefault()
+        return
       }
-      onClick?.(e);
-    };
+      onClick?.(e)
+    }
 
     return (
       <button
@@ -64,8 +65,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {loading ? <Icon as={LoaderIcon} aria-label="Loading" data-loading-icon="loader" /> : null}
         {children}
       </button>
-    );
+    )
   },
-);
+)
 
-Button.displayName = "Button";
+Button.displayName = "Button"

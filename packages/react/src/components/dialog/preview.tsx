@@ -1,19 +1,20 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import type { ComponentType } from "react";
-import { Dialog } from "./dialog";
+import { useState } from "react"
+import type { ComponentType } from "react"
+
+import { Dialog } from "./dialog"
 
 export interface DialogSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 function BasicDialogPreview() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <div>
@@ -22,19 +23,17 @@ function BasicDialogPreview() {
       <Dialog id="basic" isOpen={isOpen} onOpenChange={setIsOpen}>
         <div style={{ padding: "1.5rem" }}>
           <h2>Hello Dialog</h2>
-          <p>
-            This is a controlled Dialog. Close it with ESC, backdrop click, or the button below.
-          </p>
+          <p>This is a controlled Dialog. Close it with ESC, backdrop click, or the button below.</p>
           <button onClick={() => setIsOpen(false)}>Close Dialog</button>
         </div>
       </Dialog>
     </div>
-  );
+  )
 }
 
 function MultipleDialogsPreview() {
-  const [dialog1Open, setDialog1Open] = useState(false);
-  const [dialog2Open, setDialog2Open] = useState(false);
+  const [dialog1Open, setDialog1Open] = useState(false)
+  const [dialog2Open, setDialog2Open] = useState(false)
 
   return (
     <div>
@@ -57,7 +56,7 @@ function MultipleDialogsPreview() {
         </div>
       </Dialog>
     </div>
-  );
+  )
 }
 
 export const DialogSections: DialogSection[] = [
@@ -129,7 +128,7 @@ export function MultipleDialogs() {
     preview: MultipleDialogsPreview,
     title: "Multiple Dialogs",
   },
-];
+]
 
 export const dialogProps = [
   {
@@ -162,7 +161,7 @@ export const dialogProps = [
     name: "children",
     type: "React.ReactNode",
   },
-];
+]
 
 export const dialogInstallation = {
   code: `import { Dialog } from '@versaur/react';
@@ -192,4 +191,4 @@ function MyDialog() {
   );
 }`,
   language: "typescript" as const,
-};
+}

@@ -9,7 +9,7 @@ export {
   TableCheckbox,
   TableDoubleLine,
   TableAction,
-} from "./table";
+} from "./table"
 export type {
   TableWrapperProps,
   TableHeaderProps,
@@ -21,5 +21,5 @@ export type {
   TableCheckboxProps,
   TableDoubleLineProps,
   TableActionProps,
-} from "./table.types";
-export { tableSections, tableProps, tableInstallation } from "./preview";
+} from "./table.types"
+export { tableSections, tableProps, tableInstallation } from "./preview"

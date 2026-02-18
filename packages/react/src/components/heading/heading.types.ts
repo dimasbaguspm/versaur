@@ -1,40 +1,40 @@
-import type { HTMLAttributes, ReactNode } from "react";
-import type { Heading } from "@versaur/core";
+import type { Heading } from "@versaur/core"
+import type { HTMLAttributes, ReactNode } from "react"
 
 export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
   /**
    * The heading level to render
    * @default 'h2'
    */
-  as?: Heading.As;
+  as?: Heading.As
 
   /**
    * Override the preset font-size
    */
-  size?: Heading.Size;
+  size?: Heading.Size
 
   /**
    * Override the preset font-weight
    */
-  weight?: Heading.Weight;
+  weight?: Heading.Weight
 
   /**
    * Text color intent
    */
-  intent?: Heading.Intent;
+  intent?: Heading.Intent
 
   /**
    * Text transform case
    */
-  case?: Heading.Case;
+  case?: Heading.Case
 
   /**
    * Text decoration transform
    */
-  transform?: Heading.Transform;
+  transform?: Heading.Transform
 
   /**
    * Heading content
    */
-  children: ReactNode;
+  children: ReactNode
 }

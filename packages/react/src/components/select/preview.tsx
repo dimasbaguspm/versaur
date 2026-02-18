@@ -1,12 +1,13 @@
-import type { ComponentType } from "react";
-import { Select } from "./select";
+import type { ComponentType } from "react"
+
+import { Select } from "./select"
 
 export interface SelectSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 function StatesPreview() {
@@ -17,12 +18,7 @@ function StatesPreview() {
         <Select.Option value="2">Option 2</Select.Option>
         <Select.Option value="3">Option 3</Select.Option>
       </Select>
-      <Select
-        label="Invalid"
-        placeholder="Select an option"
-        error="This field is required"
-        required
-      >
+      <Select label="Invalid" placeholder="Select an option" error="This field is required" required>
         <Select.Option value="1">Option 1</Select.Option>
         <Select.Option value="2">Option 2</Select.Option>
         <Select.Option value="3">Option 3</Select.Option>
@@ -32,17 +28,13 @@ function StatesPreview() {
         <Select.Option value="2">Option 2</Select.Option>
         <Select.Option value="3">Option 3</Select.Option>
       </Select>
-      <Select
-        label="With Helper"
-        placeholder="Select an option"
-        helper="Choose your preferred option"
-      >
+      <Select label="With Helper" placeholder="Select an option" helper="Choose your preferred option">
         <Select.Option value="1">Option 1</Select.Option>
         <Select.Option value="2">Option 2</Select.Option>
         <Select.Option value="3">Option 3</Select.Option>
       </Select>
     </div>
-  );
+  )
 }
 
 function OptionGroupsPreview() {
@@ -66,7 +58,7 @@ function OptionGroupsPreview() {
         </Select.OptionGroup>
       </Select>
     </div>
-  );
+  )
 }
 
 export const selectSections: SelectSection[] = [
@@ -118,7 +110,7 @@ export const selectSections: SelectSection[] = [
     preview: OptionGroupsPreview,
     title: "Option Groups",
   },
-];
+]
 
 export const selectProps = [
   {
@@ -157,4 +149,4 @@ export const selectProps = [
     name: "disabled",
     type: "boolean",
   },
-];
+]

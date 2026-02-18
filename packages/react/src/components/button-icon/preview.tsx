@@ -1,13 +1,14 @@
-import { type ComponentType } from "react";
-import { ButtonIcon } from "./button-icon";
-import { MenuIcon } from "@versaur/icons";
+import { MenuIcon } from "@versaur/icons"
+import { type ComponentType } from "react"
+
+import { ButtonIcon } from "./button-icon"
 
 export interface ButtonIconSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 /**
@@ -21,7 +22,7 @@ function VariantsPreview() {
       <ButtonIcon as={MenuIcon} aria-label="Ghost" variant="ghost" />
       <ButtonIcon as={MenuIcon} aria-label="Danger" variant="danger" />
     </div>
-  );
+  )
 }
 
 /**
@@ -33,7 +34,7 @@ function SizesPreview() {
       <ButtonIcon as={MenuIcon} aria-label="Small" size="small" />
       <ButtonIcon as={MenuIcon} aria-label="Medium" size="medium" />
     </div>
-  );
+  )
 }
 
 /**
@@ -46,7 +47,7 @@ function StatesPreview() {
       <ButtonIcon as={MenuIcon} aria-label="Disabled" disabled />
       <ButtonIcon as={MenuIcon} aria-label="Pressed" pressed />
     </div>
-  );
+  )
 }
 
 export const buttonIconSections: ButtonIconSection[] = [
@@ -77,7 +78,7 @@ export const buttonIconSections: ButtonIconSection[] = [
     preview: StatesPreview,
     title: "States",
   },
-];
+]
 
 export const buttonIconProps = [
   {
@@ -88,8 +89,7 @@ export const buttonIconProps = [
   },
   {
     default: "—",
-    description:
-      "Accessible label for the icon button. Required for screen readers since there's no text content.",
+    description: "Accessible label for the icon button. Required for screen readers since there's no text content.",
     name: "aria-label",
     type: "string",
   },
@@ -129,7 +129,7 @@ export const buttonIconProps = [
     name: "iconProps",
     type: "SVGProps<SVGSVGElement>",
   },
-];
+]
 
 export function ButtonIconPreview() {
   return (
@@ -141,5 +141,5 @@ export function ButtonIconPreview() {
         </div>
       ))}
     </>
-  );
+  )
 }

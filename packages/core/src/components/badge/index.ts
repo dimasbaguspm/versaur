@@ -1,5 +1,5 @@
 // Export badge styles for use in framework wrappers
-export { default as badgeStyles } from "./badge.module.css";
+export { default as badgeStyles } from "./badge.module.css"
 
 // Export generated types
-export * from "./badge.types.generated";
+export * from "./badge.types.generated"
