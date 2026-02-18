@@ -1,7 +1,8 @@
-"use client";
+"use client"
 
-import { Table } from "./table.js";
-import { useState } from "react";
+import { useState } from "react"
+
+import { Table } from "./table.js"
 
 /* ============================================================================
    Basic Table Example - Simple 4-column table with CSS Grid
@@ -38,30 +39,26 @@ function BasicInvoiceTable() {
         </Table.Row>
       </Table.Body>
     </Table>
-  );
+  )
 }
 
 /* ============================================================================
    Sortable Table - Table with sortable headers
    ========================================================================= */
 function SortableTable() {
-  const [sortCol, setSortCol] = useState<string | null>(null);
-  const [sortDir, setSortDir] = useState<"asc" | "desc" | null>(null);
+  const [sortCol, setSortCol] = useState<string | null>(null)
+  const [sortDir, setSortDir] = useState<"asc" | "desc" | null>(null)
 
   const handleSort = (column: string) => (direction: "asc" | "desc" | null) => {
-    setSortCol(column);
-    setSortDir(direction);
-  };
+    setSortCol(column)
+    setSortDir(direction)
+  }
 
   return (
     <Table columns="2fr 1fr 1fr">
       <Table.Header>
         <Table.Row>
-          <Table.HeaderCell
-            sortable
-            sortDirection={sortCol === "task" ? sortDir : null}
-            onSort={handleSort("task")}
-          >
+          <Table.HeaderCell sortable sortDirection={sortCol === "task" ? sortDir : null} onSort={handleSort("task")}>
             Task
           </Table.HeaderCell>
           <Table.HeaderCell
@@ -93,24 +90,24 @@ function SortableTable() {
         </Table.Row>
       </Table.Body>
     </Table>
-  );
+  )
 }
 
 /* ============================================================================
    Table with Built-in Column Components - Checkbox, DoubleLine, Action
    ========================================================================= */
 function TableWithBuiltins() {
-  const [selectedRows, setSelectedRows] = useState<Set<string | number>>(new Set());
+  const [selectedRows, setSelectedRows] = useState<Set<string | number>>(new Set())
 
   const handleRowSelect = (rowId: string, checked: boolean) => {
-    const newSelected = new Set(selectedRows);
+    const newSelected = new Set(selectedRows)
     if (checked) {
-      newSelected.add(rowId);
+      newSelected.add(rowId)
     } else {
-      newSelected.delete(rowId);
+      newSelected.delete(rowId)
     }
-    setSelectedRows(newSelected);
-  };
+    setSelectedRows(newSelected)
+  }
 
   return (
     <Table columns="min-content 1fr 1fr min-content" selectedRows={selectedRows}>
@@ -136,7 +133,7 @@ function TableWithBuiltins() {
           </Table.BodyCell>
           <Table.BodyCell>Senior Product Designer</Table.BodyCell>
           <Table.BodyCell variant="action">
-            <Table.Action onClick={() => console.log("Action clicked")} />
+            <Table.Action onClick={() => {}} />
           </Table.BodyCell>
         </Table.Row>
         <Table.Row>
@@ -152,12 +149,12 @@ function TableWithBuiltins() {
           </Table.BodyCell>
           <Table.BodyCell>Software Engineer</Table.BodyCell>
           <Table.BodyCell variant="action">
-            <Table.Action onClick={() => console.log("Action clicked")} />
+            <Table.Action onClick={() => {}} />
           </Table.BodyCell>
         </Table.Row>
       </Table.Body>
     </Table>
-  );
+  )
 }
 
 /* ============================================================================
@@ -282,7 +279,7 @@ export function TableWithBuiltins() {
     preview: TableWithBuiltins,
     title: "Table with Built-in Components",
   },
-];
+]
 
 export const tableProps = [
   {
@@ -485,7 +482,7 @@ export const tableProps = [
       },
     ],
   },
-];
+]
 
 export const tableInstallation = `import { Table } from '@versaur/react/table';
-import '@versaur/core/table.css';`;
+import '@versaur/core/table.css';`

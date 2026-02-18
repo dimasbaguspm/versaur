@@ -1,41 +1,29 @@
 {
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit",
+    "source.removeUnusedImports": "explicit",
+    "source.sortImports": "explicit"
+  },
   // Oxlint - Linting
   "[javascript]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll": "explicit"
-    }
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[javascriptreact]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll": "explicit"
-    }
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll": "explicit"
-    }
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode",
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll": "explicit"
-    }
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
-
   // Oxfmt - Formatting (alternative to oxlint's formatting)
   // Uncomment below to use oxfmt for formatting instead of oxlint
   "[json]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode",
-    "editor.formatOnSave": true
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
-
   // Linting display
   "problems.showCurrentInEditor": true,
   "problems.decorations.enabled": true

@@ -1,84 +1,94 @@
-import { readFileSync, writeFileSync } from "node:fs";
-import { basename, dirname, join, resolve } from "node:path";
-import { glob } from "glob";
-import { parseCssModule } from "./css-parser";
-import { generateCssDtsFile, generateTypesFile } from "./codegen";
+import { readFileSync, writeFileSync } from "node:fs"
+import { basename, dirname, join, resolve } from "node:path"
 
-const ROOT = resolve(import.meta.dirname, "../../..");
-const COMPONENTS_GLOB = "packages/core/src/components/**/*.module.css";
+import { glob } from "glob"
 
-const isCheck = process.argv.includes("--check");
+import { generateCssDtsFile, generateTypesFile } from "./codegen"
+import { parseCssModule } from "./css-parser"
+
+const ROOT = resolve(import.meta.dirname, "../../..")
+const COMPONENTS_GLOB = "packages/core/src/components/**/*.module.css"
+
+const isCheck = process.argv.includes("--check")
 
 async function main() {
-  const files = await glob(COMPONENTS_GLOB, { absolute: true, cwd: ROOT });
+  const files = await glob(COMPONENTS_GLOB, { absolute: true, cwd: ROOT })
 
   if (files.length === 0) {
-    console.log("No CSS module files found.");
-    return;
+    // eslint-disable-next-line no-console
+    console.log("No CSS module files found.")
+    return
   }
 
-  let hasChanges = false;
+  let hasChanges = false
 
   for (const file of files.toSorted()) {
-    const css = readFileSync(file, "utf8");
-    const dir = dirname(file);
-    const fileName = basename(file, ".module.css");
-    const componentName = fileName;
+    const css = readFileSync(file, "utf8")
+    const dir = dirname(file)
+    const fileName = basename(file, ".module.css")
+    const componentName = fileName
 
-    const parsed = parseCssModule(css, componentName);
+    const parsed = parseCssModule(css, componentName)
 
     // Generate .types.generated.ts
-    const typesContent = generateTypesFile(parsed);
-    const typesPath = join(dir, `${componentName}.types.generated.ts`);
+    const typesContent = generateTypesFile(parsed)
+    const typesPath = join(dir, `${componentName}.types.generated.ts`)
 
     // Generate .module.css.d.ts
-    const dtsContent = generateCssDtsFile(parsed);
-    const dtsPath = join(dir, `${componentName}.module.css.d.ts`);
+    const dtsContent = generateCssDtsFile(parsed)
+    const dtsPath = join(dir, `${componentName}.module.css.d.ts`)
 
     if (isCheck) {
-      const existingTypes = safeRead(typesPath);
-      const existingDts = safeRead(dtsPath);
+      const existingTypes = safeRead(typesPath)
+      const existingDts = safeRead(dtsPath)
 
       if (existingTypes !== typesContent) {
-        console.error(`OUT OF DATE: ${relative(typesPath)}`);
-        hasChanges = true;
+        // eslint-disable-next-line no-console
+        console.error(`OUT OF DATE: ${relative(typesPath)}`)
+        hasChanges = true
       }
       if (existingDts !== dtsContent) {
-        console.error(`OUT OF DATE: ${relative(dtsPath)}`);
-        hasChanges = true;
+        // eslint-disable-next-line no-console
+        console.error(`OUT OF DATE: ${relative(dtsPath)}`)
+        hasChanges = true
       }
     } else {
-      writeFileSync(typesPath, typesContent);
-      console.log(`Generated: ${relative(typesPath)}`);
+      writeFileSync(typesPath, typesContent)
+      // eslint-disable-next-line no-console
+      console.log(`Generated: ${relative(typesPath)}`)
 
-      writeFileSync(dtsPath, dtsContent);
-      console.log(`Generated: ${relative(dtsPath)}`);
+      writeFileSync(dtsPath, dtsContent)
+      // eslint-disable-next-line no-console
+      console.log(`Generated: ${relative(dtsPath)}`)
     }
   }
 
   if (isCheck && hasChanges) {
-    console.error("\nGenerated type files are out of date. Run `pnpm generate:types` to update.");
-    process.exit(1);
+    // eslint-disable-next-line no-console
+    console.error("\nGenerated type files are out of date. Run `pnpm generate:types` to update.")
+    process.exit(1)
   }
 
   if (isCheck) {
-    console.log("All generated type files are up to date.");
+    // eslint-disable-next-line no-console
+    console.log("All generated type files are up to date.")
   }
 }
 
 function safeRead(path: string): string {
   try {
-    return readFileSync(path, "utf8");
+    return readFileSync(path, "utf8")
   } catch {
-    return "";
+    return ""
   }
 }
 
 function relative(path: string): string {
-  return path.replace(ROOT + "/", "");
+  return path.replace(ROOT + "/", "")
 }
 
 main().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+  // eslint-disable-next-line no-console
+  console.error(error)
+  process.exit(1)
+})

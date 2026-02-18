@@ -1,14 +1,15 @@
-"use client";
+"use client"
 
-import React from "react";
-import { Nav } from ".";
-import { ChevronDownIcon, FileCodeIcon, HomeIcon, SettingsIcon } from "@versaur/icons";
+import { ChevronDownIcon, FileCodeIcon, HomeIcon, SettingsIcon } from "@versaur/icons"
+import React from "react"
+
+import { Nav } from "./nav"
 
 /**
  * Example 1: Horizontal Nav with controlled value/onChange (recommended)
  */
 function HorizontalNav() {
-  const [active, setActive] = React.useState<string | number>("home");
+  const [active, setActive] = React.useState<string | number>("home")
 
   return (
     <Nav direction="horizontal" gap="sm" value={active} onChange={setActive}>
@@ -22,14 +23,14 @@ function HorizontalNav() {
         Settings
       </Nav.Item>
     </Nav>
-  );
+  )
 }
 
 /**
  * Example 2: Vertical Nav with controlled value/onChange (SideBar style)
  */
 function VerticalNav() {
-  const [active, setActive] = React.useState<string | number>("dashboard");
+  const [active, setActive] = React.useState<string | number>("dashboard")
 
   return (
     <Nav direction="vertical" gap="md" value={active} onChange={setActive}>
@@ -43,14 +44,14 @@ function VerticalNav() {
         Settings
       </Nav.Item>
     </Nav>
-  );
+  )
 }
 
 /**
  * Example 3: NavItem with right icon (dropdown indicator)
  */
 function NavWithRightIcon() {
-  const [active, setActive] = React.useState<string | number>("products");
+  const [active, setActive] = React.useState<string | number>("products")
 
   return (
     <Nav direction="horizontal" gap="sm" value={active} onChange={setActive}>
@@ -59,7 +60,7 @@ function NavWithRightIcon() {
         More
       </Nav.Item>
     </Nav>
-  );
+  )
 }
 
 /**
@@ -78,14 +79,14 @@ function NavAsLinks() {
         Settings
       </Nav.Item>
     </Nav>
-  );
+  )
 }
 
 /**
  * Example 5: Disabled and Loading states
  */
 function NavWithStates() {
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(false)
 
   return (
     <Nav direction="horizontal" gap="sm">
@@ -99,22 +100,22 @@ function NavWithStates() {
         value="settings"
         loading={loading}
         onClick={() => {
-          setLoading(true);
-          setTimeout(() => setLoading(false), 2000);
+          setLoading(true)
+          setTimeout(() => setLoading(false), 2000)
         }}
         leftIcon={SettingsIcon}
       >
         {loading ? "Saving..." : "Settings"}
       </Nav.Item>
     </Nav>
-  );
+  )
 }
 
 /**
  * Example 6: Compact spacing (TopBar style with xs gap)
  */
 function CompactNav() {
-  const [active, setActive] = React.useState<string | number>("home");
+  const [active, setActive] = React.useState<string | number>("home")
 
   return (
     <Nav direction="horizontal" gap="xs" value={active} onChange={setActive}>
@@ -122,7 +123,7 @@ function CompactNav() {
       <Nav.Item value="docs">Docs</Nav.Item>
       <Nav.Item value="api">API</Nav.Item>
     </Nav>
-  );
+  )
 }
 
 export const navSections = [
@@ -227,7 +228,7 @@ export const navSections = [
     preview: CompactNav,
     title: "Compact Spacing",
   },
-];
+]
 
 export const navInstallation = {
   code: `import { Nav } from "@versaur/react/nav";
@@ -245,7 +246,7 @@ export function MyNav() {
   );
 }`,
   language: "tsx",
-};
+}
 
 export const navProps = [
   {
@@ -278,7 +279,7 @@ export const navProps = [
     name: "children",
     type: "ReactNode",
   },
-];
+]
 
 export const navItemProps = [
   {
@@ -295,8 +296,7 @@ export const navItemProps = [
   },
   {
     default: "false",
-    description:
-      "Whether this item is active (uncontrolled mode only, ignored if Nav has value/onChange)",
+    description: "Whether this item is active (uncontrolled mode only, ignored if Nav has value/onChange)",
     name: "active",
     type: "boolean",
   },
@@ -324,4 +324,4 @@ export const navItemProps = [
     name: "disabled",
     type: "boolean",
   },
-];
+]

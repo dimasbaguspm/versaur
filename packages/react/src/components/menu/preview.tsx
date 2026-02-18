@@ -1,16 +1,17 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { AlertCircleIcon, CheckCircleIcon, ChevronRightIcon } from "@versaur/icons";
-import { Icon } from "../icon";
-import { Menu } from "./index.js";
-import type { ComponentType } from "react";
+import { AlertCircleIcon, CheckCircleIcon, ChevronRightIcon } from "@versaur/icons"
+import type { ComponentType } from "react"
+import { useState } from "react"
+
+import { Icon } from "../icon"
+import { Menu } from "./menu"
 
 /**
  * Controlled menu with onChange
  */
 function ControlledMenuPreview() {
-  const [selected, setSelected] = useState<string | number>();
+  const [selected, setSelected] = useState<string | number>()
 
   return (
     <div
@@ -35,14 +36,14 @@ function ControlledMenuPreview() {
         </div>
       )}
     </div>
-  );
+  )
 }
 
 /**
  * Menu with custom onClick handlers
  */
 function MenuWithClickHandlersPreview() {
-  const [action, setAction] = useState<string>();
+  const [action, setAction] = useState<string>()
 
   return (
     <div
@@ -59,8 +60,7 @@ function MenuWithClickHandlersPreview() {
         <Menu.Item
           value="new"
           onClick={() => {
-            setAction("Creating new file...");
-            setTimeout(() => setAction(""), 2000);
+            setAction("Creating new file...")
           }}
         >
           New
@@ -68,8 +68,7 @@ function MenuWithClickHandlersPreview() {
         <Menu.Item
           value="open"
           onClick={() => {
-            setAction("Opening file...");
-            setTimeout(() => setAction(""), 2000);
+            setAction("Opening file...")
           }}
         >
           Open
@@ -79,7 +78,7 @@ function MenuWithClickHandlersPreview() {
 
       {action && <div style={{ color: "#666", fontSize: "14px" }}>{action}</div>}
     </div>
-  );
+  )
 }
 
 /**
@@ -110,14 +109,14 @@ function MenuWithIconsPreview() {
         </Menu.Item>
       </Menu>
     </div>
-  );
+  )
 }
 
 /**
  * Menu with different placements
  */
 function PlacementsMenuPreview() {
-  const placements = ["top", "bottom", "left", "right"] as const;
+  const placements = ["top", "bottom", "left", "right"] as const
 
   return (
     <div
@@ -140,7 +139,7 @@ function PlacementsMenuPreview() {
         </div>
       ))}
     </div>
-  );
+  )
 }
 
 /**
@@ -165,19 +164,19 @@ function ScrollableMenuPreview() {
         ))}
       </Menu>
     </div>
-  );
+  )
 }
 
 /**
  * Menu with programmatic close
  */
 function ProgrammaticClosePreview() {
-  const [lastAction, setLastAction] = useState<string>();
+  const [lastAction, setLastAction] = useState<string>()
 
   const handleItemClick = (action: string) => {
-    setLastAction(action);
+    setLastAction(action)
     // Menu stays open - user must click outside or use close button
-  };
+  }
 
   return (
     <div
@@ -223,7 +222,7 @@ function ProgrammaticClosePreview() {
         </div>
       )}
     </div>
-  );
+  )
 }
 
 /* ============================================================================
@@ -231,11 +230,11 @@ function ProgrammaticClosePreview() {
    ========================================================================= */
 
 export interface MenuSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 export const menuSections: MenuSection[] = [
@@ -349,7 +348,7 @@ const triggerProps = Menu.getTriggerProps({ id: "controlled-menu" });
     preview: ProgrammaticClosePreview,
     title: "Programmatic Close",
   },
-];
+]
 
 /**
  * Props metadata for API reference table
@@ -420,7 +419,7 @@ export const menuProps = [
     required: false,
     type: "(options: { id: string }) => Record<string, string>",
   },
-];
+]
 
 export const menuItemProps = [
   {
@@ -460,4 +459,4 @@ export const menuItemProps = [
     required: false,
     type: "(e: React.MouseEvent) => void",
   },
-];
+]

@@ -4,7 +4,6 @@
     "node_modules/",
     "dist/",
     "build/",
-    ".astro/",
     ".storybook/",
     "*.types.generated.ts",
     "*.module.css.d.ts",
@@ -12,5 +11,12 @@
     "coverage/",
     "*.min.js",
     "pnpm-lock.yaml"
-  ]
+  ],
+  "experimentalSortImports": {
+    "order": "asc"
+  },
+  "printWidth": 120,
+  "tabWidth": 2,
+  "semi": false,
+  "trailingComma": "all"
 }

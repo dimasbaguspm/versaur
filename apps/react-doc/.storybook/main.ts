@@ -1,8 +1,7 @@
 import type { StorybookConfig } from "@storybook/react-vite";
-import { mergeConfig } from "vite";
+import { existsSync, readdirSync } from "fs";
 import { resolve } from "path";
-import { readdirSync } from "fs";
-import { existsSync } from "fs";
+import { mergeConfig } from "vite";
 
 const config: StorybookConfig = {
   addons: [
@@ -30,15 +29,15 @@ const config: StorybookConfig = {
         }
       });
     } catch (err) {
-      console.warn("Failed to generate CSS aliases:", err);
+      // Silently ignore errors in CSS alias generation
     }
 
     return mergeConfig(config, {
       resolve: {
         alias: {
-          "@versaur/react": resolve(__dirname, "../../../packages/react/src"),
-          "@versaur/icons": resolve(__dirname, "../../../packages/icons/src"),
           "@versaur/core": resolve(__dirname, "../../../packages/core/src"),
+          "@versaur/icons": resolve(__dirname, "../../../packages/icons/src"),
+          "@versaur/react": resolve(__dirname, "../../../packages/react/src"),
           ...cssAliases,
         },
         conditions: ["source", "import"],

@@ -1,12 +1,13 @@
-import type { ComponentType } from "react";
-import { AttributeList } from ".";
+import type { ComponentType } from "react"
+
+import { AttributeList } from "."
 
 export interface AttributeListSection {
-  key: string;
-  title: string;
-  preview: ComponentType;
-  code: string;
-  language: string;
+  key: string
+  title: string
+  preview: ComponentType
+  code: string
+  language: string
 }
 
 function GridLayoutPreview() {
@@ -41,7 +42,7 @@ function GridLayoutPreview() {
         </AttributeList>
       </div>
     </div>
-  );
+  )
 }
 
 function SpanningPreview() {
@@ -66,7 +67,7 @@ function SpanningPreview() {
         +1 (555) 123-4567
       </AttributeList.Item>
     </AttributeList>
-  );
+  )
 }
 
 function SingleColumnPreview() {
@@ -77,7 +78,7 @@ function SingleColumnPreview() {
       <AttributeList.Item title="Organization">Tech Innovations Inc.</AttributeList.Item>
       <AttributeList.Item title="Role">Product Manager</AttributeList.Item>
     </AttributeList>
-  );
+  )
 }
 
 export const attributeListSections: AttributeListSection[] = [
@@ -156,7 +157,7 @@ export const attributeListSections: AttributeListSection[] = [
     preview: SingleColumnPreview,
     title: "Single Column",
   },
-];
+]
 
 export const attributeListProps = [
   {
@@ -177,7 +178,7 @@ export const attributeListProps = [
     name: "children",
     type: "ReactNode",
   },
-];
+]
 
 export const attributeListItemProps = [
   {
@@ -204,7 +205,7 @@ export const attributeListItemProps = [
     name: "children",
     type: "ReactNode",
   },
-];
+]
 
 export function AttributeListPreview() {
   return (
@@ -216,5 +217,5 @@ export function AttributeListPreview() {
         </div>
       ))}
     </>
-  );
+  )
 }
