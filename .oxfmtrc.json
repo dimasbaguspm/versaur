@@ -1,0 +1,16 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "ignorePatterns": [
+    "node_modules/",
+    "dist/",
+    "build/",
+    ".astro/",
+    ".storybook/",
+    "*.types.generated.ts",
+    "*.module.css.d.ts",
+    ".next/",
+    "coverage/",
+    "*.min.js",
+    "pnpm-lock.yaml"
+  ]
+}

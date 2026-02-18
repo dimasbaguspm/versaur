@@ -4,7 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "generate:types": "tsx src/generate-types.ts"
+    "generate:types": "tsx src/generate-types.ts",
+    "lint": "oxlint src",
+    "lint:fix": "oxlint src --fix",
+    "format": "oxfmt src --write",
+    "format:check": "oxfmt src --check"
   },
   "dependencies": {
     "postcss": "^8.4.0",

@@ -1,0 +1,10 @@
+{
+  "$schema": "../../node_modules/oxlint/configuration_schema.json",
+  "extends": ["../../.oxlintrc.json"],
+  "settings": {
+    "react": {
+      "version": "18.0.0"
+    }
+  },
+  "rules": {}
+}

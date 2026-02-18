@@ -12,7 +12,6 @@ out
 # Development
 .DS_Store
 *.tsbuildinfo
-.vscode
 .idea
 
 # Env files

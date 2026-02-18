@@ -5,7 +5,11 @@
   "scripts": {
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build": "npm run build-storybook"
+    "build": "npm run build-storybook",
+    "lint": "oxlint src",
+    "lint:fix": "oxlint src --fix",
+    "format": "oxfmt src --write",
+    "format:check": "oxfmt src --check"
   },
   "dependencies": {
     "@versaur/core": "workspace:*",
