@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import { textStyles } from "@versaur/core";
-import "@versaur/core/text.css";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type { TextProps } from "./text.types";
 

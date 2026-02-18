@@ -2,7 +2,6 @@
 
 import { forwardRef } from "react";
 import { topBarStyles } from "@versaur/core";
-import "@versaur/core/top-bar.css";
 import type {
   TopBarProps,
   TopBarLeadingProps,

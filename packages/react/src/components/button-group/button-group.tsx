@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import { buttonGroupStyles } from "@versaur/core";
-import "@versaur/core/button-group.css";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type { ButtonGroupProps } from "./button-group.types";
 

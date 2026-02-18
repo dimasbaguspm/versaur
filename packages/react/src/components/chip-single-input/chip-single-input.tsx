@@ -1,6 +1,5 @@
 import { createContext, useContext, forwardRef, useId } from "react";
 import { chipSingleInputStyles } from "@versaur/core";
-import "@versaur/core/chip-single-input.css";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import { Label } from "../label";
 import { HelperText } from "../helper-text";

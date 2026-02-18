@@ -2,7 +2,6 @@
 
 import { forwardRef, createContext } from "react";
 import { navStyles } from "@versaur/core";
-import "@versaur/core/nav.css";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type { NavProps, NavContextValue } from "./nav.types";
 

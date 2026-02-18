@@ -5,7 +5,6 @@ import { Label } from "../label";
 import { HelperText } from "../helper-text";
 import { ErrorText } from "../error-text";
 import type { TextAreaProps } from "./text-area.types";
-import "@versaur/core/text-area.css";
 
 /**
  * TextArea component

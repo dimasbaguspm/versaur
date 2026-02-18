@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import { radioStyles } from "@versaur/core";
-import "@versaur/core/radio.css";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type { RadioProps } from "./radio.types";
 
@@ -29,7 +28,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       children,
       ...rest
     },
-    ref
+    ref,
   ) => {
     const dataAttrs = useDataAttrs({
       variant,
@@ -52,7 +51,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         {children && <span className={radioStyles.label}>{children}</span>}
       </label>
     );
-  }
+  },
 );
 
 Radio.displayName = "Radio";

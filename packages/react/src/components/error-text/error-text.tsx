@@ -1,7 +1,6 @@
 import { forwardRef } from "react";
 import { errorTextStyles } from "@versaur/core";
 import type { ErrorTextProps } from "./error-text.types";
-import "@versaur/core/error-text.css";
 
 /**
  * ErrorText component for form field error messages
@@ -21,7 +20,7 @@ export const ErrorText = forwardRef<HTMLParagraphElement, ErrorTextProps>(
         {children}
       </p>
     );
-  }
+  },
 );
 
 ErrorText.displayName = "ErrorText";

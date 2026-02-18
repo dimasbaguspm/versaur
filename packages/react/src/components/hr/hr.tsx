@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import { hrStyles } from "@versaur/core";
-import "@versaur/core/hr.css";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type { HrProps } from "./hr.types";
 
@@ -17,16 +16,7 @@ import type { HrProps } from "./hr.types";
  * ```
  */
 export const Hr = forwardRef<HTMLHRElement, HrProps>(
-  (
-    {
-      orientation,
-      variant,
-      size,
-      spacing,
-      ...rest
-    },
-    ref,
-  ) => {
+  ({ orientation, variant, size, spacing, ...rest }, ref) => {
     const dataAttrs = useDataAttrs({
       orientation,
       variant,

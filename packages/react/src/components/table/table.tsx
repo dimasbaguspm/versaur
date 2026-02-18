@@ -2,8 +2,6 @@
 
 import { forwardRef } from "react";
 import { tableStyles, checkboxStyles } from "@versaur/core";
-import "@versaur/core/table.css";
-import "@versaur/core/checkbox.css";
 import { ChevronUpIcon, ChevronDownIcon, MenuIcon } from "@versaur/icons";
 import { ButtonIcon } from "../button-icon";
 import { useDataAttrs } from "../../hooks/use-data-attrs.js";

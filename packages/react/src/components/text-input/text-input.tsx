@@ -5,7 +5,6 @@ import { Label } from "../label";
 import { HelperText } from "../helper-text";
 import { ErrorText } from "../error-text";
 import type { TextInputProps } from "./text-input.types";
-import "@versaur/core/text-input.css";
 
 /**
  * TextInput component

@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import { cardStyles } from "@versaur/core";
-import "@versaur/core/card.css";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type {
   CardRootProps,

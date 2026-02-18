@@ -1,6 +1,5 @@
 import { createContext, useContext, forwardRef, useId } from "react";
 import { radioGroupStyles } from "@versaur/core";
-import "@versaur/core/radio-group.css";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import { Label } from "../label";
 import { HelperText } from "../helper-text";
@@ -21,7 +20,7 @@ interface RadioGroupContextType {
 }
 
 const RadioGroupContext = createContext<RadioGroupContextType | undefined>(
-  undefined
+  undefined,
 );
 
 function useRadioGroupContext() {
@@ -70,7 +69,7 @@ const RadioGroupRoot = forwardRef<HTMLDivElement, RadioGroupRootProps>(
       children,
       ...rest
     },
-    ref
+    ref,
   ) => {
     const generatedId = useId();
     const groupId = rest.id || generatedId;
@@ -122,7 +121,7 @@ const RadioGroupRoot = forwardRef<HTMLDivElement, RadioGroupRootProps>(
         {!error && helper && <HelperText id={helperId}>{helper}</HelperText>}
       </div>
     );
-  }
+  },
 );
 
 RadioGroupRoot.displayName = "RadioGroup";
@@ -168,7 +167,7 @@ const RadioGroupOption = forwardRef<HTMLInputElement, RadioGroupOptionProps>(
         )}
       </label>
     );
-  }
+  },
 );
 
 RadioGroupOption.displayName = "RadioGroup.Option";

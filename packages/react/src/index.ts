@@ -225,20 +225,14 @@ export type { DialogRootProps } from "./components/dialog";
 export { Drawer } from "./components/drawer";
 export type {
   DrawerRootProps,
-  DrawerCloseReason,
   DrawerCloseButtonProps,
 } from "./components/drawer";
 
 export { Modal } from "./components/modal";
-export type {
-  ModalRootProps,
-  ModalCloseReason,
-  ModalCloseButtonProps,
-} from "./components/modal";
+export type { ModalRootProps, ModalCloseButtonProps } from "./components/modal";
 
 export { BottomSheet } from "./components/bottom-sheet";
 export type {
   BottomSheetRootProps,
-  BottomSheetCloseReason,
   BottomSheetCloseButtonProps,
 } from "./components/bottom-sheet";

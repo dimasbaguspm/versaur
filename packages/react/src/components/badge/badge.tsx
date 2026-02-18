@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import { badgeStyles } from "@versaur/core";
-import "@versaur/core/badge.css";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type { BadgeProps } from "./badge.types";
 

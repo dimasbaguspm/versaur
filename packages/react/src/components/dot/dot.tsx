@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import { dotStyles } from "@versaur/core";
-import "@versaur/core/dot.css";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type { DotProps } from "./dot.types";
 
@@ -15,26 +14,14 @@ import type { DotProps } from "./dot.types";
  * ```
  */
 export const Dot = forwardRef<HTMLSpanElement, DotProps>(
-  (
-    {
-      variant = "primary",
-      size = "medium",
-      ...rest
-    },
-    ref,
-  ) => {
+  ({ variant = "primary", size = "medium", ...rest }, ref) => {
     const dataAttrs = useDataAttrs({
       variant,
       size,
     });
 
     return (
-      <span
-        ref={ref}
-        className={dotStyles.dot}
-        {...dataAttrs}
-        {...rest}
-      />
+      <span ref={ref} className={dotStyles.dot} {...dataAttrs} {...rest} />
     );
   },
 );

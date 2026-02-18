@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import { overlayPartsStyles } from "@versaur/core";
-import "@versaur/core/overlay-parts.css";
 import type {
   OverlayHeaderProps,
   OverlayTitleProps,

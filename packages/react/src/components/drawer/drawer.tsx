@@ -1,7 +1,5 @@
 import { createContext, useContext, forwardRef } from "react";
 import { drawerStyles, overlayPartsStyles } from "@versaur/core";
-import "@versaur/core/drawer.css";
-import "@versaur/core/overlay-parts.css";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import { Dialog } from "../dialog";
 import {

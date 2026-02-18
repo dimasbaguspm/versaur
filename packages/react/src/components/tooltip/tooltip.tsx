@@ -2,7 +2,6 @@
 
 import { forwardRef, CSSProperties, useRef } from "react";
 import { tooltipStyles } from "@versaur/core";
-import "@versaur/core/tooltip.css";
 import { combineRefs } from "../../utils/combine-refs";
 import { useTooltipPositioning } from "../../hooks/use-tooltip-positioning";
 import type {

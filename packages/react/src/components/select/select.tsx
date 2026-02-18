@@ -14,7 +14,6 @@ import type {
   SelectOptionProps,
   SelectOptionGroupProps,
 } from "./select.types";
-import "@versaur/core/select.css";
 
 /**
  * SelectOption component

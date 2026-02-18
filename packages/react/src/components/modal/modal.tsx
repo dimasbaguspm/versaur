@@ -1,7 +1,5 @@
 import { createContext, useContext, forwardRef } from "react";
 import { modalStyles, overlayPartsStyles } from "@versaur/core";
-import "@versaur/core/modal.css";
-import "@versaur/core/overlay-parts.css";
 import { Dialog } from "../dialog";
 import {
   OverlayHeader,

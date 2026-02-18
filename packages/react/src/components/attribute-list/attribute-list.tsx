@@ -1,6 +1,5 @@
 import { forwardRef, createContext, useContext } from "react";
 import { attributeListStyles } from "@versaur/core";
-import "@versaur/core/attribute-list.css";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type { AttributeListProps } from "./attribute-list.types";
 

@@ -1,7 +1,6 @@
 import { forwardRef } from "react";
 import { helperTextStyles } from "@versaur/core";
 import type { HelperTextProps } from "./helper-text.types";
-import "@versaur/core/helper-text.css";
 
 /**
  * HelperText component for form field helper/hint text
@@ -14,7 +13,7 @@ export const HelperText = forwardRef<HTMLParagraphElement, HelperTextProps>(
         {children}
       </p>
     );
-  }
+  },
 );
 
 HelperText.displayName = "HelperText";

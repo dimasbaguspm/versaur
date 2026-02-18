@@ -1,6 +1,5 @@
 import { forwardRef, useState } from "react";
 import { avatarStyles } from "@versaur/core";
-import "@versaur/core/avatar.css";
 import { UserIcon } from "@versaur/icons";
 import { Icon } from "../icon";
 import { useDataAttrs } from "../../hooks/use-data-attrs";

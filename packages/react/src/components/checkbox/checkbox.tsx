@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import { checkboxStyles } from "@versaur/core";
-import "@versaur/core/checkbox.css";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type { CheckboxProps } from "./checkbox.types";
 

@@ -3,7 +3,6 @@
 import { forwardRef, createContext, useRef } from "react";
 import type { CSSProperties } from "react";
 import { menuStyles } from "@versaur/core";
-import "@versaur/core/menu.css";
 import { Tooltip } from "../tooltip/tooltip";
 import { useMenuState, closeMenu } from "../../hooks/use-menu-state";
 import type {

@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import { noResultsStyles } from "@versaur/core";
-import "@versaur/core/no-results.css";
 import { Icon } from "../icon";
 import type { NoResultsProps } from "./no-results.types";
 

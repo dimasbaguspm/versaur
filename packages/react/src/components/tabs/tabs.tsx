@@ -7,7 +7,6 @@ import {
   useLayoutEffect,
 } from "react";
 import { tabsStyles } from "@versaur/core";
-import "@versaur/core/tabs.css";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import { useResizeObserver } from "../../hooks/use-resize-observer";
 import { combineRefs } from "../../utils/combine-refs";

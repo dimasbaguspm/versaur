@@ -2,7 +2,6 @@
 
 import { forwardRef } from "react";
 import { kbdStyles } from "@versaur/core";
-import "@versaur/core/kbd.css";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type { KbdProps } from "./kbd.types";
 

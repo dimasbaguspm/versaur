@@ -10,7 +10,6 @@ import {
   useCallback,
 } from "react";
 import { sidebarStyles } from "@versaur/core";
-import "@versaur/core/sidebar.css";
 import { Hr } from "../hr";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import { combineRefs } from "../../utils/combine-refs";

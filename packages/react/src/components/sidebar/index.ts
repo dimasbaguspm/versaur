@@ -1,5 +1,4 @@
 import { Sidebar } from "./sidebar";
-import type { Sidebar as CoreSidebar } from "@versaur/core";
 import type {
   SidebarRootProps,
   SidebarHeaderProps,

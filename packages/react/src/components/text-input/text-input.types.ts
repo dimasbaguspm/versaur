@@ -1,5 +1,4 @@
 import type { InputHTMLAttributes, ReactNode } from "react";
-import type { TextInput } from "@versaur/core";
 
 export interface TextInputProps extends Omit<
   InputHTMLAttributes<HTMLInputElement>,

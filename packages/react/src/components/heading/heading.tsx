@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import { headingStyles } from "@versaur/core";
-import "@versaur/core/heading.css";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type { HeadingProps } from "./heading.types";
 

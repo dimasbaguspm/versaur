@@ -1,7 +1,5 @@
 import { createContext, useContext, forwardRef } from "react";
 import { bottomSheetStyles, overlayPartsStyles } from "@versaur/core";
-import "@versaur/core/bottom-sheet.css";
-import "@versaur/core/overlay-parts.css";
 import { Dialog } from "../dialog";
 import {
   OverlayHeader,

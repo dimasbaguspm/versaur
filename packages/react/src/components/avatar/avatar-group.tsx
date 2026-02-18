@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import { avatarGroupStyles } from "@versaur/core";
-import "@versaur/core/avatar-group.css";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type { AvatarGroupProps } from "./avatar-group.types";
 

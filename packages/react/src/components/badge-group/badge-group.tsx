@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import { badgeGroupStyles } from "@versaur/core";
-import "@versaur/core/badge-group.css";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type { BadgeGroupProps } from "./badge-group.types";
 

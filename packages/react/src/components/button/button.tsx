@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import { buttonStyles } from "@versaur/core";
-import "@versaur/core/button.css";
 import { LoaderIcon } from "@versaur/icons";
 import { Icon } from "../icon";
 import { useDataAttrs } from "../../hooks/use-data-attrs";

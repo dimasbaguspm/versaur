@@ -2,7 +2,6 @@
 
 import { forwardRef, ReactNode } from "react";
 import { bottomBarStyles } from "@versaur/core";
-import "@versaur/core/bottom-bar.css";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import { isComponentType } from "../../utils/polymorphic";
 
