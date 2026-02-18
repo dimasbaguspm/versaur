@@ -1,16 +1,16 @@
-import { createContext, useContext, forwardRef } from "react";
+import { createContext, forwardRef, useContext } from "react";
 import { drawerStyles, overlayPartsStyles } from "@versaur/core";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import { Dialog } from "../dialog";
 import {
-  OverlayHeader,
-  OverlayTitle,
   OverlayBody,
   OverlayFooter,
+  OverlayHeader,
+  OverlayTitle,
 } from "../overlay-parts/overlay-parts";
 import { ButtonIcon } from "../button-icon";
 import { XIcon } from "@versaur/icons";
-import type { DrawerRootProps, DrawerCloseButtonProps } from "./drawer.types";
+import type { DrawerCloseButtonProps, DrawerRootProps } from "./drawer.types";
 
 interface DrawerContextType {
   onClose: () => void;
@@ -91,9 +91,9 @@ const DrawerCloseButton = forwardRef<HTMLButtonElement, DrawerCloseButtonProps>(
 DrawerCloseButton.displayName = "Drawer.CloseButton";
 
 export const Drawer = Object.assign(DrawerRoot, {
+  Body: OverlayBody,
+  CloseButton: DrawerCloseButton,
+  Footer: OverlayFooter,
   Header: OverlayHeader,
   Title: OverlayTitle,
-  CloseButton: DrawerCloseButton,
-  Body: OverlayBody,
-  Footer: OverlayFooter,
 });

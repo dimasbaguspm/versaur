@@ -2,25 +2,25 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "@versaur/react";
 
 const meta = {
-  title: "Components/Button",
-  component: Button,
-  parameters: {
-    layout: "centered",
-  },
-  tags: ["autodocs"],
   argTypes: {
-    variant: {
-      control: "select",
-      options: ["primary", "secondary", "ghost", "danger"],
+    disabled: {
+      control: "boolean",
     },
     size: {
       control: "select",
       options: ["sm", "md", "lg"],
     },
-    disabled: {
-      control: "boolean",
+    variant: {
+      control: "select",
+      options: ["primary", "secondary", "ghost", "danger"],
     },
   },
+  component: Button,
+  parameters: {
+    layout: "centered",
+  },
+  tags: ["autodocs"],
+  title: "Components/Button",
 } satisfies Meta<typeof Button>;
 
 export default meta;
@@ -57,7 +57,7 @@ export const Danger: Story = {
 export const Disabled: Story = {
   args: {
     children: "Disabled Button",
-    variant: "primary",
     disabled: true,
+    variant: "primary",
   },
 };

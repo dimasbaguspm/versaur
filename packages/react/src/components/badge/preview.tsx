@@ -1,55 +1,50 @@
 import { Badge } from "./badge";
 import { Icon } from "../icon";
-import {
-  CheckCircleIcon,
-  AlertCircleIcon,
-  ZapIcon,
-} from "@versaur/icons";
+import { AlertCircleIcon, CheckCircleIcon, ZapIcon } from "@versaur/icons";
 
 export const badgeProps = [
   {
-    name: "variant",
-    type: "BadgeVariant",
     default: "primary",
     description:
       "Visual style variant: primary, secondary, success, danger, warning, info, outline, accent-1, accent-2, or accent-3",
+    name: "variant",
+    type: "BadgeVariant",
   },
   {
-    name: "size",
-    type: "BadgeSize",
     default: "medium",
     description: "Size of the badge: small or medium",
+    name: "size",
+    type: "BadgeSize",
   },
   {
+    default: "rounded",
+    description: "Shape of the badge: rounded (medium border-radius) or pill (full rounded)",
     name: "shape",
     type: "BadgeShape",
-    default: "rounded",
-    description:
-      "Shape of the badge: rounded (medium border-radius) or pill (full rounded)",
   },
   {
-    name: "iconLeft",
-    type: "ReactNode",
     default: "undefined",
     description: "Icon to display on the left side of the badge",
+    name: "iconLeft",
+    type: "ReactNode",
   },
   {
-    name: "iconRight",
-    type: "ReactNode",
     default: "undefined",
     description: "Icon to display on the right side of the badge",
+    name: "iconRight",
+    type: "ReactNode",
   },
   {
-    name: "children",
     default: "",
-    type: "ReactNode",
     description: "Badge content (text, icons, or mixed content)",
+    name: "children",
+    type: "ReactNode",
   },
 ];
 
 function VariantsSection() {
   return (
-    <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
       <Badge variant="primary">Primary</Badge>
       <Badge variant="secondary">Secondary</Badge>
       <Badge variant="success">Success</Badge>
@@ -68,10 +63,10 @@ function SizesSection() {
   return (
     <div
       style={{
-        display: "flex",
-        gap: "0.5rem",
-        flexWrap: "wrap",
         alignItems: "center",
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "0.5rem",
       }}
     >
       <Badge size="small">Small</Badge>
@@ -82,7 +77,7 @@ function SizesSection() {
 
 function ShapesSection() {
   return (
-    <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
       <Badge shape="rounded">Rounded</Badge>
       <Badge shape="pill">Pill</Badge>
     </div>
@@ -91,17 +86,11 @@ function ShapesSection() {
 
 function IconsSection() {
   return (
-    <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
-      <Badge
-        variant="success"
-        iconLeft={<Icon as={CheckCircleIcon} color="inherit" />}
-      >
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+      <Badge variant="success" iconLeft={<Icon as={CheckCircleIcon} color="inherit" />}>
         Complete
       </Badge>
-      <Badge
-        variant="warning"
-        iconRight={<Icon as={AlertCircleIcon} color="inherit" />}
-      >
+      <Badge variant="warning" iconRight={<Icon as={AlertCircleIcon} color="inherit" />}>
         Warning
       </Badge>
       <Badge
@@ -117,9 +106,6 @@ function IconsSection() {
 
 export const badgeSections = [
   {
-    key: "variants",
-    title: "Variants",
-    preview: VariantsSection,
     code: `<Badge variant="primary">Primary</Badge>
 <Badge variant="secondary">Secondary</Badge>
 <Badge variant="success">Success</Badge>
@@ -130,28 +116,28 @@ export const badgeSections = [
 <Badge variant="accent-1">Accent 1</Badge>
 <Badge variant="accent-2">Accent 2</Badge>
 <Badge variant="accent-3">Accent 3</Badge>`,
+    key: "variants",
     language: "tsx",
+    preview: VariantsSection,
+    title: "Variants",
   },
   {
-    key: "sizes",
-    title: "Sizes",
-    preview: SizesSection,
     code: `<Badge size="small">Small</Badge>
 <Badge size="medium">Medium</Badge>`,
+    key: "sizes",
     language: "tsx",
+    preview: SizesSection,
+    title: "Sizes",
   },
   {
-    key: "shapes",
-    title: "Shapes",
-    preview: ShapesSection,
     code: `<Badge shape="rounded">Rounded</Badge>
 <Badge shape="pill">Pill</Badge>`,
+    key: "shapes",
     language: "tsx",
+    preview: ShapesSection,
+    title: "Shapes",
   },
   {
-    key: "icons",
-    title: "With Icons",
-    preview: IconsSection,
     code: `import { Icon } from "@versaur/react";
 import { CheckCircleIcon, AlertCircleIcon, ZapIcon } from "@versaur/icons";
 
@@ -176,7 +162,10 @@ import { CheckCircleIcon, AlertCircleIcon, ZapIcon } from "@versaur/icons";
 >
   Zapped
 </Badge>`,
+    key: "icons",
     language: "tsx",
+    preview: IconsSection,
+    title: "With Icons",
   },
 ];
 
@@ -184,10 +173,7 @@ export function BadgePreview() {
   return (
     <div>
       <h2>Badge Component</h2>
-      <p>
-        Display labels, tags, or status indicators with customizable style,
-        size, and shape.
-      </p>
+      <p>Display labels, tags, or status indicators with customizable style, size, and shape.</p>
     </div>
   );
 }

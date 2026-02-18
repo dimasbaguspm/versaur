@@ -23,8 +23,7 @@ function BasicDialogPreview() {
         <div style={{ padding: "1.5rem" }}>
           <h2>Hello Dialog</h2>
           <p>
-            This is a controlled Dialog. Close it with ESC, backdrop click, or
-            the button below.
+            This is a controlled Dialog. Close it with ESC, backdrop click, or the button below.
           </p>
           <button onClick={() => setIsOpen(false)}>Close Dialog</button>
         </div>
@@ -40,10 +39,7 @@ function MultipleDialogsPreview() {
   return (
     <div>
       <button onClick={() => setDialog1Open(true)}>Open Dialog 1</button>
-      <button
-        onClick={() => setDialog2Open(true)}
-        style={{ marginLeft: "0.5rem" }}
-      >
+      <button onClick={() => setDialog2Open(true)} style={{ marginLeft: "0.5rem" }}>
         Open Dialog 2
       </button>
 
@@ -66,9 +62,6 @@ function MultipleDialogsPreview() {
 
 export const DialogSections: DialogSection[] = [
   {
-    key: "basic",
-    title: "Basic Dialog",
-    preview: BasicDialogPreview,
     code: `import { Dialog } from '@versaur/react';
 import { useState } from 'react';
 
@@ -93,12 +86,12 @@ export function MyDialog() {
     </div>
   );
 }`,
+    key: "basic",
     language: "typescript",
+    preview: BasicDialogPreview,
+    title: "Basic Dialog",
   },
   {
-    key: "multiple",
-    title: "Multiple Dialogs",
-    preview: MultipleDialogsPreview,
     code: `import { Dialog } from '@versaur/react';
 import { useState } from 'react';
 
@@ -131,40 +124,43 @@ export function MultipleDialogs() {
     </div>
   );
 }`,
+    key: "multiple",
     language: "typescript",
+    preview: MultipleDialogsPreview,
+    title: "Multiple Dialogs",
   },
 ];
 
 export const dialogProps = [
   {
-    name: "id",
-    type: "string",
     default: "required",
     description: "Unique identifier for the dialog",
+    name: "id",
+    type: "string",
   },
   {
-    name: "isOpen",
-    type: "boolean",
     default: "required",
     description: "Controlled open state - syncs with native dialog element",
+    name: "isOpen",
+    type: "boolean",
   },
   {
-    name: "onOpenChange",
-    type: "(isOpen: boolean) => void",
     default: "optional",
     description: "Callback when dialog closes (ESC key, backdrop click)",
+    name: "onOpenChange",
+    type: "(isOpen: boolean) => void",
   },
   {
-    name: "dialogProps",
-    type: "React.DialogHTMLAttributes<HTMLDialogElement>",
     default: "optional",
     description: "Additional HTML attributes for the dialog element",
+    name: "dialogProps",
+    type: "React.DialogHTMLAttributes<HTMLDialogElement>",
   },
   {
-    name: "children",
-    type: "React.ReactNode",
     default: "required",
     description: "Dialog content",
+    name: "children",
+    type: "React.ReactNode",
   },
 ];
 

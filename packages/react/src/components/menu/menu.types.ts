@@ -1,8 +1,8 @@
 import type {
-  HTMLAttributes,
-  ReactNode,
-  MouseEvent,
   ForwardRefExoticComponent,
+  HTMLAttributes,
+  MouseEvent,
+  ReactNode,
   RefAttributes,
 } from "react";
 
@@ -45,10 +45,7 @@ export interface MenuGetTriggerPropsOptions {
 /**
  * Menu Root Props
  */
-export interface MenuProps extends Omit<
-  HTMLAttributes<HTMLDivElement>,
-  "onChange"
-> {
+export interface MenuProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
   /**
    * Unique identifier for the menu (used with Menu.close())
    */
@@ -103,10 +100,7 @@ export interface MenuProps extends Omit<
 /**
  * Menu Item Props
  */
-export interface MenuItemProps extends Omit<
-  HTMLAttributes<HTMLButtonElement>,
-  "onChange"
-> {
+export interface MenuItemProps extends Omit<HTMLAttributes<HTMLButtonElement>, "onChange"> {
   /**
    * Unique identifier for this menu item
    * Used to determine active state when Menu has value/onChange
@@ -147,9 +141,7 @@ export interface MenuStatic {
   /**
    * Menu.Item component
    */
-  Item: ForwardRefExoticComponent<
-    MenuItemProps & RefAttributes<HTMLButtonElement>
-  >;
+  Item: ForwardRefExoticComponent<MenuItemProps & RefAttributes<HTMLButtonElement>>;
 
   /**
    * Close a menu programmatically

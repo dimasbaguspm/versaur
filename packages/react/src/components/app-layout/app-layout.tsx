@@ -2,9 +2,9 @@ import { forwardRef } from "react";
 import { appLayoutStyles } from "@versaur/core";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type {
-  AppLayoutRootProps,
-  AppLayoutRegionProps,
   AppLayoutMainProps,
+  AppLayoutRegionProps,
+  AppLayoutRootProps,
 } from "./app-layout.types";
 
 const AppLayoutRoot = forwardRef<HTMLDivElement, AppLayoutRootProps>(
@@ -21,19 +21,15 @@ const AppLayoutRoot = forwardRef<HTMLDivElement, AppLayoutRootProps>(
     ref,
   ) => {
     const attrs = useDataAttrs({
-      variant,
+      "show-bottom": showBottom,
       "show-header": showHeader,
       "show-side-left": showSideLeft,
       "show-side-right": showSideRight,
-      "show-bottom": showBottom,
+      variant,
     });
 
     return (
-      <div
-        ref={ref}
-        className={`${appLayoutStyles["app-layout"]} ${className}`.trim()}
-        {...attrs}
-      >
+      <div ref={ref} className={`${appLayoutStyles["app-layout"]} ${className}`.trim()} {...attrs}>
         {children}
       </div>
     );
@@ -44,10 +40,7 @@ AppLayoutRoot.displayName = "AppLayout";
 
 const AppLayoutHeader = forwardRef<HTMLDivElement, AppLayoutRegionProps>(
   ({ className = "", children }, ref) => (
-    <header
-      ref={ref}
-      className={`${appLayoutStyles["app-layout-header"]} ${className}`.trim()}
-    >
+    <header ref={ref} className={`${appLayoutStyles["app-layout-header"]} ${className}`.trim()}>
       {children}
     </header>
   ),
@@ -77,10 +70,7 @@ AppLayoutMain.displayName = "AppLayout.Main";
 
 const AppLayoutSideLeft = forwardRef<HTMLDivElement, AppLayoutRegionProps>(
   ({ className = "", children }, ref) => (
-    <aside
-      ref={ref}
-      className={`${appLayoutStyles["app-layout-side-left"]} ${className}`.trim()}
-    >
+    <aside ref={ref} className={`${appLayoutStyles["app-layout-side-left"]} ${className}`.trim()}>
       {children}
     </aside>
   ),
@@ -90,10 +80,7 @@ AppLayoutSideLeft.displayName = "AppLayout.SideLeft";
 
 const AppLayoutSideRight = forwardRef<HTMLDivElement, AppLayoutRegionProps>(
   ({ className = "", children }, ref) => (
-    <aside
-      ref={ref}
-      className={`${appLayoutStyles["app-layout-side-right"]} ${className}`.trim()}
-    >
+    <aside ref={ref} className={`${appLayoutStyles["app-layout-side-right"]} ${className}`.trim()}>
       {children}
     </aside>
   ),
@@ -103,10 +90,7 @@ AppLayoutSideRight.displayName = "AppLayout.SideRight";
 
 const AppLayoutBottom = forwardRef<HTMLDivElement, AppLayoutRegionProps>(
   ({ className = "", children }, ref) => (
-    <footer
-      ref={ref}
-      className={`${appLayoutStyles["app-layout-bottom"]} ${className}`.trim()}
-    >
+    <footer ref={ref} className={`${appLayoutStyles["app-layout-bottom"]} ${className}`.trim()}>
       {children}
     </footer>
   ),
@@ -115,9 +99,9 @@ const AppLayoutBottom = forwardRef<HTMLDivElement, AppLayoutRegionProps>(
 AppLayoutBottom.displayName = "AppLayout.Bottom";
 
 export const AppLayout = Object.assign(AppLayoutRoot, {
+  Bottom: AppLayoutBottom,
   Header: AppLayoutHeader,
   Main: AppLayoutMain,
   SideLeft: AppLayoutSideLeft,
   SideRight: AppLayoutSideRight,
-  Bottom: AppLayoutBottom,
 });

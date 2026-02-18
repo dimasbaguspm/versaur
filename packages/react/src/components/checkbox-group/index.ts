@@ -1,8 +1,5 @@
 import type { CheckboxGroup as CheckboxGroupCore } from "@versaur/core";
-import type {
-  CheckboxGroupRootProps,
-  CheckboxGroupOptionProps,
-} from "./checkbox-group.types";
+import type { CheckboxGroupOptionProps, CheckboxGroupRootProps } from "./checkbox-group.types";
 import { CheckboxGroup } from "./checkbox-group";
 
 export type { CheckboxGroupRootProps, CheckboxGroupOptionProps };

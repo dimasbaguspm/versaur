@@ -1,12 +1,12 @@
-import { createContext, useContext, forwardRef, useId } from "react";
+import { createContext, forwardRef, useContext, useId } from "react";
 import { chipSingleInputStyles } from "@versaur/core";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import { Label } from "../label";
 import { HelperText } from "../helper-text";
 import { ErrorText } from "../error-text";
 import type {
-  ChipSingleInputRootProps,
   ChipSingleInputOptionProps,
+  ChipSingleInputRootProps,
 } from "./chip-single-input.types";
 
 /**
@@ -19,16 +19,12 @@ interface ChipSingleInputContextType {
   disabled?: boolean;
 }
 
-const ChipSingleInputContext = createContext<
-  ChipSingleInputContextType | undefined
->(undefined);
+const ChipSingleInputContext = createContext<ChipSingleInputContextType | undefined>(undefined);
 
 function useChipSingleInputContext() {
   const context = useContext(ChipSingleInputContext);
   if (!context) {
-    throw new Error(
-      "ChipSingleInput.Option must be used within ChipSingleInput",
-    );
+    throw new Error("ChipSingleInput.Option must be used within ChipSingleInput");
   }
   return context;
 }
@@ -55,10 +51,7 @@ function useChipSingleInputContext() {
  * </ChipSingleInput>
  * ```
  */
-const ChipSingleInputRoot = forwardRef<
-  HTMLDivElement,
-  ChipSingleInputRootProps
->(
+const ChipSingleInputRoot = forwardRef<HTMLDivElement, ChipSingleInputRootProps>(
   (
     {
       value,
@@ -89,16 +82,11 @@ const ChipSingleInputRoot = forwardRef<
     };
 
     const dataAttrs = useDataAttrs({
-      invalid: !!error,
+      invalid: Boolean(error),
     });
 
     return (
-      <div
-        ref={ref}
-        className={chipSingleInputStyles.field}
-        {...dataAttrs}
-        {...rest}
-      >
+      <div ref={ref} className={chipSingleInputStyles.field} {...dataAttrs} {...rest}>
         {label && (
           <Label required={required} disabled={disabled}>
             {label}
@@ -107,10 +95,10 @@ const ChipSingleInputRoot = forwardRef<
 
         <ChipSingleInputContext.Provider
           value={{
-            value,
-            onChange: handleChange,
-            name,
             disabled,
+            name,
+            onChange: handleChange,
+            value,
           }}
         >
           <div
@@ -144,40 +132,39 @@ ChipSingleInputRoot.displayName = "ChipSingleInput";
  * <ChipSingleInput.Option value="small">Small</ChipSingleInput.Option>
  * ```
  */
-const ChipSingleInputOption = forwardRef<
-  HTMLButtonElement,
-  ChipSingleInputOptionProps
->(({ value, children, disabled: optionDisabled, ...rest }, ref) => {
-  const context = useChipSingleInputContext();
-  const isSelected = context.value === value;
-  const isDisabled = context.disabled || optionDisabled;
+const ChipSingleInputOption = forwardRef<HTMLButtonElement, ChipSingleInputOptionProps>(
+  ({ value, children, disabled: optionDisabled, ...rest }, ref) => {
+    const context = useChipSingleInputContext();
+    const isSelected = context.value === value;
+    const isDisabled = context.disabled || optionDisabled;
 
-  const handleClick = () => {
-    if (!isDisabled && context.onChange) {
-      context.onChange(value);
-    }
-  };
+    const handleClick = () => {
+      if (!isDisabled && context.onChange) {
+        context.onChange(value);
+      }
+    };
 
-  const dataAttrs = useDataAttrs({
-    selected: isSelected,
-    disabled: isDisabled,
-  });
+    const dataAttrs = useDataAttrs({
+      disabled: isDisabled,
+      selected: isSelected,
+    });
 
-  return (
-    <button
-      ref={ref}
-      type="button"
-      className={chipSingleInputStyles.option}
-      onClick={handleClick}
-      disabled={isDisabled}
-      aria-pressed={isSelected}
-      {...dataAttrs}
-      {...rest}
-    >
-      {children}
-    </button>
-  );
-});
+    return (
+      <button
+        ref={ref}
+        type="button"
+        className={chipSingleInputStyles.option}
+        onClick={handleClick}
+        disabled={isDisabled}
+        aria-pressed={isSelected}
+        {...dataAttrs}
+        {...rest}
+      >
+        {children}
+      </button>
+    );
+  },
+);
 
 ChipSingleInputOption.displayName = "ChipSingleInput.Option";
 

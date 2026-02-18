@@ -14,20 +14,11 @@
   --_border: var(--vers-comp-checkbox-border, var(--color-border));
   --_bg: var(--vers-comp-checkbox-bg, transparent);
   --_checked-bg: var(--vers-comp-checkbox-checked-bg, var(--color-primary));
-  --_checked-border: var(
-    --vers-comp-checkbox-checked-border,
-    var(--color-primary)
-  );
-  --_checkmark-color: var(
-    --vers-comp-checkbox-checkmark-color,
-    var(--color-white)
-  );
+  --_checked-border: var(--vers-comp-checkbox-checked-border, var(--color-primary));
+  --_checkmark-color: var(--vers-comp-checkbox-checkmark-color, var(--color-white));
 
   /* Focus ring */
-  --_focus-ring-color: var(
-    --vers-comp-checkbox-focus-ring-color,
-    var(--color-primary)
-  );
+  --_focus-ring-color: var(--vers-comp-checkbox-focus-ring-color, var(--color-primary));
 
   /* Layout */
   display: inline-flex;

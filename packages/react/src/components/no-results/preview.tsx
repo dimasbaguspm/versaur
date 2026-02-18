@@ -34,53 +34,53 @@ function SearchNoResultsWithActionPreview() {
 
 export const noResultsSections: NoResultsSection[] = [
   {
-    key: "search-no-results",
-    title: "Search No Results",
-    preview: SearchNoResultsPreview,
     code: `<NoResults
   icon={SearchXIcon}
   title="No results found"
 />`,
+    key: "search-no-results",
     language: "tsx",
+    preview: SearchNoResultsPreview,
+    title: "Search No Results",
   },
   {
-    key: "search-with-action",
-    title: "Search with Action",
-    preview: SearchNoResultsWithActionPreview,
     code: `<NoResults
   icon={SearchXIcon}
   title="No results found"
   subtitle="Try adjusting your search terms or filters."
   action={<Button variant="primary">Clear Search</Button>}
 />`,
+    key: "search-with-action",
     language: "tsx",
+    preview: SearchNoResultsWithActionPreview,
+    title: "Search with Action",
   },
 ];
 
 export const noResultsProps = [
   {
-    name: "icon",
-    type: "ComponentType<SVGProps<SVGSVGElement>>",
     default: "—",
     description: "Icon component to display. Required.",
+    name: "icon",
+    type: "ComponentType<SVGProps<SVGSVGElement>>",
   },
   {
-    name: "title",
-    type: "string",
     default: "—",
     description: "Main heading text for the empty state. Required.",
+    name: "title",
+    type: "string",
   },
   {
-    name: "subtitle",
-    type: "string | ReactNode",
     default: "undefined",
     description: "Secondary descriptive text. Optional.",
+    name: "subtitle",
+    type: "string | ReactNode",
   },
   {
-    name: "action",
-    type: "ReactNode",
     default: "undefined",
     description: "Action element to render (typically a Button). Optional.",
+    name: "action",
+    type: "ReactNode",
   },
 ];
 

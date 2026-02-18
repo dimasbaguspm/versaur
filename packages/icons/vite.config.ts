@@ -3,7 +3,6 @@ import svgr from "vite-plugin-svgr";
 import dts from "vite-plugin-dts";
 
 export default defineConfig({
-  plugins: [svgr(), dts({ insertTypesEntry: true })],
   build: {
     lib: {
       entry: "./src/index.ts",
@@ -19,4 +18,5 @@ export default defineConfig({
       },
     },
   },
+  plugins: [svgr(), dts({ insertTypesEntry: true })],
 });

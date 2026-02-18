@@ -23,9 +23,7 @@ function BasicPreview() {
     >
       <RadioGroup.Option value="basic">Basic Plan - $10/month</RadioGroup.Option>
       <RadioGroup.Option value="pro">Pro Plan - $25/month</RadioGroup.Option>
-      <RadioGroup.Option value="enterprise">
-        Enterprise - Custom pricing
-      </RadioGroup.Option>
+      <RadioGroup.Option value="enterprise">Enterprise - Custom pricing</RadioGroup.Option>
     </RadioGroup>
   );
 }
@@ -76,13 +74,7 @@ function StatesPreview() {
         <RadioGroup.Option value="option2">Option 2</RadioGroup.Option>
       </RadioGroup>
 
-      <RadioGroup
-        name="disabled-demo"
-        value={value}
-        onChange={setValue}
-        label="Disabled"
-        disabled
-      >
+      <RadioGroup name="disabled-demo" value={value} onChange={setValue} label="Disabled" disabled>
         <RadioGroup.Option value="option1">Option 1</RadioGroup.Option>
         <RadioGroup.Option value="option2">Option 2</RadioGroup.Option>
       </RadioGroup>
@@ -92,9 +84,6 @@ function StatesPreview() {
 
 export const radioGroupSections: RadioGroupSection[] = [
   {
-    key: "basic",
-    title: "Basic Usage",
-    preview: BasicPreview,
     code: `const [plan, setPlan] = useState("basic");
 
 <RadioGroup
@@ -107,22 +96,22 @@ export const radioGroupSections: RadioGroupSection[] = [
   <RadioGroup.Option value="basic">Basic Plan</RadioGroup.Option>
   <RadioGroup.Option value="pro">Pro Plan</RadioGroup.Option>
 </RadioGroup>`,
+    key: "basic",
     language: "tsx",
+    preview: BasicPreview,
+    title: "Basic Usage",
   },
   {
-    key: "direction",
-    title: "Direction",
-    preview: DirectionPreview,
     code: `<RadioGroup direction="row">
   <RadioGroup.Option value="1">Option 1</RadioGroup.Option>
   <RadioGroup.Option value="2">Option 2</RadioGroup.Option>
 </RadioGroup>`,
+    key: "direction",
     language: "tsx",
+    preview: DirectionPreview,
+    title: "Direction",
   },
   {
-    key: "states",
-    title: "States",
-    preview: StatesPreview,
     code: `<RadioGroup error="Error message">
   {/* options */}
 </RadioGroup>
@@ -130,6 +119,9 @@ export const radioGroupSections: RadioGroupSection[] = [
 <RadioGroup disabled>
   {/* options */}
 </RadioGroup>`,
+    key: "states",
     language: "tsx",
+    preview: StatesPreview,
+    title: "States",
   },
 ];

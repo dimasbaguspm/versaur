@@ -19,9 +19,9 @@ export const Hr = forwardRef<HTMLHRElement, HrProps>(
   ({ orientation, variant, size, spacing, ...rest }, ref) => {
     const dataAttrs = useDataAttrs({
       orientation,
-      variant,
       size,
       spacing,
+      variant,
     });
 
     return (

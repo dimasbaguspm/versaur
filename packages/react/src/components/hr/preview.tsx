@@ -55,10 +55,10 @@ function VerticalPreview() {
   return (
     <div
       style={{
-        display: "flex",
         alignItems: "center",
-        height: "2rem",
+        display: "flex",
         gap: 0,
+        height: "2rem",
       }}
     >
       <span>Left</span>
@@ -87,45 +87,42 @@ function CustomizationPreview() {
 
 export const hrSections: HrSection[] = [
   {
-    key: "default",
-    title: "Default",
-    preview: DefaultPreview,
     code: `<Hr />`,
+    key: "default",
     language: "tsx",
+    preview: DefaultPreview,
+    title: "Default",
   },
   {
-    key: "variants",
-    title: "Variants",
-    preview: VariantsPreview,
     code: `<Hr variant="solid" />
 <Hr variant="dashed" />
 <Hr variant="dotted" />`,
+    key: "variants",
     language: "tsx",
+    preview: VariantsPreview,
+    title: "Variants",
   },
   {
-    key: "sizes",
-    title: "Sizes",
-    preview: SizesPreview,
     code: `<Hr size="sm" />
 <Hr size="md" />
 <Hr size="lg" />`,
+    key: "sizes",
     language: "tsx",
+    preview: SizesPreview,
+    title: "Sizes",
   },
   {
-    key: "spacing",
-    title: "Spacing",
-    preview: SpacingPreview,
     code: `<Hr spacing="none" />
 <Hr spacing="sm" />
 <Hr spacing="md" />
 <Hr spacing="lg" />
 <Hr spacing="xl" />`,
+    key: "spacing",
     language: "tsx",
+    preview: SpacingPreview,
+    title: "Spacing",
   },
   {
-    key: "vertical",
-    title: "Vertical",
-    preview: VerticalPreview,
     code: `<div style={{ display: "flex", alignItems: "center", height: "2rem" }}>
   <span>Left</span>
   <Hr orientation="vertical" spacing="md" />
@@ -133,45 +130,48 @@ export const hrSections: HrSection[] = [
   <Hr orientation="vertical" spacing="md" />
   <span>Right</span>
 </div>`,
+    key: "vertical",
     language: "tsx",
+    preview: VerticalPreview,
+    title: "Vertical",
   },
   {
-    key: "customization",
-    title: "CSS Customization",
-    preview: CustomizationPreview,
     code: `/* Override component tokens to customize the divider */
 .my-custom-divider {
   --vers-comp-hr-color: #c96a50;
   --vers-comp-hr-width: 2px;
 }`,
+    key: "customization",
     language: "css",
+    preview: CustomizationPreview,
+    title: "CSS Customization",
   },
 ];
 
 export const hrProps = [
   {
-    name: "orientation",
-    type: "'horizontal' | 'vertical'",
     default: "'horizontal'",
     description: "Orientation of the divider",
+    name: "orientation",
+    type: "'horizontal' | 'vertical'",
   },
   {
-    name: "variant",
-    type: "'solid' | 'dashed' | 'dotted'",
     default: "'solid'",
     description: "Visual variant (border style) of the divider",
+    name: "variant",
+    type: "'solid' | 'dashed' | 'dotted'",
   },
   {
-    name: "size",
-    type: "'sm' | 'md' | 'lg'",
     default: "'sm'",
     description: "Thickness of the divider line (1px / 2px / 3px)",
+    name: "size",
+    type: "'sm' | 'md' | 'lg'",
   },
   {
-    name: "spacing",
-    type: "'none' | 'sm' | 'md' | 'lg' | 'xl'",
     default: "'md'",
     description: "Spacing (margin) around the divider",
+    name: "spacing",
+    type: "'none' | 'sm' | 'md' | 'lg' | 'xl'",
   },
 ];
 

@@ -2,12 +2,7 @@
 
 import React from "react";
 import { Nav } from ".";
-import {
-  HomeIcon,
-  FileCodeIcon,
-  SettingsIcon,
-  ChevronDownIcon,
-} from "@versaur/icons";
+import { ChevronDownIcon, FileCodeIcon, HomeIcon, SettingsIcon } from "@versaur/icons";
 
 /**
  * Example 1: Horizontal Nav with controlled value/onChange (recommended)
@@ -132,9 +127,6 @@ function CompactNav() {
 
 export const navSections = [
   {
-    key: "horizontal",
-    title: "Horizontal Navigation",
-    preview: HorizontalNav,
     code: `const [active, setActive] = useState('home');
 
 <Nav direction="horizontal" gap="sm" value={active} onChange={setActive}>
@@ -148,12 +140,12 @@ export const navSections = [
     Settings
   </Nav.Item>
 </Nav>`,
+    key: "horizontal",
     language: "tsx",
+    preview: HorizontalNav,
+    title: "Horizontal Navigation",
   },
   {
-    key: "vertical",
-    title: "Vertical Navigation",
-    preview: VerticalNav,
     code: `const [active, setActive] = useState('dashboard');
 
 <Nav direction="vertical" gap="md" value={active} onChange={setActive}>
@@ -167,12 +159,12 @@ export const navSections = [
     Settings
   </Nav.Item>
 </Nav>`,
+    key: "vertical",
     language: "tsx",
+    preview: VerticalNav,
+    title: "Vertical Navigation",
   },
   {
-    key: "right-icon",
-    title: "With Right Icon",
-    preview: NavWithRightIcon,
     code: `const [active, setActive] = useState('products');
 
 <Nav direction="horizontal" gap="sm" value={active} onChange={setActive}>
@@ -181,12 +173,12 @@ export const navSections = [
     More
   </Nav.Item>
 </Nav>`,
+    key: "right-icon",
     language: "tsx",
+    preview: NavWithRightIcon,
+    title: "With Right Icon",
   },
   {
-    key: "links",
-    title: "As Anchor Links",
-    preview: NavAsLinks,
     code: `<Nav direction="horizontal" gap="sm">
   <Nav.Item as="a" href="/" active leftIcon={HomeIcon}>
     Home
@@ -198,12 +190,12 @@ export const navSections = [
     Settings
   </Nav.Item>
 </Nav>`,
+    key: "links",
     language: "tsx",
+    preview: NavAsLinks,
+    title: "As Anchor Links",
   },
   {
-    key: "states",
-    title: "Disabled and Loading States",
-    preview: NavWithStates,
     code: `const [loading, setLoading] = useState(false);
 
 <Nav direction="horizontal" gap="sm">
@@ -217,12 +209,12 @@ export const navSections = [
     {loading ? "Saving..." : "Settings"}
   </Nav.Item>
 </Nav>`,
+    key: "states",
     language: "tsx",
+    preview: NavWithStates,
+    title: "Disabled and Loading States",
   },
   {
-    key: "compact",
-    title: "Compact Spacing",
-    preview: CompactNav,
     code: `const [active, setActive] = useState('home');
 
 <Nav direction="horizontal" gap="xs" value={active} onChange={setActive}>
@@ -230,7 +222,10 @@ export const navSections = [
   <Nav.Item value="docs">Docs</Nav.Item>
   <Nav.Item value="api">API</Nav.Item>
 </Nav>`,
+    key: "compact",
     language: "tsx",
+    preview: CompactNav,
+    title: "Compact Spacing",
   },
 ];
 
@@ -254,81 +249,79 @@ export function MyNav() {
 
 export const navProps = [
   {
-    name: "direction",
-    type: '"horizontal" | "vertical"',
     default: '"horizontal"',
     description: "Layout direction for the nav container",
+    name: "direction",
+    type: '"horizontal" | "vertical"',
   },
   {
-    name: "gap",
-    type: '"xs" | "sm" | "md" | "lg"',
     default: "undefined",
     description: "Space between nav items using Versaur spacing scale",
+    name: "gap",
+    type: '"xs" | "sm" | "md" | "lg"',
   },
   {
-    name: "value",
-    type: "string | number",
     default: "undefined",
     description: "Controlled value - which nav item is currently active",
+    name: "value",
+    type: "string | number",
   },
   {
+    default: "undefined",
+    description: "Callback when a nav item is selected (enables controlled mode)",
     name: "onChange",
     type: "(value: string | number) => void",
-    default: "undefined",
-    description:
-      "Callback when a nav item is selected (enables controlled mode)",
   },
   {
-    name: "children",
-    type: "ReactNode",
     default: "undefined",
     description: "Nav.Item elements or other content",
+    name: "children",
+    type: "ReactNode",
   },
 ];
 
 export const navItemProps = [
   {
+    default: '"button"',
+    description: 'Render as different element: "a", Link component, or custom component',
     name: "as",
     type: "ElementType",
-    default: '"button"',
-    description:
-      'Render as different element: "a", Link component, or custom component',
   },
   {
-    name: "value",
-    type: "string | number",
     default: "undefined",
     description: "Unique identifier for this item in controlled Nav mode",
+    name: "value",
+    type: "string | number",
   },
   {
-    name: "active",
-    type: "boolean",
     default: "false",
     description:
       "Whether this item is active (uncontrolled mode only, ignored if Nav has value/onChange)",
+    name: "active",
+    type: "boolean",
   },
   {
-    name: "leftIcon",
-    type: "ComponentType<SVGProps>",
     default: "undefined",
     description: "Icon to render on the left side of text",
+    name: "leftIcon",
+    type: "ComponentType<SVGProps>",
   },
   {
-    name: "rightIcon",
-    type: "ComponentType<SVGProps>",
     default: "undefined",
     description: "Icon to render on the right side of text",
+    name: "rightIcon",
+    type: "ComponentType<SVGProps>",
   },
   {
-    name: "loading",
-    type: "boolean",
     default: "false",
     description: "Loading state - disables interaction with visual indicator",
+    name: "loading",
+    type: "boolean",
   },
   {
-    name: "disabled",
-    type: "boolean",
     default: "false",
     description: "Disabled state - prevents all interactions",
+    name: "disabled",
+    type: "boolean",
   },
 ];

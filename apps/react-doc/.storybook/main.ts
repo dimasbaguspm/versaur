@@ -5,8 +5,6 @@ import { readdirSync } from "fs";
 import { existsSync } from "fs";
 
 const config: StorybookConfig = {
-  framework: "@storybook/react-vite",
-  stories: ["../src/**/*.stories.ts", "../src/**/*.stories.tsx"],
   addons: [
     "@storybook/addon-onboarding",
     "@storybook/addon-essentials",
@@ -16,6 +14,8 @@ const config: StorybookConfig = {
   docs: {
     autodocs: "tag",
   },
+  framework: "@storybook/react-vite",
+  stories: ["../src/**/*.stories.ts", "../src/**/*.stories.tsx"],
   viteFinal: (config) => {
     // Generate CSS aliases for all components in core
     const cssAliases: Record<string, string> = {};

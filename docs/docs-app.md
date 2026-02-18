@@ -10,10 +10,10 @@ Currently it consumes `@versaur/react`, but the architecture is designed to supp
 
 The app has two separate React apps built in a single Vite build:
 
-| Entry | HTML | Mount point | Purpose |
-|-------|------|-------------|---------|
-| Main docs | `index.html` | `#root` | SPA with routing, navigation, framework switcher |
-| Preview | `preview.html` | `#preview-root` | Isolated iframe renderer for live component demos |
+| Entry     | HTML           | Mount point     | Purpose                                           |
+| --------- | -------------- | --------------- | ------------------------------------------------- |
+| Main docs | `index.html`   | `#root`         | SPA with routing, navigation, framework switcher  |
+| Preview   | `preview.html` | `#preview-root` | Isolated iframe renderer for live component demos |
 
 Configured in `vite.config.ts`:
 
@@ -96,6 +96,7 @@ Maps component name strings (from the URL query param) to React components. Add 
 The `FrameworkSwitcher` component renders tabs for React, Vue (TBA), and Angular (TBA). It lives **outside the iframe** in the parent route.
 
 Framework selection is persisted via:
+
 - `localStorage` (key: `versaur_framework`) for cross-session persistence
 - URL query param (`?framework=react`) for shareability
 - `window.history.replaceState` to update the URL without navigation
@@ -110,7 +111,7 @@ Each doc page wraps component data into a per-framework examples object:
 function makeExamples(section: { code: string; language: string }) {
   return {
     react: { code: section.code, language: section.language },
-    vue: { code: "", language: "vue" },       // placeholder
+    vue: { code: "", language: "vue" }, // placeholder
     angular: { code: "", language: "angular" }, // placeholder
   };
 }

@@ -1,12 +1,12 @@
-import { createContext, useContext, forwardRef, useId } from "react";
+import { createContext, forwardRef, useContext, useId } from "react";
 import { chipMultipleInputStyles } from "@versaur/core";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import { Label } from "../label";
 import { HelperText } from "../helper-text";
 import { ErrorText } from "../error-text";
 import type {
-  ChipMultipleInputRootProps,
   ChipMultipleInputOptionProps,
+  ChipMultipleInputRootProps,
 } from "./chip-multiple-input.types";
 
 /**
@@ -19,16 +19,12 @@ interface ChipMultipleInputContextType {
   disabled?: boolean;
 }
 
-const ChipMultipleInputContext = createContext<
-  ChipMultipleInputContextType | undefined
->(undefined);
+const ChipMultipleInputContext = createContext<ChipMultipleInputContextType | undefined>(undefined);
 
 function useChipMultipleInputContext() {
   const context = useContext(ChipMultipleInputContext);
   if (!context) {
-    throw new Error(
-      "ChipMultipleInput.Option must be used within ChipMultipleInput",
-    );
+    throw new Error("ChipMultipleInput.Option must be used within ChipMultipleInput");
   }
   return context;
 }
@@ -55,10 +51,7 @@ function useChipMultipleInputContext() {
  * </ChipMultipleInput>
  * ```
  */
-const ChipMultipleInputRoot = forwardRef<
-  HTMLDivElement,
-  ChipMultipleInputRootProps
->(
+const ChipMultipleInputRoot = forwardRef<HTMLDivElement, ChipMultipleInputRootProps>(
   (
     {
       value,
@@ -89,16 +82,11 @@ const ChipMultipleInputRoot = forwardRef<
     };
 
     const dataAttrs = useDataAttrs({
-      invalid: !!error,
+      invalid: Boolean(error),
     });
 
     return (
-      <div
-        ref={ref}
-        className={chipMultipleInputStyles.field}
-        {...dataAttrs}
-        {...rest}
-      >
+      <div ref={ref} className={chipMultipleInputStyles.field} {...dataAttrs} {...rest}>
         {label && (
           <Label required={required} disabled={disabled}>
             {label}
@@ -107,10 +95,10 @@ const ChipMultipleInputRoot = forwardRef<
 
         <ChipMultipleInputContext.Provider
           value={{
-            value,
-            onChange: handleChange,
-            name,
             disabled,
+            name,
+            onChange: handleChange,
+            value,
           }}
         >
           <div
@@ -144,43 +132,42 @@ ChipMultipleInputRoot.displayName = "ChipMultipleInput";
  * <ChipMultipleInput.Option value="design">Design</ChipMultipleInput.Option>
  * ```
  */
-const ChipMultipleInputOption = forwardRef<
-  HTMLButtonElement,
-  ChipMultipleInputOptionProps
->(({ value, children, disabled: optionDisabled, ...rest }, ref) => {
-  const context = useChipMultipleInputContext();
-  const isSelected = context.value.includes(value);
-  const isDisabled = context.disabled || optionDisabled;
+const ChipMultipleInputOption = forwardRef<HTMLButtonElement, ChipMultipleInputOptionProps>(
+  ({ value, children, disabled: optionDisabled, ...rest }, ref) => {
+    const context = useChipMultipleInputContext();
+    const isSelected = context.value.includes(value);
+    const isDisabled = context.disabled || optionDisabled;
 
-  const handleClick = () => {
-    if (!isDisabled && context.onChange) {
-      const newValue = isSelected
-        ? context.value.filter((v) => v !== value)
-        : [...context.value, value];
-      context.onChange(newValue);
-    }
-  };
+    const handleClick = () => {
+      if (!isDisabled && context.onChange) {
+        const newValue = isSelected
+          ? context.value.filter((v) => v !== value)
+          : [...context.value, value];
+        context.onChange(newValue);
+      }
+    };
 
-  const dataAttrs = useDataAttrs({
-    selected: isSelected,
-    disabled: isDisabled,
-  });
+    const dataAttrs = useDataAttrs({
+      disabled: isDisabled,
+      selected: isSelected,
+    });
 
-  return (
-    <button
-      ref={ref}
-      type="button"
-      className={chipMultipleInputStyles.option}
-      onClick={handleClick}
-      disabled={isDisabled}
-      aria-pressed={isSelected}
-      {...dataAttrs}
-      {...rest}
-    >
-      {children}
-    </button>
-  );
-});
+    return (
+      <button
+        ref={ref}
+        type="button"
+        className={chipMultipleInputStyles.option}
+        onClick={handleClick}
+        disabled={isDisabled}
+        aria-pressed={isSelected}
+        {...dataAttrs}
+        {...rest}
+      >
+        {children}
+      </button>
+    );
+  },
+);
 
 ChipMultipleInputOption.displayName = "ChipMultipleInput.Option";
 

@@ -3,17 +3,6 @@ import { resolve } from "path";
 import dts from "vite-plugin-dts";
 
 export default defineConfig({
-  plugins: [
-    dts({
-      insertTypesEntry: true,
-      copyDtsFiles: true,
-    }),
-  ],
-  css: {
-    modules: {
-      generateScopedName: "versaur-[name]-[local]",
-    },
-  },
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
@@ -37,4 +26,15 @@ export default defineConfig({
       },
     },
   },
+  css: {
+    modules: {
+      generateScopedName: "versaur-[name]-[local]",
+    },
+  },
+  plugins: [
+    dts({
+      insertTypesEntry: true,
+      copyDtsFiles: true,
+    }),
+  ],
 });

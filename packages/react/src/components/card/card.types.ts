@@ -1,13 +1,10 @@
-import type { ReactNode, HTMLAttributes, ButtonHTMLAttributes } from "react";
-import type { CardSize, CardAlign, CardJustify, CardGap } from "@versaur/core";
+import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
+import type { CardAlign, CardGap, CardJustify, CardSize } from "@versaur/core";
 
 export type CardBorder = "all-rounded" | "vertical" | "horizontal";
 
 /* Card Root Props */
-export interface CardRootProps extends Omit<
-  HTMLAttributes<HTMLDivElement>,
-  "as"
-> {
+export interface CardRootProps extends Omit<HTMLAttributes<HTMLDivElement>, "as"> {
   /** Rendering element: 'div' (default) or 'button' */
   as?: "div" | "button";
   /** Card size variant */

@@ -1,11 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  CheckCircleIcon,
-  AlertCircleIcon,
-  ChevronRightIcon,
-} from "@versaur/icons";
+import { AlertCircleIcon, CheckCircleIcon, ChevronRightIcon } from "@versaur/icons";
 import { Icon } from "../icon";
 import { Menu } from "./index.js";
 import type { ComponentType } from "react";
@@ -19,16 +15,14 @@ function ControlledMenuPreview() {
   return (
     <div
       style={{
+        alignItems: "flex-start",
         display: "flex",
         gap: "2rem",
         justifyContent: "center",
         padding: "2rem 1rem",
-        alignItems: "flex-start",
       }}
     >
-      <button {...Menu.getTriggerProps({ id: "controlled-menu" })}>
-        Actions
-      </button>
+      <button {...Menu.getTriggerProps({ id: "controlled-menu" })}>Actions</button>
       <Menu id="controlled-menu" value={selected} onChange={setSelected}>
         <Menu.Item value="save">Save</Menu.Item>
         <Menu.Item value="export">Export</Menu.Item>
@@ -36,7 +30,7 @@ function ControlledMenuPreview() {
       </Menu>
 
       {selected && (
-        <div style={{ fontSize: "14px", color: "#666" }}>
+        <div style={{ color: "#666", fontSize: "14px" }}>
           Selected: <strong>{selected}</strong>
         </div>
       )}
@@ -53,11 +47,11 @@ function MenuWithClickHandlersPreview() {
   return (
     <div
       style={{
+        alignItems: "flex-start",
         display: "flex",
         gap: "2rem",
         justifyContent: "center",
         padding: "2rem 1rem",
-        alignItems: "flex-start",
       }}
     >
       <button {...Menu.getTriggerProps({ id: "handlers-menu" })}>File</button>
@@ -83,9 +77,7 @@ function MenuWithClickHandlersPreview() {
         <Menu.Item value="save">Save</Menu.Item>
       </Menu>
 
-      {action && (
-        <div style={{ fontSize: "14px", color: "#666" }}>{action}</div>
-      )}
+      {action && <div style={{ color: "#666", fontSize: "14px" }}>{action}</div>}
     </div>
   );
 }
@@ -97,11 +89,11 @@ function MenuWithIconsPreview() {
   return (
     <div
       style={{
+        alignItems: "flex-start",
         display: "flex",
         gap: "2rem",
         justifyContent: "center",
         padding: "2rem 1rem",
-        alignItems: "flex-start",
       }}
     >
       <button {...Menu.getTriggerProps({ id: "icons-menu" })}>Status</button>
@@ -113,10 +105,7 @@ function MenuWithIconsPreview() {
         >
           Complete
         </Menu.Item>
-        <Menu.Item
-          value="warning"
-          leftIcon={<Icon as={AlertCircleIcon} color="inherit" />}
-        >
+        <Menu.Item value="warning" leftIcon={<Icon as={AlertCircleIcon} color="inherit" />}>
           Warning
         </Menu.Item>
       </Menu>
@@ -134,17 +123,15 @@ function PlacementsMenuPreview() {
     <div
       style={{
         display: "grid",
-        gridTemplateColumns: "repeat(2, 1fr)",
         gap: "3rem",
+        gridTemplateColumns: "repeat(2, 1fr)",
         padding: "3rem",
         placeItems: "center",
       }}
     >
       {placements.map((placement) => (
         <div key={placement}>
-          <button {...Menu.getTriggerProps({ id: `menu-${placement}` })}>
-            {placement}
-          </button>
+          <button {...Menu.getTriggerProps({ id: `menu-${placement}` })}>{placement}</button>
           <Menu id={`menu-${placement}`} placement={placement}>
             <Menu.Item value={`${placement}-1`}>Option 1</Menu.Item>
             <Menu.Item value={`${placement}-2`}>Option 2</Menu.Item>
@@ -169,9 +156,7 @@ function ScrollableMenuPreview() {
         padding: "2rem 1rem",
       }}
     >
-      <button {...Menu.getTriggerProps({ id: "scrollable-menu" })}>
-        Long List
-      </button>
+      <button {...Menu.getTriggerProps({ id: "scrollable-menu" })}>Long List</button>
       <Menu id="scrollable-menu" maxHeight={150}>
         {Array.from({ length: 10 }).map((_, i) => (
           <Menu.Item key={i} value={`item-${i}`}>
@@ -197,23 +182,23 @@ function ProgrammaticClosePreview() {
   return (
     <div
       style={{
+        alignItems: "flex-start",
         display: "flex",
         gap: "2rem",
         justifyContent: "center",
         padding: "2rem 1rem",
-        alignItems: "flex-start",
       }}
     >
       <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
         <button
           onMouseEnter={() => Menu.close({ id: "close-menu" })}
           style={{
-            padding: "0.5rem 1rem",
-            fontSize: "12px",
             backgroundColor: "#f5f5f5",
             border: "1px solid #ddd",
             borderRadius: "4px",
             cursor: "pointer",
+            fontSize: "12px",
+            padding: "0.5rem 1rem",
           }}
         >
           Hover me to close the Menu
@@ -233,7 +218,7 @@ function ProgrammaticClosePreview() {
       </div>
 
       {lastAction && (
-        <div style={{ fontSize: "14px", color: "#666" }}>
+        <div style={{ color: "#666", fontSize: "14px" }}>
           Last action: <strong>{lastAction}</strong>
         </div>
       )}
@@ -255,9 +240,6 @@ export interface MenuSection {
 
 export const menuSections: MenuSection[] = [
   {
-    key: "controlled",
-    title: "Controlled Menu",
-    preview: ControlledMenuPreview,
     code: `const [selected, setSelected] = useState<string | number>();
 const triggerProps = Menu.getTriggerProps({ id: "controlled-menu" });
 
@@ -267,12 +249,12 @@ const triggerProps = Menu.getTriggerProps({ id: "controlled-menu" });
   <Menu.Item value="export">Export</Menu.Item>
   <Menu.Item value="share">Share</Menu.Item>
 </Menu>`,
+    key: "controlled",
     language: "tsx",
+    preview: ControlledMenuPreview,
+    title: "Controlled Menu",
   },
   {
-    key: "click-handlers",
-    title: "Menu with Click Handlers",
-    preview: MenuWithClickHandlersPreview,
     code: `const triggerProps = Menu.getTriggerProps({ id: "handlers-menu" });
 
 <button {...triggerProps}>File</button>
@@ -281,12 +263,12 @@ const triggerProps = Menu.getTriggerProps({ id: "controlled-menu" });
   <Menu.Item value="open" onClick={() => console.log('open')}>Open</Menu.Item>
   <Menu.Item value="save">Save</Menu.Item>
 </Menu>`,
+    key: "click-handlers",
     language: "tsx",
+    preview: MenuWithClickHandlersPreview,
+    title: "Menu with Click Handlers",
   },
   {
-    key: "icons",
-    title: "Menu with Icons",
-    preview: MenuWithIconsPreview,
     code: `<button {...Menu.getTriggerProps({ id: "icons-menu" })}>Status</button>
 <Menu id="icons-menu" minWidth={180}>
   <Menu.Item
@@ -303,12 +285,12 @@ const triggerProps = Menu.getTriggerProps({ id: "controlled-menu" });
     Warning
   </Menu.Item>
 </Menu>`,
+    key: "icons",
     language: "tsx",
+    preview: MenuWithIconsPreview,
+    title: "Menu with Icons",
   },
   {
-    key: "placements",
-    title: "Menu Placements",
-    preview: PlacementsMenuPreview,
     code: `<button {...Menu.getTriggerProps({ id: "menu-top" })}>Top</button>
 <Menu id="menu-top" placement="top">
   <Menu.Item value="1">Option 1</Menu.Item>
@@ -332,12 +314,12 @@ const triggerProps = Menu.getTriggerProps({ id: "controlled-menu" });
   <Menu.Item value="1">Option 1</Menu.Item>
   <Menu.Item value="2">Option 2</Menu.Item>
 </Menu>`,
+    key: "placements",
     language: "tsx",
+    preview: PlacementsMenuPreview,
+    title: "Menu Placements",
   },
   {
-    key: "scrollable",
-    title: "Scrollable Menu",
-    preview: ScrollableMenuPreview,
     code: `<button {...Menu.getTriggerProps({ id: "scrollable-menu" })}>Long List</button>
 <Menu id="scrollable-menu" maxHeight={150}>
   {Array.from({ length: 10 }).map((_, i) => (
@@ -346,12 +328,12 @@ const triggerProps = Menu.getTriggerProps({ id: "controlled-menu" });
     </Menu.Item>
   ))}
 </Menu>`,
+    key: "scrollable",
     language: "tsx",
+    preview: ScrollableMenuPreview,
+    title: "Scrollable Menu",
   },
   {
-    key: "programmatic-close",
-    title: "Programmatic Close",
-    preview: ProgrammaticClosePreview,
     code: `<button {...Menu.getTriggerProps({ id: "close-menu" })}>Actions</button>
 <Menu id="close-menu">
   <Menu.Item value="view">View</Menu.Item>
@@ -362,7 +344,10 @@ const triggerProps = Menu.getTriggerProps({ id: "controlled-menu" });
 <button onClick={() => Menu.close({ id: "close-menu" })}>
   Close Menu
 </button>`,
+    key: "programmatic-close",
     language: "tsx",
+    preview: ProgrammaticClosePreview,
+    title: "Programmatic Close",
   },
 ];
 
@@ -371,110 +356,108 @@ const triggerProps = Menu.getTriggerProps({ id: "controlled-menu" });
  */
 export const menuProps = [
   {
-    name: "id",
-    type: "string",
-    required: true,
     description: "Unique identifier for the menu (used with Menu.close())",
-  },
-  {
-    name: "children",
-    type: "ReactNode",
+    name: "id",
     required: true,
+    type: "string",
+  },
+  {
     description: "Menu content (Menu.Item components)",
+    name: "children",
+    required: true,
+    type: "ReactNode",
   },
   {
-    name: "placement",
-    type: "Menu.Placement",
-    required: false,
     defaultValue: '"bottom"',
-    description:
-      "Placement relative to trigger (top, bottom, left, right, or start/end variants)",
+    description: "Placement relative to trigger (top, bottom, left, right, or start/end variants)",
+    name: "placement",
+    required: false,
+    type: "Menu.Placement",
   },
   {
-    name: "maxHeight",
-    type: "number",
-    required: false,
     defaultValue: "400",
-    description:
-      "Maximum height of the menu list in pixels (enables scrolling)",
+    description: "Maximum height of the menu list in pixels (enables scrolling)",
+    name: "maxHeight",
+    required: false,
+    type: "number",
   },
   {
-    name: "minWidth",
-    type: "number",
-    required: false,
     defaultValue: "160",
     description: "Minimum width of the menu list in pixels",
+    name: "minWidth",
+    required: false,
+    type: "number",
   },
   {
-    name: "maxWidth",
-    type: "number",
-    required: false,
     defaultValue: "320",
     description: "Maximum width of the menu list in pixels",
+    name: "maxWidth",
+    required: false,
+    type: "number",
   },
   {
-    name: "gap",
-    type: "number",
-    required: false,
     defaultValue: "8",
     description: "Gap between trigger button and menu in pixels",
+    name: "gap",
+    required: false,
+    type: "number",
   },
   {
-    name: "value",
-    type: "string | number",
-    required: false,
     description: "Controlled value - which menu item is currently selected",
+    name: "value",
+    required: false,
+    type: "string | number",
   },
   {
-    name: "onChange",
-    type: "(value: string | number) => void",
-    required: false,
     description: "Callback when a menu item is selected",
+    name: "onChange",
+    required: false,
+    type: "(value: string | number) => void",
   },
   {
-    name: "Menu.getTriggerProps",
-    type: "(options: { id: string }) => Record<string, string>",
-    required: false,
     description: "Helper for wiring external trigger elements to a menu",
+    name: "Menu.getTriggerProps",
+    required: false,
+    type: "(options: { id: string }) => Record<string, string>",
   },
 ];
 
 export const menuItemProps = [
   {
-    name: "value",
-    type: "string | number",
-    required: false,
     description: "Unique identifier for this item (used in controlled mode)",
+    name: "value",
+    required: false,
+    type: "string | number",
   },
   {
-    name: "children",
-    type: "ReactNode",
-    required: true,
     description: "Item label/content",
+    name: "children",
+    required: true,
+    type: "ReactNode",
   },
   {
-    name: "leftIcon",
-    type: "ReactNode",
-    required: false,
     description: "Optional left icon/content (e.g. Icon component)",
-  },
-  {
-    name: "rightIcon",
+    name: "leftIcon",
+    required: false,
     type: "ReactNode",
-    required: false,
-    description: "Optional right icon/content (e.g. Icon component)",
   },
   {
-    name: "disabled",
-    type: "boolean",
+    description: "Optional right icon/content (e.g. Icon component)",
+    name: "rightIcon",
     required: false,
+    type: "ReactNode",
+  },
+  {
     defaultValue: "false",
     description: "Whether this item is disabled",
+    name: "disabled",
+    required: false,
+    type: "boolean",
   },
   {
-    name: "onClick",
-    type: "(e: React.MouseEvent) => void",
-    required: false,
     description: "Click handler - fired in addition to Menu onChange",
+    name: "onClick",
+    required: false,
+    type: "(e: React.MouseEvent) => void",
   },
 ];

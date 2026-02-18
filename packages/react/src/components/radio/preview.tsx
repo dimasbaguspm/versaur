@@ -104,30 +104,30 @@ function StatesPreview() {
 
 export const radioSections: RadioSection[] = [
   {
-    key: "variants",
-    title: "Variants",
-    preview: VariantsPreview,
     code: `<Radio variant="outline">Outline radio</Radio>
 <Radio variant="filled">Filled radio</Radio>`,
+    key: "variants",
     language: "tsx",
+    preview: VariantsPreview,
+    title: "Variants",
   },
   {
-    key: "sizes",
-    title: "Sizes",
-    preview: SizesPreview,
     code: `<Radio size="small">Small radio</Radio>
 <Radio size="medium">Medium radio</Radio>
 <Radio size="large">Large radio</Radio>`,
+    key: "sizes",
     language: "tsx",
+    preview: SizesPreview,
+    title: "Sizes",
   },
   {
-    key: "states",
-    title: "States",
-    preview: StatesPreview,
     code: `<Radio>Unchecked</Radio>
 <Radio checked>Checked</Radio>
 <Radio disabled>Disabled</Radio>
 <Radio invalid>Invalid</Radio>`,
+    key: "states",
     language: "tsx",
+    preview: StatesPreview,
+    title: "States",
   },
 ];

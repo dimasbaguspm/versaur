@@ -1,9 +1,6 @@
 import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from "react";
 
-export interface CheckboxGroupRootProps extends Omit<
-  HTMLAttributes<HTMLDivElement>,
-  "onChange"
-> {
+export interface CheckboxGroupRootProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
   /**
    * Array of selected checkbox values
    */

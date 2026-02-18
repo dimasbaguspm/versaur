@@ -1,7 +1,7 @@
 import { Menu as MenuRoot } from "./menu";
 import { MenuItem } from "./menu-item";
 import type { Menu as CoreMenu } from "@versaur/core";
-import type { MenuProps, MenuItemProps, MenuPlacement } from "./menu.types";
+import type { MenuItemProps, MenuPlacement, MenuProps } from "./menu.types";
 
 // Declaration merging: namespace + const = Menu.Props, Menu.Placement, etc.
 declare namespace Menu {

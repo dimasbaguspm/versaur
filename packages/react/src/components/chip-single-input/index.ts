@@ -1,7 +1,7 @@
 import type { ChipSingleInput as ChipSingleInputCore } from "@versaur/core";
 import type {
-  ChipSingleInputRootProps,
   ChipSingleInputOptionProps,
+  ChipSingleInputRootProps,
 } from "./chip-single-input.types";
 import { ChipSingleInput } from "./chip-single-input";
 

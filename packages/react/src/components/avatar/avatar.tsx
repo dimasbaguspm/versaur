@@ -3,25 +3,16 @@ import { avatarStyles } from "@versaur/core";
 import { UserIcon } from "@versaur/icons";
 import { Icon } from "../icon";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
-import type { AvatarProps, AvatarImageProps } from "./avatar.types";
+import type { AvatarImageProps, AvatarProps } from "./avatar.types";
 
 const AvatarRoot = forwardRef<HTMLSpanElement, AvatarProps>(
-  (
-    { variant = "primary", size = "md", shape = "circle", children, ...rest },
-    ref,
-  ) => {
-    const dataAttrs = useDataAttrs({ variant, size, shape });
+  ({ variant = "primary", size = "md", shape = "circle", children, ...rest }, ref) => {
+    const dataAttrs = useDataAttrs({ shape, size, variant });
 
     const fallback = children || <Icon as={UserIcon} />;
 
     return (
-      <span
-        ref={ref}
-        className={avatarStyles.avatar}
-        role="img"
-        {...dataAttrs}
-        {...rest}
-      >
+      <span ref={ref} className={avatarStyles.avatar} role="img" {...dataAttrs} {...rest}>
         {fallback}
       </span>
     );

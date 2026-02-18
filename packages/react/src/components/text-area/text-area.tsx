@@ -36,8 +36,8 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 
     // Convert props to data attributes
     const dataAttrs = useDataAttrs({
-      invalid: !!error,
       disabled,
+      invalid: !!error,
       readOnly,
       resizable: resizable ? "true" : "false",
     });

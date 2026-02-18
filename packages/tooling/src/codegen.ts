@@ -20,11 +20,7 @@ function toCamelCase(s: string): string {
  */
 export function generateTypesFile(parsed: ParsedComponent): string {
   const pascal = toPascalCase(parsed.componentName);
-  const lines: string[] = [
-    HEADER,
-    `// Source: ${parsed.componentName}.module.css`,
-    "",
-  ];
+  const lines: string[] = [HEADER, `// Source: ${parsed.componentName}.module.css`, ""];
 
   // Enumerated type aliases
   const enumTypeNames: { attrName: string; typeName: string }[] = [];
@@ -32,14 +28,16 @@ export function generateTypesFile(parsed: ParsedComponent): string {
     const pascalAttr = toPascalCase(attrName);
     const typeName = `${pascal}${pascalAttr}`;
     const union = [...values]
-      .sort()
+      .toSorted()
       .map((v) => `'${v}'`)
       .join(" | ");
     lines.push(`export type ${typeName} = ${union};`);
     enumTypeNames.push({ attrName, typeName });
   }
 
-  if (enumTypeNames.length > 0) lines.push("");
+  if (enumTypeNames.length > 0) {
+    lines.push("");
+  }
 
   // DataAttrs interface
   lines.push(`export interface ${pascal}DataAttrs {`);
@@ -47,7 +45,7 @@ export function generateTypesFile(parsed: ParsedComponent): string {
     const propName = toCamelCase(attrName);
     lines.push(`  ${propName}?: ${typeName};`);
   }
-  for (const attrName of [...parsed.booleanAttrs].sort()) {
+  for (const attrName of [...parsed.booleanAttrs].toSorted()) {
     const propName = toCamelCase(attrName);
     lines.push(`  ${propName}?: boolean;`);
   }
@@ -74,9 +72,7 @@ export function generateCssDtsFile(parsed: ParsedComponent): string {
   const lines: string[] = [HEADER, "declare const styles: {"];
 
   for (const className of parsed.classNames) {
-    const key = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(className)
-      ? className
-      : `'${className}'`;
+    const key = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(className) ? className : `'${className}'`;
     lines.push(`  readonly ${key}: string;`);
   }
 

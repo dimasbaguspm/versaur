@@ -1,6 +1,6 @@
 import type { ComponentType } from "react";
 import { TextInput } from "./text-input";
-import { MailIcon, SearchIcon, CheckCircleIcon } from "@versaur/icons";
+import { CheckCircleIcon, MailIcon, SearchIcon } from "@versaur/icons";
 import { Icon } from "../icon";
 
 export interface TextInputSection {
@@ -14,16 +14,8 @@ export interface TextInputSection {
 function WithIconsPreview() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <TextInput
-        placeholder="Search..."
-        label="Search"
-        leftIcon={<Icon as={SearchIcon} />}
-      />
-      <TextInput
-        placeholder="you@example.com"
-        label="Email"
-        rightIcon={<Icon as={MailIcon} />}
-      />
+      <TextInput placeholder="Search..." label="Search" leftIcon={<Icon as={SearchIcon} />} />
+      <TextInput placeholder="you@example.com" label="Email" rightIcon={<Icon as={MailIcon} />} />
       <TextInput
         placeholder="Username"
         label="With both icons"
@@ -44,12 +36,7 @@ function StatesPreview() {
         error="This field is required"
         required
       />
-      <TextInput
-        placeholder="Disabled state"
-        label="Disabled"
-        disabled
-        value="Disabled value"
-      />
+      <TextInput placeholder="Disabled state" label="Disabled" disabled value="Disabled value" />
       <TextInput
         placeholder="With helper text"
         label="With Helper"
@@ -62,12 +49,7 @@ function StatesPreview() {
 function ReadOnlyPreview() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <TextInput
-        placeholder="Read-only input"
-        label="Read Only"
-        readOnly
-        value="Read-only value"
-      />
+      <TextInput placeholder="Read-only input" label="Read Only" readOnly value="Read-only value" />
       <TextInput
         placeholder="Read-only with icon"
         label="Read Only with Icon"
@@ -81,9 +63,6 @@ function ReadOnlyPreview() {
 
 export const textInputSections: TextInputSection[] = [
   {
-    key: "icons",
-    title: "With Icons",
-    preview: WithIconsPreview,
     code: `<TextInput
   placeholder="Search..."
   label="Search"
@@ -100,12 +79,12 @@ export const textInputSections: TextInputSection[] = [
   leftIcon={<Icon as={SearchIcon} />}
   rightIcon={<Icon as={CheckCircleIcon} />}
 />`,
+    key: "icons",
     language: "tsx",
+    preview: WithIconsPreview,
+    title: "With Icons",
   },
   {
-    key: "states",
-    title: "States",
-    preview: StatesPreview,
     code: `<TextInput placeholder="Default state" label="Default" />
 <TextInput
   placeholder="Invalid state"
@@ -123,12 +102,12 @@ export const textInputSections: TextInputSection[] = [
   label="With Helper"
   helper="This is helpful information"
 />`,
+    key: "states",
     language: "tsx",
+    preview: StatesPreview,
+    title: "States",
   },
   {
-    key: "readonly",
-    title: "Read Only",
-    preview: ReadOnlyPreview,
     code: `<TextInput
   placeholder="Read-only input"
   label="Read Only"
@@ -142,58 +121,61 @@ export const textInputSections: TextInputSection[] = [
   value="confirmed@example.com"
   rightIcon={<Icon as={CheckCircleIcon} />}
 />`,
+    key: "readonly",
     language: "tsx",
+    preview: ReadOnlyPreview,
+    title: "Read Only",
   },
 ];
 
 export const textInputProps = [
   {
-    name: "label",
-    type: "string",
     default: "undefined",
     description: "Label text displayed above input",
+    name: "label",
+    type: "string",
   },
   {
-    name: "helper",
-    type: "string",
     default: "undefined",
     description: "Helper text displayed below input",
+    name: "helper",
+    type: "string",
   },
   {
-    name: "error",
-    type: "string",
     default: "undefined",
     description: "Error message displayed below input (replaces helper)",
+    name: "error",
+    type: "string",
   },
   {
-    name: "leftIcon",
-    type: "ReactNode",
     default: "undefined",
     description: "Icon or element displayed on the left side",
+    name: "leftIcon",
+    type: "ReactNode",
   },
   {
-    name: "rightIcon",
-    type: "ReactNode",
     default: "undefined",
     description: "Icon or element displayed on the right side",
+    name: "rightIcon",
+    type: "ReactNode",
   },
   {
-    name: "readOnly",
-    type: "boolean",
     default: "false",
     description: "Whether the input is read-only",
+    name: "readOnly",
+    type: "boolean",
   },
   {
-    name: "required",
-    type: "boolean",
     default: "false",
     description: "Shows required indicator and sets HTML required attribute",
+    name: "required",
+    type: "boolean",
   },
   {
-    name: "disabled",
-    type: "boolean",
     default: "false",
     description: "Whether the input is disabled",
+    name: "disabled",
+    type: "boolean",
   },
 ];
 

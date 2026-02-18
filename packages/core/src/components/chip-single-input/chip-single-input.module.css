@@ -51,14 +51,8 @@
   --_text: var(--vers-comp-chip-text, var(--color-text));
 
   /* Focus ring */
-  --_focus-ring-width: var(
-    --vers-comp-chip-focus-ring-width,
-    var(--focus-ring-width)
-  );
-  --_focus-ring-color: var(
-    --vers-comp-chip-focus-ring-color,
-    var(--color-border-focus)
-  );
+  --_focus-ring-width: var(--vers-comp-chip-focus-ring-width, var(--focus-ring-width));
+  --_focus-ring-color: var(--vers-comp-chip-focus-ring-color, var(--color-border-focus));
 
   /* Layout */
   display: inline-flex;

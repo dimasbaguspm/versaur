@@ -71,9 +71,6 @@ function OptionGroupsPreview() {
 
 export const selectSections: SelectSection[] = [
   {
-    key: "states",
-    title: "States",
-    preview: StatesPreview,
     code: `<Select label="Default" placeholder="Select an option">
   <Select.Option value="1">Option 1</Select.Option>
   <Select.Option value="2">Option 2</Select.Option>
@@ -93,12 +90,12 @@ export const selectSections: SelectSection[] = [
   <Select.Option value="2">Option 2</Select.Option>
   <Select.Option value="3">Option 3</Select.Option>
 </Select>`,
+    key: "states",
     language: "tsx",
+    preview: StatesPreview,
+    title: "States",
   },
   {
-    key: "groups",
-    title: "Option Groups",
-    preview: OptionGroupsPreview,
     code: `<Select label="With Option Groups" placeholder="Select a country">
   <Select.OptionGroup label="North America">
     <Select.Option value="us">United States</Select.Option>
@@ -116,45 +113,48 @@ export const selectSections: SelectSection[] = [
     <Select.Option value="in">India</Select.Option>
   </Select.OptionGroup>
 </Select>`,
+    key: "groups",
     language: "tsx",
+    preview: OptionGroupsPreview,
+    title: "Option Groups",
   },
 ];
 
 export const selectProps = [
   {
-    name: "label",
-    type: "string",
     default: "undefined",
     description: "Label text displayed above select",
+    name: "label",
+    type: "string",
   },
   {
-    name: "helper",
-    type: "string",
     default: "undefined",
     description: "Helper text displayed below select",
+    name: "helper",
+    type: "string",
   },
   {
-    name: "error",
-    type: "string",
     default: "undefined",
     description: "Error message displayed below select (replaces helper)",
+    name: "error",
+    type: "string",
   },
   {
-    name: "placeholder",
-    type: "string",
     default: "undefined",
     description: "Placeholder text (creates a disabled first option)",
+    name: "placeholder",
+    type: "string",
   },
   {
-    name: "required",
-    type: "boolean",
     default: "false",
     description: "Shows required indicator and sets HTML required attribute",
+    name: "required",
+    type: "boolean",
   },
   {
-    name: "disabled",
-    type: "boolean",
     default: "false",
     description: "Whether the select is disabled",
+    name: "disabled",
+    type: "boolean",
   },
 ];

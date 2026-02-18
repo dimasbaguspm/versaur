@@ -34,17 +34,19 @@ function IntermediatePreview() {
         checked={checked}
         onChange={(e) => setChecked(e.target.checked)}
         ref={(el) => {
-          if (el) el.indeterminate = !checked;
+          if (el) {
+            el.indeterminate = !checked;
+          }
         }}
       >
         Indeterminate (select all)
       </Checkbox>
       <div
         style={{
-          marginLeft: "2rem",
           display: "flex",
           flexDirection: "column",
           gap: "0.5rem",
+          marginLeft: "2rem",
         }}
       >
         <Checkbox>Option 1</Checkbox>
@@ -57,20 +59,17 @@ function IntermediatePreview() {
 
 export const checkboxSections: CheckboxSection[] = [
   {
-    key: "states",
-    title: "States",
-    preview: StatesPreview,
     code: `<Checkbox>Unchecked</Checkbox>
 <Checkbox checked>Checked</Checkbox>
 <Checkbox required>Required</Checkbox>
 <Checkbox disabled>Disabled</Checkbox>
 <Checkbox invalid>Invalid</Checkbox>`,
+    key: "states",
     language: "tsx",
+    preview: StatesPreview,
+    title: "States",
   },
   {
-    key: "intermediate",
-    title: "Indeterminate",
-    preview: IntermediatePreview,
     code: `<Checkbox
   checked={checked}
   onChange={(e) => setChecked(e.target.checked)}
@@ -80,6 +79,9 @@ export const checkboxSections: CheckboxSection[] = [
 >
   Indeterminate (select all)
 </Checkbox>`,
+    key: "intermediate",
     language: "tsx",
+    preview: IntermediatePreview,
+    title: "Indeterminate",
   },
 ];

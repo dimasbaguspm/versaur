@@ -8,19 +8,11 @@ import type { ErrorTextProps } from "./error-text.types";
  * Uses role="alert" for screen reader announcements
  */
 export const ErrorText = forwardRef<HTMLParagraphElement, ErrorTextProps>(
-  ({ children, ...rest }, ref) => {
-    return (
-      <p
-        ref={ref}
-        className={errorTextStyles.error}
-        role="alert"
-        aria-live="polite"
-        {...rest}
-      >
-        {children}
-      </p>
-    );
-  },
+  ({ children, ...rest }, ref) => (
+    <p ref={ref} className={errorTextStyles.error} role="alert" aria-live="polite" {...rest}>
+      {children}
+    </p>
+  ),
 );
 
 ErrorText.displayName = "ErrorText";

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import type { DialogRootProps } from "./dialog.types";
 
 /**
@@ -17,13 +17,14 @@ const DialogRoot = React.forwardRef<HTMLDialogElement, DialogRootProps>(
   ({ isOpen, onOpenChange, children, onClick, ...rest }, forwardedRef) => {
     const internalRef = useRef<HTMLDialogElement>(null);
     const dialogRef =
-      (forwardedRef as React.MutableRefObject<HTMLDialogElement | null>) ||
-      internalRef;
+      (forwardedRef as React.MutableRefObject<HTMLDialogElement | null>) || internalRef;
 
     // Sync React state with native dialog
     useEffect(() => {
       const dialog = dialogRef.current;
-      if (!dialog) return;
+      if (!dialog) {
+        return;
+      }
 
       if (isOpen) {
         try {
@@ -39,7 +40,9 @@ const DialogRoot = React.forwardRef<HTMLDialogElement, DialogRootProps>(
     // Handle backdrop click and native events
     useEffect(() => {
       const dialog = dialogRef.current;
-      if (!dialog) return;
+      if (!dialog) {
+        return;
+      }
 
       const handleClose = () => onOpenChange?.(false);
       const handleCancel = (e: Event) => {

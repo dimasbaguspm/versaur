@@ -1,8 +1,5 @@
 import type { RadioGroup as RadioGroupCore } from "@versaur/core";
-import type {
-  RadioGroupRootProps,
-  RadioGroupOptionProps,
-} from "./radio-group.types";
+import type { RadioGroupOptionProps, RadioGroupRootProps } from "./radio-group.types";
 
 import { RadioGroup } from "./radio-group";
 export type { RadioGroupRootProps, RadioGroupOptionProps };

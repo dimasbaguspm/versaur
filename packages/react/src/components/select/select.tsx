@@ -1,32 +1,22 @@
-import {
-  forwardRef,
-  useId,
-  ForwardRefExoticComponent,
-  RefAttributes,
-} from "react";
+import type { ForwardRefExoticComponent, RefAttributes } from "react";
+import { forwardRef, useId } from "react";
 import { selectStyles } from "@versaur/core";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import { Label } from "../label";
 import { HelperText } from "../helper-text";
 import { ErrorText } from "../error-text";
-import type {
-  SelectProps,
-  SelectOptionProps,
-  SelectOptionGroupProps,
-} from "./select.types";
+import type { SelectOptionGroupProps, SelectOptionProps, SelectProps } from "./select.types";
 
 /**
  * SelectOption component
  * An option within a Select dropdown
  */
 export const SelectOption = forwardRef<HTMLOptionElement, SelectOptionProps>(
-  ({ children, ...rest }, ref) => {
-    return (
-      <option ref={ref} {...rest}>
-        {children}
-      </option>
-    );
-  },
+  ({ children, ...rest }, ref) => (
+    <option ref={ref} {...rest}>
+      {children}
+    </option>
+  ),
 );
 
 SelectOption.displayName = "Select.Option";
@@ -35,16 +25,13 @@ SelectOption.displayName = "Select.Option";
  * SelectOptionGroup component
  * A grouped set of options within a Select dropdown
  */
-export const SelectOptionGroup = forwardRef<
-  HTMLOptGroupElement,
-  SelectOptionGroupProps
->(({ label, children, ...rest }, ref) => {
-  return (
+export const SelectOptionGroup = forwardRef<HTMLOptGroupElement, SelectOptionGroupProps>(
+  ({ label, children, ...rest }, ref) => (
     <optgroup ref={ref} label={label} {...rest}>
       {children}
     </optgroup>
-  );
-});
+  ),
+);
 
 SelectOptionGroup.displayName = "Select.OptionGroup";
 
@@ -76,8 +63,8 @@ const SelectComponent = forwardRef<HTMLSelectElement, SelectProps>(
 
     // Convert props to data attributes
     const dataAttrs = useDataAttrs({
-      invalid: !!error,
       disabled,
+      invalid: !!error,
     });
 
     return (

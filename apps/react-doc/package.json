@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "@versaur/core": "workspace:*",
-    "@versaur/react": "workspace:*",
     "@versaur/icons": "workspace:*",
+    "@versaur/react": "workspace:*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

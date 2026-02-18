@@ -17,7 +17,7 @@ import type { KbdProps } from "./kbd.types";
  */
 const Kbd = forwardRef<HTMLElement, KbdProps>(
   ({ variant = "filled", size = "md", children, ...props }, ref) => {
-    const dataAttrs = useDataAttrs({ variant, size });
+    const dataAttrs = useDataAttrs({ size, variant });
 
     return (
       <kbd ref={ref} className={kbdStyles.kbd} {...dataAttrs} {...props}>

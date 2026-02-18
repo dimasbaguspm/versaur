@@ -1,13 +1,10 @@
-import { createContext, useContext, forwardRef, useId } from "react";
+import { createContext, forwardRef, useContext, useId } from "react";
 import { radioGroupStyles } from "@versaur/core";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import { Label } from "../label";
 import { HelperText } from "../helper-text";
 import { ErrorText } from "../error-text";
-import type {
-  RadioGroupRootProps,
-  RadioGroupOptionProps,
-} from "./radio-group.types";
+import type { RadioGroupOptionProps, RadioGroupRootProps } from "./radio-group.types";
 
 /**
  * Private context for managing radio group state
@@ -19,9 +16,7 @@ interface RadioGroupContextType {
   disabled?: boolean;
 }
 
-const RadioGroupContext = createContext<RadioGroupContextType | undefined>(
-  undefined,
-);
+const RadioGroupContext = createContext<RadioGroupContextType | undefined>(undefined);
 
 function useRadioGroupContext() {
   const context = useContext(RadioGroupContext);
@@ -84,28 +79,21 @@ const RadioGroupRoot = forwardRef<HTMLDivElement, RadioGroupRootProps>(
     };
 
     const dataAttrs = useDataAttrs({
-      variant: size === "medium" ? variant : undefined,
-      size: size === "medium" ? undefined : size,
-      invalid: !!error,
       disabled,
+      invalid: !!error,
+      size: size === "medium" ? undefined : size,
+      variant: size === "medium" ? variant : undefined,
     });
 
     return (
-      <div
-        ref={ref}
-        className={radioGroupStyles.field}
-        {...dataAttrs}
-        {...rest}
-      >
+      <div ref={ref} className={radioGroupStyles.field} {...dataAttrs} {...rest}>
         {label && (
           <Label required={required} disabled={disabled}>
             {label}
           </Label>
         )}
 
-        <RadioGroupContext.Provider
-          value={{ value, onChange: handleChange, name, disabled }}
-        >
+        <RadioGroupContext.Provider value={{ disabled, name, onChange: handleChange, value }}>
           <div
             className={radioGroupStyles.options}
             data-direction={direction}
@@ -162,9 +150,7 @@ const RadioGroupOption = forwardRef<HTMLInputElement, RadioGroupOptionProps>(
           {...rest}
         />
         <span className={radioGroupStyles.indicator} />
-        {children && (
-          <span className={radioGroupStyles.optionLabel}>{children}</span>
-        )}
+        {children && <span className={radioGroupStyles.optionLabel}>{children}</span>}
       </label>
     );
   },

@@ -1,14 +1,15 @@
 "use client";
 
-import { forwardRef, CSSProperties, useRef } from "react";
+import type { CSSProperties } from "react";
+import { forwardRef, useRef } from "react";
 import { tooltipStyles } from "@versaur/core";
 import { combineRefs } from "../../utils/combine-refs";
 import { useTooltipPositioning } from "../../hooks/use-tooltip-positioning";
 import type {
-  TooltipProps,
-  TooltipTextProps,
   TooltipGetTriggerPropsOptions,
+  TooltipProps,
   TooltipStatic,
+  TooltipTextProps,
 } from "./tooltip.types";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 
@@ -26,7 +27,9 @@ function calculatePosition(
   placement: Placement = "top",
   gap: number = DEFAULT_GAP,
 ) {
-  if (!trigger || !tooltip) return;
+  if (!trigger || !tooltip) {
+    return;
+  }
 
   // Mark as positioned before rendering
   tooltip.setAttribute("data-positioned", "true");
@@ -40,60 +43,72 @@ function calculatePosition(
 
   switch (placement) {
     // Top placements
-    case "top":
+    case "top": {
       top = triggerRect.top - tooltipRect.height - offset;
       left = triggerRect.left + triggerRect.width / 2 - tooltipRect.width / 2;
       break;
-    case "top-start":
+    }
+    case "top-start": {
       top = triggerRect.top - tooltipRect.height - offset;
       left = triggerRect.left;
       break;
-    case "top-end":
+    }
+    case "top-end": {
       top = triggerRect.top - tooltipRect.height - offset;
       left = triggerRect.right - tooltipRect.width;
       break;
+    }
 
     // Bottom placements
-    case "bottom":
+    case "bottom": {
       top = triggerRect.bottom + offset;
       left = triggerRect.left + triggerRect.width / 2 - tooltipRect.width / 2;
       break;
-    case "bottom-start":
+    }
+    case "bottom-start": {
       top = triggerRect.bottom + offset;
       left = triggerRect.left;
       break;
-    case "bottom-end":
+    }
+    case "bottom-end": {
       top = triggerRect.bottom + offset;
       left = triggerRect.right - tooltipRect.width;
       break;
+    }
 
     // Left placements
-    case "left":
+    case "left": {
       top = triggerRect.top + triggerRect.height / 2 - tooltipRect.height / 2;
       left = triggerRect.left - tooltipRect.width - offset;
       break;
-    case "left-start":
+    }
+    case "left-start": {
       top = triggerRect.top;
       left = triggerRect.left - tooltipRect.width - offset;
       break;
-    case "left-end":
+    }
+    case "left-end": {
       top = triggerRect.bottom - tooltipRect.height;
       left = triggerRect.left - tooltipRect.width - offset;
       break;
+    }
 
     // Right placements
-    case "right":
+    case "right": {
       top = triggerRect.top + triggerRect.height / 2 - tooltipRect.height / 2;
       left = triggerRect.right + offset;
       break;
-    case "right-start":
+    }
+    case "right-start": {
       top = triggerRect.top;
       left = triggerRect.right + offset;
       break;
-    case "right-end":
+    }
+    case "right-end": {
       top = triggerRect.bottom - tooltipRect.height;
       left = triggerRect.right + offset;
       break;
+    }
   }
 
   // Add scroll offset
@@ -138,15 +153,7 @@ function calculatePosition(
  */
 const TooltipRoot = forwardRef<HTMLDivElement, TooltipProps>(
   (
-    {
-      id,
-      children,
-      placement = "top",
-      gap = DEFAULT_GAP,
-      triggerType = "all",
-      style,
-      ...props
-    },
+    { id, children, placement = "top", gap = DEFAULT_GAP, triggerType = "all", style, ...props },
     ref,
   ) => {
     const tooltipRef = useRef<HTMLDivElement | null>(null);
@@ -155,12 +162,12 @@ const TooltipRoot = forwardRef<HTMLDivElement, TooltipProps>(
     });
 
     useTooltipPositioning({
-      id,
-      tooltipRef,
-      placement,
-      gap,
-      triggerType,
       calculatePosition,
+      gap,
+      id,
+      placement,
+      tooltipRef,
+      triggerType,
     });
 
     return (
@@ -187,8 +194,8 @@ TooltipRoot.displayName = "Tooltip";
 const TooltipText = forwardRef<HTMLDivElement, TooltipTextProps>(
   ({ children, maxWidth, maxLines = 2, style, className, ...props }, ref) => {
     const customStyle: CSSProperties = {
-      "--_max-width": maxWidth,
       "--_lines": maxLines,
+      "--_max-width": maxWidth,
       ...style,
     } as CSSProperties;
 
@@ -210,9 +217,7 @@ TooltipText.displayName = "Tooltip.Text";
 /**
  * Get required attributes for the trigger element
  */
-function getTooltipTriggerProps(
-  options: TooltipGetTriggerPropsOptions,
-): Record<string, string> {
+function getTooltipTriggerProps(options: TooltipGetTriggerPropsOptions): Record<string, string> {
   const { id, triggerType = "all", ...rest } = options;
   // Always add data-tooltip-trigger for finding the trigger in the hook
   const result: Record<string, string> = {

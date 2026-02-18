@@ -30,14 +30,9 @@ function TopBarBasic() {
       </TopBar.Leading>
       <TopBar.Trailing>
         <ButtonIcon variant="ghost" as={BellIcon} aria-label="Notifications" />
-        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+        <div style={{ alignItems: "center", display: "flex", gap: "0.5rem" }}>
           <Avatar size="md">DM</Avatar>
-          <ButtonIcon
-            variant="ghost"
-            as={ChevronDownIcon}
-            size="small"
-            aria-label="User menu"
-          />
+          <ButtonIcon variant="ghost" as={ChevronDownIcon} size="small" aria-label="User menu" />
         </div>
       </TopBar.Trailing>
     </TopBar>
@@ -68,10 +63,10 @@ function TopBarWithSearch() {
         <input
           placeholder="Search..."
           style={{
-            padding: "0.5rem 0.75rem",
             border: "1px solid #e5e7eb",
             borderRadius: "0.375rem",
             fontSize: "0.875rem",
+            padding: "0.5rem 0.75rem",
             width: "250px",
           }}
         />
@@ -79,14 +74,9 @@ function TopBarWithSearch() {
       <TopBar.Trailing>
         <Button variant="ghost">Docs</Button>
         <Button variant="ghost">Support</Button>
-        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+        <div style={{ alignItems: "center", display: "flex", gap: "0.5rem" }}>
           <Avatar size="md">DM</Avatar>
-          <ButtonIcon
-            variant="ghost"
-            as={ChevronDownIcon}
-            size="small"
-            aria-label="User menu"
-          />
+          <ButtonIcon variant="ghost" as={ChevronDownIcon} size="small" aria-label="User menu" />
         </div>
       </TopBar.Trailing>
     </TopBar>
@@ -112,9 +102,6 @@ function TopBarGhost() {
 
 export const topBarSections = [
   {
-    key: "basic",
-    title: "TopBar with Nav Navigation",
-    preview: TopBarBasic,
     code: `import { useState } from 'react';
 import { TopBar } from '@versaur/react';
 import { Nav } from '@versaur/react';
@@ -145,12 +132,12 @@ export function TopBarBasic() {
     </TopBar>
   );
 }`,
+    key: "basic",
     language: "tsx",
+    preview: TopBarBasic,
+    title: "TopBar with Nav Navigation",
   },
   {
-    key: "with-search",
-    title: "TopBar with Search & Ghost Buttons",
-    preview: TopBarWithSearch,
     code: `import { useState } from 'react';
 import { TopBar } from '@versaur/react';
 import { Nav } from '@versaur/react';
@@ -186,12 +173,12 @@ export function TopBarWithSearch() {
     </TopBar>
   );
 }`,
+    key: "with-search",
     language: "tsx",
+    preview: TopBarWithSearch,
+    title: "TopBar with Search & Ghost Buttons",
   },
   {
-    key: "ghost-buttons",
-    title: "TopBar with Ghost Buttons",
-    preview: TopBarGhost,
     code: `import { TopBar } from '@versaur/react';
 import { Button } from '@versaur/react';
 
@@ -208,7 +195,10 @@ export function TopBarGhost() {
     </TopBar>
   );
 }`,
+    key: "ghost-buttons",
     language: "tsx",
+    preview: TopBarGhost,
+    title: "TopBar with Ghost Buttons",
   },
 ];
 
@@ -217,10 +207,10 @@ export const topBarProps = [
     name: "TopBar",
     props: [
       {
+        default: "-",
+        description: "TopBar.Leading, TopBar.Centred, and/or TopBar.Trailing",
         name: "children",
         type: "ReactNode",
-        description: "TopBar.Leading, TopBar.Centred, and/or TopBar.Trailing",
-        default: "-",
       },
     ],
   },
@@ -228,10 +218,10 @@ export const topBarProps = [
     name: "TopBar.Leading",
     props: [
       {
+        default: "-",
+        description: "Logo, brand, or left-aligned content",
         name: "children",
         type: "ReactNode",
-        description: "Logo, brand, or left-aligned content",
-        default: "-",
       },
     ],
   },
@@ -239,10 +229,10 @@ export const topBarProps = [
     name: "TopBar.Centred",
     props: [
       {
+        default: "-",
+        description: "Center-aligned content (search, title, etc)",
         name: "children",
         type: "ReactNode",
-        description: "Center-aligned content (search, title, etc)",
-        default: "-",
       },
     ],
   },
@@ -250,10 +240,10 @@ export const topBarProps = [
     name: "TopBar.Trailing",
     props: [
       {
+        default: "-",
+        description: "Right-aligned content (actions, avatar, etc)",
         name: "children",
         type: "ReactNode",
-        description: "Right-aligned content (actions, avatar, etc)",
-        default: "-",
       },
     ],
   },

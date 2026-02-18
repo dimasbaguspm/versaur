@@ -41,18 +41,10 @@ function OverflowPreview() {
       helper="Options wrap by default, disable with wrap={false}"
       wrap={false}
     >
-      <ChipSingleInput.Option value="option1">
-        Very Long Option Text
-      </ChipSingleInput.Option>
-      <ChipSingleInput.Option value="option2">
-        Another Very Long Option
-      </ChipSingleInput.Option>
-      <ChipSingleInput.Option value="option3">
-        One More Long Option
-      </ChipSingleInput.Option>
-      <ChipSingleInput.Option value="option4">
-        Yet Another Very Long Option
-      </ChipSingleInput.Option>
+      <ChipSingleInput.Option value="option1">Very Long Option Text</ChipSingleInput.Option>
+      <ChipSingleInput.Option value="option2">Another Very Long Option</ChipSingleInput.Option>
+      <ChipSingleInput.Option value="option3">One More Long Option</ChipSingleInput.Option>
+      <ChipSingleInput.Option value="option4">Yet Another Very Long Option</ChipSingleInput.Option>
     </ChipSingleInput>
   );
 }
@@ -64,55 +56,22 @@ function CustomGapPreview() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-      <ChipSingleInput
-        value={value4}
-        onChange={setValue4}
-        label="Large gap (gap='4')"
-        gap="4"
-      >
-        <ChipSingleInput.Option value="option1">
-          Option 1
-        </ChipSingleInput.Option>
-        <ChipSingleInput.Option value="option2">
-          Option 2
-        </ChipSingleInput.Option>
-        <ChipSingleInput.Option value="option3">
-          Option 3
-        </ChipSingleInput.Option>
+      <ChipSingleInput value={value4} onChange={setValue4} label="Large gap (gap='4')" gap="4">
+        <ChipSingleInput.Option value="option1">Option 1</ChipSingleInput.Option>
+        <ChipSingleInput.Option value="option2">Option 2</ChipSingleInput.Option>
+        <ChipSingleInput.Option value="option3">Option 3</ChipSingleInput.Option>
       </ChipSingleInput>
 
-      <ChipSingleInput
-        value={value3}
-        onChange={setValue3}
-        label="Normal gap (gap='2')"
-        gap="2"
-      >
-        <ChipSingleInput.Option value="option1">
-          Option 1
-        </ChipSingleInput.Option>
-        <ChipSingleInput.Option value="option2">
-          Option 2
-        </ChipSingleInput.Option>
-        <ChipSingleInput.Option value="option3">
-          Option 3
-        </ChipSingleInput.Option>
+      <ChipSingleInput value={value3} onChange={setValue3} label="Normal gap (gap='2')" gap="2">
+        <ChipSingleInput.Option value="option1">Option 1</ChipSingleInput.Option>
+        <ChipSingleInput.Option value="option2">Option 2</ChipSingleInput.Option>
+        <ChipSingleInput.Option value="option3">Option 3</ChipSingleInput.Option>
       </ChipSingleInput>
 
-      <ChipSingleInput
-        value={value1}
-        onChange={setValue1}
-        label="Small gap (gap='1')"
-        gap="1"
-      >
-        <ChipSingleInput.Option value="option1">
-          Option 1
-        </ChipSingleInput.Option>
-        <ChipSingleInput.Option value="option2">
-          Option 2
-        </ChipSingleInput.Option>
-        <ChipSingleInput.Option value="option3">
-          Option 3
-        </ChipSingleInput.Option>
+      <ChipSingleInput value={value1} onChange={setValue1} label="Small gap (gap='1')" gap="1">
+        <ChipSingleInput.Option value="option1">Option 1</ChipSingleInput.Option>
+        <ChipSingleInput.Option value="option2">Option 2</ChipSingleInput.Option>
+        <ChipSingleInput.Option value="option3">Option 3</ChipSingleInput.Option>
       </ChipSingleInput>
     </div>
   );
@@ -133,12 +92,7 @@ function StatesPreview() {
         <ChipSingleInput.Option value="2">Option 2</ChipSingleInput.Option>
       </ChipSingleInput>
 
-      <ChipSingleInput
-        value={value}
-        onChange={setValue}
-        label="Disabled"
-        disabled
-      >
+      <ChipSingleInput value={value} onChange={setValue} label="Disabled" disabled>
         <ChipSingleInput.Option value="1">Option 1</ChipSingleInput.Option>
         <ChipSingleInput.Option value="2">Option 2</ChipSingleInput.Option>
       </ChipSingleInput>
@@ -148,9 +102,6 @@ function StatesPreview() {
 
 export const chipSingleInputSections: ChipSingleInputSection[] = [
   {
-    key: "basic",
-    title: "Basic Usage",
-    preview: BasicPreview,
     code: `const [size, setSize] = useState<string>();
 
 <ChipSingleInput
@@ -163,12 +114,12 @@ export const chipSingleInputSections: ChipSingleInputSection[] = [
   <ChipSingleInput.Option value="s">S</ChipSingleInput.Option>
   <ChipSingleInput.Option value="m">M</ChipSingleInput.Option>
 </ChipSingleInput>`,
+    key: "basic",
     language: "tsx",
+    preview: BasicPreview,
+    title: "Basic Usage",
   },
   {
-    key: "overflow",
-    title: "Overflow Handling",
-    preview: OverflowPreview,
     code: `<ChipSingleInput
   value={value}
   onChange={setValue}
@@ -180,12 +131,12 @@ export const chipSingleInputSections: ChipSingleInputSection[] = [
   </ChipSingleInput.Option>
   {/* more options */}
 </ChipSingleInput>`,
+    key: "overflow",
     language: "tsx",
+    preview: OverflowPreview,
+    title: "Overflow Handling",
   },
   {
-    key: "customGap",
-    title: "Custom Gap",
-    preview: CustomGapPreview,
     code: `<ChipSingleInput gap="4">
   {/* options */}
 </ChipSingleInput>
@@ -197,12 +148,12 @@ export const chipSingleInputSections: ChipSingleInputSection[] = [
 <ChipSingleInput gap="1">
   {/* options */}
 </ChipSingleInput>`,
+    key: "customGap",
     language: "tsx",
+    preview: CustomGapPreview,
+    title: "Custom Gap",
   },
   {
-    key: "states",
-    title: "States",
-    preview: StatesPreview,
     code: `<ChipSingleInput error="Error message">
   {/* options */}
 </ChipSingleInput>
@@ -210,6 +161,9 @@ export const chipSingleInputSections: ChipSingleInputSection[] = [
 <ChipSingleInput disabled>
   {/* options */}
 </ChipSingleInput>`,
+    key: "states",
     language: "tsx",
+    preview: StatesPreview,
+    title: "States",
   },
 ];

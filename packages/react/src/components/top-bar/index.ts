@@ -1,9 +1,4 @@
-export {
-  TopBar,
-  TopBarLeading,
-  TopBarCentred,
-  TopBarTrailing,
-} from "./top-bar";
+export { TopBar, TopBarLeading, TopBarCentred, TopBarTrailing } from "./top-bar";
 export type {
   TopBarProps,
   TopBarLeadingProps,

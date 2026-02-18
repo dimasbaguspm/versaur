@@ -59,10 +59,7 @@ function ConfirmModalPreview() {
           <Modal.CloseButton />
         </Modal.Header>
         <Modal.Body>
-          <p>
-            Are you sure you want to delete this item? This action cannot be
-            undone.
-          </p>
+          <p>Are you sure you want to delete this item? This action cannot be undone.</p>
         </Modal.Body>
         <Modal.Footer>
           <ButtonGroup align="end">
@@ -79,9 +76,6 @@ function ConfirmModalPreview() {
 
 export const ModalSections: ModalSection[] = [
   {
-    key: "basic",
-    title: "Basic Modal",
-    preview: BasicModalPreview,
     code: `import { useState } from 'react';
 import { Modal } from '@versaur/react';
 import { Button } from '@versaur/react';
@@ -105,12 +99,12 @@ export function MyModal() {
     </div>
   );
 }`,
+    key: "basic",
     language: "typescript",
+    preview: BasicModalPreview,
+    title: "Basic Modal",
   },
   {
-    key: "confirm",
-    title: "Confirmation Modal",
-    preview: ConfirmModalPreview,
     code: `<Modal open={isOpen} onClose={() => setIsOpen(false)}>
   <Modal.Header>
     <Modal.Title>Confirm Action</Modal.Title>
@@ -123,22 +117,25 @@ export function MyModal() {
     <Button variant="danger">Delete</Button>
   </Modal.Footer>
 </Modal>`,
+    key: "confirm",
     language: "typescript",
+    preview: ConfirmModalPreview,
+    title: "Confirmation Modal",
   },
 ];
 
 export const modalProps = [
   {
-    name: "open",
-    type: "boolean",
     default: "false",
     description: "Whether the modal is open",
+    name: "open",
+    type: "boolean",
   },
   {
-    name: "onClose",
-    type: "(reason: 'esc' | 'backdrop' | 'closeButton' | 'programmatic') => void",
     default: "required",
     description: "Callback when the modal closes, includes the close reason",
+    name: "onClose",
+    type: "(reason: 'esc' | 'backdrop' | 'closeButton' | 'programmatic') => void",
   },
 ];
 

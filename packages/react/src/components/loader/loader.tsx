@@ -22,8 +22,8 @@ import type { LoaderProps } from "./loader.types";
 export const Loader = forwardRef<HTMLDivElement, LoaderProps>(
   ({ type = "spinner", size = "sm", children, ...rest }, ref) => {
     const dataAttrs = useDataAttrs({
-      type,
       size,
+      type,
     });
 
     return (

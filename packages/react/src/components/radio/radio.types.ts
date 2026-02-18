@@ -1,8 +1,7 @@
 import type { InputHTMLAttributes, ReactNode } from "react";
 import type { Radio as RadioCore } from "@versaur/core";
 
-export interface RadioProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "size"> {
+export interface RadioProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "size"> {
   /**
    * Visual variant of the radio
    * @default "outline"

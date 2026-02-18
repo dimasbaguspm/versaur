@@ -1,13 +1,10 @@
-import { createContext, useContext, forwardRef, useId } from "react";
+import { createContext, forwardRef, useContext, useId } from "react";
 import { checkboxGroupStyles } from "@versaur/core";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import { Label } from "../label";
 import { HelperText } from "../helper-text";
 import { ErrorText } from "../error-text";
-import type {
-  CheckboxGroupRootProps,
-  CheckboxGroupOptionProps,
-} from "./checkbox-group.types";
+import type { CheckboxGroupOptionProps, CheckboxGroupRootProps } from "./checkbox-group.types";
 
 /**
  * Private context for managing checkbox group state
@@ -19,9 +16,7 @@ interface CheckboxGroupContextType {
   disabled?: boolean;
 }
 
-const CheckboxGroupContext = createContext<
-  CheckboxGroupContextType | undefined
->(undefined);
+const CheckboxGroupContext = createContext<CheckboxGroupContextType | undefined>(undefined);
 
 function useCheckboxGroupContext() {
   const context = useContext(CheckboxGroupContext);
@@ -81,26 +76,19 @@ const CheckboxGroupRoot = forwardRef<HTMLDivElement, CheckboxGroupRootProps>(
     };
 
     const dataAttrs = useDataAttrs({
-      invalid: !!error,
       disabled,
+      invalid: !!error,
     });
 
     return (
-      <div
-        ref={ref}
-        className={checkboxGroupStyles.field}
-        {...dataAttrs}
-        {...rest}
-      >
+      <div ref={ref} className={checkboxGroupStyles.field} {...dataAttrs} {...rest}>
         {label && (
           <Label required={required} disabled={disabled}>
             {label}
           </Label>
         )}
 
-        <CheckboxGroupContext.Provider
-          value={{ value, onChange: handleChange, name, disabled }}
-        >
+        <CheckboxGroupContext.Provider value={{ disabled, name, onChange: handleChange, value }}>
           <div
             className={checkboxGroupStyles.options}
             data-direction={direction}
@@ -132,18 +120,9 @@ CheckboxGroupRoot.displayName = "CheckboxGroup";
  * <CheckboxGroup.Option value="analytics" required>Advanced Analytics</CheckboxGroup.Option>
  * ```
  */
-const CheckboxGroupOption = forwardRef<
-  HTMLInputElement,
-  CheckboxGroupOptionProps
->(
+const CheckboxGroupOption = forwardRef<HTMLInputElement, CheckboxGroupOptionProps>(
   (
-    {
-      value,
-      children,
-      disabled: optionDisabled,
-      required: optionRequired = false,
-      ...rest
-    },
+    { value, children, disabled: optionDisabled, required: optionRequired = false, ...rest },
     ref,
   ) => {
     const generatedId = useId();
@@ -183,11 +162,7 @@ const CheckboxGroupOption = forwardRef<
         />
         <span className={checkboxGroupStyles.indicator} />
         {children && (
-          <Label
-            required={optionRequired}
-            disabled={isDisabled}
-            htmlFor={generatedId}
-          >
+          <Label required={optionRequired} disabled={isDisabled} htmlFor={generatedId}>
             {children}
           </Label>
         )}

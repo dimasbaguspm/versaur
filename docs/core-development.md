@@ -31,14 +31,14 @@ For the React wrapper layer, see [react-development.md](./react-development.md).
 
 All files use **kebab-case**. No PascalCase or camelCase filenames.
 
-| Convention | Example |
-|---|---|
-| CSS module | `button.module.css` |
-| Generated types | `button.types.generated.ts` |
-| Generated CSS declarations | `button.module.css.d.ts` |
-| Token file | `colors.css` |
-| Barrel file | `index.ts` |
-| Token aggregator | `index.css` |
+| Convention                 | Example                     |
+| -------------------------- | --------------------------- |
+| CSS module                 | `button.module.css`         |
+| Generated types            | `button.types.generated.ts` |
+| Generated CSS declarations | `button.module.css.d.ts`    |
+| Token file                 | `colors.css`                |
+| Barrel file                | `index.ts`                  |
+| Token aggregator           | `index.css`                 |
 
 ## 3. Directory layout
 
@@ -122,23 +122,23 @@ All tokens are defined as CSS custom properties in `:root`. Naming convention: `
 
 **Primitive scales** — 4 color scales, each with 10 stops (50–900):
 
-| Scale | Example range |
-|---|---|
-| Blue | `--color-blue-50` … `--color-blue-900` |
-| Gray | `--color-gray-50` … `--color-gray-900` |
-| Red | `--color-red-50` … `--color-red-900` |
+| Scale | Example range                            |
+| ----- | ---------------------------------------- |
+| Blue  | `--color-blue-50` … `--color-blue-900`   |
+| Gray  | `--color-gray-50` … `--color-gray-900`   |
+| Red   | `--color-red-50` … `--color-red-900`     |
 | Green | `--color-green-50` … `--color-green-900` |
 
 **Semantic tokens** — ~20 tokens organized by purpose:
 
-| Group | Tokens |
-|---|---|
-| Primary | `--color-primary`, `--color-primary-hover`, `--color-primary-active`, `--color-primary-text` |
+| Group     | Tokens                                                                                               |
+| --------- | ---------------------------------------------------------------------------------------------------- |
+| Primary   | `--color-primary`, `--color-primary-hover`, `--color-primary-active`, `--color-primary-text`         |
 | Secondary | `--color-secondary`, `--color-secondary-hover`, `--color-secondary-active`, `--color-secondary-text` |
-| Danger | `--color-danger`, `--color-danger-hover`, `--color-danger-active`, `--color-danger-text` |
-| Text | `--color-text-primary`, `--color-text-secondary`, `--color-text-disabled` |
-| Border | `--color-border`, `--color-border-focus` |
-| Surface | `--color-background`, `--color-surface` |
+| Danger    | `--color-danger`, `--color-danger-hover`, `--color-danger-active`, `--color-danger-text`             |
+| Text      | `--color-text-primary`, `--color-text-secondary`, `--color-text-disabled`                            |
+| Border    | `--color-border`, `--color-border-focus`                                                             |
+| Surface   | `--color-background`, `--color-surface`                                                              |
 
 All semantic tokens have dark mode overrides via `@media (prefers-color-scheme: dark)`.
 
@@ -146,37 +146,37 @@ All semantic tokens have dark mode overrides via `@media (prefers-color-scheme: 
 
 4px (`0.25rem`) base unit, non-linear progression:
 
-| Token | Value |
-|---|---|
-| `--spacing-0` | `0` |
-| `--spacing-1` | `0.25rem` (4px) |
-| `--spacing-2` | `0.5rem` (8px) |
-| `--spacing-3` | `0.75rem` (12px) |
-| `--spacing-4` | `1rem` (16px) |
-| `--spacing-5` | `1.25rem` (20px) |
-| `--spacing-6` | `1.5rem` (24px) |
-| `--spacing-8` | `2rem` (32px) |
-| `--spacing-10` | `2.5rem` (40px) |
-| `--spacing-12` | `3rem` (48px) |
-| `--spacing-16` | `4rem` (64px) |
+| Token          | Value            |
+| -------------- | ---------------- |
+| `--spacing-0`  | `0`              |
+| `--spacing-1`  | `0.25rem` (4px)  |
+| `--spacing-2`  | `0.5rem` (8px)   |
+| `--spacing-3`  | `0.75rem` (12px) |
+| `--spacing-4`  | `1rem` (16px)    |
+| `--spacing-5`  | `1.25rem` (20px) |
+| `--spacing-6`  | `1.5rem` (24px)  |
+| `--spacing-8`  | `2rem` (32px)    |
+| `--spacing-10` | `2.5rem` (40px)  |
+| `--spacing-12` | `3rem` (48px)    |
+| `--spacing-16` | `4rem` (64px)    |
 
 ### Typography (`typography.css`)
 
-| Category | Tokens |
-|---|---|
-| Font families (2) | `--font-sans` (system stack), `--font-mono` (monospace stack) |
-| Font sizes (6) | `--font-size-xs` (12px) … `--font-size-2xl` (24px) |
-| Line heights (3) | `--line-height-tight` (1.25), `--line-height-normal` (1.5), `--line-height-relaxed` (1.75) |
-| Font weights (4) | `--font-weight-normal` (400), `--font-weight-medium` (500), `--font-weight-semibold` (600), `--font-weight-bold` (700) |
+| Category          | Tokens                                                                                                                 |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Font families (2) | `--font-sans` (system stack), `--font-mono` (monospace stack)                                                          |
+| Font sizes (6)    | `--font-size-xs` (12px) … `--font-size-2xl` (24px)                                                                     |
+| Line heights (3)  | `--line-height-tight` (1.25), `--line-height-normal` (1.5), `--line-height-relaxed` (1.75)                             |
+| Font weights (4)  | `--font-weight-normal` (400), `--font-weight-medium` (500), `--font-weight-semibold` (600), `--font-weight-bold` (700) |
 
 ### Effects (`effects.css`)
 
-| Category | Tokens |
-|---|---|
-| Border radius (7) | `--radius-none` (0) … `--radius-full` (9999px) |
-| Shadows (5) | `--shadow-sm`, `--shadow-base`, `--shadow-md`, `--shadow-lg`, `--shadow-xl` |
-| Focus ring (3) | `--focus-ring-width` (2px), `--focus-ring-offset` (2px), `--focus-ring-color` (references `--color-border-focus`) |
-| Transitions (3) | `--transition-fast` (150ms), `--transition-base` (200ms), `--transition-slow` (300ms) — all use `cubic-bezier(0.4, 0, 0.2, 1)` |
+| Category          | Tokens                                                                                                                         |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Border radius (7) | `--radius-none` (0) … `--radius-full` (9999px)                                                                                 |
+| Shadows (5)       | `--shadow-sm`, `--shadow-base`, `--shadow-md`, `--shadow-lg`, `--shadow-xl`                                                    |
+| Focus ring (3)    | `--focus-ring-width` (2px), `--focus-ring-offset` (2px), `--focus-ring-color` (references `--color-border-focus`)              |
+| Transitions (3)   | `--transition-fast` (150ms), `--transition-base` (200ms), `--transition-slow` (300ms) — all use `cubic-bezier(0.4, 0, 0.2, 1)` |
 
 ## 6. Component-level token pattern
 
@@ -235,13 +235,13 @@ Consumers can customize a single component without affecting the global design s
 
 Component override tokens follow the pattern `--vers-comp-<component>-<variant?>-<state?>-<property>`:
 
-| Token | Purpose |
-|---|---|
-| `--vers-comp-button-bg` | Default background |
-| `--vers-comp-button-primary-bg` | Primary variant background |
-| `--vers-comp-button-primary-hover-bg` | Primary variant hover background |
-| `--vers-comp-button-sm-height` | Small size height |
-| `--vers-comp-button-focus-ring-color` | Default focus ring color |
+| Token                                         | Purpose                          |
+| --------------------------------------------- | -------------------------------- |
+| `--vers-comp-button-bg`                       | Default background               |
+| `--vers-comp-button-primary-bg`               | Primary variant background       |
+| `--vers-comp-button-primary-hover-bg`         | Primary variant hover background |
+| `--vers-comp-button-sm-height`                | Small size height                |
+| `--vers-comp-button-focus-ring-color`         | Default focus ring color         |
 | `--vers-comp-button-primary-focus-ring-color` | Primary variant focus ring color |
 
 ## 7. Component CSS module pattern
@@ -250,11 +250,11 @@ Each component has a single `.module.css` file. All visual states are driven by 
 
 ### Data-attribute types
 
-| Type | CSS selector | Example |
-|---|---|---|
-| Enumerated | `[data-variant="primary"]` | Variants, sizes |
-| Boolean (present) | `[data-loading]` | Loading, disabled |
-| ARIA-driven | `[aria-pressed="true"]` | Pressed state |
+| Type              | CSS selector               | Example           |
+| ----------------- | -------------------------- | ----------------- |
+| Enumerated        | `[data-variant="primary"]` | Variants, sizes   |
+| Boolean (present) | `[data-loading]`           | Loading, disabled |
+| ARIA-driven       | `[aria-pressed="true"]`    | Pressed state     |
 
 ### Base class
 
@@ -437,9 +437,9 @@ Core uses Vite in library mode, outputting ES modules only.
 ### Full `vite.config.ts`
 
 ```ts
-import { defineConfig } from 'vite';
-import { resolve } from 'path';
-import dts from 'vite-plugin-dts';
+import { defineConfig } from "vite";
+import { resolve } from "path";
+import dts from "vite-plugin-dts";
 
 export default defineConfig({
   plugins: [
@@ -450,25 +450,25 @@ export default defineConfig({
   ],
   css: {
     modules: {
-      generateScopedName: 'versaur-[name]-[local]',
+      generateScopedName: "versaur-[name]-[local]",
     },
   },
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
-      formats: ['es'],
-      fileName: 'index',
+      entry: resolve(__dirname, "src/index.ts"),
+      formats: ["es"],
+      fileName: "index",
     },
     cssCodeSplit: true,
     rollupOptions: {
       output: {
         preserveModules: true,
-        preserveModulesRoot: 'src',
+        preserveModulesRoot: "src",
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name?.endsWith('.css')) {
-            return assetInfo.name.replace('.module.css', '.css');
+          if (assetInfo.name?.endsWith(".css")) {
+            return assetInfo.name.replace(".module.css", ".css");
           }
-          return 'assets/[name]-[hash][extname]';
+          return "assets/[name]-[hash][extname]";
         },
       },
     },
@@ -478,14 +478,14 @@ export default defineConfig({
 
 ### Key build options
 
-| Option | Effect |
-|---|---|
-| `formats: ['es']` | ES modules only — no CommonJS |
-| `cssCodeSplit: true` | Separate CSS file per component (enables tree-shaking) |
-| `preserveModules: true` | Output mirrors `src/` directory structure |
-| `preserveModulesRoot: 'src'` | Strip `src/` prefix from output paths |
-| `assetFileNames` | Strips `.module` from CSS filenames |
-| `vite-plugin-dts` | Generates `.d.ts` declarations alongside JS output |
+| Option                       | Effect                                                 |
+| ---------------------------- | ------------------------------------------------------ |
+| `formats: ['es']`            | ES modules only — no CommonJS                          |
+| `cssCodeSplit: true`         | Separate CSS file per component (enables tree-shaking) |
+| `preserveModules: true`      | Output mirrors `src/` directory structure              |
+| `preserveModulesRoot: 'src'` | Strip `src/` prefix from output paths                  |
+| `assetFileNames`             | Strips `.module` from CSS filenames                    |
+| `vite-plugin-dts`            | Generates `.d.ts` declarations alongside JS output     |
 
 ### Source-first dev resolution
 
@@ -511,8 +511,8 @@ button.module.css  ──parse──▶  generate-types.ts  ──▶  button.ty
 // AUTO-GENERATED by @versaur/tooling — DO NOT EDIT
 // Source: button.module.css
 
-export type ButtonSize = 'large' | 'medium' | 'small';
-export type ButtonVariant = 'danger' | 'primary' | 'secondary';
+export type ButtonSize = "large" | "medium" | "small";
+export type ButtonVariant = "danger" | "primary" | "secondary";
 
 export interface ButtonDataAttrs {
   size?: ButtonSize;
@@ -540,9 +540,9 @@ export default styles;
 
 ### Commands
 
-| Command | Purpose |
-|---|---|
-| `pnpm generate:types` | Parse CSS and regenerate all type files |
+| Command                       | Purpose                                    |
+| ----------------------------- | ------------------------------------------ |
+| `pnpm generate:types`         | Parse CSS and regenerate all type files    |
 | `pnpm generate:types --check` | Verify generated files are up to date (CI) |
 
 Generated files (`*.types.generated.ts`, `*.module.css.d.ts`) are committed to git and auto-discovered via glob.
@@ -551,13 +551,13 @@ Generated files (`*.types.generated.ts`, `*.module.css.d.ts`) are committed to g
 
 The `package.json` `exports` field defines 5 subpath patterns:
 
-| Subpath | Resolves to (source) | Purpose |
-|---|---|---|
-| `.` | `./src/index.ts` | Root barrel — all exports |
-| `./tokens` | `./src/tokens/index.css` | Design tokens CSS (imported in app root) |
-| `./<name>.css` | `./src/components/<name>/<name>.module.css` | Component CSS (side-effect import) |
-| `./components/*` | `./src/components/*/index.ts` | Component TS (wildcard, class-name mappings + types) |
-| `./styles/*` | `./src/components/*/*.module.css` | Raw CSS module (wildcard) |
+| Subpath          | Resolves to (source)                        | Purpose                                              |
+| ---------------- | ------------------------------------------- | ---------------------------------------------------- |
+| `.`              | `./src/index.ts`                            | Root barrel — all exports                            |
+| `./tokens`       | `./src/tokens/index.css`                    | Design tokens CSS (imported in app root)             |
+| `./<name>.css`   | `./src/components/<name>/<name>.module.css` | Component CSS (side-effect import)                   |
+| `./components/*` | `./src/components/*/index.ts`               | Component TS (wildcard, class-name mappings + types) |
+| `./styles/*`     | `./src/components/*/*.module.css`           | Raw CSS module (wildcard)                            |
 
 When adding a new component, only `./<name>.css` needs a manual entry in `package.json`:
 
@@ -586,7 +586,7 @@ The wildcard patterns (`./components/*`, `./styles/*`) automatically cover new c
   ```
 - [ ] Export from root `packages/core/src/index.ts`:
   ```ts
-  export * from './components/<name>';
+  export * from "./components/<name>";
   ```
 - [ ] Add `./<name>.css` entry in `packages/core/package.json` exports
 - [ ] Run `pnpm generate:types` — creates `<name>.types.generated.ts` and `<name>.module.css.d.ts`

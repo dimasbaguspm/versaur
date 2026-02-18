@@ -3,11 +3,7 @@
 import React from "react";
 import { Sidebar } from "./sidebar";
 import { Icon } from "../icon";
-import {
-  ChevronDownIcon,
-  LayoutDashboardIcon,
-  FileCodeIcon,
-} from "@versaur/icons";
+import { ChevronDownIcon, FileCodeIcon, LayoutDashboardIcon } from "@versaur/icons";
 
 /**
  * Example 1: Expanded Sidebar
@@ -16,9 +12,7 @@ function ExpandedSidebar() {
   const [isOpen, setIsOpen] = React.useState(true);
 
   return (
-    <div
-      style={{ display: "flex", height: "400px", border: "1px solid #e5e7eb" }}
-    >
+    <div style={{ border: "1px solid #e5e7eb", display: "flex", height: "400px" }}>
       <Sidebar isOpen={isOpen} onOpenChange={setIsOpen}>
         <Sidebar.Header>
           <Sidebar.Item
@@ -30,20 +24,11 @@ function ExpandedSidebar() {
           </Sidebar.Item>
         </Sidebar.Header>
         <Sidebar.Body>
-          <Sidebar.Group
-            label="Navigation"
-            icon={<Icon as={FileCodeIcon} color="inherit" />}
-          >
-            <Sidebar.Item
-              href="/projects"
-              icon={<Icon as={FileCodeIcon} color="inherit" />}
-            >
+          <Sidebar.Group label="Navigation" icon={<Icon as={FileCodeIcon} color="inherit" />}>
+            <Sidebar.Item href="/projects" icon={<Icon as={FileCodeIcon} color="inherit" />}>
               Projects
             </Sidebar.Item>
-            <Sidebar.Item
-              href="/settings"
-              icon={<Icon as={ChevronDownIcon} color="inherit" />}
-            >
+            <Sidebar.Item href="/settings" icon={<Icon as={ChevronDownIcon} color="inherit" />}>
               Settings
             </Sidebar.Item>
           </Sidebar.Group>
@@ -52,25 +37,22 @@ function ExpandedSidebar() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             style={{
-              width: "100%",
-              padding: "0.75rem",
+              backgroundColor: "#f3f4f6",
               border: "none",
               borderRadius: "0.375rem",
-              backgroundColor: "#f3f4f6",
               cursor: "pointer",
               fontSize: "0.875rem",
+              padding: "0.75rem",
+              width: "100%",
             }}
           >
             {isOpen ? "Collapse" : "Expand"}
           </button>
         </Sidebar.Footer>
       </Sidebar>
-      <div style={{ flex: 1, padding: "1rem", overflow: "auto" }}>
+      <div style={{ flex: 1, overflow: "auto", padding: "1rem" }}>
         <h3>Content Area</h3>
-        <p>
-          Toggle sidebar with button at bottom. Use arrow keys to navigate
-          items.
-        </p>
+        <p>Toggle sidebar with button at bottom. Use arrow keys to navigate items.</p>
       </div>
     </div>
   );
@@ -83,9 +65,7 @@ function CollapsedSidebar() {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <div
-      style={{ display: "flex", height: "400px", border: "1px solid #e5e7eb" }}
-    >
+    <div style={{ border: "1px solid #e5e7eb", display: "flex", height: "400px" }}>
       <Sidebar isOpen={isOpen} onOpenChange={setIsOpen}>
         <Sidebar.Header>
           <Sidebar.Item
@@ -98,16 +78,10 @@ function CollapsedSidebar() {
         </Sidebar.Header>
         <Sidebar.Body>
           <Sidebar.Group label="Navigation">
-            <Sidebar.Item
-              href="/projects"
-              icon={<Icon as={FileCodeIcon} color="inherit" />}
-            >
+            <Sidebar.Item href="/projects" icon={<Icon as={FileCodeIcon} color="inherit" />}>
               Projects
             </Sidebar.Item>
-            <Sidebar.Item
-              href="/settings"
-              icon={<Icon as={ChevronDownIcon} color="inherit" />}
-            >
+            <Sidebar.Item href="/settings" icon={<Icon as={ChevronDownIcon} color="inherit" />}>
               Settings
             </Sidebar.Item>
           </Sidebar.Group>
@@ -116,20 +90,20 @@ function CollapsedSidebar() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             style={{
-              width: "100%",
-              padding: "0.75rem",
+              backgroundColor: "#f3f4f6",
               border: "none",
               borderRadius: "0.375rem",
-              backgroundColor: "#f3f4f6",
               cursor: "pointer",
               fontSize: "0.875rem",
+              padding: "0.75rem",
+              width: "100%",
             }}
           >
             {isOpen ? "Collapse" : "Expand"}
           </button>
         </Sidebar.Footer>
       </Sidebar>
-      <div style={{ flex: 1, padding: "1rem", overflow: "auto" }}>
+      <div style={{ flex: 1, overflow: "auto", padding: "1rem" }}>
         <h3>Content Area</h3>
         <p>Sidebar is collapsed (icons only). Click expand button to open.</p>
       </div>
@@ -144,9 +118,7 @@ function SidebarWithGroups() {
   const [isOpen, setIsOpen] = React.useState(true);
 
   return (
-    <div
-      style={{ display: "flex", height: "500px", border: "1px solid #e5e7eb" }}
-    >
+    <div style={{ border: "1px solid #e5e7eb", display: "flex", height: "500px" }}>
       <Sidebar isOpen={isOpen} onOpenChange={setIsOpen}>
         <Sidebar.Header>
           <Sidebar.Item
@@ -159,16 +131,10 @@ function SidebarWithGroups() {
         </Sidebar.Header>
         <Sidebar.Body>
           <Sidebar.Group label="Main">
-            <Sidebar.Item
-              href="/projects"
-              icon={<Icon as={FileCodeIcon} color="inherit" />}
-            >
+            <Sidebar.Item href="/projects" icon={<Icon as={FileCodeIcon} color="inherit" />}>
               Projects
             </Sidebar.Item>
-            <Sidebar.Item
-              href="/team"
-              icon={<Icon as={ChevronDownIcon} color="inherit" />}
-            >
+            <Sidebar.Item href="/team" icon={<Icon as={ChevronDownIcon} color="inherit" />}>
               Team
             </Sidebar.Item>
           </Sidebar.Group>
@@ -176,16 +142,10 @@ function SidebarWithGroups() {
           <Sidebar.Divider />
 
           <Sidebar.Group label="Tools">
-            <Sidebar.Item
-              href="/analytics"
-              icon={<Icon as={FileCodeIcon} color="inherit" />}
-            >
+            <Sidebar.Item href="/analytics" icon={<Icon as={FileCodeIcon} color="inherit" />}>
               Analytics
             </Sidebar.Item>
-            <Sidebar.Item
-              href="/settings"
-              icon={<Icon as={ChevronDownIcon} color="inherit" />}
-            >
+            <Sidebar.Item href="/settings" icon={<Icon as={ChevronDownIcon} color="inherit" />}>
               Settings
             </Sidebar.Item>
           </Sidebar.Group>
@@ -194,20 +154,20 @@ function SidebarWithGroups() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             style={{
-              width: "100%",
-              padding: "0.75rem",
+              backgroundColor: "#f3f4f6",
               border: "none",
               borderRadius: "0.375rem",
-              backgroundColor: "#f3f4f6",
               cursor: "pointer",
               fontSize: "0.875rem",
+              padding: "0.75rem",
+              width: "100%",
             }}
           >
             {isOpen ? "Collapse" : "Expand"}
           </button>
         </Sidebar.Footer>
       </Sidebar>
-      <div style={{ flex: 1, padding: "1rem", overflow: "auto" }}>
+      <div style={{ flex: 1, overflow: "auto", padding: "1rem" }}>
         <h3>Content Area</h3>
         <p>Multiple groups with divider. Use arrow keys to navigate.</p>
       </div>
@@ -227,9 +187,7 @@ function SidebarKeyboardNav() {
   };
 
   return (
-    <div
-      style={{ display: "flex", height: "400px", border: "1px solid #e5e7eb" }}
-    >
+    <div style={{ border: "1px solid #e5e7eb", display: "flex", height: "400px" }}>
       <Sidebar isOpen={isOpen} onOpenChange={setIsOpen}>
         <Sidebar.Header>
           <Sidebar.Item
@@ -265,20 +223,20 @@ function SidebarKeyboardNav() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             style={{
-              width: "100%",
-              padding: "0.75rem",
+              backgroundColor: "#f3f4f6",
               border: "none",
               borderRadius: "0.375rem",
-              backgroundColor: "#f3f4f6",
               cursor: "pointer",
               fontSize: "0.875rem",
+              padding: "0.75rem",
+              width: "100%",
             }}
           >
             {isOpen ? "Collapse" : "Expand"}
           </button>
         </Sidebar.Footer>
       </Sidebar>
-      <div style={{ flex: 1, padding: "1rem", overflow: "auto" }}>
+      <div style={{ flex: 1, overflow: "auto", padding: "1rem" }}>
         <h3>Keyboard Navigation Demo</h3>
         <p>Focus on the sidebar and use:</p>
         <ul>
@@ -293,9 +251,6 @@ function SidebarKeyboardNav() {
 
 export const sidebarSections = [
   {
-    key: "expanded",
-    title: "Expanded Sidebar",
-    preview: ExpandedSidebar,
     code: `import { Sidebar } from '@versaur/react/sidebar';
 import { Icon } from '@versaur/react/icon';
 import { LayoutDashboardIcon, FileCodeIcon } from '@versaur/icons';
@@ -333,12 +288,12 @@ export function ExpandedSidebar() {
     </Sidebar>
   );
 }`,
+    key: "expanded",
     language: "tsx",
+    preview: ExpandedSidebar,
+    title: "Expanded Sidebar",
   },
   {
-    key: "collapsed",
-    title: "Collapsed Sidebar",
-    preview: CollapsedSidebar,
     code: `import { Sidebar } from '@versaur/react/sidebar';
 import { Icon } from '@versaur/react/icon';
 import { LayoutDashboardIcon } from '@versaur/icons';
@@ -362,12 +317,12 @@ export function CollapsedSidebar() {
     </Sidebar>
   );
 }`,
+    key: "collapsed",
     language: "tsx",
+    preview: CollapsedSidebar,
+    title: "Collapsed Sidebar",
   },
   {
-    key: "with-groups",
-    title: "Sidebar with Groups",
-    preview: SidebarWithGroups,
     code: `import { Sidebar } from '@versaur/react/sidebar';
 import { Icon } from '@versaur/react/icon';
 import { LayoutDashboardIcon, FileCodeIcon } from '@versaur/icons';
@@ -405,12 +360,12 @@ export function SidebarWithGroups() {
     </Sidebar>
   );
 }`,
+    key: "with-groups",
     language: "tsx",
+    preview: SidebarWithGroups,
+    title: "Sidebar with Groups",
   },
   {
-    key: "keyboard-nav",
-    title: "Keyboard Navigation",
-    preview: SidebarKeyboardNav,
     code: `import { Sidebar } from '@versaur/react/sidebar';
 import { Icon } from '@versaur/react/icon';
 import { LayoutDashboardIcon } from '@versaur/icons';
@@ -440,7 +395,10 @@ export function SidebarKeyboardNav() {
 
 // Use Arrow Up/Down to navigate items
 // Press Enter/Space to activate focused item`,
+    key: "keyboard-nav",
     language: "tsx",
+    preview: SidebarKeyboardNav,
+    title: "Keyboard Navigation",
   },
 ];
 
@@ -449,22 +407,22 @@ export const sidebarProps = [
     name: "Sidebar",
     props: [
       {
+        default: "-",
+        description: "Whether sidebar is expanded (required, controlled)",
         name: "isOpen",
         type: "boolean",
-        description: "Whether sidebar is expanded (required, controlled)",
-        default: "-",
       },
       {
+        default: "-",
+        description: "Callback when sidebar open state changes",
         name: "onOpenChange",
         type: "(isOpen: boolean) => void",
-        description: "Callback when sidebar open state changes",
-        default: "-",
       },
       {
+        default: "-",
+        description: "Sidebar.Header, Sidebar.Body, Sidebar.Footer",
         name: "children",
         type: "ReactNode",
-        description: "Sidebar.Header, Sidebar.Body, Sidebar.Footer",
-        default: "-",
       },
     ],
   },
@@ -472,10 +430,10 @@ export const sidebarProps = [
     name: "Sidebar.Header",
     props: [
       {
+        default: "-",
+        description: "Header content (typically Sidebar.Item)",
         name: "children",
         type: "ReactNode",
-        description: "Header content (typically Sidebar.Item)",
-        default: "-",
       },
     ],
   },
@@ -483,11 +441,10 @@ export const sidebarProps = [
     name: "Sidebar.Body",
     props: [
       {
+        default: "-",
+        description: "Main content (Sidebar.Group, Sidebar.Item, Sidebar.Divider)",
         name: "children",
         type: "ReactNode",
-        description:
-          "Main content (Sidebar.Group, Sidebar.Item, Sidebar.Divider)",
-        default: "-",
       },
     ],
   },
@@ -495,10 +452,10 @@ export const sidebarProps = [
     name: "Sidebar.Footer",
     props: [
       {
+        default: "-",
+        description: "Footer content (typically buttons or info)",
         name: "children",
         type: "ReactNode",
-        description: "Footer content (typically buttons or info)",
-        default: "-",
       },
     ],
   },
@@ -506,22 +463,22 @@ export const sidebarProps = [
     name: "Sidebar.Group",
     props: [
       {
+        default: "-",
+        description: "Group label/heading",
         name: "label",
         type: "ReactNode",
-        description: "Group label/heading",
-        default: "-",
       },
       {
+        default: "-",
+        description: "Icon displayed next to label",
         name: "icon",
         type: "ReactNode",
-        description: "Icon displayed next to label",
-        default: "-",
       },
       {
+        default: "-",
+        description: "Sidebar.Item components in group",
         name: "children",
         type: "ReactNode",
-        description: "Sidebar.Item components in group",
-        default: "-",
       },
     ],
   },
@@ -529,46 +486,46 @@ export const sidebarProps = [
     name: "Sidebar.Item",
     props: [
       {
+        default: '"button"',
+        description: "Polymorphic component (button, anchor, or Link)",
         name: "as",
         type: '"button" | "a" | ElementType',
-        description: "Polymorphic component (button, anchor, or Link)",
-        default: '"button"',
       },
       {
+        default: "-",
+        description: "URL for link items (when as='a')",
         name: "href",
         type: "string",
-        description: "URL for link items (when as='a')",
-        default: "-",
       },
       {
+        default: "false",
+        description: "Indicates current/active item",
         name: "active",
         type: "boolean",
-        description: "Indicates current/active item",
-        default: "false",
       },
       {
+        default: "false",
+        description: "Disables item interaction",
         name: "disabled",
         type: "boolean",
-        description: "Disables item interaction",
-        default: "false",
       },
       {
+        default: "-",
+        description: "Icon displayed left of label",
         name: "icon",
         type: "ReactNode",
-        description: "Icon displayed left of label",
-        default: "-",
       },
       {
+        default: "-",
+        description: "Item label/content",
         name: "children",
         type: "ReactNode",
-        description: "Item label/content",
-        default: "-",
       },
       {
+        default: "-",
+        description: "Click handler for buttons",
         name: "onClick",
         type: "(e: React.MouseEvent) => void",
-        description: "Click handler for buttons",
-        default: "-",
       },
     ],
   },
@@ -576,10 +533,10 @@ export const sidebarProps = [
     name: "Sidebar.Divider",
     props: [
       {
+        default: "-",
+        description: "Visual divider (renders Hr component)",
         name: "children",
         type: "ReactNode",
-        description: "Visual divider (renders Hr component)",
-        default: "-",
       },
     ],
   },

@@ -32,13 +32,12 @@ export function closeMenu(options: { id: string }) {
 /**
  * Hook to register/unregister a menu
  */
-export function useMenuState(
-  id: string,
-  menuRef: MutableRefObject<HTMLElement | null>,
-) {
+export function useMenuState(id: string, menuRef: MutableRefObject<HTMLElement | null>) {
   useEffect(() => {
     const menuEl = menuRef.current;
-    if (!menuEl || !id) return;
+    if (!menuEl || !id) {
+      return;
+    }
 
     registerMenu(id, menuEl);
 

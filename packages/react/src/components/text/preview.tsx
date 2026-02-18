@@ -73,10 +73,7 @@ function IntentsPreview() {
       <Text intent="danger">Danger Intent</Text>
       <Text intent="success">Success Intent</Text>
       <Text intent="warning">Warning Intent</Text>
-      <Text
-        intent="white"
-        style={{ backgroundColor: "#333", padding: "0.5rem" }}
-      >
+      <Text intent="white" style={{ backgroundColor: "#333", padding: "0.5rem" }}>
         White Intent
       </Text>
       <Text intent="black">Black Intent</Text>
@@ -86,42 +83,39 @@ function IntentsPreview() {
 
 export const textSections: TextSection[] = [
   {
-    key: "as-elements",
-    title: "As Elements",
-    preview: AsElementsPreview,
     code: `<Text as="p">Paragraph text</Text>
 <Text as="span">Span text</Text>
 <Text as="small">Small text</Text>
 <Text as="strong">Strong text</Text>
 <Text as="em">Emphasized text</Text>`,
+    key: "as-elements",
     language: "tsx",
+    preview: AsElementsPreview,
+    title: "As Elements",
   },
   {
-    key: "sizes",
-    title: "Sizes",
-    preview: SizesPreview,
     code: `<Text size="xs">Extra Small</Text>
 <Text size="sm">Small</Text>
 <Text size="base">Base</Text>
 <Text size="lg">Large</Text>
 <Text size="xl">Extra Large</Text>
 <Text size="2xl">2X Large</Text>`,
+    key: "sizes",
     language: "tsx",
+    preview: SizesPreview,
+    title: "Sizes",
   },
   {
-    key: "weights",
-    title: "Weights",
-    preview: WeightsPreview,
     code: `<Text weight="normal">Normal Weight</Text>
 <Text weight="medium">Medium Weight</Text>
 <Text weight="semibold">Semibold Weight</Text>
 <Text weight="bold">Bold Weight</Text>`,
+    key: "weights",
     language: "tsx",
+    preview: WeightsPreview,
+    title: "Weights",
   },
   {
-    key: "intents",
-    title: "Intents",
-    preview: IntentsPreview,
     code: `<Text intent="default">Default Intent</Text>
 <Text intent="gray">Gray Intent</Text>
 <Text intent="primary">Primary Intent</Text>
@@ -131,64 +125,67 @@ export const textSections: TextSection[] = [
 <Text intent="warning">Warning Intent</Text>
 <Text intent="white">White Intent</Text>
 <Text intent="black">Black Intent</Text>`,
+    key: "intents",
     language: "tsx",
+    preview: IntentsPreview,
+    title: "Intents",
   },
   {
-    key: "case",
-    title: "Case",
-    preview: CasePreview,
     code: `<Text case="upper">uppercase text transform</Text>
 <Text case="lower">LOWERCASE TEXT TRANSFORM</Text>
 <Text case="capitalize">capitalize text transform</Text>`,
+    key: "case",
     language: "tsx",
+    preview: CasePreview,
+    title: "Case",
   },
   {
-    key: "transform",
-    title: "Transform",
-    preview: TransformPreview,
     code: `<Text transform="underline">Underlined Text</Text>
 <Text transform="line-through">Line Through Text</Text>
 <Text transform="overline">Overlined Text</Text>`,
+    key: "transform",
     language: "tsx",
+    preview: TransformPreview,
+    title: "Transform",
   },
 ];
 
 export const textProps = [
   {
-    name: "as",
-    type: "'p' | 'span' | 'small' | 'strong' | 'em'",
     default: "'p'",
     description: "The HTML element to render",
+    name: "as",
+    type: "'p' | 'span' | 'small' | 'strong' | 'em'",
   },
   {
-    name: "size",
-    type: "'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl'",
     default: "—",
     description: "Override the preset font-size",
+    name: "size",
+    type: "'xs' | 'sm' | 'base' | 'lg' | 'xl' | '2xl'",
   },
   {
-    name: "weight",
-    type: "'normal' | 'medium' | 'semibold' | 'bold'",
     default: "—",
     description: "Override the preset font-weight",
+    name: "weight",
+    type: "'normal' | 'medium' | 'semibold' | 'bold'",
   },
   {
-    name: "intent",
-    type: "'default' | 'gray' | 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'white' | 'black'",
     default: "—",
     description: "Text color intent",
+    name: "intent",
+    type: "'default' | 'gray' | 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'white' | 'black'",
   },
   {
-    name: "case",
-    type: "'upper' | 'lower' | 'capitalize'",
     default: "—",
     description: "Text transform case",
+    name: "case",
+    type: "'upper' | 'lower' | 'capitalize'",
   },
   {
-    name: "transform",
-    type: "'underline' | 'line-through' | 'overline'",
     default: "—",
     description: "Text decoration transform",
+    name: "transform",
+    type: "'underline' | 'line-through' | 'overline'",
   },
 ];
 

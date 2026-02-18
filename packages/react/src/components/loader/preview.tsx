@@ -11,7 +11,7 @@ export interface LoaderSection {
 
 function TypesPreview() {
   return (
-    <div style={{ display: "flex", gap: "3rem", alignItems: "flex-start" }}>
+    <div style={{ alignItems: "flex-start", display: "flex", gap: "3rem" }}>
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
         <h4>Spinner</h4>
         <Loader type="spinner" size="sm">
@@ -49,12 +49,12 @@ function SizesPreview() {
 
 function NoLabelPreview() {
   return (
-    <div style={{ display: "flex", gap: "3rem", alignItems: "center" }}>
+    <div style={{ alignItems: "center", display: "flex", gap: "3rem" }}>
       <div
         style={{
+          alignItems: "center",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
           gap: "1rem",
         }}
       >
@@ -63,9 +63,9 @@ function NoLabelPreview() {
       </div>
       <div
         style={{
+          alignItems: "center",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
           gap: "1rem",
         }}
       >
@@ -78,49 +78,49 @@ function NoLabelPreview() {
 
 export const loaderSections: LoaderSection[] = [
   {
-    key: "types",
-    title: "Types",
-    preview: TypesPreview,
     code: `<Loader type="spinner">Loading...</Loader>
 <Loader type="bar">Loading...</Loader>`,
+    key: "types",
     language: "tsx",
+    preview: TypesPreview,
+    title: "Types",
   },
   {
-    key: "sizes",
-    title: "Sizes",
-    preview: SizesPreview,
     code: `<Loader type="spinner" size="sm">Small</Loader>
 <Loader type="spinner" size="lg">Large</Loader>`,
+    key: "sizes",
     language: "tsx",
+    preview: SizesPreview,
+    title: "Sizes",
   },
   {
-    key: "no-label",
-    title: "No Label",
-    preview: NoLabelPreview,
     code: `<Loader type="spinner" size="sm" />
 <Loader type="bar" size="sm" />`,
+    key: "no-label",
     language: "tsx",
+    preview: NoLabelPreview,
+    title: "No Label",
   },
 ];
 
 export const loaderProps = [
   {
-    name: "type",
-    type: "'spinner' | 'bar'",
     default: "'spinner'",
     description: "The type of loading indicator to display",
+    name: "type",
+    type: "'spinner' | 'bar'",
   },
   {
-    name: "size",
-    type: "'sm' | 'lg'",
     default: "'sm'",
     description: "Size of the loading indicator",
+    name: "size",
+    type: "'sm' | 'lg'",
   },
   {
-    name: "children",
-    type: "ReactNode",
     default: "undefined",
     description: "Loading status text to display below the indicator",
+    name: "children",
+    type: "ReactNode",
   },
 ];
 

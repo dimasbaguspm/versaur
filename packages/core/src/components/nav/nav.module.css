@@ -62,10 +62,7 @@
     color 0.15s ease;
 
   /* Focus ring */
-  --_focus-ring-color: var(
-    --vers-comp-nav-item-focus-ring-color,
-    var(--color-primary)
-  );
+  --_focus-ring-color: var(--vers-comp-nav-item-focus-ring-color, var(--color-primary));
   outline: none;
 }
 
@@ -80,15 +77,9 @@
 
 /* Active state (current page) */
 .nav-item[data-active]:not([data-disabled]):not([data-loading]) {
-  background-color: var(
-    --vers-comp-nav-item-active-bg,
-    var(--color-primary-light)
-  );
+  background-color: var(--vers-comp-nav-item-active-bg, var(--color-primary-light));
   color: var(--vers-comp-nav-item-active-text, var(--color-primary));
-  font-weight: var(
-    --vers-comp-nav-item-active-font-weight,
-    var(--font-weight-semibold)
-  );
+  font-weight: var(--vers-comp-nav-item-active-font-weight, var(--font-weight-semibold));
 }
 
 /* Disabled state (overrides all other states) */

@@ -31,9 +31,9 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
     ref,
   ) => {
     const dataAttrs = useDataAttrs({
-      variant,
-      size,
       shape,
+      size,
+      variant,
     });
 
     return (

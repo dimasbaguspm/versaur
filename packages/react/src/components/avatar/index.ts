@@ -1,6 +1,6 @@
 import { Avatar } from "./avatar";
 import type { Avatar as CoreAvatar } from "@versaur/core";
-import type { AvatarProps, AvatarImageProps } from "./avatar.types";
+import type { AvatarImageProps, AvatarProps } from "./avatar.types";
 
 // Declaration merging: namespace + const = Avatar.Props, Avatar.Variant, Avatar.Image, etc.
 declare namespace Avatar {

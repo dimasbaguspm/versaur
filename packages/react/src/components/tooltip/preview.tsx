@@ -19,9 +19,7 @@ function BasicTooltipPreview() {
         padding: "3rem 1rem",
       }}
     >
-      <button {...Tooltip.getTooltipTriggerProps({ id: "basic-tooltip" })}>
-        Hover me
-      </button>
+      <button {...Tooltip.getTooltipTriggerProps({ id: "basic-tooltip" })}>Hover me</button>
       <Tooltip id="basic-tooltip" placement="top">
         <Tooltip.Text>This is a helpful tooltip</Tooltip.Text>
       </Tooltip>
@@ -33,7 +31,7 @@ function BasicTooltipPreview() {
  * All placement variants
  */
 function PlacementsPreview() {
-  const placements: Array<
+  const placements: (
     | "top"
     | "top-start"
     | "top-end"
@@ -46,7 +44,7 @@ function PlacementsPreview() {
     | "right"
     | "right-start"
     | "right-end"
-  > = [
+  )[] = [
     "top",
     "top-start",
     "top-end",
@@ -64,19 +62,17 @@ function PlacementsPreview() {
   return (
     <div
       style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(4, 1fr)",
-        gap: "3rem",
-        padding: "4rem",
         alignItems: "center",
+        display: "grid",
+        gap: "3rem",
+        gridTemplateColumns: "repeat(4, 1fr)",
         justifyItems: "center",
+        padding: "4rem",
       }}
     >
       {placements.map((placement) => (
         <div key={placement} style={{ position: "relative" }}>
-          <button
-            {...Tooltip.getTooltipTriggerProps({ id: `tooltip-${placement}` })}
-          >
+          <button {...Tooltip.getTooltipTriggerProps({ id: `tooltip-${placement}` })}>
             {placement}
           </button>
           <Tooltip id={`tooltip-${placement}`} placement={placement}>
@@ -101,13 +97,11 @@ function CustomMaxWidthPreview() {
         padding: "3rem 1rem",
       }}
     >
-      <button {...Tooltip.getTooltipTriggerProps({ id: "wide-tooltip" })}>
-        Wide tooltip
-      </button>
+      <button {...Tooltip.getTooltipTriggerProps({ id: "wide-tooltip" })}>Wide tooltip</button>
       <Tooltip id="wide-tooltip" placement="top">
         <Tooltip.Text maxWidth="400px">
-          This tooltip has a custom maximum width of 400 pixels and will wrap
-          text across multiple lines if needed.
+          This tooltip has a custom maximum width of 400 pixels and will wrap text across multiple
+          lines if needed.
         </Tooltip.Text>
       </Tooltip>
     </div>
@@ -122,8 +116,8 @@ function LineClampPreview() {
     <div
       style={{
         display: "flex",
-        gap: "1rem",
         flexDirection: "column",
+        gap: "1rem",
         justifyContent: "center",
         padding: "3rem 1rem",
       }}
@@ -134,20 +128,16 @@ function LineClampPreview() {
         </button>
         <Tooltip id="clamped-2-lines" placement="top">
           <Tooltip.Text maxWidth="200px">
-            Line one is here. Line two is here. Line three will be cut off and
-            hidden with ellipsis.
+            Line one is here. Line two is here. Line three will be cut off and hidden with ellipsis.
           </Tooltip.Text>
         </Tooltip>
       </div>
 
       <div>
-        <button {...Tooltip.getTooltipTriggerProps({ id: "clamped-1-line" })}>
-          1 line only
-        </button>
+        <button {...Tooltip.getTooltipTriggerProps({ id: "clamped-1-line" })}>1 line only</button>
         <Tooltip id="clamped-1-line" placement="top">
           <Tooltip.Text maxWidth="200px" maxLines={1}>
-            This long text will be completely cut off because it exceeds the
-            single line limit.
+            This long text will be completely cut off because it exceeds the single line limit.
           </Tooltip.Text>
         </Tooltip>
       </div>
@@ -163,16 +153,14 @@ function TriggerTypePreview() {
     <div
       style={{
         display: "flex",
-        gap: "2rem",
         flexDirection: "column",
+        gap: "2rem",
         justifyContent: "center",
         padding: "3rem 1rem",
       }}
     >
       <div>
-        <button {...Tooltip.getTooltipTriggerProps({ id: "trigger-hover" })}>
-          Hover me
-        </button>
+        <button {...Tooltip.getTooltipTriggerProps({ id: "trigger-hover" })}>Hover me</button>
         <Tooltip id="trigger-hover" placement="top" triggerType="hover">
           <Tooltip.Text>Shows on hover only</Tooltip.Text>
         </Tooltip>
@@ -253,14 +241,14 @@ function CustomUIPreview() {
           <Card.Footer gap="sm">
             <button
               style={{
-                flex: 1,
-                padding: "6px 12px",
                 backgroundColor: "#3b82f6",
-                color: "white",
                 border: "none",
                 borderRadius: "4px",
+                color: "white",
                 cursor: "pointer",
+                flex: 1,
                 fontSize: "12px",
+                padding: "6px 12px",
               }}
             >
               Follow
@@ -286,21 +274,18 @@ export interface TooltipSection {
 
 export const tooltipSections: TooltipSection[] = [
   {
-    key: "basic",
-    title: "Basic Tooltip",
-    preview: BasicTooltipPreview,
     code: `const triggerProps = Tooltip.getTooltipTriggerProps({ id: "basic-tooltip" });
 
 <button {...triggerProps}>Hover me</button>
 <Tooltip id="basic-tooltip" placement="top">
   <Tooltip.Text>This is a helpful tooltip</Tooltip.Text>
 </Tooltip>`,
+    key: "basic",
     language: "tsx",
+    preview: BasicTooltipPreview,
+    title: "Basic Tooltip",
   },
   {
-    key: "placements",
-    title: "All Placements",
-    preview: PlacementsPreview,
     code: `const placements = [
   "top", "top-start", "top-end",
   "bottom", "bottom-start", "bottom-end",
@@ -318,12 +303,12 @@ export const tooltipSections: TooltipSection[] = [
     </Tooltip>
   </div>
 ))}`,
+    key: "placements",
     language: "tsx",
+    preview: PlacementsPreview,
+    title: "All Placements",
   },
   {
-    key: "max-width",
-    title: "Custom Max-Width",
-    preview: CustomMaxWidthPreview,
     code: `<button {...Tooltip.getTooltipTriggerProps({ id: "wide-tooltip" })}>
   Wide tooltip
 </button>
@@ -332,12 +317,12 @@ export const tooltipSections: TooltipSection[] = [
     This tooltip has a custom maximum width of 400 pixels and will wrap text across multiple lines if needed.
   </Tooltip.Text>
 </Tooltip>`,
+    key: "max-width",
     language: "tsx",
+    preview: CustomMaxWidthPreview,
+    title: "Custom Max-Width",
   },
   {
-    key: "line-clamp",
-    title: "Line Clamping",
-    preview: LineClampPreview,
     code: `{/* 2 lines (default) */}
 <button {...Tooltip.getTooltipTriggerProps({ id: "clamped-2-lines" })}>
   2 lines
@@ -357,12 +342,12 @@ export const tooltipSections: TooltipSection[] = [
     This long text will be completely cut off because it exceeds the single line limit.
   </Tooltip.Text>
 </Tooltip>`,
+    key: "line-clamp",
     language: "tsx",
+    preview: LineClampPreview,
+    title: "Line Clamping",
   },
   {
-    key: "trigger-type",
-    title: "Trigger Type",
-    preview: TriggerTypePreview,
     code: `{/* Shows on hover only */}
 <button {...Tooltip.getTooltipTriggerProps({ id: "trigger-hover" })}>
   Hover me
@@ -386,12 +371,12 @@ export const tooltipSections: TooltipSection[] = [
 <Tooltip id="trigger-all" placement="top" triggerType="all">
   <Tooltip.Text>Shows on both hover and focus</Tooltip.Text>
 </Tooltip>`,
+    key: "trigger-type",
     language: "tsx",
+    preview: TriggerTypePreview,
+    title: "Trigger Type",
   },
   {
-    key: "custom-ui",
-    title: "Custom UI Content",
-    preview: CustomUIPreview,
     code: `<button {...Tooltip.getTooltipTriggerProps({ id: "user-card", triggerType: "focus" })}>
   View Profile
 </button>
@@ -422,7 +407,10 @@ export const tooltipSections: TooltipSection[] = [
     </Card.Footer>
   </Card>
 </Tooltip>`,
+    key: "custom-ui",
     language: "tsx",
+    preview: CustomUIPreview,
+    title: "Custom UI Content",
   },
 ];
 
@@ -431,58 +419,57 @@ export const tooltipSections: TooltipSection[] = [
  */
 export const tooltipProps = [
   {
-    name: "id",
-    type: "string",
-    required: true,
     description: "Unique identifier matching the popovertarget on trigger",
-  },
-  {
-    name: "children",
-    type: "ReactNode",
+    name: "id",
     required: true,
-    description:
-      "Tooltip content (can use Tooltip.Text or any custom component)",
+    type: "string",
   },
   {
-    name: "placement",
-    type: "Tooltip.Placement",
-    required: false,
+    description: "Tooltip content (can use Tooltip.Text or any custom component)",
+    name: "children",
+    required: true,
+    type: "ReactNode",
+  },
+  {
     defaultValue: '"top"',
     description:
       "Placement relative to trigger (top, top-start, top-end, bottom, bottom-start, bottom-end, left, left-start, left-end, right, right-start, right-end)",
+    name: "placement",
+    required: false,
+    type: "Tooltip.Placement",
   },
   {
-    name: "gap",
-    type: "number",
-    required: false,
     defaultValue: "8",
     description: "Gap between tooltip and trigger in pixels",
+    name: "gap",
+    required: false,
+    type: "number",
   },
   {
-    name: "triggerType",
-    type: "'focus' | 'hover' | 'all'",
-    required: false,
     defaultValue: '"all"',
     description: "When to show tooltip: focus, hover, or both (all)",
+    name: "triggerType",
+    required: false,
+    type: "'focus' | 'hover' | 'all'",
   },
   {
-    name: "Tooltip.Text",
-    type: "Component",
-    required: false,
     description: "Text variant with optional text-specific styling",
+    name: "Tooltip.Text",
+    required: false,
+    type: "Component",
   },
   {
-    name: "Tooltip.Text.maxWidth",
-    type: "string",
-    required: false,
     defaultValue: '"280px"',
     description: "Maximum width CSS value for text (e.g. 400px, 20rem)",
+    name: "Tooltip.Text.maxWidth",
+    required: false,
+    type: "string",
   },
   {
-    name: "Tooltip.Text.maxLines",
-    type: "number",
-    required: false,
     defaultValue: "2",
     description: "Maximum number of lines before text is clamped with ellipsis",
+    name: "Tooltip.Text.maxLines",
+    required: false,
+    type: "number",
   },
 ];

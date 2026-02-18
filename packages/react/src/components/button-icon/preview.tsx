@@ -15,7 +15,7 @@ export interface ButtonIconSection {
  */
 function VariantsPreview() {
   return (
-    <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+    <div style={{ alignItems: "center", display: "flex", gap: "8px" }}>
       <ButtonIcon as={MenuIcon} aria-label="Primary" variant="primary" />
       <ButtonIcon as={MenuIcon} aria-label="Secondary" variant="secondary" />
       <ButtonIcon as={MenuIcon} aria-label="Ghost" variant="ghost" />
@@ -29,7 +29,7 @@ function VariantsPreview() {
  */
 function SizesPreview() {
   return (
-    <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+    <div style={{ alignItems: "center", display: "flex", gap: "8px" }}>
       <ButtonIcon as={MenuIcon} aria-label="Small" size="small" />
       <ButtonIcon as={MenuIcon} aria-label="Medium" size="medium" />
     </div>
@@ -41,7 +41,7 @@ function SizesPreview() {
  */
 function StatesPreview() {
   return (
-    <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+    <div style={{ alignItems: "center", display: "flex", gap: "8px" }}>
       <ButtonIcon as={MenuIcon} aria-label="Loading" loading />
       <ButtonIcon as={MenuIcon} aria-label="Disabled" disabled />
       <ButtonIcon as={MenuIcon} aria-label="Pressed" pressed />
@@ -51,84 +51,83 @@ function StatesPreview() {
 
 export const buttonIconSections: ButtonIconSection[] = [
   {
-    key: "variants",
-    title: "Variants",
-    preview: VariantsPreview,
     code: `<ButtonIcon as={MenuIcon} aria-label="Primary" variant="primary" />
 <ButtonIcon as={MenuIcon} aria-label="Secondary" variant="secondary" />
 <ButtonIcon as={MenuIcon} aria-label="Ghost" variant="ghost" />
 <ButtonIcon as={MenuIcon} aria-label="Danger" variant="danger" />`,
+    key: "variants",
     language: "tsx",
+    preview: VariantsPreview,
+    title: "Variants",
   },
   {
-    key: "sizes",
-    title: "Sizes",
-    preview: SizesPreview,
     code: `<ButtonIcon as={MenuIcon} aria-label="Small" size="small" />
 <ButtonIcon as={MenuIcon} aria-label="Medium" size="medium" />`,
+    key: "sizes",
     language: "tsx",
+    preview: SizesPreview,
+    title: "Sizes",
   },
   {
-    key: "states",
-    title: "States",
-    preview: StatesPreview,
     code: `<ButtonIcon as={MenuIcon} aria-label="Loading" loading />
 <ButtonIcon as={MenuIcon} aria-label="Disabled" disabled />
 <ButtonIcon as={MenuIcon} aria-label="Pressed" pressed />`,
+    key: "states",
     language: "tsx",
+    preview: StatesPreview,
+    title: "States",
   },
 ];
 
 export const buttonIconProps = [
   {
-    name: "as",
-    type: "ComponentType<SVGProps<SVGSVGElement>>",
     default: "—",
     description: "The SVG icon component to render. Required.",
+    name: "as",
+    type: "ComponentType<SVGProps<SVGSVGElement>>",
   },
   {
-    name: "aria-label",
-    type: "string",
     default: "—",
     description:
       "Accessible label for the icon button. Required for screen readers since there's no text content.",
+    name: "aria-label",
+    type: "string",
   },
   {
-    name: "variant",
-    type: "'primary' | 'secondary' | 'ghost' | 'danger'",
     default: "'primary'",
     description: "Visual variant of the button.",
+    name: "variant",
+    type: "'primary' | 'secondary' | 'ghost' | 'danger'",
   },
   {
-    name: "size",
-    type: "'small' | 'medium'",
     default: "'medium'",
     description: "Size of the button.",
+    name: "size",
+    type: "'small' | 'medium'",
   },
   {
-    name: "loading",
-    type: "boolean",
     default: "false",
     description: "Whether the button is in a loading state.",
+    name: "loading",
+    type: "boolean",
   },
   {
-    name: "disabled",
-    type: "boolean",
     default: "false",
     description: "Whether the button is disabled.",
+    name: "disabled",
+    type: "boolean",
   },
   {
+    default: "false",
+    description: "Whether the button is in a pressed state (for toggle buttons).",
     name: "pressed",
     type: "boolean",
-    default: "false",
-    description:
-      "Whether the button is in a pressed state (for toggle buttons).",
   },
   {
-    name: "iconProps",
-    type: "SVGProps<SVGSVGElement>",
     default: "{}",
     description: "Additional props to pass to the icon.",
+    name: "iconProps",
+    type: "SVGProps<SVGSVGElement>",
   },
 ];
 

@@ -1,9 +1,9 @@
 "use client";
 
-import { forwardRef, createContext } from "react";
+import { createContext, forwardRef } from "react";
 import { navStyles } from "@versaur/core";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
-import type { NavProps, NavContextValue } from "./nav.types";
+import type { NavContextValue, NavProps } from "./nav.types";
 
 /**
  * Nav Context - provides controlled state to NavItems
@@ -37,22 +37,19 @@ export const NavContext = createContext<NavContextValue | undefined>(undefined);
  * ```
  */
 export const Nav = forwardRef<HTMLElement, NavProps>(
-  (
-    { direction = "horizontal", gap, value, onChange, children, ...props },
-    ref,
-  ) => {
+  ({ direction = "horizontal", gap, value, onChange, children, ...props }, ref) => {
     const dataAttrs = useDataAttrs({ direction });
 
     const spacingMap: Record<string, string> = {
-      xs: "var(--spacing-1)",
-      sm: "var(--spacing-2)",
-      md: "var(--spacing-3)",
       lg: "var(--spacing-4)",
+      md: "var(--spacing-3)",
+      sm: "var(--spacing-2)",
+      xs: "var(--spacing-1)",
     };
 
     const contextValue: NavContextValue = {
-      value,
       onChange,
+      value,
     };
 
     return (

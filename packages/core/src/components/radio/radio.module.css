@@ -14,24 +14,12 @@
   --_border: var(--vers-comp-radio-border, var(--color-border));
   --_bg: var(--vers-comp-radio-bg, transparent);
   --_checked-bg: var(--vers-comp-radio-checked-bg, var(--color-primary));
-  --_checked-border: var(
-    --vers-comp-radio-checked-border,
-    var(--color-primary)
-  );
-  --_indicator-color: var(
-    --vers-comp-radio-indicator-color,
-    var(--color-white)
-  );
+  --_checked-border: var(--vers-comp-radio-checked-border, var(--color-primary));
+  --_indicator-color: var(--vers-comp-radio-indicator-color, var(--color-white));
 
   /* Focus ring */
-  --_focus-ring-width: var(
-    --vers-comp-radio-focus-ring-width,
-    var(--focus-ring-width)
-  );
-  --_focus-ring-color: var(
-    --vers-comp-radio-focus-ring-color,
-    var(--color-border-focus)
-  );
+  --_focus-ring-width: var(--vers-comp-radio-focus-ring-width, var(--focus-ring-width));
+  --_focus-ring-color: var(--vers-comp-radio-focus-ring-color, var(--color-border-focus));
 
   /* Layout */
   display: inline-flex;

@@ -1,15 +1,15 @@
-import { createContext, useContext, forwardRef } from "react";
+import { createContext, forwardRef, useContext } from "react";
 import { modalStyles, overlayPartsStyles } from "@versaur/core";
 import { Dialog } from "../dialog";
 import {
-  OverlayHeader,
-  OverlayTitle,
   OverlayBody,
   OverlayFooter,
+  OverlayHeader,
+  OverlayTitle,
 } from "../overlay-parts/overlay-parts";
 import { ButtonIcon } from "../button-icon";
 import { XIcon } from "@versaur/icons";
-import type { ModalRootProps, ModalCloseButtonProps } from "./modal.types";
+import type { ModalCloseButtonProps, ModalRootProps } from "./modal.types";
 
 interface ModalContextType {
   onClose: () => void;
@@ -26,21 +26,19 @@ const useModalContext = () => {
 };
 
 const ModalRoot = forwardRef<HTMLDialogElement, ModalRootProps>(
-  ({ open, onOpenChange, children, ...props }, ref) => {
-    return (
-      <ModalContext.Provider value={{ onClose: () => onOpenChange?.(false) }}>
-        <Dialog
-          ref={ref}
-          isOpen={open}
-          onOpenChange={onOpenChange}
-          className={open ? modalStyles.modal : ""}
-          {...props}
-        >
-          <div className={overlayPartsStyles.content}>{children}</div>
-        </Dialog>
-      </ModalContext.Provider>
-    );
-  },
+  ({ open, onOpenChange, children, ...props }, ref) => (
+    <ModalContext.Provider value={{ onClose: () => onOpenChange?.(false) }}>
+      <Dialog
+        ref={ref}
+        isOpen={open}
+        onOpenChange={onOpenChange}
+        className={open ? modalStyles.modal : ""}
+        {...props}
+      >
+        <div className={overlayPartsStyles.content}>{children}</div>
+      </Dialog>
+    </ModalContext.Provider>
+  ),
 );
 
 ModalRoot.displayName = "Modal";
@@ -71,9 +69,9 @@ const ModalCloseButton = forwardRef<HTMLButtonElement, ModalCloseButtonProps>(
 ModalCloseButton.displayName = "Modal.CloseButton";
 
 export const Modal = Object.assign(ModalRoot, {
+  Body: OverlayBody,
+  CloseButton: ModalCloseButton,
+  Footer: OverlayFooter,
   Header: OverlayHeader,
   Title: OverlayTitle,
-  CloseButton: ModalCloseButton,
-  Body: OverlayBody,
-  Footer: OverlayFooter,
 });

@@ -1,23 +1,21 @@
 "use client";
 
-import { forwardRef, createContext, useRef } from "react";
+import { createContext, forwardRef, useRef } from "react";
 import type { CSSProperties } from "react";
 import { menuStyles } from "@versaur/core";
 import { Tooltip } from "../tooltip/tooltip";
-import { useMenuState, closeMenu } from "../../hooks/use-menu-state";
+import { closeMenu, useMenuState } from "../../hooks/use-menu-state";
 import type {
-  MenuProps,
   MenuContextValue,
-  MenuStatic,
   MenuGetTriggerPropsOptions,
+  MenuProps,
+  MenuStatic,
 } from "./menu.types";
 
 /**
  * Menu Context - provides controlled state to Menu.Items
  */
-export const MenuContext = createContext<MenuContextValue | undefined>(
-  undefined,
-);
+export const MenuContext = createContext<MenuContextValue | undefined>(undefined);
 
 /**
  * Menu - Dropdown menu component built on Tooltip's Popover API
@@ -68,28 +66,22 @@ const MenuRoot = forwardRef<HTMLDivElement, MenuProps>(
     useMenuState(id, menuRef);
 
     const contextValue: MenuContextValue = {
-      value,
-      onChange,
       close: closeMenu,
+      onChange,
+      value,
     };
 
     return (
       <div ref={ref} {...props}>
         <MenuContext.Provider value={contextValue}>
-          <Tooltip
-            ref={menuRef}
-            id={id}
-            placement={placement}
-            gap={gap}
-            triggerType="focus"
-          >
+          <Tooltip ref={menuRef} id={id} placement={placement} gap={gap} triggerType="focus">
             <div
               className={menuStyles["menu-list"]}
               style={
                 {
                   "--_max-height": `${maxHeight}px`,
-                  "--_min-width": `${minWidth}px`,
                   "--_max-width": `${maxWidth}px`,
+                  "--_min-width": `${minWidth}px`,
                 } as CSSProperties
               }
             >
@@ -107,9 +99,7 @@ MenuRoot.displayName = "Menu";
 /**
  * Get required attributes for a trigger element
  */
-function getTriggerProps(
-  options: MenuGetTriggerPropsOptions,
-): Record<string, string> {
+function getTriggerProps(options: MenuGetTriggerPropsOptions): Record<string, string> {
   return Tooltip.getTooltipTriggerProps({
     id: options.id,
     triggerType: "focus",

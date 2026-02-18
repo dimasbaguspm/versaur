@@ -29,9 +29,9 @@ export const BadgeGroup = forwardRef<HTMLDivElement, BadgeGroupProps>(
     ref,
   ) => {
     const dataAttrs = useDataAttrs({
-      gap,
-      direction,
       align,
+      direction,
+      gap,
       wrap,
     });
 

@@ -45,6 +45,7 @@ Instead of complex className concatenation, component states are managed through
 ```
 
 **Benefits:**
+
 - Single source of truth for component state
 - Easier debugging (inspect HTML attributes)
 - Framework-agnostic pattern
@@ -78,9 +79,9 @@ pnpm add @versaur/react @versaur/core
 ```
 
 ```tsx
-import { Button } from '@versaur/react';
-import '@versaur/core/tokens';
-import '@versaur/core/button.css';  // Import component styles
+import { Button } from "@versaur/react";
+import "@versaur/core/tokens";
+import "@versaur/core/button.css"; // Import component styles
 
 function App() {
   return (
@@ -110,16 +111,19 @@ Copy the code into your project for full customization.
 A versatile button component with multiple variants, sizes, and states.
 
 **Variants:**
+
 - `primary` - Primary action button (blue)
 - `secondary` - Secondary action button (gray)
 - `danger` - Destructive action button (red)
 
 **Sizes:**
+
 - `small` - 2rem height
 - `medium` - 2.5rem height (default)
 - `large` - 3rem height
 
 **States:**
+
 - `loading` - Shows spinner, disables interaction
 - `disabled` - Grayed out, non-interactive
 - `pressed` - Toggle/pressed state
@@ -145,20 +149,24 @@ A versatile button component with multiple variants, sizes, and states.
 All visual styling is built on CSS custom properties:
 
 ### Colors
+
 - Primitive scales: blue, gray, red, green (50-900)
 - Semantic tokens: primary, secondary, danger
 - Automatic dark mode support
 
 ### Spacing
+
 - 8px base scale (0.25rem to 4rem)
 - Consistent vertical rhythm
 
 ### Typography
+
 - Font families (sans, mono)
 - Size scale (xs to 2xl)
 - Line heights and weights
 
 ### Effects
+
 - Border radius variants
 - Shadow scale
 - Focus ring definitions
@@ -190,16 +198,22 @@ pnpm clean               # Remove all build artifacts
 ### Adding New Components
 
 1. **Create CSS in `packages/core/src/components/`**
+
    ```css
    /* component.module.css */
-   .component { /* base styles */ }
-   .component[data-variant="primary"] { /* variant */ }
+   .component {
+     /* base styles */
+   }
+   .component[data-variant="primary"] {
+     /* variant */
+   }
    ```
 
 2. **Create React wrapper in `packages/react/src/components/`**
+
    ```tsx
-   import { useDataAttrs } from '../../hooks/use-data-attrs';
-   import { componentStyles } from '@versaur/core';
+   import { useDataAttrs } from "../../hooks/use-data-attrs";
+   import { componentStyles } from "@versaur/core";
 
    export function Component({ variant, ...props }) {
      const dataAttrs = useDataAttrs({ variant });
@@ -223,18 +237,21 @@ MIT
 ## Roadmap
 
 ### Immediate Next Steps
+
 - Icon component integration
 - Input component
 - Card layout component
 - CLI tool for component copying
 
 ### Medium Term
+
 - Vue wrapper package
 - Angular wrapper package
 - Additional color schemes
 - Animation system
 
 ### Long Term
+
 - Form components (Select, Checkbox, Radio)
 - Complex components (Modal, Dropdown, Tabs)
 - Layout system (Grid, Stack, Container)
@@ -249,6 +266,7 @@ This is currently a portfolio/demonstration project. Feedback and suggestions ar
 Built by [Your Name] as a modern design system demonstration.
 
 Inspired by:
+
 - shadcn/ui (registry distribution model)
 - Radix UI (accessibility patterns)
 - Tailwind CSS (design token system)

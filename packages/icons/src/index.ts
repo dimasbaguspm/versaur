@@ -1,4 +1,4 @@
-import { SVGProps, ComponentType } from "react";
+import type { ComponentType, SVGProps } from "react";
 
 // Navigation & UI
 import LoaderIcon from "../assets/loader.svg?react";
@@ -127,492 +127,492 @@ export interface IconMetadata {
 export const icons: Record<string, IconMetadata> = {
   // Navigation & UI
   loader: {
-    name: "Loader",
     component: LoaderIcon,
+    name: "Loader",
     tags: ["loading", "spinner", "animation"],
   },
   user: {
-    name: "User",
     component: UserIcon,
+    name: "User",
     tags: ["person", "profile", "account"],
   },
   "chevron-down": {
-    name: "ChevronDown",
     component: ChevronDownIcon,
+    name: "ChevronDown",
     tags: ["chevron", "arrow", "down", "navigation"],
   },
   "chevron-up": {
-    name: "ChevronUp",
     component: ChevronUpIcon,
+    name: "ChevronUp",
     tags: ["chevron", "arrow", "up", "navigation"],
   },
   "chevron-left": {
-    name: "ChevronLeft",
     component: ChevronLeftIcon,
+    name: "ChevronLeft",
     tags: ["chevron", "arrow", "left", "navigation"],
   },
   "chevron-right": {
-    name: "ChevronRight",
     component: ChevronRightIcon,
+    name: "ChevronRight",
     tags: ["chevron", "arrow", "right", "navigation"],
   },
   "layout-dashboard": {
-    name: "LayoutDashboard",
     component: LayoutDashboardIcon,
+    name: "LayoutDashboard",
     tags: ["layout", "dashboard", "grid", "saas"],
   },
   "file-code": {
-    name: "FileCode",
     component: FileCodeIcon,
+    name: "FileCode",
     tags: ["file", "code", "document", "programming"],
   },
   home: {
-    name: "Home",
     component: HomeIcon,
+    name: "Home",
     tags: ["home", "house", "dashboard", "navigation"],
   },
   search: {
-    name: "Search",
     component: SearchIcon,
+    name: "Search",
     tags: ["search", "find", "magnifying", "glass"],
   },
   "search-x": {
-    name: "SearchX",
     component: SearchXIcon,
+    name: "SearchX",
     tags: ["search", "clear", "close", "no results"],
   },
   menu: {
-    name: "Menu",
     component: MenuIcon,
+    name: "Menu",
     tags: ["navigation", "menu", "hamburger", "dashboard"],
   },
   "menu-open": {
-    name: "MenuOpen",
     component: MenuOpenIcon,
+    name: "MenuOpen",
     tags: ["navigation", "menu", "dashboard"],
   },
   settings: {
-    name: "Settings",
     component: SettingsIcon,
+    name: "Settings",
     tags: ["configuration", "preferences", "dashboard"],
   },
   grid: {
-    name: "Grid",
     component: GridIcon,
+    name: "Grid",
     tags: ["layout", "grid", "2x2", "dashboard"],
   },
   "grid-3x3": {
-    name: "Grid3x3",
     component: Grid3x3Icon,
+    name: "Grid3x3",
     tags: ["layout", "grid", "3x3", "dashboard"],
   },
   "columns-2": {
-    name: "Columns2",
     component: Columns2Icon,
+    name: "Columns2",
     tags: ["layout", "columns", "dashboard"],
   },
   "columns-3": {
-    name: "Columns3",
     component: Columns3Icon,
+    name: "Columns3",
     tags: ["layout", "columns", "dashboard"],
   },
   list: {
-    name: "List",
     component: ListIcon,
+    name: "List",
     tags: ["list", "navigation", "dashboard"],
   },
   "list-checks": {
-    name: "ListChecks",
     component: ListChecksIcon,
+    name: "ListChecks",
     tags: ["list", "checklist", "tasks", "dashboard"],
   },
   "list-ordered": {
-    name: "ListOrdered",
     component: ListOrderedIcon,
+    name: "ListOrdered",
     tags: ["list", "ordered", "numbering", "dashboard"],
   },
   sliders: {
-    name: "Sliders",
     component: SlidersIcon,
+    name: "Sliders",
     tags: ["settings", "controls", "configuration", "dashboard"],
   },
 
   // Financial & Analytics
   "trending-up": {
-    name: "TrendingUp",
     component: TrendingUpIcon,
+    name: "TrendingUp",
     tags: ["chart", "financial", "analytics", "growth"],
   },
   "trending-down": {
-    name: "TrendingDown",
     component: TrendingDownIcon,
+    name: "TrendingDown",
     tags: ["chart", "financial", "analytics", "decline"],
   },
   "bar-chart": {
-    name: "BarChart",
     component: BarChartIcon,
+    name: "BarChart",
     tags: ["chart", "financial", "analytics", "data"],
   },
   "bar-chart-2": {
-    name: "BarChart2",
     component: BarChart2Icon,
+    name: "BarChart2",
     tags: ["chart", "financial", "analytics", "data"],
   },
   "line-chart": {
-    name: "LineChart",
     component: LineChartIcon,
+    name: "LineChart",
     tags: ["chart", "financial", "analytics", "data"],
   },
   "area-chart": {
-    name: "AreaChart",
     component: AreaChartIcon,
+    name: "AreaChart",
     tags: ["chart", "financial", "analytics", "data"],
   },
   "pie-chart": {
-    name: "PieChart",
     component: PieChartIcon,
+    name: "PieChart",
     tags: ["chart", "financial", "analytics", "data"],
   },
   "donut-chart": {
-    name: "DonutChart",
     component: DonutChartIcon,
+    name: "DonutChart",
     tags: ["chart", "financial", "analytics", "data"],
   },
   wallet: {
-    name: "Wallet",
     component: WalletIcon,
+    name: "Wallet",
     tags: ["payment", "financial", "money"],
   },
   "credit-card": {
-    name: "CreditCard",
     component: CreditCardIcon,
+    name: "CreditCard",
     tags: ["payment", "financial", "money", "card"],
   },
   "dollar-sign": {
-    name: "DollarSign",
     component: DollarSignIcon,
+    name: "DollarSign",
     tags: ["currency", "financial", "money", "price"],
   },
   percent: {
-    name: "Percent",
     component: PercentIcon,
+    name: "Percent",
     tags: ["discount", "financial", "analytics", "percentage"],
   },
   gauge: {
-    name: "Gauge",
     component: GaugeIcon,
+    name: "Gauge",
     tags: ["performance", "analytics", "metrics"],
   },
   "gauge-circle": {
-    name: "GaugeCircle",
     component: GaugeCircleIcon,
+    name: "GaugeCircle",
     tags: ["performance", "analytics", "metrics"],
   },
 
   // Business & Operations
   building: {
-    name: "Building",
     component: BuildingIcon,
+    name: "Building",
     tags: ["company", "organization", "saas", "business"],
   },
   "building-2": {
-    name: "Building2",
     component: Building2Icon,
+    name: "Building2",
     tags: ["company", "organization", "saas", "business"],
   },
   briefcase: {
-    name: "Briefcase",
     component: BriefcaseIcon,
+    name: "Briefcase",
     tags: ["work", "business", "projects", "saas"],
   },
   "briefcase-2": {
-    name: "Briefcase2",
     component: Briefcase2Icon,
+    name: "Briefcase2",
     tags: ["work", "business", "projects", "saas"],
   },
   target: {
-    name: "Target",
     component: TargetIcon,
+    name: "Target",
     tags: ["goals", "metrics", "business", "saas"],
   },
   "target-circle": {
-    name: "TargetCircle",
     component: TargetCircleIcon,
+    name: "TargetCircle",
     tags: ["goals", "metrics", "business", "saas"],
   },
   zap: {
-    name: "Zap",
     component: ZapIcon,
+    name: "Zap",
     tags: ["performance", "power", "energy", "saas"],
   },
   "zap-2": {
-    name: "Zap2",
     component: Zap2Icon,
+    name: "Zap2",
     tags: ["performance", "power", "energy", "saas"],
   },
   shield: {
-    name: "Shield",
     component: ShieldIcon,
+    name: "Shield",
     tags: ["security", "protection", "saas"],
   },
   "shield-alert": {
-    name: "ShieldAlert",
     component: ShieldAlertIcon,
+    name: "ShieldAlert",
     tags: ["security", "alert", "warning", "saas"],
   },
   archive: {
-    name: "Archive",
     component: ArchiveIcon,
+    name: "Archive",
     tags: ["storage", "backup", "files", "saas"],
   },
   "archive-x": {
-    name: "ArchiveX",
     component: ArchiveXIcon,
+    name: "ArchiveX",
     tags: ["delete", "remove", "storage", "saas"],
   },
 
   // Notifications & Communication
   bell: {
-    name: "Bell",
     component: BellIcon,
+    name: "Bell",
     tags: ["notification", "alert", "dashboard"],
   },
   "bell-off": {
-    name: "BellOff",
     component: BellOffIcon,
+    name: "BellOff",
     tags: ["notification", "alert", "disabled", "dashboard"],
   },
   mail: {
-    name: "Mail",
     component: MailIcon,
+    name: "Mail",
     tags: ["email", "communication", "message"],
   },
   "mail-open": {
-    name: "MailOpen",
     component: MailOpenIcon,
+    name: "MailOpen",
     tags: ["email", "communication", "message"],
   },
   "message-circle": {
-    name: "MessageCircle",
     component: MessageCircleIcon,
+    name: "MessageCircle",
     tags: ["chat", "communication", "message"],
   },
   "message-square": {
-    name: "MessageSquare",
     component: MessageSquareIcon,
+    name: "MessageSquare",
     tags: ["chat", "communication", "message"],
   },
   inbox: {
-    name: "Inbox",
     component: InboxIcon,
+    name: "Inbox",
     tags: ["email", "communication", "notification"],
   },
 
   // Date & Time
   calendar: {
-    name: "Calendar",
     component: CalendarIcon,
+    name: "Calendar",
     tags: ["date", "scheduling", "time"],
   },
   "calendar-check": {
-    name: "CalendarCheck",
     component: CalendarCheckIcon,
+    name: "CalendarCheck",
     tags: ["date", "scheduling", "confirmed"],
   },
   clock: {
-    name: "Clock",
     component: ClockIcon,
+    name: "Clock",
     tags: ["time", "duration", "scheduling"],
   },
   "clock-alert": {
-    name: "ClockAlert",
     component: ClockAlertIcon,
+    name: "ClockAlert",
     tags: ["time", "alert", "warning"],
   },
 
   // Location
   "map-pin": {
-    name: "MapPin",
     component: MapPinIcon,
+    name: "MapPin",
     tags: ["location", "maps", "geo"],
   },
   "map-pin-check": {
-    name: "MapPinCheck",
     component: MapPinCheckIcon,
+    name: "MapPinCheck",
     tags: ["location", "maps", "confirmed"],
   },
 
   // Data & Analytics
   layers: {
-    name: "Layers",
     component: LayersIcon,
+    name: "Layers",
     tags: ["data", "structure", "analytics"],
   },
   activity: {
-    name: "Activity",
     component: ActivityIcon,
+    name: "Activity",
     tags: ["data", "analytics", "metrics"],
   },
   "activity-square": {
-    name: "ActivitySquare",
     component: ActivitySquareIcon,
+    name: "ActivitySquare",
     tags: ["data", "analytics", "metrics"],
   },
   data: {
-    name: "Data",
     component: DataIcon,
+    name: "Data",
     tags: ["data", "structure", "analytics"],
   },
   funnel: {
-    name: "Funnel",
     component: FunnelIcon,
+    name: "Funnel",
     tags: ["filter", "analytics", "data"],
   },
   filter: {
-    name: "Filter",
     component: FilterIcon,
+    name: "Filter",
     tags: ["filter", "analytics", "data"],
   },
   award: {
-    name: "Award",
     component: AwardIcon,
+    name: "Award",
     tags: ["achievement", "recognition", "saas"],
   },
   star: {
-    name: "Star",
     component: StarIcon,
+    name: "Star",
     tags: ["rating", "favorite", "achievement"],
   },
 
   // Actions
   download: {
-    name: "Download",
     component: DownloadIcon,
+    name: "Download",
     tags: ["export", "file", "action"],
   },
   "download-cloud": {
-    name: "DownloadCloud",
     component: DownloadCloudIcon,
+    name: "DownloadCloud",
     tags: ["export", "cloud", "file"],
   },
   upload: {
-    name: "Upload",
     component: UploadIcon,
+    name: "Upload",
     tags: ["import", "file", "action"],
   },
   "upload-cloud": {
-    name: "UploadCloud",
     component: UploadCloudIcon,
+    name: "UploadCloud",
     tags: ["import", "cloud", "file"],
   },
   share: {
-    name: "Share",
     component: ShareIcon,
+    name: "Share",
     tags: ["share", "distribute", "action"],
   },
   "share-2": {
-    name: "Share2",
     component: Share2Icon,
+    name: "Share2",
     tags: ["share", "distribute", "action"],
   },
   copy: {
-    name: "Copy",
     component: CopyIcon,
+    name: "Copy",
     tags: ["duplicate", "clipboard", "action"],
   },
   clipboard: {
-    name: "Clipboard",
     component: ClipboardIcon,
+    name: "Clipboard",
     tags: ["paste", "clipboard", "action"],
   },
   repeat: {
-    name: "Repeat",
     component: RepeatIcon,
+    name: "Repeat",
     tags: ["redo", "refresh", "sync"],
   },
   trash: {
-    name: "Trash",
     component: TrashIcon,
+    name: "Trash",
     tags: ["delete", "remove", "action"],
   },
 
   // Security
   lock: {
-    name: "Lock",
     component: LockIcon,
+    name: "Lock",
     tags: ["security", "protection", "locked"],
   },
   unlock: {
-    name: "Unlock",
     component: UnlockIcon,
+    name: "Unlock",
     tags: ["security", "protection", "unlocked"],
   },
   globe: {
-    name: "Globe",
     component: GlobeIcon,
+    name: "Globe",
     tags: ["world", "internet", "web"],
   },
 
   // Utilities
   "help-circle": {
-    name: "HelpCircle",
     component: HelpCircleIcon,
+    name: "HelpCircle",
     tags: ["help", "information", "faq"],
   },
   "plus-circle": {
-    name: "PlusCircle",
     component: PlusCircleIcon,
+    name: "PlusCircle",
     tags: ["add", "create", "action"],
   },
   plus: {
-    name: "Plus",
     component: PlusIcon,
+    name: "Plus",
     tags: ["add", "create", "action"],
   },
   minus: {
-    name: "Minus",
     component: MinusIcon,
+    name: "Minus",
     tags: ["remove", "subtract", "action"],
   },
   smile: {
-    name: "Smile",
     component: SmileIcon,
+    name: "Smile",
     tags: ["emotion", "happy", "feedback"],
   },
   frown: {
-    name: "Frown",
     component: FrownIcon,
+    name: "Frown",
     tags: ["emotion", "sad", "feedback"],
   },
   "alert-circle": {
-    name: "AlertCircle",
     component: AlertCircleIcon,
+    name: "AlertCircle",
     tags: ["alert", "warning", "info"],
   },
   "alert-triangle": {
-    name: "AlertTriangle",
     component: AlertTriangleIcon,
+    name: "AlertTriangle",
     tags: ["alert", "warning", "danger"],
   },
   check: {
-    name: "Check",
     component: CheckIcon,
+    name: "Check",
     tags: ["confirm", "success", "valid"],
   },
   "check-circle": {
-    name: "CheckCircle",
     component: CheckCircleIcon,
+    name: "CheckCircle",
     tags: ["confirm", "success", "valid"],
   },
-  x: { name: "X", component: XIcon, tags: ["close", "cancel", "invalid"] },
+  x: { component: XIcon, name: "X", tags: ["close", "cancel", "invalid"] },
   "x-circle": {
-    name: "XCircle",
     component: XCircleIcon,
+    name: "XCircle",
     tags: ["close", "cancel", "invalid"],
   },
   "search-2": {
-    name: "Search2",
     component: Search2Icon,
+    name: "Search2",
     tags: ["search", "find", "magnifying"],
   },
 };

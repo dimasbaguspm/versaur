@@ -1,12 +1,7 @@
 import { Nav as NavRoot } from "./nav";
 import { NavItem } from "./nav-item";
-import type { NavProps, NavItemProps, NavContextValue } from "./nav.types";
-import {
-  navSections,
-  navInstallation,
-  navProps,
-  navItemProps,
-} from "./preview";
+import type { NavContextValue, NavItemProps, NavProps } from "./nav.types";
+import { navInstallation, navItemProps, navProps, navSections } from "./preview";
 
 /**
  * Namespace merging: Nav.Item syntax

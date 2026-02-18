@@ -39,14 +39,8 @@
   --_indicator-color: var(--vers-comp-radio-indicator-color, #ffffff);
 
   /* Focus ring */
-  --_focus-ring-width: var(
-    --vers-comp-radio-focus-ring-width,
-    var(--focus-ring-width)
-  );
-  --_focus-ring-color: var(
-    --vers-comp-radio-focus-ring-color,
-    var(--color-border-focus)
-  );
+  --_focus-ring-width: var(--vers-comp-radio-focus-ring-width, var(--focus-ring-width));
+  --_focus-ring-color: var(--vers-comp-radio-focus-ring-color, var(--color-border-focus));
 
   /* Layout */
   display: inline-flex;
@@ -85,7 +79,7 @@
 
 /* Checked state - inner circle */
 .input:checked + .indicator::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 50%;
   height: 50%;

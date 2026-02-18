@@ -80,14 +80,8 @@
 .kbd[data-variant="filled"] {
   --_bg: var(--vers-comp-kbd-filled-bg, var(--color-primary-light));
   --_color: var(--vers-comp-kbd-filled-color, var(--color-primary));
-  --_border-color: var(
-    --vers-comp-kbd-filled-border-color,
-    var(--color-primary-light)
-  );
-  --_shadow: var(
-    --vers-comp-kbd-filled-shadow,
-    inset 0 -2px 0 0 rgb(0 0 0 / 0.1)
-  );
+  --_border-color: var(--vers-comp-kbd-filled-border-color, var(--color-primary-light));
+  --_shadow: var(--vers-comp-kbd-filled-shadow, inset 0 -2px 0 0 rgb(0 0 0 / 0.1));
 }
 
 /* ============================================
@@ -96,10 +90,7 @@
 .kbd[data-variant="outline"] {
   --_bg: var(--vers-comp-kbd-outline-bg, transparent);
   --_color: var(--vers-comp-kbd-outline-color, var(--color-text-primary));
-  --_border-color: var(
-    --vers-comp-kbd-outline-border-color,
-    var(--color-border)
-  );
+  --_border-color: var(--vers-comp-kbd-outline-border-color, var(--color-border));
   --_shadow: var(--vers-comp-kbd-outline-shadow, none);
 }
 

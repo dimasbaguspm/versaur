@@ -16,7 +16,7 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
     },
     ref,
   ) => {
-    const dataAttrs = useDataAttrs({ direction, size, align, wrap });
+    const dataAttrs = useDataAttrs({ align, direction, size, wrap });
 
     return (
       <div

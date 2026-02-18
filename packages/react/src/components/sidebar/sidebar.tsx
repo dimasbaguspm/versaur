@@ -1,13 +1,13 @@
 "use client";
 
 import {
-  forwardRef,
   createContext,
+  forwardRef,
+  useCallback,
   useContext,
   useEffect,
-  useState,
   useRef,
-  useCallback,
+  useState,
 } from "react";
 import { sidebarStyles } from "@versaur/core";
 import { Hr } from "../hr";
@@ -15,13 +15,13 @@ import { useDataAttrs } from "../../hooks/use-data-attrs";
 import { combineRefs } from "../../utils/combine-refs";
 import { isComponentType } from "../../utils/polymorphic";
 import type {
-  SidebarRootProps,
-  SidebarHeaderProps,
   SidebarBodyProps,
+  SidebarDividerProps,
   SidebarFooterProps,
   SidebarGroupProps,
+  SidebarHeaderProps,
   SidebarItemProps,
-  SidebarDividerProps,
+  SidebarRootProps,
 } from "./sidebar.types";
 
 /**
@@ -58,23 +58,15 @@ const SidebarRoot = forwardRef<HTMLElement, SidebarRootProps>(
       setFocusedItemIndex(0);
     }, [isOpen]);
 
-    const registerItem = useCallback(
-      (itemRef: React.RefObject<HTMLElement>) => {
-        if (!itemRefsArray.current.includes(itemRef)) {
-          itemRefsArray.current.push(itemRef);
-        }
-      },
-      [],
-    );
+    const registerItem = useCallback((itemRef: React.RefObject<HTMLElement>) => {
+      if (!itemRefsArray.current.includes(itemRef)) {
+        itemRefsArray.current.push(itemRef);
+      }
+    }, []);
 
-    const unregisterItem = useCallback(
-      (itemRef: React.RefObject<HTMLElement>) => {
-        itemRefsArray.current = itemRefsArray.current.filter(
-          (ref) => ref !== itemRef,
-        );
-      },
-      [],
-    );
+    const unregisterItem = useCallback((itemRef: React.RefObject<HTMLElement>) => {
+      itemRefsArray.current = itemRefsArray.current.filter((ref) => ref !== itemRef);
+    }, []);
 
     const handleKeyDown = useCallback(
       (e: React.KeyboardEvent<HTMLElement>) => {
@@ -82,27 +74,30 @@ const SidebarRoot = forwardRef<HTMLElement, SidebarRootProps>(
           (ref) => ref.current && !ref.current.getAttribute("data-disabled"),
         );
 
-        if (enabledItems.length === 0) return;
+        if (enabledItems.length === 0) {
+          return;
+        }
 
         switch (e.key) {
-          case "ArrowDown":
+          case "ArrowDown": {
             e.preventDefault();
             setFocusedItemIndex((prev) => (prev + 1) % enabledItems.length);
             break;
-          case "ArrowUp":
+          }
+          case "ArrowUp": {
             e.preventDefault();
-            setFocusedItemIndex((prev) =>
-              prev === 0 ? enabledItems.length - 1 : prev - 1,
-            );
+            setFocusedItemIndex((prev) => (prev === 0 ? enabledItems.length - 1 : prev - 1));
             break;
+          }
           case "Enter":
-          case " ":
+          case " ": {
             e.preventDefault();
             const focusedElement = enabledItems[focusedItemIndex]?.current;
             if (focusedElement) {
               focusedElement.click();
             }
             break;
+          }
         }
       },
       [focusedItemIndex],
@@ -113,8 +108,8 @@ const SidebarRoot = forwardRef<HTMLElement, SidebarRootProps>(
     return (
       <SidebarContext.Provider
         value={{
-          isOpen,
           focusedItemIndex,
+          isOpen,
           itemRefs: itemRefsArray.current,
           registerItem,
           unregisterItem,
@@ -139,41 +134,33 @@ SidebarRoot.displayName = "Sidebar";
  * Sidebar.Header - Top section for header content
  */
 const SidebarHeader = forwardRef<HTMLDivElement, SidebarHeaderProps>(
-  ({ children, ...props }, ref) => {
-    return (
-      <div ref={ref} className={sidebarStyles["sidebar-header"]} {...props}>
-        {children}
-      </div>
-    );
-  },
+  ({ children, ...props }, ref) => (
+    <div ref={ref} className={sidebarStyles["sidebar-header"]} {...props}>
+      {children}
+    </div>
+  ),
 );
 SidebarHeader.displayName = "Sidebar.Header";
 
 /**
  * Sidebar.Body - Main scrollable content area
  */
-const SidebarBody = forwardRef<HTMLDivElement, SidebarBodyProps>(
-  ({ children, ...props }, ref) => {
-    return (
-      <div ref={ref} className={sidebarStyles["sidebar-body"]} {...props}>
-        {children}
-      </div>
-    );
-  },
-);
+const SidebarBody = forwardRef<HTMLDivElement, SidebarBodyProps>(({ children, ...props }, ref) => (
+  <div ref={ref} className={sidebarStyles["sidebar-body"]} {...props}>
+    {children}
+  </div>
+));
 SidebarBody.displayName = "Sidebar.Body";
 
 /**
  * Sidebar.Footer - Bottom section for footer content
  */
 const SidebarFooter = forwardRef<HTMLDivElement, SidebarFooterProps>(
-  ({ children, ...props }, ref) => {
-    return (
-      <div ref={ref} className={sidebarStyles["sidebar-footer"]} {...props}>
-        {children}
-      </div>
-    );
-  },
+  ({ children, ...props }, ref) => (
+    <div ref={ref} className={sidebarStyles["sidebar-footer"]} {...props}>
+      {children}
+    </div>
+  ),
 );
 SidebarFooter.displayName = "Sidebar.Footer";
 
@@ -181,19 +168,17 @@ SidebarFooter.displayName = "Sidebar.Footer";
  * Sidebar.Group - Container for grouped items with label
  */
 const SidebarGroup = forwardRef<HTMLDivElement, SidebarGroupProps>(
-  ({ label, icon, children, ...props }, ref) => {
-    return (
-      <div ref={ref} className={sidebarStyles["sidebar-group"]} {...props}>
-        {label && (
-          <div className={sidebarStyles["sidebar-group-label"]}>
-            {icon && <span>{icon}</span>}
-            <span>{label}</span>
-          </div>
-        )}
-        {children}
-      </div>
-    );
-  },
+  ({ label, icon, children, ...props }, ref) => (
+    <div ref={ref} className={sidebarStyles["sidebar-group"]} {...props}>
+      {label && (
+        <div className={sidebarStyles["sidebar-group-label"]}>
+          {icon && <span>{icon}</span>}
+          <span>{label}</span>
+        </div>
+      )}
+      {children}
+    </div>
+  ),
 );
 SidebarGroup.displayName = "Sidebar.Group";
 
@@ -214,8 +199,7 @@ const SidebarItem = forwardRef<HTMLElement, SidebarItemProps>(
     },
     ref,
   ) => {
-    const { focusedItemIndex, registerItem, unregisterItem, itemRefs } =
-      useSidebarContext();
+    const { focusedItemIndex, registerItem, unregisterItem, itemRefs } = useSidebarContext();
     const itemRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
@@ -227,8 +211,7 @@ const SidebarItem = forwardRef<HTMLElement, SidebarItemProps>(
 
     // Determine if this item is focused
     const currentItemIndex = itemRefs.indexOf(itemRef);
-    const isFocused =
-      currentItemIndex === focusedItemIndex && currentItemIndex !== -1;
+    const isFocused = currentItemIndex === focusedItemIndex && currentItemIndex !== -1;
 
     const dataAttrs = useDataAttrs({
       active,
@@ -247,9 +230,9 @@ const SidebarItem = forwardRef<HTMLElement, SidebarItemProps>(
     // Handle polymorphic component rendering
     const isLink = isComponentType(Component, "a");
     const itemProps: Record<string, any> = {
-      ref: combineRefs(itemRef, ref),
       className: sidebarStyles["sidebar-item"],
       onClick: handleClick,
+      ref: combineRefs(itemRef, ref),
       ...dataAttrs,
       ...props,
     };
@@ -262,12 +245,8 @@ const SidebarItem = forwardRef<HTMLElement, SidebarItemProps>(
 
     return (
       <ItemComponent {...itemProps}>
-        {icon && (
-          <span className={sidebarStyles["sidebar-item-icon"]}>{icon}</span>
-        )}
-        {children && (
-          <span className={sidebarStyles["sidebar-item-text"]}>{children}</span>
-        )}
+        {icon && <span className={sidebarStyles["sidebar-item-icon"]}>{icon}</span>}
+        {children && <span className={sidebarStyles["sidebar-item-text"]}>{children}</span>}
       </ItemComponent>
     );
   },
@@ -277,27 +256,23 @@ SidebarItem.displayName = "Sidebar.Item";
 /**
  * Sidebar.Divider - Visual divider using Hr component
  */
-const SidebarDivider = forwardRef<HTMLDivElement, SidebarDividerProps>(
-  (props, ref) => {
-    return (
-      <div ref={ref} className={sidebarStyles["sidebar-divider"]}>
-        <Hr {...props} />
-      </div>
-    );
-  },
-);
+const SidebarDivider = forwardRef<HTMLDivElement, SidebarDividerProps>((props, ref) => (
+  <div ref={ref} className={sidebarStyles["sidebar-divider"]}>
+    <Hr {...props} />
+  </div>
+));
 SidebarDivider.displayName = "Sidebar.Divider";
 
 /**
  * Compound Sidebar component with sub-components
  */
 const Sidebar = Object.assign(SidebarRoot, {
-  Header: SidebarHeader,
   Body: SidebarBody,
+  Divider: SidebarDivider,
   Footer: SidebarFooter,
   Group: SidebarGroup,
+  Header: SidebarHeader,
   Item: SidebarItem,
-  Divider: SidebarDivider,
 });
 
 export {

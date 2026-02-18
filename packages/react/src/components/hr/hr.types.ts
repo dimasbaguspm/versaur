@@ -1,5 +1,5 @@
-import type { HTMLAttributes } from 'react';
-import type { Hr } from '@versaur/core';
+import type { HTMLAttributes } from "react";
+import type { Hr } from "@versaur/core";
 
 export interface HrProps extends HTMLAttributes<HTMLHRElement> {
   /**

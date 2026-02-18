@@ -1,12 +1,10 @@
-import { Ref } from "react";
+import type { Ref } from "react";
 
 /**
  * Combines multiple refs into a single ref callback
  * Handles both function and object refs
  */
-export function combineRefs<T>(
-  ...refs: (Ref<T> | undefined)[]
-): (value: T | null) => void {
+export function combineRefs<T>(...refs: (Ref<T> | undefined)[]): (value: T | null) => void {
   return (value: T | null) => {
     refs.forEach((ref) => {
       if (typeof ref === "function") {

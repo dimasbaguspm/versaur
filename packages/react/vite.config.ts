@@ -5,13 +5,9 @@ import { resolve } from "path";
 import pkg from "./package.json";
 
 // Get external dependencies from peerDependencies + additional externals
-const external = [
-  ...Object.keys(pkg.peerDependencies || {}),
-  "react/jsx-runtime",
-];
+const external = [...Object.keys(pkg.peerDependencies || {}), "react/jsx-runtime"];
 
 export default defineConfig({
-  plugins: [react(), dts()],
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
@@ -21,4 +17,5 @@ export default defineConfig({
       external,
     },
   },
+  plugins: [react(), dts()],
 });

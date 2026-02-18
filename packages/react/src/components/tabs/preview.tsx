@@ -1,4 +1,4 @@
-import { useState, type ComponentType } from "react";
+import { type ComponentType, useState } from "react";
 import { Tabs } from "./tabs";
 
 export interface TabsSection {
@@ -55,9 +55,6 @@ function WithPanelsPreview() {
 
 export const tabsSections: TabsSection[] = [
   {
-    key: "with-panels",
-    title: "With Panels",
-    preview: WithPanelsPreview,
     code: `import { useState } from "react";
 import { Tabs } from "@versaur/react";
 
@@ -84,12 +81,12 @@ export function TabbedContent() {
     </div>
   );
 }`,
+    key: "with-panels",
     language: "tsx",
+    preview: WithPanelsPreview,
+    title: "With Panels",
   },
   {
-    key: "disabled-items",
-    title: "Disabled Items",
-    preview: DisabledItemsPreview,
     code: `import { useState } from "react";
 import { Tabs } from "@versaur/react";
 
@@ -106,49 +103,52 @@ export function MyTabs() {
     </Tabs>
   );
 }`,
+    key: "disabled-items",
     language: "tsx",
+    preview: DisabledItemsPreview,
+    title: "Disabled Items",
   },
 ];
 
 export const tabsProps = [
   {
-    name: "value",
-    type: "string",
     default: "—",
     description: "The currently active tab value. Required.",
+    name: "value",
+    type: "string",
   },
   {
-    name: "onChange",
-    type: "(value: string) => void",
     default: "—",
     description: "Callback fired when a tab item is clicked. Required.",
+    name: "onChange",
+    type: "(value: string) => void",
   },
   {
-    name: "children",
-    type: "ReactNode",
     default: "—",
     description: "Tab item elements. Required.",
+    name: "children",
+    type: "ReactNode",
   },
 ];
 
 export const tabsItemProps = [
   {
-    name: "value",
-    type: "string",
     default: "—",
     description: "The unique identifier for this tab item. Required.",
+    name: "value",
+    type: "string",
   },
   {
-    name: "disabled",
-    type: "boolean",
     default: "false",
     description: "Whether the tab item is disabled.",
+    name: "disabled",
+    type: "boolean",
   },
   {
-    name: "children",
-    type: "ReactNode",
     default: "—",
     description: "The label or content of the tab item. Required.",
+    name: "children",
+    type: "ReactNode",
   },
 ];
 

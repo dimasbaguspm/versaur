@@ -1,4 +1,4 @@
-import type { HTMLAttributes, ReactNode, ElementType } from "react";
+import type { ElementType, HTMLAttributes, ReactNode } from "react";
 
 export interface OverlayHeaderProps extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;

@@ -30,10 +30,7 @@
   --_arrow-color: var(--vers-comp-select-arrow-color, var(--color-text-muted));
 
   /* Focus ring */
-  --_focus-ring-color: var(
-    --vers-comp-select-focus-ring-color,
-    var(--color-primary)
-  );
+  --_focus-ring-color: var(--vers-comp-select-focus-ring-color, var(--color-primary));
 
   /* Layout */
   width: 100%;

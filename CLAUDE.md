@@ -93,15 +93,15 @@ packages/react/src/components/button/
 
 ## Key files
 
-| File | Purpose |
-|------|---------|
-| `packages/core/vite.config.ts` | CSS module scoping config (`versaur-[name]-[local]`) |
-| `packages/core/src/tokens/` | Design tokens (CSS custom properties) |
-| `packages/react/src/hooks/use-data-attrs.ts` | Core hook: props to data-attributes |
-| `packages/react/src/components/button/button.tsx` | Reference component implementation |
-| `apps/docs/src/components/framework-switcher.tsx` | Framework toggle for docs |
-| `apps/docs/src/components/component-preview.tsx` | Collapsible code panel with Shiki highlighting |
-| `apps/docs/src/components/props-table.tsx` | Reusable API reference table |
-| `packages/tooling/src/generate-types.ts` | PostCSS type extraction entry point |
-| `packages/tooling/src/css-parser.ts` | CSS data-attribute selector parser |
-| `packages/tooling/src/codegen.ts` | TypeScript codegen from parsed CSS |
+| File                                              | Purpose                                              |
+| ------------------------------------------------- | ---------------------------------------------------- |
+| `packages/core/vite.config.ts`                    | CSS module scoping config (`versaur-[name]-[local]`) |
+| `packages/core/src/tokens/`                       | Design tokens (CSS custom properties)                |
+| `packages/react/src/hooks/use-data-attrs.ts`      | Core hook: props to data-attributes                  |
+| `packages/react/src/components/button/button.tsx` | Reference component implementation                   |
+| `apps/docs/src/components/framework-switcher.tsx` | Framework toggle for docs                            |
+| `apps/docs/src/components/component-preview.tsx`  | Collapsible code panel with Shiki highlighting       |
+| `apps/docs/src/components/props-table.tsx`        | Reusable API reference table                         |
+| `packages/tooling/src/generate-types.ts`          | PostCSS type extraction entry point                  |
+| `packages/tooling/src/css-parser.ts`              | CSS data-attribute selector parser                   |
+| `packages/tooling/src/codegen.ts`                 | TypeScript codegen from parsed CSS                   |

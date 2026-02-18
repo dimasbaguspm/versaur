@@ -3,11 +3,11 @@
 import { forwardRef } from "react";
 import { topBarStyles } from "@versaur/core";
 import type {
-  TopBarProps,
-  TopBarLeadingProps,
   TopBarCentredProps,
-  TopBarTrailingProps,
   TopBarComponent,
+  TopBarLeadingProps,
+  TopBarProps,
+  TopBarTrailingProps,
 } from "./top-bar.types";
 
 /**
@@ -30,15 +30,11 @@ import type {
  * </TopBar>
  * ```
  */
-const TopBar = forwardRef<HTMLElement, TopBarProps>(
-  ({ children, ...props }, ref) => {
-    return (
-      <header ref={ref} className={topBarStyles["top-bar"]} {...props}>
-        {children}
-      </header>
-    );
-  },
-);
+const TopBar = forwardRef<HTMLElement, TopBarProps>(({ children, ...props }, ref) => (
+  <header ref={ref} className={topBarStyles["top-bar"]} {...props}>
+    {children}
+  </header>
+));
 TopBar.displayName = "TopBar";
 
 /**
@@ -46,13 +42,11 @@ TopBar.displayName = "TopBar";
  * Typically contains logo, brand, and navigation
  */
 const TopBarLeading = forwardRef<HTMLDivElement, TopBarLeadingProps>(
-  ({ children, ...props }, ref) => {
-    return (
-      <div ref={ref} className={topBarStyles["top-bar-leading"]} {...props}>
-        {children}
-      </div>
-    );
-  },
+  ({ children, ...props }, ref) => (
+    <div ref={ref} className={topBarStyles["top-bar-leading"]} {...props}>
+      {children}
+    </div>
+  ),
 );
 TopBarLeading.displayName = "TopBar.Leading";
 
@@ -61,13 +55,11 @@ TopBarLeading.displayName = "TopBar.Leading";
  * Typically contains search, title, or other center content
  */
 const TopBarCentred = forwardRef<HTMLDivElement, TopBarCentredProps>(
-  ({ children, ...props }, ref) => {
-    return (
-      <div ref={ref} className={topBarStyles["top-bar-centred"]} {...props}>
-        {children}
-      </div>
-    );
-  },
+  ({ children, ...props }, ref) => (
+    <div ref={ref} className={topBarStyles["top-bar-centred"]} {...props}>
+      {children}
+    </div>
+  ),
 );
 TopBarCentred.displayName = "TopBar.Centred";
 
@@ -76,13 +68,11 @@ TopBarCentred.displayName = "TopBar.Centred";
  * Typically contains actions, user menu, and notifications
  */
 const TopBarTrailing = forwardRef<HTMLDivElement, TopBarTrailingProps>(
-  ({ children, ...props }, ref) => {
-    return (
-      <div ref={ref} className={topBarStyles["top-bar-trailing"]} {...props}>
-        {children}
-      </div>
-    );
-  },
+  ({ children, ...props }, ref) => (
+    <div ref={ref} className={topBarStyles["top-bar-trailing"]} {...props}>
+      {children}
+    </div>
+  ),
 );
 TopBarTrailing.displayName = "TopBar.Trailing";
 
@@ -91,17 +81,10 @@ TopBarTrailing.displayName = "TopBar.Trailing";
  * Attaches sub-components to TopBar for namespace-based API
  */
 const TopBarCompound = Object.assign(TopBar, {
-  Leading: TopBarLeading,
   Centred: TopBarCentred,
+  Leading: TopBarLeading,
   Trailing: TopBarTrailing,
-}) as React.ForwardRefExoticComponent<
-  TopBarProps & React.RefAttributes<HTMLElement>
-> &
+}) as React.ForwardRefExoticComponent<TopBarProps & React.RefAttributes<HTMLElement>> &
   TopBarComponent;
 
-export {
-  TopBarCompound as TopBar,
-  TopBarLeading,
-  TopBarCentred,
-  TopBarTrailing,
-};
+export { TopBarCompound as TopBar, TopBarLeading, TopBarCentred, TopBarTrailing };

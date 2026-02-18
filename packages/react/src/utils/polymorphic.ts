@@ -1,11 +1,9 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 /**
  * Helper to check if component is a string (HTML element) or function component
  */
-export function isStringComponent(
-  component: unknown,
-): component is keyof JSX.IntrinsicElements {
+export function isStringComponent(component: unknown): component is keyof JSX.IntrinsicElements {
   return typeof component === "string";
 }
 

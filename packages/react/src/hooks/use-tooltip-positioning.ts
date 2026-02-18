@@ -1,4 +1,5 @@
-import { useEffect, MutableRefObject } from "react";
+import type { MutableRefObject } from "react";
+import { useEffect } from "react";
 
 type TriggerType = "focus" | "hover" | "all";
 type Placement =
@@ -42,12 +43,14 @@ export function useTooltipPositioning({
 }: UseTooltipPositioningOptions) {
   useEffect(() => {
     const tooltipEl = tooltipRef.current;
-    if (!tooltipEl || !id) return;
+    if (!tooltipEl || !id) {
+      return;
+    }
 
-    const triggerEl = document.querySelector(
-      `[data-tooltip-trigger="${id}"]`,
-    ) as HTMLElement;
-    if (!triggerEl) return;
+    const triggerEl = document.querySelector(`[data-tooltip-trigger="${id}"]`) as HTMLElement;
+    if (!triggerEl) {
+      return;
+    }
 
     // Handle popover toggle event (after positioning)
     const handleToggle = (e: Event) => {

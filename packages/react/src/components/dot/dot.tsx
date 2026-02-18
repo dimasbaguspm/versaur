@@ -16,13 +16,11 @@ import type { DotProps } from "./dot.types";
 export const Dot = forwardRef<HTMLSpanElement, DotProps>(
   ({ variant = "primary", size = "medium", ...rest }, ref) => {
     const dataAttrs = useDataAttrs({
-      variant,
       size,
+      variant,
     });
 
-    return (
-      <span ref={ref} className={dotStyles.dot} {...dataAttrs} {...rest} />
-    );
+    return <span ref={ref} className={dotStyles.dot} {...dataAttrs} {...rest} />;
   },
 );
 

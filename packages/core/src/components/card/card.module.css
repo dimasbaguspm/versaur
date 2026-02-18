@@ -9,10 +9,7 @@
   /* Interactive states - only applied when data-interactive="true" */
   --_cursor: var(--vers-comp-card-cursor, pointer);
   --_hover-bg: var(--vers-comp-card-hover-bg, var(--color-surface));
-  --_focus-ring: var(
-    --vers-comp-card-focus-ring,
-    2px solid var(--color-primary)
-  );
+  --_focus-ring: var(--vers-comp-card-focus-ring, 2px solid var(--color-primary));
 
   display: flex;
   flex-direction: column;
@@ -47,18 +44,12 @@
 
 /* Border style variants */
 .card[data-border="all-rounded"] {
-  --_border: var(
-    --vers-comp-card-border-all-rounded,
-    1px solid var(--color-border)
-  );
+  --_border: var(--vers-comp-card-border-all-rounded, 1px solid var(--color-border));
   border-radius: var(--_border-radius);
 }
 
 .card[data-border="vertical"] {
-  --_border: var(
-    --vers-comp-card-border-vertical,
-    1px solid var(--color-border)
-  );
+  --_border: var(--vers-comp-card-border-vertical, 1px solid var(--color-border));
   border-left: 1px solid var(--color-border);
   border-right: 1px solid var(--color-border);
   border-top: none;
@@ -67,10 +58,7 @@
 }
 
 .card[data-border="horizontal"] {
-  --_border: var(
-    --vers-comp-card-border-horizontal,
-    1px solid var(--color-border)
-  );
+  --_border: var(--vers-comp-card-border-horizontal, 1px solid var(--color-border));
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
   border-left: none;

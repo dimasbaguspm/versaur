@@ -32,24 +32,12 @@
   /* Color — private tokens default to primary */
   --_bg: var(--vers-comp-button-icon-bg, var(--color-primary));
   --_color: var(--vers-comp-button-icon-color, var(--color-white));
-  --_border-color: var(
-    --vers-comp-button-icon-border-color,
-    var(--color-primary)
-  );
+  --_border-color: var(--vers-comp-button-icon-border-color, var(--color-primary));
 
   /* Focus ring */
-  --_focus-ring-width: var(
-    --vers-comp-button-icon-focus-ring-width,
-    var(--focus-ring-width)
-  );
-  --_focus-ring-offset: var(
-    --vers-comp-button-icon-focus-ring-offset,
-    var(--focus-ring-offset)
-  );
-  --_focus-ring-color: var(
-    --vers-comp-button-icon-focus-ring-color,
-    var(--focus-ring-color)
-  );
+  --_focus-ring-width: var(--vers-comp-button-icon-focus-ring-width, var(--focus-ring-width));
+  --_focus-ring-offset: var(--vers-comp-button-icon-focus-ring-offset, var(--focus-ring-offset));
+  --_focus-ring-color: var(--vers-comp-button-icon-focus-ring-color, var(--focus-ring-color));
 
   background-color: var(--_bg);
   color: var(--_color);
@@ -97,36 +85,20 @@
 .button-icon[data-variant="primary"] {
   --_bg: var(--vers-comp-button-icon-primary-bg, var(--color-primary));
   --_color: var(--vers-comp-button-icon-primary-color, var(--color-white));
-  --_border-color: var(
-    --vers-comp-button-icon-primary-border-color,
-    var(--color-primary)
-  );
-  --_focus-ring-color: var(
-    --vers-comp-button-icon-primary-focus-ring-color,
-    var(--color-primary)
-  );
+  --_border-color: var(--vers-comp-button-icon-primary-border-color, var(--color-primary));
+  --_focus-ring-color: var(--vers-comp-button-icon-primary-focus-ring-color, var(--color-primary));
 }
 
-.button-icon[data-variant="primary"]:hover:not([data-disabled]):not(
-    [data-loading]
-  ) {
-  --_bg: var(
-    --vers-comp-button-icon-primary-hover-bg,
-    var(--color-primary-hover)
-  );
+.button-icon[data-variant="primary"]:hover:not([data-disabled]):not([data-loading]) {
+  --_bg: var(--vers-comp-button-icon-primary-hover-bg, var(--color-primary-hover));
   --_border-color: var(
     --vers-comp-button-icon-primary-hover-border-color,
     var(--color-primary-hover)
   );
 }
 
-.button-icon[data-variant="primary"]:active:not([data-disabled]):not(
-    [data-loading]
-  ) {
-  --_bg: var(
-    --vers-comp-button-icon-primary-active-bg,
-    var(--color-primary-active)
-  );
+.button-icon[data-variant="primary"]:active:not([data-disabled]):not([data-loading]) {
+  --_bg: var(--vers-comp-button-icon-primary-active-bg, var(--color-primary-active));
 }
 
 /* ============================================
@@ -135,36 +107,23 @@
 .button-icon[data-variant="secondary"] {
   --_bg: var(--vers-comp-button-icon-secondary-bg, var(--color-secondary));
   --_color: var(--vers-comp-button-icon-secondary-color, var(--color-white));
-  --_border-color: var(
-    --vers-comp-button-icon-secondary-border-color,
-    var(--color-secondary)
-  );
+  --_border-color: var(--vers-comp-button-icon-secondary-border-color, var(--color-secondary));
   --_focus-ring-color: var(
     --vers-comp-button-icon-secondary-focus-ring-color,
     var(--color-secondary)
   );
 }
 
-.button-icon[data-variant="secondary"]:hover:not([data-disabled]):not(
-    [data-loading]
-  ) {
-  --_bg: var(
-    --vers-comp-button-icon-secondary-hover-bg,
-    var(--color-secondary-hover)
-  );
+.button-icon[data-variant="secondary"]:hover:not([data-disabled]):not([data-loading]) {
+  --_bg: var(--vers-comp-button-icon-secondary-hover-bg, var(--color-secondary-hover));
   --_border-color: var(
     --vers-comp-button-icon-secondary-hover-border-color,
     var(--color-secondary-hover)
   );
 }
 
-.button-icon[data-variant="secondary"]:active:not([data-disabled]):not(
-    [data-loading]
-  ) {
-  --_bg: var(
-    --vers-comp-button-icon-secondary-active-bg,
-    var(--color-secondary-active)
-  );
+.button-icon[data-variant="secondary"]:active:not([data-disabled]):not([data-loading]) {
+  --_bg: var(--vers-comp-button-icon-secondary-active-bg, var(--color-secondary-active));
 }
 
 /* ============================================
@@ -174,15 +133,10 @@
   --_bg: var(--vers-comp-button-icon-ghost-bg, transparent);
   --_color: var(--vers-comp-button-icon-ghost-color, var(--color-ghost));
   --_border-color: var(--vers-comp-button-icon-ghost-border-color, transparent);
-  --_focus-ring-color: var(
-    --vers-comp-button-icon-ghost-focus-ring-color,
-    var(--color-ghost)
-  );
+  --_focus-ring-color: var(--vers-comp-button-icon-ghost-focus-ring-color, var(--color-ghost));
 }
 
-.button-icon[data-variant="ghost"]:hover:not([data-disabled]):not(
-    [data-loading]
-  ) {
+.button-icon[data-variant="ghost"]:hover:not([data-disabled]):not([data-loading]) {
   --_bg: var(--vers-comp-button-icon-ghost-hover-bg, var(--color-surface));
   --_color: var(--vers-comp-button-icon-ghost-hover-color, var(--color-ghost));
 }
@@ -193,36 +147,20 @@
 .button-icon[data-variant="danger"] {
   --_bg: var(--vers-comp-button-icon-danger-bg, var(--color-danger));
   --_color: var(--vers-comp-button-icon-danger-color, var(--color-white));
-  --_border-color: var(
-    --vers-comp-button-icon-danger-border-color,
-    var(--color-danger)
-  );
-  --_focus-ring-color: var(
-    --vers-comp-button-icon-danger-focus-ring-color,
-    var(--color-danger)
-  );
+  --_border-color: var(--vers-comp-button-icon-danger-border-color, var(--color-danger));
+  --_focus-ring-color: var(--vers-comp-button-icon-danger-focus-ring-color, var(--color-danger));
 }
 
-.button-icon[data-variant="danger"]:hover:not([data-disabled]):not(
-    [data-loading]
-  ) {
-  --_bg: var(
-    --vers-comp-button-icon-danger-hover-bg,
-    var(--color-danger-hover)
-  );
+.button-icon[data-variant="danger"]:hover:not([data-disabled]):not([data-loading]) {
+  --_bg: var(--vers-comp-button-icon-danger-hover-bg, var(--color-danger-hover));
   --_border-color: var(
     --vers-comp-button-icon-danger-hover-border-color,
     var(--color-danger-hover)
   );
 }
 
-.button-icon[data-variant="danger"]:active:not([data-disabled]):not(
-    [data-loading]
-  ) {
-  --_bg: var(
-    --vers-comp-button-icon-danger-active-bg,
-    var(--color-danger-active)
-  );
+.button-icon[data-variant="danger"]:active:not([data-disabled]):not([data-loading]) {
+  --_bg: var(--vers-comp-button-icon-danger-active-bg, var(--color-danger-active));
 }
 
 /* ============================================

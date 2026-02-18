@@ -1,15 +1,17 @@
 import type {
-  ElementType,
-  ReactNode,
-  HTMLAttributes,
   ComponentType,
-  SVGProps,
+  ElementType,
   ForwardRefExoticComponent,
+  HTMLAttributes,
+  ReactNode,
   RefAttributes,
+  SVGProps,
 } from "react";
 
 /* Polymorphic utilities */
-type AsProp<C extends ElementType = ElementType> = { as?: C };
+interface AsProp<C extends ElementType = ElementType> {
+  as?: C;
+}
 type PolymorphicProps<C extends ElementType = ElementType, Props = {}> = Props &
   AsProp<C> &
   Omit<React.ComponentPropsWithoutRef<C>, keyof Props | "as">;
@@ -27,10 +29,7 @@ export interface NavContextValue {
 /**
  * Nav props
  */
-export interface NavProps extends Omit<
-  HTMLAttributes<HTMLElement>,
-  "onChange"
-> {
+export interface NavProps extends Omit<HTMLAttributes<HTMLElement>, "onChange"> {
   /**
    * Layout direction for the navigation container
    * @default "horizontal"
@@ -101,8 +100,10 @@ export interface NavItemBaseProps {
  * Polymorphic NavItem type
  * Defaults to "button" but supports "a", Next.js Link, React Router Link, or any custom component
  */
-export type NavItemProps<C extends ElementType = ElementType> =
-  PolymorphicProps<C, NavItemBaseProps>;
+export type NavItemProps<C extends ElementType = ElementType> = PolymorphicProps<
+  C,
+  NavItemBaseProps
+>;
 
 /* Component types for namespace */
 type NavItemComponent = ForwardRefExoticComponent<

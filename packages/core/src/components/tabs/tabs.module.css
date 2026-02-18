@@ -14,10 +14,7 @@
 
   /* Private tokens */
   --_gap: var(--vers-comp-tabs-gap, var(--spacing-2));
-  --_border-bottom-color: var(
-    --vers-comp-tabs-border-bottom-color,
-    var(--color-border)
-  );
+  --_border-bottom-color: var(--vers-comp-tabs-border-bottom-color, var(--color-border));
   --_border-bottom-width: var(--vers-comp-tabs-border-bottom-width, 1px);
 
   gap: var(--_gap);
@@ -64,10 +61,7 @@
   /* Typography */
   font-family: var(--font-sans);
   font-size: var(--vers-comp-tabs-trigger-font-size, var(--font-size-sm));
-  font-weight: var(
-    --vers-comp-tabs-trigger-font-weight,
-    var(--font-weight-medium)
-  );
+  font-weight: var(--vers-comp-tabs-trigger-font-weight, var(--font-weight-medium));
   text-decoration: none;
   white-space: nowrap;
 
@@ -80,15 +74,9 @@
   padding: var(--_trigger-py) var(--_trigger-px);
 
   /* Colors */
-  --_trigger-color: var(
-    --vers-comp-tabs-trigger-color,
-    var(--color-text-secondary)
-  );
+  --_trigger-color: var(--vers-comp-tabs-trigger-color, var(--color-text-secondary));
   --_trigger-bg: var(--vers-comp-tabs-trigger-bg, transparent);
-  --_trigger-border-color: var(
-    --vers-comp-tabs-trigger-border-color,
-    transparent
-  );
+  --_trigger-border-color: var(--vers-comp-tabs-trigger-border-color, transparent);
 
   color: var(--_trigger-color);
   background-color: var(--_trigger-bg);
@@ -109,24 +97,15 @@
 
 /* Hover state */
 .trigger:hover {
-  --_trigger-color: var(
-    --vers-comp-tabs-trigger-hover-color,
-    var(--color-text)
-  );
-  --_trigger-bg: var(
-    --vers-comp-tabs-trigger-hover-bg,
-    var(--color-bg-secondary)
-  );
+  --_trigger-color: var(--vers-comp-tabs-trigger-hover-color, var(--color-text));
+  --_trigger-bg: var(--vers-comp-tabs-trigger-hover-bg, var(--color-bg-secondary));
 }
 
 /* ============================================
    ACTIVE STATE (aria-selected="true")
    ============================================ */
 .trigger[data-state="active"] {
-  --_trigger-color: var(
-    --vers-comp-tabs-trigger-active-color,
-    var(--color-primary)
-  );
+  --_trigger-color: var(--vers-comp-tabs-trigger-active-color, var(--color-primary));
   --_trigger-bg: var(--vers-comp-tabs-trigger-active-bg, transparent);
 }
 
@@ -134,10 +113,7 @@
    DISABLED STATE
    ============================================ */
 .trigger[data-state="disabled"] {
-  --_trigger-color: var(
-    --vers-comp-tabs-trigger-disabled-color,
-    var(--color-text-disabled)
-  );
+  --_trigger-color: var(--vers-comp-tabs-trigger-disabled-color, var(--color-text-disabled));
   --_trigger-bg: var(--vers-comp-tabs-trigger-disabled-bg, transparent);
 
   cursor: not-allowed;
@@ -145,10 +121,7 @@
 }
 
 .trigger[data-state="disabled"]:hover {
-  --_trigger-color: var(
-    --vers-comp-tabs-trigger-disabled-color,
-    var(--color-text-disabled)
-  );
+  --_trigger-color: var(--vers-comp-tabs-trigger-disabled-color, var(--color-text-disabled));
   --_trigger-bg: var(--vers-comp-tabs-trigger-disabled-bg, transparent);
 }
 
@@ -156,18 +129,9 @@
    FOCUS RING (Accessibility)
    ============================================ */
 .trigger:focus-visible {
-  --_focus-ring-width: var(
-    --vers-comp-tabs-trigger-focus-ring-width,
-    var(--focus-ring-width)
-  );
-  --_focus-ring-offset: var(
-    --vers-comp-tabs-trigger-focus-ring-offset,
-    var(--focus-ring-offset)
-  );
-  --_focus-ring-color: var(
-    --vers-comp-tabs-trigger-focus-ring-color,
-    var(--focus-ring-color)
-  );
+  --_focus-ring-width: var(--vers-comp-tabs-trigger-focus-ring-width, var(--focus-ring-width));
+  --_focus-ring-offset: var(--vers-comp-tabs-trigger-focus-ring-offset, var(--focus-ring-offset));
+  --_focus-ring-color: var(--vers-comp-tabs-trigger-focus-ring-color, var(--focus-ring-color));
 
   outline: var(--_focus-ring-width) solid var(--_focus-ring-color);
 }

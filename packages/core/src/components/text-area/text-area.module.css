@@ -24,18 +24,12 @@
   --_bg: var(--vers-comp-textarea-bg, transparent);
   --_border: var(--vers-comp-textarea-border, var(--color-border));
   --_text: var(--vers-comp-textarea-text, var(--color-text));
-  --_placeholder: var(
-    --vers-comp-textarea-placeholder,
-    var(--color-text-muted)
-  );
+  --_placeholder: var(--vers-comp-textarea-placeholder, var(--color-text-muted));
 
   /* Focus ring */
   --_focus-ring-width: var(--vers-comp-textarea-focus-ring-width, 1px);
   --_focus-ring-offset: var(--vers-comp-textarea-focus-ring-offset, 0);
-  --_focus-ring-color: var(
-    --vers-comp-textarea-focus-ring-color,
-    var(--color-primary)
-  );
+  --_focus-ring-color: var(--vers-comp-textarea-focus-ring-color, var(--color-primary));
 
   /* Layout */
   width: 100%;

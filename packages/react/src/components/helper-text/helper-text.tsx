@@ -7,13 +7,11 @@ import type { HelperTextProps } from "./helper-text.types";
  * Internal primitive - not exported from main package
  */
 export const HelperText = forwardRef<HTMLParagraphElement, HelperTextProps>(
-  ({ children, ...rest }, ref) => {
-    return (
-      <p ref={ref} className={helperTextStyles.helper} {...rest}>
-        {children}
-      </p>
-    );
-  },
+  ({ children, ...rest }, ref) => (
+    <p ref={ref} className={helperTextStyles.helper} {...rest}>
+      {children}
+    </p>
+  ),
 );
 
 HelperText.displayName = "HelperText";

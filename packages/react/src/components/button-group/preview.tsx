@@ -3,40 +3,40 @@ import { ButtonGroup } from "./button-group";
 
 export const buttonGroupProps = [
   {
-    name: "gap",
-    type: "ButtonGroupGap",
     default: "md",
     description: "Gap between buttons: xs, sm, md, or lg",
+    name: "gap",
+    type: "ButtonGroupGap",
   },
   {
-    name: "direction",
-    type: "ButtonGroupDirection",
     default: "horizontal",
     description: "Direction of flex layout: horizontal or vertical",
+    name: "direction",
+    type: "ButtonGroupDirection",
   },
   {
-    name: "align",
-    type: "ButtonGroupAlign",
     default: "center",
     description:
       "Alignment of items: start, center, end, space-between, space-around, or space-evenly",
+    name: "align",
+    type: "ButtonGroupAlign",
   },
   {
-    name: "wrap",
-    type: "ButtonGroupWrap",
     default: "nowrap",
     description: "Flex wrap behavior: wrap or nowrap",
+    name: "wrap",
+    type: "ButtonGroupWrap",
   },
   {
-    name: "aria-label",
-    type: "string",
     default: "Button group",
     description: "Accessible label for the group (customizable)",
+    name: "aria-label",
+    type: "string",
   },
   {
+    description: "Button children components",
     name: "children",
     type: "ReactNode",
-    description: "Button children components",
   },
 ];
 
@@ -44,7 +44,7 @@ function GapSection() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
       <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "500" }}>xs gap</p>
+        <p style={{ fontWeight: "500", marginBottom: "0.5rem" }}>xs gap</p>
         <ButtonGroup gap="xs">
           <Button variant="primary" size="small">
             Save
@@ -55,7 +55,7 @@ function GapSection() {
         </ButtonGroup>
       </div>
       <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "500" }}>sm gap</p>
+        <p style={{ fontWeight: "500", marginBottom: "0.5rem" }}>sm gap</p>
         <ButtonGroup gap="sm">
           <Button variant="primary" size="small">
             Save
@@ -66,7 +66,7 @@ function GapSection() {
         </ButtonGroup>
       </div>
       <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "500" }}>md gap</p>
+        <p style={{ fontWeight: "500", marginBottom: "0.5rem" }}>md gap</p>
         <ButtonGroup gap="md">
           <Button variant="primary" size="small">
             Save
@@ -77,7 +77,7 @@ function GapSection() {
         </ButtonGroup>
       </div>
       <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "500" }}>lg gap</p>
+        <p style={{ fontWeight: "500", marginBottom: "0.5rem" }}>lg gap</p>
         <ButtonGroup gap="lg">
           <Button variant="primary" size="small">
             Save
@@ -95,14 +95,14 @@ function DirectionSection() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
       <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "500" }}>Horizontal</p>
+        <p style={{ fontWeight: "500", marginBottom: "0.5rem" }}>Horizontal</p>
         <ButtonGroup direction="horizontal">
           <Button variant="primary">Submit</Button>
           <Button variant="secondary">Reset</Button>
         </ButtonGroup>
       </div>
       <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "500" }}>Vertical</p>
+        <p style={{ fontWeight: "500", marginBottom: "0.5rem" }}>Vertical</p>
         <ButtonGroup direction="vertical" align="start">
           <Button variant="primary">Option 1</Button>
           <Button variant="secondary">Option 2</Button>
@@ -116,35 +116,33 @@ function AlignmentSection() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
       <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "500" }}>Start</p>
+        <p style={{ fontWeight: "500", marginBottom: "0.5rem" }}>Start</p>
         <ButtonGroup align="start" gap="lg">
           <Button variant="primary">Yes</Button>
           <Button variant="secondary">No</Button>
         </ButtonGroup>
       </div>
       <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "500" }}>Center</p>
+        <p style={{ fontWeight: "500", marginBottom: "0.5rem" }}>Center</p>
         <ButtonGroup align="center" gap="lg">
           <Button variant="primary">Yes</Button>
           <Button variant="secondary">No</Button>
         </ButtonGroup>
       </div>
       <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "500" }}>End</p>
+        <p style={{ fontWeight: "500", marginBottom: "0.5rem" }}>End</p>
         <ButtonGroup align="end" gap="lg">
           <Button variant="primary">Yes</Button>
           <Button variant="secondary">No</Button>
         </ButtonGroup>
       </div>
       <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "500" }}>
-          Space Between
-        </p>
+        <p style={{ fontWeight: "500", marginBottom: "0.5rem" }}>Space Between</p>
         <div
           style={{
             border: "1px solid #e5e7eb",
-            padding: "0.5rem",
             borderRadius: "0.375rem",
+            padding: "0.5rem",
           }}
         >
           <ButtonGroup align="space-between" gap="lg" style={{ width: "100%" }}>
@@ -158,14 +156,12 @@ function AlignmentSection() {
         </div>
       </div>
       <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "500" }}>
-          Space Around
-        </p>
+        <p style={{ fontWeight: "500", marginBottom: "0.5rem" }}>Space Around</p>
         <div
           style={{
             border: "1px solid #e5e7eb",
-            padding: "0.5rem",
             borderRadius: "0.375rem",
+            padding: "0.5rem",
           }}
         >
           <ButtonGroup align="space-around" gap="lg" style={{ width: "100%" }}>
@@ -182,14 +178,12 @@ function AlignmentSection() {
         </div>
       </div>
       <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "500" }}>
-          Space Evenly
-        </p>
+        <p style={{ fontWeight: "500", marginBottom: "0.5rem" }}>Space Evenly</p>
         <div
           style={{
             border: "1px solid #e5e7eb",
-            padding: "0.5rem",
             borderRadius: "0.375rem",
+            padding: "0.5rem",
           }}
         >
           <ButtonGroup align="space-evenly" gap="lg" style={{ width: "100%" }}>
@@ -213,7 +207,7 @@ function WrapSection() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
       <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "500" }}>No wrap</p>
+        <p style={{ fontWeight: "500", marginBottom: "0.5rem" }}>No wrap</p>
         <ButtonGroup wrap="nowrap" style={{ width: "300px" }}>
           <Button size="small">Button 1</Button>
           <Button size="small">Button 2</Button>
@@ -222,7 +216,7 @@ function WrapSection() {
         </ButtonGroup>
       </div>
       <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "500" }}>With wrap</p>
+        <p style={{ fontWeight: "500", marginBottom: "0.5rem" }}>With wrap</p>
         <ButtonGroup wrap="wrap" style={{ width: "300px" }}>
           <Button size="small">Button 1</Button>
           <Button size="small">Button 2</Button>
@@ -238,9 +232,7 @@ function CustomSpacingSection() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
       <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "500" }}>
-          Custom spacing override
-        </p>
+        <p style={{ fontWeight: "500", marginBottom: "0.5rem" }}>Custom spacing override</p>
         <ButtonGroup
           gap="md"
           style={
@@ -260,9 +252,6 @@ function CustomSpacingSection() {
 
 export const buttonGroupSections = [
   {
-    key: "gap-variants",
-    title: "Gap Variants",
-    preview: GapSection,
     code: `<ButtonGroup gap="xs">
   <Button variant="primary" size="small">Save</Button>
   <Button variant="secondary" size="small">Cancel</Button>
@@ -271,12 +260,12 @@ export const buttonGroupSections = [
 <ButtonGroup gap="sm">...</ButtonGroup>
 <ButtonGroup gap="md">...</ButtonGroup>
 <ButtonGroup gap="lg">...</ButtonGroup>`,
+    key: "gap-variants",
     language: "tsx",
+    preview: GapSection,
+    title: "Gap Variants",
   },
   {
-    key: "direction",
-    title: "Direction",
-    preview: DirectionSection,
     code: `<ButtonGroup direction="horizontal">
   <Button variant="primary">Submit</Button>
   <Button variant="secondary">Reset</Button>
@@ -286,12 +275,12 @@ export const buttonGroupSections = [
   <Button variant="primary">Option 1</Button>
   <Button variant="secondary">Option 2</Button>
 </ButtonGroup>`,
+    key: "direction",
     language: "tsx",
+    preview: DirectionSection,
+    title: "Direction",
   },
   {
-    key: "alignment",
-    title: "Alignment",
-    preview: AlignmentSection,
     code: `<ButtonGroup align="start" gap="lg">
   <Button variant="primary">Yes</Button>
   <Button variant="secondary">No</Button>
@@ -313,12 +302,12 @@ export const buttonGroupSections = [
   <Button variant="secondary" size="small">Draft</Button>
   <Button variant="secondary" size="small">Cancel</Button>
 </ButtonGroup>`,
+    key: "alignment",
     language: "tsx",
+    preview: AlignmentSection,
+    title: "Alignment",
   },
   {
-    key: "wrap",
-    title: "Flex Wrap",
-    preview: WrapSection,
     code: `<ButtonGroup wrap="nowrap" style={{ width: "300px" }}>
   <Button size="small">Button 1</Button>
   <Button size="small">Button 2</Button>
@@ -329,12 +318,12 @@ export const buttonGroupSections = [
 <ButtonGroup wrap="wrap" style={{ width: "300px" }}>
   ...
 </ButtonGroup>`,
+    key: "wrap",
     language: "tsx",
+    preview: WrapSection,
+    title: "Flex Wrap",
   },
   {
-    key: "custom-spacing",
-    title: "Custom Spacing Override",
-    preview: CustomSpacingSection,
     code: `<ButtonGroup
   gap="md"
   style={{
@@ -345,7 +334,10 @@ export const buttonGroupSections = [
   <Button variant="secondary">Gap</Button>
   <Button variant="outline">Override</Button>
 </ButtonGroup>`,
+    key: "custom-spacing",
     language: "tsx",
+    preview: CustomSpacingSection,
+    title: "Custom Spacing Override",
   },
 ];
 
@@ -368,8 +360,8 @@ export function ButtonGroupPreview() {
     <div>
       <h2>ButtonGroup Component</h2>
       <p>
-        Container component for grouping multiple buttons with customizable
-        spacing, direction, alignment, and wrap behavior.
+        Container component for grouping multiple buttons with customizable spacing, direction,
+        alignment, and wrap behavior.
       </p>
     </div>
   );

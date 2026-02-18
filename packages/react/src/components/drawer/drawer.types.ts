@@ -1,10 +1,7 @@
 import type { DialogHTMLAttributes, ReactNode } from "react";
 import type { Drawer as DrawerCore } from "@versaur/core";
 
-export interface DrawerRootProps extends Omit<
-  DialogHTMLAttributes<HTMLDialogElement>,
-  "onClose"
-> {
+export interface DrawerRootProps extends Omit<DialogHTMLAttributes<HTMLDialogElement>, "onClose"> {
   /**
    * Whether the drawer is open (controlled state)
    */

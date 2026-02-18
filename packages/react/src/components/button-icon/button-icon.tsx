@@ -36,10 +36,10 @@ export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
     ref,
   ) => {
     const dataAttrs = useDataAttrs({
-      variant,
-      size,
-      loading,
       disabled: disabled || loading,
+      loading,
+      size,
+      variant,
     });
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -64,16 +64,9 @@ export const ButtonIcon = forwardRef<HTMLButtonElement, ButtonIconProps>(
         onClick={handleClick}
       >
         {loading ? (
-          <Icon
-            as={LoaderIcon}
-            aria-label="Loading"
-            data-loading-icon="loader"
-          />
+          <Icon as={LoaderIcon} aria-label="Loading" data-loading-icon="loader" />
         ) : (
-          <Icon
-            as={IconComponent}
-            {...(iconProps as Record<string, unknown>)}
-          />
+          <Icon as={IconComponent} {...(iconProps as Record<string, unknown>)} />
         )}
       </button>
     );

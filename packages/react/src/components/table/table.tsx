@@ -1,75 +1,56 @@
 "use client";
 
 import { forwardRef } from "react";
-import { tableStyles, checkboxStyles } from "@versaur/core";
-import { ChevronUpIcon, ChevronDownIcon, MenuIcon } from "@versaur/icons";
+import { checkboxStyles, tableStyles } from "@versaur/core";
+import { ChevronDownIcon, ChevronUpIcon, MenuIcon } from "@versaur/icons";
 import { ButtonIcon } from "../button-icon";
 import { useDataAttrs } from "../../hooks/use-data-attrs.js";
 import type {
-  TableWrapperProps,
-  TableHeaderProps,
-  TableBodyProps,
-  TableFooterProps,
-  TableRowProps,
-  TableHeaderCellProps,
+  TableActionProps,
   TableBodyCellProps,
+  TableBodyProps,
   TableCheckboxProps,
   TableDoubleLineProps,
-  TableActionProps,
+  TableFooterProps,
+  TableHeaderCellProps,
+  TableHeaderProps,
+  TableRowProps,
+  TableWrapperProps,
 } from "./table.types.js";
 
 /**
  * TableHeader - thead wrapper
  */
-const TableHeader = forwardRef<HTMLTableSectionElement, TableHeaderProps>(
-  (props, ref) => {
-    return (
-      <thead ref={ref} className={tableStyles["table-header"]} {...props} />
-    );
-  },
-);
+const TableHeader = forwardRef<HTMLTableSectionElement, TableHeaderProps>((props, ref) => (
+  <thead ref={ref} className={tableStyles["table-header"]} {...props} />
+));
 
 TableHeader.displayName = "Table.Header";
 
 /**
  * TableBody - tbody wrapper
  */
-const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
-  (props, ref) => {
-    return <tbody ref={ref} className={tableStyles["table-body"]} {...props} />;
-  },
-);
+const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>((props, ref) => (
+  <tbody ref={ref} className={tableStyles["table-body"]} {...props} />
+));
 
 TableBody.displayName = "Table.Body";
 
 /**
  * TableFooter - tfoot wrapper
  */
-const TableFooter = forwardRef<HTMLTableSectionElement, TableFooterProps>(
-  (props, ref) => {
-    return (
-      <tfoot ref={ref} className={tableStyles["table-footer"]} {...props} />
-    );
-  },
-);
+const TableFooter = forwardRef<HTMLTableSectionElement, TableFooterProps>((props, ref) => (
+  <tfoot ref={ref} className={tableStyles["table-footer"]} {...props} />
+));
 
 TableFooter.displayName = "Table.Footer";
 
 /**
  * TableRow - tr wrapper with click-to-select support
  */
-const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
-  ({ onClick, ...props }, ref) => {
-    return (
-      <tr
-        ref={ref}
-        data-clickable={onClick ? "true" : undefined}
-        onClick={onClick}
-        {...props}
-      />
-    );
-  },
-);
+const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(({ onClick, ...props }, ref) => (
+  <tr ref={ref} data-clickable={onClick ? "true" : undefined} onClick={onClick} {...props} />
+));
 
 TableRow.displayName = "Table.Row";
 
@@ -79,12 +60,17 @@ TableRow.displayName = "Table.Row";
 const TableHeaderCell = forwardRef<HTMLTableCellElement, TableHeaderCellProps>(
   ({ sortable, sortDirection, onSort, children, ...props }, ref) => {
     const handleClick = () => {
-      if (!sortable || !onSort) return;
+      if (!sortable || !onSort) {
+        return;
+      }
 
       // Cycle through: null → asc → desc → null
       let newDirection: "asc" | "desc" | null = "asc";
-      if (sortDirection === "asc") newDirection = "desc";
-      else if (sortDirection === "desc") newDirection = null;
+      if (sortDirection === "asc") {
+        newDirection = "desc";
+      } else if (sortDirection === "desc") {
+        newDirection = null;
+      }
 
       onSort(newDirection);
     };
@@ -103,8 +89,8 @@ const TableHeaderCell = forwardRef<HTMLTableCellElement, TableHeaderCellProps>(
       >
         <div
           style={{
-            display: "flex",
             alignItems: "center",
+            display: "flex",
             gap: "0.5rem",
             justifyContent: "flex-start",
           }}
@@ -113,22 +99,18 @@ const TableHeaderCell = forwardRef<HTMLTableCellElement, TableHeaderCellProps>(
           {sortable && (
             <>
               {sortDirection === "asc" && (
-                <ChevronUpIcon
-                  style={{ width: "1em", height: "1em", flexShrink: 0 }}
-                />
+                <ChevronUpIcon style={{ flexShrink: 0, height: "1em", width: "1em" }} />
               )}
               {sortDirection === "desc" && (
-                <ChevronDownIcon
-                  style={{ width: "1em", height: "1em", flexShrink: 0 }}
-                />
+                <ChevronDownIcon style={{ flexShrink: 0, height: "1em", width: "1em" }} />
               )}
               {!sortDirection && (
                 <ChevronDownIcon
                   style={{
-                    width: "1em",
-                    height: "1em",
                     flexShrink: 0,
+                    height: "1em",
                     opacity: 0.5,
+                    width: "1em",
                   }}
                 />
               )}
@@ -146,16 +128,14 @@ TableHeaderCell.displayName = "Table.HeaderCell";
  * TableBodyCell - td wrapper (renamed from TableCell)
  */
 const TableBodyCell = forwardRef<HTMLTableCellElement, TableBodyCellProps>(
-  ({ variant, ...props }, ref) => {
-    return (
-      <td
-        ref={ref}
-        className={tableStyles["table-cell"]}
-        data-table-cell-variant={variant}
-        {...props}
-      />
-    );
-  },
+  ({ variant, ...props }, ref) => (
+    <td
+      ref={ref}
+      className={tableStyles["table-cell"]}
+      data-table-cell-variant={variant}
+      {...props}
+    />
+  ),
 );
 
 TableBodyCell.displayName = "Table.BodyCell";
@@ -164,30 +144,28 @@ TableBodyCell.displayName = "Table.BodyCell";
  * TableCheckbox - Built-in checkbox for row-level selection
  */
 const TableCheckbox = forwardRef<HTMLInputElement, TableCheckboxProps>(
-  ({ rowId, checked, indeterminate, onChange }, ref) => {
-    return (
-      <label className={checkboxStyles.checkbox}>
-        <input
-          ref={(el) => {
-            if (el) {
-              el.indeterminate = indeterminate || false;
-              if (typeof ref === "function") {
-                ref(el);
-              } else if (ref) {
-                ref.current = el;
-              }
+  ({ rowId, checked, indeterminate, onChange }, ref) => (
+    <label className={checkboxStyles.checkbox}>
+      <input
+        ref={(el) => {
+          if (el) {
+            el.indeterminate = indeterminate || false;
+            if (typeof ref === "function") {
+              ref(el);
+            } else if (ref) {
+              ref.current = el;
             }
-          }}
-          type="checkbox"
-          className={checkboxStyles.input}
-          checked={checked || false}
-          onChange={(e) => onChange(e.target.checked)}
-          aria-label={`Select row ${rowId}`}
-        />
-        <span className={checkboxStyles.indicator} />
-      </label>
-    );
-  },
+          }
+        }}
+        type="checkbox"
+        className={checkboxStyles.input}
+        checked={checked || false}
+        onChange={(e) => onChange(e.target.checked)}
+        aria-label={`Select row ${rowId}`}
+      />
+      <span className={checkboxStyles.indicator} />
+    </label>
+  ),
 );
 
 TableCheckbox.displayName = "Table.Checkbox";
@@ -196,38 +174,26 @@ TableCheckbox.displayName = "Table.Checkbox";
  * TableDoubleLine - Built-in cell with title and subtitle
  */
 const TableDoubleLine = forwardRef<HTMLDivElement, TableDoubleLineProps>(
-  ({ title, subtitle, size = "md" }, ref) => {
-    return (
+  ({ title, subtitle, size = "md" }, ref) => (
+    <div ref={ref} className={tableStyles["table-cell"]} data-table-cell-variant="double-line">
       <div
-        ref={ref}
-        className={tableStyles["table-cell"]}
-        data-table-cell-variant="double-line"
+        style={{
+          fontWeight: 600,
+          fontSize: size === "sm" ? "0.875rem" : size === "lg" ? "1rem" : "0.9375rem",
+        }}
       >
-        <div
-          style={{
-            fontWeight: 600,
-            fontSize:
-              size === "sm" ? "0.875rem" : size === "lg" ? "1rem" : "0.9375rem",
-          }}
-        >
-          {title}
-        </div>
-        <div
-          style={{
-            fontSize:
-              size === "sm"
-                ? "0.75rem"
-                : size === "lg"
-                  ? "0.875rem"
-                  : "0.8125rem",
-            color: "#6b7280",
-          }}
-        >
-          {subtitle}
-        </div>
+        {title}
       </div>
-    );
-  },
+      <div
+        style={{
+          fontSize: size === "sm" ? "0.75rem" : size === "lg" ? "0.875rem" : "0.8125rem",
+          color: "#6b7280",
+        }}
+      >
+        {subtitle}
+      </div>
+    </div>
+  ),
 );
 
 TableDoubleLine.displayName = "Table.DoubleLine";
@@ -263,39 +229,35 @@ TableAction.displayName = "Table.Action";
  * Replaces TableRootProps and TableWrapperProps patterns
  */
 const TableComponent = forwardRef<HTMLDivElement, TableWrapperProps>(
-  ({ columns, selectedRows, children, ...props }, ref) => {
-    return (
-      <div
-        ref={ref}
-        className={tableStyles.table}
-        style={
-          {
-            "--table-grid-columns": columns,
-          } as React.CSSProperties
-        }
-        {...props}
-      >
-        <table>{children}</table>
-      </div>
-    );
-  },
+  ({ columns, selectedRows, children, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={tableStyles.table}
+      style={
+        {
+          "--table-grid-columns": columns,
+        } as React.CSSProperties
+      }
+      {...props}
+    >
+      <table>{children}</table>
+    </div>
+  ),
 );
 
 TableComponent.displayName = "Table";
 
 const Table = Object.assign(TableComponent, {
-  Header: TableHeader,
+  Action: TableAction,
   Body: TableBody,
-  Footer: TableFooter,
-  Row: TableRow,
-  HeaderCell: TableHeaderCell,
   BodyCell: TableBodyCell,
   Checkbox: TableCheckbox,
   DoubleLine: TableDoubleLine,
-  Action: TableAction,
-}) as React.ForwardRefExoticComponent<
-  TableWrapperProps & React.RefAttributes<HTMLDivElement>
-> & {
+  Footer: TableFooter,
+  Header: TableHeader,
+  HeaderCell: TableHeaderCell,
+  Row: TableRow,
+}) as React.ForwardRefExoticComponent<TableWrapperProps & React.RefAttributes<HTMLDivElement>> & {
   Header: typeof TableHeader;
   Body: typeof TableBody;
   Footer: typeof TableFooter;

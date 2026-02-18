@@ -1,7 +1,7 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react';
-import type { Button } from '@versaur/core';
+import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type { Button } from "@versaur/core";
 
-export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'disabled'> {
+export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "disabled"> {
   /**
    * Visual variant of the button
    * @default 'primary'

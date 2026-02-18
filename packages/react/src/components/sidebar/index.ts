@@ -1,12 +1,12 @@
 import { Sidebar } from "./sidebar";
 import type {
-  SidebarRootProps,
-  SidebarHeaderProps,
   SidebarBodyProps,
+  SidebarDividerProps,
   SidebarFooterProps,
   SidebarGroupProps,
+  SidebarHeaderProps,
   SidebarItemProps,
-  SidebarDividerProps,
+  SidebarRootProps,
 } from "./sidebar.types";
 
 declare namespace Sidebar {
@@ -29,9 +29,4 @@ export type {
   SidebarItemProps,
   SidebarDividerProps,
 };
-export {
-  sidebarSections,
-  sidebarInstallation,
-  sidebarProps,
-  SidebarPreview,
-} from "./preview";
+export { sidebarSections, sidebarInstallation, sidebarProps, SidebarPreview } from "./preview";

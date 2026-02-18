@@ -1,20 +1,9 @@
-import {
-  createContext,
-  useContext,
-  forwardRef,
-  useRef,
-  useState,
-  useLayoutEffect,
-} from "react";
+import { createContext, forwardRef, useContext, useLayoutEffect, useRef, useState } from "react";
 import { tabsStyles } from "@versaur/core";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import { useResizeObserver } from "../../hooks/use-resize-observer";
 import { combineRefs } from "../../utils/combine-refs";
-import type {
-  TabsProps,
-  TabsItemProps,
-  TabsPanelAttributes,
-} from "./tabs.types";
+import type { TabsItemProps, TabsPanelAttributes, TabsProps } from "./tabs.types";
 
 /**
  * Private context for managing active tab state and change handler
@@ -50,84 +39,75 @@ function useTabsContext() {
  * </Tabs>
  * ```
  */
-const TabsRoot = forwardRef<HTMLDivElement, TabsProps>(
-  ({ value, onChange, children }, ref) => {
-    const navRef = useRef<HTMLDivElement>(null);
-    const triggersRef = useRef<Map<string, HTMLButtonElement>>(new Map());
-    const [thumbLeft, setThumbLeft] = useState(0);
-    const [thumbWidth, setThumbWidth] = useState(0);
+const TabsRoot = forwardRef<HTMLDivElement, TabsProps>(({ value, onChange, children }, ref) => {
+  const navRef = useRef<HTMLDivElement>(null);
+  const triggersRef = useRef<Map<string, HTMLButtonElement>>(new Map());
+  const [thumbLeft, setThumbLeft] = useState(0);
+  const [thumbWidth, setThumbWidth] = useState(0);
 
-    /**
-     * Measure the active trigger and update thumb position/width
-     */
-    const measureTabs = () => {
-      const activeTrigger = triggersRef.current.get(value);
-      if (!activeTrigger || !navRef.current) return;
+  /**
+   * Measure the active trigger and update thumb position/width
+   */
+  const measureTabs = () => {
+    const activeTrigger = triggersRef.current.get(value);
+    if (!activeTrigger || !navRef.current) {
+      return;
+    }
 
-      const navRect = navRef.current.getBoundingClientRect();
-      const triggerRect = activeTrigger.getBoundingClientRect();
+    const navRect = navRef.current.getBoundingClientRect();
+    const triggerRect = activeTrigger.getBoundingClientRect();
 
-      // Calculate thumb position relative to nav container, accounting for scroll
-      const left = triggerRect.left - navRect.left + navRef.current.scrollLeft;
-      const width = triggerRect.width;
+    // Calculate thumb position relative to nav container, accounting for scroll
+    const left = triggerRect.left - navRect.left + navRef.current.scrollLeft;
+    const { width } = triggerRect;
 
-      setThumbLeft(left);
-      setThumbWidth(width);
+    setThumbLeft(left);
+    setThumbWidth(width);
 
-      // Auto-scroll active tab into view
-      activeTrigger.scrollIntoView({
-        behavior: "smooth",
-        block: "nearest",
-        inline: "center",
-      });
-    };
+    // Auto-scroll active tab into view
+    activeTrigger.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "center",
+    });
+  };
 
-    /**
-     * Register trigger refs for measurement
-     */
-    const registerTrigger = (
-      triggerValue: string,
-      triggerRef: HTMLButtonElement | null,
-    ) => {
-      if (triggerRef) {
-        triggersRef.current.set(triggerValue, triggerRef);
-      }
-    };
+  /**
+   * Register trigger refs for measurement
+   */
+  const registerTrigger = (triggerValue: string, triggerRef: HTMLButtonElement | null) => {
+    if (triggerRef) {
+      triggersRef.current.set(triggerValue, triggerRef);
+    }
+  };
 
-    // Measure on mount and when active value changes (synchronously, no animation)
-    useLayoutEffect(() => {
-      measureTabs();
-    }, [value]);
+  // Measure on mount and when active value changes (synchronously, no animation)
+  useLayoutEffect(() => {
+    measureTabs();
+  }, [value]);
 
-    // Recalculate on resize
-    useResizeObserver(navRef, measureTabs);
+  // Recalculate on resize
+  useResizeObserver(navRef, measureTabs);
 
-    const dataAttrs = useDataAttrs({});
+  const dataAttrs = useDataAttrs({});
 
-    return (
-      <TabsContext.Provider
-        value={{ activeValue: value, onChange, registerTrigger }}
-      >
-        <nav
-          ref={combineRefs(ref, navRef)}
-          className={tabsStyles.tabs}
-          {...dataAttrs}
-        >
-          <ul className={tabsStyles.tablist} role="tablist">
-            {children}
-          </ul>
-          <div
-            className={tabsStyles["tabs-thumb"]}
-            style={{
-              left: `${thumbLeft}px`,
-              width: `${thumbWidth}px`,
-            }}
-          />
-        </nav>
-      </TabsContext.Provider>
-    );
-  },
-);
+  return (
+    <TabsContext.Provider value={{ activeValue: value, onChange, registerTrigger }}>
+      <nav ref={combineRefs(ref, navRef)} className={tabsStyles.tabs} {...dataAttrs}>
+        <ul className={tabsStyles.tablist} role="tablist">
+          {children}
+        </ul>
+        <div
+          className={tabsStyles["tabs-thumb"]}
+          style={{
+            left: `${thumbLeft}px`,
+            width: `${thumbWidth}px`,
+          }}
+        />
+      </nav>
+    </TabsContext.Provider>
+  );
+});
 
 TabsRoot.displayName = "Tabs";
 
@@ -192,9 +172,9 @@ TabsItem.displayName = "Tabs.Item";
  */
 function getPanelAttribute(value: string): TabsPanelAttributes {
   return {
+    "aria-labelledby": `tabs-trigger-${value}`,
     id: `tabs-panel-${value}`,
     role: "tabpanel",
-    "aria-labelledby": `tabs-trigger-${value}`,
   };
 }
 

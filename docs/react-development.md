@@ -14,14 +14,14 @@ Key relationships:
 
 All files use **kebab-case**. No PascalCase or camelCase filenames.
 
-| Convention | Example |
-|---|---|
-| Component file | `button.tsx` |
-| Types file | `button.types.ts` |
-| Hook file | `use-data-attrs.ts` |
+| Convention          | Example              |
+| ------------------- | -------------------- |
+| Component file      | `button.tsx`         |
+| Types file          | `button.types.ts`    |
+| Hook file           | `use-data-attrs.ts`  |
 | Component directory | `components/button/` |
-| Preview file | `preview.tsx` |
-| Barrel file | `index.ts` |
+| Preview file        | `preview.tsx`        |
+| Barrel file         | `index.ts`           |
 
 ## 3. Directory layout
 
@@ -60,7 +60,10 @@ import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type { ButtonProps } from "./button.types";
 
 export const _Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant = "primary", size = "medium", loading = false, disabled = false, children, ...rest }, ref) => {
+  (
+    { variant = "primary", size = "medium", loading = false, disabled = false, children, ...rest },
+    ref,
+  ) => {
     const dataAttrs = useDataAttrs({ variant, size, loading, disabled: disabled || loading });
 
     return (
@@ -82,6 +85,7 @@ _Button.displayName = "Button";
 ```
 
 > **Disabled/loading click prevention:** Wrappers intercept `onClick` to prevent interaction when `disabled` or `loading` is true. This is necessary because the CSS disabled state uses `cursor: not-allowed` without `pointer-events: none`, so clicks still reach the element. The wrapper's `handleClick` guards against this:
+>
 > ```tsx
 > const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
 >   if (disabled || loading) {
@@ -228,12 +232,12 @@ const dataAttrs = useDataAttrs({ variant, size, loading, disabled });
 
 Rules:
 
-| Prop type | Data attribute | CSS selector |
-|---|---|---|
-| `string` / `number` | `data-variant="primary"` | `[data-variant="primary"]` |
-| `boolean` (`true`) | `data-loading=""` (present) | `[data-loading]` |
-| `boolean` (`false`) | omitted | — |
-| `undefined` / `null` | omitted | — |
+| Prop type            | Data attribute              | CSS selector               |
+| -------------------- | --------------------------- | -------------------------- |
+| `string` / `number`  | `data-variant="primary"`    | `[data-variant="primary"]` |
+| `boolean` (`true`)   | `data-loading=""` (present) | `[data-loading]`           |
+| `boolean` (`false`)  | omitted                     | —                          |
+| `undefined` / `null` | omitted                     | —                          |
 
 ARIA attributes are **not** handled by `useDataAttrs`. Set them directly on the element:
 
@@ -255,11 +259,11 @@ Each component includes a `preview.tsx` that bundles all documentation data in o
 
 ```tsx
 export interface ButtonSection {
-  key: string;        // URL-safe identifier (e.g. "variants")
-  title: string;      // Display heading (e.g. "Variants")
-  preview: ComponentType;  // Live React component
-  code: string;       // Code string for syntax highlighting
-  language: string;   // Syntax language (e.g. "tsx")
+  key: string; // URL-safe identifier (e.g. "variants")
+  title: string; // Display heading (e.g. "Variants")
+  preview: ComponentType; // Live React component
+  code: string; // Code string for syntax highlighting
+  language: string; // Syntax language (e.g. "tsx")
 }
 
 export const buttonSections: ButtonSection[] = [
@@ -386,9 +390,9 @@ build: {
 The root `@versaur/react` entry (`src/index.ts`) re-exports the component and key types but **not** the preview data:
 
 ```tsx
-export { useDataAttrs } from './hooks/use-data-attrs';
-export { Button } from './components/button';
-export type { ButtonProps, ButtonVariant, ButtonSize } from './components/button';
+export { useDataAttrs } from "./hooks/use-data-attrs";
+export { Button } from "./components/button";
+export type { ButtonProps, ButtonVariant, ButtonSize } from "./components/button";
 ```
 
 Preview data (`buttonSections`, `buttonProps`, etc.) is only available via the component subpath or by importing directly from the preview file.
@@ -434,8 +438,8 @@ Preview data (`buttonSections`, `buttonProps`, etc.) is only available via the c
   ```
 - **Props interface extends native HTML attributes**, omitting any that are overridden:
   ```tsx
-  export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'disabled'> {
-    disabled?: boolean;  // Re-declared with our semantics
+  export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "disabled"> {
+    disabled?: boolean; // Re-declared with our semantics
   }
   ```
 - **JSDoc on prop fields** — every prop should have a JSDoc comment with `@default` where applicable.

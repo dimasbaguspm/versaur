@@ -16,8 +16,7 @@ function GridLayoutPreview() {
         <h4>3 Column Grid (Default)</h4>
         <AttributeList columns="3">
           <AttributeList.Item columnSpan="3" title="Bio">
-            Full-stack developer with 8+ years of experience in building
-            scalable web applications
+            Full-stack developer with 8+ years of experience in building scalable web applications
           </AttributeList.Item>
           <AttributeList.Item columnSpan="2" title="Name">
             John Doe
@@ -49,8 +48,7 @@ function SpanningPreview() {
   return (
     <AttributeList columns="6">
       <AttributeList.Item columnSpan="6" title="Summary" contentLineClamp="3">
-        Experienced full-stack developer passionate about building user-centric
-        solutions
+        Experienced full-stack developer passionate about building user-centric solutions
       </AttributeList.Item>
       <AttributeList.Item columnSpan="2" title="First Name">
         John
@@ -75,12 +73,8 @@ function SingleColumnPreview() {
   return (
     <AttributeList columns="1">
       <AttributeList.Item title="Name">Alice Chen</AttributeList.Item>
-      <AttributeList.Item title="Email">
-        alice.chen@example.com
-      </AttributeList.Item>
-      <AttributeList.Item title="Organization">
-        Tech Innovations Inc.
-      </AttributeList.Item>
+      <AttributeList.Item title="Email">alice.chen@example.com</AttributeList.Item>
+      <AttributeList.Item title="Organization">Tech Innovations Inc.</AttributeList.Item>
       <AttributeList.Item title="Role">Product Manager</AttributeList.Item>
     </AttributeList>
   );
@@ -88,9 +82,6 @@ function SingleColumnPreview() {
 
 export const attributeListSections: AttributeListSection[] = [
   {
-    key: "grid-layout",
-    title: "Grid Layouts",
-    preview: GridLayoutPreview,
     code: `<AttributeList columns="3">
   <AttributeList.Item columnSpan="3" title="Bio">
     Full-stack developer with 8+ years of experience
@@ -114,12 +105,12 @@ export const attributeListSections: AttributeListSection[] = [
     Remote
   </AttributeList.Item>
 </AttributeList>`,
+    key: "grid-layout",
     language: "tsx",
+    preview: GridLayoutPreview,
+    title: "Grid Layouts",
   },
   {
-    key: "spanning",
-    title: "Column Spanning",
-    preview: SpanningPreview,
     code: `<AttributeList columns="6">
   <AttributeList.Item columnSpan="6" title="Summary" contentLineClamp="3">
     Experienced full-stack developer...
@@ -140,12 +131,12 @@ export const attributeListSections: AttributeListSection[] = [
     +1 (555) 123-4567
   </AttributeList.Item>
 </AttributeList>`,
+    key: "spanning",
     language: "tsx",
+    preview: SpanningPreview,
+    title: "Column Spanning",
   },
   {
-    key: "single-column",
-    title: "Single Column",
-    preview: SingleColumnPreview,
     code: `<AttributeList columns="1">
   <AttributeList.Item title="Name">
     Alice Chen
@@ -160,55 +151,58 @@ export const attributeListSections: AttributeListSection[] = [
     Product Manager
   </AttributeList.Item>
 </AttributeList>`,
+    key: "single-column",
     language: "tsx",
+    preview: SingleColumnPreview,
+    title: "Single Column",
   },
 ];
 
 export const attributeListProps = [
   {
-    name: "columns",
-    type: "'1' | '2' | '3' | '4' | '5' | '6'",
     default: "'3'",
     description: "Number of columns for the grid layout",
+    name: "columns",
+    type: "'1' | '2' | '3' | '4' | '5' | '6'",
   },
   {
-    name: "root",
-    type: "'dl' | 'div'",
     default: "'dl'",
     description: "HTML root element type (semantic DL or non-semantic DIV)",
+    name: "root",
+    type: "'dl' | 'div'",
   },
   {
-    name: "children",
-    type: "ReactNode",
     default: "undefined",
     description: "AttributeList.Item components",
+    name: "children",
+    type: "ReactNode",
   },
 ];
 
 export const attributeListItemProps = [
   {
-    name: "title",
-    type: "string",
     default: "required",
     description: "The title/label for this attribute",
+    name: "title",
+    type: "string",
   },
   {
-    name: "columnSpan",
-    type: "'1' | '2' | '3' | '4' | '5' | '6'",
     default: "'1'",
     description: "Number of columns to span (auto-clamped to columns count)",
+    name: "columnSpan",
+    type: "'1' | '2' | '3' | '4' | '5' | '6'",
   },
   {
-    name: "contentLineClamp",
-    type: "'1' | '2' | '3' | '4' | '5'",
     default: "'2'",
     description: "Number of lines before truncating with ellipsis",
+    name: "contentLineClamp",
+    type: "'1' | '2' | '3' | '4' | '5'",
   },
   {
-    name: "children",
-    type: "ReactNode",
     default: "undefined",
     description: "The value content (text, links, badges, etc.)",
+    name: "children",
+    type: "ReactNode",
   },
 ];
 

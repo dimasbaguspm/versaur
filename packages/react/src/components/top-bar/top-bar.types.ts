@@ -1,9 +1,4 @@
-import type {
-  ReactNode,
-  HTMLAttributes,
-  ForwardRefExoticComponent,
-  RefAttributes,
-} from "react";
+import type { ForwardRefExoticComponent, HTMLAttributes, ReactNode, RefAttributes } from "react";
 
 /**
  * TopBar root component props

@@ -28,9 +28,9 @@ export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
     ref,
   ) => {
     const dataAttrs = useDataAttrs({
-      gap,
-      direction,
       align,
+      direction,
+      gap,
       wrap,
     });
 

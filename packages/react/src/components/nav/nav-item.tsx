@@ -1,6 +1,7 @@
 "use client";
 
-import { forwardRef, ElementType, useContext } from "react";
+import type { ElementType } from "react";
+import { forwardRef, useContext } from "react";
 import { navStyles } from "@versaur/core";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import { Icon } from "../icon";
@@ -37,10 +38,7 @@ import type { NavItemProps } from "./nav.types";
  * <Nav.Item rightIcon={ChevronIcon} value="more">More</Nav.Item>
  * ```
  */
-export const NavItem = forwardRef<
-  HTMLButtonElement | HTMLAnchorElement,
-  NavItemProps
->(
+export const NavItem = forwardRef<HTMLButtonElement | HTMLAnchorElement, NavItemProps>(
   (
     {
       as: Component = "button" as ElementType,
@@ -62,9 +60,7 @@ export const NavItem = forwardRef<
     // If Nav provides onChange, use controlled value logic
     // Otherwise use uncontrolled active prop
     const isActive =
-      navContext?.onChange && value !== undefined
-        ? navContext.value === value
-        : activeProp;
+      navContext?.onChange && value !== undefined ? navContext.value === value : activeProp;
 
     const dataAttrs = useDataAttrs({
       active: isActive,
@@ -72,9 +68,7 @@ export const NavItem = forwardRef<
       loading,
     });
 
-    const handleClick = (
-      e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
-    ) => {
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
       if (disabled || loading) {
         e.preventDefault();
         return;

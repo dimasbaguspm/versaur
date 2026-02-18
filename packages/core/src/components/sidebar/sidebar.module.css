@@ -11,21 +11,12 @@
   --_width-collapsed: var(--vers-comp-sidebar-width-collapsed, 4.5rem);
   --_bg: var(--vers-comp-sidebar-bg, var(--color-neutral-soft));
   --_text-color: var(--vers-comp-sidebar-text-color, var(--color-ghost));
-  --_border-color: var(
-    --vers-comp-sidebar-border-color,
-    var(--color-neutral-hover)
-  );
-  --_transition-duration: var(
-    --vers-comp-sidebar-transition-duration,
-    var(--transition-base)
-  );
+  --_border-color: var(--vers-comp-sidebar-border-color, var(--color-neutral-hover));
+  --_transition-duration: var(--vers-comp-sidebar-transition-duration, var(--transition-base));
   --_item-padding: var(--vers-comp-sidebar-item-padding, var(--spacing-3));
   --_group-gap: var(--vers-comp-sidebar-group-gap, var(--spacing-3));
   --_item-gap: var(--vers-comp-sidebar-item-gap, var(--spacing-2));
-  --_item-border-radius: var(
-    --vers-comp-sidebar-item-border-radius,
-    var(--radius-lg)
-  );
+  --_item-border-radius: var(--vers-comp-sidebar-item-border-radius, var(--radius-lg));
   --_focus-bg: var(--vers-comp-sidebar-focus-bg, var(--color-neutral-light));
   --_active-bg: var(--vers-comp-sidebar-active-bg, var(--color-primary-soft));
   --_active-text: var(--vers-comp-sidebar-active-text, var(--color-primary));

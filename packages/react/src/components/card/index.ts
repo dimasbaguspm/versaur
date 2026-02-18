@@ -1,13 +1,13 @@
 import { Card } from "./card";
 import type {
-  CardRootProps,
-  CardButtonProps,
-  CardHeaderProps,
   CardBodyProps,
-  CardFooterProps,
   CardBorder,
+  CardButtonProps,
+  CardFooterProps,
+  CardHeaderProps,
+  CardRootProps,
 } from "./card.types";
-import type { CardSize, CardAlign, CardJustify, CardGap } from "@versaur/core";
+import type { CardAlign, CardGap, CardJustify, CardSize } from "@versaur/core";
 
 // Declaration merging: namespace + const = Card.Variant, Card.Props, etc.
 declare namespace Card {

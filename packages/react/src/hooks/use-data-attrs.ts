@@ -3,10 +3,7 @@
  * This is the core pattern for the data-attribute state machine
  */
 
-type DataAttrInput = Record<
-  string,
-  string | boolean | number | undefined | null
->;
+type DataAttrInput = Record<string, string | boolean | number | undefined | null>;
 
 // Convert camelCase to kebab-case
 function camelToKebab(str: string): string {

@@ -1,8 +1,7 @@
 import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from "react";
 import type { RadioGroup as RadioGroupCore } from "@versaur/core";
 
-export interface RadioGroupRootProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
+export interface RadioGroupRootProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
   /**
    * Selected radio value
    */
@@ -62,8 +61,10 @@ export interface RadioGroupRootProps
   direction?: "row" | "column";
 }
 
-export interface RadioGroupOptionProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "type" | "size"> {
+export interface RadioGroupOptionProps extends Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  "type" | "size"
+> {
   /**
    * Radio value
    */

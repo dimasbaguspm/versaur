@@ -1,4 +1,4 @@
-import { forwardRef, createContext, useContext } from "react";
+import { createContext, forwardRef, useContext } from "react";
 import { attributeListStyles } from "@versaur/core";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type { AttributeListProps } from "./attribute-list.types";
@@ -10,16 +10,12 @@ interface AttributeListContextType {
   columns: string;
 }
 
-const AttributeListContext = createContext<
-  AttributeListContextType | undefined
->(undefined);
+const AttributeListContext = createContext<AttributeListContextType | undefined>(undefined);
 
 export const useAttributeListContext = () => {
   const context = useContext(AttributeListContext);
   if (!context) {
-    throw new Error(
-      "AttributeList.Item must be used within an AttributeList component",
-    );
+    throw new Error("AttributeList.Item must be used within an AttributeList component");
   }
   return context;
 };
@@ -50,12 +46,7 @@ export const AttributeList = forwardRef<HTMLDListElement, AttributeListProps>(
 
     return (
       <AttributeListContext.Provider value={{ columns }}>
-        <dl
-          ref={ref}
-          className={attributeListStyles["attribute-list"]}
-          {...dataAttrs}
-          {...rest}
-        >
+        <dl ref={ref} className={attributeListStyles["attribute-list"]} {...dataAttrs} {...rest}>
           {children}
         </dl>
       </AttributeListContext.Provider>

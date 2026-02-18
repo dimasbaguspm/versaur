@@ -64,75 +64,74 @@ function SizesPreview() {
 
 export const buttonSections: ButtonSection[] = [
   {
-    key: "variants",
-    title: "Variants",
-    preview: VariantsPreview,
     code: `<Button variant="primary">Primary</Button>
 <Button variant="secondary">Secondary</Button>
 <Button variant="ghost">Ghost</Button>
 <Button variant="danger">Danger</Button>`,
+    key: "variants",
     language: "tsx",
+    preview: VariantsPreview,
+    title: "Variants",
   },
   {
-    key: "states",
-    title: "States",
-    preview: StatesPreview,
     code: `<Button loading>Loading</Button>
 <Button disabled>Disabled</Button>
 <Button pressed>Pressed</Button>`,
+    key: "states",
     language: "tsx",
+    preview: StatesPreview,
+    title: "States",
   },
   {
-    key: "sizes",
-    title: "Sizes",
-    preview: SizesPreview,
     code: `<Button variant="primary" size="medium">Medium</Button>
 <Button variant="primary" size="small">Small</Button>`,
+    key: "sizes",
     language: "tsx",
+    preview: SizesPreview,
+    title: "Sizes",
   },
   {
-    key: "disabled",
-    title: "Disabled State",
-    preview: DisabledPreview,
     code: `<Button variant="primary" disabled>Primary</Button>
 <Button variant="secondary" disabled>Secondary</Button>
 <Button variant="ghost" disabled>Ghost</Button>
 <Button variant="danger" disabled>Danger</Button>`,
+    key: "disabled",
     language: "tsx",
+    preview: DisabledPreview,
+    title: "Disabled State",
   },
 ];
 
 export const buttonProps = [
   {
-    name: "variant",
-    type: "'primary' | 'secondary' | 'ghost' | 'danger'",
     default: "'primary'",
     description: "Visual variant of the button",
+    name: "variant",
+    type: "'primary' | 'secondary' | 'ghost' | 'danger'",
   },
   {
-    name: "size",
-    type: "'small' | 'medium'",
     default: "'medium'",
     description: "Size of the button",
+    name: "size",
+    type: "'small' | 'medium'",
   },
   {
-    name: "loading",
-    type: "boolean",
     default: "false",
     description: "Shows a spinner and disables interaction",
+    name: "loading",
+    type: "boolean",
   },
   {
-    name: "disabled",
-    type: "boolean",
     default: "false",
     description: "Whether the button is disabled",
+    name: "disabled",
+    type: "boolean",
   },
   {
+    default: "false",
+    description: "Whether the button is in a pressed state (for toggle buttons)",
     name: "pressed",
     type: "boolean",
-    default: "false",
-    description:
-      "Whether the button is in a pressed state (for toggle buttons)",
   },
 ];
 

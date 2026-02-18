@@ -15,9 +15,5 @@ export { ButtonIcon };
 export type { ButtonIconProps };
 
 // Preview exports
-export {
-  ButtonIconPreview,
-  buttonIconSections,
-  buttonIconProps,
-} from "./preview";
+export { ButtonIconPreview, buttonIconSections, buttonIconProps } from "./preview";
 export type { ButtonIconSection } from "./preview";

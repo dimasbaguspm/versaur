@@ -2,11 +2,11 @@ import { forwardRef } from "react";
 import { cardStyles } from "@versaur/core";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type {
-  CardRootProps,
-  CardButtonProps,
-  CardHeaderProps,
   CardBodyProps,
+  CardButtonProps,
   CardFooterProps,
+  CardHeaderProps,
+  CardRootProps,
 } from "./card.types";
 
 /**
@@ -26,19 +26,13 @@ import type {
  * ```
  */
 function CardRootInternal(
-  {
-    as = "div",
-    size = "md",
-    border,
-    children,
-    ...rest
-  }: CardRootProps & CardButtonProps,
+  { as = "div", size = "md", border, children, ...rest }: CardRootProps & CardButtonProps,
   ref: any,
 ) {
   const dataAttrs = useDataAttrs({
-    size,
     border,
     interactive: as === "button" ? "true" : "false",
+    size,
   });
 
   const Element = as === "button" ? "button" : "div";
@@ -63,7 +57,7 @@ CardRoot.displayName = "Card";
  */
 export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
   ({ justify, gap, children, ...rest }, ref) => {
-    const dataAttrs = useDataAttrs({ justify, gap });
+    const dataAttrs = useDataAttrs({ gap, justify });
     return (
       <div ref={ref} className={cardStyles.header} {...dataAttrs} {...rest}>
         {children}
@@ -95,7 +89,7 @@ CardBody.displayName = "Card.Body";
  */
 export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(
   ({ justify, gap, children, ...rest }, ref) => {
-    const dataAttrs = useDataAttrs({ justify, gap });
+    const dataAttrs = useDataAttrs({ gap, justify });
     return (
       <div ref={ref} className={cardStyles.footer} {...dataAttrs} {...rest}>
         {children}
@@ -117,7 +111,7 @@ interface CardComponent extends React.ForwardRefExoticComponent<
 }
 
 export const Card = Object.assign(CardRoot, {
-  Header: CardHeader,
   Body: CardBody,
   Footer: CardFooter,
+  Header: CardHeader,
 }) as CardComponent;

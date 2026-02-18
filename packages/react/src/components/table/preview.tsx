@@ -48,11 +48,9 @@ function SortableTable() {
   const [sortCol, setSortCol] = useState<string | null>(null);
   const [sortDir, setSortDir] = useState<"asc" | "desc" | null>(null);
 
-  const handleSort = (column: string) => {
-    return (direction: "asc" | "desc" | null) => {
-      setSortCol(column);
-      setSortDir(direction);
-    };
+  const handleSort = (column: string) => (direction: "asc" | "desc" | null) => {
+    setSortCol(column);
+    setSortDir(direction);
   };
 
   return (
@@ -70,7 +68,6 @@ function SortableTable() {
             sortable
             sortDirection={sortCol === "status" ? sortDir : null}
             onSort={handleSort("status")}
-           
           >
             Status
           </Table.HeaderCell>
@@ -78,7 +75,6 @@ function SortableTable() {
             sortable
             sortDirection={sortCol === "priority" ? sortDir : null}
             onSort={handleSort("priority")}
-           
           >
             Priority
           </Table.HeaderCell>
@@ -104,9 +100,7 @@ function SortableTable() {
    Table with Built-in Column Components - Checkbox, DoubleLine, Action
    ========================================================================= */
 function TableWithBuiltins() {
-  const [selectedRows, setSelectedRows] = useState<Set<string | number>>(
-    new Set(),
-  );
+  const [selectedRows, setSelectedRows] = useState<Set<string | number>>(new Set());
 
   const handleRowSelect = (rowId: string, checked: boolean) => {
     const newSelected = new Set(selectedRows);
@@ -119,10 +113,7 @@ function TableWithBuiltins() {
   };
 
   return (
-    <Table
-      columns="min-content 1fr 1fr min-content"
-      selectedRows={selectedRows}
-    >
+    <Table columns="min-content 1fr 1fr min-content" selectedRows={selectedRows}>
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell>Select</Table.HeaderCell>
@@ -141,11 +132,7 @@ function TableWithBuiltins() {
             />
           </Table.BodyCell>
           <Table.BodyCell>
-            <Table.DoubleLine
-              title="Alice Chen"
-              subtitle="alice@company.com"
-              size="md"
-            />
+            <Table.DoubleLine title="Alice Chen" subtitle="alice@company.com" size="md" />
           </Table.BodyCell>
           <Table.BodyCell>Senior Product Designer</Table.BodyCell>
           <Table.BodyCell variant="action">
@@ -161,11 +148,7 @@ function TableWithBuiltins() {
             />
           </Table.BodyCell>
           <Table.BodyCell>
-            <Table.DoubleLine
-              title="Bob Smith"
-              subtitle="bob@company.com"
-              size="md"
-            />
+            <Table.DoubleLine title="Bob Smith" subtitle="bob@company.com" size="md" />
           </Table.BodyCell>
           <Table.BodyCell>Software Engineer</Table.BodyCell>
           <Table.BodyCell variant="action">
@@ -182,9 +165,6 @@ function TableWithBuiltins() {
    ========================================================================= */
 export const tableSections = [
   {
-    key: "basic-invoice",
-    title: "Basic Invoice Table",
-    preview: BasicInvoiceTable,
     code: `import { Table } from '@versaur/react/table';
 
 export function BasicInvoiceTable() {
@@ -209,12 +189,12 @@ export function BasicInvoiceTable() {
     </Table>
   );
 }`,
+    key: "basic-invoice",
     language: "tsx",
+    preview: BasicInvoiceTable,
+    title: "Basic Invoice Table",
   },
   {
-    key: "sortable-table",
-    title: "Sortable Table",
-    preview: SortableTable,
     code: `import { Table } from '@versaur/react/table';
 import { useState } from 'react';
 
@@ -246,12 +226,12 @@ export function SortableTable() {
     </Table>
   );
 }`,
+    key: "sortable-table",
     language: "tsx",
+    preview: SortableTable,
+    title: "Sortable Table",
   },
   {
-    key: "table-with-builtins",
-    title: "Table with Built-in Components",
-    preview: TableWithBuiltins,
     code: `import { Table } from '@versaur/react/table';
 import { useState } from 'react';
 
@@ -297,7 +277,10 @@ export function TableWithBuiltins() {
     </Table>
   );
 }`,
+    key: "table-with-builtins",
     language: "tsx",
+    preview: TableWithBuiltins,
+    title: "Table with Built-in Components",
   },
 ];
 
@@ -306,23 +289,22 @@ export const tableProps = [
     name: "Table",
     props: [
       {
+        default: "required",
+        description: 'CSS Grid columns string (e.g., "2fr 1fr 1fr min-content")',
         name: "columns",
         type: "string",
-        description:
-          'CSS Grid columns string (e.g., "2fr 1fr 1fr min-content")',
-        default: "required",
       },
       {
+        default: "undefined",
+        description: "Controlled set of selected row IDs",
         name: "selectedRows",
         type: "Set<string | number>",
-        description: "Controlled set of selected row IDs",
-        default: "undefined",
       },
       {
+        default: "-",
+        description: "Table structure content (Header, Body, Footer)",
         name: "children",
         type: "ReactNode",
-        description: "Table structure content (Header, Body, Footer)",
-        default: "-",
       },
     ],
   },
@@ -330,10 +312,10 @@ export const tableProps = [
     name: "Table.Header",
     props: [
       {
+        default: "-",
+        description: "Header rows with HeaderCell elements",
         name: "children",
         type: "ReactNode",
-        description: "Header rows with HeaderCell elements",
-        default: "-",
       },
     ],
   },
@@ -341,10 +323,10 @@ export const tableProps = [
     name: "Table.Body",
     props: [
       {
+        default: "-",
+        description: "Body rows with BodyCell elements",
         name: "children",
         type: "ReactNode",
-        description: "Body rows with BodyCell elements",
-        default: "-",
       },
     ],
   },
@@ -352,10 +334,10 @@ export const tableProps = [
     name: "Table.Footer",
     props: [
       {
+        default: "-",
+        description: "Footer rows with BodyCell elements",
         name: "children",
         type: "ReactNode",
-        description: "Footer rows with BodyCell elements",
-        default: "-",
       },
     ],
   },
@@ -363,10 +345,10 @@ export const tableProps = [
     name: "Table.Row",
     props: [
       {
+        default: "-",
+        description: "Row cells (HeaderCell or BodyCell)",
         name: "children",
         type: "ReactNode",
-        description: "Row cells (HeaderCell or BodyCell)",
-        default: "-",
       },
     ],
   },
@@ -374,34 +356,34 @@ export const tableProps = [
     name: "Table.HeaderCell",
     props: [
       {
+        default: "-",
+        description: "Header cell content",
         name: "children",
         type: "ReactNode",
-        description: "Header cell content",
-        default: "-",
       },
       {
+        default: "false",
+        description: "Enable sorting on this column",
         name: "sortable",
         type: "boolean",
-        description: "Enable sorting on this column",
-        default: "false",
       },
       {
+        default: "null",
+        description: "Current sort direction (controlled)",
         name: "sortDirection",
         type: "'asc' | 'desc' | null",
-        description: "Current sort direction (controlled)",
-        default: "null",
       },
       {
+        default: "-",
+        description: "Sort direction change handler",
         name: "onSort",
         type: "(direction: 'asc' | 'desc' | null) => void",
-        description: "Sort direction change handler",
-        default: "-",
       },
       {
+        default: "left",
+        description: "Text alignment",
         name: "align",
         type: "'left' | 'center' | 'right'",
-        description: "Text alignment",
-        default: "left",
       },
     ],
   },
@@ -409,22 +391,22 @@ export const tableProps = [
     name: "Table.BodyCell",
     props: [
       {
+        default: "-",
+        description: "Cell content",
         name: "children",
         type: "ReactNode",
-        description: "Cell content",
-        default: "-",
       },
       {
+        default: "undefined",
+        description: "Cell styling variant for built-in components",
         name: "variant",
         type: "'checkbox' | 'double-line' | 'action'",
-        description: "Cell styling variant for built-in components",
-        default: "undefined",
       },
       {
+        default: "left",
+        description: "Text alignment",
         name: "align",
         type: "'left' | 'center' | 'right'",
-        description: "Text alignment",
-        default: "left",
       },
     ],
   },
@@ -432,28 +414,28 @@ export const tableProps = [
     name: "Table.Checkbox",
     props: [
       {
+        default: "-",
+        description: "Unique identifier for the row",
         name: "rowId",
         type: "string | number",
-        description: "Unique identifier for the row",
-        default: "-",
       },
       {
+        default: "false",
+        description: "Checkbox checked state",
         name: "checked",
         type: "boolean",
-        description: "Checkbox checked state",
-        default: "false",
       },
       {
+        default: "false",
+        description: "Indeterminate state (partial selection)",
         name: "indeterminate",
         type: "boolean",
-        description: "Indeterminate state (partial selection)",
-        default: "false",
       },
       {
+        default: "-",
+        description: "Change handler",
         name: "onChange",
         type: "(checked: boolean) => void",
-        description: "Change handler",
-        default: "-",
       },
     ],
   },
@@ -461,22 +443,22 @@ export const tableProps = [
     name: "Table.DoubleLine",
     props: [
       {
+        default: "-",
+        description: "Primary text (bold)",
         name: "title",
         type: "ReactNode",
-        description: "Primary text (bold)",
-        default: "-",
       },
       {
+        default: "-",
+        description: "Secondary text (gray, smaller)",
         name: "subtitle",
         type: "ReactNode",
-        description: "Secondary text (gray, smaller)",
-        default: "-",
       },
       {
+        default: "md",
+        description: "Component size",
         name: "size",
         type: "'sm' | 'md' | 'lg'",
-        description: "Component size",
-        default: "md",
       },
     ],
   },
@@ -484,22 +466,22 @@ export const tableProps = [
     name: "Table.Action",
     props: [
       {
+        default: "-",
+        description: "Icon component from @versaur/icons",
         name: "icon",
         type: "React.ComponentType<SVGProps>",
-        description: "Icon component from @versaur/icons",
-        default: "-",
       },
       {
+        default: "-",
+        description: "Click handler (optional, click propagation is stopped)",
         name: "onClick",
         type: "() => void",
-        description: "Click handler (optional, click propagation is stopped)",
-        default: "-",
       },
       {
+        default: "false",
+        description: "Disable the button",
         name: "disabled",
         type: "boolean",
-        description: "Disable the button",
-        default: "false",
       },
     ],
   },

@@ -11,10 +11,7 @@ export interface ParsedComponent {
 /**
  * Parse a CSS module file and extract data-attribute selectors and class names.
  */
-export function parseCssModule(
-  css: string,
-  componentName: string,
-): ParsedComponent {
+export function parseCssModule(css: string, componentName: string): ParsedComponent {
   const root = postcss.parse(css);
   const classNames = new Set<string>();
   const enumeratedAttrs = new Map<string, Set<string>>();
@@ -33,7 +30,9 @@ export function parseCssModule(
           const attrName = node.attribute.replace(/^data-/, "");
 
           // Skip aria-* attributes that might appear
-          if (attrName.startsWith("aria-")) return;
+          if (attrName.startsWith("aria-")) {
+            return;
+          }
 
           if (node.value) {
             // Enumerated: has a value like [data-variant="primary"]
@@ -60,9 +59,9 @@ export function parseCssModule(
   }
 
   return {
-    componentName,
-    classNames: [...classNames].sort(),
-    enumeratedAttrs,
     booleanAttrs,
+    classNames: [...classNames].sort(),
+    componentName,
+    enumeratedAttrs,
   };
 }

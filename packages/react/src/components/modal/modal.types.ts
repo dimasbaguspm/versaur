@@ -1,9 +1,6 @@
 import type { DialogHTMLAttributes, ReactNode } from "react";
 
-export interface ModalRootProps extends Omit<
-  DialogHTMLAttributes<HTMLDialogElement>,
-  "onClose"
-> {
+export interface ModalRootProps extends Omit<DialogHTMLAttributes<HTMLDialogElement>, "onClose"> {
   /**
    * Whether the modal is open - controlled state
    */

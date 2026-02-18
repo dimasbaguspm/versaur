@@ -20,43 +20,22 @@
   grid-auto-rows: min-content;
 
   /* Private tokens for styling - using ghost variant */
-  --table-border-color: var(
-    --vers-comp-table-border-color,
-    var(--color-ghost-soft)
-  );
+  --table-border-color: var(--vers-comp-table-border-color, var(--color-ghost-soft));
   --table-cell-padding-x: var(--vers-comp-table-cell-padding-x, 1rem);
   --table-cell-padding-y: var(--vers-comp-table-cell-padding-y, 0.75rem);
   --table-bg-row: var(--vers-comp-table-bg-row, transparent);
   --table-bg-row-alt: var(--vers-comp-table-bg-row-alt, transparent);
-  --table-bg-row-hover: var(
-    --vers-comp-table-bg-row-hover,
-    var(--color-ghost-soft)
-  );
+  --table-bg-row-hover: var(--vers-comp-table-bg-row-hover, var(--color-ghost-soft));
   --table-text-color: var(--vers-comp-table-text-color, var(--color-ghost));
-  --table-text-secondary: var(
-    --vers-comp-table-text-secondary,
-    var(--color-text-secondary)
-  );
+  --table-text-secondary: var(--vers-comp-table-text-secondary, var(--color-text-secondary));
   --table-header-bg: var(--vers-comp-table-header-bg, transparent);
-  --table-header-border: var(
-    --vers-comp-table-header-border,
-    var(--color-ghost-light)
-  );
-  --table-header-text-color: var(
-    --vers-comp-table-header-text-color,
-    var(--color-ghost)
-  );
+  --table-header-border: var(--vers-comp-table-header-border, var(--color-ghost-light));
+  --table-header-text-color: var(--vers-comp-table-header-text-color, var(--color-ghost));
   --table-header-font-weight: var(--vers-comp-table-header-font-weight, 600);
   --table-header-font-size: var(--vers-comp-table-header-font-size, 0.8125rem);
   --table-footer-bg: var(--vers-comp-table-footer-bg, transparent);
-  --table-footer-border: var(
-    --vers-comp-table-footer-border,
-    var(--color-ghost-light)
-  );
-  --table-footer-text-color: var(
-    --vers-comp-table-footer-text-color,
-    var(--color-ghost)
-  );
+  --table-footer-border: var(--vers-comp-table-footer-border, var(--color-ghost-light));
+  --table-footer-text-color: var(--vers-comp-table-footer-text-color, var(--color-ghost));
   --table-footer-font-weight: var(--vers-comp-table-footer-font-weight, 600);
 }
 
@@ -138,9 +117,7 @@
 }
 
 /* Checkbox border darkens on row hover when clickable */
-.table-body
-  tr[data-clickable="true"]:hover
-  [data-table-cell-variant="checkbox"] {
+.table-body tr[data-clickable="true"]:hover [data-table-cell-variant="checkbox"] {
   /* Checkbox input will receive darker border via native styling */
 }
 
@@ -177,27 +154,18 @@
   /* Numeric content - right aligned with monospace */
   text-align: right;
   font-variant-numeric: tabular-nums;
-  font-family: var(
-    --vers-comp-table-numeric-font-family,
-    "Menlo",
-    "Courier New",
-    monospace
-  );
+  font-family: var(--vers-comp-table-numeric-font-family, "Menlo", "Courier New", monospace);
   font-weight: 500;
 }
 
 .table-cell[data-table-cell-variant="highlight"] {
   /* Highlighted/important content */
   font-weight: 600;
-  background-color: var(
-    --vers-comp-table-cell-highlight-bg,
-    var(--color-warning-soft)
-  );
+  background-color: var(--vers-comp-table-cell-highlight-bg, var(--color-warning-soft));
   color: var(--vers-comp-table-cell-highlight-color, var(--color-warning-bold));
   padding-left: calc(var(--table-cell-padding-x) - 2px);
   padding-right: calc(var(--table-cell-padding-x) - 2px);
-  border-left: 4px solid
-    var(--vers-comp-table-cell-highlight-border, var(--color-warning));
+  border-left: 4px solid var(--vers-comp-table-cell-highlight-border, var(--color-warning));
 }
 
 /* Built-in column types */
@@ -211,14 +179,8 @@
 }
 
 /* Checkbox input border darkens on row hover */
-.table-body
-  tr[data-clickable="true"]:hover
-  .table-cell[data-table-cell-variant="checkbox"]
-  input {
-  border-color: var(
-    --vers-comp-checkbox-border-hover,
-    var(--color-ghost-active)
-  );
+.table-body tr[data-clickable="true"]:hover .table-cell[data-table-cell-variant="checkbox"] input {
+  border-color: var(--vers-comp-checkbox-border-hover, var(--color-ghost-active));
 }
 
 .table-cell[data-table-cell-variant="double-line"] {
@@ -249,8 +211,7 @@
 
   .table-head,
   .table-cell {
-    padding: calc(var(--table-cell-padding-y) * 0.75)
-      calc(var(--table-cell-padding-x) * 0.75);
+    padding: calc(var(--table-cell-padding-y) * 0.75) calc(var(--table-cell-padding-x) * 0.75);
     font-size: 0.75rem;
   }
 

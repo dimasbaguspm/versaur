@@ -1,9 +1,6 @@
 import { AttributeList as AttributeListRoot } from "./attribute-list";
 import { AttributeListItem } from "./attribute-list-item";
-import type {
-  AttributeListProps,
-  AttributeListItemProps,
-} from "./attribute-list.types";
+import type { AttributeListItemProps, AttributeListProps } from "./attribute-list.types";
 import type { AttributeList as AttributeListCore } from "@versaur/core";
 import React from "react";
 

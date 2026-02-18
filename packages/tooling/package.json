@@ -11,9 +11,9 @@
     "format:check": "oxfmt src --check"
   },
   "dependencies": {
+    "glob": "^11.0.0",
     "postcss": "^8.4.0",
-    "postcss-selector-parser": "^7.0.0",
-    "glob": "^11.0.0"
+    "postcss-selector-parser": "^7.0.0"
   },
   "devDependencies": {
     "tsx": "^4.0.0",

@@ -1,9 +1,6 @@
 import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
 
-export interface ChipSingleInputRootProps extends Omit<
-  HTMLAttributes<HTMLDivElement>,
-  "onChange"
-> {
+export interface ChipSingleInputRootProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
   /**
    * Selected chip value
    */

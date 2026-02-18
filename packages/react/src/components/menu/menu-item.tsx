@@ -24,25 +24,12 @@ import type { MenuItemProps } from "./menu.types";
  * ```
  */
 const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
-  (
-    {
-      value,
-      disabled = false,
-      leftIcon,
-      rightIcon,
-      children,
-      onClick,
-      ...props
-    },
-    ref,
-  ) => {
+  ({ value, disabled = false, leftIcon, rightIcon, children, onClick, ...props }, ref) => {
     const menuContext = useContext(MenuContext);
 
     // Determine if this item is active
     const isActive =
-      menuContext?.onChange && value !== undefined
-        ? menuContext.value === value
-        : false;
+      menuContext?.onChange && value !== undefined ? menuContext.value === value : false;
 
     const dataAttrs = useDataAttrs({
       active: isActive,
@@ -73,13 +60,9 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
         {...props}
         onClick={handleClick}
       >
-        {leftIcon ? (
-          <span className={menuStyles["menu-item-icon"]}>{leftIcon}</span>
-        ) : null}
+        {leftIcon ? <span className={menuStyles["menu-item-icon"]}>{leftIcon}</span> : null}
         <span className={menuStyles["menu-item-label"]}>{children}</span>
-        {rightIcon ? (
-          <span className={menuStyles["menu-item-icon"]}>{rightIcon}</span>
-        ) : null}
+        {rightIcon ? <span className={menuStyles["menu-item-icon"]}>{rightIcon}</span> : null}
       </button>
     );
   },

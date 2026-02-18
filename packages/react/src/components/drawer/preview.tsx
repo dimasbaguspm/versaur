@@ -68,9 +68,6 @@ function LeftPlacementPreview() {
 
 export const DrawerSections: DrawerSection[] = [
   {
-    key: "basic",
-    title: "Basic Drawer",
-    preview: BasicDrawerPreview,
     code: `import { useState } from 'react';
 import { Drawer, Button } from '@versaur/react';
 
@@ -93,12 +90,12 @@ export function MyDrawer() {
     </div>
   );
 }`,
+    key: "basic",
     language: "typescript",
+    preview: BasicDrawerPreview,
+    title: "Basic Drawer",
   },
   {
-    key: "placement",
-    title: "Placement",
-    preview: LeftPlacementPreview,
     code: `<Drawer
   open={isOpen}
   onOpenChange={setIsOpen}
@@ -108,29 +105,31 @@ export function MyDrawer() {
     <Drawer.Title>Left Drawer</Drawer.Title>
   </Drawer.Header>
 </Drawer>`,
+    key: "placement",
     language: "typescript",
+    preview: LeftPlacementPreview,
+    title: "Placement",
   },
 ];
 
 export const drawerProps = [
   {
-    name: "open",
-    type: "boolean",
     default: "required",
     description: "Controlled open state - syncs with native dialog element",
+    name: "open",
+    type: "boolean",
   },
   {
+    default: "optional",
+    description: "Callback when drawer closes (ESC key, backdrop click, or close button)",
     name: "onOpenChange",
     type: "(open: boolean) => void",
-    default: "optional",
-    description:
-      "Callback when drawer closes (ESC key, backdrop click, or close button)",
   },
   {
-    name: "placement",
-    type: "'left' | 'right'",
     default: "'right'",
     description: "Which side the drawer slides in from",
+    name: "placement",
+    type: "'left' | 'right'",
   },
 ];
 

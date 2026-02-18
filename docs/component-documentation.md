@@ -16,11 +16,11 @@ Each section pairs a live preview component with its code string:
 
 ```tsx
 export interface ButtonSection {
-  key: string;         // URL-friendly identifier
-  title: string;       // Section heading
+  key: string; // URL-friendly identifier
+  title: string; // Section heading
   preview: ComponentType; // Live demo component
-  code: string;        // Code snippet for display
-  language: string;    // Syntax highlighting language
+  code: string; // Code snippet for display
+  language: string; // Syntax highlighting language
 }
 
 export const buttonSections: ButtonSection[] = [
@@ -35,7 +35,12 @@ API reference data for the PropsTable:
 
 ```tsx
 export const buttonProps = [
-  { name: "variant", type: "'primary' | 'secondary' | 'danger'", default: "'primary'", description: "..." },
+  {
+    name: "variant",
+    type: "'primary' | 'secondary' | 'danger'",
+    default: "'primary'",
+    description: "...",
+  },
   // ...
 ];
 ```
@@ -54,7 +59,9 @@ export const buttonInstallation = {
 A `ButtonPreview` component is also exported for non-docs consumers that just want to render all demos:
 
 ```tsx
-export function ButtonPreview() { /* renders all sections */ }
+export function ButtonPreview() {
+  /* renders all sections */
+}
 ```
 
 ## Doc page structure
@@ -75,12 +82,12 @@ Doc pages live in `apps/docs/src/previews/pages/` and render inside an iframe (v
 
 ## Shared docs components
 
-| Component | File | Purpose |
-|-----------|------|---------|
-| `ComponentPreview` | `apps/docs/src/components/component-preview.tsx` | Collapsible code panel with Shiki syntax highlighting, copy button, and framework switching |
-| `PropsTable` | `apps/docs/src/components/props-table.tsx` | Renders API reference table from prop definitions array |
-| `FrameworkSwitcher` | `apps/docs/src/components/framework-switcher.tsx` | Toggles between React/Vue/Angular code examples (rendered outside the iframe) |
-| `PreviewFrame` | `apps/docs/src/preview/preview-frame.tsx` | iframe wrapper with auto-resizing via ResizeObserver + postMessage |
+| Component           | File                                              | Purpose                                                                                     |
+| ------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `ComponentPreview`  | `apps/docs/src/components/component-preview.tsx`  | Collapsible code panel with Shiki syntax highlighting, copy button, and framework switching |
+| `PropsTable`        | `apps/docs/src/components/props-table.tsx`        | Renders API reference table from prop definitions array                                     |
+| `FrameworkSwitcher` | `apps/docs/src/components/framework-switcher.tsx` | Toggles between React/Vue/Angular code examples (rendered outside the iframe)               |
+| `PreviewFrame`      | `apps/docs/src/preview/preview-frame.tsx`         | iframe wrapper with auto-resizing via ResizeObserver + postMessage                          |
 
 ## Adding documentation for a new component
 

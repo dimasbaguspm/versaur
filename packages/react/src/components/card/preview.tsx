@@ -58,9 +58,9 @@ export function CardWithListPreview() {
       <Card.Body gap="sm">
         <div
           style={{
+            alignItems: "center",
             display: "flex",
             gap: "var(--spacing-2)",
-            alignItems: "center",
           }}
         >
           <Dot variant="secondary" size="small" />
@@ -68,9 +68,9 @@ export function CardWithListPreview() {
         </div>
         <div
           style={{
+            alignItems: "center",
             display: "flex",
             gap: "var(--spacing-2)",
-            alignItems: "center",
           }}
         >
           <Dot variant="secondary" size="small" />
@@ -78,9 +78,9 @@ export function CardWithListPreview() {
         </div>
         <div
           style={{
+            alignItems: "center",
             display: "flex",
             gap: "var(--spacing-2)",
-            alignItems: "center",
           }}
         >
           <Dot variant="secondary" size="small" />
@@ -108,9 +108,9 @@ export function CardComplexPreview() {
           <div style={{ display: "flex", gap: "var(--spacing-2)" }}>
             <div
               style={{
+                alignItems: "center",
                 display: "flex",
                 gap: "var(--spacing-2)",
-                alignItems: "center",
               }}
             >
               <Dot variant="secondary" size="small" />
@@ -118,9 +118,9 @@ export function CardComplexPreview() {
             </div>
             <div
               style={{
+                alignItems: "center",
                 display: "flex",
                 gap: "var(--spacing-2)",
-                alignItems: "center",
               }}
             >
               <Dot variant="secondary" size="small" />
@@ -151,10 +151,7 @@ export function CardWithFooterPreview() {
         <Heading as="h3">Task Summary</Heading>
       </Card.Header>
       <Card.Body gap="sm">
-        <Text>
-          Complete the project requirements and submit for review by end of
-          week.
-        </Text>
+        <Text>Complete the project requirements and submit for review by end of week.</Text>
       </Card.Body>
       <Card.Footer gap="md" justify="between">
         <Text size="sm" intent="secondary">
@@ -176,10 +173,7 @@ export function CardInteractivePreview() {
         <Heading as="h3">Click Me</Heading>
       </Card.Header>
       <Card.Body gap="sm">
-        <Text>
-          This card is interactive and can be clicked. It will highlight on
-          hover.
-        </Text>
+        <Text>This card is interactive and can be clicked. It will highlight on hover.</Text>
       </Card.Body>
       <Card.Footer>
         <Text size="sm" intent="secondary">
@@ -251,9 +245,6 @@ export interface CardSection {
 
 export const cardSections: CardSection[] = [
   {
-    key: "featured",
-    title: "Featured Example",
-    preview: CardFeaturedPreview,
     code: `<Card size="md">
   <Card.Header gap="md" justify="between">
     <div style={{ display: "flex", gap: "var(--spacing-3)" }}>
@@ -276,12 +267,12 @@ export const cardSections: CardSection[] = [
     </BadgeGroup>
   </Card.Body>
 </Card>`,
+    key: "featured",
     language: "tsx",
+    preview: CardFeaturedPreview,
+    title: "Featured Example",
   },
   {
-    key: "list",
-    title: "Card with List",
-    preview: CardWithListPreview,
     code: `<Card size="md">
   <Card.Header>
     <Heading as="h3" size="lg">
@@ -299,12 +290,12 @@ export const cardSections: CardSection[] = [
     </div>
   </Card.Body>
 </Card>`,
+    key: "list",
     language: "tsx",
+    preview: CardWithListPreview,
+    title: "Card with List",
   },
   {
-    key: "complex",
-    title: "Complex Card (Full Example)",
-    preview: CardComplexPreview,
     code: `<Card size="lg">
   <Card.Header gap="md" justify="start">
     <Avatar shape="circle" size="lg" variant="primary">AC</Avatar>
@@ -322,12 +313,12 @@ export const cardSections: CardSection[] = [
     </BadgeGroup>
   </Card.Body>
 </Card>`,
+    key: "complex",
     language: "tsx",
+    preview: CardComplexPreview,
+    title: "Complex Card (Full Example)",
   },
   {
-    key: "with-footer",
-    title: "Card with Header, Body, and Footer",
-    preview: CardWithFooterPreview,
     code: `<Card size="md">
   <Card.Header>
     <Heading as="h3" size="md">Task Summary</Heading>
@@ -340,12 +331,12 @@ export const cardSections: CardSection[] = [
     <Badge variant="warning">In Progress</Badge>
   </Card.Footer>
 </Card>`,
+    key: "with-footer",
     language: "tsx",
+    preview: CardWithFooterPreview,
+    title: "Card with Header, Body, and Footer",
   },
   {
-    key: "interactive",
-    title: "Interactive Card (Button)",
-    preview: CardInteractivePreview,
     code: `<Card as="button" size="md" onClick={() => {}}>
   <Card.Header>
     <Heading as="h3" size="md">Click Me</Heading>
@@ -357,12 +348,12 @@ export const cardSections: CardSection[] = [
     <Text size="sm" intent="secondary">Interactive Button Card</Text>
   </Card.Footer>
 </Card>`,
+    key: "interactive",
     language: "tsx",
+    preview: CardInteractivePreview,
+    title: "Interactive Card (Button)",
   },
   {
-    key: "border-variants",
-    title: "Border Variants",
-    preview: CardBorderVariantsPreview,
     code: `<Card size="md" border="all-rounded" bordered>
   <Card.Header><Heading as="h4" size="sm">All Rounded</Heading></Card.Header>
   <Card.Body gap="sm"><Text size="sm">Full border with rounded corners</Text></Card.Body>
@@ -377,7 +368,10 @@ export const cardSections: CardSection[] = [
   <Card.Header><Heading as="h4" size="sm">Horizontal Border</Heading></Card.Header>
   <Card.Body gap="sm"><Text size="sm">Top and bottom borders only</Text></Card.Body>
 </Card>`,
+    key: "border-variants",
     language: "tsx",
+    preview: CardBorderVariantsPreview,
+    title: "Border Variants",
   },
 ];
 
@@ -393,59 +387,59 @@ export interface CardPropDoc {
 
 export const cardProps: CardPropDoc[] = [
   {
-    name: "as",
-    type: "'div' | 'button'",
     default: "'div'",
     description:
       "Root element type. Button variant includes interactive styling (hover, cursor, focus ring). Div variant has no interactive styles.",
+    name: "as",
+    type: "'div' | 'button'",
   },
   {
-    name: "size",
-    type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
     default: "'md'",
     description: "Card padding size (applied to root container)",
+    name: "size",
+    type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
   },
   {
-    name: "border",
-    type: "'all-rounded' | 'vertical' | 'horizontal'",
     default: "undefined",
     description: "Border style variant for custom border styling",
+    name: "border",
+    type: "'all-rounded' | 'vertical' | 'horizontal'",
   },
   {
-    name: "Header.justify",
-    type: "'start' | 'center' | 'end' | 'between' | 'around'",
     default: "'start'",
     description: "Flex justify-content alignment for Header items",
+    name: "Header.justify",
+    type: "'start' | 'center' | 'end' | 'between' | 'around'",
   },
   {
-    name: "Header.gap",
-    type: "'none' | 'xs' | 'sm' | 'md' | 'lg'",
     default: "'md'",
     description: "Internal spacing between Header items",
+    name: "Header.gap",
+    type: "'none' | 'xs' | 'sm' | 'md' | 'lg'",
   },
   {
-    name: "Body.align",
-    type: "'left' | 'center' | 'right'",
     default: "'left'",
     description: "Horizontal alignment of Body items (align-items)",
+    name: "Body.align",
+    type: "'left' | 'center' | 'right'",
   },
   {
-    name: "Body.gap",
-    type: "'none' | 'xs' | 'sm' | 'md' | 'lg'",
     default: "'sm'",
     description: "Internal spacing between Body items",
+    name: "Body.gap",
+    type: "'none' | 'xs' | 'sm' | 'md' | 'lg'",
   },
   {
-    name: "Footer.justify",
-    type: "'start' | 'center' | 'end' | 'between' | 'around'",
     default: "'start'",
     description: "Flex justify-content alignment for Footer items",
+    name: "Footer.justify",
+    type: "'start' | 'center' | 'end' | 'between' | 'around'",
   },
   {
-    name: "Footer.gap",
-    type: "'none' | 'xs' | 'sm' | 'md' | 'lg'",
     default: "'md'",
     description: "Internal spacing between Footer items",
+    name: "Footer.gap",
+    type: "'none' | 'xs' | 'sm' | 'md' | 'lg'",
   },
 ];
 

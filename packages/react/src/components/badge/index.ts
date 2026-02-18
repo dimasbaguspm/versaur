@@ -16,8 +16,4 @@ export { Badge };
 export type { BadgeProps };
 export type { BadgeVariant, BadgeSize, BadgeShape } from "@versaur/core";
 
-export {
-  BadgePreview,
-  badgeSections,
-  badgeProps,
-} from "./preview";
+export { BadgePreview, badgeSections, badgeProps } from "./preview";

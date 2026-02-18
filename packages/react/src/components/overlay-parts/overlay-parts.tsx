@@ -1,10 +1,10 @@
 import { forwardRef } from "react";
 import { overlayPartsStyles } from "@versaur/core";
 import type {
-  OverlayHeaderProps,
-  OverlayTitleProps,
   OverlayBodyProps,
   OverlayFooterProps,
+  OverlayHeaderProps,
+  OverlayTitleProps,
 } from "./overlay-parts.types";
 
 export const OverlayHeader = forwardRef<HTMLDivElement, OverlayHeaderProps>(

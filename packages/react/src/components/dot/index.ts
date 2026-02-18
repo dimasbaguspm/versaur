@@ -15,8 +15,4 @@ export { Dot };
 export type { DotProps };
 export type { DotVariant, DotSize } from "@versaur/core";
 
-export {
-  DotPreview,
-  dotSections,
-  dotProps,
-} from "./preview";
+export { DotPreview, dotSections, dotProps } from "./preview";

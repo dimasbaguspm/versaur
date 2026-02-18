@@ -4,27 +4,15 @@ import { useDataAttrs } from "../../hooks/use-data-attrs";
 import type { HeadingProps } from "./heading.types";
 
 export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
-  (
-    {
-      as = "h2",
-      size,
-      weight,
-      intent,
-      case: caseVal,
-      transform,
-      children,
-      ...rest
-    },
-    ref,
-  ) => {
+  ({ as = "h2", size, weight, intent, case: caseVal, transform, children, ...rest }, ref) => {
     const Tag = as;
     const dataAttrs = useDataAttrs({
       as,
-      size,
-      weight,
-      intent,
       case: caseVal,
+      intent,
+      size,
       transform,
+      weight,
     });
 
     return (

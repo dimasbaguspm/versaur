@@ -23,38 +23,34 @@ import type { NoResultsProps } from "./no-results.types";
  * ```
  */
 export const NoResults = forwardRef<HTMLElement, NoResultsProps>(
-  ({ icon: IconComponent, title, subtitle, action, ...props }, ref) => {
-    return (
-      <section
-        ref={ref}
-        className={noResultsStyles["no-results"]}
-        role="status"
-        aria-label={title}
-        {...props}
-      >
-        <header className={noResultsStyles["no-results-header"]}>
-          <div className={noResultsStyles["no-results-icon"]}>
-            <Icon as={IconComponent} color="inherit" aria-hidden="true" />
-          </div>
-          <h5 className={noResultsStyles["no-results-title"]}>{title}</h5>
-        </header>
+  ({ icon: IconComponent, title, subtitle, action, ...props }, ref) => (
+    <section
+      ref={ref}
+      className={noResultsStyles["no-results"]}
+      role="status"
+      aria-label={title}
+      {...props}
+    >
+      <header className={noResultsStyles["no-results-header"]}>
+        <div className={noResultsStyles["no-results-icon"]}>
+          <Icon as={IconComponent} color="inherit" aria-hidden="true" />
+        </div>
+        <h5 className={noResultsStyles["no-results-title"]}>{title}</h5>
+      </header>
 
-        {subtitle && (
-          <p className={noResultsStyles["no-results-subtitle"]}>{subtitle}</p>
-        )}
+      {subtitle && <p className={noResultsStyles["no-results-subtitle"]}>{subtitle}</p>}
 
-        {action && (
-          <div
-            className={noResultsStyles["no-results-action"]}
-            role="group"
-            aria-label="Available actions"
-          >
-            {action}
-          </div>
-        )}
-      </section>
-    );
-  },
+      {action && (
+        <div
+          className={noResultsStyles["no-results-action"]}
+          role="group"
+          aria-label="Available actions"
+        >
+          {action}
+        </div>
+      )}
+    </section>
+  ),
 );
 
 NoResults.displayName = "NoResults";

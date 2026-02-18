@@ -22,16 +22,10 @@ function BasicPreview() {
       helper="Choose all that apply"
     >
       <ChipMultipleInput.Option value="design">Design</ChipMultipleInput.Option>
-      <ChipMultipleInput.Option value="dev">
-        Development
-      </ChipMultipleInput.Option>
-      <ChipMultipleInput.Option value="marketing">
-        Marketing
-      </ChipMultipleInput.Option>
+      <ChipMultipleInput.Option value="dev">Development</ChipMultipleInput.Option>
+      <ChipMultipleInput.Option value="marketing">Marketing</ChipMultipleInput.Option>
       <ChipMultipleInput.Option value="sales">Sales</ChipMultipleInput.Option>
-      <ChipMultipleInput.Option value="support">
-        Support
-      </ChipMultipleInput.Option>
+      <ChipMultipleInput.Option value="support">Support</ChipMultipleInput.Option>
     </ChipMultipleInput>
   );
 }
@@ -70,45 +64,25 @@ function CustomGapPreview() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-      <ChipMultipleInput
-        value={values1}
-        onChange={setValues1}
-        label="Gap 1"
-        gap="1"
-      >
+      <ChipMultipleInput value={values1} onChange={setValues1} label="Gap 1" gap="1">
         <ChipMultipleInput.Option value="a">Option A</ChipMultipleInput.Option>
         <ChipMultipleInput.Option value="b">Option B</ChipMultipleInput.Option>
         <ChipMultipleInput.Option value="c">Option C</ChipMultipleInput.Option>
       </ChipMultipleInput>
 
-      <ChipMultipleInput
-        value={values2}
-        onChange={setValues2}
-        label="Gap 2 (default)"
-        gap="2"
-      >
+      <ChipMultipleInput value={values2} onChange={setValues2} label="Gap 2 (default)" gap="2">
         <ChipMultipleInput.Option value="a">Option A</ChipMultipleInput.Option>
         <ChipMultipleInput.Option value="b">Option B</ChipMultipleInput.Option>
         <ChipMultipleInput.Option value="c">Option C</ChipMultipleInput.Option>
       </ChipMultipleInput>
 
-      <ChipMultipleInput
-        value={values3}
-        onChange={setValues3}
-        label="Gap 3"
-        gap="3"
-      >
+      <ChipMultipleInput value={values3} onChange={setValues3} label="Gap 3" gap="3">
         <ChipMultipleInput.Option value="a">Option A</ChipMultipleInput.Option>
         <ChipMultipleInput.Option value="b">Option B</ChipMultipleInput.Option>
         <ChipMultipleInput.Option value="c">Option C</ChipMultipleInput.Option>
       </ChipMultipleInput>
 
-      <ChipMultipleInput
-        value={values4}
-        onChange={setValues4}
-        label="Gap 4"
-        gap="4"
-      >
+      <ChipMultipleInput value={values4} onChange={setValues4} label="Gap 4" gap="4">
         <ChipMultipleInput.Option value="a">Option A</ChipMultipleInput.Option>
         <ChipMultipleInput.Option value="b">Option B</ChipMultipleInput.Option>
         <ChipMultipleInput.Option value="c">Option C</ChipMultipleInput.Option>
@@ -132,12 +106,7 @@ function StatesPreview() {
         <ChipMultipleInput.Option value="2">Option 2</ChipMultipleInput.Option>
       </ChipMultipleInput>
 
-      <ChipMultipleInput
-        value={values}
-        onChange={setValues}
-        label="Disabled"
-        disabled
-      >
+      <ChipMultipleInput value={values} onChange={setValues} label="Disabled" disabled>
         <ChipMultipleInput.Option value="1">Option 1</ChipMultipleInput.Option>
         <ChipMultipleInput.Option value="2">Option 2</ChipMultipleInput.Option>
       </ChipMultipleInput>
@@ -147,9 +116,6 @@ function StatesPreview() {
 
 export const chipMultipleInputSections: ChipMultipleInputSection[] = [
   {
-    key: "basic",
-    title: "Basic Usage",
-    preview: BasicPreview,
     code: `const [interests, setInterests] = useState<string[]>([]);
 
 <ChipMultipleInput
@@ -161,12 +127,12 @@ export const chipMultipleInputSections: ChipMultipleInputSection[] = [
   <ChipMultipleInput.Option value="design">Design</ChipMultipleInput.Option>
   <ChipMultipleInput.Option value="dev">Development</ChipMultipleInput.Option>
 </ChipMultipleInput>`,
+    key: "basic",
     language: "tsx",
+    preview: BasicPreview,
+    title: "Basic Usage",
   },
   {
-    key: "overflow",
-    title: "Horizontal Scroll",
-    preview: OverflowPreview,
     code: `<ChipMultipleInput wrap={false}>
   <ChipMultipleInput.Option value="opt1">
     Very long option text number one
@@ -175,12 +141,12 @@ export const chipMultipleInputSections: ChipMultipleInputSection[] = [
     Very long option text number two
   </ChipMultipleInput.Option>
 </ChipMultipleInput>`,
+    key: "overflow",
     language: "tsx",
+    preview: OverflowPreview,
+    title: "Horizontal Scroll",
   },
   {
-    key: "gap",
-    title: "Custom Gap",
-    preview: CustomGapPreview,
     code: `<ChipMultipleInput gap="1">
   {/* options */}
 </ChipMultipleInput>
@@ -196,12 +162,12 @@ export const chipMultipleInputSections: ChipMultipleInputSection[] = [
 <ChipMultipleInput gap="4">
   {/* options */}
 </ChipMultipleInput>`,
+    key: "gap",
     language: "tsx",
+    preview: CustomGapPreview,
+    title: "Custom Gap",
   },
   {
-    key: "states",
-    title: "States",
-    preview: StatesPreview,
     code: `<ChipMultipleInput error="Error message">
   {/* options */}
 </ChipMultipleInput>
@@ -209,6 +175,9 @@ export const chipMultipleInputSections: ChipMultipleInputSection[] = [
 <ChipMultipleInput disabled>
   {/* options */}
 </ChipMultipleInput>`,
+    key: "states",
     language: "tsx",
+    preview: StatesPreview,
+    title: "States",
   },
 ];

@@ -1,9 +1,5 @@
 import { Tabs } from "./tabs";
-import type {
-  TabsProps,
-  TabsItemProps,
-  TabsPanelAttributes,
-} from "./tabs.types";
+import type { TabsItemProps, TabsPanelAttributes, TabsProps } from "./tabs.types";
 
 /**
  * Declaration merging for Tabs compound component

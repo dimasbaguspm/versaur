@@ -35,11 +35,11 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 
     // Convert props to data attributes
     const dataAttrs = useDataAttrs({
-      invalid: !!error,
       disabled,
-      readOnly,
       hasLeftIcon: !!leftIcon,
       hasRightIcon: !!rightIcon,
+      invalid: !!error,
+      readOnly,
     });
 
     return (
@@ -51,9 +51,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         )}
 
         <div className={textInputStyles.wrapper} {...dataAttrs}>
-          {leftIcon && (
-            <span className={textInputStyles["left-icon"]}>{leftIcon}</span>
-          )}
+          {leftIcon && <span className={textInputStyles["left-icon"]}>{leftIcon}</span>}
 
           <input
             ref={ref}
@@ -69,9 +67,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             {...rest}
           />
 
-          {rightIcon && (
-            <span className={textInputStyles["right-icon"]}>{rightIcon}</span>
-          )}
+          {rightIcon && <span className={textInputStyles["right-icon"]}>{rightIcon}</span>}
         </div>
 
         {error && <ErrorText id={errorId}>{error}</ErrorText>}

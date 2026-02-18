@@ -1,6 +1,7 @@
 "use client";
 
-import { forwardRef, ReactNode } from "react";
+import type { ReactNode } from "react";
+import { forwardRef } from "react";
 import { bottomBarStyles } from "@versaur/core";
 import { useDataAttrs } from "../../hooks/use-data-attrs";
 import { isComponentType } from "../../utils/polymorphic";
@@ -27,15 +28,11 @@ interface BottomBarRootProps extends React.HTMLAttributes<HTMLElement> {
 /**
  * BottomBarRoot - Main container for bottom navigation items
  */
-const BottomBarRoot = forwardRef<HTMLElement, BottomBarRootProps>(
-  ({ children, ...props }, ref) => {
-    return (
-      <nav ref={ref} className={bottomBarStyles["bottom-bar"]} {...props}>
-        {children}
-      </nav>
-    );
-  },
-);
+const BottomBarRoot = forwardRef<HTMLElement, BottomBarRootProps>(({ children, ...props }, ref) => (
+  <nav ref={ref} className={bottomBarStyles["bottom-bar"]} {...props}>
+    {children}
+  </nav>
+));
 BottomBarRoot.displayName = "BottomBar";
 
 /**
@@ -71,9 +68,9 @@ const BottomBarItem = forwardRef<HTMLElement, BottomBarItemProps>(
     };
 
     const itemProps: Record<string, any> = {
-      ref,
       className: bottomBarStyles["bottom-bar-item"],
       onClick: handleClick,
+      ref,
       ...dataAttrs,
       ...props,
     };
@@ -86,16 +83,8 @@ const BottomBarItem = forwardRef<HTMLElement, BottomBarItemProps>(
 
     return (
       <ItemComponent {...itemProps}>
-        {icon && (
-          <span className={bottomBarStyles["bottom-bar-item-icon"]}>
-            {icon}
-          </span>
-        )}
-        {children && (
-          <span className={bottomBarStyles["bottom-bar-item-text"]}>
-            {children}
-          </span>
-        )}
+        {icon && <span className={bottomBarStyles["bottom-bar-item-icon"]}>{icon}</span>}
+        {children && <span className={bottomBarStyles["bottom-bar-item-text"]}>{children}</span>}
       </ItemComponent>
     );
   },

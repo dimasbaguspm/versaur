@@ -9,8 +9,8 @@ import { useDataAttrs } from "../../hooks/use-data-attrs";
 export const Label = forwardRef<HTMLLabelElement, LabelProps>(
   ({ required = false, disabled = false, children, ...rest }, ref) => {
     const dataAttrs = useDataAttrs({
-      required,
       disabled,
+      required,
     });
 
     return (

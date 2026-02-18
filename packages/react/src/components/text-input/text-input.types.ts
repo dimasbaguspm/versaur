@@ -1,9 +1,6 @@
 import type { InputHTMLAttributes, ReactNode } from "react";
 
-export interface TextInputProps extends Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  "size"
-> {
+export interface TextInputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
   /**
    * Label text displayed above input
    */

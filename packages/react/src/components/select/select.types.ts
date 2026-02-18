@@ -1,8 +1,4 @@
-import type {
-  SelectHTMLAttributes,
-  OptionHTMLAttributes,
-  OptgroupHTMLAttributes,
-} from "react";
+import type { OptgroupHTMLAttributes, OptionHTMLAttributes, SelectHTMLAttributes } from "react";
 
 export interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   /**

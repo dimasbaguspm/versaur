@@ -20,21 +20,14 @@ import type { RadioProps } from "./radio.types";
  */
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   (
-    {
-      variant = "outline",
-      size = "medium",
-      invalid = false,
-      disabled = false,
-      children,
-      ...rest
-    },
+    { variant = "outline", size = "medium", invalid = false, disabled = false, children, ...rest },
     ref,
   ) => {
     const dataAttrs = useDataAttrs({
-      variant,
-      size,
-      invalid,
       disabled,
+      invalid,
+      size,
+      variant,
     });
 
     return (

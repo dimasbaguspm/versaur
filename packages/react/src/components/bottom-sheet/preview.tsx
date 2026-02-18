@@ -30,8 +30,7 @@ function BasicBottomSheetPreview() {
         </BottomSheet.Header>
         <BottomSheet.Body>
           <p>
-            This is the bottom sheet content. Mobile-friendly panel that slides
-            up from the bottom.
+            This is the bottom sheet content. Mobile-friendly panel that slides up from the bottom.
           </p>
         </BottomSheet.Body>
         <BottomSheet.Footer>
@@ -61,31 +60,17 @@ function MobileMenuPreview() {
           <BottomSheet.Title>Menu</BottomSheet.Title>
         </BottomSheet.Header>
         <BottomSheet.Body>
-          <div
-            style={{ display: "flex", flexDirection: "column", gap: "12px" }}
-          >
-            <Button
-              variant="ghost"
-              style={{ justifyContent: "flex-start", width: "100%" }}
-            >
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+            <Button variant="ghost" style={{ justifyContent: "flex-start", width: "100%" }}>
               Profile
             </Button>
-            <Button
-              variant="ghost"
-              style={{ justifyContent: "flex-start", width: "100%" }}
-            >
+            <Button variant="ghost" style={{ justifyContent: "flex-start", width: "100%" }}>
               Settings
             </Button>
-            <Button
-              variant="ghost"
-              style={{ justifyContent: "flex-start", width: "100%" }}
-            >
+            <Button variant="ghost" style={{ justifyContent: "flex-start", width: "100%" }}>
               Help
             </Button>
-            <Button
-              variant="danger"
-              style={{ justifyContent: "flex-start", width: "100%" }}
-            >
+            <Button variant="danger" style={{ justifyContent: "flex-start", width: "100%" }}>
               Logout
             </Button>
           </div>
@@ -97,9 +82,6 @@ function MobileMenuPreview() {
 
 export const BottomSheetSections: BottomSheetSection[] = [
   {
-    key: "basic",
-    title: "Basic Bottom Sheet",
-    preview: BasicBottomSheetPreview,
     code: `import { useState } from 'react';
 import { BottomSheet } from '@versaur/react';
 import { Button } from '@versaur/react';
@@ -123,12 +105,12 @@ export function MyBottomSheet() {
     </div>
   );
 }`,
+    key: "basic",
     language: "typescript",
+    preview: BasicBottomSheetPreview,
+    title: "Basic Bottom Sheet",
   },
   {
-    key: "menu",
-    title: "Mobile Menu",
-    preview: MobileMenuPreview,
     code: `<BottomSheet open={isOpen} onClose={() => setIsOpen(false)}>
   <BottomSheet.Header>
     <BottomSheet.Title>Menu</BottomSheet.Title>
@@ -139,23 +121,25 @@ export function MyBottomSheet() {
     <Button variant="danger">Logout</Button>
   </BottomSheet.Body>
 </BottomSheet>`,
+    key: "menu",
     language: "typescript",
+    preview: MobileMenuPreview,
+    title: "Mobile Menu",
   },
 ];
 
 export const bottomSheetProps = [
   {
-    name: "open",
-    type: "boolean",
     default: "false",
     description: "Whether the bottom sheet is open",
+    name: "open",
+    type: "boolean",
   },
   {
+    default: "required",
+    description: "Callback when the bottom sheet closes, includes the close reason",
     name: "onClose",
     type: "(reason: 'esc' | 'backdrop' | 'closeButton' | 'programmatic') => void",
-    default: "required",
-    description:
-      "Callback when the bottom sheet closes, includes the close reason",
   },
 ];
 

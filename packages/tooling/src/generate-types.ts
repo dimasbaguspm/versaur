@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { basename, dirname, join, resolve } from "node:path";
 import { glob } from "glob";
 import { parseCssModule } from "./css-parser";
-import { generateTypesFile, generateCssDtsFile } from "./codegen";
+import { generateCssDtsFile, generateTypesFile } from "./codegen";
 
 const ROOT = resolve(import.meta.dirname, "../../..");
 const COMPONENTS_GLOB = "packages/core/src/components/**/*.module.css";
@@ -10,7 +10,7 @@ const COMPONENTS_GLOB = "packages/core/src/components/**/*.module.css";
 const isCheck = process.argv.includes("--check");
 
 async function main() {
-  const files = await glob(COMPONENTS_GLOB, { cwd: ROOT, absolute: true });
+  const files = await glob(COMPONENTS_GLOB, { absolute: true, cwd: ROOT });
 
   if (files.length === 0) {
     console.log("No CSS module files found.");
@@ -19,8 +19,8 @@ async function main() {
 
   let hasChanges = false;
 
-  for (const file of files.sort()) {
-    const css = readFileSync(file, "utf-8");
+  for (const file of files.toSorted()) {
+    const css = readFileSync(file, "utf8");
     const dir = dirname(file);
     const fileName = basename(file, ".module.css");
     const componentName = fileName;
@@ -57,9 +57,7 @@ async function main() {
   }
 
   if (isCheck && hasChanges) {
-    console.error(
-      "\nGenerated type files are out of date. Run `pnpm generate:types` to update.",
-    );
+    console.error("\nGenerated type files are out of date. Run `pnpm generate:types` to update.");
     process.exit(1);
   }
 
@@ -70,7 +68,7 @@ async function main() {
 
 function safeRead(path: string): string {
   try {
-    return readFileSync(path, "utf-8");
+    return readFileSync(path, "utf8");
   } catch {
     return "";
   }
@@ -80,7 +78,7 @@ function relative(path: string): string {
   return path.replace(ROOT + "/", "");
 }
 
-main().catch((err) => {
-  console.error(err);
+main().catch((error) => {
+  console.error(error);
   process.exit(1);
 });

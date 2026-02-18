@@ -1,9 +1,9 @@
 import type {
-  TdHTMLAttributes,
-  ThHTMLAttributes,
-  TableHTMLAttributes,
   HTMLAttributes,
   ReactNode,
+  TableHTMLAttributes,
+  TdHTMLAttributes,
+  ThHTMLAttributes,
 } from "react";
 import type { TableCellVariant } from "@versaur/core";
 
@@ -61,7 +61,7 @@ export type TableBodyCellProps = TdHTMLAttributes<HTMLTableCellElement> & {
 /**
  * Built-in checkbox for row selection
  */
-export type TableCheckboxProps = {
+export interface TableCheckboxProps {
   /**
    * Unique row identifier
    */
@@ -78,12 +78,12 @@ export type TableCheckboxProps = {
    * Callback when checkbox state changes
    */
   onChange: (checked: boolean) => void;
-};
+}
 
 /**
  * Built-in double-line cell (title + subtitle)
  */
-export type TableDoubleLineProps = {
+export interface TableDoubleLineProps {
   /**
    * Main title (bold, primary color)
    */
@@ -97,12 +97,12 @@ export type TableDoubleLineProps = {
    * @default "md"
    */
   size?: "sm" | "md" | "lg";
-};
+}
 
 /**
  * Built-in action button for action column
  */
-export type TableActionProps = {
+export interface TableActionProps {
   /**
    * Callback when button is clicked
    */
@@ -111,9 +111,9 @@ export type TableActionProps = {
    * Disable the button
    */
   disabled?: boolean;
-};
+}
 
-export type TableComponent = {
+export interface TableComponent {
   Header: typeof TableHeader;
   Body: typeof TableBody;
   Footer: typeof TableFooter;
@@ -123,7 +123,7 @@ export type TableComponent = {
   Checkbox: typeof TableCheckbox;
   DoubleLine: typeof TableDoubleLine;
   Action: typeof TableAction;
-};
+}
 
 // Component type exports for namespace declaration merging
 declare const TableHeader: React.ForwardRefExoticComponent<

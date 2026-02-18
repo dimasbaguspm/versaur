@@ -1,9 +1,6 @@
-import type { HTMLAttributes, ReactNode, ElementType } from "react";
+import type { ElementType, HTMLAttributes, ReactNode } from "react";
 
-export interface SidebarRootProps extends Omit<
-  HTMLAttributes<HTMLElement>,
-  "children"
-> {
+export interface SidebarRootProps extends Omit<HTMLAttributes<HTMLElement>, "children"> {
   isOpen: boolean;
   onOpenChange?: (isOpen: boolean) => void;
   children?: ReactNode;
@@ -27,9 +24,10 @@ export interface SidebarGroupProps extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
 }
 
-export interface SidebarItemProps<
-  T extends ElementType = "button",
-> extends Omit<HTMLAttributes<HTMLElement>, "as" | "ref"> {
+export interface SidebarItemProps<T extends ElementType = "button"> extends Omit<
+  HTMLAttributes<HTMLElement>,
+  "as" | "ref"
+> {
   as?: T;
   href?: string;
   active?: boolean;

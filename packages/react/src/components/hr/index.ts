@@ -17,10 +17,5 @@ export { Hr };
 export type { HrProps };
 export type { HrOrientation, HrVariant, HrSize, HrSpacing } from "@versaur/core";
 
-export {
-  HrPreview,
-  hrSections,
-  hrInstallation,
-  hrProps,
-} from "./preview";
+export { HrPreview, hrSections, hrInstallation, hrProps } from "./preview";
 export type { HrSection } from "./preview";

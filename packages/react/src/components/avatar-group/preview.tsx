@@ -12,7 +12,7 @@ export interface AvatarGroupSection {
 
 function GroupPreview() {
   return (
-    <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start" }}>
+    <div style={{ alignItems: "flex-start", display: "flex", gap: "2rem" }}>
       <AvatarGroup>
         <Avatar name="Alice Brown" />
         <Avatar name="Bob Chen" variant="secondary" />
@@ -30,7 +30,7 @@ function GroupPreview() {
 
 function GroupSizesPreview() {
   return (
-    <div style={{ display: "flex", gap: "2rem", alignItems: "center" }}>
+    <div style={{ alignItems: "center", display: "flex", gap: "2rem" }}>
       <AvatarGroup size="sm">
         <Avatar size="sm" name="Alice Brown" />
         <Avatar size="sm" name="Bob Chen" variant="secondary" />
@@ -49,7 +49,7 @@ function GroupAlignmentPreview() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
       <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "500" }}>Start</p>
+        <p style={{ fontWeight: "500", marginBottom: "0.5rem" }}>Start</p>
         <AvatarGroup align="start">
           <Avatar size="sm" name="Alice Brown" />
           <Avatar size="sm" name="Bob Chen" variant="secondary" />
@@ -57,7 +57,7 @@ function GroupAlignmentPreview() {
         </AvatarGroup>
       </div>
       <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "500" }}>Center</p>
+        <p style={{ fontWeight: "500", marginBottom: "0.5rem" }}>Center</p>
         <AvatarGroup align="center">
           <Avatar size="sm" name="Alice Brown" />
           <Avatar size="sm" name="Bob Chen" variant="secondary" />
@@ -65,7 +65,7 @@ function GroupAlignmentPreview() {
         </AvatarGroup>
       </div>
       <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "500" }}>End</p>
+        <p style={{ fontWeight: "500", marginBottom: "0.5rem" }}>End</p>
         <AvatarGroup align="end">
           <Avatar size="sm" name="Alice Brown" />
           <Avatar size="sm" name="Bob Chen" variant="secondary" />
@@ -73,14 +73,12 @@ function GroupAlignmentPreview() {
         </AvatarGroup>
       </div>
       <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "500" }}>
-          Space Between
-        </p>
+        <p style={{ fontWeight: "500", marginBottom: "0.5rem" }}>Space Between</p>
         <div
           style={{
             border: "1px solid #e5e7eb",
-            padding: "0.5rem",
             borderRadius: "0.375rem",
+            padding: "0.5rem",
           }}
         >
           <AvatarGroup align="space-between" style={{ width: "100%" }}>
@@ -90,14 +88,12 @@ function GroupAlignmentPreview() {
         </div>
       </div>
       <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "500" }}>
-          Space Around
-        </p>
+        <p style={{ fontWeight: "500", marginBottom: "0.5rem" }}>Space Around</p>
         <div
           style={{
             border: "1px solid #e5e7eb",
-            padding: "0.5rem",
             borderRadius: "0.375rem",
+            padding: "0.5rem",
           }}
         >
           <AvatarGroup align="space-around" style={{ width: "100%" }}>
@@ -115,7 +111,7 @@ function GroupWrapPreview() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
       <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "500" }}>No wrap</p>
+        <p style={{ fontWeight: "500", marginBottom: "0.5rem" }}>No wrap</p>
         <AvatarGroup wrap="nowrap" style={{ width: "300px" }}>
           <Avatar size="sm" name="Alice Brown" />
           <Avatar size="sm" name="Bob Chen" variant="secondary" />
@@ -124,7 +120,7 @@ function GroupWrapPreview() {
         </AvatarGroup>
       </div>
       <div>
-        <p style={{ marginBottom: "0.5rem", fontWeight: "500" }}>With wrap</p>
+        <p style={{ fontWeight: "500", marginBottom: "0.5rem" }}>With wrap</p>
         <AvatarGroup wrap="wrap" style={{ width: "250px" }}>
           <Avatar size="sm" name="Alice Brown" />
           <Avatar size="sm" name="Bob Chen" variant="secondary" />
@@ -156,9 +152,6 @@ function CustomizationPreview() {
 
 export const avatarGroupSections: AvatarGroupSection[] = [
   {
-    key: "group",
-    title: "Group",
-    preview: GroupPreview,
     code: `{/* Horizontal (default) */}
 <AvatarGroup>
   <Avatar name="Alice Brown" />
@@ -173,12 +166,12 @@ export const avatarGroupSections: AvatarGroupSection[] = [
   <Avatar name="Bob Chen" variant="secondary" />
   <Avatar name="Carol Davis" variant="outline" />
 </AvatarGroup>`,
+    key: "group",
     language: "tsx",
+    preview: GroupPreview,
+    title: "Group",
   },
   {
-    key: "group-sizes",
-    title: "Group Sizes",
-    preview: GroupSizesPreview,
     code: `<AvatarGroup size="sm">
   <Avatar size="sm" name="Alice Brown" />
   <Avatar size="sm" name="Bob Chen" variant="secondary" />
@@ -190,12 +183,12 @@ export const avatarGroupSections: AvatarGroupSection[] = [
   <Avatar size="lg" name="Bob Chen" variant="secondary" />
   <Avatar size="lg" name="Carol Davis" variant="outline" />
 </AvatarGroup>`,
+    key: "group-sizes",
     language: "tsx",
+    preview: GroupSizesPreview,
+    title: "Group Sizes",
   },
   {
-    key: "alignment",
-    title: "Alignment",
-    preview: GroupAlignmentPreview,
     code: `<AvatarGroup align="start">
   <Avatar size="sm" name="Alice Brown" />
   <Avatar size="sm" name="Bob Chen" variant="secondary" />
@@ -212,12 +205,12 @@ export const avatarGroupSections: AvatarGroupSection[] = [
   <Avatar size="sm" name="Bob Chen" variant="secondary" />
   <Avatar size="sm" name="Carol Davis" variant="outline" />
 </AvatarGroup>`,
+    key: "alignment",
     language: "tsx",
+    preview: GroupAlignmentPreview,
+    title: "Alignment",
   },
   {
-    key: "wrap",
-    title: "Flex Wrap",
-    preview: GroupWrapPreview,
     code: `<AvatarGroup wrap="nowrap" style={{ width: "300px" }}>
   <Avatar size="sm" name="Alice Brown" />
   <Avatar size="sm" name="Bob Chen" variant="secondary" />
@@ -228,12 +221,12 @@ export const avatarGroupSections: AvatarGroupSection[] = [
 <AvatarGroup wrap="wrap" style={{ width: "250px" }}>
   ...
 </AvatarGroup>`,
+    key: "wrap",
     language: "tsx",
+    preview: GroupWrapPreview,
+    title: "Flex Wrap",
   },
   {
-    key: "customization",
-    title: "CSS Customization",
-    preview: CustomizationPreview,
     code: `<AvatarGroup
   style={{
     "--vers-comp-avatar-group-gap": "var(--spacing-4)",
@@ -243,46 +236,49 @@ export const avatarGroupSections: AvatarGroupSection[] = [
   <Avatar size="sm" name="Bob Chen" variant="secondary" />
   <Avatar size="sm" name="Carol Davis" variant="outline" />
 </AvatarGroup>`,
+    key: "customization",
     language: "tsx",
+    preview: CustomizationPreview,
+    title: "CSS Customization",
   },
 ];
 
 export const avatarGroupProps = [
   {
-    name: "direction",
-    type: "'horizontal' | 'vertical'",
     default: "'horizontal'",
     description: "Direction of the avatar stack",
+    name: "direction",
+    type: "'horizontal' | 'vertical'",
   },
   {
-    name: "size",
-    type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
     default: "'md'",
     description: "Size controls the overlap amount between avatars",
+    name: "size",
+    type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
   },
   {
-    name: "align",
-    type: "'start' | 'center' | 'end' | 'space-between' | 'space-around' | 'space-evenly'",
     default: "'center'",
     description: "Alignment of items with support for flex spacing",
+    name: "align",
+    type: "'start' | 'center' | 'end' | 'space-between' | 'space-around' | 'space-evenly'",
   },
   {
-    name: "wrap",
-    type: "'wrap' | 'nowrap'",
     default: "'nowrap'",
     description: "Flex wrap behavior",
+    name: "wrap",
+    type: "'wrap' | 'nowrap'",
   },
   {
-    name: "aria-label",
-    type: "string",
     default: "'Avatar group'",
     description: "Accessible label for the group (customizable)",
+    name: "aria-label",
+    type: "string",
   },
   {
-    name: "children",
-    type: "ReactNode",
     default: "—",
     description: "Avatar children",
+    name: "children",
+    type: "ReactNode",
   },
 ];
 
@@ -306,8 +302,8 @@ export function AvatarGroupPreview() {
     <div>
       <h2>AvatarGroup Component</h2>
       <p>
-        Container component for grouping multiple avatars with customizable
-        spacing, direction, alignment, and wrap behavior.
+        Container component for grouping multiple avatars with customizable spacing, direction,
+        alignment, and wrap behavior.
       </p>
     </div>
   );

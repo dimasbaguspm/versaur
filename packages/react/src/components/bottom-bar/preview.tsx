@@ -82,24 +82,13 @@ function ActiveStateBottomBar() {
   return (
     <div style={{ border: "1px solid #e5e7eb", borderRadius: "8px" }}>
       <BottomBar>
-        <BottomBar.Item
-          as="button"
-          active={true}
-          icon={<Icon as={HomeIcon} color="inherit" />}
-        >
+        <BottomBar.Item as="button" active={true} icon={<Icon as={HomeIcon} color="inherit" />}>
           Home
         </BottomBar.Item>
-        <BottomBar.Item
-          as="button"
-          icon={<Icon as={SearchIcon} color="inherit" />}
-        >
+        <BottomBar.Item as="button" icon={<Icon as={SearchIcon} color="inherit" />}>
           Search
         </BottomBar.Item>
-        <BottomBar.Item
-          as="button"
-          disabled={true}
-          icon={<Icon as={UserIcon} color="inherit" />}
-        >
+        <BottomBar.Item as="button" disabled={true} icon={<Icon as={UserIcon} color="inherit" />}>
           Profile
         </BottomBar.Item>
       </BottomBar>
@@ -112,9 +101,6 @@ function ActiveStateBottomBar() {
  */
 export const bottomBarSections = [
   {
-    key: "icon-only",
-    title: "Icon Only",
-    preview: IconOnlyBottomBar,
     code: `import { BottomBar } from '@versaur/react/bottom-bar';
 import { Icon } from '@versaur/react/icon';
 import { HomeIcon, SearchIcon, UserIcon } from '@versaur/icons';
@@ -146,12 +132,12 @@ export function IconOnlyBottomBar() {
     </BottomBar>
   );
 }`,
+    key: "icon-only",
     language: "tsx",
+    preview: IconOnlyBottomBar,
+    title: "Icon Only",
   },
   {
-    key: "icon-with-text",
-    title: "Icon With Text",
-    preview: IconWithTextBottomBar,
     code: `import { BottomBar } from '@versaur/react/bottom-bar';
 import { Icon } from '@versaur/react/icon';
 import { HomeIcon, SearchIcon, UserIcon } from '@versaur/icons';
@@ -189,12 +175,12 @@ export function IconWithTextBottomBar() {
     </BottomBar>
   );
 }`,
+    key: "icon-with-text",
     language: "tsx",
+    preview: IconWithTextBottomBar,
+    title: "Icon With Text",
   },
   {
-    key: "active-state",
-    title: "Active & Disabled States",
-    preview: ActiveStateBottomBar,
     code: `import { BottomBar } from '@versaur/react/bottom-bar';
 import { Icon } from '@versaur/react/icon';
 import { HomeIcon, SearchIcon, UserIcon } from '@versaur/icons';
@@ -225,7 +211,10 @@ export function ActiveStateBottomBar() {
     </BottomBar>
   );
 }`,
+    key: "active-state",
     language: "tsx",
+    preview: ActiveStateBottomBar,
+    title: "Active & Disabled States",
   },
 ];
 
@@ -234,10 +223,10 @@ export const bottomBarProps = [
     name: "BottomBar",
     props: [
       {
+        default: "-",
+        description: "BottomBar.Item components",
         name: "children",
         type: "ReactNode",
-        description: "BottomBar.Item components",
-        default: "-",
       },
     ],
   },
@@ -245,46 +234,46 @@ export const bottomBarProps = [
     name: "BottomBar.Item",
     props: [
       {
+        default: '"button"',
+        description: "Polymorphic component (button, anchor, or Link)",
         name: "as",
         type: '"button" | "a" | ElementType',
-        description: "Polymorphic component (button, anchor, or Link)",
-        default: '"button"',
       },
       {
+        default: "-",
+        description: "URL for link items (when as='a')",
         name: "href",
         type: "string",
-        description: "URL for link items (when as='a')",
-        default: "-",
       },
       {
+        default: "false",
+        description: "Indicates current/active item",
         name: "active",
         type: "boolean",
-        description: "Indicates current/active item",
-        default: "false",
       },
       {
+        default: "false",
+        description: "Disables item interaction",
         name: "disabled",
         type: "boolean",
-        description: "Disables item interaction",
-        default: "false",
       },
       {
+        default: "-",
+        description: "Icon displayed above text",
         name: "icon",
         type: "ReactNode",
-        description: "Icon displayed above text",
-        default: "-",
       },
       {
+        default: "-",
+        description: "Item text label (optional)",
         name: "children",
         type: "ReactNode",
-        description: "Item text label (optional)",
-        default: "-",
       },
       {
+        default: "-",
+        description: "Click handler for buttons",
         name: "onClick",
         type: "(e: React.MouseEvent) => void",
-        description: "Click handler for buttons",
-        default: "-",
       },
     ],
   },

@@ -17,13 +17,10 @@ import type { CheckboxProps } from "./checkbox.types";
  * ```
  */
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  (
-    { invalid = false, disabled = false, required = false, children, ...rest },
-    ref,
-  ) => {
+  ({ invalid = false, disabled = false, required = false, children, ...rest }, ref) => {
     const dataAttrs = useDataAttrs({
-      invalid,
       disabled,
+      invalid,
       required,
     });
 
@@ -41,10 +38,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         />
         <span className={checkboxStyles.indicator} />
         {children && (
-          <span
-            className={checkboxStyles.label}
-            data-required={required || undefined}
-          >
+          <span className={checkboxStyles.label} data-required={required || undefined}>
             {children}
           </span>
         )}

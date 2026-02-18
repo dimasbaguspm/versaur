@@ -1,4 +1,4 @@
-import type { ComponentType, ReactNode, SVGProps, HTMLAttributes } from "react";
+import type { ComponentType, HTMLAttributes, ReactNode, SVGProps } from "react";
 
 /**
  * NoResults component props
