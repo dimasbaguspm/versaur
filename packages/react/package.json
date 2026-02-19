@@ -33,6 +33,7 @@
   },
   "scripts": {
     "build": "vite build",
+    "typecheck": "tsc --noEmit",
     "dev": "vite build --watch",
     "lint": "oxlint src",
     "lint:fix": "oxlint src --fix",

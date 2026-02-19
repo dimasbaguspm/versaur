@@ -15,6 +15,7 @@
     "changeset": "changeset",
     "version": "changeset version",
     "release": "pnpm build:packages && changeset publish",
+    "typecheck": "pnpm -r --parallel typecheck",
     "lint": "oxlint .",
     "lint:fix": "oxlint . --fix",
     "format": "oxfmt . --write",
@@ -28,7 +29,7 @@
     "vite": "^6.0.0"
   },
   "engines": {
-    "node": ">=18.0.0",
+    "node": "22",
     "pnpm": ">=8.0.0"
   },
   "packageManager": "pnpm@10.15.0"

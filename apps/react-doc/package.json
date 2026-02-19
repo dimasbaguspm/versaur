@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "storybook": "storybook dev -p 6006",
+    "typecheck": "tsc --noEmit",
     "build-storybook": "storybook build",
     "build": "npm run build-storybook",
     "lint": "oxlint src",

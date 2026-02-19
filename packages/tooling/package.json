@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "generate:types": "tsx src/generate-types.ts",
+    "typecheck": "tsc --noEmit",
     "lint": "oxlint src",
     "lint:fix": "oxlint src --fix",
     "format": "oxfmt src --write",
