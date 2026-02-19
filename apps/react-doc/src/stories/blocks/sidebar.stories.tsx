@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { HomeIcon, SettingsIcon, UserIcon, TrashIcon } from "@versaur/icons"
-import { Button, Text } from "@versaur/react/primitive"
+import { HomeIcon, SettingsIcon, TrashIcon, UserIcon } from "@versaur/icons"
 import { Sidebar } from "@versaur/react/blocks"
+import { Button, Text } from "@versaur/react/primitive"
 import { useState } from "react"
 
 const meta = {
@@ -96,26 +96,6 @@ export const Collapsed: Story = {
         </Sidebar>
         <div style={{ flex: 1, padding: "2rem" }}>
           <Button onClick={() => setIsOpen(!isOpen)}>Toggle Sidebar</Button>
-        </div>
-      </div>
-    )
-  },
-}
-
-export const Simple: Story = {
-  render: (args) => {
-    const [isOpen, setIsOpen] = useState(true)
-    return (
-      <div style={{ display: "flex" }}>
-        <Sidebar {...args} isOpen={isOpen}>
-          <Sidebar.Body>
-            <Sidebar.Item active>Home</Sidebar.Item>
-            <Sidebar.Item>About</Sidebar.Item>
-            <Sidebar.Item>Contact</Sidebar.Item>
-          </Sidebar.Body>
-        </Sidebar>
-        <div style={{ flex: 1, padding: "1rem" }}>
-          <Text>Main content</Text>
         </div>
       </div>
     )
