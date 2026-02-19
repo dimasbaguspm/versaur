@@ -90,7 +90,7 @@ CardFooter.displayName = "Card.Footer"
 /**
  * Card Component - Compound component with layout regions
  */
-interface CardComponent extends React.ForwardRefExoticComponent<
+export interface CardComponent extends React.ForwardRefExoticComponent<
   CardRootProps & React.RefAttributes<HTMLDivElement | HTMLButtonElement>
 > {
   Header: typeof CardHeader

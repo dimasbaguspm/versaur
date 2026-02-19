@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { Drawer, Button, Text } from "@versaur/react"
+import { Button, Drawer, Text } from "@versaur/react"
 import { useState } from "react"
 
 const meta = {
@@ -8,6 +8,10 @@ const meta = {
       control: "select",
       options: ["left", "right"],
     },
+  },
+  args: {
+    open: false,
+    placement: "right",
   },
   component: Drawer,
   parameters: {
@@ -28,9 +32,11 @@ export const RightPlacement: Story = {
         <Button onClick={() => setIsOpen(true)} style={{ margin: "2rem" }}>
           Open Drawer (Right)
         </Button>
-        <Drawer {...args} open={isOpen} onOpenChange={setIsOpen}} placement="right">
+        <Drawer {...args} open={isOpen} onOpenChange={setIsOpen} placement="right">
           <div style={{ padding: "2rem", minWidth: "350px", height: "100vh" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}>
+            <div
+              style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}
+            >
               <Text weight="bold" size="lg">
                 Navigation
               </Text>
@@ -59,7 +65,9 @@ export const LeftPlacement: Story = {
         </Button>
         <Drawer {...args} open={isOpen} onOpenChange={setIsOpen} placement="left">
           <div style={{ padding: "2rem", minWidth: "350px", height: "100vh" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}>
+            <div
+              style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}
+            >
               <Text weight="bold" size="lg">
                 Menu
               </Text>
@@ -86,8 +94,12 @@ export const Settings: Story = {
           Settings
         </Button>
         <Drawer {...args} open={isOpen} onOpenChange={setIsOpen} placement="right">
-          <div style={{ padding: "2rem", minWidth: "400px", height: "100vh", display: "flex", flexDirection: "column" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem" }}>
+          <div
+            style={{ padding: "2rem", minWidth: "400px", height: "100vh", display: "flex", flexDirection: "column" }}
+          >
+            <div
+              style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem" }}
+            >
               <Text weight="bold" size="lg">
                 Settings
               </Text>

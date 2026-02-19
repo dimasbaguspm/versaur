@@ -81,10 +81,19 @@ const BottomBarItem = forwardRef<HTMLElement, BottomBarItemProps>(
 BottomBarItem.displayName = "BottomBar.Item"
 
 /**
+ * BottomBar Component - Compound component with item sub-component
+ */
+export interface BottomBarComponent extends React.ForwardRefExoticComponent<
+  BottomBarRootProps & React.RefAttributes<HTMLElement>
+> {
+  Item: typeof BottomBarItem
+}
+
+/**
  * Compound BottomBar component with sub-components
  */
 const BottomBar = Object.assign(BottomBarRoot, {
   Item: BottomBarItem,
-})
+}) as BottomBarComponent
 
 export { BottomBar, BottomBarRoot, BottomBarItem }

@@ -25,6 +25,7 @@ declare namespace Card {
 }
 
 export { Card }
+export type { CardComponent } from "./card"
 
 // Flat type exports
 export type { CardRootProps, CardButtonProps, CardBorder, CardHeaderProps, CardBodyProps, CardFooterProps }
