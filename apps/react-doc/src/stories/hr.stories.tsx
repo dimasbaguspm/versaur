@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { Hr } from "@versaur/react"
+import { Hr } from "@versaur/react/primitive"
 
 const meta = {
   argTypes: {

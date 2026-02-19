@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { TextArea } from "@versaur/react"
+import { TextArea } from "@versaur/react/forms"
 
 const meta = {
   argTypes: {

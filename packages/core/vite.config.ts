@@ -6,9 +6,13 @@ import dts from "vite-plugin-dts"
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, "src/index.ts"),
+      entry: {
+        primitive: resolve(__dirname, "src/components/primitive/index.ts"),
+        forms: resolve(__dirname, "src/components/forms/index.ts"),
+        blocks: resolve(__dirname, "src/components/blocks/index.ts"),
+        utils: resolve(__dirname, "src/components/utils/index.ts"),
+      },
       formats: ["es"],
-      fileName: "index",
     },
     cssCodeSplit: true,
     rollupOptions: {
@@ -34,7 +38,7 @@ export default defineConfig({
   },
   plugins: [
     dts({
-      insertTypesEntry: true,
+      entryRoot: "src/components",
       copyDtsFiles: true,
     }),
   ],

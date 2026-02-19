@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { HomeIcon, LogOutIcon, SettingsIcon, UserIcon } from "@versaur/icons"
-import { Button, Sidebar, Text } from "@versaur/react"
+import { HomeIcon, SettingsIcon, UserIcon, TrashIcon } from "@versaur/icons"
+import { Button, Text } from "@versaur/react/primitive"
+import { Sidebar } from "@versaur/react/blocks"
 import { useState } from "react"
 
 const meta = {
@@ -34,7 +35,7 @@ export const Default: Story = {
             <Sidebar.Item icon={<SettingsIcon width={20} height={20} />}>Settings</Sidebar.Item>
           </Sidebar.Body>
           <Sidebar.Footer>
-            <Sidebar.Item icon={<LogOutIcon width={20} height={20} />}>Logout</Sidebar.Item>
+            <Sidebar.Item icon={<TrashIcon width={20} height={20} />}>Delete</Sidebar.Item>
           </Sidebar.Footer>
         </Sidebar>
         <div style={{ flex: 1, padding: "2rem" }}>

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { Select } from "@versaur/react"
+import { Select } from "@versaur/react/forms"
 
 const meta = {
   argTypes: {

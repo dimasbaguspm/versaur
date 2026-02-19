@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { MenuIcon, SearchIcon } from "@versaur/icons"
-import { Button, Text, TopBar } from "@versaur/react"
+import { Button, Text } from "@versaur/react/primitive"
+import { TopBar } from "@versaur/react/blocks"
 
 const meta = {
   component: TopBar,

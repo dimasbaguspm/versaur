@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { CheckboxGroup } from "@versaur/react"
+import { CheckboxGroup } from "@versaur/react/forms"
 import { useState } from "react"
 
 const meta = {

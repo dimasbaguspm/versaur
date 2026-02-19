@@ -1,3 +1,0 @@
-export { TextArea } from "./text-area"
-export type { TextAreaProps } from "./text-area.types"
-export * from "./preview"

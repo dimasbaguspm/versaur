@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { SearchIcon } from "@versaur/icons"
-import { Button, NoResults } from "@versaur/react"
+import { Button } from "@versaur/react/primitive"
+import { NoResults } from "@versaur/react/blocks"
 
 const meta = {
   component: NoResults,

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { ErrorText } from "@versaur/react"
+import { ErrorText } from "@versaur/react/forms"
 
 const meta = {
   component: ErrorText,

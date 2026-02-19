@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { Button, ButtonGroup } from "@versaur/react"
+import { Button } from "@versaur/react/primitive"
+import { ButtonGroup } from "@versaur/react/blocks"
 
 const meta = {
   argTypes: {

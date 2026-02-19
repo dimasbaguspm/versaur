@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { ChipSingleInput } from "@versaur/react"
+import { ChipSingleInput } from "@versaur/react/forms"
 import { useState } from "react"
 
 const meta = {

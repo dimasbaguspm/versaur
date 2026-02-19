@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { Button, Modal, Text } from "@versaur/react"
+import { Button, Text } from "@versaur/react/primitive"
+import { Modal } from "@versaur/react/blocks"
 import { useState } from "react"
 
 const meta = {

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { HomeIcon, LayoutDashboardIcon, SettingsIcon, UserIcon } from "@versaur/icons"
-import { AppLayout, Button, Heading, Text } from "@versaur/react"
+import { Button, Heading, Text } from "@versaur/react/primitive"
+import { AppLayout } from "@versaur/react/blocks"
 
 const meta = {
   argTypes: {

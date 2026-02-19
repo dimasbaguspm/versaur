@@ -6,14 +6,26 @@
     "dist"
   ],
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "source": "./src/index.ts",
-      "import": "./dist/index.js"
+    "./primitive": {
+      "types": "./dist/components/primitive/index.d.ts",
+      "source": "./src/components/primitive/index.ts",
+      "import": "./dist/components/primitive/index.js"
+    },
+    "./forms": {
+      "types": "./dist/components/forms/index.d.ts",
+      "source": "./src/components/forms/index.ts",
+      "import": "./dist/components/forms/index.js"
+    },
+    "./blocks": {
+      "types": "./dist/components/blocks/index.d.ts",
+      "source": "./src/components/blocks/index.ts",
+      "import": "./dist/components/blocks/index.js"
+    },
+    "./utils": {
+      "types": "./dist/components/utils/index.d.ts",
+      "source": "./src/components/utils/index.ts",
+      "import": "./dist/components/utils/index.js"
     }
   },
   "publishConfig": {

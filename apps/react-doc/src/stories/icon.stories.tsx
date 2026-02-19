@@ -5,7 +5,6 @@ import {
   CheckIcon,
   HelpCircleIcon,
   HomeIcon,
-  InfoIcon,
   MailIcon,
   SearchIcon,
   SettingsIcon,
@@ -13,7 +12,7 @@ import {
   TrashIcon,
   UserIcon,
 } from "@versaur/icons"
-import { Icon, Text } from "@versaur/react"
+import { Icon, Text } from "@versaur/react/primitive"
 
 const meta = {
   argTypes: {
@@ -151,7 +150,7 @@ export const StatusIcons: Story = {
         <Text size="sm">Error</Text>
       </div>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}>
-        <Icon {...args} as={InfoIcon} color="secondary" />
+        <Icon {...args} as={BellIcon} color="secondary" />
         <Text size="sm">Info</Text>
       </div>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}>

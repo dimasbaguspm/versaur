@@ -12,12 +12,28 @@ const external = [...Object.keys(pkg.peerDependencies || {}), "react/jsx-runtime
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, "src/index.ts"),
+      entry: {
+        primitive: resolve(__dirname, "src/components/primitive/index.ts"),
+        forms: resolve(__dirname, "src/components/forms/index.ts"),
+        blocks: resolve(__dirname, "src/components/blocks/index.ts"),
+        utils: resolve(__dirname, "src/components/utils/index.ts"),
+      },
       formats: ["es"],
     },
     rollupOptions: {
       external,
+      output: {
+        preserveModules: true,
+        preserveModulesRoot: "src",
+      },
     },
   },
-  plugins: [react(), dts()],
+  resolve: {
+    alias: {
+      "@versaur/core": resolve(__dirname, "../core/src"),
+      "@versaur/icons": resolve(__dirname, "../icons/src"),
+    },
+    conditions: ["source"],
+  },
+  plugins: [react(), dts({ entryRoot: "src/components" })],
 })

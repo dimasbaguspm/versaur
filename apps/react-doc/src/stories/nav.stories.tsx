@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { HomeIcon, InfoIcon, SettingsIcon } from "@versaur/icons"
-import { Nav } from "@versaur/react"
+import { HomeIcon, SettingsIcon, UserIcon } from "@versaur/icons"
+import { Nav } from "@versaur/react/blocks"
 import { useState } from "react"
 
 const meta = {
@@ -86,8 +86,8 @@ export const WithIcons: Story = {
         <Nav.Item value="settings" leftIcon={SettingsIcon} active={value === "settings"}>
           Settings
         </Nav.Item>
-        <Nav.Item value="info" leftIcon={InfoIcon} active={value === "info"}>
-          Info
+        <Nav.Item value="user" leftIcon={UserIcon} active={value === "user"}>
+          Profile
         </Nav.Item>
       </Nav>
     )

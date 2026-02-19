@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { SettingsIcon, StarIcon, TrashIcon } from "@versaur/icons"
-import { ButtonIcon } from "@versaur/react"
+import { ButtonIcon } from "@versaur/react/primitive"
 
 const meta = {
   argTypes: {

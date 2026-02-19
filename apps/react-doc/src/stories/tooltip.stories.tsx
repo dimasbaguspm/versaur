@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { HelpCircleIcon, InfoIcon } from "@versaur/icons"
-import { Button, Text, Tooltip } from "@versaur/react"
+import { HelpCircleIcon } from "@versaur/icons"
+import { Button, Text, Tooltip } from "@versaur/react/primitive"
 
 const meta = {
   argTypes: {
@@ -126,7 +126,7 @@ export const OnIcon: Story = {
           alignItems: "center",
         }}
       >
-        <InfoIcon width={20} height={20} />
+        <HelpCircleIcon width={20} height={20} />
       </button>
     </div>
   ),

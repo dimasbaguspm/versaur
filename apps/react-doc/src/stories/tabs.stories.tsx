@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { Tabs } from "@versaur/react"
+import { Tabs } from "@versaur/react/blocks"
 import { useState } from "react"
 
 const meta = {

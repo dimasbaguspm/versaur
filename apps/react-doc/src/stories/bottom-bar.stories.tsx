@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { HomeIcon, SettingsIcon, UserIcon } from "@versaur/icons"
-import { BottomBar } from "@versaur/react"
+import { BottomBar } from "@versaur/react/blocks"
 
 const meta = {
   component: BottomBar,

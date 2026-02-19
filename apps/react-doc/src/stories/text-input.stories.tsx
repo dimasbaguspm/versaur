@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { MailIcon, SearchIcon } from "@versaur/icons"
-import { TextInput } from "@versaur/react"
+import { TextInput } from "@versaur/react/forms"
 
 const meta = {
   argTypes: {

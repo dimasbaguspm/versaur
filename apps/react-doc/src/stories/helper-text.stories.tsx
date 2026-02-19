@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { HelperText } from "@versaur/react"
+import { HelperText } from "@versaur/react/forms"
 
 const meta = {
   component: HelperText,

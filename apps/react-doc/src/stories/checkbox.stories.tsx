@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { Checkbox } from "@versaur/react"
+import { Checkbox } from "@versaur/react/forms"
 
 const meta = {
   argTypes: {

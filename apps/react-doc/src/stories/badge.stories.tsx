@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { AlertCircleIcon, CheckIcon } from "@versaur/icons"
-import { Badge } from "@versaur/react"
+import { Badge } from "@versaur/react/primitive"
 
 const meta = {
   argTypes: {
