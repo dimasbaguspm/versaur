@@ -1,3 +1,4 @@
+import { copyFileSync, mkdirSync } from "fs"
 import { resolve } from "path"
 
 import { defineConfig } from "vite"
@@ -41,5 +42,24 @@ export default defineConfig({
       entryRoot: "src/components",
       copyDtsFiles: true,
     }),
+    {
+      name: "copy-tokens",
+      closeBundle() {
+        const srcTokens = resolve(__dirname, "src/tokens")
+        const distTokens = resolve(__dirname, "dist/tokens")
+
+        // Create dist/tokens directory
+        mkdirSync(distTokens, { recursive: true })
+
+        // Copy all CSS files from src/tokens to dist/tokens
+        const files = ["index.css", "colors.css", "spacing.css", "typography.css", "effects.css"]
+        files.forEach((file) => {
+          copyFileSync(
+            resolve(srcTokens, file),
+            resolve(distTokens, file)
+          )
+        })
+      },
+    },
   ],
 })

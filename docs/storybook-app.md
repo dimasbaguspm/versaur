@@ -57,9 +57,16 @@ Configures:
 ### Preview configuration (`.storybook/preview.ts`)
 
 Configures:
-- Global decorators (e.g., importing design tokens CSS)
+- Global CSS imports (design tokens from `@versaur/core/tokens`)
+- Global decorators
 - Default parameters (layout, controls)
 - Theme customization
+
+The tokens CSS is imported at the top to make all Versaur CSS custom properties available globally:
+
+```ts
+import "@versaur/core/tokens";
+```
 
 ## Component categories
 

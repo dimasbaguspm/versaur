@@ -7,25 +7,29 @@
   ],
   "type": "module",
   "exports": {
+    "./tokens": {
+      "source": "./src/tokens/index.css",
+      "default": "./dist/tokens/index.css"
+    },
     "./primitive": {
-      "types": "./dist/components/primitive/index.d.ts",
+      "types": "./dist/primitive/index.d.ts",
       "source": "./src/components/primitive/index.ts",
-      "import": "./dist/components/primitive/index.js"
+      "import": "./dist/primitive.js"
     },
     "./forms": {
-      "types": "./dist/components/forms/index.d.ts",
+      "types": "./dist/forms/index.d.ts",
       "source": "./src/components/forms/index.ts",
-      "import": "./dist/components/forms/index.js"
+      "import": "./dist/forms.js"
     },
     "./blocks": {
-      "types": "./dist/components/blocks/index.d.ts",
+      "types": "./dist/blocks/index.d.ts",
       "source": "./src/components/blocks/index.ts",
-      "import": "./dist/components/blocks/index.js"
+      "import": "./dist/blocks.js"
     },
     "./utils": {
-      "types": "./dist/components/utils/index.d.ts",
+      "types": "./dist/utils/index.d.ts",
       "source": "./src/components/utils/index.ts",
-      "import": "./dist/components/utils/index.js"
+      "import": "./dist/utils.js"
     }
   },
   "publishConfig": {

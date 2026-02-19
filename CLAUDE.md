@@ -104,6 +104,16 @@ apps/react-doc/src/stories/
   <name>.stories.tsx      — Storybook stories for component documentation
 ```
 
+## Importing design tokens
+
+Design tokens (CSS custom properties) are available via:
+
+```ts
+import "@versaur/core/tokens"
+```
+
+This includes all color, spacing, typography, and effects tokens. In apps, import this once in your root/entry file. In Storybook, it's imported in `.storybook/preview.ts`.
+
 ## Adding a new component
 
 1. **Core**: Create `packages/core/src/components/<category>/<name>/<name>.module.css` with data-attribute selectors. Add an `index.ts`. Export from `packages/core/src/components/<category>/index.ts`.

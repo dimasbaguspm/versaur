@@ -17,6 +17,7 @@ export default defineConfig({
       "@versaur/react/forms": resolve(__dirname, "../../packages/react/src/components/forms"),
       "@versaur/react/blocks": resolve(__dirname, "../../packages/react/src/components/blocks"),
       "@versaur/react/utils": resolve(__dirname, "../../packages/react/src/components/utils"),
+      "@versaur/core/tokens": resolve(__dirname, "../../packages/core/src/tokens/index.css"),
       "@versaur/core/primitive": resolve(__dirname, "../../packages/core/src/components/primitive"),
       "@versaur/core/forms": resolve(__dirname, "../../packages/core/src/components/forms"),
       "@versaur/core/blocks": resolve(__dirname, "../../packages/core/src/components/blocks"),

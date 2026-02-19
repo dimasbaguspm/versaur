@@ -1,4 +1,5 @@
 import type { Preview } from "@storybook/react";
+import "@versaur/core/tokens";
 
 const preview: Preview = {
   parameters: {
