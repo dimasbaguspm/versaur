@@ -7,15 +7,10 @@ on:
   push:
     branches:
       - main
-  
-
-concurrency:
-  group: ci-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
-  lint:
-    name: Lint
+  ci:
+    name: CI
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,32 +19,18 @@ jobs:
         with:
           node-version-file: package.json
           cache: pnpm
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm lint --format github
 
-  typecheck:
-    name: Typecheck
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: package.json
-          cache: pnpm
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm generate:types
-      - run: pnpm typecheck
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: package.json
-          cache: pnpm
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm build:packages
+      - name: Build packages
+        run: pnpm build:packages
+
+      - name: Lint
+        run: pnpm lint --format github
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Build docs
+        run: pnpm build:docs
