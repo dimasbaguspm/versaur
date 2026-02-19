@@ -6,9 +6,3 @@ export interface ErrorTextProps extends HTMLAttributes<HTMLParagraphElement> {
    */
   id?: string
 }
-
-declare module "@versaur/core" {
-  export namespace ErrorText {
-    export { ErrorTextProps as Props }
-  }
-}

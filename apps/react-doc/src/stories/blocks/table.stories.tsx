@@ -4,6 +4,9 @@ import { Table } from "@versaur/react/blocks"
 import { useState } from "react"
 
 const meta = {
+  args: {
+    columns: "1fr",
+  },
   component: Table,
   parameters: {
     layout: "centered",

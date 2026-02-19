@@ -9,6 +9,10 @@ const meta = {
       options: ["1", "2", "3", "4"],
     },
   },
+  args: {
+    value: [],
+    onChange: () => {},
+  },
   component: ChipMultipleInput,
   parameters: {
     layout: "centered",

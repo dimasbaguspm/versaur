@@ -9,8 +9,8 @@ export type { ChipSingleInputRootProps, ChipSingleInputOptionProps }
 declare namespace ChipSingleInput {
   export type Props = ChipSingleInputRootProps
   export type OptionProps = ChipSingleInputOptionProps
-  export type Variant = ChipSingleInputCore.Variant
-  export type Size = ChipSingleInputCore.Size
+  export type Gap = ChipSingleInputCore.Gap
+  export type Wrap = ChipSingleInputCore.Wrap
   export type DataAttrs = ChipSingleInputCore.DataAttrs
 }
 

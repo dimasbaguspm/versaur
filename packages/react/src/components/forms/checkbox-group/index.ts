@@ -9,8 +9,7 @@ export type { CheckboxGroupRootProps, CheckboxGroupOptionProps }
 declare namespace CheckboxGroup {
   export type Props = CheckboxGroupRootProps
   export type OptionProps = CheckboxGroupOptionProps
-  export type Variant = CheckboxGroupCore.Variant
-  export type Size = CheckboxGroupCore.Size
+  export type Direction = CheckboxGroupCore.Direction
   export type DataAttrs = CheckboxGroupCore.DataAttrs
 }
 

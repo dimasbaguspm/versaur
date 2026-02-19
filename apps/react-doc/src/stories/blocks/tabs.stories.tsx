@@ -3,6 +3,11 @@ import { Tabs } from "@versaur/react/blocks"
 import { useState } from "react"
 
 const meta = {
+  args: {
+    value: "",
+    onChange: () => {},
+    children: undefined,
+  },
   component: Tabs,
   parameters: {
     layout: "centered",

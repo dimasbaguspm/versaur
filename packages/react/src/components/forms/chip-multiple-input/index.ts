@@ -7,8 +7,8 @@ export type { ChipMultipleInputRootProps, ChipMultipleInputOptionProps }
 declare namespace ChipMultipleInput {
   export type Props = ChipMultipleInputRootProps
   export type OptionProps = ChipMultipleInputOptionProps
-  export type Variant = ChipMultipleInputCore.Variant
-  export type Size = ChipMultipleInputCore.Size
+  export type Gap = ChipMultipleInputCore.Gap
+  export type Wrap = ChipMultipleInputCore.Wrap
   export type DataAttrs = ChipMultipleInputCore.DataAttrs
 }
 

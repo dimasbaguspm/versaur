@@ -23,6 +23,10 @@ const meta = {
       options: ["filled", "outline"],
     },
   },
+  args: {
+    value: undefined,
+    onChange: () => {},
+  },
   component: RadioGroup,
   parameters: {
     layout: "centered",

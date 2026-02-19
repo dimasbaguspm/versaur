@@ -5,6 +5,9 @@ import { Button, Text } from "@versaur/react/primitive"
 import { useState } from "react"
 
 const meta = {
+  args: {
+    isOpen: false,
+  },
   component: Sidebar,
   parameters: {
     layout: "fullscreen",

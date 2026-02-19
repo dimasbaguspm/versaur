@@ -13,9 +13,3 @@ export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
    */
   disabled?: boolean
 }
-
-declare module "@versaur/core" {
-  export namespace Label {
-    export { LabelProps as Props }
-  }
-}

@@ -93,7 +93,7 @@ const SelectComponent = forwardRef<HTMLSelectElement, SelectProps>(
 
 SelectComponent.displayName = "Select"
 
-interface SelectComponent extends ForwardRefExoticComponent<SelectProps & RefAttributes<HTMLSelectElement>> {
+export interface SelectComponent extends ForwardRefExoticComponent<SelectProps & RefAttributes<HTMLSelectElement>> {
   Option: typeof SelectOption
   OptionGroup: typeof SelectOptionGroup
 }

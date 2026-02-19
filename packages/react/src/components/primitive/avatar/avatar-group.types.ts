@@ -1,4 +1,4 @@
-import type { AvatarGroup } from "@versaur/core/primitive"
+import type { AvatarGroup } from "@versaur/core/blocks"
 import type { HTMLAttributes } from "react"
 
 export interface AvatarGroupProps extends HTMLAttributes<HTMLDivElement> {

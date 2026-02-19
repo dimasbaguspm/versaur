@@ -40,9 +40,3 @@ export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElemen
    */
   maxRows?: number
 }
-
-declare module "@versaur/core" {
-  export namespace TextArea {
-    export { TextAreaProps as Props }
-  }
-}

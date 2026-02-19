@@ -15,6 +15,10 @@ const meta = {
       control: "boolean",
     },
   },
+  args: {
+    value: [],
+    onChange: () => {},
+  },
   component: CheckboxGroup,
   parameters: {
     layout: "centered",

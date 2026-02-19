@@ -1,4 +1,4 @@
-import type { AvatarGroup as CoreAvatarGroup } from "@versaur/core/primitive"
+import type { AvatarGroup as CoreAvatarGroup } from "@versaur/core/blocks"
 
 import { AvatarGroup } from "./avatar-group"
 import type { AvatarGroupProps } from "./avatar-group.types"
@@ -17,6 +17,6 @@ export { AvatarGroup }
 
 // Backward-compat flat type exports
 export type { AvatarGroupProps }
-export type { AvatarGroupDirection, AvatarGroupSize, AvatarGroupAlign, AvatarGroupWrap } from "@versaur/core/primitive"
+export type { AvatarGroupDirection, AvatarGroupSize, AvatarGroupAlign, AvatarGroupWrap } from "@versaur/core/blocks"
 
 // Preview exports

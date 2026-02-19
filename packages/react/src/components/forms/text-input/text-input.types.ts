@@ -31,9 +31,3 @@ export interface TextInputProps extends Omit<InputHTMLAttributes<HTMLInputElemen
    */
   readOnly?: boolean
 }
-
-declare module "@versaur/core" {
-  export namespace TextInput {
-    export { TextInputProps as Props }
-  }
-}

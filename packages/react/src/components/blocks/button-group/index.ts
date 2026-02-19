@@ -1,4 +1,4 @@
-import type { ButtonGroup as CoreButtonGroup } from "@versaur/core/primitive"
+import type { ButtonGroup as CoreButtonGroup } from "@versaur/core/blocks"
 
 import { ButtonGroup } from "./button-group"
 import type { ButtonGroupProps } from "./button-group.types"
@@ -16,5 +16,5 @@ export { ButtonGroup }
 
 // Backward-compat flat type exports
 export type { ButtonGroupProps }
-export type { ButtonGroupGap, ButtonGroupDirection, ButtonGroupAlign, ButtonGroupWrap } from "@versaur/core/primitive"
+export type { ButtonGroupGap, ButtonGroupDirection, ButtonGroupAlign, ButtonGroupWrap } from "@versaur/core/blocks"
 

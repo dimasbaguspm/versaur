@@ -19,12 +19,12 @@ import type { IconProps } from "./icon.types"
  * ```
  */
 export const Icon = React.forwardRef<SVGSVGElement, IconProps>(function Icon(
-  { _color = "inherit", _size = "inherit", className, as: As, ...rest },
+  { color = "inherit", size = "inherit", as: As, ...rest },
   ref,
 ) {
   // Render the SVG component passed via the 'as' prop using JSX
   // Styling is controlled by CSS selectors in the consuming component
-  return <As ref={ref} className={className} {...rest} />
+  return <As ref={ref} {...rest} data-color={color} data-size={size} />
 })
 
 Icon.displayName = "Icon"

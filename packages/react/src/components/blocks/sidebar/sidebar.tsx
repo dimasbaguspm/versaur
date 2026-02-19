@@ -41,7 +41,7 @@ const useSidebarContext = () => {
 /**
  * SidebarRoot - Main container managing isOpen state and keyboard navigation
  */
-const SidebarRoot = forwardRef<HTMLElement, SidebarRootProps>(({ isOpen, _onOpenChange, children, ...props }, ref) => {
+const SidebarRoot = forwardRef<HTMLElement, SidebarRootProps>(({ isOpen, children, ...props }, ref) => {
   const itemRefsArray = useRef<React.RefObject<HTMLElement>[]>([])
   const [focusedItemIndex, setFocusedItemIndex] = useState(0)
 

@@ -3,10 +3,8 @@ import type { Checkbox as CheckboxCore } from "@versaur/core/forms"
 import { Checkbox } from "./checkbox"
 export type { CheckboxProps } from "./checkbox.types"
 
-// Namespace declaration merging for Checkbox.Variant, Checkbox.Size
+// Namespace declaration merging
 declare namespace Checkbox {
-  export type Variant = CheckboxCore.Variant
-  export type Size = CheckboxCore.Size
   export type DataAttrs = CheckboxCore.DataAttrs
 }
 

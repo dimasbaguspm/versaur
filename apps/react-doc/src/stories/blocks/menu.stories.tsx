@@ -23,6 +23,10 @@ const meta = {
       ],
     },
   },
+  args: {
+    id: "menu",
+    children: undefined,
+  },
   component: Menu,
   parameters: {
     layout: "centered",

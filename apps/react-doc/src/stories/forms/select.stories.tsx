@@ -113,7 +113,7 @@ export const ManyOptions: Story = {
     <Select {...args} label="Number" placeholder="Pick a number 1-50">
       {Array.from({ length: 50 }, (_, i) => (
         <Select.Option key={i + 1} value={String(i + 1)}>
-          {i + 1}
+          {String(i + 1)}
         </Select.Option>
       ))}
     </Select>

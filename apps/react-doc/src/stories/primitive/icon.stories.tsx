@@ -25,6 +25,9 @@ const meta = {
       options: ["inherit", "xs", "sm", "md", "lg", "xl"],
     },
   },
+  args: {
+    as: StarIcon,
+  },
   component: Icon,
   parameters: {
     layout: "centered",

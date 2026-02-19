@@ -15,7 +15,7 @@ export namespace AttributeList {
 }
 
 // Compound component with Object.assign pattern
-interface AttributeListComponent extends React.ForwardRefExoticComponent<
+export interface AttributeListComponent extends React.ForwardRefExoticComponent<
   AttributeListProps & React.RefAttributes<HTMLDListElement>
 > {
   Item: typeof AttributeListItem

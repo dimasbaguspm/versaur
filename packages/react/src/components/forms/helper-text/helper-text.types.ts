@@ -6,9 +6,3 @@ export interface HelperTextProps extends HTMLAttributes<HTMLParagraphElement> {
    */
   id?: string
 }
-
-declare module "@versaur/core" {
-  export namespace HelperText {
-    export { HelperTextProps as Props }
-  }
-}

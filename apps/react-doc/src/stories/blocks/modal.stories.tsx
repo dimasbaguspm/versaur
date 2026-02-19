@@ -4,6 +4,9 @@ import { Modal } from "@versaur/react/blocks"
 import { useState } from "react"
 
 const meta = {
+  args: {
+    open: false,
+  },
   component: Modal,
   parameters: {
     layout: "centered",

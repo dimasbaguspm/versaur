@@ -6,9 +6,6 @@ const meta = {
     disabled: {
       control: "boolean",
     },
-    invalid: {
-      control: "boolean",
-    },
     readOnly: {
       control: "boolean",
     },

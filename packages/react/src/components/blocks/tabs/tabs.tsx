@@ -186,7 +186,7 @@ function getPanelAttribute(value: string): TabsPanelAttributes {
 }
 
 // Create a compound component with typed properties
-interface TabsComponent extends React.ForwardRefExoticComponent<TabsProps & React.RefAttributes<HTMLDivElement>> {
+export interface TabsComponent extends React.ForwardRefExoticComponent<TabsProps & React.RefAttributes<HTMLDivElement>> {
   Item: typeof TabsItem
   getPanelAttribute: typeof getPanelAttribute
 }

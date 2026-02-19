@@ -26,6 +26,10 @@ const meta = {
       options: ["hover", "focus", "all"],
     },
   },
+  args: {
+    id: "tooltip",
+    children: undefined,
+  },
   component: Tooltip,
   parameters: {
     layout: "centered",

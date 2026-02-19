@@ -4,6 +4,10 @@ import { Dialog } from "@versaur/react/blocks"
 import { useState } from "react"
 
 const meta = {
+  args: {
+    isOpen: false,
+    children: undefined,
+  },
   component: Dialog,
   parameters: {
     layout: "centered",
