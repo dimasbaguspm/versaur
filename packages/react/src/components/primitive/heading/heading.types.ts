@@ -1,4 +1,4 @@
-import type { Heading } from "@versaur/core"
+import type { Heading } from "@versaur/core/primitive"
 import type { HTMLAttributes, ReactNode } from "react"
 
 export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {

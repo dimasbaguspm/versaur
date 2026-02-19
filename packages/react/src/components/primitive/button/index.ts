@@ -1,4 +1,4 @@
-import type { Button as CoreButton } from "@versaur/core"
+import type { Button as CoreButton } from "@versaur/core/primitive"
 
 import { Button } from "./button"
 import type { ButtonProps } from "./button.types"
@@ -14,5 +14,5 @@ export { Button }
 
 // Backward-compat flat type exports
 export type { ButtonProps }
-export type { ButtonVariant, ButtonSize } from "@versaur/core"
+export type { ButtonVariant, ButtonSize } from "@versaur/core/primitive"
 

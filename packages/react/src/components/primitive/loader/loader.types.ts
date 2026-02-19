@@ -1,4 +1,4 @@
-import type { Loader } from "@versaur/core"
+import type { Loader } from "@versaur/core/primitive"
 import type { HTMLAttributes, ReactNode } from "react"
 
 export interface LoaderProps extends HTMLAttributes<HTMLDivElement> {

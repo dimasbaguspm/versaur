@@ -1,4 +1,4 @@
-import type { Text as CoreText } from "@versaur/core"
+import type { Text as CoreText } from "@versaur/core/primitive"
 
 import { Text } from "./text"
 import type { TextProps } from "./text.types"
@@ -18,5 +18,5 @@ export { Text }
 
 // Flat type exports
 export type { TextProps }
-export type { TextAs, TextSize, TextWeight, TextIntent, TextCase, TextTransform } from "@versaur/core"
+export type { TextAs, TextSize, TextWeight, TextIntent, TextCase, TextTransform } from "@versaur/core/primitive"
 

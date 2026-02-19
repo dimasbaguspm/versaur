@@ -1,4 +1,4 @@
-import { overlayPartsStyles } from "@versaur/core"
+import { overlayPartsStyles } from "@versaur/core/utils"
 import { forwardRef } from "react"
 
 import type { OverlayBodyProps, OverlayFooterProps, OverlayHeaderProps, OverlayTitleProps } from "./overlay-parts.types"

@@ -1,4 +1,4 @@
-import { textAreaStyles } from "@versaur/core"
+import { textAreaStyles } from "@versaur/core/forms"
 import { forwardRef, useId } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs"

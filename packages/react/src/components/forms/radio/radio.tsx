@@ -1,4 +1,4 @@
-import { radioStyles } from "@versaur/core"
+import { radioStyles } from "@versaur/core/forms"
 import { forwardRef } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs"

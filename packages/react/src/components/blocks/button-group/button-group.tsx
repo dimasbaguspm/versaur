@@ -1,4 +1,4 @@
-import { buttonGroupStyles } from "@versaur/core"
+import { buttonGroupStyles } from "@versaur/core/blocks"
 import { forwardRef } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs"

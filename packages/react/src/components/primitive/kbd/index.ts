@@ -1,4 +1,4 @@
-import type { Kbd as CoreKbd } from "@versaur/core"
+import type { Kbd as CoreKbd } from "@versaur/core/primitive"
 
 import { Kbd } from "./kbd"
 import type { KbdProps } from "./kbd.types"

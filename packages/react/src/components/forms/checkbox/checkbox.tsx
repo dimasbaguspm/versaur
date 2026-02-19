@@ -1,4 +1,4 @@
-import { checkboxStyles } from "@versaur/core"
+import { checkboxStyles } from "@versaur/core/forms"
 import { forwardRef } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs"

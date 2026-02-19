@@ -1,4 +1,4 @@
-import type { Heading as CoreHeading } from "@versaur/core"
+import type { Heading as CoreHeading } from "@versaur/core/primitive"
 
 import { Heading } from "./heading"
 import type { HeadingProps } from "./heading.types"
@@ -18,5 +18,5 @@ export { Heading }
 
 // Flat type exports
 export type { HeadingProps }
-export type { HeadingAs, HeadingSize, HeadingWeight, HeadingIntent, HeadingCase, HeadingTransform } from "@versaur/core"
+export type { HeadingAs, HeadingSize, HeadingWeight, HeadingIntent, HeadingCase, HeadingTransform } from "@versaur/core/primitive"
 

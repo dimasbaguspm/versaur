@@ -1,6 +1,6 @@
 "use client"
 
-import { menuStyles } from "@versaur/core"
+import { menuStyles } from "@versaur/core/blocks"
 import { forwardRef, useContext } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs"

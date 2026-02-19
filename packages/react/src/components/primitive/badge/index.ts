@@ -1,4 +1,4 @@
-import type { Badge as CoreBadge } from "@versaur/core"
+import type { Badge as CoreBadge } from "@versaur/core/primitive"
 
 import { Badge } from "./badge"
 import type { BadgeProps } from "./badge.types"
@@ -15,5 +15,5 @@ export { Badge }
 
 // Backward-compat flat type exports
 export type { BadgeProps }
-export type { BadgeVariant, BadgeSize, BadgeShape } from "@versaur/core"
+export type { BadgeVariant, BadgeSize, BadgeShape } from "@versaur/core/primitive"
 

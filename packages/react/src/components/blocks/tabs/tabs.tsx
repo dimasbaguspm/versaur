@@ -1,4 +1,4 @@
-import { tabsStyles } from "@versaur/core"
+import { tabsStyles } from "@versaur/core/blocks"
 import { createContext, forwardRef, useContext, useLayoutEffect, useRef, useState } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs"

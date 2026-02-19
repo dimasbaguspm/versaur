@@ -1,6 +1,6 @@
 "use client"
 
-import { navStyles } from "@versaur/core"
+import { navStyles } from "@versaur/core/blocks"
 import { createContext, forwardRef } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs"

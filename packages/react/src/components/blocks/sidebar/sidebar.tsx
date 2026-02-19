@@ -1,6 +1,6 @@
 "use client"
 
-import { sidebarStyles } from "@versaur/core"
+import { sidebarStyles } from "@versaur/core/blocks"
 import { createContext, forwardRef, useCallback, useContext, useEffect, useRef, useState } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs"

@@ -1,4 +1,4 @@
-import type { RadioGroup as RadioGroupCore } from "@versaur/core"
+import type { RadioGroup as RadioGroupCore } from "@versaur/core/forms"
 import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from "react"
 
 export interface RadioGroupRootProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {

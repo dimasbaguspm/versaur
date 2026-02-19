@@ -1,4 +1,4 @@
-import { hrStyles } from "@versaur/core"
+import { hrStyles } from "@versaur/core/primitive"
 import { forwardRef } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs"

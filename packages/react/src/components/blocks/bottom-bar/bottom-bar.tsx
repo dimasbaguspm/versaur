@@ -1,6 +1,6 @@
 "use client"
 
-import { bottomBarStyles } from "@versaur/core"
+import { bottomBarStyles } from "@versaur/core/blocks"
 import type { ReactNode } from "react"
 import { forwardRef } from "react"
 

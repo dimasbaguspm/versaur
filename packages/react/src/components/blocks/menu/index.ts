@@ -1,4 +1,4 @@
-import type { Menu as CoreMenu } from "@versaur/core"
+import type { Menu as CoreMenu } from "@versaur/core/blocks"
 
 import { Menu as MenuRoot } from "./menu"
 import { MenuItem } from "./menu-item"

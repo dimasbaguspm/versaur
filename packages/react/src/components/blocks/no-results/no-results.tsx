@@ -1,4 +1,4 @@
-import { noResultsStyles } from "@versaur/core"
+import { noResultsStyles } from "@versaur/core/blocks"
 import { forwardRef } from "react"
 
 import { Icon } from "../../primitive/icon"

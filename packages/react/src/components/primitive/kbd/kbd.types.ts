@@ -1,4 +1,4 @@
-import type { Kbd } from "@versaur/core"
+import type { Kbd } from "@versaur/core/primitive"
 import type { HTMLAttributes, ReactNode } from "react"
 
 /**

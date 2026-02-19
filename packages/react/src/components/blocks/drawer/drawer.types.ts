@@ -1,4 +1,4 @@
-import type { Drawer as DrawerCore } from "@versaur/core"
+import type { Drawer as DrawerCore } from "@versaur/core/blocks"
 import type { DialogHTMLAttributes, ReactNode } from "react"
 
 export interface DrawerRootProps extends Omit<DialogHTMLAttributes<HTMLDialogElement>, "onClose"> {

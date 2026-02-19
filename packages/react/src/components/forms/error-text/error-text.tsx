@@ -1,4 +1,4 @@
-import { errorTextStyles } from "@versaur/core"
+import { errorTextStyles } from "@versaur/core/forms"
 import { forwardRef } from "react"
 
 import type { ErrorTextProps } from "./error-text.types"

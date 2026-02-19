@@ -1,4 +1,4 @@
-import type { AttributeList } from "@versaur/core"
+import type { AttributeList } from "@versaur/core/blocks"
 import type { HTMLAttributes, ReactNode } from "react"
 
 export interface AttributeListProps extends HTMLAttributes<HTMLDListElement> {

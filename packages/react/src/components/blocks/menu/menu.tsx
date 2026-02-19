@@ -1,6 +1,6 @@
 "use client"
 
-import { menuStyles } from "@versaur/core"
+import { menuStyles } from "@versaur/core/blocks"
 import { createContext, forwardRef, useRef } from "react"
 import type { CSSProperties } from "react"
 

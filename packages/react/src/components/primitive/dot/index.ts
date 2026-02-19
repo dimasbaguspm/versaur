@@ -1,4 +1,4 @@
-import type { Dot as CoreDot } from "@versaur/core"
+import type { Dot as CoreDot } from "@versaur/core/primitive"
 
 import { Dot } from "./dot"
 import type { DotProps } from "./dot.types"
@@ -14,5 +14,5 @@ export { Dot }
 
 // Backward-compat flat type exports
 export type { DotProps }
-export type { DotVariant, DotSize } from "@versaur/core"
+export type { DotVariant, DotSize } from "@versaur/core/primitive"
 

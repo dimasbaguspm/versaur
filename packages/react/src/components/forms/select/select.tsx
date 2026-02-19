@@ -1,4 +1,4 @@
-import { selectStyles } from "@versaur/core"
+import { selectStyles } from "@versaur/core/forms"
 import type { ForwardRefExoticComponent, RefAttributes } from "react"
 import { forwardRef, useId } from "react"
 

@@ -1,4 +1,4 @@
-import type { ChipSingleInput as ChipSingleInputCore } from "@versaur/core"
+import type { ChipSingleInput as ChipSingleInputCore } from "@versaur/core/forms"
 
 import { ChipSingleInput } from "./chip-single-input"
 import type { ChipSingleInputOptionProps, ChipSingleInputRootProps } from "./chip-single-input.types"

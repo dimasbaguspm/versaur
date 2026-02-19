@@ -1,4 +1,4 @@
-import type { AppLayout } from "@versaur/core"
+import type { AppLayout } from "@versaur/core/blocks"
 
 export interface AppLayoutRootProps extends AppLayout.DataAttrs {
   className?: string

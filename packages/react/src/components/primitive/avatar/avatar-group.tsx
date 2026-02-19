@@ -1,4 +1,4 @@
-import { avatarGroupStyles } from "@versaur/core"
+import { avatarGroupStyles } from "@versaur/core/blocks"
 import { forwardRef } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs"

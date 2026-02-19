@@ -1,4 +1,4 @@
-import type { Avatar } from "@versaur/core"
+import type { Avatar } from "@versaur/core/primitive"
 import type { HTMLAttributes, ImgHTMLAttributes, ReactNode } from "react"
 
 export interface AvatarProps extends HTMLAttributes<HTMLSpanElement> {

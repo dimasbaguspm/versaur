@@ -1,4 +1,4 @@
-import type { ButtonIcon } from "@versaur/core"
+import type { ButtonIcon } from "@versaur/core/primitive"
 import type { ComponentType, SVGProps } from "react"
 
 import type { ButtonProps } from "../button/button.types"

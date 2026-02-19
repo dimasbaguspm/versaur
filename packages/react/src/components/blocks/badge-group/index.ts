@@ -1,4 +1,4 @@
-import type { BadgeGroup as CoreBadgeGroup } from "@versaur/core"
+import type { BadgeGroup as CoreBadgeGroup } from "@versaur/core/blocks"
 
 import { BadgeGroup } from "./badge-group"
 import type { BadgeGroupProps } from "./badge-group.types"
@@ -16,5 +16,5 @@ export { BadgeGroup }
 
 // Backward-compat flat type exports
 export type { BadgeGroupProps }
-export type { BadgeGroupGap, BadgeGroupDirection, BadgeGroupAlign, BadgeGroupWrap } from "@versaur/core"
+export type { BadgeGroupGap, BadgeGroupDirection, BadgeGroupAlign, BadgeGroupWrap } from "@versaur/core/blocks"
 

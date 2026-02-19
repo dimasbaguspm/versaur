@@ -1,6 +1,7 @@
 "use client"
 
-import { checkboxStyles, tableStyles } from "@versaur/core"
+import { checkboxStyles } from "@versaur/core/forms"
+import { tableStyles } from "@versaur/core/blocks"
 import { ChevronDownIcon, ChevronUpIcon, MenuIcon } from "@versaur/icons"
 import { forwardRef } from "react"
 

@@ -1,4 +1,4 @@
-import type { ButtonIconSize, ButtonIconVariant } from "@versaur/core"
+import type { ButtonIconSize, ButtonIconVariant } from "@versaur/core/primitive"
 
 import { ButtonIcon } from "./button-icon"
 import type { ButtonIconProps } from "./button-icon.types"

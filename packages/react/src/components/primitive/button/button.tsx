@@ -1,4 +1,4 @@
-import { buttonStyles } from "@versaur/core"
+import { buttonStyles } from "@versaur/core/primitive"
 import { LoaderIcon } from "@versaur/icons"
 import { forwardRef } from "react"
 

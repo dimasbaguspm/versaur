@@ -1,4 +1,4 @@
-import type { Dot } from "@versaur/core"
+import type { Dot } from "@versaur/core/primitive"
 import type { HTMLAttributes } from "react"
 
 export interface DotProps extends HTMLAttributes<HTMLSpanElement> {

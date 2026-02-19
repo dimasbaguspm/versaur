@@ -1,4 +1,4 @@
-import type { CardAlign, CardGap, CardJustify, CardSize } from "@versaur/core"
+import type { CardAlign, CardGap, CardJustify, CardSize } from "@versaur/core/blocks"
 import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react"
 
 export type CardBorder = "all-rounded" | "vertical" | "horizontal"

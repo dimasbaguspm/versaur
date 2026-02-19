@@ -1,4 +1,4 @@
-import { labelStyles } from "@versaur/core"
+import { labelStyles } from "@versaur/core/forms"
 import { forwardRef } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs"

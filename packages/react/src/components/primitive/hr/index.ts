@@ -1,4 +1,4 @@
-import type { Hr as CoreHr } from "@versaur/core"
+import type { Hr as CoreHr } from "@versaur/core/primitive"
 
 import { Hr } from "./hr"
 import type { HrProps } from "./hr.types"
@@ -16,5 +16,5 @@ export { Hr }
 
 // Backward-compat flat type exports
 export type { HrProps }
-export type { HrOrientation, HrVariant, HrSize, HrSpacing } from "@versaur/core"
+export type { HrOrientation, HrVariant, HrSize, HrSpacing } from "@versaur/core/primitive"
 

@@ -1,4 +1,4 @@
-import type { Text } from "@versaur/core"
+import type { Text } from "@versaur/core/primitive"
 import type { HTMLAttributes, ReactNode } from "react"
 
 export interface TextProps extends HTMLAttributes<HTMLElement> {

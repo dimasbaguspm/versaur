@@ -1,4 +1,4 @@
-import type { Badge } from "@versaur/core"
+import type { Badge } from "@versaur/core/primitive"
 import type { HTMLAttributes, ReactNode } from "react"
 
 export interface BadgeProps extends HTMLAttributes<HTMLDivElement> {

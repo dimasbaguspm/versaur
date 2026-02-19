@@ -1,4 +1,4 @@
-import type { TableCellVariant } from "@versaur/core"
+import type { TableCellVariant } from "@versaur/core/blocks"
 import type { HTMLAttributes, ReactNode, TableHTMLAttributes, TdHTMLAttributes, ThHTMLAttributes } from "react"
 
 /**

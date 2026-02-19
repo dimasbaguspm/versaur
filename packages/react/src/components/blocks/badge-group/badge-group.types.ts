@@ -1,4 +1,4 @@
-import type { BadgeGroup } from "@versaur/core"
+import type { BadgeGroup } from "@versaur/core/blocks"
 import type { HTMLAttributes } from "react"
 
 export interface BadgeGroupProps extends HTMLAttributes<HTMLDivElement> {

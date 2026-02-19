@@ -1,4 +1,4 @@
-import type { Radio as RadioCore } from "@versaur/core"
+import type { Radio as RadioCore } from "@versaur/core/forms"
 
 import { Radio } from "./radio"
 export type { RadioProps } from "./radio.types"

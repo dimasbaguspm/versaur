@@ -1,4 +1,4 @@
-import { appLayoutStyles } from "@versaur/core"
+import { appLayoutStyles } from "@versaur/core/blocks"
 import { forwardRef } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs"

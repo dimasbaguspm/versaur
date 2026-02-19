@@ -1,4 +1,4 @@
-import { helperTextStyles } from "@versaur/core"
+import { helperTextStyles } from "@versaur/core/forms"
 import { forwardRef } from "react"
 
 import type { HelperTextProps } from "./helper-text.types"

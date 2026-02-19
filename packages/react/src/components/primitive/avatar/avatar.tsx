@@ -1,4 +1,4 @@
-import { avatarStyles } from "@versaur/core"
+import { avatarStyles } from "@versaur/core/primitive"
 import { UserIcon } from "@versaur/icons"
 import { forwardRef, useState } from "react"
 

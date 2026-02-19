@@ -1,6 +1,6 @@
 "use client"
 
-import { navStyles } from "@versaur/core"
+import { navStyles } from "@versaur/core/blocks"
 import type { ElementType } from "react"
 import { forwardRef, useContext } from "react"
 

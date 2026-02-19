@@ -30,6 +30,10 @@ export default defineConfig({
   },
   resolve: {
     alias: {
+      "@versaur/core/primitive": resolve(__dirname, "../core/src/components/primitive"),
+      "@versaur/core/forms": resolve(__dirname, "../core/src/components/forms"),
+      "@versaur/core/blocks": resolve(__dirname, "../core/src/components/blocks"),
+      "@versaur/core/utils": resolve(__dirname, "../core/src/components/utils"),
       "@versaur/core": resolve(__dirname, "../core/src"),
       "@versaur/icons": resolve(__dirname, "../icons/src"),
     },

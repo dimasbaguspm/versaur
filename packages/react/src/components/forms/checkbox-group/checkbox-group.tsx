@@ -1,4 +1,4 @@
-import { checkboxGroupStyles } from "@versaur/core"
+import { checkboxGroupStyles } from "@versaur/core/forms"
 import { createContext, forwardRef, useContext, useId } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs"

@@ -1,4 +1,4 @@
-import type { CardAlign, CardGap, CardJustify, CardSize } from "@versaur/core"
+import type { CardAlign, CardGap, CardJustify, CardSize } from "@versaur/core/blocks"
 
 import { Card } from "./card"
 import type {

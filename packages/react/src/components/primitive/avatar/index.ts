@@ -1,4 +1,4 @@
-import type { Avatar as CoreAvatar } from "@versaur/core"
+import type { Avatar as CoreAvatar } from "@versaur/core/primitive"
 
 import { Avatar } from "./avatar"
 import type { AvatarImageProps, AvatarProps } from "./avatar.types"
@@ -17,5 +17,5 @@ export { Avatar }
 
 // Backward-compat flat type exports
 export type { AvatarProps, AvatarImageProps }
-export type { AvatarVariant, AvatarSize, AvatarShape } from "@versaur/core"
+export type { AvatarVariant, AvatarSize, AvatarShape } from "@versaur/core/primitive"
 

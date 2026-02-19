@@ -1,4 +1,4 @@
-import type { ButtonGroup } from "@versaur/core"
+import type { ButtonGroup } from "@versaur/core/primitive"
 import type { HTMLAttributes } from "react"
 
 export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {

@@ -1,4 +1,4 @@
-import { attributeListStyles } from "@versaur/core"
+import { attributeListStyles } from "@versaur/core/blocks"
 import { createContext, forwardRef, useContext } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs"

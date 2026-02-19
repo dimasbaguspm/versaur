@@ -1,7 +1,7 @@
 export type { LoaderProps } from "./loader.types"
 
 // Namespace merging for type safety
-import type { Loader as LoaderCore } from "@versaur/core"
+import type { Loader as LoaderCore } from "@versaur/core/primitive"
 
 import { Loader } from "./loader"
 

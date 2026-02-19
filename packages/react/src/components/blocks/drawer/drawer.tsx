@@ -1,4 +1,5 @@
-import { drawerStyles, overlayPartsStyles } from "@versaur/core"
+import { drawerStyles } from "@versaur/core/blocks"
+import { overlayPartsStyles } from "@versaur/core/utils"
 import { XIcon } from "@versaur/icons"
 import { createContext, forwardRef, useContext } from "react"
 

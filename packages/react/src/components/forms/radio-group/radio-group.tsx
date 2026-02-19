@@ -1,4 +1,4 @@
-import { radioGroupStyles } from "@versaur/core"
+import { radioGroupStyles } from "@versaur/core/forms"
 import { createContext, forwardRef, useContext, useId } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs"

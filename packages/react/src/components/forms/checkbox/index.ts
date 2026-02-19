@@ -1,4 +1,4 @@
-import type { Checkbox as CheckboxCore } from "@versaur/core"
+import type { Checkbox as CheckboxCore } from "@versaur/core/forms"
 
 import { Checkbox } from "./checkbox"
 export type { CheckboxProps } from "./checkbox.types"

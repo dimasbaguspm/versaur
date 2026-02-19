@@ -1,4 +1,4 @@
-import type { ChipMultipleInput as ChipMultipleInputCore } from "@versaur/core"
+import type { ChipMultipleInput as ChipMultipleInputCore } from "@versaur/core/forms"
 
 import { ChipMultipleInput } from "./chip-multiple-input"
 import type { ChipMultipleInputOptionProps, ChipMultipleInputRootProps } from "./chip-multiple-input.types"

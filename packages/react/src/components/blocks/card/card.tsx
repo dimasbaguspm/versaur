@@ -1,4 +1,4 @@
-import { cardStyles } from "@versaur/core"
+import { cardStyles } from "@versaur/core/blocks"
 import { forwardRef } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs"

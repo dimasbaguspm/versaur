@@ -1,4 +1,4 @@
-import type { AttributeList as AttributeListCore } from "@versaur/core"
+import type { AttributeList as AttributeListCore } from "@versaur/core/blocks"
 import React from "react"
 
 import { AttributeList as AttributeListRoot } from "./attribute-list"
