@@ -1,111 +1,114 @@
 # Component Documentation System
 
-How component documentation pages are structured in Versaur.
+How component documentation is structured in Versaur using Storybook.
 
 ## Overview
 
-Each component's documentation data lives **inside its framework package** (`packages/react/src/components/<name>/preview.tsx`), not in the docs app. The docs app provides reusable layout components that consume this data.
+Components are documented using **Storybook** in `apps/react-doc`. Each component has a corresponding `.stories.tsx` file that provides interactive examples and documentation.
 
-## preview.tsx structure
+## Storybook stories structure
 
-The `preview.tsx` file in each component directory bundles everything the docs need:
+Stories live in `apps/react-doc/src/stories/` and follow the `<name>.stories.tsx` naming convention:
 
-### Sections array
-
-Each section pairs a live preview component with its code string:
-
-```tsx
-export interface ButtonSection {
-  key: string // URL-friendly identifier
-  title: string // Section heading
-  preview: ComponentType // Live demo component
-  code: string // Code snippet for display
-  language: string // Syntax highlighting language
-}
-
-export const buttonSections: ButtonSection[] = [
-  { key: "variants", title: "Variants", preview: VariantsPreview, code: `...`, language: "tsx" },
-  // ...
-]
+```
+apps/react-doc/src/stories/
+├── button.stories.tsx
+├── badge.stories.tsx
+├── avatar.stories.tsx
+├── card.stories.tsx
+└── ...
 ```
 
-### Props metadata
-
-API reference data for the PropsTable:
+### Basic story structure
 
 ```tsx
-export const buttonProps = [
-  {
-    name: "variant",
-    type: "'primary' | 'secondary' | 'danger'",
-    default: "'primary'",
-    description: "...",
+import type { Meta, StoryObj } from '@storybook/react'
+import { Button } from '@versaur/react/primitive'
+
+const meta = {
+  title: 'Primitive/Button',
+  component: Button,
+  parameters: {
+    layout: 'centered',
   },
-  // ...
-]
-```
+  tags: ['autodocs'],
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: ['primary', 'secondary', 'danger', 'ghost', 'outline'],
+      description: 'Visual variant of the button',
+    },
+    size: {
+      control: 'select',
+      options: ['small', 'medium', 'large'],
+      description: 'Size of the button',
+    },
+    loading: {
+      control: 'boolean',
+      description: 'Whether the button is in a loading state',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Whether the button is disabled',
+    },
+  },
+} satisfies Meta<typeof Button>
 
-### Installation
+export default meta
+type Story = StoryObj<typeof meta>
 
-```tsx
-export const buttonInstallation = {
-  code: `npm install @versaur/react @versaur/core`,
-  language: "bash" as const,
+export const Primary: Story = {
+  args: {
+    variant: 'primary',
+    children: 'Primary Button',
+  },
+}
+
+export const Secondary: Story = {
+  args: {
+    variant: 'secondary',
+    children: 'Secondary Button',
+  },
 }
 ```
 
-### Convenience preview
+## Component categories
 
-A `ButtonPreview` component is also exported for non-docs consumers that just want to render all demos:
+Stories are organized by component category in the Storybook sidebar:
 
-```tsx
-export function ButtonPreview() {
-  /* renders all sections */
-}
-```
-
-## Doc page structure
-
-Doc pages live in `apps/docs/src/previews/pages/` and render inside an iframe (via `PreviewFrame`). Each page imports data from the component package and uses shared layout components:
-
-```
-<name>-doc-page.tsx
-  ├── For each section:
-  │   ├── <h3>{title}</h3>
-  │   ├── <section.preview />        (live demo)
-  │   └── <ComponentPreview />       (collapsible code panel)
-  ├── <h2>API Reference</h2>
-  │   └── <PropsTable props={...} /> (data-driven table)
-  └── <h2>Installation</h2>
-      └── <ComponentPreview />       (install commands)
-```
-
-## Shared docs components
-
-| Component           | File                                              | Purpose                                                                                     |
-| ------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `ComponentPreview`  | `apps/docs/src/components/component-preview.tsx`  | Collapsible code panel with Shiki syntax highlighting, copy button, and framework switching |
-| `PropsTable`        | `apps/docs/src/components/props-table.tsx`        | Renders API reference table from prop definitions array                                     |
-| `FrameworkSwitcher` | `apps/docs/src/components/framework-switcher.tsx` | Toggles between React/Vue/Angular code examples (rendered outside the iframe)               |
-| `PreviewFrame`      | `apps/docs/src/preview/preview-frame.tsx`         | iframe wrapper with auto-resizing via ResizeObserver + postMessage                          |
+| Category    | Title Prefix       | Example Components                  |
+| ----------- | ------------------ | ----------------------------------- |
+| Primitive   | `Primitive/`       | Button, Badge, Text, Heading        |
+| Forms       | `Forms/`           | TextInput, Select, Checkbox, Radio  |
+| Blocks      | `Blocks/`          | Card, Modal, Dialog, Sidebar        |
+| Utils       | `Utils/`           | Loader, Icon, Tooltip               |
 
 ## Adding documentation for a new component
 
-1. Create `preview.tsx` in `packages/react/src/components/<name>/` with:
-   - Section preview components (small, focused demos)
-   - `<name>Sections` array pairing previews with code strings
-   - `<name>Props` array with API reference data
-   - `<name>Installation` object
-   - `<Name>Preview` convenience component
+1. Create `apps/react-doc/src/stories/<name>.stories.tsx`
+2. Import the component from `@versaur/react/<category>`
+3. Define the story metadata with appropriate category prefix
+4. Add multiple story variations to demonstrate different states
+5. Configure `argTypes` for interactive controls
+6. Use `tags: ['autodocs']` to generate automatic API documentation
 
-2. Export everything from `packages/react/src/components/<name>/index.ts`
+## Storybook features
 
-3. Create `apps/docs/src/previews/pages/<name>-doc-page.tsx`:
-   - Import sections, props, installation from the component package
-   - Map sections to heading + preview + ComponentPreview
-   - Add PropsTable for API reference
-   - Add installation ComponentPreview
+- **Interactive controls**: Adjust component props in real-time
+- **Auto-generated docs**: API documentation from TypeScript types
+- **Multiple examples**: Each export creates a new story variant
+- **Responsive preview**: Test components at different viewport sizes
+- **Accessibility testing**: Built-in a11y addon for accessibility checks
+- **Source code**: View component implementation directly in Storybook
 
-4. Register in `apps/docs/src/previews/registry.ts`
+## Development workflow
 
-5. Create route at `apps/docs/src/routes/docs/components/<name>.tsx` with FrameworkSwitcher + PreviewFrame
+```sh
+# Start Storybook dev server
+pnpm dev
+
+# Build static Storybook site
+pnpm build:docs
+```
+
+Storybook automatically hot-reloads when you change component source files thanks to source-first resolution (`resolve.conditions: ['source']`).

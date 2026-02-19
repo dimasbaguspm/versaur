@@ -44,7 +44,6 @@ All files use **kebab-case**. No PascalCase or camelCase filenames.
 
 ```
 packages/core/src/
-├── index.ts                              # Root barrel — re-exports all components + tokens
 ├── tokens/
 │   ├── index.css                         # Aggregator: imports all token files + base resets
 │   ├── colors.css                        # Primitive + semantic color tokens, dark mode overrides
@@ -52,11 +51,16 @@ packages/core/src/
 │   ├── typography.css                    # Font families, sizes, weights, line heights
 │   └── effects.css                       # Radius, shadows, focus ring, transitions
 └── components/
-    └── <name>/
-        ├── <name>.module.css             # All styling via data-attribute selectors
-        ├── <name>.module.css.d.ts        # GENERATED: TypeScript declarations for CSS module
-        ├── <name>.types.generated.ts     # GENERATED: Data-attribute types & namespace
-        └── index.ts                      # Barrel: exports styles + re-exports types
+    ├── primitive/                        # Basic building blocks
+    │   ├── index.ts                      # Exports all primitive components
+    │   └── <name>/
+    │       ├── <name>.module.css         # All styling via data-attribute selectors
+    │       ├── <name>.module.css.d.ts    # GENERATED: TypeScript declarations for CSS module
+    │       ├── <name>.types.generated.ts # GENERATED: Data-attribute types & namespace
+    │       └── index.ts                  # Barrel: exports styles + re-exports types
+    ├── forms/                            # Form controls
+    ├── blocks/                           # Composite components
+    └── utils/                            # Utility components
 ```
 
 ## 4. Token architecture
@@ -572,23 +576,23 @@ The wildcard patterns (`./components/*`, `./styles/*`) automatically cover new c
 
 ## 12. Adding a new component — core-side checklist
 
-- [ ] Create `packages/core/src/components/<name>/<name>.module.css` with:
+- [ ] Determine the appropriate category: `primitive`, `forms`, `blocks`, or `utils`
+- [ ] Create `packages/core/src/components/<category>/<name>/<name>.module.css` with:
   - Base class using design tokens
   - Enumerated data-attribute selectors (`[data-variant="..."]`, `[data-size="..."]`)
   - Boolean data-attribute selectors (`[data-disabled]`, `[data-loading]`)
   - Hover/active guards: `:hover:not([data-disabled]):not([data-loading])`
   - Focus ring: `:focus-visible` with `--focus-ring-*` tokens
-- [ ] Create `packages/core/src/components/<name>/index.ts` barrel:
+- [ ] Create `packages/core/src/components/<category>/<name>/index.ts` barrel:
   ```ts
   export { default as <name>Styles } from './<name>.module.css';
   export * from './<name>.types.generated';
   export type { <Name> } from './<name>.types.generated';
   ```
-- [ ] Export from root `packages/core/src/index.ts`:
+- [ ] Export from category index `packages/core/src/components/<category>/index.ts`:
   ```ts
-  export * from "./components/<name>"
+  export * from "./<name>"
   ```
-- [ ] Add `./<name>.css` entry in `packages/core/package.json` exports
 - [ ] Run `pnpm generate:types` — creates `<name>.types.generated.ts` and `<name>.module.css.d.ts`
 - [ ] Verify: `pnpm generate:types --check` passes
 - [ ] Verify: `pnpm build:packages` completes without errors

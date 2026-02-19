@@ -7,8 +7,9 @@ Framework-agnostic design system using CSS modules + data-attribute state machin
 ```
 packages/core     — @versaur/core: CSS modules, design tokens, no JS runtime
 packages/react    — @versaur/react: React wrappers (peer dep on React 18/19)
+packages/icons    — @versaur/icons: SVG icon library (peer dep on React 18/19)
 packages/tooling  — @versaur/tooling: PostCSS type extraction (private, dev-only)
-apps/docs         — Vite + React SPA with TanStack Router, framework switcher
+apps/react-doc    — Storybook for React component documentation
 ```
 
 Package manager: **pnpm** (workspace protocol `workspace:*` for internal deps).
@@ -16,10 +17,10 @@ Package manager: **pnpm** (workspace protocol `workspace:*` for internal deps).
 ## Commands
 
 ```sh
-pnpm dev              # Start docs dev server
+pnpm dev              # Start Storybook dev server for react-doc
 pnpm generate:types   # Generate TS types from CSS modules (via @versaur/tooling)
-pnpm build:packages   # Build core + react
-pnpm build:docs       # Build docs site
+pnpm build:packages   # Build core + react + icons
+pnpm build:docs       # Build Storybook static site
 pnpm build            # Generate types + build everything
 pnpm release          # Build packages + changeset publish
 ```
@@ -44,13 +45,12 @@ pnpm release          # Build packages + changeset publish
 - ARIA attributes (`aria-pressed`, `aria-busy`, `aria-disabled`) are set directly from props.
 - Components use `forwardRef` for ref forwarding.
 
-### Docs (`apps/docs`)
+### Docs (`apps/react-doc`)
 
-- Vite + React SPA with TanStack Router for file-based routing.
-- Framework switcher lets users toggle code examples between frameworks.
-- Component routes live in `apps/docs/src/routes/docs/components/`.
-- Code blocks use Shiki for syntax highlighting.
-- **Source-first dev resolution**: Vite is configured with `resolve.conditions: ['source']`. Each package declares a `"source"` condition in its `package.json` exports pointing to source files. This means the docs dev server resolves all `@versaur/*` imports from source — no manual aliases needed. Adding new components or subpath exports requires zero alias maintenance.
+- Storybook-based documentation for React components.
+- Component stories live in `apps/react-doc/src/stories/*.stories.tsx`.
+- Uses Storybook's built-in component documentation and interactive playground features.
+- **Source-first dev resolution**: Vite is configured with `resolve.conditions: ['source']`. Each package declares a `"source"` condition in its `package.json` exports pointing to source files. This means Storybook resolves all `@versaur/*` imports from source — no manual aliases needed. Adding new components or subpath exports requires zero alias maintenance.
 
 ## Type generation
 
@@ -66,42 +66,61 @@ button.module.css ──parse──▶ generate-types.ts ──▶ button.types.
 - Generated files (`*.types.generated.ts`, `*.module.css.d.ts`) are committed to git.
 - React components import types from `@versaur/core` and use namespace merging (`Button.Variant`, `Button.Props`).
 
-## Component file structure
+## Component organization
 
-Each component follows this layout in both core and framework packages:
+Components are organized into four categories in both core and React packages:
 
 ```
-packages/core/src/components/button/
-  button.module.css            — All styling via data-attribute selectors
-  button.module.css.d.ts       — GENERATED: TypeScript declarations for CSS module
-  button.types.generated.ts    — GENERATED: Data-attribute types & namespace
+packages/core/src/components/
+  ├── primitive/    — Basic building blocks (Button, Badge, Text, Heading, Avatar, etc.)
+  ├── forms/        — Form controls (TextInput, Select, Checkbox, Radio, etc.)
+  ├── blocks/       — Composite components (Card, Modal, Dialog, Sidebar, etc.)
+  └── utils/        — Utility components
+
+packages/react/src/components/
+  ├── primitive/    — React wrappers for primitive components
+  ├── forms/        — React wrappers for form components
+  ├── blocks/       — React wrappers for block components
+  └── utils/        — React wrappers for utility components
+```
+
+## Component file structure
+
+Each component follows this layout:
+
+```
+packages/core/src/components/<category>/<name>/
+  <name>.module.css            — All styling via data-attribute selectors
+  <name>.module.css.d.ts       — GENERATED: TypeScript declarations for CSS module
+  <name>.types.generated.ts    — GENERATED: Data-attribute types & namespace
   index.ts                     — Re-exports
 
-packages/react/src/components/button/
-  button.tsx              — React component (forwardRef, useDataAttrs)
-  button.types.ts         — Props interface (imports types from @versaur/core)
-  preview.tsx             — Sections array (live previews + code strings + props metadata)
+packages/react/src/components/<category>/<name>/
+  <name>.tsx              — React component (forwardRef, useDataAttrs)
+  <name>.types.ts         — Props interface (imports types from @versaur/core)
   index.ts                — Re-exports + namespace declaration merging
+
+apps/react-doc/src/stories/
+  <name>.stories.tsx      — Storybook stories for component documentation
 ```
 
 ## Adding a new component
 
-1. **Core**: Create `packages/core/src/components/<name>/<name>.module.css` with data-attribute selectors. Add an `index.ts`. Export from `packages/core/src/index.ts`. Add an export entry in `packages/core/package.json`.
+1. **Core**: Create `packages/core/src/components/<category>/<name>/<name>.module.css` with data-attribute selectors. Add an `index.ts`. Export from `packages/core/src/components/<category>/index.ts`.
 2. **Generate types**: Run `pnpm generate:types` — this creates the `.types.generated.ts` and `.module.css.d.ts` files automatically.
-3. **React wrapper**: Create the component in `packages/react/src/components/<name>/` following the button pattern — types file (importing from `@versaur/core`), component using `useDataAttrs`, `preview.tsx` with sections array (live previews, code strings, props metadata, installation), and index with namespace merging. Export from `packages/react/src/index.ts` and add to `packages/react/package.json` exports.
-4. **Docs**: Add a route at `apps/docs/src/routes/docs/components/<name>.tsx`, a doc page at `apps/docs/src/previews/pages/<name>-doc-page.tsx`, and register it in `apps/docs/src/previews/registry.ts`.
+3. **React wrapper**: Create the component in `packages/react/src/components/<category>/<name>/` following the button pattern — types file (importing from `@versaur/core/<category>`), component using `useDataAttrs`, and index with namespace merging. Export from `packages/react/src/components/<category>/index.ts`.
+4. **Storybook**: Add a story file at `apps/react-doc/src/stories/<name>.stories.tsx` with component documentation and examples.
 
 ## Key files
 
-| File                                              | Purpose                                              |
-| ------------------------------------------------- | ---------------------------------------------------- |
-| `packages/core/vite.config.ts`                    | CSS module scoping config (`versaur-[name]-[local]`) |
-| `packages/core/src/tokens/`                       | Design tokens (CSS custom properties)                |
-| `packages/react/src/hooks/use-data-attrs.ts`      | Core hook: props to data-attributes                  |
-| `packages/react/src/components/button/button.tsx` | Reference component implementation                   |
-| `apps/docs/src/components/framework-switcher.tsx` | Framework toggle for docs                            |
-| `apps/docs/src/components/component-preview.tsx`  | Collapsible code panel with Shiki highlighting       |
-| `apps/docs/src/components/props-table.tsx`        | Reusable API reference table                         |
-| `packages/tooling/src/generate-types.ts`          | PostCSS type extraction entry point                  |
-| `packages/tooling/src/css-parser.ts`              | CSS data-attribute selector parser                   |
-| `packages/tooling/src/codegen.ts`                 | TypeScript codegen from parsed CSS                   |
+| File                                                       | Purpose                                              |
+| ---------------------------------------------------------- | ---------------------------------------------------- |
+| `packages/core/vite.config.ts`                             | CSS module scoping config (`versaur-[name]-[local]`) |
+| `packages/core/src/tokens/`                                | Design tokens (CSS custom properties)                |
+| `packages/react/src/hooks/use-data-attrs.ts`               | Core hook: props to data-attributes                  |
+| `packages/react/src/components/primitive/button/button.tsx`| Reference component implementation                   |
+| `packages/icons/src/index.ts`                              | Icon library registry and exports                    |
+| `apps/react-doc/src/stories/*.stories.tsx`                 | Storybook component documentation                    |
+| `packages/tooling/src/generate-types.ts`                   | PostCSS type extraction entry point                  |
+| `packages/tooling/src/css-parser.ts`                       | CSS data-attribute selector parser                   |
+| `packages/tooling/src/codegen.ts`                          | TypeScript codegen from parsed CSS                   |
