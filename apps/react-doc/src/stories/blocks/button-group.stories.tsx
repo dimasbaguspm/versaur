@@ -64,7 +64,7 @@ export const Vertical: Story = {
   args: {
     direction: "vertical",
     gap: "md",
-    align: "stretch",
+    align: "start",
   },
 }
 
