@@ -202,6 +202,35 @@
   box-shadow: var(--shadow-sm);
 }
 
+/* ============================================
+   OUTLINE VARIANT - Bordered Button
+   ============================================ */
+.button[data-variant="outline"] {
+  --_bg: var(--vers-comp-button-outline-bg, transparent);
+  --_color: var(--vers-comp-button-outline-color, var(--color-text-primary));
+  --_border-color: var(--vers-comp-button-outline-border-color, var(--color-neutral));
+  --_focus-ring-color: var(--vers-comp-button-outline-focus-ring-color, var(--color-neutral));
+}
+
+.button[data-variant="outline"]:hover:not([data-disabled]):not([data-loading]) {
+  --_bg: var(--vers-comp-button-outline-hover-bg, transparent);
+  --_color: var(--vers-comp-button-outline-hover-color, var(--color-text-primary));
+  --_border-color: var(--vers-comp-button-outline-hover-border-color, var(--color-neutral-hover));
+}
+
+.button[data-variant="outline"]:active:not([data-disabled]):not([data-loading]) {
+  --_bg: var(--vers-comp-button-outline-active-bg, var(--color-neutral-light));
+  --_color: var(--vers-comp-button-outline-active-color, var(--color-text-primary));
+  --_border-color: var(--vers-comp-button-outline-active-border-color, var(--color-neutral-hover));
+}
+
+.button[data-variant="outline"][aria-pressed="true"] {
+  --_bg: var(--vers-comp-button-outline-pressed-bg, var(--color-neutral-light));
+  --_color: var(--vers-comp-button-outline-pressed-color, var(--color-text-primary));
+  --_border-color: var(--vers-comp-button-outline-pressed-border-color, var(--color-neutral-hover));
+  box-shadow: var(--shadow-sm);
+}
+
 /* State - Disabled */
 .button[data-disabled] {
   opacity: 0.5;

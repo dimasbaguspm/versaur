@@ -7,6 +7,8 @@ export interface TextAreaDataAttrs {
   resizable?: TextAreaResizable;
   disabled?: boolean;
   invalid?: boolean;
+  maxRows?: boolean;
+  minRows?: boolean;
   readOnly?: boolean;
 };
 

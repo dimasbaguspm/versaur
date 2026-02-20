@@ -2,7 +2,7 @@
 // Source: button-icon.module.css
 
 export type ButtonIconSize = 'medium' | 'small';
-export type ButtonIconVariant = 'danger' | 'ghost' | 'primary' | 'secondary';
+export type ButtonIconVariant = 'danger' | 'ghost' | 'outline' | 'primary' | 'secondary';
 export type ButtonIconLoadingIcon = 'loader';
 
 export interface ButtonIconDataAttrs {

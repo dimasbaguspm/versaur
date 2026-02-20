@@ -41,7 +41,7 @@ export const Default: Story = {
 }
 
 /**
- * Showcase all available color variants: primary, secondary, ghost, and danger.
+ * Showcase all available color variants: primary, secondary, outline, ghost, and danger.
  */
 export const Variants: Story = {
   render: (args) => (
@@ -51,6 +51,9 @@ export const Variants: Story = {
       </Button>
       <Button {...args} variant="secondary">
         Secondary
+      </Button>
+      <Button {...args} variant="outline">
+        Outline
       </Button>
       <Button {...args} variant="ghost">
         Ghost

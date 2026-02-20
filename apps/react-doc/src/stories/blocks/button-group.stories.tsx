@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { Button } from "@versaur/react/primitive"
 import { ButtonGroup } from "@versaur/react/blocks"
+import { Button } from "@versaur/react/primitive"
 
 const meta = {
   argTypes: {
@@ -40,6 +40,7 @@ export const Default: Story = {
     <ButtonGroup {...args}>
       <Button variant="primary">Save</Button>
       <Button variant="secondary">Cancel</Button>
+      <Button variant="outline">Info</Button>
       <Button variant="ghost">Reset</Button>
     </ButtonGroup>
   ),
@@ -59,6 +60,7 @@ export const Direction: Story = {
       <ButtonGroup {...args} direction="horizontal">
         <Button variant="primary">Save</Button>
         <Button variant="secondary">Cancel</Button>
+        <Button variant="outline">Info</Button>
         <Button variant="ghost">Reset</Button>
       </ButtonGroup>
       <ButtonGroup {...args} direction="vertical">
@@ -67,6 +69,9 @@ export const Direction: Story = {
         </Button>
         <Button variant="secondary" style={{ width: "100%" }}>
           Edit
+        </Button>
+        <Button variant="outline" style={{ width: "100%" }}>
+          Info
         </Button>
         <Button variant="danger" style={{ width: "100%" }}>
           Delete

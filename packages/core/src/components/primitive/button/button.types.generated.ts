@@ -3,7 +3,7 @@
 
 export type ButtonIconConfig = 'both' | 'both-text' | 'left' | 'left-text' | 'right' | 'right-text';
 export type ButtonSize = 'medium' | 'small';
-export type ButtonVariant = 'danger' | 'ghost' | 'primary' | 'secondary';
+export type ButtonVariant = 'danger' | 'ghost' | 'outline' | 'primary' | 'secondary';
 export type ButtonLoadingIcon = 'loader';
 
 export interface ButtonDataAttrs {

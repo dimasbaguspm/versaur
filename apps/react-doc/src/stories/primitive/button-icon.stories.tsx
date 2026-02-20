@@ -16,7 +16,7 @@ const meta = {
     },
     variant: {
       control: "select",
-      options: ["primary", "secondary", "ghost", "danger"],
+      options: ["primary", "secondary", "outline", "ghost", "danger"],
     },
   },
   component: ButtonIcon,
@@ -46,13 +46,14 @@ export const Default: Story = {
 }
 
 /**
- * Showcase all available color variants: primary, secondary, ghost, and danger.
+ * Showcase all available color variants: primary, secondary, outline, ghost, and danger.
  */
 export const Variants: Story = {
   render: (args) => (
     <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
       <ButtonIcon {...args} variant="primary" />
       <ButtonIcon {...args} variant="secondary" />
+      <ButtonIcon {...args} variant="outline" />
       <ButtonIcon {...args} variant="ghost" />
       <ButtonIcon {...args} variant="danger" />
     </div>
