@@ -31,3 +31,4 @@ export { Tooltip } from "./tooltip"
 export type { TooltipProps } from "./tooltip"
 
 export { Icon } from "./icon"
+export type { IconProps, IconSize, IconIntent } from "./icon"
