@@ -11,13 +11,13 @@
 
   /* Sizing — private tokens */
   --_height: var(--vers-comp-bottom-bar-height, 4rem);
-  --_bg: var(--vers-comp-bottom-bar-bg, var(--color-neutral-soft));
+  --_bg: var(--vers-comp-bottom-bar-bg, var(--color-background));
   --_text-color: var(--vers-comp-bottom-bar-text-color, var(--color-ghost));
   --_border-color: var(--vers-comp-bottom-bar-border-color, var(--color-neutral-hover));
   --_transition-duration: var(--vers-comp-bottom-bar-transition-duration, var(--transition-base));
   --_item-padding: var(--vers-comp-bottom-bar-item-padding, var(--spacing-3));
   --_item-gap: var(--vers-comp-bottom-bar-item-gap, var(--spacing-2));
-  --_icon-size: var(--vers-comp-bottom-bar-icon-size, 1.25rem);
+  --_icon-size: var(--vers-comp-bottom-bar-icon-size, 1.5rem);
   --_focus-bg: var(--vers-comp-bottom-bar-focus-bg, var(--color-neutral-light));
   --_active-bg: var(--vers-comp-bottom-bar-active-bg, var(--color-primary-soft));
   --_active-text: var(--vers-comp-bottom-bar-active-text, var(--color-primary));
@@ -66,8 +66,7 @@
   pointer-events: none;
 }
 
-.bottom-bar-item[data-active=""] {
-  background-color: var(--_active-bg);
+.bottom-bar-item[data-active] {
   color: var(--_active-text);
   font-weight: var(--font-weight-semibold);
 }
@@ -89,6 +88,7 @@
   justify-content: center;
   width: var(--_icon-size);
   height: var(--_icon-size);
+  color: inherit;
 }
 
 .bottom-bar-item-text {

@@ -15,6 +15,6 @@ export interface BottomBarItemProps extends React.ButtonHTMLAttributes<HTMLButto
   href?: string
   active?: boolean
   disabled?: boolean
-  icon?: ReactNode
+  icon: ReactNode
   children?: ReactNode
 }
