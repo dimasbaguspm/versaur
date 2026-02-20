@@ -39,207 +39,111 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+/**
+ * Default text component rendered as a span
+ */
 export const Default: Story = {
   args: {
     children: "This is a default text component",
   },
 }
 
-export const Paragraph: Story = {
-  args: {
-    as: "p",
-    children: "This is rendered as a paragraph element.",
-    size: "base",
-  },
+/**
+ * All available HTML element types demonstrated
+ */
+export const HtmlElements: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <Text {...args} as="p">Rendered as paragraph (p)</Text>
+      <Text {...args} as="span">Rendered as span</Text>
+      <Text {...args} as="small">Rendered as small</Text>
+      <Text {...args} as="em">Rendered as emphasis (em)</Text>
+      <Text {...args} as="strong">Rendered as strong</Text>
+    </div>
+  ),
 }
 
-export const Small: Story = {
-  args: {
-    as: "small",
-    children: "This is small text",
-    size: "sm",
-  },
+/**
+ * All available sizes demonstrated
+ */
+export const Sizes: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <Text {...args} size="xs">Extra Small (xs)</Text>
+      <Text {...args} size="sm">Small (sm)</Text>
+      <Text {...args} size="base">Base</Text>
+      <Text {...args} size="lg">Large (lg)</Text>
+      <Text {...args} size="xl">Extra Large (xl)</Text>
+      <Text {...args} size="2xl">2X Large (2xl)</Text>
+    </div>
+  ),
 }
 
-export const Span: Story = {
-  args: {
-    as: "span",
-    children: "This is inline text",
-  },
+/**
+ * All available font weights demonstrated
+ */
+export const Weights: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <Text {...args} weight="normal">Normal Weight</Text>
+      <Text {...args} weight="medium">Medium Weight</Text>
+      <Text {...args} weight="semibold">Semibold Weight</Text>
+      <Text {...args} weight="bold">Bold Weight</Text>
+    </div>
+  ),
 }
 
-export const Strong: Story = {
-  args: {
-    as: "strong",
-    children: "This is strong text",
-    weight: "bold",
-  },
+/**
+ * All available color intents demonstrated
+ */
+export const Intents: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <Text {...args} intent="default">Default Intent</Text>
+      <Text {...args} intent="primary">Primary Intent</Text>
+      <Text {...args} intent="secondary">Secondary Intent</Text>
+      <Text {...args} intent="success">Success Intent</Text>
+      <Text {...args} intent="warning">Warning Intent</Text>
+      <Text {...args} intent="danger">Danger Intent</Text>
+      <Text {...args} intent="gray">Gray Intent</Text>
+      <Text {...args} intent="black">Black Intent</Text>
+      <Text {...args} intent="white" style={{ backgroundColor: "#333", padding: "0.5rem" }}>White Intent</Text>
+    </div>
+  ),
 }
 
-export const Emphasis: Story = {
-  args: {
-    as: "em",
-    children: "This is emphasized text",
-  },
+/**
+ * All available text case transformations demonstrated
+ */
+export const Cases: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <Text {...args} case="lower">lowercase text (lower)</Text>
+      <Text {...args} case="upper">uppercase text (upper)</Text>
+      <Text {...args} case="capitalize">capitalize first letter (capitalize)</Text>
+    </div>
+  ),
 }
 
-export const ExtraSmall: Story = {
-  args: {
-    children: "Extra small text",
-    size: "xs",
-  },
+/**
+ * All available text decorations demonstrated
+ */
+export const Transforms: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <Text {...args} transform="underline">Underlined text</Text>
+      <Text {...args} transform="overline">Overlined text</Text>
+      <Text {...args} transform="line-through">Strikethrough text</Text>
+    </div>
+  ),
 }
 
-export const SmallText: Story = {
-  args: {
-    children: "Small text",
-    size: "sm",
-  },
-}
-
-export const BaseText: Story = {
-  args: {
-    children: "Base size text",
-    size: "base",
-  },
-}
-
-export const LargeText: Story = {
-  args: {
-    children: "Large text",
-    size: "lg",
-  },
-}
-
-export const XLargeText: Story = {
-  args: {
-    children: "Extra large text",
-    size: "xl",
-  },
-}
-
-export const TwoXLargeText: Story = {
-  args: {
-    children: "Double extra large text",
-    size: "2xl",
-  },
-}
-
-export const NormalWeight: Story = {
-  args: {
-    children: "Normal weight text",
-    weight: "normal",
-  },
-}
-
-export const MediumWeight: Story = {
-  args: {
-    children: "Medium weight text",
-    weight: "medium",
-  },
-}
-
-export const SemiboldWeight: Story = {
-  args: {
-    children: "Semibold weight text",
-    weight: "semibold",
-  },
-}
-
-export const BoldWeight: Story = {
-  args: {
-    children: "Bold weight text",
-    weight: "bold",
-  },
-}
-
-export const PrimaryIntent: Story = {
-  args: {
-    children: "Primary color text",
-    intent: "primary",
-  },
-}
-
-export const SecondaryIntent: Story = {
-  args: {
-    children: "Secondary color text",
-    intent: "secondary",
-  },
-}
-
-export const SuccessIntent: Story = {
-  args: {
-    children: "Success color text",
-    intent: "success",
-  },
-}
-
-export const WarningIntent: Story = {
-  args: {
-    children: "Warning color text",
-    intent: "warning",
-  },
-}
-
-export const DangerIntent: Story = {
-  args: {
-    children: "Danger color text",
-    intent: "danger",
-  },
-}
-
-export const GrayIntent: Story = {
-  args: {
-    children: "Gray color text",
-    intent: "gray",
-  },
-}
-
-export const Uppercase: Story = {
-  args: {
-    children: "uppercase text",
-    case: "upper",
-  },
-}
-
-export const Lowercase: Story = {
-  args: {
-    children: "LOWERCASE TEXT",
-    case: "lower",
-  },
-}
-
-export const Capitalize: Story = {
-  args: {
-    children: "capitalize first letter",
-    case: "capitalize",
-  },
-}
-
-export const Underline: Story = {
-  args: {
-    children: "Underlined text",
-    transform: "underline",
-  },
-}
-
-export const Overline: Story = {
-  args: {
-    children: "Overlined text",
-    transform: "overline",
-  },
-}
-
-export const LineThrough: Story = {
-  args: {
-    children: "Strikethrough text",
-    transform: "line-through",
-  },
-}
-
+/**
+ * Combined styling example with multiple props
+ */
 export const Combined: Story = {
   args: {
-    children: "styled text",
+    children: "Styled text",
     size: "lg",
     weight: "bold",
     intent: "primary",
