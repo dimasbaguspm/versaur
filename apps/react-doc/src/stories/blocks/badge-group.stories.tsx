@@ -32,7 +32,10 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Horizontal: Story = {
+/**
+ * Default badge group with medium gap and horizontal direction.
+ */
+export const Default: Story = {
   render: (args) => (
     <BadgeGroup {...args}>
       <Badge variant="primary">React</Badge>
@@ -46,48 +49,83 @@ export const Horizontal: Story = {
   },
 }
 
-export const Vertical: Story = {
+/**
+ * Showcase horizontal and vertical layout directions.
+ */
+export const Direction: Story = {
   render: (args) => (
-    <BadgeGroup {...args}>
-      <Badge variant="danger">Error</Badge>
-      <Badge variant="warning">Warning</Badge>
-      <Badge variant="info">Info</Badge>
-    </BadgeGroup>
+    <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start" }}>
+      <BadgeGroup {...args} direction="horizontal">
+        <Badge variant="primary">React</Badge>
+        <Badge variant="secondary">TypeScript</Badge>
+        <Badge variant="success">Active</Badge>
+      </BadgeGroup>
+      <BadgeGroup {...args} direction="vertical">
+        <Badge variant="danger">Error</Badge>
+        <Badge variant="warning">Warning</Badge>
+        <Badge variant="info">Info</Badge>
+      </BadgeGroup>
+    </div>
   ),
   args: {
-    direction: "vertical",
     gap: "md",
   },
 }
 
-export const SmallGap: Story = {
+/**
+ * Showcase all available gaps: extra small to large.
+ */
+export const Gap: Story = {
   render: (args) => (
-    <BadgeGroup {...args}>
-      <Badge variant="primary">Tag 1</Badge>
-      <Badge variant="secondary">Tag 2</Badge>
-      <Badge variant="outline">Tag 3</Badge>
-    </BadgeGroup>
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      <BadgeGroup {...args} gap="xs">
+        <Badge variant="primary">Tag 1</Badge>
+        <Badge variant="secondary">Tag 2</Badge>
+        <Badge variant="outline">Tag 3</Badge>
+      </BadgeGroup>
+      <BadgeGroup {...args} gap="sm">
+        <Badge variant="primary">Tag 1</Badge>
+        <Badge variant="secondary">Tag 2</Badge>
+        <Badge variant="outline">Tag 3</Badge>
+      </BadgeGroup>
+      <BadgeGroup {...args} gap="md">
+        <Badge variant="primary">Tag 1</Badge>
+        <Badge variant="secondary">Tag 2</Badge>
+        <Badge variant="outline">Tag 3</Badge>
+      </BadgeGroup>
+      <BadgeGroup {...args} gap="lg">
+        <Badge variant="success">Completed</Badge>
+        <Badge variant="info">In Progress</Badge>
+      </BadgeGroup>
+    </div>
   ),
   args: {
-    gap: "xs",
     direction: "horizontal",
   },
 }
 
-export const LargeGap: Story = {
+/**
+ * Showcase different alignment options with full-width layout.
+ */
+export const Alignment: Story = {
   render: (args) => (
-    <BadgeGroup {...args}>
-      <Badge variant="success">Completed</Badge>
-      <Badge variant="info">In Progress</Badge>
+    <BadgeGroup {...args} style={{ width: "100%" }}>
+      <Badge variant="primary">React</Badge>
+      <Badge variant="secondary">TypeScript</Badge>
+      <Badge variant="success">Active</Badge>
     </BadgeGroup>
   ),
   args: {
-    gap: "lg",
+    align: "space-evenly",
     direction: "horizontal",
+    gap: "md",
   },
 }
 
-export const WithWrap: Story = {
+/**
+ * Demonstrate wrapping behavior with constrained width.
+ */
+export const Wrap: Story = {
   render: (args) => (
     <BadgeGroup {...args} style={{ width: "300px" }}>
       <Badge variant="primary">JavaScript</Badge>
@@ -104,6 +142,9 @@ export const WithWrap: Story = {
   },
 }
 
+/**
+ * Showcase all available badge variants in a single group.
+ */
 export const AllVariants: Story = {
   render: (args) => (
     <BadgeGroup {...args}>

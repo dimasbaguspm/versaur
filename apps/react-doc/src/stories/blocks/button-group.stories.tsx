@@ -32,7 +32,10 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Horizontal: Story = {
+/**
+ * Default button group with medium gap and horizontal direction.
+ */
+export const Default: Story = {
   render: (args) => (
     <ButtonGroup {...args}>
       <Button variant="primary">Save</Button>
@@ -47,57 +50,72 @@ export const Horizontal: Story = {
   },
 }
 
-export const Vertical: Story = {
+/**
+ * Showcase horizontal and vertical layout directions.
+ */
+export const Direction: Story = {
   render: (args) => (
-    <ButtonGroup {...args}>
-      <Button variant="primary" style={{ width: "100%" }}>
-        Create
-      </Button>
-      <Button variant="secondary" style={{ width: "100%" }}>
-        Edit
-      </Button>
-      <Button variant="danger" style={{ width: "100%" }}>
-        Delete
-      </Button>
-    </ButtonGroup>
+    <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start" }}>
+      <ButtonGroup {...args} direction="horizontal">
+        <Button variant="primary">Save</Button>
+        <Button variant="secondary">Cancel</Button>
+        <Button variant="ghost">Reset</Button>
+      </ButtonGroup>
+      <ButtonGroup {...args} direction="vertical">
+        <Button variant="primary" style={{ width: "100%" }}>
+          Create
+        </Button>
+        <Button variant="secondary" style={{ width: "100%" }}>
+          Edit
+        </Button>
+        <Button variant="danger" style={{ width: "100%" }}>
+          Delete
+        </Button>
+      </ButtonGroup>
+    </div>
   ),
   args: {
-    direction: "vertical",
     gap: "md",
-    align: "start",
   },
 }
 
-export const SmallGap: Story = {
+/**
+ * Showcase all available gaps: extra small to large.
+ */
+export const Gap: Story = {
   render: (args) => (
-    <ButtonGroup {...args}>
-      <Button variant="primary">One</Button>
-      <Button variant="primary">Two</Button>
-      <Button variant="primary">Three</Button>
-    </ButtonGroup>
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      <ButtonGroup {...args} gap="xs">
+        <Button variant="primary">One</Button>
+        <Button variant="primary">Two</Button>
+        <Button variant="primary">Three</Button>
+      </ButtonGroup>
+      <ButtonGroup {...args} gap="sm">
+        <Button variant="primary">One</Button>
+        <Button variant="primary">Two</Button>
+        <Button variant="primary">Three</Button>
+      </ButtonGroup>
+      <ButtonGroup {...args} gap="md">
+        <Button variant="primary">One</Button>
+        <Button variant="primary">Two</Button>
+        <Button variant="primary">Three</Button>
+      </ButtonGroup>
+      <ButtonGroup {...args} gap="lg">
+        <Button variant="secondary">Previous</Button>
+        <Button variant="secondary">Next</Button>
+      </ButtonGroup>
+    </div>
   ),
   args: {
-    gap: "xs",
     direction: "horizontal",
     align: "center",
   },
 }
 
-export const LargeGap: Story = {
-  render: (args) => (
-    <ButtonGroup {...args}>
-      <Button variant="secondary">Previous</Button>
-      <Button variant="secondary">Next</Button>
-    </ButtonGroup>
-  ),
-  args: {
-    gap: "lg",
-    direction: "horizontal",
-    align: "center",
-  },
-}
-
-export const SpaceEvenly: Story = {
+/**
+ * Showcase different alignment options with full-width layout.
+ */
+export const Alignment: Story = {
   render: (args) => (
     <ButtonGroup {...args} style={{ width: "100%" }}>
       <Button variant="ghost">Left</Button>
@@ -112,7 +130,10 @@ export const SpaceEvenly: Story = {
   },
 }
 
-export const WithWrap: Story = {
+/**
+ * Demonstrate wrapping behavior with constrained width.
+ */
+export const Wrap: Story = {
   render: (args) => (
     <ButtonGroup {...args} style={{ width: "300px" }}>
       <Button variant="primary">Button 1</Button>
