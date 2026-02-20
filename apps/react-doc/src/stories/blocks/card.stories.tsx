@@ -1,9 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { Button, Text } from "@versaur/react/primitive"
-import { Card } from "@versaur/react/blocks"
+import { BadgeGroup, Card } from "@versaur/react/blocks"
+import { Avatar, Badge, Button, Heading, Text } from "@versaur/react/primitive"
 
 const meta = {
   argTypes: {
+    as: {
+      control: "select",
+      options: ["div", "button"],
+    },
     border: {
       control: "select",
       options: ["all-rounded", "horizontal", "vertical"],
@@ -19,11 +23,17 @@ const meta = {
   },
   tags: ["autodocs"],
   title: "Blocks/Card",
+  args: {
+    children: "Card",
+  },
 } satisfies Meta<typeof Card>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
+/**
+ * Default card with medium size and standard border.
+ */
 export const Default: Story = {
   render: (args) => (
     <Card {...args}>
@@ -37,27 +47,105 @@ export const Default: Story = {
   },
 }
 
-export const WithHeader: Story = {
+/**
+ * Showcase all available sizes: xs, sm, md, lg, and xl.
+ */
+export const Sizes: Story = {
   render: (args) => (
-    <Card {...args}>
-      <Card.Header>
-        <Text weight="bold">Card Title</Text>
-      </Card.Header>
-      <Card.Body>
-        <Text>Card content goes here</Text>
-      </Card.Body>
-    </Card>
+    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <Card {...args} size="xs">
+        <Card.Body>
+          <Text size="xs">XS Card</Text>
+        </Card.Body>
+      </Card>
+      <Card {...args} size="sm">
+        <Card.Body>
+          <Text size="sm">Small Card</Text>
+        </Card.Body>
+      </Card>
+      <Card {...args} size="md">
+        <Card.Body>
+          <Text>Medium Card</Text>
+        </Card.Body>
+      </Card>
+      <Card {...args} size="lg">
+        <Card.Body>
+          <Text>Large Card</Text>
+        </Card.Body>
+      </Card>
+      <Card {...args} size="xl">
+        <Card.Body>
+          <Text>Extra Large Card</Text>
+        </Card.Body>
+      </Card>
+    </div>
+  ),
+}
+
+/**
+ * Showcase all available border variants: all-rounded, horizontal, vertical, and individual sides.
+ */
+export const Borders: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+      <Card {...args} border="all-rounded">
+        <Card.Body>
+          <Text>All Rounded</Text>
+        </Card.Body>
+      </Card>
+      <Card {...args} border="horizontal">
+        <Card.Body>
+          <Text>Horizontal</Text>
+        </Card.Body>
+      </Card>
+      <Card {...args} border="vertical">
+        <Card.Body>
+          <Text>Vertical</Text>
+        </Card.Body>
+      </Card>
+      <Card {...args} border="top">
+        <Card.Body>
+          <Text>Top</Text>
+        </Card.Body>
+      </Card>
+      <Card {...args} border="bottom">
+        <Card.Body>
+          <Text>Bottom</Text>
+        </Card.Body>
+      </Card>
+      <Card {...args} border="left">
+        <Card.Body>
+          <Text>Left</Text>
+        </Card.Body>
+      </Card>
+      <Card {...args} border="right">
+        <Card.Body>
+          <Text>Right</Text>
+        </Card.Body>
+      </Card>
+    </div>
   ),
   args: {
     size: "md",
   },
 }
 
-export const WithFooter: Story = {
+/**
+ * Showcase card regions: Header, Body, and Footer composition.
+ */
+export const Regions: Story = {
   render: (args) => (
     <Card {...args}>
-      <Card.Body>
-        <Text>Content with action footer</Text>
+      <Card.Header justify="between" gap="md">
+        <Heading as="h3" size="base">
+          Card Title
+        </Heading>
+        <Badge variant="info" size="small">
+          New
+        </Badge>
+      </Card.Header>
+      <Card.Body gap="md">
+        <Text>Card content in body region</Text>
       </Card.Body>
       <Card.Footer justify="end" gap="sm">
         <Button variant="secondary" size="small">
@@ -74,175 +162,97 @@ export const WithFooter: Story = {
   },
 }
 
-export const Complete: Story = {
+/**
+ * Card rendered as interactive button with click handler.
+ */
+export const Interactive: Story = {
+  render: (args) => (
+    <Card {...args} onClick={() => alert("Card clicked!")}>
+      <Card.Body gap="md">
+        <Heading as="h4" size="sm">
+          Interactive Card
+        </Heading>
+        <Text size="sm">Click me! Supports hover effects and click handlers</Text>
+      </Card.Body>
+    </Card>
+  ),
+  args: {
+    as: "button",
+    size: "md",
+  },
+}
+
+/**
+ * Real-world example: User profile card with avatar, info, and actions.
+ */
+export const UserProfile: Story = {
   render: (args) => (
     <Card {...args}>
       <Card.Header justify="between" gap="md">
-        <Text weight="bold" size="lg">
-          Product Card
-        </Text>
-        <span>★★★★★</span>
+        <div style={{ display: "flex", gap: "var(--spacing-3)", alignItems: "center" }}>
+          <Avatar size="md" shape="circle">
+            AC
+          </Avatar>
+          <div>
+            <Heading as="h4" size="sm">
+              Alice Chen
+            </Heading>
+            <Text size="xs" intent="gray">
+              Product Designer
+            </Text>
+          </div>
+        </div>
+        <Badge variant="success" size="small">
+          Online
+        </Badge>
       </Card.Header>
-      <Card.Body gap="md">
-        <Text>High-quality product with excellent features</Text>
-        <Text size="sm" intent="gray">
-          Price: $99.99
-        </Text>
+      <Card.Body gap="sm">
+        <Text size="sm">San Francisco, CA • 2 years experience</Text>
       </Card.Body>
-      <Card.Footer justify="end">
+      <Card.Footer justify="between" gap="sm">
+        <Button variant="secondary" size="small">
+          Message
+        </Button>
         <Button variant="primary" size="small">
-          Add to Cart
+          View Profile
         </Button>
       </Card.Footer>
     </Card>
   ),
   args: {
-    size: "lg",
+    size: "md",
   },
 }
 
-export const ExtraSmall: Story = {
+/**
+ * Real-world example: Transaction/expense card with amount, details, and status.
+ */
+export const Transaction: Story = {
   render: (args) => (
-    <Card {...args}>
-      <Card.Body>
-        <Text size="sm">XS Card</Text>
-      </Card.Body>
-    </Card>
-  ),
-  args: {
-    size: "xs",
-  },
-}
-
-export const Small: Story = {
-  render: (args) => (
-    <Card {...args}>
-      <Card.Header>
-        <Text>Small Card</Text>
+    <Card {...args} border={undefined}>
+      <Card.Header justify="between" gap="md">
+        <div>
+          <Heading as="h3" size="lg">
+            Rp 1.000.000
+          </Heading>
+          <Text size="xs" intent="gray">
+            Lain-lain • Bank Mandiri • TF KP2KS
+          </Text>
+        </div>
       </Card.Header>
-      <Card.Body>
-        <Text size="sm">Small sized card content</Text>
-      </Card.Body>
+      <Card.Footer justify="between" gap="sm">
+        <BadgeGroup>
+          <Badge variant="warning" size="small">
+            Expense
+          </Badge>
+        </BadgeGroup>
+        <Text size="xs" intent="gray">
+          11:02
+        </Text>
+      </Card.Footer>
     </Card>
   ),
   args: {
     size: "sm",
-  },
-}
-
-export const Medium: Story = {
-  render: (args) => (
-    <Card {...args}>
-      <Card.Header>
-        <Text weight="bold">Medium Card</Text>
-      </Card.Header>
-      <Card.Body>
-        <Text>Medium sized card with standard content</Text>
-      </Card.Body>
-    </Card>
-  ),
-  args: {
-    size: "md",
-  },
-}
-
-export const Large: Story = {
-  render: (args) => (
-    <Card {...args}>
-      <Card.Header justify="start" gap="md">
-        <Text weight="bold" size="lg">
-          Large Card
-        </Text>
-      </Card.Header>
-      <Card.Body gap="md">
-        <Text>Large card with more space</Text>
-        <Text size="sm" intent="gray">
-          Additional content and details
-        </Text>
-      </Card.Body>
-    </Card>
-  ),
-  args: {
-    size: "lg",
-  },
-}
-
-export const ExtraLarge: Story = {
-  render: (args) => (
-    <Card {...args}>
-      <Card.Header justify="between">
-        <Text weight="bold" size="xl">
-          Extra Large Card
-        </Text>
-        <Button variant="ghost" size="small">
-          More
-        </Button>
-      </Card.Header>
-      <Card.Body gap="lg">
-        <Text>Extra large card with plenty of space</Text>
-        <Text size="sm">Perfect for featured content</Text>
-      </Card.Body>
-      <Card.Footer justify="center">
-        <Button variant="primary">View Details</Button>
-      </Card.Footer>
-    </Card>
-  ),
-  args: {
-    size: "xl",
-  },
-}
-
-export const AllRounded: Story = {
-  render: (args) => (
-    <Card {...args}>
-      <Card.Body>
-        <Text>All rounded border style</Text>
-      </Card.Body>
-    </Card>
-  ),
-  args: {
-    border: "all-rounded",
-    size: "md",
-  },
-}
-
-export const Horizontal: Story = {
-  render: (args) => (
-    <Card {...args}>
-      <Card.Body>
-        <Text>Horizontal border variant</Text>
-      </Card.Body>
-    </Card>
-  ),
-  args: {
-    border: "horizontal",
-    size: "md",
-  },
-}
-
-export const Vertical: Story = {
-  render: (args) => (
-    <Card {...args}>
-      <Card.Body>
-        <Text>Vertical border variant</Text>
-      </Card.Body>
-    </Card>
-  ),
-  args: {
-    border: "vertical",
-    size: "md",
-  },
-}
-
-export const AsButton: Story = {
-  render: (args) => (
-    <Card {...args} as="button" onClick={() => alert("Card clicked!")}>
-      <Card.Body>
-        <Text>Clickable card button</Text>
-      </Card.Body>
-    </Card>
-  ),
-  args: {
-    size: "md",
   },
 }

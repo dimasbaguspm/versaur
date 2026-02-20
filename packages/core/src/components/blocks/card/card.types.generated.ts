@@ -2,7 +2,7 @@
 // Source: card.module.css
 
 export type CardSize = 'lg' | 'md' | 'sm' | 'xl' | 'xs';
-export type CardBorder = 'all-rounded' | 'horizontal' | 'vertical';
+export type CardBorder = 'all-rounded' | 'bottom' | 'horizontal' | 'left' | 'right' | 'top' | 'vertical';
 export type CardInteractive = 'false' | 'true';
 export type CardJustify = 'around' | 'between' | 'center' | 'end' | 'start';
 export type CardGap = 'lg' | 'md' | 'none' | 'sm' | 'xs';

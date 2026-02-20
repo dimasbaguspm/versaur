@@ -3,8 +3,15 @@
   --_padding: var(--vers-comp-card-padding, var(--spacing-4));
   --_gap: var(--vers-comp-card-gap, var(--spacing-3));
   --_border-radius: var(--vers-comp-card-border-radius, 0);
-  --_border: var(--vers-comp-card-border, 1px solid var(--color-border));
   --_bg: var(--vers-comp-card-bg, var(--color-background));
+
+  /* Border configuration */
+  --_border-width: 1px;
+  --_border-color: var(--color-border);
+  --_border-top: none;
+  --_border-bottom: none;
+  --_border-left: none;
+  --_border-right: none;
 
   /* Interactive states - only applied when data-interactive="true" */
   --_cursor: var(--vers-comp-card-cursor, pointer);
@@ -17,7 +24,10 @@
   background-color: var(--_bg);
   border-radius: var(--_border-radius);
   padding: var(--_padding);
-  border: var(--_border);
+  border-top: var(--_border-top);
+  border-bottom: var(--_border-bottom);
+  border-left: var(--_border-left);
+  border-right: var(--_border-right);
   outline: none;
 }
 
@@ -44,26 +54,39 @@
 
 /* Border style variants */
 .card[data-border="all-rounded"] {
-  --_border: var(--vers-comp-card-border-all-rounded, 1px solid var(--color-border));
+  --_border-top: var(--vers-comp-card-border-all-rounded, var(--_border-width) var(--_border-style, solid) var(--_border-color));
+  --_border-bottom: var(--vers-comp-card-border-all-rounded, var(--_border-width) var(--_border-style, solid) var(--_border-color));
+  --_border-left: var(--vers-comp-card-border-all-rounded, var(--_border-width) var(--_border-style, solid) var(--_border-color));
+  --_border-right: var(--vers-comp-card-border-all-rounded, var(--_border-width) var(--_border-style, solid) var(--_border-color));
   border-radius: var(--_border-radius);
 }
 
-.card[data-border="vertical"] {
-  --_border: var(--vers-comp-card-border-vertical, 1px solid var(--color-border));
-  border-left: 1px solid var(--color-border);
-  border-right: 1px solid var(--color-border);
-  border-top: none;
-  border-bottom: none;
+.card[data-border="horizontal"] {
+  --_border-top: var(--vers-comp-card-border-horizontal, var(--_border-width) solid var(--_border-color));
+  --_border-bottom: var(--vers-comp-card-border-horizontal, var(--_border-width) solid var(--_border-color));
   border-radius: 0;
 }
 
-.card[data-border="horizontal"] {
-  --_border: var(--vers-comp-card-border-horizontal, 1px solid var(--color-border));
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-  border-left: none;
-  border-right: none;
+.card[data-border="vertical"] {
+  --_border-left: var(--vers-comp-card-border-vertical, var(--_border-width) solid var(--_border-color));
+  --_border-right: var(--vers-comp-card-border-vertical, var(--_border-width) solid var(--_border-color));
   border-radius: 0;
+}
+
+.card[data-border="top"] {
+  --_border-top: var(--vers-comp-card-border-top, var(--_border-width) solid var(--_border-color));
+}
+
+.card[data-border="bottom"] {
+  --_border-bottom: var(--vers-comp-card-border-bottom, var(--_border-width) solid var(--_border-color));
+}
+
+.card[data-border="left"] {
+  --_border-left: var(--vers-comp-card-border-left, var(--_border-width) solid var(--_border-color));
+}
+
+.card[data-border="right"] {
+  --_border-right: var(--vers-comp-card-border-right, var(--_border-width) solid var(--_border-color));
 }
 
 /* Non-interactive state (div rendering) */
