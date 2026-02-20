@@ -22,6 +22,7 @@ export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
       direction = "horizontal",
       align = "center",
       wrap = "nowrap",
+      fluid = false,
       "aria-label": ariaLabel = "Button group",
       children,
       ...rest
@@ -31,6 +32,7 @@ export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
     const dataAttrs = useDataAttrs({
       align,
       direction,
+      fluid: fluid ? "true" : "false",
       gap,
       wrap,
     })

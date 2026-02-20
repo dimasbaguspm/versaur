@@ -5,12 +5,14 @@ export type ButtonGroupGap = 'lg' | 'md' | 'sm' | 'xs';
 export type ButtonGroupDirection = 'horizontal' | 'vertical';
 export type ButtonGroupAlign = 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly' | 'start';
 export type ButtonGroupWrap = 'nowrap' | 'wrap';
+export type ButtonGroupFluid = 'false' | 'true';
 
 export interface ButtonGroupDataAttrs {
   gap?: ButtonGroupGap;
   direction?: ButtonGroupDirection;
   align?: ButtonGroupAlign;
   wrap?: ButtonGroupWrap;
+  fluid?: ButtonGroupFluid;
 };
 
 export namespace ButtonGroup {
@@ -18,5 +20,6 @@ export namespace ButtonGroup {
   export type Direction = ButtonGroupDirection;
   export type Align = ButtonGroupAlign;
   export type Wrap = ButtonGroupWrap;
+  export type Fluid = ButtonGroupFluid;
   export type DataAttrs = ButtonGroupDataAttrs;
 }

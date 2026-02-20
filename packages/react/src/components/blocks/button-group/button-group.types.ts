@@ -27,6 +27,12 @@ export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
   wrap?: ButtonGroup.Wrap
 
   /**
+   * Stretch group to full width and children proportionally
+   * @default false
+   */
+  fluid?: boolean
+
+  /**
    * Accessible label for the group
    * @default 'Button group'
    */

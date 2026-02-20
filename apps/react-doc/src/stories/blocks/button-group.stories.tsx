@@ -12,6 +12,9 @@ const meta = {
       control: "select",
       options: ["horizontal", "vertical"],
     },
+    fluid: {
+      control: "boolean",
+    },
     gap: {
       control: "select",
       options: ["xs", "sm", "md", "lg"],
@@ -153,5 +156,40 @@ export const Wrap: Story = {
     wrap: "wrap",
     gap: "md",
     align: "start",
+  },
+}
+
+/**
+ * Toggle between fit-content and full-width fluid layout.
+ */
+export const Fluid: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem", width: "100%" }}>
+      <div>
+        <p style={{ marginBottom: "0.5rem", fontSize: "0.875rem", color: "#666" }}>Fit-content (default)</p>
+        <div style={{ width: "100%", border: "1px dashed #ccc" }}>
+          <ButtonGroup {...args} fluid={false}>
+            <Button variant="primary">Save</Button>
+            <Button variant="secondary">Cancel</Button>
+          </ButtonGroup>
+        </div>
+      </div>
+      <div>
+        <p style={{ marginBottom: "0.5rem", fontSize: "0.875rem", color: "#666" }}>
+          Fluid - children stretch to fill parent width
+        </p>
+        <div style={{ width: "100%", border: "1px dashed #ccc" }}>
+          <ButtonGroup {...args} fluid style={{ width: "100%" }}>
+            <Button variant="primary">Save</Button>
+            <Button variant="secondary">Cancel</Button>
+          </ButtonGroup>
+        </div>
+      </div>
+    </div>
+  ),
+  args: {
+    direction: "horizontal",
+    gap: "md",
+    align: "center",
   },
 }

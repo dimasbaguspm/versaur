@@ -15,7 +15,9 @@
   --_direction: var(--vers-comp-button-group-direction, row);
   --_align: var(--vers-comp-button-group-align, center);
   --_wrap: var(--vers-comp-button-group-wrap, nowrap);
+  --_width: var(--vers-comp-button-group-width, fit-content);
 
+  width: var(--_width);
   gap: var(--_gap);
   flex-direction: var(--_direction);
   align-items: var(--_align);
@@ -96,4 +98,22 @@
 
 .button-group[data-wrap="nowrap"] {
   --_wrap: nowrap;
+}
+
+/* ============================================
+   FLUID MODE — fit-content vs full-width
+   ============================================ */
+
+.button-group[data-fluid="true"] {
+  --_width: 100%;
+}
+
+.button-group[data-fluid="true"] > * {
+  flex: 1 0;
+  min-width: 0;
+  width: 100%;
+}
+
+.button-group[data-fluid="false"] {
+  --_width: fit-content;
 }
