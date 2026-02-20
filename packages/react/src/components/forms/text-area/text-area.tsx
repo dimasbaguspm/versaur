@@ -22,6 +22,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       readOnly = false,
       resizable = true,
       minRows = 3,
+      maxRows,
       id: providedId,
       ...rest
     },
@@ -40,7 +41,15 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       invalid: Boolean(error),
       readOnly,
       resizable: resizable ? "true" : "false",
+      minRows: "true",
+      ...(maxRows && { maxRows: "true" }),
     })
+
+    // Set CSS variables for row constraints calculation
+    const style = {
+      "--_min-rows-count": minRows,
+      ...(maxRows && { "--_max-rows-count": maxRows }),
+    } as React.CSSProperties
 
     return (
       <div className={textAreaStyles.field}>
@@ -57,7 +66,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           disabled={disabled}
           readOnly={readOnly}
           required={required}
-          rows={minRows}
+          style={style}
           aria-invalid={error ? "true" : undefined}
           aria-disabled={disabled ? "true" : undefined}
           aria-describedby={describedBy || undefined}

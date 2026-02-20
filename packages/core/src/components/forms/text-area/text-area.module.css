@@ -90,3 +90,20 @@
   opacity: 0.7;
   cursor: not-allowed;
 }
+
+/* Row constraints — minRows and maxRows control height
+   Component passes --_min-rows-count and --_max-rows-count as CSS variables
+   Calculation: each row is 1.5rem (1.5 line-height × 16px base font)
+   Plus vertical padding on both sides */
+.textarea[data-min-rows] {
+  min-height: calc(
+    var(--_min-rows-count, 3) * 1.5rem + (var(--_py) * 2)
+  );
+}
+
+.textarea[data-max-rows] {
+  max-height: calc(
+    var(--_max-rows-count, 5) * 1.5rem + (var(--_py) * 2)
+  );
+  overflow-y: auto;
+}
