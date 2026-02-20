@@ -32,7 +32,7 @@ export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
     const dataAttrs = useDataAttrs({
       align,
       direction,
-      fluid: fluid ? "true" : "false",
+      fluid,
       gap,
       wrap,
     })

@@ -18,12 +18,16 @@ export function useDataAttrs<T extends DataAttrInput>(props: T): Record<string, 
       continue
     }
 
+    if (typeof value === "boolean") {
+      // Skip false boolean values (only include true)
+    }
+
     const kebabKey = camelToKebab(key)
 
     // Boolean values: presence indicates true
     if (typeof value === "boolean") {
       if (value) {
-        dataAttrs[`data-${kebabKey}`] = ""
+        dataAttrs[`data-${kebabKey}`] = Boolean(value).toString()
       }
     }
     // String/number values: use as attribute value
