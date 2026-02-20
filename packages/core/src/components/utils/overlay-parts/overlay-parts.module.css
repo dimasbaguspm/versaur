@@ -5,9 +5,98 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-3);
-  padding: var(--_padding);
+  padding: 0;
   border-bottom: 1px solid var(--_border);
   flex-shrink: 0;
+}
+
+.header:not([data-action]):not([data-tabs]) {
+  padding: var(--_padding);
+}
+
+.header[data-action] {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "headerContentTitle headerTop"
+    "headerContentRest headerContentRest";
+  gap: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--_border);
+}
+
+.header[data-action][data-tabs] {
+  border-bottom: none;
+}
+
+.header[data-tabs]:not([data-action]) {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: 0;
+  border-bottom: none;
+}
+
+.headerTop {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.header[data-tabs]:not([data-action]) .headerTop {
+  padding: var(--_padding);
+  padding-bottom: var(--spacing-2);
+}
+
+.header[data-action] .headerTop {
+  grid-area: headerTop;
+  padding: var(--_padding);
+  padding-bottom: var(--spacing-2);
+  align-items: center;
+}
+
+.headerContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  padding: var(--_padding);
+  padding-bottom: var(--spacing-2);
+}
+
+.header[data-action] .headerContent {
+  display: contents;
+}
+
+.header[data-action] .headerContent > :first-child {
+  grid-area: headerContentTitle;
+  display: flex;
+  align-items: center;
+  padding: var(--_padding);
+  padding-bottom: var(--spacing-2);
+}
+
+.header[data-action] .headerContent > :not(:first-child) {
+  grid-area: headerContentRest;
+}
+
+.header[data-action] .headerContent > :nth-child(n+2) {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-2);
+  padding: 0 var(--_padding) var(--spacing-2) var(--_padding);
+}
+
+.header[data-tabs],
+.header[data-action][data-tabs] {
+  padding: 0;
+}
+
+.header[data-tabs] > :last-child,
+.header[data-action][data-tabs] > :last-child {
+  width: 100%;
+  grid-column: 1 / -1;
 }
 
 .title {

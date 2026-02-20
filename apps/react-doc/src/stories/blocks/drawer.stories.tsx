@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { Button, Text } from "@versaur/react/primitive"
-import { Drawer } from "@versaur/react/blocks"
+import { BadgeGroup, ButtonGroup, Drawer, Tabs } from "@versaur/react/blocks"
+import { Badge, Button, Heading, Text } from "@versaur/react/primitive"
 import { useState } from "react"
 
 const meta = {
@@ -25,6 +25,10 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+/**
+ * Drawer positioned on the right side of the viewport.
+ * Demonstrates basic drawer usage with title, close button, content, and footer actions.
+ */
 export const RightPlacement: Story = {
   render: (args) => {
     const [isOpen, setIsOpen] = useState(false)
@@ -34,28 +38,35 @@ export const RightPlacement: Story = {
           Open Drawer (Right)
         </Button>
         <Drawer {...args} open={isOpen} onOpenChange={setIsOpen} placement="right">
-          <div style={{ padding: "2rem", minWidth: "350px", height: "100vh" }}>
-            <div
-              style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}
-            >
-              <Text weight="bold" size="lg">
-                Navigation
-              </Text>
-              <Drawer.CloseButton onClick={() => setIsOpen(false)}>×</Drawer.CloseButton>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-              <Text>Home</Text>
-              <Text>About</Text>
-              <Text>Services</Text>
-              <Text>Contact</Text>
-            </div>
-          </div>
+          <Drawer.Header action={<Drawer.CloseButton onClick={() => setIsOpen(false)} />}>
+            <Heading as="h4">Product Info</Heading>
+          </Drawer.Header>
+          <Drawer.Body>
+            <Text>Home</Text>
+            <Text>About</Text>
+            <Text>Services</Text>
+            <Text>Contact</Text>
+          </Drawer.Body>
+          <Drawer.Footer>
+            <ButtonGroup fluid>
+              <Button variant="primary" onClick={() => setIsOpen(false)}>
+                Save
+              </Button>
+              <Button variant="ghost" onClick={() => setIsOpen(false)}>
+                Cancel
+              </Button>
+            </ButtonGroup>
+          </Drawer.Footer>
         </Drawer>
       </>
     )
   },
 }
 
+/**
+ * Drawer positioned on the left side of the viewport.
+ * Shows drawer from the opposite direction with identical structure to RightPlacement.
+ */
 export const LeftPlacement: Story = {
   render: (args) => {
     const [isOpen, setIsOpen] = useState(false)
@@ -65,89 +76,131 @@ export const LeftPlacement: Story = {
           Open Drawer (Left)
         </Button>
         <Drawer {...args} open={isOpen} onOpenChange={setIsOpen} placement="left">
-          <div style={{ padding: "2rem", minWidth: "350px", height: "100vh" }}>
-            <div
-              style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}
-            >
-              <Text weight="bold" size="lg">
-                Menu
-              </Text>
-              <Drawer.CloseButton onClick={() => setIsOpen(false)}>×</Drawer.CloseButton>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-              <Text>Item 1</Text>
-              <Text>Item 2</Text>
-              <Text>Item 3</Text>
-            </div>
-          </div>
+          <Drawer.Header action={<Drawer.CloseButton onClick={() => setIsOpen(false)} />}>
+            <Heading as="h4">Product Info</Heading>
+          </Drawer.Header>
+          <Drawer.Body>
+            <Text>Item 1</Text>
+            <Text>Item 2</Text>
+            <Text>Item 3</Text>
+          </Drawer.Body>
+          <Drawer.Footer>
+            <ButtonGroup fluid>
+              <Button variant="primary" onClick={() => setIsOpen(false)}>
+                Confirm
+              </Button>
+              <Button variant="ghost" onClick={() => setIsOpen(false)}>
+                Cancel
+              </Button>
+            </ButtonGroup>
+          </Drawer.Footer>
         </Drawer>
       </>
     )
   },
 }
 
-export const Settings: Story = {
+/**
+ * Drawer without a close button in the header.
+ * Useful when the drawer is controlled externally or has dedicated action buttons in the footer.
+ */
+export const WithoutCloseButton: Story = {
   render: (args) => {
     const [isOpen, setIsOpen] = useState(false)
     return (
       <>
         <Button onClick={() => setIsOpen(true)} style={{ margin: "2rem" }}>
-          Settings
+          Open Drawer (No Close Button)
         </Button>
         <Drawer {...args} open={isOpen} onOpenChange={setIsOpen} placement="right">
-          <div
-            style={{ padding: "2rem", minWidth: "400px", height: "100vh", display: "flex", flexDirection: "column" }}
-          >
-            <div
-              style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem" }}
-            >
-              <Text weight="bold" size="lg">
-                Settings
-              </Text>
-              <Drawer.CloseButton onClick={() => setIsOpen(false)} style={{ fontSize: "1.5rem" }}>
-                ×
-              </Drawer.CloseButton>
-            </div>
-            <div style={{ flex: 1 }}>
-              <Text weight="semibold" style={{ marginBottom: "1rem" }}>
-                Preferences
-              </Text>
-              <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                <Text size="sm">Theme</Text>
-                <Text size="sm">Language</Text>
-                <Text size="sm">Notifications</Text>
-              </div>
-            </div>
-            <Button variant="primary" style={{ width: "100%" }} onClick={() => setIsOpen(false)}>
-              Save
-            </Button>
-          </div>
+          <Drawer.Header>
+            <Heading as="h4">Product Info</Heading>
+          </Drawer.Header>
+          <Drawer.Body>
+            <Text>Content without close button. Use external controls to manage the drawer state.</Text>
+          </Drawer.Body>
         </Drawer>
       </>
     )
   },
 }
 
-export const Sidebar: Story = {
+/**
+ * Drawer with tabs in the header for organizing content into multiple sections.
+ * Demonstrates header with title, badges, action button, and tabbed content navigation.
+ */
+export const WithTabs: Story = {
+  render: (args) => {
+    const [isOpen, setIsOpen] = useState(false)
+    const [activeTab, setActiveTab] = useState("details")
+
+    return (
+      <>
+        <Button onClick={() => setIsOpen(true)} style={{ margin: "2rem" }}>
+          Open Drawer with Tabs
+        </Button>
+        <Drawer {...args} open={isOpen} onOpenChange={setIsOpen} placement="right">
+          <Drawer.Header
+            action={<Drawer.CloseButton onClick={() => setIsOpen(false)} />}
+            tabs={
+              <Tabs value={activeTab} onChange={setActiveTab}>
+                <Tabs.Item value="details">Details</Tabs.Item>
+                <Tabs.Item value="history">History</Tabs.Item>
+                <Tabs.Item value="notes">Notes</Tabs.Item>
+              </Tabs>
+            }
+          >
+            <Heading as="h4">Product Info</Heading>
+            <BadgeGroup align="start">
+              <Badge variant="success">In Stock</Badge>
+              <Badge variant="warning">Limited Offer</Badge>
+            </BadgeGroup>
+          </Drawer.Header>
+          <Drawer.Body>
+            {activeTab === "details" && <Text>Product details content here.</Text>}
+            {activeTab === "history" && <Text>Change history content here.</Text>}
+            {activeTab === "notes" && <Text>Notes content here.</Text>}
+          </Drawer.Body>
+        </Drawer>
+      </>
+    )
+  },
+}
+
+/**
+ * Drawer with supplementary information in the header.
+ * Demonstrates the action prop with badges and status info below the title,
+ * showcasing the 3-area header layout (title, action, supplementary content).
+ */
+export const WithSupplementaryInfo: Story = {
   render: (args) => {
     const [isOpen, setIsOpen] = useState(false)
     return (
       <>
         <Button onClick={() => setIsOpen(true)} style={{ margin: "2rem" }}>
-          Toggle Sidebar
+          Open Drawer with Info
         </Button>
-        <Drawer {...args} open={isOpen} onOpenChange={setIsOpen} placement="left">
-          <div style={{ padding: "1.5rem", minWidth: "280px", height: "100vh" }}>
-            <Text weight="bold" size="lg" style={{ marginBottom: "2rem" }}>
-              Sidebar
+        <Drawer {...args} open={isOpen} onOpenChange={setIsOpen} placement="right">
+          <Drawer.Header action={<Drawer.CloseButton onClick={() => setIsOpen(false)} />}>
+            <Heading as="h4">Customer Profile</Heading>
+            <Text size="sm">Member since January 2024</Text>
+          </Drawer.Header>
+          <Drawer.Body>
+            <Text>
+              This drawer showcases supplementary information in the header. The title appears top-left, the action
+              button (close) top-right, and additional info badges display below.
             </Text>
-            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-              <Text>Dashboard</Text>
-              <Text>Analytics</Text>
-              <Text>Reports</Text>
-              <Text>Settings</Text>
-            </div>
-          </div>
+          </Drawer.Body>
+          <Drawer.Footer>
+            <ButtonGroup fluid>
+              <Button variant="primary" onClick={() => setIsOpen(false)}>
+                View Profile
+              </Button>
+              <Button variant="ghost" onClick={() => setIsOpen(false)}>
+                Close
+              </Button>
+            </ButtonGroup>
+          </Drawer.Footer>
         </Drawer>
       </>
     )

@@ -3,12 +3,12 @@ import { overlayPartsStyles } from "@versaur/core/utils"
 import { XIcon } from "@versaur/icons"
 import { createContext, forwardRef, useContext } from "react"
 
-import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
+import { cx } from "../../../utils/cx"
 import { ButtonIcon } from "../../primitive/button-icon"
+import { OverlayBody, OverlayFooter, OverlayTitle } from "../../utils/overlay-parts/overlay-parts"
 import { Dialog } from "../dialog"
-import { OverlayBody, OverlayFooter, OverlayHeader, OverlayTitle } from "../../utils/overlay-parts/overlay-parts"
-import type { DrawerCloseButtonProps, DrawerRootProps } from "./drawer.types"
+import type { DrawerCloseButtonProps, DrawerHeaderProps, DrawerRootProps } from "./drawer.types"
 
 interface DrawerContextType {
   onClose: () => void
@@ -86,10 +86,35 @@ const DrawerCloseButton = forwardRef<HTMLButtonElement, DrawerCloseButtonProps>(
 
 DrawerCloseButton.displayName = "Drawer.CloseButton"
 
+const DrawerHeader = forwardRef<HTMLDivElement, DrawerHeaderProps>(
+  ({ action, children, tabs, className, ...rest }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={cx(overlayPartsStyles.header, className)}
+        {...rest}
+        {...(action && { "data-action": "" })}
+        {...(tabs && { "data-tabs": "" })}
+      >
+        {action ? (
+          <>
+            <div className={overlayPartsStyles.headerTop}>{action}</div>
+            {children && <div className={overlayPartsStyles.headerContent}>{children}</div>}
+          </>
+        ) : (
+          <div className={overlayPartsStyles.headerTop}>{children}</div>
+        )}
+        {tabs}
+      </div>
+    )
+  },
+)
+DrawerHeader.displayName = "Drawer.Header"
+
 export const Drawer = Object.assign(DrawerRoot, {
   Body: OverlayBody,
   CloseButton: DrawerCloseButton,
   Footer: OverlayFooter,
-  Header: OverlayHeader,
+  Header: DrawerHeader,
   Title: OverlayTitle,
 })

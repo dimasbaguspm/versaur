@@ -5,6 +5,8 @@ declare const styles: {
   readonly content: string;
   readonly footer: string;
   readonly header: string;
+  readonly headerContent: string;
+  readonly headerTop: string;
   readonly title: string;
 };
 export default styles;

@@ -2,6 +2,8 @@
 // Source: overlay-parts.module.css
 
 export interface OverlayPartsDataAttrs {
+  action?: boolean;
+  tabs?: boolean;
 };
 
 export namespace OverlayParts {
