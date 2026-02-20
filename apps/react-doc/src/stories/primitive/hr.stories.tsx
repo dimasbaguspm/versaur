@@ -31,6 +31,9 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+/**
+ * Default Hr component with standard horizontal divider.
+ */
 export const Default: Story = {
   args: {
     orientation: "horizontal",
@@ -40,83 +43,109 @@ export const Default: Story = {
   },
 }
 
-export const Horizontal: Story = {
-  args: {
-    orientation: "horizontal",
-    variant: "solid",
-  },
-}
-
-export const Vertical: Story = {
+/**
+ * Showcase all orientation variants: horizontal and vertical.
+ * Vertical orientation is displayed between content to demonstrate spacing.
+ */
+export const Orientations: Story = {
   render: (args) => (
-    <div style={{ display: "flex", gap: "1rem" }}>
-      <div>Content on left</div>
-      <Hr {...args} style={{ height: "100px" }} />
-      <div>Content on right</div>
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      <div>
+        <div style={{ marginBottom: "0.5rem", fontSize: "0.875rem" }}>Horizontal</div>
+        <Hr {...args} orientation="horizontal" />
+      </div>
+      <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+        <div>Content on left</div>
+        <Hr {...args} orientation="vertical" style={{ height: "100px" }} />
+        <div>Content on right</div>
+      </div>
     </div>
   ),
   args: {
-    orientation: "vertical",
     variant: "solid",
   },
 }
 
-export const SolidVariant: Story = {
+/**
+ * Showcase all style variants: solid, dashed, and dotted.
+ */
+export const Variants: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem" }}>Solid</div>
+        <Hr {...args} variant="solid" />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem" }}>Dashed</div>
+        <Hr {...args} variant="dashed" />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem" }}>Dotted</div>
+        <Hr {...args} variant="dotted" />
+      </div>
+    </div>
+  ),
   args: {
-    variant: "solid",
     orientation: "horizontal",
   },
 }
 
-export const DashedVariant: Story = {
+/**
+ * Showcase all size variants: sm, md, and lg.
+ */
+export const Sizes: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem" }}>Small</div>
+        <Hr {...args} size="sm" />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem" }}>Medium</div>
+        <Hr {...args} size="md" />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem" }}>Large</div>
+        <Hr {...args} size="lg" />
+      </div>
+    </div>
+  ),
   args: {
-    variant: "dashed",
-    orientation: "horizontal",
-  },
-}
-
-export const DottedVariant: Story = {
-  args: {
-    variant: "dotted",
-    orientation: "horizontal",
-  },
-}
-
-export const SmallSize: Story = {
-  args: {
-    size: "sm",
-    variant: "solid",
-    orientation: "horizontal",
-  },
-}
-
-export const MediumSize: Story = {
-  args: {
-    size: "md",
-    variant: "solid",
-    orientation: "horizontal",
-  },
-}
-
-export const LargeSize: Story = {
-  args: {
-    size: "lg",
-    variant: "solid",
-    orientation: "horizontal",
-  },
-}
-
-export const NoSpacing: Story = {
-  args: {
-    spacing: "none",
     orientation: "horizontal",
     variant: "solid",
   },
 }
 
-export const WithSpacing: Story = {
+/**
+ * Showcase all spacing variants: none, sm, md, lg, and xl.
+ */
+export const Spacing: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem" }}>None</div>
+        <Hr {...args} spacing="none" />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem" }}>Small</div>
+        <Hr {...args} spacing="sm" />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem" }}>Medium</div>
+        <Hr {...args} spacing="md" />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem" }}>Large</div>
+        <Hr {...args} spacing="lg" />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem" }}>Extra Large</div>
+        <Hr {...args} spacing="xl" />
+      </div>
+    </div>
+  ),
   args: {
-    spacing: "xl",
     orientation: "horizontal",
     variant: "solid",
   },
