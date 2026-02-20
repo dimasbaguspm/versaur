@@ -5,7 +5,7 @@
 
   /* Spacing — private tokens */
   --_gap: var(--vers-comp-attribute-list-gap, var(--spacing-3));
-  --_item-gap: var(--vers-comp-attribute-list-item-gap, var(--spacing-1));
+  --_item-gap: var(--vers-comp-attribute-list-item-gap, var(--spacing-0));
   --_columns: var(--vers-comp-attribute-list-columns, 3);
 
   grid-template-columns: repeat(var(--_columns), 1fr);
@@ -91,11 +91,11 @@
 }
 
 .attribute-list > * > dt {
-  /* Title styling */
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+  /* Title styling — using text component's gray pattern */
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-normal);
-  color: var(--color-text-secondary);
+  color: var(--color-text-tertiary);
   margin: 0;
   padding: 0;
 }
@@ -125,8 +125,8 @@
 }
 
 .attribute-list > * > dd {
-  /* Value styling — larger than title */
-  font-size: var(--font-size-base);
+  /* Value styling — slightly larger than title but compact */
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-normal);
   color: var(--color-text-primary);
