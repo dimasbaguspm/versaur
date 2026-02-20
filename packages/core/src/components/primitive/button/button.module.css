@@ -52,10 +52,28 @@
   outline: none;
 }
 
+/* Icon-only buttons — square aspect ratio, no padding */
+.button[data-icon-config="left"],
+.button[data-icon-config="right"],
+.button[data-icon-config="both"] {
+  min-width: var(--_height);
+  padding: 0;
+}
+
+/* Button with icon and text — keep default padding and spacing */
+.button[data-icon-config="left-text"],
+.button[data-icon-config="right-text"],
+.button[data-icon-config="both-text"] {
+  /* Uses base button padding and gap */
+}
+
 /* Consolidated icon sizing */
 .button svg {
+  display: inline-block;
+  flex-shrink: 0;
   width: var(--_icon-size);
   height: var(--_icon-size);
+  color: currentColor;
 }
 
 /* ============================================

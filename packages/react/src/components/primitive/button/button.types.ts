@@ -1,4 +1,4 @@
-import type { Button } from "@versaur/core/primitive"
+import { Button } from "@versaur/core/primitive"
 import type { ButtonHTMLAttributes, ReactNode } from "react"
 
 export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "disabled"> {
@@ -32,6 +32,16 @@ export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement
    * @default false
    */
   pressed?: boolean
+
+  /**
+   * Icon to display on the left side of the button
+   */
+  leftIcon?: ReactNode
+
+  /**
+   * Icon to display on the right side of the button
+   */
+  rightIcon?: ReactNode
 
   /**
    * Button content

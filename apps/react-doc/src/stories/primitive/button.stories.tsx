@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { Button } from "@versaur/react/primitive"
+import { CheckIcon, ChevronRightIcon } from "@versaur/icons"
+import { Button, Icon } from "@versaur/react/primitive"
 
 const meta = {
   argTypes: {
@@ -21,43 +22,97 @@ const meta = {
   },
   tags: ["autodocs"],
   title: "Primitive/Button",
+  args: {
+    children: "Button",
+  },
 } satisfies Meta<typeof Button>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Primary: Story = {
+/**
+ * Default button with primary variant and medium size.
+ */
+export const Default: Story = {
   args: {
-    children: "Primary Button",
+    children: "Button",
     variant: "primary",
   },
 }
 
-export const Secondary: Story = {
-  args: {
-    children: "Secondary Button",
-    variant: "secondary",
-  },
+/**
+ * Showcase all available color variants: primary, secondary, ghost, and danger.
+ */
+export const Variants: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>
+      <Button {...args} variant="primary">
+        Primary
+      </Button>
+      <Button {...args} variant="secondary">
+        Secondary
+      </Button>
+      <Button {...args} variant="ghost">
+        Ghost
+      </Button>
+      <Button {...args} variant="danger">
+        Danger
+      </Button>
+    </div>
+  ),
 }
 
-export const Ghost: Story = {
-  args: {
-    children: "Ghost Button",
-    variant: "ghost",
-  },
+/**
+ * Showcase all available sizes: small, medium, and large.
+ */
+export const Sizes: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>
+      <Button {...args} size="small">
+        Small
+      </Button>
+      <Button {...args} size="medium">
+        Medium
+      </Button>
+    </div>
+  ),
 }
 
-export const Danger: Story = {
-  args: {
-    children: "Danger Button",
-    variant: "danger",
-  },
+/**
+ * Showcase button states: disabled.
+ */
+export const States: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+      <Button {...args} variant="primary">
+        Normal
+      </Button>
+      <Button {...args} variant="primary" disabled>
+        Disabled
+      </Button>
+      <Button {...args} variant="primary" loading>
+        Loading
+      </Button>
+    </div>
+  ),
 }
 
-export const Disabled: Story = {
-  args: {
-    children: "Disabled Button",
-    disabled: true,
-    variant: "primary",
-  },
+/**
+ * Button with various icon configurations: left, right, both, and icon-only.
+ */
+export const WithIcons: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>
+      <Button {...args} variant="primary" leftIcon={<Icon as={CheckIcon} />}>
+        Done
+      </Button>
+      <Button {...args} variant="primary" rightIcon={<Icon as={ChevronRightIcon} />}>
+        Next
+      </Button>
+      <Button {...args} variant="primary" leftIcon={<Icon as={CheckIcon} />} rightIcon={<Icon as={ChevronRightIcon} />}>
+        Complete
+      </Button>
+      <Button {...args} variant="primary" leftIcon={<Icon as={CheckIcon} />} />
+    </div>
+  ),
 }

@@ -1,3 +1,4 @@
+import type { Badge as BadgeCore } from "@versaur/core/primitive"
 import { badgeStyles } from "@versaur/core/primitive"
 import { forwardRef } from "react"
 
@@ -21,9 +22,9 @@ import type { BadgeProps } from "./badge.types"
 export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
   (
     {
-      variant = "primary",
-      size = "medium",
-      shape = "rounded",
+      variant = "primary" as BadgeCore.Variant,
+      size = "medium" as BadgeCore.Size,
+      shape = "rounded" as BadgeCore.Shape,
       iconLeft,
       iconRight,
       maxWidth,
@@ -37,7 +38,7 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
     const hasIconRight = Boolean(iconRight)
     const hasText = Boolean(children)
 
-    let iconConfig: string | undefined
+    let iconConfig: BadgeCore.IconConfig | undefined
     if (hasIconLeft && hasIconRight && hasText) {
       iconConfig = "both-text"
     } else if (hasIconLeft && hasText) {

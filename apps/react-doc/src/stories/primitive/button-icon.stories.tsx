@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { SettingsIcon, StarIcon, TrashIcon } from "@versaur/icons"
+import { StarIcon } from "@versaur/icons"
 import { ButtonIcon } from "@versaur/react/primitive"
 
 const meta = {
@@ -25,12 +25,19 @@ const meta = {
   },
   tags: ["autodocs"],
   title: "Primitive/ButtonIcon",
+  args: {
+    as: StarIcon,
+    "aria-label": "Button icon",
+  },
 } satisfies Meta<typeof ButtonIcon>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Primary: Story = {
+/**
+ * Default button icon with primary variant and medium size.
+ */
+export const Default: Story = {
   args: {
     as: StarIcon,
     "aria-label": "Add to favorites",
@@ -38,62 +45,41 @@ export const Primary: Story = {
   },
 }
 
-export const Secondary: Story = {
-  args: {
-    as: StarIcon,
-    "aria-label": "Add to favorites",
-    variant: "secondary",
-  },
+/**
+ * Showcase all available color variants: primary, secondary, ghost, and danger.
+ */
+export const Variants: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+      <ButtonIcon {...args} variant="primary" />
+      <ButtonIcon {...args} variant="secondary" />
+      <ButtonIcon {...args} variant="ghost" />
+      <ButtonIcon {...args} variant="danger" />
+    </div>
+  ),
 }
 
-export const Ghost: Story = {
-  args: {
-    as: StarIcon,
-    "aria-label": "Add to favorites",
-    variant: "ghost",
-  },
+/**
+ * Showcase all available sizes: small and medium.
+ */
+export const Sizes: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+      <ButtonIcon {...args} size="small" variant="primary" />
+      <ButtonIcon {...args} size="medium" variant="primary" />
+    </div>
+  ),
 }
 
-export const Danger: Story = {
-  args: {
-    as: TrashIcon,
-    "aria-label": "Delete item",
-    variant: "danger",
-  },
-}
-
-export const Small: Story = {
-  args: {
-    as: SettingsIcon,
-    "aria-label": "Settings",
-    size: "small",
-    variant: "primary",
-  },
-}
-
-export const Medium: Story = {
-  args: {
-    as: SettingsIcon,
-    "aria-label": "Settings",
-    size: "medium",
-    variant: "primary",
-  },
-}
-
-export const Loading: Story = {
-  args: {
-    as: StarIcon,
-    "aria-label": "Saving",
-    loading: true,
-    variant: "primary",
-  },
-}
-
-export const Disabled: Story = {
-  args: {
-    as: StarIcon,
-    "aria-label": "Add to favorites",
-    disabled: true,
-    variant: "primary",
-  },
+/**
+ * Showcase button icon states: loading and disabled.
+ */
+export const States: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+      <ButtonIcon {...args} variant="primary" />
+      <ButtonIcon {...args} loading variant="primary" />
+      <ButtonIcon {...args} disabled variant="primary" />
+    </div>
+  ),
 }

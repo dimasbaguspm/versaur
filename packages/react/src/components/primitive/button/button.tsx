@@ -1,3 +1,4 @@
+import type { Button as CoreButton } from "@versaur/core/primitive"
 import { buttonStyles } from "@versaur/core/primitive"
 import { LoaderIcon } from "@versaur/icons"
 import { forwardRef } from "react"
@@ -23,11 +24,13 @@ import type { ButtonProps } from "./button.types"
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
-      variant = "primary",
-      size = "medium",
+      variant = "primary" as CoreButton.Variant,
+      size = "medium" as CoreButton.Size,
       loading = false,
       disabled = false,
       pressed = false,
+      leftIcon,
+      rightIcon,
       children,
       type = "button",
       onClick,
@@ -35,11 +38,31 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref,
   ) => {
+    const hasLeftIcon = Boolean(leftIcon)
+    const hasRightIcon = Boolean(rightIcon)
+    const hasText = Boolean(children)
+
+    let iconConfig: CoreButton.IconConfig | undefined
+    if (hasLeftIcon && hasRightIcon && hasText) {
+      iconConfig = "both-text"
+    } else if (hasLeftIcon && hasText) {
+      iconConfig = "left-text"
+    } else if (hasRightIcon && hasText) {
+      iconConfig = "right-text"
+    } else if (hasLeftIcon && hasRightIcon) {
+      iconConfig = "both"
+    } else if (hasLeftIcon) {
+      iconConfig = "left"
+    } else if (hasRightIcon) {
+      iconConfig = "right"
+    }
+
     const dataAttrs = useDataAttrs({
       disabled: disabled || loading,
       loading,
       size,
       variant,
+      ...(iconConfig && { iconConfig }),
     })
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -63,7 +86,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         onClick={handleClick}
       >
         {loading ? <Icon as={LoaderIcon} aria-label="Loading" data-loading-icon="loader" /> : null}
+        {leftIcon}
         {children}
+        {rightIcon}
       </button>
     )
   },
