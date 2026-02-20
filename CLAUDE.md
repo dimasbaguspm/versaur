@@ -73,6 +73,16 @@ className={cx(baseStyles.button, userClassName)}
 
 This ensures user-supplied styles are preserved and don't silently overwrite component styles.
 
+## Block Component Behaviors
+
+### Dialog - Scroll Prevention
+The Dialog component automatically prevents parent document scrolling when open to maintain focus:
+- When dialog opens: Sets `document.documentElement.style.overflow = "hidden"`
+- When dialog closes: Restores previous overflow behavior
+- Cleanup on unmount ensures styles are cleaned up if component unmounts
+
+This provides a seamless UX by keeping the dialog centered and preventing distraction from background content.
+
 ## Type generation
 
 CSS is the single source of truth for data-attribute types. A PostCSS script in `@versaur/tooling` parses `[data-*]` selectors from CSS modules and generates TypeScript types.

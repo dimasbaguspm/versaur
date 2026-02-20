@@ -19,7 +19,7 @@ const DialogRoot = React.forwardRef<HTMLDialogElement, DialogRootProps>(
     const internalRef = useRef<HTMLDialogElement>(null)
     const dialogRef = (forwardedRef as React.MutableRefObject<HTMLDialogElement | null>) || internalRef
 
-    // Sync React state with native dialog
+    // Sync React state with native dialog and manage scroll
     useEffect(() => {
       const dialog = dialogRef.current
       if (!dialog) {
@@ -29,11 +29,17 @@ const DialogRoot = React.forwardRef<HTMLDialogElement, DialogRootProps>(
       if (isOpen) {
         try {
           dialog.showModal()
+          document.documentElement.style.overflow = "hidden"
         } catch {
           // Already open
         }
       } else {
         dialog.close()
+        document.documentElement.style.overflow = ""
+      }
+
+      return () => {
+        document.documentElement.style.overflow = ""
       }
     }, [isOpen, dialogRef])
 
