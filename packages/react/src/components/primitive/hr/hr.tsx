@@ -1,6 +1,7 @@
 import { hrStyles } from "@versaur/core/primitive"
 import { forwardRef } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import type { HrProps } from "./hr.types"
 
@@ -16,7 +17,7 @@ import type { HrProps } from "./hr.types"
  * <Hr orientation="vertical" />
  * ```
  */
-export const Hr = forwardRef<HTMLHRElement, HrProps>(({ orientation, variant, size, spacing, ...rest }, ref) => {
+export const Hr = forwardRef<HTMLHRElement, HrProps>(({ orientation, variant, size, spacing, className, ...rest }, ref) => {
   const dataAttrs = useDataAttrs({
     orientation,
     size,
@@ -27,7 +28,7 @@ export const Hr = forwardRef<HTMLHRElement, HrProps>(({ orientation, variant, si
   return (
     <hr
       ref={ref}
-      className={hrStyles.hr}
+      className={cx(hrStyles.hr, className)}
       role="separator"
       aria-orientation={orientation === "vertical" ? "vertical" : undefined}
       {...dataAttrs}

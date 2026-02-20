@@ -1,6 +1,7 @@
 import { noResultsStyles } from "@versaur/core/blocks"
 import { forwardRef } from "react"
 
+import { cx } from "../../../utils/cx"
 import { Icon } from "../../primitive/icon"
 import type { NoResultsProps } from "./no-results.types"
 
@@ -24,8 +25,8 @@ import type { NoResultsProps } from "./no-results.types"
  * ```
  */
 export const NoResults = forwardRef<HTMLElement, NoResultsProps>(
-  ({ icon: IconComponent, title, subtitle, action, ...props }, ref) => (
-    <section ref={ref} className={noResultsStyles["no-results"]} role="status" aria-label={title} {...props}>
+  ({ icon: IconComponent, title, subtitle, action, className, ...props }, ref) => (
+    <section ref={ref} className={cx(noResultsStyles["no-results"], className)} role="status" aria-label={title} {...props}>
       <header className={noResultsStyles["no-results-header"]}>
         <div className={noResultsStyles["no-results-icon"]}>
           <Icon as={IconComponent} color="inherit" aria-hidden="true" />

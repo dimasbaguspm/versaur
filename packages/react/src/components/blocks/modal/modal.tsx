@@ -3,6 +3,7 @@ import { overlayPartsStyles } from "@versaur/core/utils"
 import { XIcon } from "@versaur/icons"
 import { createContext, forwardRef, useContext } from "react"
 
+import { cx } from "../../../utils/cx"
 import { ButtonIcon } from "../../primitive/button-icon"
 import { Dialog } from "../dialog"
 import { OverlayBody, OverlayFooter, OverlayHeader, OverlayTitle } from "../../utils/overlay-parts/overlay-parts"
@@ -22,9 +23,9 @@ const useModalContext = () => {
   return context
 }
 
-const ModalRoot = forwardRef<HTMLDialogElement, ModalRootProps>(({ open, onOpenChange, children, ...props }, ref) => (
+const ModalRoot = forwardRef<HTMLDialogElement, ModalRootProps>(({ open, onOpenChange, children, className, ...props }, ref) => (
   <ModalContext.Provider value={{ onClose: () => onOpenChange?.(false) }}>
-    <Dialog ref={ref} isOpen={open} onOpenChange={onOpenChange} className={open ? modalStyles.modal : ""} {...props}>
+    <Dialog ref={ref} isOpen={open} onOpenChange={onOpenChange} className={cx(open && modalStyles.modal, className)} {...props}>
       <div className={overlayPartsStyles.content}>{children}</div>
     </Dialog>
   </ModalContext.Provider>

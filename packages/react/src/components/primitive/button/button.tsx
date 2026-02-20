@@ -3,6 +3,7 @@ import { buttonStyles } from "@versaur/core/primitive"
 import { LoaderIcon } from "@versaur/icons"
 import { forwardRef } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { Icon } from "../icon"
 import type { ButtonProps } from "./button.types"
@@ -34,6 +35,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       type = "button",
       onClick,
+      className,
       ...rest
     },
     ref,
@@ -77,7 +79,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         type={type}
-        className={buttonStyles.button}
+        className={cx(buttonStyles.button, className)}
         aria-pressed={pressed ? "true" : undefined}
         aria-busy={loading ? "true" : undefined}
         aria-disabled={disabled || loading ? "true" : undefined}

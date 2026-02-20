@@ -1,6 +1,7 @@
 import { badgeGroupStyles } from "@versaur/core/blocks"
 import { forwardRef } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import type { BadgeGroupProps } from "./badge-group.types"
 
@@ -25,6 +26,7 @@ export const BadgeGroup = forwardRef<HTMLDivElement, BadgeGroupProps>(
       wrap = "nowrap",
       "aria-label": ariaLabel = "Badge group",
       children,
+      className,
       ...rest
     },
     ref,
@@ -39,7 +41,7 @@ export const BadgeGroup = forwardRef<HTMLDivElement, BadgeGroupProps>(
     return (
       <div
         ref={ref}
-        className={badgeGroupStyles["badge-group"]}
+        className={cx(badgeGroupStyles["badge-group"], className)}
         role="group"
         aria-label={ariaLabel}
         {...dataAttrs}

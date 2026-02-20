@@ -1,6 +1,7 @@
 import { buttonGroupStyles } from "@versaur/core/blocks"
 import { forwardRef } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import type { ButtonGroupProps } from "./button-group.types"
 
@@ -25,6 +26,7 @@ export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
       fluid = false,
       "aria-label": ariaLabel = "Button group",
       children,
+      className,
       ...rest
     },
     ref,
@@ -40,7 +42,7 @@ export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
     return (
       <div
         ref={ref}
-        className={buttonGroupStyles["button-group"]}
+        className={cx(buttonGroupStyles["button-group"], className)}
         role="group"
         aria-label={ariaLabel}
         {...dataAttrs}

@@ -1,6 +1,7 @@
 import { chipMultipleInputStyles } from "@versaur/core/forms"
 import { createContext, forwardRef, useContext, useId } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { ErrorText } from "../error-text"
 import { HelperText } from "../helper-text"
@@ -63,6 +64,7 @@ const ChipMultipleInputRoot = forwardRef<HTMLDivElement, ChipMultipleInputRootPr
       gap = "2",
       wrap = true,
       children,
+      className,
       ...rest
     },
     ref,
@@ -84,7 +86,7 @@ const ChipMultipleInputRoot = forwardRef<HTMLDivElement, ChipMultipleInputRootPr
     })
 
     return (
-      <div ref={ref} className={chipMultipleInputStyles.field} {...dataAttrs} {...rest}>
+      <div ref={ref} className={cx(chipMultipleInputStyles.field, className)} {...dataAttrs} {...rest}>
         {label && (
           <Label required={required} disabled={disabled}>
             {label}

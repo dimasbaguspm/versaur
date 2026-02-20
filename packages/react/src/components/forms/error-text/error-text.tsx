@@ -1,6 +1,7 @@
 import { errorTextStyles } from "@versaur/core/forms"
 import { forwardRef } from "react"
 
+import { cx } from "../../../utils/cx"
 import type { ErrorTextProps } from "./error-text.types"
 
 /**
@@ -8,8 +9,8 @@ import type { ErrorTextProps } from "./error-text.types"
  * Internal primitive - not exported from main package
  * Uses role="alert" for screen reader announcements
  */
-export const ErrorText = forwardRef<HTMLParagraphElement, ErrorTextProps>(({ children, ...rest }, ref) => (
-  <p ref={ref} className={errorTextStyles.error} role="alert" aria-live="polite" {...rest}>
+export const ErrorText = forwardRef<HTMLParagraphElement, ErrorTextProps>(({ children, className, ...rest }, ref) => (
+  <p ref={ref} className={cx(errorTextStyles.error, className)} role="alert" aria-live="polite" {...rest}>
     {children}
   </p>
 ))

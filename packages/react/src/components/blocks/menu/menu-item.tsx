@@ -3,6 +3,7 @@
 import { menuStyles } from "@versaur/core/blocks"
 import { forwardRef, useContext } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { MenuContext } from "./menu"
 import type { MenuItemProps } from "./menu.types"
@@ -25,7 +26,7 @@ import type { MenuItemProps } from "./menu.types"
  * ```
  */
 const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
-  ({ value, disabled = false, leftIcon, rightIcon, children, onClick, ...props }, ref) => {
+  ({ value, disabled = false, leftIcon, rightIcon, children, onClick, className, ...props }, ref) => {
     const menuContext = useContext(MenuContext)
 
     // Determine if this item is active
@@ -54,7 +55,7 @@ const MenuItem = forwardRef<HTMLButtonElement, MenuItemProps>(
     return (
       <button
         ref={ref}
-        className={menuStyles["menu-item"]}
+        className={cx(menuStyles["menu-item"], className)}
         disabled={disabled}
         {...dataAttrs}
         {...props}

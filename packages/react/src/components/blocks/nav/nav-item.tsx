@@ -4,6 +4,7 @@ import { navStyles } from "@versaur/core/blocks"
 import type { ElementType } from "react"
 import { forwardRef, useContext } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { Icon } from "../../primitive/icon"
 import { NavContext } from "./nav"
@@ -51,6 +52,7 @@ export const NavItem = forwardRef<HTMLButtonElement | HTMLAnchorElement, NavItem
       rightIcon: RightIcon,
       children,
       onClick,
+      className,
       ...props
     },
     ref,
@@ -86,7 +88,7 @@ export const NavItem = forwardRef<HTMLButtonElement | HTMLAnchorElement, NavItem
     return (
       <Component
         ref={ref}
-        className={navStyles["nav-item"]}
+        className={cx(navStyles["nav-item"], className)}
         aria-current={isActive && Component !== "button" ? "page" : undefined}
         aria-disabled={disabled || loading ? "true" : undefined}
         aria-busy={loading ? "true" : undefined}

@@ -3,6 +3,7 @@
 import { kbdStyles } from "@versaur/core/primitive"
 import { forwardRef } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import type { KbdProps } from "./kbd.types"
 
@@ -16,11 +17,11 @@ import type { KbdProps } from "./kbd.types"
  * <Kbd variant="outline" size="sm">Cmd</Kbd>
  * ```
  */
-const Kbd = forwardRef<HTMLElement, KbdProps>(({ variant = "filled", size = "md", children, ...props }, ref) => {
+const Kbd = forwardRef<HTMLElement, KbdProps>(({ variant = "filled", size = "md", children, className, ...props }, ref) => {
   const dataAttrs = useDataAttrs({ size, variant })
 
   return (
-    <kbd ref={ref} className={kbdStyles.kbd} {...dataAttrs} {...props}>
+    <kbd ref={ref} className={cx(kbdStyles.kbd, className)} {...dataAttrs} {...props}>
       {children}
     </kbd>
   )

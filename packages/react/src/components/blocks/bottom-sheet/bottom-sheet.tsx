@@ -3,6 +3,7 @@ import { overlayPartsStyles } from "@versaur/core/utils"
 import { XIcon } from "@versaur/icons"
 import { createContext, forwardRef, useContext } from "react"
 
+import { cx } from "../../../utils/cx"
 import { ButtonIcon } from "../../primitive/button-icon"
 import { Dialog } from "../dialog"
 import { OverlayBody, OverlayFooter, OverlayHeader, OverlayTitle } from "../../utils/overlay-parts/overlay-parts"
@@ -23,9 +24,9 @@ const useBottomSheetContext = () => {
 }
 
 const BottomSheetRoot = forwardRef<HTMLDialogElement, BottomSheetRootProps>(
-  ({ open, onOpenChange, children, ...props }, ref) => (
+  ({ open, onOpenChange, children, className, ...props }, ref) => (
     <BottomSheetContext.Provider value={{ onClose: () => onOpenChange?.(false) }}>
-      <Dialog ref={ref} isOpen={open} onOpenChange={onOpenChange} className={bottomSheetStyles.bottomSheet} {...props}>
+      <Dialog ref={ref} isOpen={open} onOpenChange={onOpenChange} className={cx(bottomSheetStyles.bottomSheet, className)} {...props}>
         <div className={overlayPartsStyles.content}>{children}</div>
       </Dialog>
     </BottomSheetContext.Provider>

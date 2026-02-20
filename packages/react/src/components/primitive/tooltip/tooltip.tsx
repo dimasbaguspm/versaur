@@ -4,6 +4,7 @@ import { tooltipStyles } from "@versaur/core/primitive"
 import type { CSSProperties } from "react"
 import { forwardRef, useRef } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { useTooltipPositioning } from "../../../hooks/use-tooltip-positioning"
 import { combineRefs } from "../../../utils/combine-refs"
@@ -142,7 +143,7 @@ function calculatePosition(
  * ```
  */
 const TooltipRoot = forwardRef<HTMLDivElement, TooltipProps>(
-  ({ id, children, placement = "top", gap = DEFAULT_GAP, triggerType = "all", style, ...props }, ref) => {
+  ({ id, children, placement = "top", gap = DEFAULT_GAP, triggerType = "all", style, className, ...props }, ref) => {
     const tooltipRef = useRef<HTMLDivElement | null>(null)
     const dataAttrs = useDataAttrs({
       placement,
@@ -161,7 +162,7 @@ const TooltipRoot = forwardRef<HTMLDivElement, TooltipProps>(
       <div
         ref={combineRefs(tooltipRef, ref)}
         id={id}
-        className={tooltipStyles.tooltip}
+        className={cx(tooltipStyles.tooltip, className)}
         {...(dataAttrs as any)}
         style={style}
         {...(props as any)}
@@ -189,7 +190,7 @@ const TooltipText = forwardRef<HTMLDivElement, TooltipTextProps>(
     return (
       <div
         ref={ref}
-        className={`${tooltipStyles["tooltip-text"]}${className ? ` ${className}` : ""}`}
+        className={cx(tooltipStyles["tooltip-text"], className)}
         style={customStyle}
         {...props}
       >

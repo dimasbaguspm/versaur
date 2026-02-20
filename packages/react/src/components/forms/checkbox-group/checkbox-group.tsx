@@ -1,6 +1,7 @@
 import { checkboxGroupStyles } from "@versaur/core/forms"
 import { createContext, forwardRef, useContext, useId } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { ErrorText } from "../error-text"
 import { HelperText } from "../helper-text"
@@ -60,6 +61,7 @@ const CheckboxGroupRoot = forwardRef<HTMLDivElement, CheckboxGroupRootProps>(
       disabled = false,
       direction = "column",
       children,
+      className,
       ...rest
     },
     ref,
@@ -82,7 +84,7 @@ const CheckboxGroupRoot = forwardRef<HTMLDivElement, CheckboxGroupRootProps>(
     })
 
     return (
-      <div ref={ref} className={checkboxGroupStyles.field} {...dataAttrs} {...rest}>
+      <div ref={ref} className={cx(checkboxGroupStyles.field, className)} {...dataAttrs} {...rest}>
         {label && (
           <Label required={required} disabled={disabled}>
             {label}
@@ -122,7 +124,7 @@ CheckboxGroupRoot.displayName = "CheckboxGroup"
  * ```
  */
 const CheckboxGroupOption = forwardRef<HTMLInputElement, CheckboxGroupOptionProps>(
-  ({ value, children, disabled: optionDisabled, required: optionRequired = false, ...rest }, ref) => {
+  ({ value, children, disabled: optionDisabled, required: optionRequired = false, className, ...rest }, ref) => {
     const generatedId = useId()
     const context = useCheckboxGroupContext()
     const isChecked = context.value.includes(value)
@@ -141,7 +143,7 @@ const CheckboxGroupOption = forwardRef<HTMLInputElement, CheckboxGroupOptionProp
     })
 
     return (
-      <label className={checkboxGroupStyles.option} {...dataAttrs}>
+      <label className={cx(checkboxGroupStyles.option, className)} {...dataAttrs}>
         <input
           ref={ref}
           type="checkbox"

@@ -1,6 +1,7 @@
 import { appLayoutStyles } from "@versaur/core/blocks"
 import { forwardRef } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import type { AppLayoutMainProps, AppLayoutRegionProps, AppLayoutRootProps } from "./app-layout.types"
 
@@ -12,7 +13,7 @@ const AppLayoutRoot = forwardRef<HTMLDivElement, AppLayoutRootProps>(
       showSideLeft = true,
       showSideRight = false,
       showBottom = true,
-      className = "",
+      className,
       children,
     },
     ref,
@@ -26,7 +27,7 @@ const AppLayoutRoot = forwardRef<HTMLDivElement, AppLayoutRootProps>(
     })
 
     return (
-      <div ref={ref} className={`${appLayoutStyles["app-layout"]} ${className}`.trim()} {...attrs}>
+      <div ref={ref} className={cx(appLayoutStyles["app-layout"], className)} {...attrs}>
         {children}
       </div>
     )
@@ -35,8 +36,8 @@ const AppLayoutRoot = forwardRef<HTMLDivElement, AppLayoutRootProps>(
 
 AppLayoutRoot.displayName = "AppLayout"
 
-const AppLayoutHeader = forwardRef<HTMLDivElement, AppLayoutRegionProps>(({ className = "", children }, ref) => (
-  <header ref={ref} className={`${appLayoutStyles["app-layout-header"]} ${className}`.trim()}>
+const AppLayoutHeader = forwardRef<HTMLDivElement, AppLayoutRegionProps>(({ className, children }, ref) => (
+  <header ref={ref} className={cx(appLayoutStyles["app-layout-header"], className)}>
     {children}
   </header>
 ))
@@ -44,13 +45,13 @@ const AppLayoutHeader = forwardRef<HTMLDivElement, AppLayoutRegionProps>(({ clas
 AppLayoutHeader.displayName = "AppLayout.Header"
 
 const AppLayoutMain = forwardRef<HTMLDivElement, AppLayoutMainProps>(
-  ({ className = "", placement = "full-width", children }, ref) => {
+  ({ className, placement = "full-width", children }, ref) => {
     const attrs = useDataAttrs({
       placement,
     })
 
     return (
-      <main ref={ref} className={`${appLayoutStyles["app-layout-main"]} ${className}`.trim()} {...attrs}>
+      <main ref={ref} className={cx(appLayoutStyles["app-layout-main"], className)} {...attrs}>
         {children}
       </main>
     )
@@ -59,24 +60,24 @@ const AppLayoutMain = forwardRef<HTMLDivElement, AppLayoutMainProps>(
 
 AppLayoutMain.displayName = "AppLayout.Main"
 
-const AppLayoutSideLeft = forwardRef<HTMLDivElement, AppLayoutRegionProps>(({ className = "", children }, ref) => (
-  <aside ref={ref} className={`${appLayoutStyles["app-layout-side-left"]} ${className}`.trim()}>
+const AppLayoutSideLeft = forwardRef<HTMLDivElement, AppLayoutRegionProps>(({ className, children }, ref) => (
+  <aside ref={ref} className={cx(appLayoutStyles["app-layout-side-left"], className)}>
     {children}
   </aside>
 ))
 
 AppLayoutSideLeft.displayName = "AppLayout.SideLeft"
 
-const AppLayoutSideRight = forwardRef<HTMLDivElement, AppLayoutRegionProps>(({ className = "", children }, ref) => (
-  <aside ref={ref} className={`${appLayoutStyles["app-layout-side-right"]} ${className}`.trim()}>
+const AppLayoutSideRight = forwardRef<HTMLDivElement, AppLayoutRegionProps>(({ className, children }, ref) => (
+  <aside ref={ref} className={cx(appLayoutStyles["app-layout-side-right"], className)}>
     {children}
   </aside>
 ))
 
 AppLayoutSideRight.displayName = "AppLayout.SideRight"
 
-const AppLayoutBottom = forwardRef<HTMLDivElement, AppLayoutRegionProps>(({ className = "", children }, ref) => (
-  <footer ref={ref} className={`${appLayoutStyles["app-layout-bottom"]} ${className}`.trim()}>
+const AppLayoutBottom = forwardRef<HTMLDivElement, AppLayoutRegionProps>(({ className, children }, ref) => (
+  <footer ref={ref} className={cx(appLayoutStyles["app-layout-bottom"], className)}>
     {children}
   </footer>
 ))

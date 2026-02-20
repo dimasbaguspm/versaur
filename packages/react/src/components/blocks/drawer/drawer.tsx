@@ -3,6 +3,7 @@ import { overlayPartsStyles } from "@versaur/core/utils"
 import { XIcon } from "@versaur/icons"
 import { createContext, forwardRef, useContext } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { ButtonIcon } from "../../primitive/button-icon"
 import { Dialog } from "../dialog"
@@ -38,7 +39,7 @@ const useDrawerContext = () => {
  * ```
  */
 const DrawerRoot = forwardRef<HTMLDialogElement, DrawerRootProps>(
-  ({ open, onOpenChange, placement = "right", children, ...props }, ref) => {
+  ({ open, onOpenChange, placement = "right", children, className, ...props }, ref) => {
     const dataAttrs = useDataAttrs({
       placement,
     })
@@ -49,7 +50,7 @@ const DrawerRoot = forwardRef<HTMLDialogElement, DrawerRootProps>(
           ref={ref}
           isOpen={open}
           onOpenChange={onOpenChange}
-          className={open ? drawerStyles.drawer : ""}
+          className={cx(open && drawerStyles.drawer, className)}
           {...dataAttrs}
           {...props}
         >

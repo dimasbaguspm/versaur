@@ -1,6 +1,7 @@
 import { checkboxStyles } from "@versaur/core/forms"
 import { forwardRef } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import type { CheckboxProps } from "./checkbox.types"
 
@@ -18,7 +19,7 @@ import type { CheckboxProps } from "./checkbox.types"
  * ```
  */
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ invalid = false, disabled = false, required = false, children, ...rest }, ref) => {
+  ({ invalid = false, disabled = false, required = false, children, className, ...rest }, ref) => {
     const dataAttrs = useDataAttrs({
       disabled,
       invalid,
@@ -26,7 +27,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     })
 
     return (
-      <label className={checkboxStyles.checkbox} {...dataAttrs}>
+      <label className={cx(checkboxStyles.checkbox, className)} {...dataAttrs}>
         <input
           ref={ref}
           type="checkbox"

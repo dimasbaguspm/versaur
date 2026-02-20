@@ -1,6 +1,7 @@
 import { avatarGroupStyles } from "@versaur/core/blocks"
 import { forwardRef } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import type { AvatarGroupProps } from "./avatar-group.types"
 
@@ -13,6 +14,7 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
       wrap = "nowrap",
       "aria-label": ariaLabel = "Avatar group",
       children,
+      className,
       ...rest
     },
     ref,
@@ -22,7 +24,7 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
     return (
       <div
         ref={ref}
-        className={avatarGroupStyles["avatar-group"]}
+        className={cx(avatarGroupStyles["avatar-group"], className)}
         role="group"
         aria-label={ariaLabel}
         {...dataAttrs}

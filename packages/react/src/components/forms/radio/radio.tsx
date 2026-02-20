@@ -1,6 +1,7 @@
 import { radioStyles } from "@versaur/core/forms"
 import { forwardRef } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import type { RadioProps } from "./radio.types"
 
@@ -20,7 +21,7 @@ import type { RadioProps } from "./radio.types"
  * ```
  */
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  ({ variant = "outline", size = "medium", invalid = false, disabled = false, children, ...rest }, ref) => {
+  ({ variant = "outline", size = "medium", invalid = false, disabled = false, children, className, ...rest }, ref) => {
     const dataAttrs = useDataAttrs({
       disabled,
       invalid,
@@ -29,7 +30,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
     })
 
     return (
-      <label className={radioStyles.radio} {...dataAttrs}>
+      <label className={cx(radioStyles.radio, className)} {...dataAttrs}>
         <input
           ref={ref}
           type="radio"

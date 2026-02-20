@@ -1,6 +1,6 @@
 import type { ReactNode } from "react"
 
-export interface TabsProps {
+export interface TabsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange"> {
   /**
    * The currently active tab value
    */
@@ -17,7 +17,7 @@ export interface TabsProps {
   children: ReactNode
 }
 
-export interface TabsItemProps {
+export interface TabsItemProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "value"> {
   /**
    * The unique identifier for this item
    */

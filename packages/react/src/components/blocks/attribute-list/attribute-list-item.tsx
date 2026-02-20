@@ -1,5 +1,6 @@
 import { forwardRef } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { useAttributeListContext } from "./attribute-list"
 import type { AttributeListItemProps } from "./attribute-list.types"
@@ -15,7 +16,7 @@ import type { AttributeListItemProps } from "./attribute-list.types"
  * ```
  */
 export const AttributeListItem = forwardRef<HTMLDivElement, AttributeListItemProps>(
-  ({ title, columnSpan = "1", contentLineClamp = "2", children }, ref) => {
+  ({ title, columnSpan = "1", contentLineClamp = "2", children, className }, ref) => {
     useAttributeListContext()
 
     const dataAttrs = useDataAttrs({
@@ -24,7 +25,7 @@ export const AttributeListItem = forwardRef<HTMLDivElement, AttributeListItemPro
     })
 
     return (
-      <div ref={ref} {...dataAttrs}>
+      <div ref={ref} className={cx(className)} {...dataAttrs}>
         <dt>{title}</dt>
         <dd>{children}</dd>
       </div>

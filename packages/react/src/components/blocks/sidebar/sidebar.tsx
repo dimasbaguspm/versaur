@@ -3,6 +3,7 @@
 import { sidebarStyles } from "@versaur/core/blocks"
 import { createContext, forwardRef, useCallback, useContext, useEffect, useRef, useState } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { combineRefs } from "../../../utils/combine-refs"
 import { isComponentType } from "../../../utils/polymorphic"
@@ -41,7 +42,7 @@ const useSidebarContext = () => {
 /**
  * SidebarRoot - Main container managing isOpen state and keyboard navigation
  */
-const SidebarRoot = forwardRef<HTMLElement, SidebarRootProps>(({ isOpen, children, ...props }, ref) => {
+const SidebarRoot = forwardRef<HTMLElement, SidebarRootProps>(({ isOpen, children, className, ...props }, ref) => {
   const itemRefsArray = useRef<React.RefObject<HTMLElement>[]>([])
   const [focusedItemIndex, setFocusedItemIndex] = useState(0)
 
@@ -107,7 +108,7 @@ const SidebarRoot = forwardRef<HTMLElement, SidebarRootProps>(({ isOpen, childre
         unregisterItem,
       }}
     >
-      <aside ref={ref} className={sidebarStyles.sidebar} onKeyDown={handleKeyDown} {...dataAttrs} {...props}>
+      <aside ref={ref} className={cx(sidebarStyles.sidebar, className)} onKeyDown={handleKeyDown} {...dataAttrs} {...props}>
         {children}
       </aside>
     </SidebarContext.Provider>
@@ -118,8 +119,8 @@ SidebarRoot.displayName = "Sidebar"
 /**
  * Sidebar.Header - Top section for header content
  */
-const SidebarHeader = forwardRef<HTMLDivElement, SidebarHeaderProps>(({ children, ...props }, ref) => (
-  <div ref={ref} className={sidebarStyles["sidebar-header"]} {...props}>
+const SidebarHeader = forwardRef<HTMLDivElement, SidebarHeaderProps>(({ children, className, ...props }, ref) => (
+  <div ref={ref} className={cx(sidebarStyles["sidebar-header"], className)} {...props}>
     {children}
   </div>
 ))
@@ -128,8 +129,8 @@ SidebarHeader.displayName = "Sidebar.Header"
 /**
  * Sidebar.Body - Main scrollable content area
  */
-const SidebarBody = forwardRef<HTMLDivElement, SidebarBodyProps>(({ children, ...props }, ref) => (
-  <div ref={ref} className={sidebarStyles["sidebar-body"]} {...props}>
+const SidebarBody = forwardRef<HTMLDivElement, SidebarBodyProps>(({ children, className, ...props }, ref) => (
+  <div ref={ref} className={cx(sidebarStyles["sidebar-body"], className)} {...props}>
     {children}
   </div>
 ))
@@ -138,8 +139,8 @@ SidebarBody.displayName = "Sidebar.Body"
 /**
  * Sidebar.Footer - Bottom section for footer content
  */
-const SidebarFooter = forwardRef<HTMLDivElement, SidebarFooterProps>(({ children, ...props }, ref) => (
-  <div ref={ref} className={sidebarStyles["sidebar-footer"]} {...props}>
+const SidebarFooter = forwardRef<HTMLDivElement, SidebarFooterProps>(({ children, className, ...props }, ref) => (
+  <div ref={ref} className={cx(sidebarStyles["sidebar-footer"], className)} {...props}>
     {children}
   </div>
 ))
@@ -148,8 +149,8 @@ SidebarFooter.displayName = "Sidebar.Footer"
 /**
  * Sidebar.Group - Container for grouped items with label
  */
-const SidebarGroup = forwardRef<HTMLDivElement, SidebarGroupProps>(({ label, icon, children, ...props }, ref) => (
-  <div ref={ref} className={sidebarStyles["sidebar-group"]} {...props}>
+const SidebarGroup = forwardRef<HTMLDivElement, SidebarGroupProps>(({ label, icon, children, className, ...props }, ref) => (
+  <div ref={ref} className={cx(sidebarStyles["sidebar-group"], className)} {...props}>
     {label && (
       <div className={sidebarStyles["sidebar-group-label"]}>
         {icon && <span>{icon}</span>}
@@ -165,7 +166,7 @@ SidebarGroup.displayName = "Sidebar.Group"
  * Sidebar.Item - Polymorphic navigation item (button or link)
  */
 const SidebarItem = forwardRef<HTMLElement, SidebarItemProps>(
-  ({ as: Component = "button", href, active = false, disabled = false, icon, children, onClick, ...props }, ref) => {
+  ({ as: Component = "button", href, active = false, disabled = false, icon, children, onClick, className, ...props }, ref) => {
     const { focusedItemIndex, registerItem, unregisterItem, itemRefs } = useSidebarContext()
     const itemRef = useRef<HTMLElement>(null)
 
@@ -197,7 +198,7 @@ const SidebarItem = forwardRef<HTMLElement, SidebarItemProps>(
     // Handle polymorphic component rendering
     const isLink = isComponentType(Component, "a")
     const itemProps: Record<string, any> = {
-      className: sidebarStyles["sidebar-item"],
+      className: cx(sidebarStyles["sidebar-item"], className),
       onClick: handleClick,
       ref: combineRefs(itemRef, ref),
       ...dataAttrs,
@@ -223,8 +224,8 @@ SidebarItem.displayName = "Sidebar.Item"
 /**
  * Sidebar.Divider - Visual divider using Hr component
  */
-const SidebarDivider = forwardRef<HTMLDivElement, SidebarDividerProps>((props, ref) => (
-  <div ref={ref} className={sidebarStyles["sidebar-divider"]}>
+const SidebarDivider = forwardRef<HTMLDivElement, SidebarDividerProps>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cx(sidebarStyles["sidebar-divider"], className)}>
     <Hr {...props} />
   </div>
 ))

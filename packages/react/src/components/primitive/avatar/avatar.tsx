@@ -2,18 +2,19 @@ import { avatarStyles } from "@versaur/core/primitive"
 import { UserIcon } from "@versaur/icons"
 import { forwardRef, useState } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { Icon } from "../icon"
 import type { AvatarImageProps, AvatarProps } from "./avatar.types"
 
 const AvatarRoot = forwardRef<HTMLSpanElement, AvatarProps>(
-  ({ variant = "primary", size = "md", shape = "circle", children, ...rest }, ref) => {
+  ({ variant = "primary", size = "md", shape = "circle", children, className, ...rest }, ref) => {
     const dataAttrs = useDataAttrs({ shape, size, variant })
 
     const fallback = children || <Icon as={UserIcon} />
 
     return (
-      <span ref={ref} className={avatarStyles.avatar} role="img" {...dataAttrs} {...rest}>
+      <span ref={ref} className={cx(avatarStyles.avatar, className)} role="img" {...dataAttrs} {...rest}>
         {fallback}
       </span>
     )
@@ -22,7 +23,7 @@ const AvatarRoot = forwardRef<HTMLSpanElement, AvatarProps>(
 
 AvatarRoot.displayName = "Avatar"
 
-const AvatarImage = forwardRef<HTMLImageElement, AvatarImageProps>(({ src, alt, onError, ...rest }, ref) => {
+const AvatarImage = forwardRef<HTMLImageElement, AvatarImageProps>(({ src, alt, onError, className, ...rest }, ref) => {
   const [imgError, setImgError] = useState(false)
 
   if (imgError) {
@@ -32,7 +33,7 @@ const AvatarImage = forwardRef<HTMLImageElement, AvatarImageProps>(({ src, alt, 
   return (
     <img
       ref={ref}
-      className={avatarStyles["avatar-image"]}
+      className={cx(avatarStyles["avatar-image"], className)}
       src={src}
       alt={alt}
       onError={(e) => {

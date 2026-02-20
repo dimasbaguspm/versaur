@@ -3,6 +3,7 @@
 import { topBarStyles } from "@versaur/core/blocks"
 import { forwardRef } from "react"
 
+import { cx } from "../../../utils/cx"
 import type {
   TopBarCentredProps,
   TopBarComponent,
@@ -31,8 +32,8 @@ import type {
  * </TopBar>
  * ```
  */
-const TopBar = forwardRef<HTMLElement, TopBarProps>(({ children, ...props }, ref) => (
-  <header ref={ref} className={topBarStyles["top-bar"]} {...props}>
+const TopBar = forwardRef<HTMLElement, TopBarProps>(({ children, className, ...props }, ref) => (
+  <header ref={ref} className={cx(topBarStyles["top-bar"], className)} {...props}>
     {children}
   </header>
 ))
@@ -42,8 +43,8 @@ TopBar.displayName = "TopBar"
  * TopBar.Leading - Left grid area
  * Typically contains logo, brand, and navigation
  */
-const TopBarLeading = forwardRef<HTMLDivElement, TopBarLeadingProps>(({ children, ...props }, ref) => (
-  <div ref={ref} className={topBarStyles["top-bar-leading"]} {...props}>
+const TopBarLeading = forwardRef<HTMLDivElement, TopBarLeadingProps>(({ children, className, ...props }, ref) => (
+  <div ref={ref} className={cx(topBarStyles["top-bar-leading"], className)} {...props}>
     {children}
   </div>
 ))
@@ -53,8 +54,8 @@ TopBarLeading.displayName = "TopBar.Leading"
  * TopBar.Centred - Center grid area
  * Typically contains search, title, or other center content
  */
-const TopBarCentred = forwardRef<HTMLDivElement, TopBarCentredProps>(({ children, ...props }, ref) => (
-  <div ref={ref} className={topBarStyles["top-bar-centred"]} {...props}>
+const TopBarCentred = forwardRef<HTMLDivElement, TopBarCentredProps>(({ children, className, ...props }, ref) => (
+  <div ref={ref} className={cx(topBarStyles["top-bar-centred"], className)} {...props}>
     {children}
   </div>
 ))
@@ -64,8 +65,8 @@ TopBarCentred.displayName = "TopBar.Centred"
  * TopBar.Trailing - Right grid area
  * Typically contains actions, user menu, and notifications
  */
-const TopBarTrailing = forwardRef<HTMLDivElement, TopBarTrailingProps>(({ children, ...props }, ref) => (
-  <div ref={ref} className={topBarStyles["top-bar-trailing"]} {...props}>
+const TopBarTrailing = forwardRef<HTMLDivElement, TopBarTrailingProps>(({ children, className, ...props }, ref) => (
+  <div ref={ref} className={cx(topBarStyles["top-bar-trailing"], className)} {...props}>
     {children}
   </div>
 ))

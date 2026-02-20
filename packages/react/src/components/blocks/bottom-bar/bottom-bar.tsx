@@ -4,6 +4,7 @@ import { bottomBarStyles } from "@versaur/core/blocks"
 import type { ReactNode } from "react"
 import { forwardRef } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { isComponentType } from "../../../utils/polymorphic"
 
@@ -29,8 +30,8 @@ interface BottomBarRootProps extends React.HTMLAttributes<HTMLElement> {
 /**
  * BottomBarRoot - Main container for bottom navigation items
  */
-const BottomBarRoot = forwardRef<HTMLElement, BottomBarRootProps>(({ children, ...props }, ref) => (
-  <nav ref={ref} className={bottomBarStyles["bottom-bar"]} {...props}>
+const BottomBarRoot = forwardRef<HTMLElement, BottomBarRootProps>(({ children, className, ...props }, ref) => (
+  <nav ref={ref} className={cx(bottomBarStyles["bottom-bar"], className)} {...props}>
     {children}
   </nav>
 ))
@@ -40,7 +41,7 @@ BottomBarRoot.displayName = "BottomBar"
  * BottomBar.Item - Polymorphic navigation item (button or link)
  */
 const BottomBarItem = forwardRef<HTMLElement, BottomBarItemProps>(
-  ({ as: Component = "button", href, active = false, disabled = false, icon, children, onClick, ...props }, ref) => {
+  ({ as: Component = "button", href, active = false, disabled = false, icon, children, onClick, className, ...props }, ref) => {
     const isLink = isComponentType(Component, "a")
 
     const dataAttrs = useDataAttrs({
@@ -57,7 +58,7 @@ const BottomBarItem = forwardRef<HTMLElement, BottomBarItemProps>(
     }
 
     const itemProps: Record<string, any> = {
-      className: bottomBarStyles["bottom-bar-item"],
+      className: cx(bottomBarStyles["bottom-bar-item"], className),
       onClick: handleClick,
       ref,
       ...dataAttrs,

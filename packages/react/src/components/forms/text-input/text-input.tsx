@@ -1,6 +1,7 @@
 import { textInputStyles } from "@versaur/core/forms"
 import { forwardRef, useId } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { ErrorText } from "../error-text"
 import { HelperText } from "../helper-text"
@@ -23,6 +24,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       leftIcon,
       rightIcon,
       id: providedId,
+      className,
       ...rest
     },
     ref,
@@ -44,7 +46,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     })
 
     return (
-      <div className={textInputStyles.field}>
+      <div className={cx(textInputStyles.field, className)}>
         {label && (
           <Label htmlFor={inputId} required={required} disabled={disabled}>
             {label}

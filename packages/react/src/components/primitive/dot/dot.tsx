@@ -2,6 +2,7 @@ import { dotStyles } from "@versaur/core/primitive"
 import type { Dot as CoreDot } from "@versaur/core/primitive"
 import { forwardRef } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import type { DotProps } from "./dot.types"
 
@@ -15,13 +16,13 @@ import type { DotProps } from "./dot.types"
  * <Dot aria-label="Active status" />
  * ```
  */
-export const Dot = forwardRef<HTMLSpanElement, DotProps>(({ variant = "primary" as CoreDot.Variant, size = "medium" as CoreDot.Size, ...rest }, ref) => {
+export const Dot = forwardRef<HTMLSpanElement, DotProps>(({ variant = "primary" as CoreDot.Variant, size = "medium" as CoreDot.Size, className, ...rest }, ref) => {
   const dataAttrs = useDataAttrs({
     size,
     variant,
   })
 
-  return <span ref={ref} className={dotStyles.dot} {...dataAttrs} {...rest} />
+  return <span ref={ref} className={cx(dotStyles.dot, className)} {...dataAttrs} {...rest} />
 })
 
 Dot.displayName = "Dot"

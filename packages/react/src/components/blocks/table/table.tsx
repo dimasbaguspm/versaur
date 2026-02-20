@@ -5,6 +5,7 @@ import { tableStyles } from "@versaur/core/blocks"
 import { ChevronDownIcon, ChevronUpIcon, MenuIcon } from "@versaur/icons"
 import { forwardRef } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs.js"
 import { ButtonIcon } from "../../primitive/button-icon"
 import type {
@@ -23,8 +24,8 @@ import type {
 /**
  * TableHeader - thead wrapper
  */
-const TableHeader = forwardRef<HTMLTableSectionElement, TableHeaderProps>((props, ref) => (
-  <thead ref={ref} className={tableStyles["table-header"]} {...props} />
+const TableHeader = forwardRef<HTMLTableSectionElement, TableHeaderProps>(({ className, ...props }, ref) => (
+  <thead ref={ref} className={cx(tableStyles["table-header"], className)} {...props} />
 ))
 
 TableHeader.displayName = "Table.Header"
@@ -32,8 +33,8 @@ TableHeader.displayName = "Table.Header"
 /**
  * TableBody - tbody wrapper
  */
-const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>((props, ref) => (
-  <tbody ref={ref} className={tableStyles["table-body"]} {...props} />
+const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(({ className, ...props }, ref) => (
+  <tbody ref={ref} className={cx(tableStyles["table-body"], className)} {...props} />
 ))
 
 TableBody.displayName = "Table.Body"
@@ -41,8 +42,8 @@ TableBody.displayName = "Table.Body"
 /**
  * TableFooter - tfoot wrapper
  */
-const TableFooter = forwardRef<HTMLTableSectionElement, TableFooterProps>((props, ref) => (
-  <tfoot ref={ref} className={tableStyles["table-footer"]} {...props} />
+const TableFooter = forwardRef<HTMLTableSectionElement, TableFooterProps>(({ className, ...props }, ref) => (
+  <tfoot ref={ref} className={cx(tableStyles["table-footer"], className)} {...props} />
 ))
 
 TableFooter.displayName = "Table.Footer"
@@ -50,8 +51,8 @@ TableFooter.displayName = "Table.Footer"
 /**
  * TableRow - tr wrapper with click-to-select support
  */
-const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(({ onClick, ...props }, ref) => (
-  <tr ref={ref} data-clickable={onClick ? "true" : undefined} onClick={onClick} {...props} />
+const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(({ onClick, className, ...props }, ref) => (
+  <tr ref={ref} className={cx(className)} data-clickable={onClick ? "true" : undefined} onClick={onClick} {...props} />
 ))
 
 TableRow.displayName = "Table.Row"
@@ -60,7 +61,7 @@ TableRow.displayName = "Table.Row"
  * TableHeaderCell - th wrapper with sortable support (renamed from TableHead)
  */
 const TableHeaderCell = forwardRef<HTMLTableCellElement, TableHeaderCellProps>(
-  ({ sortable, sortDirection, onSort, children, ...props }, ref) => {
+  ({ sortable, sortDirection, onSort, children, className, ...props }, ref) => {
     const handleClick = () => {
       if (!sortable || !onSort) {
         return
@@ -84,7 +85,7 @@ const TableHeaderCell = forwardRef<HTMLTableCellElement, TableHeaderCellProps>(
     return (
       <th
         ref={ref}
-        className={tableStyles["table-head"]}
+        className={cx(tableStyles["table-head"], className)}
         onClick={sortable ? handleClick : undefined}
         {...dataAttrs}
         {...props}
@@ -125,8 +126,8 @@ TableHeaderCell.displayName = "Table.HeaderCell"
 /**
  * TableBodyCell - td wrapper (renamed from TableCell)
  */
-const TableBodyCell = forwardRef<HTMLTableCellElement, TableBodyCellProps>(({ variant, ...props }, ref) => (
-  <td ref={ref} className={tableStyles["table-cell"]} data-table-cell-variant={variant} {...props} />
+const TableBodyCell = forwardRef<HTMLTableCellElement, TableBodyCellProps>(({ variant, className, ...props }, ref) => (
+  <td ref={ref} className={cx(tableStyles["table-cell"], className)} data-table-cell-variant={variant} {...props} />
 ))
 
 TableBodyCell.displayName = "Table.BodyCell"
@@ -164,7 +165,7 @@ TableCheckbox.displayName = "Table.Checkbox"
 /**
  * TableDoubleLine - Built-in cell with title and subtitle
  */
-const TableDoubleLine = forwardRef<HTMLDivElement, TableDoubleLineProps>(({ title, subtitle, size = "md" }, ref) => {
+const TableDoubleLine = forwardRef<HTMLDivElement, TableDoubleLineProps>(({ title, subtitle, size = "md", className }, ref) => {
   const fontSizeMap = {
     title: {
       sm: "0.875rem",
@@ -179,7 +180,7 @@ const TableDoubleLine = forwardRef<HTMLDivElement, TableDoubleLineProps>(({ titl
   }
 
   return (
-    <div ref={ref} className={tableStyles["table-cell"]} data-table-cell-variant="double-line">
+    <div ref={ref} className={cx(tableStyles["table-cell"], className)} data-table-cell-variant="double-line">
       <div
         style={{
           fontWeight: 600,
@@ -230,10 +231,10 @@ TableAction.displayName = "Table.Action"
  * Table - Compound component with CSS Grid column management
  * Replaces TableRootProps and TableWrapperProps patterns
  */
-const TableComponent = forwardRef<HTMLDivElement, TableWrapperProps>(({ columns, children, ...props }, ref) => (
+const TableComponent = forwardRef<HTMLDivElement, TableWrapperProps>(({ columns, children, className, ...props }, ref) => (
   <div
     ref={ref}
-    className={tableStyles.table}
+    className={cx(tableStyles.table, className)}
     style={
       {
         "--table-grid-columns": columns,

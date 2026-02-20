@@ -1,11 +1,12 @@
 import { textStyles } from "@versaur/core/primitive"
 import { forwardRef } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import type { TextProps } from "./text.types"
 
 export const Text = forwardRef<HTMLElement, TextProps>(
-  ({ as = "p", size, weight, intent, case: caseVal, transform, children, ...rest }, ref) => {
+  ({ as = "p", size, weight, intent, case: caseVal, transform, children, className, ...rest }, ref) => {
     const Tag = as
     const dataAttrs = useDataAttrs({
       as,
@@ -17,7 +18,7 @@ export const Text = forwardRef<HTMLElement, TextProps>(
     })
 
     return (
-      <Tag ref={ref as any} className={textStyles.text} {...dataAttrs} {...rest}>
+      <Tag ref={ref as any} className={cx(textStyles.text, className)} {...dataAttrs} {...rest}>
         {children}
       </Tag>
     )

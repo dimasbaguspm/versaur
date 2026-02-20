@@ -77,7 +77,7 @@ export interface TableCheckboxProps {
 /**
  * Built-in double-line cell (title + subtitle)
  */
-export interface TableDoubleLineProps {
+export interface TableDoubleLineProps extends Omit<HTMLAttributes<HTMLDivElement>, "title" | "subtitle"> {
   /**
    * Main title (bold, primary color)
    */

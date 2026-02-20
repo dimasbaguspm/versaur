@@ -1,6 +1,7 @@
 import { radioGroupStyles } from "@versaur/core/forms"
 import { createContext, forwardRef, useContext, useId } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { ErrorText } from "../error-text"
 import { HelperText } from "../helper-text"
@@ -63,6 +64,7 @@ const RadioGroupRoot = forwardRef<HTMLDivElement, RadioGroupRootProps>(
       disabled = false,
       direction = "column",
       children,
+      className,
       ...rest
     },
     ref,
@@ -87,7 +89,7 @@ const RadioGroupRoot = forwardRef<HTMLDivElement, RadioGroupRootProps>(
     })
 
     return (
-      <div ref={ref} className={radioGroupStyles.field} {...dataAttrs} {...rest}>
+      <div ref={ref} className={cx(radioGroupStyles.field, className)} {...dataAttrs} {...rest}>
         {label && (
           <Label required={required} disabled={disabled}>
             {label}
@@ -126,7 +128,7 @@ RadioGroupRoot.displayName = "RadioGroup"
  * ```
  */
 const RadioGroupOption = forwardRef<HTMLInputElement, RadioGroupOptionProps>(
-  ({ value, children, disabled: optionDisabled, ...rest }, ref) => {
+  ({ value, children, disabled: optionDisabled, className, ...rest }, ref) => {
     const context = useRadioGroupContext()
     const isChecked = context.value === value
     const isDisabled = context.disabled || optionDisabled
@@ -138,7 +140,7 @@ const RadioGroupOption = forwardRef<HTMLInputElement, RadioGroupOptionProps>(
     }
 
     return (
-      <label className={radioGroupStyles.option}>
+      <label className={cx(radioGroupStyles.option, className)}>
         <input
           ref={ref}
           type="radio"

@@ -1,6 +1,7 @@
 import { attributeListStyles } from "@versaur/core/blocks"
 import { createContext, forwardRef, useContext } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import type { AttributeListProps } from "./attribute-list.types"
 
@@ -40,14 +41,14 @@ export const useAttributeListContext = () => {
  * ```
  */
 export const AttributeList = forwardRef<HTMLDListElement, AttributeListProps>(
-  ({ columns = "3", children, ...rest }, ref) => {
+  ({ columns = "3", children, className, ...rest }, ref) => {
     const dataAttrs = useDataAttrs({
       columns,
     })
 
     return (
       <AttributeListContext.Provider value={{ columns }}>
-        <dl ref={ref} className={attributeListStyles["attribute-list"]} {...dataAttrs} {...rest}>
+        <dl ref={ref} className={cx(attributeListStyles["attribute-list"], className)} {...dataAttrs} {...rest}>
           {children}
         </dl>
       </AttributeListContext.Provider>

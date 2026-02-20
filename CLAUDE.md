@@ -42,6 +42,7 @@ pnpm release          # Build packages + changeset publish
 
 - Thin layers that convert component props into `data-*` attributes via the `useDataAttrs` hook (`packages/react/src/hooks/use-data-attrs.ts`).
 - Wrappers import the scoped class names from core (`buttonStyles`) and auto-import the pre-built CSS (`import "@versaur/core/button.css"`) as a side-effect, so consumers get styles automatically.
+- **Class name merging**: All components use the `cx` utility (`packages/react/src/utils/cx.ts`) to merge component base classes with user-supplied `className` props. This prevents silent style overwrites and allows consumers to extend component styling.
 - ARIA attributes (`aria-pressed`, `aria-busy`, `aria-disabled`) are set directly from props.
 - Components use `forwardRef` for ref forwarding.
 
@@ -51,6 +52,26 @@ pnpm release          # Build packages + changeset publish
 - Component stories live in `apps/react-doc/src/stories/*.stories.tsx`.
 - Uses Storybook's built-in component documentation and interactive playground features.
 - **Source-first dev resolution**: Vite is configured with `resolve.conditions: ['source']`. Each package declares a `"source"` condition in its `package.json` exports pointing to source files. This means Storybook resolves all `@versaur/*` imports from source — no manual aliases needed. Adding new components or subpath exports requires zero alias maintenance.
+
+## Class name merging
+
+All React components use the `cx` utility to merge component base classes with user-supplied `className` props:
+
+```tsx
+// cx utility filters falsy values and joins strings with spaces
+className={cx(baseStyles.button, userClassName)}
+
+// This allows:
+<Button className="custom-margin">Click me</Button>
+// Renders with both 'versaur-button-button' and 'custom-margin'
+```
+
+**Pattern in all React components:**
+1. Import `cx`: `import { cx } from "../../../utils/cx"`
+2. Destructure `className`: `({ variant, disabled, className, ...rest })`
+3. Apply to element: `className={cx(componentStyles.base, className)}`
+
+This ensures user-supplied styles are preserved and don't silently overwrite component styles.
 
 ## Type generation
 
@@ -127,6 +148,7 @@ This includes all color, spacing, typography, and effects tokens. In apps, impor
 | ---------------------------------------------------------- | ---------------------------------------------------- |
 | `packages/core/vite.config.ts`                             | CSS module scoping config (`versaur-[name]-[local]`) |
 | `packages/core/src/tokens/`                                | Design tokens (CSS custom properties)                |
+| `packages/react/src/utils/cx.ts`                           | Class name merging utility (filters + joins)         |
 | `packages/react/src/hooks/use-data-attrs.ts`               | Core hook: props to data-attributes                  |
 | `packages/react/src/components/primitive/button/button.tsx`| Reference component implementation                   |
 | `packages/icons/src/index.ts`                              | Icon library registry and exports                    |

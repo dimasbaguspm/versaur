@@ -3,6 +3,7 @@
 import { navStyles } from "@versaur/core/blocks"
 import { createContext, forwardRef } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import type { NavContextValue, NavProps } from "./nav.types"
 
@@ -38,7 +39,7 @@ export const NavContext = createContext<NavContextValue | undefined>(undefined)
  * ```
  */
 export const Nav = forwardRef<HTMLElement, NavProps>(
-  ({ direction = "horizontal", gap, value, onChange, children, ...props }, ref) => {
+  ({ direction = "horizontal", gap, value, onChange, children, className, ...props }, ref) => {
     const dataAttrs = useDataAttrs({ direction })
 
     const spacingMap: Record<string, string> = {
@@ -57,7 +58,7 @@ export const Nav = forwardRef<HTMLElement, NavProps>(
       <NavContext.Provider value={contextValue}>
         <nav
           ref={ref}
-          className={navStyles.nav}
+          className={cx(navStyles.nav, className)}
           style={{
             ...(gap &&
               ({

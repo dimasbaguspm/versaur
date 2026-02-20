@@ -1,14 +1,7 @@
-import type { CardAlign, CardGap, CardJustify, CardSize } from "@versaur/core/blocks"
+import type { CardAlign, CardBorder, CardGap, CardJustify, CardSize } from "@versaur/core/blocks"
 
 import { Card } from "./card"
-import type {
-  CardBodyProps,
-  CardBorder,
-  CardButtonProps,
-  CardFooterProps,
-  CardHeaderProps,
-  CardRootProps,
-} from "./card.types"
+import type { CardBodyProps, CardButtonProps, CardFooterProps, CardHeaderProps, CardRootProps } from "./card.types"
 
 // Declaration merging: namespace + const = Card.Variant, Card.Props, etc.
 declare namespace Card {
@@ -24,11 +17,10 @@ declare namespace Card {
   export type FooterProps = CardFooterProps
 }
 
-export { Card }
 export type { CardComponent } from "./card"
+export { Card }
 
 // Flat type exports
-export type { CardRootProps, CardButtonProps, CardBorder, CardHeaderProps, CardBodyProps, CardFooterProps }
+export type { CardBodyProps, CardBorder, CardButtonProps, CardFooterProps, CardHeaderProps, CardRootProps }
 
-export type { CardSize, CardAlign, CardJustify, CardGap }
-
+export type { CardAlign, CardGap, CardJustify, CardSize }

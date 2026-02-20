@@ -1,6 +1,7 @@
 import { chipSingleInputStyles } from "@versaur/core/forms"
 import { createContext, forwardRef, useContext, useId } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { ErrorText } from "../error-text"
 import { HelperText } from "../helper-text"
@@ -63,6 +64,7 @@ const ChipSingleInputRoot = forwardRef<HTMLDivElement, ChipSingleInputRootProps>
       gap = "2",
       wrap = true,
       children,
+      className,
       ...rest
     },
     ref,
@@ -84,7 +86,7 @@ const ChipSingleInputRoot = forwardRef<HTMLDivElement, ChipSingleInputRootProps>
     })
 
     return (
-      <div ref={ref} className={chipSingleInputStyles.field} {...dataAttrs} {...rest}>
+      <div ref={ref} className={cx(chipSingleInputStyles.field, className)} {...dataAttrs} {...rest}>
         {label && (
           <Label required={required} disabled={disabled}>
             {label}

@@ -4,6 +4,7 @@ import { createContext, forwardRef, useContext, useLayoutEffect, useRef, useStat
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { useResizeObserver } from "../../../hooks/use-resize-observer"
 import { combineRefs } from "../../../utils/combine-refs"
+import { cx } from "../../../utils/cx"
 import type { TabsItemProps, TabsPanelAttributes, TabsProps } from "./tabs.types"
 
 /**
@@ -40,7 +41,7 @@ function useTabsContext() {
  * </Tabs>
  * ```
  */
-const TabsRoot = forwardRef<HTMLDivElement, TabsProps>(({ value, onChange, children }, ref) => {
+const TabsRoot = forwardRef<HTMLDivElement, TabsProps>(({ value, onChange, children, className }, ref) => {
   const navRef = useRef<HTMLDivElement>(null)
   const triggersRef = useRef<Map<string, HTMLButtonElement>>(new Map())
   const [thumbLeft, setThumbLeft] = useState(0)
@@ -94,7 +95,7 @@ const TabsRoot = forwardRef<HTMLDivElement, TabsProps>(({ value, onChange, child
 
   return (
     <TabsContext.Provider value={{ activeValue: value, onChange, registerTrigger }}>
-      <nav ref={combineRefs(ref, navRef)} className={tabsStyles.tabs} {...dataAttrs}>
+      <nav ref={combineRefs(ref, navRef)} className={cx(tabsStyles.tabs, className)} {...dataAttrs}>
         <ul className={tabsStyles.tablist} role="tablist">
           {children}
         </ul>
@@ -123,44 +124,46 @@ TabsRoot.displayName = "Tabs"
  * <Tabs.Item value="tab1">Tab 1</Tabs.Item>
  * ```
  */
-const TabsItem = forwardRef<HTMLButtonElement, TabsItemProps>(({ value, disabled = false, children }, ref) => {
-  const { activeValue, onChange, registerTrigger } = useTabsContext()
+const TabsItem = forwardRef<HTMLButtonElement, TabsItemProps>(
+  ({ value, disabled = false, children, className }, ref) => {
+    const { activeValue, onChange, registerTrigger } = useTabsContext()
 
-  const isActive = activeValue === value
+    const isActive = activeValue === value
 
-  let state: "disabled" | "active" | "default"
-  if (disabled) {
-    state = "disabled"
-  } else if (isActive) {
-    state = "active"
-  } else {
-    state = "default"
-  }
-
-  const handleClick = () => {
-    if (!disabled) {
-      onChange(value)
+    let state: "disabled" | "active" | "default"
+    if (disabled) {
+      state = "disabled"
+    } else if (isActive) {
+      state = "active"
+    } else {
+      state = "default"
     }
-  }
 
-  return (
-    <li className={tabsStyles.tabitem}>
-      <button
-        ref={combineRefs(ref, (element) => registerTrigger(value, element))}
-        className={tabsStyles.trigger}
-        role="tab"
-        id={`tabs-trigger-${value}`}
-        aria-selected={isActive}
-        aria-controls={`tabs-panel-${value}`}
-        data-state={state}
-        disabled={disabled}
-        onClick={handleClick}
-      >
-        {children}
-      </button>
-    </li>
-  )
-})
+    const handleClick = () => {
+      if (!disabled) {
+        onChange(value)
+      }
+    }
+
+    return (
+      <li className={tabsStyles.tabitem}>
+        <button
+          ref={combineRefs(ref, (element) => registerTrigger(value, element))}
+          className={cx(tabsStyles.trigger, className)}
+          role="tab"
+          id={`tabs-trigger-${value}`}
+          aria-selected={isActive}
+          aria-controls={`tabs-panel-${value}`}
+          data-state={state}
+          disabled={disabled}
+          onClick={handleClick}
+        >
+          {children}
+        </button>
+      </li>
+    )
+  },
+)
 
 TabsItem.displayName = "Tabs.Item"
 
@@ -186,7 +189,9 @@ function getPanelAttribute(value: string): TabsPanelAttributes {
 }
 
 // Create a compound component with typed properties
-export interface TabsComponent extends React.ForwardRefExoticComponent<TabsProps & React.RefAttributes<HTMLDivElement>> {
+export interface TabsComponent extends React.ForwardRefExoticComponent<
+  TabsProps & React.RefAttributes<HTMLDivElement>
+> {
   Item: typeof TabsItem
   getPanelAttribute: typeof getPanelAttribute
 }

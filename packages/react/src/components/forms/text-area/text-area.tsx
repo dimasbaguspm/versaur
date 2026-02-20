@@ -1,6 +1,7 @@
 import { textAreaStyles } from "@versaur/core/forms"
 import { forwardRef, useId } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { ErrorText } from "../error-text"
 import { HelperText } from "../helper-text"
@@ -24,6 +25,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       minRows = 3,
       maxRows,
       id: providedId,
+      className,
       ...rest
     },
     ref,
@@ -52,7 +54,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     } as React.CSSProperties
 
     return (
-      <div className={textAreaStyles.field}>
+      <div className={cx(textAreaStyles.field, className)}>
         {label && (
           <Label htmlFor={textareaId} required={required} disabled={disabled}>
             {label}

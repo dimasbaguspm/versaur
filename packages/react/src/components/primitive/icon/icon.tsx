@@ -1,6 +1,7 @@
 import { iconStyles } from "@versaur/core/primitive"
 import React from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import type { IconProps } from "./icon.types"
 
@@ -9,7 +10,7 @@ export const Icon = React.forwardRef<SVGSVGElement, IconProps>(function Icon(
   ref,
 ) {
   const dataAttrs = useDataAttrs({ intent, size })
-  return <As ref={ref} className={[iconStyles.icon, className].filter(Boolean).join(" ")} {...dataAttrs} {...rest} />
+  return <As ref={ref} className={cx(iconStyles.icon, className)} {...dataAttrs} {...rest} />
 })
 
 Icon.displayName = "Icon"

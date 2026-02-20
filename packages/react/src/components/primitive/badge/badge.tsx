@@ -2,6 +2,7 @@ import type { Badge as BadgeCore } from "@versaur/core/primitive"
 import { badgeStyles } from "@versaur/core/primitive"
 import { forwardRef } from "react"
 
+import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import type { BadgeProps } from "./badge.types"
 
@@ -30,6 +31,7 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
       maxWidth,
       children,
       style,
+      className,
       ...rest
     },
     ref,
@@ -66,7 +68,7 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
     }
 
     return (
-      <div ref={ref} className={badgeStyles["badge"]} {...dataAttrs} {...rest} style={computedStyle}>
+      <div ref={ref} className={cx(badgeStyles["badge"], className)} {...dataAttrs} {...rest} style={computedStyle}>
         {iconLeft}
         {children}
         {iconRight}
