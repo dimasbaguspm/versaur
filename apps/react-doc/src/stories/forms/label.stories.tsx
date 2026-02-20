@@ -21,34 +21,50 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+/**
+ * Default label with standard styling.
+ */
 export const Default: Story = {
   args: {
     children: "Form Label",
   },
 }
 
-export const Required: Story = {
-  args: {
-    children: "Required Field",
-    required: true,
-  },
+/**
+ * Showcase all label states: normal, required, disabled, and disabled+required.
+ */
+export const States: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", gap: "3rem", alignItems: "flex-start", flexWrap: "wrap" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Normal</div>
+        <Label {...args}>Normal Label</Label>
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Required</div>
+        <Label {...args} required>
+          Required Label
+        </Label>
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Disabled</div>
+        <Label {...args} disabled>
+          Disabled Label
+        </Label>
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Disabled+Required</div>
+        <Label {...args} disabled required>
+          Disabled Required
+        </Label>
+      </div>
+    </div>
+  ),
 }
 
-export const Disabled: Story = {
-  args: {
-    children: "Disabled Label",
-    disabled: true,
-  },
-}
-
-export const DisabledRequired: Story = {
-  args: {
-    children: "Disabled Required Field",
-    disabled: true,
-    required: true,
-  },
-}
-
+/**
+ * Label with htmlFor attribute to associate with an input element.
+ */
 export const WithHtmlFor: Story = {
   render: (args) => (
     <div>
@@ -63,6 +79,9 @@ export const WithHtmlFor: Story = {
   },
 }
 
+/**
+ * Label paired with helper text to provide additional context.
+ */
 export const WithHelperText: Story = {
   render: (args) => (
     <div>

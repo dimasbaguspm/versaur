@@ -13,42 +13,21 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+/**
+ * Default helper text providing additional context to a form field.
+ */
 export const Default: Story = {
   args: {
     children: "This is helper text that provides additional context",
   },
 }
 
-export const ShortHelp: Story = {
-  args: {
-    children: "Enter a valid email address",
-  },
-}
-
+/**
+ * Helper text with an id attribute for associating with form fields.
+ */
 export const WithId: Story = {
   args: {
     id: "helper-1",
     children: "Password must be at least 8 characters long",
-  },
-}
-
-export const ForPassword: Story = {
-  args: {
-    id: "password-helper",
-    children: "Use a combination of letters, numbers, and symbols",
-  },
-}
-
-export const ForEmail: Story = {
-  args: {
-    id: "email-helper",
-    children: "We'll use this to send you important updates",
-  },
-}
-
-export const ForPhone: Story = {
-  args: {
-    id: "phone-helper",
-    children: "Include country code for international numbers",
   },
 }

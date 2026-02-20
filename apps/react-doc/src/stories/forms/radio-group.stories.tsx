@@ -38,6 +38,9 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+/**
+ * Default radio group with basic vertical layout.
+ */
 export const Default: Story = {
   render: (args) => {
     const [value, setValue] = useState<string>("")
@@ -51,6 +54,9 @@ export const Default: Story = {
   },
 }
 
+/**
+ * Radio group with a label.
+ */
 export const WithLabel: Story = {
   render: (args) => {
     const [value, setValue] = useState<string>("")
@@ -64,6 +70,9 @@ export const WithLabel: Story = {
   },
 }
 
+/**
+ * Radio group with helper text for additional guidance.
+ */
 export const WithHelper: Story = {
   render: (args) => {
     const [value, setValue] = useState<string>("")
@@ -84,6 +93,9 @@ export const WithHelper: Story = {
   },
 }
 
+/**
+ * Radio group with error state and validation message.
+ */
 export const WithError: Story = {
   render: (args) => {
     const [value, setValue] = useState<string>("")
@@ -103,113 +115,152 @@ export const WithError: Story = {
   },
 }
 
-export const Horizontal: Story = {
-  render: (args) => {
-    const [value, setValue] = useState<string>("")
-    return (
-      <RadioGroup {...args} value={value} onChange={setValue} name="horizontal" direction="row" label="Alignment">
-        <RadioGroup.Option value="left">Left</RadioGroup.Option>
-        <RadioGroup.Option value="center">Center</RadioGroup.Option>
-        <RadioGroup.Option value="right">Right</RadioGroup.Option>
-      </RadioGroup>
-    )
-  },
+/**
+ * Showcase all radio group variants: filled and outline.
+ */
+export const Variants: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", gap: "3rem", alignItems: "flex-start", flexWrap: "wrap" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Filled</div>
+        {(() => {
+          const [value, setValue] = useState<string>("")
+          return (
+            <RadioGroup {...args} value={value} onChange={setValue} name="filled" variant="filled" label="Type">
+              <RadioGroup.Option value="typeA">Type A</RadioGroup.Option>
+              <RadioGroup.Option value="typeB">Type B</RadioGroup.Option>
+            </RadioGroup>
+          )
+        })()}
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Outline</div>
+        {(() => {
+          const [value, setValue] = useState<string>("")
+          return (
+            <RadioGroup {...args} value={value} onChange={setValue} name="outline" variant="outline" label="Style">
+              <RadioGroup.Option value="outlined">Outlined</RadioGroup.Option>
+              <RadioGroup.Option value="filled2">Filled</RadioGroup.Option>
+            </RadioGroup>
+          )
+        })()}
+      </div>
+    </div>
+  ),
 }
 
-export const Vertical: Story = {
-  render: (args) => {
-    const [value, setValue] = useState<string>("")
-    return (
-      <RadioGroup {...args} value={value} onChange={setValue} name="vertical" direction="column" label="Level">
-        <RadioGroup.Option value="beginner">Beginner</RadioGroup.Option>
-        <RadioGroup.Option value="intermediate">Intermediate</RadioGroup.Option>
-        <RadioGroup.Option value="advanced">Advanced</RadioGroup.Option>
-      </RadioGroup>
-    )
-  },
+/**
+ * Showcase all radio group sizes: small, medium, and large.
+ */
+export const Sizes: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Small</div>
+        {(() => {
+          const [value, setValue] = useState<string>("")
+          return (
+            <RadioGroup {...args} value={value} onChange={setValue} name="small" size="small" label="Small">
+              <RadioGroup.Option value="small1">Small 1</RadioGroup.Option>
+              <RadioGroup.Option value="small2">Small 2</RadioGroup.Option>
+            </RadioGroup>
+          )
+        })()}
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Medium</div>
+        {(() => {
+          const [value, setValue] = useState<string>("")
+          return (
+            <RadioGroup {...args} value={value} onChange={setValue} name="medium" size="medium" label="Medium">
+              <RadioGroup.Option value="medium1">Medium 1</RadioGroup.Option>
+              <RadioGroup.Option value="medium2">Medium 2</RadioGroup.Option>
+            </RadioGroup>
+          )
+        })()}
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Large</div>
+        {(() => {
+          const [value, setValue] = useState<string>("")
+          return (
+            <RadioGroup {...args} value={value} onChange={setValue} name="large" size="large" label="Large">
+              <RadioGroup.Option value="large1">Large 1</RadioGroup.Option>
+              <RadioGroup.Option value="large2">Large 2</RadioGroup.Option>
+            </RadioGroup>
+          )
+        })()}
+      </div>
+    </div>
+  ),
 }
 
-export const Filled: Story = {
-  render: (args) => {
-    const [value, setValue] = useState<string>("")
-    return (
-      <RadioGroup {...args} value={value} onChange={setValue} name="filled" variant="filled" label="Type">
-        <RadioGroup.Option value="typeA">Type A</RadioGroup.Option>
-        <RadioGroup.Option value="typeB">Type B</RadioGroup.Option>
-      </RadioGroup>
-    )
-  },
+/**
+ * Showcase layout direction: row and column orientations.
+ */
+export const Direction: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", gap: "3rem", alignItems: "flex-start", flexWrap: "wrap" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Row</div>
+        {(() => {
+          const [value, setValue] = useState<string>("")
+          return (
+            <RadioGroup {...args} value={value} onChange={setValue} name="horizontal" direction="row" label="Horizontal">
+              <RadioGroup.Option value="left">Left</RadioGroup.Option>
+              <RadioGroup.Option value="center">Center</RadioGroup.Option>
+              <RadioGroup.Option value="right">Right</RadioGroup.Option>
+            </RadioGroup>
+          )
+        })()}
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Column</div>
+        {(() => {
+          const [value, setValue] = useState<string>("")
+          return (
+            <RadioGroup {...args} value={value} onChange={setValue} name="vertical" direction="column" label="Vertical">
+              <RadioGroup.Option value="beginner">Beginner</RadioGroup.Option>
+              <RadioGroup.Option value="intermediate">Intermediate</RadioGroup.Option>
+              <RadioGroup.Option value="advanced">Advanced</RadioGroup.Option>
+            </RadioGroup>
+          )
+        })()}
+      </div>
+    </div>
+  ),
 }
 
-export const Outline: Story = {
-  render: (args) => {
-    const [value, setValue] = useState<string>("")
-    return (
-      <RadioGroup {...args} value={value} onChange={setValue} name="outline" variant="outline" label="Style">
-        <RadioGroup.Option value="outlined">Outlined</RadioGroup.Option>
-        <RadioGroup.Option value="filled2">Filled</RadioGroup.Option>
-      </RadioGroup>
-    )
-  },
-}
-
-export const Small: Story = {
-  render: (args) => {
-    const [value, setValue] = useState<string>("")
-    return (
-      <RadioGroup {...args} value={value} onChange={setValue} name="small" size="small" label="Small Size">
-        <RadioGroup.Option value="small1">Small 1</RadioGroup.Option>
-        <RadioGroup.Option value="small2">Small 2</RadioGroup.Option>
-      </RadioGroup>
-    )
-  },
-}
-
-export const Large: Story = {
-  render: (args) => {
-    const [value, setValue] = useState<string>("")
-    return (
-      <RadioGroup {...args} value={value} onChange={setValue} name="large" size="large" label="Large Size">
-        <RadioGroup.Option value="large1">Large 1</RadioGroup.Option>
-        <RadioGroup.Option value="large2">Large 2</RadioGroup.Option>
-      </RadioGroup>
-    )
-  },
-}
-
-export const Disabled: Story = {
-  render: (args) => {
-    const [value, setValue] = useState<string>("option1")
-    return (
-      <RadioGroup {...args} value={value} onChange={setValue} name="disabled" disabled label="Disabled Group">
-        <RadioGroup.Option value="option1">Disabled 1</RadioGroup.Option>
-        <RadioGroup.Option value="option2">Disabled 2</RadioGroup.Option>
-      </RadioGroup>
-    )
-  },
-}
-
-export const Required: Story = {
-  render: (args) => {
-    const [value, setValue] = useState<string>("")
-    return (
-      <RadioGroup {...args} value={value} onChange={setValue} name="required" required label="Required">
-        <RadioGroup.Option value="req1">Required 1</RadioGroup.Option>
-        <RadioGroup.Option value="req2">Required 2</RadioGroup.Option>
-      </RadioGroup>
-    )
-  },
-}
-
-export const PreSelected: Story = {
-  render: (args) => {
-    const [value, setValue] = useState<string>("moderate")
-    return (
-      <RadioGroup {...args} value={value} onChange={setValue} name="preselected" label="Activity Level">
-        <RadioGroup.Option value="sedentary">Sedentary</RadioGroup.Option>
-        <RadioGroup.Option value="moderate">Moderate</RadioGroup.Option>
-        <RadioGroup.Option value="active">Active</RadioGroup.Option>
-      </RadioGroup>
-    )
-  },
+/**
+ * Showcase radio group states: disabled and required.
+ */
+export const States: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", gap: "3rem", alignItems: "flex-start", flexWrap: "wrap" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Disabled</div>
+        {(() => {
+          const [value] = useState<string>("option1")
+          return (
+            <RadioGroup {...args} value={value} onChange={() => {}} name="disabled" disabled label="Disabled">
+              <RadioGroup.Option value="option1">Option 1</RadioGroup.Option>
+              <RadioGroup.Option value="option2">Option 2</RadioGroup.Option>
+            </RadioGroup>
+          )
+        })()}
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Required</div>
+        {(() => {
+          const [value, setValue] = useState<string>("")
+          return (
+            <RadioGroup {...args} value={value} onChange={setValue} name="required" required label="Required">
+              <RadioGroup.Option value="req1">Option 1</RadioGroup.Option>
+              <RadioGroup.Option value="req2">Option 2</RadioGroup.Option>
+            </RadioGroup>
+          )
+        })()}
+      </div>
+    </div>
+  ),
 }

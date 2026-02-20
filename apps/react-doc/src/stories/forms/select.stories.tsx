@@ -21,6 +21,9 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+/**
+ * Default select with basic styling.
+ */
 export const Default: Story = {
   render: (args) => (
     <Select {...args}>
@@ -32,6 +35,9 @@ export const Default: Story = {
   ),
 }
 
+/**
+ * Select with a label.
+ */
 export const WithLabel: Story = {
   render: (args) => (
     <Select {...args} label="Choose an option">
@@ -43,6 +49,9 @@ export const WithLabel: Story = {
   ),
 }
 
+/**
+ * Select with a placeholder.
+ */
 export const WithPlaceholder: Story = {
   render: (args) => (
     <Select {...args} label="Fruit" placeholder="Select a fruit">
@@ -53,6 +62,9 @@ export const WithPlaceholder: Story = {
   ),
 }
 
+/**
+ * Select with helper text for additional guidance.
+ */
 export const WithHelper: Story = {
   render: (args) => (
     <Select {...args} label="Country" placeholder="Select your country" helper="You can change this later">
@@ -63,6 +75,9 @@ export const WithHelper: Story = {
   ),
 }
 
+/**
+ * Select with error state and validation message.
+ */
 export const WithError: Story = {
   render: (args) => (
     <Select {...args} label="Region" placeholder="Select region" error="Please select a region">
@@ -73,26 +88,35 @@ export const WithError: Story = {
   ),
 }
 
-export const Disabled: Story = {
+/**
+ * Showcase select states: disabled and required.
+ */
+export const States: Story = {
   render: (args) => (
-    <Select {...args} label="Disabled" disabled>
-      <Select.Option value="">-- Select --</Select.Option>
-      <Select.Option value="option1">Option 1</Select.Option>
-      <Select.Option value="option2">Option 2</Select.Option>
-    </Select>
+    <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start", flexWrap: "wrap" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", minWidth: "200px" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Disabled</div>
+        <Select {...args} label="Disabled" disabled>
+          <Select.Option value="">-- Select --</Select.Option>
+          <Select.Option value="option1">Option 1</Select.Option>
+          <Select.Option value="option2">Option 2</Select.Option>
+        </Select>
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", minWidth: "200px" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Required</div>
+        <Select {...args} label="Category" placeholder="Select category" required>
+          <Select.Option value="category1">Category 1</Select.Option>
+          <Select.Option value="category2">Category 2</Select.Option>
+          <Select.Option value="category3">Category 3</Select.Option>
+        </Select>
+      </div>
+    </div>
   ),
 }
 
-export const Required: Story = {
-  render: (args) => (
-    <Select {...args} label="Category" placeholder="Select category" required>
-      <Select.Option value="category1">Category 1</Select.Option>
-      <Select.Option value="category2">Category 2</Select.Option>
-      <Select.Option value="category3">Category 3</Select.Option>
-    </Select>
-  ),
-}
-
+/**
+ * Select with option groups for organizing related choices.
+ */
 export const WithOptGroups: Story = {
   render: (args) => (
     <Select {...args} label="Vehicle" placeholder="Select a vehicle">
@@ -104,18 +128,6 @@ export const WithOptGroups: Story = {
         <Select.Option value="ford">Ford</Select.Option>
         <Select.Option value="chevy">Chevy</Select.Option>
       </Select.OptionGroup>
-    </Select>
-  ),
-}
-
-export const ManyOptions: Story = {
-  render: (args) => (
-    <Select {...args} label="Number" placeholder="Pick a number 1-50">
-      {Array.from({ length: 50 }, (_, i) => (
-        <Select.Option key={i + 1} value={String(i + 1)}>
-          {String(i + 1)}
-        </Select.Option>
-      ))}
     </Select>
   ),
 }

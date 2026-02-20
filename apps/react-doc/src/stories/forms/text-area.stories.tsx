@@ -24,12 +24,18 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+/**
+ * Default textarea with basic styling.
+ */
 export const Default: Story = {
   args: {
     placeholder: "Enter your message...",
   },
 }
 
+/**
+ * Textarea with a label.
+ */
 export const WithLabel: Story = {
   args: {
     label: "Comments",
@@ -37,6 +43,9 @@ export const WithLabel: Story = {
   },
 }
 
+/**
+ * Textarea with helper text for additional guidance.
+ */
 export const WithHelper: Story = {
   args: {
     label: "Bio",
@@ -45,6 +54,9 @@ export const WithHelper: Story = {
   },
 }
 
+/**
+ * Textarea with error state and validation message.
+ */
 export const WithError: Story = {
   args: {
     label: "Message",
@@ -54,63 +66,56 @@ export const WithError: Story = {
   },
 }
 
-export const Disabled: Story = {
-  args: {
-    label: "Disabled",
-    placeholder: "Cannot edit",
-    disabled: true,
-    value: "This textarea is disabled",
-  },
+/**
+ * Showcase textarea states: disabled and read-only.
+ */
+export const States: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start", flexWrap: "wrap" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", minWidth: "250px" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Disabled</div>
+        <TextArea {...args} label="Disabled" placeholder="Cannot edit" disabled value="This textarea is disabled" />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", minWidth: "250px" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Read Only</div>
+        <TextArea {...args} label="Read Only" value="This content cannot be edited" readOnly />
+      </div>
+    </div>
+  ),
 }
 
-export const ReadOnly: Story = {
-  args: {
-    label: "Read Only",
-    value: "This content cannot be edited",
-    readOnly: true,
-  },
+/**
+ * Showcase resize behavior: resizable vs non-resizable.
+ */
+export const ResizeBehavior: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start", flexWrap: "wrap" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", minWidth: "250px" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Resizable</div>
+        <TextArea {...args} label="Description" placeholder="Can be resized" resizable minRows={3} />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", minWidth: "250px" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Non-Resizable</div>
+        <TextArea {...args} label="Fixed Size" placeholder="Cannot be resized" resizable={false} minRows={3} />
+      </div>
+    </div>
+  ),
 }
 
-export const Resizable: Story = {
-  args: {
-    label: "Description",
-    placeholder: "Enter description",
-    resizable: true,
-    minRows: 3,
-  },
-}
-
-export const NonResizable: Story = {
-  args: {
-    label: "Fixed Size",
-    placeholder: "This textarea cannot be resized",
-    resizable: false,
-    minRows: 4,
-  },
-}
-
-export const MinRows: Story = {
-  args: {
-    label: "Message",
-    placeholder: "Minimum 5 rows",
-    minRows: 5,
-  },
-}
-
-export const MaxRows: Story = {
-  args: {
-    label: "Limited Size",
-    placeholder: "Maximum 8 rows before scrolling",
-    minRows: 3,
-    maxRows: 8,
-  },
-}
-
-export const LongContent: Story = {
-  args: {
-    label: "Rich Content",
-    value:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    minRows: 4,
-  },
+/**
+ * Showcase row constraints with minRows and maxRows.
+ */
+export const RowConstraints: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Min Rows (5)</div>
+        <TextArea {...args} label="Message" placeholder="Minimum 5 rows" minRows={5} />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Max Rows (3-8)</div>
+        <TextArea {...args} label="Limited Size" placeholder="3 to 8 rows" minRows={3} maxRows={8} />
+      </div>
+    </div>
+  ),
 }

@@ -22,12 +22,18 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+/**
+ * Default text input with basic styling.
+ */
 export const Default: Story = {
   args: {
     placeholder: "Enter text...",
   },
 }
 
+/**
+ * Text input with a label.
+ */
 export const WithLabel: Story = {
   args: {
     label: "Email Address",
@@ -36,6 +42,9 @@ export const WithLabel: Story = {
   },
 }
 
+/**
+ * Text input with helper text for additional guidance.
+ */
 export const WithHelper: Story = {
   args: {
     label: "Password",
@@ -45,6 +54,9 @@ export const WithHelper: Story = {
   },
 }
 
+/**
+ * Text input with error state and validation message.
+ */
 export const WithError: Story = {
   args: {
     label: "Username",
@@ -54,93 +66,72 @@ export const WithError: Story = {
   },
 }
 
-export const Disabled: Story = {
-  args: {
-    label: "Disabled Field",
-    placeholder: "Cannot edit",
-    disabled: true,
-    value: "Disabled",
-  },
-}
-
-export const ReadOnly: Story = {
-  args: {
-    label: "Read Only Field",
-    value: "This is read only",
-    readOnly: true,
-  },
-}
-
-export const WithLeftIcon: Story = {
-  render: (args) => <TextInput {...args} leftIcon={<SearchIcon width={20} height={20} />} />,
-  args: {
-    label: "Search",
-    placeholder: "Search...",
-  },
-}
-
-export const WithRightIcon: Story = {
-  render: (args) => <TextInput {...args} rightIcon={<MailIcon width={20} height={20} />} />,
-  args: {
-    label: "Email",
-    type: "email",
-    placeholder: "Enter email",
-  },
-}
-
-export const WithBothIcons: Story = {
+/**
+ * Showcase input states: disabled and read-only.
+ */
+export const States: Story = {
   render: (args) => (
-    <TextInput
-      {...args}
-      leftIcon={<MailIcon width={20} height={20} />}
-      rightIcon={<SearchIcon width={20} height={20} />}
-    />
+    <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start", flexWrap: "wrap" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", minWidth: "200px" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Disabled</div>
+        <TextInput {...args} label="Disabled Field" placeholder="Cannot edit" disabled value="Disabled" />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", minWidth: "200px" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Read Only</div>
+        <TextInput {...args} label="Read Only Field" value="This is read only" readOnly />
+      </div>
+    </div>
   ),
-  args: {
-    placeholder: "With icons on both sides",
-  },
 }
 
-export const Password: Story = {
-  args: {
-    label: "Password",
-    type: "password",
-    placeholder: "Enter password",
-    helper: "Min 8 chars, with uppercase, lowercase, and numbers",
-  },
+/**
+ * Showcase different input types: password, email, number, url, and tel.
+ */
+export const InputTypes: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Password</div>
+        <TextInput {...args} label="Password" type="password" placeholder="Enter password" />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Email</div>
+        <TextInput {...args} label="Email Address" type="email" placeholder="you@example.com" />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Number</div>
+        <TextInput {...args} label="Age" type="number" placeholder="Enter your age" />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>URL</div>
+        <TextInput {...args} label="Website" type="url" placeholder="https://example.com" />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Phone</div>
+        <TextInput {...args} label="Phone Number" type="tel" placeholder="+1 (555) 000-0000" />
+      </div>
+    </div>
+  ),
 }
 
-export const Email: Story = {
-  args: {
-    label: "Email Address",
-    type: "email",
-    placeholder: "you@example.com",
-    helper: "We'll never share your email",
-  },
-}
-
-export const Number: Story = {
-  args: {
-    label: "Age",
-    type: "number",
-    placeholder: "Enter your age",
-    min: "0",
-    max: "120",
-  },
-}
-
-export const Url: Story = {
-  args: {
-    label: "Website",
-    type: "url",
-    placeholder: "https://example.com",
-  },
-}
-
-export const Tel: Story = {
-  args: {
-    label: "Phone Number",
-    type: "tel",
-    placeholder: "+1 (555) 000-0000",
-  },
+/**
+ * Text input with various icon configurations: left, right, and both.
+ */
+export const WithIcons: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Left Icon</div>
+        <TextInput {...args} label="Search" placeholder="Search..." leftIcon={<SearchIcon width={20} height={20} />} />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Right Icon</div>
+        <TextInput {...args} label="Email" type="email" placeholder="Enter email" rightIcon={<MailIcon width={20} height={20} />} />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Both Icons</div>
+        <TextInput {...args} placeholder="With icons on both sides" leftIcon={<MailIcon width={20} height={20} />} rightIcon={<SearchIcon width={20} height={20} />} />
+      </div>
+    </div>
+  ),
 }

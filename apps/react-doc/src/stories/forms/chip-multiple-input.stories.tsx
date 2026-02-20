@@ -24,6 +24,9 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+/**
+ * Default chip multiple input with multiple options for selection.
+ */
 export const Default: Story = {
   render: (args) => {
     const [value, setValue] = useState<string[]>([])
@@ -44,6 +47,9 @@ export const Default: Story = {
   },
 }
 
+/**
+ * Chip multiple input with helper text for additional guidance.
+ */
 export const WithHelper: Story = {
   render: (args) => {
     const [value, setValue] = useState<string[]>([])
@@ -67,6 +73,9 @@ export const WithHelper: Story = {
   },
 }
 
+/**
+ * Chip multiple input with error state and validation message.
+ */
 export const WithError: Story = {
   render: (args) => {
     const [value, setValue] = useState<string[]>([])
@@ -89,6 +98,9 @@ export const WithError: Story = {
   },
 }
 
+/**
+ * Chip multiple input with pre-selected options.
+ */
 export const PreSelected: Story = {
   render: (args) => {
     const [value, setValue] = useState<string[]>(["2", "4"])
@@ -106,91 +118,70 @@ export const PreSelected: Story = {
   },
 }
 
-export const Disabled: Story = {
-  render: (args) => {
-    const [value] = useState<string[]>(["2"])
-    return (
-      <div style={{ width: "100%", maxWidth: "500px" }}>
-        <ChipMultipleInput {...args} value={value} onChange={() => {}} label="Disabled" disabled>
-          <ChipMultipleInput.Option value="1">Option 1</ChipMultipleInput.Option>
-          <ChipMultipleInput.Option value="2">Option 2</ChipMultipleInput.Option>
-          <ChipMultipleInput.Option value="3">Option 3</ChipMultipleInput.Option>
-        </ChipMultipleInput>
+/**
+ * Showcase chip multiple input states: disabled and required.
+ */
+export const States: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start", flexWrap: "wrap" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Disabled</div>
+        {(() => {
+          const [value] = useState<string[]>(["2"])
+          return (
+            <div style={{ width: "100%", maxWidth: "250px" }}>
+              <ChipMultipleInput {...args} value={value} onChange={() => {}} label="Disabled" disabled>
+                <ChipMultipleInput.Option value="1">Option 1</ChipMultipleInput.Option>
+                <ChipMultipleInput.Option value="2">Option 2</ChipMultipleInput.Option>
+                <ChipMultipleInput.Option value="3">Option 3</ChipMultipleInput.Option>
+              </ChipMultipleInput>
+            </div>
+          )
+        })()}
       </div>
-    )
-  },
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Required</div>
+        {(() => {
+          const [value, setValue] = useState<string[]>([])
+          return (
+            <div style={{ width: "100%", maxWidth: "250px" }}>
+              <ChipMultipleInput {...args} value={value} onChange={setValue} label="Requirements" required>
+                <ChipMultipleInput.Option value="responsive">Responsive</ChipMultipleInput.Option>
+                <ChipMultipleInput.Option value="accessible">Accessible</ChipMultipleInput.Option>
+                <ChipMultipleInput.Option value="performance">Performance</ChipMultipleInput.Option>
+              </ChipMultipleInput>
+            </div>
+          )
+        })()}
+      </div>
+    </div>
+  ),
 }
 
-export const Required: Story = {
-  render: (args) => {
-    const [value, setValue] = useState<string[]>([])
-    return (
-      <div style={{ width: "100%", maxWidth: "500px" }}>
-        <ChipMultipleInput {...args} value={value} onChange={setValue} label="Requirements" required>
-          <ChipMultipleInput.Option value="responsive">Responsive Design</ChipMultipleInput.Option>
-          <ChipMultipleInput.Option value="accessible">Accessibility</ChipMultipleInput.Option>
-          <ChipMultipleInput.Option value="performance">Performance</ChipMultipleInput.Option>
-          <ChipMultipleInput.Option value="testing">Testing</ChipMultipleInput.Option>
-        </ChipMultipleInput>
-      </div>
-    )
-  },
-}
-
-export const NoWrap: Story = {
-  render: (args) => {
-    const [value, setValue] = useState<string[]>([])
-    return (
-      <div style={{ width: "100%", maxWidth: "500px" }}>
-        <ChipMultipleInput
-          {...args}
-          value={value}
-          onChange={setValue}
-          label="No wrapping"
-          helper="Chips stay on one line"
-          wrap={false}
-        >
-          <ChipMultipleInput.Option value="option1">Very Long Option Text</ChipMultipleInput.Option>
-          <ChipMultipleInput.Option value="option2">Another Very Long Option</ChipMultipleInput.Option>
-          <ChipMultipleInput.Option value="option3">One More Long Option</ChipMultipleInput.Option>
-        </ChipMultipleInput>
-      </div>
-    )
-  },
-}
-
-export const ManyOptions: Story = {
-  render: (args) => {
-    const [value, setValue] = useState<string[]>([])
-    return (
-      <div style={{ width: "100%", maxWidth: "500px" }}>
-        <ChipMultipleInput {...args} value={value} onChange={setValue} label="Select numbers (multi-select)" gap="2">
-          {Array.from({ length: 15 }, (_, i) => (
-            <ChipMultipleInput.Option key={i} value={String(i + 1)}>
-              {i + 1}
-            </ChipMultipleInput.Option>
-          ))}
-        </ChipMultipleInput>
-      </div>
-    )
-  },
-}
-
-export const LargeGap: Story = {
-  render: (args) => {
-    const [value, setValue] = useState<string[]>([])
-    return (
-      <div style={{ width: "100%", maxWidth: "500px" }}>
-        <ChipMultipleInput {...args} value={value} onChange={setValue} label="Large spacing" gap="4">
-          <ChipMultipleInput.Option value="1">First</ChipMultipleInput.Option>
-          <ChipMultipleInput.Option value="2">Second</ChipMultipleInput.Option>
-          <ChipMultipleInput.Option value="3">Third</ChipMultipleInput.Option>
-          <ChipMultipleInput.Option value="4">Fourth</ChipMultipleInput.Option>
-        </ChipMultipleInput>
-      </div>
-    )
-  },
-  args: {
-    gap: "4",
-  },
+/**
+ * Showcase all gap spacing options: 1, 2, 3, and 4.
+ */
+export const GapOptions: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+      {(["1", "2", "3", "4"] as const).map((gapValue) => (
+        <div key={gapValue} style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+          <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Gap: {gapValue}</div>
+          {(() => {
+            const [value, setValue] = useState<string[]>([])
+            return (
+              <div style={{ width: "100%", maxWidth: "400px" }}>
+                <ChipMultipleInput {...args} value={value} onChange={setValue} label="Choose" gap={gapValue}>
+                  <ChipMultipleInput.Option value="1">Option 1</ChipMultipleInput.Option>
+                  <ChipMultipleInput.Option value="2">Option 2</ChipMultipleInput.Option>
+                  <ChipMultipleInput.Option value="3">Option 3</ChipMultipleInput.Option>
+                  <ChipMultipleInput.Option value="4">Option 4</ChipMultipleInput.Option>
+                </ChipMultipleInput>
+              </div>
+            )
+          })()}
+        </div>
+      ))}
+    </div>
+  ),
 }

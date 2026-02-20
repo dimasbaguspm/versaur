@@ -13,46 +13,21 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+/**
+ * Default error text with a generic required field message.
+ */
 export const Default: Story = {
   args: {
     children: "This field is required",
   },
 }
 
-export const InvalidEmail: Story = {
+/**
+ * Error text with an id attribute for associating with form fields.
+ */
+export const WithId: Story = {
   args: {
     id: "email-error",
     children: "Please enter a valid email address",
-  },
-}
-
-export const PasswordMismatch: Story = {
-  args: {
-    id: "password-error",
-    children: "Passwords do not match",
-  },
-}
-
-export const TooShort: Story = {
-  args: {
-    children: "Input must be at least 3 characters long",
-  },
-}
-
-export const TooLong: Story = {
-  args: {
-    children: "Input exceeds maximum length of 255 characters",
-  },
-}
-
-export const AlreadyTaken: Story = {
-  args: {
-    children: "This username is already taken",
-  },
-}
-
-export const InvalidFormat: Story = {
-  args: {
-    children: "Invalid format. Please use YYYY-MM-DD",
   },
 }

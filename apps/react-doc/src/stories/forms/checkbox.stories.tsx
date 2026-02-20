@@ -24,63 +24,72 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+/**
+ * Default checkbox in unchecked state.
+ */
 export const Default: Story = {
   args: {
     children: "Checkbox label",
   },
 }
 
-export const Checked: Story = {
-  args: {
-    children: "Checked checkbox",
-    defaultChecked: true,
-  },
+/**
+ * Showcase all checkbox states: normal, checked, disabled, disabled+checked, invalid, invalid+checked, and required.
+ */
+export const States: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <div style={{ display: "flex", gap: "2rem", alignItems: "center", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem", alignItems: "flex-start" }}>
+          <div style={{ fontSize: "0.75rem", fontWeight: 500, color: "#666" }}>Normal</div>
+          <Checkbox {...args}>Normal</Checkbox>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem", alignItems: "flex-start" }}>
+          <div style={{ fontSize: "0.75rem", fontWeight: 500, color: "#666" }}>Checked</div>
+          <Checkbox {...args} defaultChecked>
+            Checked
+          </Checkbox>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem", alignItems: "flex-start" }}>
+          <div style={{ fontSize: "0.75rem", fontWeight: 500, color: "#666" }}>Disabled</div>
+          <Checkbox {...args} disabled>
+            Disabled
+          </Checkbox>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem", alignItems: "flex-start" }}>
+          <div style={{ fontSize: "0.75rem", fontWeight: 500, color: "#666" }}>Disabled+Checked</div>
+          <Checkbox {...args} disabled defaultChecked>
+            Disabled+Checked
+          </Checkbox>
+        </div>
+      </div>
+      <div style={{ display: "flex", gap: "2rem", alignItems: "center", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem", alignItems: "flex-start" }}>
+          <div style={{ fontSize: "0.75rem", fontWeight: 500, color: "#666" }}>Invalid</div>
+          <Checkbox {...args} invalid>
+            Invalid
+          </Checkbox>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem", alignItems: "flex-start" }}>
+          <div style={{ fontSize: "0.75rem", fontWeight: 500, color: "#666" }}>Invalid+Checked</div>
+          <Checkbox {...args} invalid defaultChecked>
+            Invalid+Checked
+          </Checkbox>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem", alignItems: "flex-start" }}>
+          <div style={{ fontSize: "0.75rem", fontWeight: 500, color: "#666" }}>Required</div>
+          <Checkbox {...args} required>
+            Required
+          </Checkbox>
+        </div>
+      </div>
+    </div>
+  ),
 }
 
-export const Unchecked: Story = {
-  args: {
-    children: "Unchecked checkbox",
-    defaultChecked: false,
-  },
-}
-
-export const Disabled: Story = {
-  args: {
-    children: "Disabled checkbox",
-    disabled: true,
-  },
-}
-
-export const DisabledChecked: Story = {
-  args: {
-    children: "Disabled checked checkbox",
-    disabled: true,
-    defaultChecked: true,
-  },
-}
-
-export const Required: Story = {
-  args: {
-    children: "Required checkbox",
-    required: true,
-  },
-}
-
-export const Invalid: Story = {
-  args: {
-    children: "Invalid checkbox",
-    invalid: true,
-  },
-}
-
-export const InvalidChecked: Story = {
-  args: {
-    children: "Invalid selected checkbox",
-    invalid: true,
-    defaultChecked: true,
-  },
-}
-
+/**
+ * Checkbox with a long text label that wraps to multiple lines.
+ */
 export const WithLongLabel: Story = {
   args: {
     children: "I agree to the terms and conditions of service",
@@ -88,6 +97,9 @@ export const WithLongLabel: Story = {
   },
 }
 
+/**
+ * Checkbox paired with helper text to provide additional context.
+ */
 export const WithDescription: Story = {
   render: (args) => (
     <div>
