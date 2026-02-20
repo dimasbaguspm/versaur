@@ -13,5 +13,5 @@ declare namespace Button {
 export { Button }
 
 // Backward-compat flat type exports
-
+export type { ButtonProps }
 export type { ButtonSize, ButtonVariant } from "@versaur/core/primitive"

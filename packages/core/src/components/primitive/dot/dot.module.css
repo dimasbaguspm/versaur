@@ -36,7 +36,7 @@
 }
 
 /* ============================================
-   VARIANT STYLES — primary, secondary, success, danger, warning, info, accent variants
+   VARIANT STYLES — primary, secondary, success, danger, warning, info
    ============================================ */
 
 .dot[data-variant="primary"] {
@@ -61,23 +61,4 @@
 
 .dot[data-variant="info"] {
   --_bg: var(--color-info);
-}
-
-/* Accent variants use soft backgrounds with bold borders */
-.dot[data-variant="accent-1"] {
-  --_bg: var(--color-primary-soft);
-  --_border-color: var(--color-primary-bold);
-  --_border-width: 2px;
-}
-
-.dot[data-variant="accent-2"] {
-  --_bg: var(--color-secondary-soft);
-  --_border-color: var(--color-secondary-bold);
-  --_border-width: 2px;
-}
-
-.dot[data-variant="accent-3"] {
-  --_bg: var(--color-outline-soft);
-  --_border-color: var(--color-outline-bold);
-  --_border-width: 2px;
 }

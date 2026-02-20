@@ -9,7 +9,7 @@ const meta = {
     },
     variant: {
       control: "select",
-      options: ["primary", "secondary", "danger", "success", "warning", "info", "accent-1", "accent-2", "accent-3"],
+      options: ["primary", "secondary", "danger", "success", "warning", "info"],
     },
   },
   component: Dot,
@@ -23,70 +23,39 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Primary: Story = {
+/**
+ * Default dot component with primary variant
+ */
+export const Default: Story = {
   args: {
     variant: "primary",
   },
 }
 
-export const Secondary: Story = {
-  args: {
-    variant: "secondary",
-  },
+/**
+ * All available variants displayed together
+ */
+export const Variants: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>
+      <Dot {...args} variant="primary" />
+      <Dot {...args} variant="secondary" />
+      <Dot {...args} variant="success" />
+      <Dot {...args} variant="danger" />
+      <Dot {...args} variant="warning" />
+      <Dot {...args} variant="info" />
+    </div>
+  ),
 }
 
-export const Danger: Story = {
-  args: {
-    variant: "danger",
-  },
-}
-
-export const Success: Story = {
-  args: {
-    variant: "success",
-  },
-}
-
-export const Warning: Story = {
-  args: {
-    variant: "warning",
-  },
-}
-
-export const Info: Story = {
-  args: {
-    variant: "info",
-  },
-}
-
-export const Small: Story = {
-  args: {
-    size: "small",
-    variant: "primary",
-  },
-}
-
-export const Medium: Story = {
-  args: {
-    size: "medium",
-    variant: "primary",
-  },
-}
-
-export const Accent1: Story = {
-  args: {
-    variant: "accent-1",
-  },
-}
-
-export const Accent2: Story = {
-  args: {
-    variant: "accent-2",
-  },
-}
-
-export const Accent3: Story = {
-  args: {
-    variant: "accent-3",
-  },
+/**
+ * All available sizes demonstrated
+ */
+export const Sizes: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", gap: "1rem", alignItems: "center", flexWrap: "wrap" }}>
+      <Dot {...args} size="small" />
+      <Dot {...args} size="medium" />
+    </div>
+  ),
 }

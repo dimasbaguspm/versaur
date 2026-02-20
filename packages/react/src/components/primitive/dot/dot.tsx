@@ -1,4 +1,5 @@
 import { dotStyles } from "@versaur/core/primitive"
+import type { Dot as CoreDot } from "@versaur/core/primitive"
 import { forwardRef } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
@@ -11,10 +12,10 @@ import type { DotProps } from "./dot.types"
  * ```tsx
  * <Dot variant="success" />
  * <Dot variant="danger" size="small" />
- * <Dot variant="accent-1" aria-label="Active status" />
+ * <Dot aria-label="Active status" />
  * ```
  */
-export const Dot = forwardRef<HTMLSpanElement, DotProps>(({ variant = "primary", size = "medium", ...rest }, ref) => {
+export const Dot = forwardRef<HTMLSpanElement, DotProps>(({ variant = "primary" as CoreDot.Variant, size = "medium" as CoreDot.Size, ...rest }, ref) => {
   const dataAttrs = useDataAttrs({
     size,
     variant,

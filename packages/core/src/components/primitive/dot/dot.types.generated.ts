@@ -2,7 +2,7 @@
 // Source: dot.module.css
 
 export type DotSize = 'medium' | 'small';
-export type DotVariant = 'accent-1' | 'accent-2' | 'accent-3' | 'danger' | 'info' | 'primary' | 'secondary' | 'success' | 'warning';
+export type DotVariant = 'danger' | 'info' | 'primary' | 'secondary' | 'success' | 'warning';
 
 export interface DotDataAttrs {
   size?: DotSize;
