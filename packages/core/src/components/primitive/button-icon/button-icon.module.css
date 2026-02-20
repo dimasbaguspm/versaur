@@ -157,20 +157,20 @@
 .button-icon[data-variant="outline"] {
   --_bg: var(--vers-comp-button-icon-outline-bg, transparent);
   --_color: var(--vers-comp-button-icon-outline-color, var(--color-text-primary));
-  --_border-color: var(--vers-comp-button-icon-outline-border-color, var(--color-neutral));
-  --_focus-ring-color: var(--vers-comp-button-icon-outline-focus-ring-color, var(--color-neutral));
+  --_border-color: var(--vers-comp-button-icon-outline-border-color, var(--color-border));
+  --_focus-ring-color: var(--vers-comp-button-icon-outline-focus-ring-color, var(--color-border));
 }
 
 .button-icon[data-variant="outline"]:hover:not([data-disabled]):not([data-loading]) {
   --_bg: var(--vers-comp-button-icon-outline-hover-bg, transparent);
   --_color: var(--vers-comp-button-icon-outline-hover-color, var(--color-text-primary));
-  --_border-color: var(--vers-comp-button-icon-outline-hover-border-color, var(--color-neutral-hover));
+  --_border-color: var(--vers-comp-button-icon-outline-hover-border-color, var(--color-border-focus));
 }
 
 .button-icon[data-variant="outline"]:active:not([data-disabled]):not([data-loading]) {
-  --_bg: var(--vers-comp-button-icon-outline-active-bg, var(--color-neutral-light));
+  --_bg: var(--vers-comp-button-icon-outline-active-bg, transparent);
   --_color: var(--vers-comp-button-icon-outline-active-color, var(--color-text-primary));
-  --_border-color: var(--vers-comp-button-icon-outline-active-border-color, var(--color-neutral-hover));
+  --_border-color: var(--vers-comp-button-icon-outline-active-border-color, var(--color-border-focus));
 }
 
 /* ============================================
