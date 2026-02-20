@@ -27,7 +27,11 @@
   --_bg: var(--vers-comp-kbd-bg, var(--color-neutral));
   --_color: var(--vers-comp-kbd-color, var(--color-white));
   --_border-color: var(--vers-comp-kbd-border-color, var(--color-neutral));
-  --_shadow: var(--vers-comp-kbd-shadow, inset 0 -2px 0 0 rgb(0 0 0 / 0.2));
+
+  /* Shadow — outer and inset for depth */
+  --_outer-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+  --_inset-shadow: inset 0 -2px 0 0 rgb(0 0 0 / 0.2);
+  --_shadow: var(--vers-comp-kbd-shadow, var(--_outer-shadow), var(--_inset-shadow));
 
   background-color: var(--_bg);
   color: var(--_color);
@@ -80,8 +84,10 @@
 .kbd[data-variant="filled"] {
   --_bg: var(--vers-comp-kbd-filled-bg, var(--color-primary-light));
   --_color: var(--vers-comp-kbd-filled-color, var(--color-primary));
-  --_border-color: var(--vers-comp-kbd-filled-border-color, var(--color-primary-light));
-  --_shadow: var(--vers-comp-kbd-filled-shadow, inset 0 -2px 0 0 rgb(0 0 0 / 0.1));
+  --_border-color: var(--vers-comp-kbd-filled-border-color, var(--color-primary));
+  --_outer-shadow: var(--vers-comp-kbd-filled-outer-shadow, 0 2px 4px rgb(0 0 0 / 0.1));
+  --_inset-shadow: var(--vers-comp-kbd-filled-inset-shadow, inset 0 -2px 0 0 rgb(0 0 0 / 0.15));
+  --_shadow: var(--vers-comp-kbd-filled-shadow, var(--_outer-shadow), var(--_inset-shadow));
 }
 
 /* ============================================
@@ -91,7 +97,9 @@
   --_bg: var(--vers-comp-kbd-outline-bg, transparent);
   --_color: var(--vers-comp-kbd-outline-color, var(--color-text-primary));
   --_border-color: var(--vers-comp-kbd-outline-border-color, var(--color-border));
-  --_shadow: var(--vers-comp-kbd-outline-shadow, none);
+  --_outer-shadow: var(--vers-comp-kbd-outline-outer-shadow, 0 1px 3px rgb(0 0 0 / 0.08));
+  --_inset-shadow: var(--vers-comp-kbd-outline-inset-shadow, inset 0 -1px 0 0 rgb(0 0 0 / 0.1));
+  --_shadow: var(--vers-comp-kbd-outline-shadow, var(--_outer-shadow), var(--_inset-shadow));
 }
 
 /* ============================================
