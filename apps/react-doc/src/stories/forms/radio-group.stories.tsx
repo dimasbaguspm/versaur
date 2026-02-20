@@ -168,18 +168,6 @@ export const Sizes: Story = {
         })()}
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Medium</div>
-        {(() => {
-          const [value, setValue] = useState<string>("")
-          return (
-            <RadioGroup {...args} value={value} onChange={setValue} name="medium" size="medium" label="Medium">
-              <RadioGroup.Option value="medium1">Medium 1</RadioGroup.Option>
-              <RadioGroup.Option value="medium2">Medium 2</RadioGroup.Option>
-            </RadioGroup>
-          )
-        })()}
-      </div>
-      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
         <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Large</div>
         {(() => {
           const [value, setValue] = useState<string>("")
@@ -206,7 +194,14 @@ export const Direction: Story = {
         {(() => {
           const [value, setValue] = useState<string>("")
           return (
-            <RadioGroup {...args} value={value} onChange={setValue} name="horizontal" direction="row" label="Horizontal">
+            <RadioGroup
+              {...args}
+              value={value}
+              onChange={setValue}
+              name="horizontal"
+              direction="row"
+              label="Horizontal"
+            >
               <RadioGroup.Option value="left">Left</RadioGroup.Option>
               <RadioGroup.Option value="center">Center</RadioGroup.Option>
               <RadioGroup.Option value="right">Right</RadioGroup.Option>

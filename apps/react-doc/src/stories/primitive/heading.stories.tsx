@@ -28,6 +28,9 @@ const meta = {
       options: ["normal", "medium", "semibold", "bold"],
     },
   },
+  args: {
+    children: "Heading component",
+  },
   component: Heading,
   parameters: {
     layout: "centered",
@@ -55,12 +58,24 @@ export const Default: Story = {
 export const HeadingLevels: Story = {
   render: (args) => (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <Heading {...args} as="h1">Heading Level 1</Heading>
-      <Heading {...args} as="h2">Heading Level 2</Heading>
-      <Heading {...args} as="h3">Heading Level 3</Heading>
-      <Heading {...args} as="h4">Heading Level 4</Heading>
-      <Heading {...args} as="h5">Heading Level 5</Heading>
-      <Heading {...args} as="h6">Heading Level 6</Heading>
+      <Heading {...args} as="h1">
+        Heading Level 1
+      </Heading>
+      <Heading {...args} as="h2">
+        Heading Level 2
+      </Heading>
+      <Heading {...args} as="h3">
+        Heading Level 3
+      </Heading>
+      <Heading {...args} as="h4">
+        Heading Level 4
+      </Heading>
+      <Heading {...args} as="h5">
+        Heading Level 5
+      </Heading>
+      <Heading {...args} as="h6">
+        Heading Level 6
+      </Heading>
     </div>
   ),
 }
@@ -71,12 +86,24 @@ export const HeadingLevels: Story = {
 export const Sizes: Story = {
   render: (args) => (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <Heading {...args} size="xs">Extra Small (xs)</Heading>
-      <Heading {...args} size="sm">Small (sm)</Heading>
-      <Heading {...args} size="base">Base</Heading>
-      <Heading {...args} size="lg">Large (lg)</Heading>
-      <Heading {...args} size="xl">Extra Large (xl)</Heading>
-      <Heading {...args} size="2xl">2X Large (2xl)</Heading>
+      <Heading {...args} size="xs">
+        Extra Small (xs)
+      </Heading>
+      <Heading {...args} size="sm">
+        Small (sm)
+      </Heading>
+      <Heading {...args} size="base">
+        Base
+      </Heading>
+      <Heading {...args} size="lg">
+        Large (lg)
+      </Heading>
+      <Heading {...args} size="xl">
+        Extra Large (xl)
+      </Heading>
+      <Heading {...args} size="2xl">
+        2X Large (2xl)
+      </Heading>
     </div>
   ),
 }
@@ -87,10 +114,18 @@ export const Sizes: Story = {
 export const Weights: Story = {
   render: (args) => (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <Heading {...args} weight="normal">Normal Weight</Heading>
-      <Heading {...args} weight="medium">Medium Weight</Heading>
-      <Heading {...args} weight="semibold">Semibold Weight</Heading>
-      <Heading {...args} weight="bold">Bold Weight</Heading>
+      <Heading {...args} weight="normal">
+        Normal Weight
+      </Heading>
+      <Heading {...args} weight="medium">
+        Medium Weight
+      </Heading>
+      <Heading {...args} weight="semibold">
+        Semibold Weight
+      </Heading>
+      <Heading {...args} weight="bold">
+        Bold Weight
+      </Heading>
     </div>
   ),
 }
@@ -101,15 +136,33 @@ export const Weights: Story = {
 export const Intents: Story = {
   render: (args) => (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <Heading {...args} intent="default">Default Intent</Heading>
-      <Heading {...args} intent="primary">Primary Intent</Heading>
-      <Heading {...args} intent="secondary">Secondary Intent</Heading>
-      <Heading {...args} intent="success">Success Intent</Heading>
-      <Heading {...args} intent="warning">Warning Intent</Heading>
-      <Heading {...args} intent="danger">Danger Intent</Heading>
-      <Heading {...args} intent="gray">Gray Intent</Heading>
-      <Heading {...args} intent="black">Black Intent</Heading>
-      <Heading {...args} intent="white" style={{ backgroundColor: "#333", padding: "0.5rem" }}>White Intent</Heading>
+      <Heading {...args} intent="default">
+        Default Intent
+      </Heading>
+      <Heading {...args} intent="primary">
+        Primary Intent
+      </Heading>
+      <Heading {...args} intent="secondary">
+        Secondary Intent
+      </Heading>
+      <Heading {...args} intent="success">
+        Success Intent
+      </Heading>
+      <Heading {...args} intent="warning">
+        Warning Intent
+      </Heading>
+      <Heading {...args} intent="danger">
+        Danger Intent
+      </Heading>
+      <Heading {...args} intent="gray">
+        Gray Intent
+      </Heading>
+      <Heading {...args} intent="black">
+        Black Intent
+      </Heading>
+      <Heading {...args} intent="white" style={{ backgroundColor: "#333", padding: "0.5rem" }}>
+        White Intent
+      </Heading>
     </div>
   ),
 }
@@ -120,9 +173,15 @@ export const Intents: Story = {
 export const Cases: Story = {
   render: (args) => (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <Heading {...args} case="lower">lowercase text (lower)</Heading>
-      <Heading {...args} case="upper">UPPERCASE TEXT (upper)</Heading>
-      <Heading {...args} case="capitalize">capitalize first letter (capitalize)</Heading>
+      <Heading {...args} case="lower">
+        lowercase text (lower)
+      </Heading>
+      <Heading {...args} case="upper">
+        UPPERCASE TEXT (upper)
+      </Heading>
+      <Heading {...args} case="capitalize">
+        capitalize first letter (capitalize)
+      </Heading>
     </div>
   ),
 }
@@ -133,9 +192,15 @@ export const Cases: Story = {
 export const Transforms: Story = {
   render: (args) => (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <Heading {...args} transform="underline">Underlined Heading</Heading>
-      <Heading {...args} transform="overline">Overlined Heading</Heading>
-      <Heading {...args} transform="line-through">Strikethrough Heading</Heading>
+      <Heading {...args} transform="underline">
+        Underlined Heading
+      </Heading>
+      <Heading {...args} transform="overline">
+        Overlined Heading
+      </Heading>
+      <Heading {...args} transform="line-through">
+        Strikethrough Heading
+      </Heading>
     </div>
   ),
 }

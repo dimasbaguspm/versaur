@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { Badge } from "@versaur/react/primitive"
 import { BadgeGroup } from "@versaur/react/blocks"
+import { Badge } from "@versaur/react/primitive"
 
 const meta = {
   argTypes: {
@@ -81,17 +81,14 @@ export const Gap: Story = {
       <BadgeGroup {...args} gap="xs">
         <Badge variant="primary">Tag 1</Badge>
         <Badge variant="secondary">Tag 2</Badge>
-        <Badge variant="outline">Tag 3</Badge>
       </BadgeGroup>
       <BadgeGroup {...args} gap="sm">
         <Badge variant="primary">Tag 1</Badge>
         <Badge variant="secondary">Tag 2</Badge>
-        <Badge variant="outline">Tag 3</Badge>
       </BadgeGroup>
       <BadgeGroup {...args} gap="md">
         <Badge variant="primary">Tag 1</Badge>
         <Badge variant="secondary">Tag 2</Badge>
-        <Badge variant="outline">Tag 3</Badge>
       </BadgeGroup>
       <BadgeGroup {...args} gap="lg">
         <Badge variant="success">Completed</Badge>
@@ -154,8 +151,6 @@ export const AllVariants: Story = {
       <Badge variant="success">Success</Badge>
       <Badge variant="warning">Warning</Badge>
       <Badge variant="info">Info</Badge>
-      <Badge variant="outline">Outline</Badge>
-      <Badge variant="accent-1">Accent 1</Badge>
     </BadgeGroup>
   ),
   args: {
