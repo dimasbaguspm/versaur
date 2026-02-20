@@ -4,7 +4,8 @@
   display: grid;
 
   /* Component-specific custom properties */
-  --_height: var(--vers-comp-app-layout-height, 100vh);
+  --_height: var(--vers-comp-app-layout-height, 100%);
+  --_min-height: var(--vers-comp-app-layout-min-height, auto);
   --_header-height: var(--vers-comp-app-layout-header-height, 3.5rem);
   --_bottom-height: var(--vers-comp-app-layout-bottom-height, 4rem);
   --_sidebar-width: var(--vers-comp-app-layout-sidebar-width, 15rem);
@@ -20,9 +21,10 @@
   grid-template-columns:
     var(--_sidebar-width) 1fr auto var(--_sidebar-width)
     1px;
-  grid-template-rows: var(--_header-height) 1fr var(--_bottom-height);
+  grid-template-rows: var(--_header-height) 1fr auto;
   gap: var(--_gap);
   height: var(--_height);
+  min-height: var(--_min-height);
 
   /* Styling */
   background-color: var(--vers-color-background, #ffffff);
@@ -127,23 +129,21 @@
    PLACEMENT: full-width vs centred
    ============================================ */
 
-/* Full-width (default): Uses entire main area */
-.app-layout-main[data-placement="full-width"] {
-  /* No additional styles needed - default behavior */
-}
-
-/* Centred: Constrain width and center content */
+/* Centred: Constrain width and center children horizontally */
 .app-layout-main[data-placement="centred"] {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  align-items: center;
+}
+
+.app-layout-main[data-placement="centred"] > * {
   max-width: var(--_main-max-width);
   width: 100%;
   padding: 0 var(--vers-spacing-4, 1rem);
 }
 
 @media (min-width: 768px) {
-  .app-layout-main[data-placement="centred"] {
+  .app-layout-main[data-placement="centred"] > * {
     padding: 0 var(--vers-spacing-6, 1.5rem);
   }
 }
@@ -153,10 +153,8 @@
    ============================================ */
 .app-layout-side-left {
   grid-area: side-left;
-  position: sticky;
-  top: var(--_header-height);
-  height: calc(var(--_height) - var(--_header-height));
   overflow-y: auto;
+  overflow-x: hidden;
   border-right: 1px solid var(--vers-color-border, #e5e5e5);
   background-color: var(--vers-color-background-secondary, #f9f9f9);
   transition: var(--_transition);
@@ -167,10 +165,8 @@
    ============================================ */
 .app-layout-side-right {
   grid-area: side-right;
-  position: sticky;
-  top: var(--_header-height);
-  height: calc(var(--_height) - var(--_header-height));
   overflow-y: auto;
+  overflow-x: hidden;
   border-left: 1px solid var(--vers-color-border, #e5e5e5);
   background-color: var(--vers-color-background-secondary, #f9f9f9);
   transition: var(--_transition);
@@ -184,6 +180,9 @@
   position: sticky;
   bottom: 0;
   z-index: 9;
+  height: var(--_bottom-height, 4rem);
+  overflow-y: auto;
+  overflow-x: hidden;
   border-top: 1px solid var(--vers-color-border, #e5e5e5);
   background-color: var(--vers-color-background, #ffffff);
   transition: var(--_transition);
@@ -208,20 +207,6 @@
   display: none;
 }
 
-/* ============================================
-   RESPONSIVE: Tablet and up (1024px+)
-   ============================================ */
-@media (min-width: 1024px) {
-  .app-layout[data-variant="mobile"] {
-    grid-template-areas:
-      "header   header      header      header      header"
-      "side-left main       main        side-right  side-right"
-      "bottom   bottom      bottom      bottom      bottom";
-    grid-template-columns:
-      var(--_sidebar-width) 1fr auto var(--_sidebar-width)
-      1px;
-  }
-}
 
 /* ============================================
    RESPONSIVE: Large screens (1280px+)
