@@ -31,6 +31,11 @@ export interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
   iconRight?: ReactNode
 
   /**
+   * Maximum width of the badge. Text will truncate with ellipsis if exceeded.
+   */
+  maxWidth?: string | number
+
+  /**
    * Badge content (text, icons, etc.)
    */
   children?: React.ReactNode

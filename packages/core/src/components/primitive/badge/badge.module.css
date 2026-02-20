@@ -12,8 +12,8 @@
   white-space: nowrap;
 
   /* Sizing — private tokens default to medium */
-  --_height: var(--vers-comp-badge-height, 1.5rem);
-  --_px: var(--vers-comp-badge-padding-x, var(--spacing-2));
+  --_height: var(--vers-comp-badge-height, 1.375rem);
+  --_px: var(--vers-comp-badge-padding-x, var(--spacing-1));
   --_font-size: var(--vers-comp-badge-font-size, var(--font-size-xs));
   --_gap: var(--vers-comp-badge-gap, var(--spacing-1));
 
@@ -21,6 +21,9 @@
   padding: 0 var(--_px);
   font-size: var(--_font-size);
   gap: var(--_gap);
+
+  /* Max-width with custom override */
+  max-width: var(--vers-comp-badge-max-width, none);
 
   /* Border radius — default rounded, can be overridden by shape */
   --_radius: var(--vers-comp-badge-radius, var(--radius-sm));
@@ -33,6 +36,14 @@
   color: var(--_color);
   border: 1px solid transparent;
   border-radius: var(--_radius);
+}
+
+/* Icon-only badges — square aspect ratio, no padding */
+.badge[data-icon-config="left"],
+.badge[data-icon-config="right"],
+.badge[data-icon-config="both"] {
+  min-width: var(--_height);
+  padding: 0;
 }
 
 /* Icon styling */
@@ -50,14 +61,14 @@
 
 .badge[data-size="small"] {
   --_height: 1.25rem;
-  --_px: var(--spacing-2);
+  --_px: var(--spacing-1);
   --_font-size: var(--font-size-xs);
 }
 
 .badge[data-size="medium"] {
-  --_height: 1.5rem;
-  --_px: var(--spacing-2);
-  --_font-size: var(--font-size-sm);
+  --_height: 1.375rem;
+  --_px: var(--spacing-1);
+  --_font-size: var(--font-size-xs);
 }
 
 /* ============================================
@@ -65,55 +76,33 @@
    ============================================ */
 
 .badge[data-variant="primary"] {
-  --_bg: var(--color-primary);
-  --_color: var(--color-white);
-}
-
-.badge[data-variant="secondary"] {
-  --_bg: var(--color-secondary);
-  --_color: var(--color-white);
-}
-
-.badge[data-variant="success"] {
-  --_bg: var(--color-success);
-  --_color: var(--color-white);
-}
-
-.badge[data-variant="danger"] {
-  --_bg: var(--color-danger);
-  --_color: var(--color-white);
-}
-
-.badge[data-variant="warning"] {
-  --_bg: var(--color-warning);
-  --_color: var(--color-white);
-}
-
-.badge[data-variant="info"] {
-  --_bg: var(--color-info);
-  --_color: var(--color-white);
-}
-
-.badge[data-variant="outline"] {
-  --_bg: transparent;
-  --_color: var(--color-outline);
-  --_border-color: var(--color-outline);
-  border-color: var(--_border-color);
-}
-
-.badge[data-variant="accent-1"] {
-  --_bg: var(--color-primary-soft);
+  --_bg: var(--color-primary-light);
   --_color: var(--color-primary-bold);
 }
 
-.badge[data-variant="accent-2"] {
-  --_bg: var(--color-secondary-soft);
+.badge[data-variant="secondary"] {
+  --_bg: var(--color-secondary-light);
   --_color: var(--color-secondary-bold);
 }
 
-.badge[data-variant="accent-3"] {
-  --_bg: var(--color-outline-soft);
-  --_color: var(--color-outline-bold);
+.badge[data-variant="success"] {
+  --_bg: var(--color-success-light);
+  --_color: var(--color-success-bold);
+}
+
+.badge[data-variant="danger"] {
+  --_bg: var(--color-danger-light);
+  --_color: var(--color-danger-bold);
+}
+
+.badge[data-variant="warning"] {
+  --_bg: var(--color-warning-light);
+  --_color: var(--color-warning-bold);
+}
+
+.badge[data-variant="info"] {
+  --_bg: var(--color-info-light);
+  --_color: var(--color-info-bold);
 }
 
 /* ============================================
@@ -127,4 +116,12 @@
 
 .badge[data-shape="pill"] {
   --_radius: 9999px;
+  --_px: var(--spacing-2);
+}
+
+/* Badge with icon and text — increased horizontal padding */
+.badge[data-icon-config="left-text"],
+.badge[data-icon-config="right-text"],
+.badge[data-icon-config="both-text"] {
+  --_px: var(--spacing-1);
 }
