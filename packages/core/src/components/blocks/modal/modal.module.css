@@ -29,6 +29,61 @@
   animation: fadeIn 300ms ease-out;
 }
 
+/* Size variants */
+.modal[data-size="small"] {
+  --_width: var(--vers-comp-modal-sm-width, 400px);
+}
+
+.modal[data-size="large"] {
+  --_width: var(--vers-comp-modal-lg-width, 800px);
+}
+
+/* Position variants */
+.modal[data-position="top"] {
+  top: var(--spacing-8);
+  bottom: auto;
+  margin: 0 auto;
+}
+
+.modal[data-position="bottom"] {
+  top: auto;
+  bottom: var(--spacing-8);
+  margin: 0 auto;
+}
+
+.modal[data-position="center"] {
+  margin: auto;
+}
+
+/* Modal-specific header and footer styling */
+.modal [data-modal-header] {
+  border-bottom: none;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal [data-modal-header] .modal-header-action {
+  margin-left: auto;
+}
+
+.modal [data-modal-footer] {
+  border-top: none;
+  justify-content: flex-end;
+}
+
+.modal [data-modal-footer][data-align="start"] {
+  justify-content: flex-start;
+}
+
+.modal [data-modal-footer][data-align="center"] {
+  justify-content: center;
+}
+
+.modal [data-modal-footer][data-align="end"] {
+  justify-content: flex-end;
+}
+
 /* Backdrop */
 .modal::backdrop {
   background-color: rgba(0, 0, 0, 0.5);

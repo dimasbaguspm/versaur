@@ -3,11 +3,12 @@ import { overlayPartsStyles } from "@versaur/core/utils"
 import { XIcon } from "@versaur/icons"
 import { createContext, forwardRef, useContext } from "react"
 
+import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { cx } from "../../../utils/cx"
 import { ButtonIcon } from "../../primitive/button-icon"
+import { OverlayBody, OverlayTitle } from "../../utils/overlay-parts/overlay-parts"
 import { Dialog } from "../dialog"
-import { OverlayBody, OverlayFooter, OverlayHeader, OverlayTitle } from "../../utils/overlay-parts/overlay-parts"
-import type { ModalCloseButtonProps, ModalRootProps } from "./modal.types"
+import type { ModalCloseButtonProps, ModalFooterProps, ModalHeaderProps, ModalRootProps } from "./modal.types"
 
 interface ModalContextType {
   onClose: () => void
@@ -23,13 +24,27 @@ const useModalContext = () => {
   return context
 }
 
-const ModalRoot = forwardRef<HTMLDialogElement, ModalRootProps>(({ open, onOpenChange, children, className, ...props }, ref) => (
-  <ModalContext.Provider value={{ onClose: () => onOpenChange?.(false) }}>
-    <Dialog ref={ref} isOpen={open} onOpenChange={onOpenChange} className={cx(open && modalStyles.modal, className)} {...props}>
-      <div className={overlayPartsStyles.content}>{children}</div>
-    </Dialog>
-  </ModalContext.Provider>
-))
+const ModalRoot = forwardRef<HTMLDialogElement, ModalRootProps>(
+  ({ open, onOpenChange, size, position, children, className, ...props }, ref) => {
+    const dataAttrs = useDataAttrs({ size, position })
+
+    return (
+      <ModalContext.Provider value={{ onClose: () => onOpenChange?.(false) }}>
+        <Dialog
+          ref={ref}
+          isOpen={open}
+          onOpenChange={onOpenChange}
+          className={cx(open && modalStyles.modal, className)}
+          data-modal=""
+          {...dataAttrs}
+          {...props}
+        >
+          <div className={overlayPartsStyles.content}>{children}</div>
+        </Dialog>
+      </ModalContext.Provider>
+    )
+  },
+)
 
 ModalRoot.displayName = "Modal"
 
@@ -56,10 +71,35 @@ const ModalCloseButton = forwardRef<HTMLButtonElement, ModalCloseButtonProps>(({
 
 ModalCloseButton.displayName = "Modal.CloseButton"
 
+const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(({ action, children, className, ...props }, ref) => (
+  <div ref={ref} className={cx(overlayPartsStyles.header, "modal-header", className)} data-modal-header="" {...props}>
+    <div>{children}</div>
+    {action && <div className="modal-header-action">{action}</div>}
+  </div>
+))
+
+ModalHeader.displayName = "Modal.Header"
+
+const ModalFooter = forwardRef<HTMLDivElement, ModalFooterProps>(
+  ({ align = "end", children, className, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cx(overlayPartsStyles.footer, "modal-footer", className)}
+      data-modal-footer=""
+      data-align={align}
+      {...props}
+    >
+      {children}
+    </div>
+  ),
+)
+
+ModalFooter.displayName = "Modal.Footer"
+
 export const Modal = Object.assign(ModalRoot, {
   Body: OverlayBody,
   CloseButton: ModalCloseButton,
-  Footer: OverlayFooter,
-  Header: OverlayHeader,
+  Footer: ModalFooter,
+  Header: ModalHeader,
   Title: OverlayTitle,
 })

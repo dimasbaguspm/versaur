@@ -1,12 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react"
+import { ButtonGroup, Modal } from "@versaur/react/blocks"
 import { Button, Text } from "@versaur/react/primitive"
-import { Modal } from "@versaur/react/blocks"
 import { useState } from "react"
 
 const meta = {
-  args: {
-    open: false,
-  },
   component: Modal,
   parameters: {
     layout: "centered",
@@ -18,7 +15,32 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+const ModalContent = ({ footerAlign = "end" }: { footerAlign?: "start" | "center" | "end" } = {}) => (
+  <>
+    <Modal.Header action={<Modal.CloseButton />}>
+      <Modal.Title>Modal Title</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
+      <Text>This is a modal dialog with customizable size and position props.</Text>
+    </Modal.Body>
+    <Modal.Footer align={footerAlign}>
+      <ButtonGroup>
+        <Button variant="secondary" onClick={() => {}}>
+          Cancel
+        </Button>
+        <Button variant="primary" onClick={() => {}}>
+          OK
+        </Button>
+      </ButtonGroup>
+    </Modal.Footer>
+  </>
+)
+
 export const Default: Story = {
+  args: {
+    open: false,
+    onOpenChange: () => {},
+  },
   render: (args) => {
     const [isOpen, setIsOpen] = useState(false)
     return (
@@ -27,136 +49,128 @@ export const Default: Story = {
           Open Modal
         </Button>
         <Modal {...args} open={isOpen} onOpenChange={setIsOpen}>
-          <div style={{ padding: "2rem", minWidth: "450px" }}>
-            <div
-              style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}
-            >
-              <Text weight="bold" size="lg">
-                Modal Title
-              </Text>
-              <Modal.CloseButton onClick={() => setIsOpen(false)}>×</Modal.CloseButton>
-            </div>
-            <Text style={{ marginBottom: "1.5rem" }}>
-              This is a modal dialog with a close button. Click the close button or outside to close.
-            </Text>
-            <div style={{ display: "flex", gap: "1rem", justifyContent: "flex-end" }}>
-              <Button variant="secondary" onClick={() => setIsOpen(false)}>
-                Cancel
-              </Button>
-              <Button variant="primary" onClick={() => setIsOpen(false)}>
-                OK
-              </Button>
-            </div>
-          </div>
+          <ModalContent />
         </Modal>
       </div>
     )
   },
 }
 
-export const WithHeader: Story = {
-  render: (args) => {
-    const [isOpen, setIsOpen] = useState(false)
+export const Sizes: Story = {
+  args: { open: false, onOpenChange: () => {} },
+  render: () => {
+    const [openSmall, setOpenSmall] = useState(false)
+    const [openDefault, setOpenDefault] = useState(false)
+    const [openLarge, setOpenLarge] = useState(false)
+
     return (
-      <div>
-        <Button onClick={() => setIsOpen(true)}>Open Form Modal</Button>
-        <Modal {...args} open={isOpen} onOpenChange={setIsOpen}>
-          <div style={{ minWidth: "500px" }}>
-            <div style={{ padding: "1.5rem", borderBottom: "1px solid #ddd" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <Text weight="bold" size="lg">
-                  User Information
-                </Text>
-                <Modal.CloseButton onClick={() => setIsOpen(false)} style={{ fontSize: "1.5rem" }}>
-                  ×
-                </Modal.CloseButton>
-              </div>
-            </div>
-            <div style={{ padding: "2rem" }}>
-              <Text style={{ marginBottom: "1rem" }}>Fill in the user details below.</Text>
-              {/* Form content would go here */}
-            </div>
-            <div
-              style={{
-                padding: "1.5rem",
-                borderTop: "1px solid #ddd",
-                display: "flex",
-                gap: "1rem",
-                justifyContent: "flex-end",
-              }}
-            >
-              <Button variant="secondary" onClick={() => setIsOpen(false)}>
-                Cancel
-              </Button>
-              <Button variant="primary" onClick={() => setIsOpen(false)}>
-                Save
-              </Button>
-            </div>
-          </div>
-        </Modal>
+      <div style={{ display: "flex", gap: "1rem" }}>
+        <div>
+          <Button variant="secondary" onClick={() => setOpenSmall(true)}>
+            Open Small Modal
+          </Button>
+          <Modal size="small" open={openSmall} onOpenChange={setOpenSmall}>
+            <ModalContent />
+          </Modal>
+        </div>
+
+        <div>
+          <Button variant="secondary" onClick={() => setOpenDefault(true)}>
+            Open Default Modal
+          </Button>
+          <Modal open={openDefault} onOpenChange={setOpenDefault}>
+            <ModalContent />
+          </Modal>
+        </div>
+
+        <div>
+          <Button variant="secondary" onClick={() => setOpenLarge(true)}>
+            Open Large Modal
+          </Button>
+          <Modal size="large" open={openLarge} onOpenChange={setOpenLarge}>
+            <ModalContent />
+          </Modal>
+        </div>
       </div>
     )
   },
 }
 
-export const Small: Story = {
-  render: (args) => {
-    const [isOpen, setIsOpen] = useState(false)
+export const Positions: Story = {
+  args: { open: false, onOpenChange: () => {} },
+  render: () => {
+    const [openTop, setOpenTop] = useState(false)
+    const [openCenter, setOpenCenter] = useState(false)
+    const [openBottom, setOpenBottom] = useState(false)
+
     return (
-      <div>
-        <Button onClick={() => setIsOpen(true)}>Open Small Modal</Button>
-        <Modal {...args} open={isOpen} onOpenChange={setIsOpen}>
-          <div style={{ padding: "1.5rem", minWidth: "300px" }}>
-            <Text weight="bold" style={{ marginBottom: "1rem" }}>
-              Confirm Action
-            </Text>
-            <Text style={{ marginBottom: "1.5rem" }}>Are you sure?</Text>
-            <div style={{ display: "flex", gap: "1rem", justifyContent: "flex-end" }}>
-              <Button variant="secondary" size="small" onClick={() => setIsOpen(false)}>
-                No
-              </Button>
-              <Button variant="primary" size="small" onClick={() => setIsOpen(false)}>
-                Yes
-              </Button>
-            </div>
-          </div>
-        </Modal>
+      <div style={{ display: "flex", gap: "1rem" }}>
+        <div>
+          <Button variant="secondary" onClick={() => setOpenTop(true)}>
+            Open Modal (Top)
+          </Button>
+          <Modal position="top" open={openTop} onOpenChange={setOpenTop}>
+            <ModalContent />
+          </Modal>
+        </div>
+
+        <div>
+          <Button variant="secondary" onClick={() => setOpenCenter(true)}>
+            Open Modal (Center)
+          </Button>
+          <Modal position="center" open={openCenter} onOpenChange={setOpenCenter}>
+            <ModalContent />
+          </Modal>
+        </div>
+
+        <div>
+          <Button variant="secondary" onClick={() => setOpenBottom(true)}>
+            Open Modal (Bottom)
+          </Button>
+          <Modal position="bottom" open={openBottom} onOpenChange={setOpenBottom}>
+            <ModalContent />
+          </Modal>
+        </div>
       </div>
     )
   },
 }
 
-export const Large: Story = {
-  render: (args) => {
-    const [isOpen, setIsOpen] = useState(false)
+export const FooterAlignment: Story = {
+  args: { open: false, onOpenChange: () => {} },
+  render: () => {
+    const [openStart, setOpenStart] = useState(false)
+    const [openCenter, setOpenCenter] = useState(false)
+    const [openEnd, setOpenEnd] = useState(false)
+
     return (
-      <div>
-        <Button onClick={() => setIsOpen(true)}>Open Large Modal</Button>
-        <Modal {...args} open={isOpen} onOpenChange={setIsOpen}>
-          <div style={{ minWidth: "700px", padding: "2rem" }}>
-            <div
-              style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}
-            >
-              <Text weight="bold" size="lg">
-                Settings
-              </Text>
-              <Modal.CloseButton onClick={() => setIsOpen(false)} style={{ fontSize: "1.5rem" }}>
-                ×
-              </Modal.CloseButton>
-            </div>
-            <Text style={{ marginBottom: "2rem" }}>
-              Configure your application settings here. This is a large modal with more space for content.
-            </Text>
-            <div style={{ display: "flex", gap: "1rem", justifyContent: "flex-end" }}>
-              <Button variant="secondary" onClick={() => setIsOpen(false)}>
-                Cancel
-              </Button>
-              <Button variant="primary" onClick={() => setIsOpen(false)}>
-                Apply
-              </Button>
-            </div>
-          </div>
-        </Modal>
+      <div style={{ display: "flex", gap: "1rem" }}>
+        <div>
+          <Button variant="secondary" onClick={() => setOpenStart(true)}>
+            Align Start
+          </Button>
+          <Modal open={openStart} onOpenChange={setOpenStart}>
+            <ModalContent footerAlign="start" />
+          </Modal>
+        </div>
+
+        <div>
+          <Button variant="secondary" onClick={() => setOpenCenter(true)}>
+            Align Center
+          </Button>
+          <Modal open={openCenter} onOpenChange={setOpenCenter}>
+            <ModalContent footerAlign="center" />
+          </Modal>
+        </div>
+
+        <div>
+          <Button variant="secondary" onClick={() => setOpenEnd(true)}>
+            Align End
+          </Button>
+          <Modal open={openEnd} onOpenChange={setOpenEnd}>
+            <ModalContent footerAlign="end" />
+          </Modal>
+        </div>
       </div>
     )
   },
