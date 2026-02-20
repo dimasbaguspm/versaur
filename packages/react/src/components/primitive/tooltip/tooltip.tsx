@@ -16,6 +16,7 @@ type Placement = TooltipProps["placement"]
 
 /**
  * Calculate tooltip position relative to trigger element
+ * Positions synchronously before showing to prevent flicker
  */
 function calculatePosition(
   trigger: HTMLElement | null,
@@ -27,92 +28,85 @@ function calculatePosition(
     return
   }
 
-  // Mark as positioned before rendering
-  tooltip.setAttribute("data-positioned", "true")
-
   const triggerRect = trigger.getBoundingClientRect()
+
+  // Measure tooltip: temporarily make it visible to get real dimensions
+  // since display:none returns 0,0,0,0 for getBoundingClientRect()
+  const originalDisplay = tooltip.style.display
+  const originalVisibility = tooltip.style.visibility
+  tooltip.style.display = "block"
+  tooltip.style.visibility = "hidden"
+  tooltip.style.pointerEvents = "none"
+
   const tooltipRect = tooltip.getBoundingClientRect()
+
+  // Restore original state
+  tooltip.style.display = originalDisplay
+  tooltip.style.visibility = originalVisibility
+  tooltip.style.pointerEvents = "auto"
 
   let top = 0
   let left = 0
   const offset = gap + ARROW_SIZE / 2
 
   switch (placement) {
-    // Top placements
+    // Top placement
     case "top": {
       top = triggerRect.top - tooltipRect.height - offset
       left = triggerRect.left + triggerRect.width / 2 - tooltipRect.width / 2
       break
     }
-    case "top-start": {
-      top = triggerRect.top - tooltipRect.height - offset
-      left = triggerRect.left
-      break
-    }
-    case "top-end": {
-      top = triggerRect.top - tooltipRect.height - offset
-      left = triggerRect.right - tooltipRect.width
-      break
-    }
 
-    // Bottom placements
+    // Bottom placement
     case "bottom": {
       top = triggerRect.bottom + offset
       left = triggerRect.left + triggerRect.width / 2 - tooltipRect.width / 2
       break
     }
-    case "bottom-start": {
-      top = triggerRect.bottom + offset
-      left = triggerRect.left
-      break
-    }
-    case "bottom-end": {
-      top = triggerRect.bottom + offset
-      left = triggerRect.right - tooltipRect.width
-      break
-    }
 
-    // Left placements
+    // Left placement
     case "left": {
       top = triggerRect.top + triggerRect.height / 2 - tooltipRect.height / 2
       left = triggerRect.left - tooltipRect.width - offset
       break
     }
-    case "left-start": {
-      top = triggerRect.top
-      left = triggerRect.left - tooltipRect.width - offset
-      break
-    }
-    case "left-end": {
-      top = triggerRect.bottom - tooltipRect.height
-      left = triggerRect.left - tooltipRect.width - offset
-      break
-    }
 
-    // Right placements
+    // Right placement
     case "right": {
       top = triggerRect.top + triggerRect.height / 2 - tooltipRect.height / 2
       left = triggerRect.right + offset
       break
     }
-    case "right-start": {
-      top = triggerRect.top
-      left = triggerRect.right + offset
-      break
-    }
-    case "right-end": {
-      top = triggerRect.bottom - tooltipRect.height
-      left = triggerRect.right + offset
-      break
-    }
   }
 
-  // Add scroll offset
-  const scrollLeft = window.scrollX || document.documentElement.scrollLeft
-  const scrollTop = window.scrollY || document.documentElement.scrollTop
+  // For fixed positioning, use viewport coordinates directly (no scroll offset)
+  // getBoundingClientRect() already returns viewport-relative coordinates
 
-  tooltip.style.top = `${top + scrollTop}px`
-  tooltip.style.left = `${left + scrollLeft}px`
+  // Apply viewport boundary constraints to prevent tooltips from going off-screen
+  const viewportWidth = window.innerWidth
+  const viewportHeight = window.innerHeight
+  const minPadding = 8 // minimum padding from viewport edges
+
+  // Constrain horizontal position
+  let constrainedLeft = left
+  if (constrainedLeft + tooltipRect.width > viewportWidth - minPadding) {
+    constrainedLeft = viewportWidth - tooltipRect.width - minPadding
+  }
+  if (constrainedLeft < minPadding) {
+    constrainedLeft = minPadding
+  }
+
+  // Constrain vertical position
+  let constrainedTop = top
+  if (constrainedTop + tooltipRect.height > viewportHeight - minPadding) {
+    constrainedTop = viewportHeight - tooltipRect.height - minPadding
+  }
+  if (constrainedTop < minPadding) {
+    constrainedTop = minPadding
+  }
+
+  tooltip.style.top = `${constrainedTop}px`
+  tooltip.style.left = `${constrainedLeft}px`
 }
 
 /**

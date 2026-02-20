@@ -1,18 +1,6 @@
 import type { ForwardRefExoticComponent, HTMLAttributes, MouseEvent, ReactNode, RefAttributes } from "react"
 
-export type MenuPlacement =
-  | "top"
-  | "top-start"
-  | "top-end"
-  | "bottom"
-  | "bottom-start"
-  | "bottom-end"
-  | "left"
-  | "left-start"
-  | "left-end"
-  | "right"
-  | "right-start"
-  | "right-end"
+export type MenuPlacement = "top" | "bottom" | "left" | "right"
 
 /**
  * Menu Context for managing selected value across items

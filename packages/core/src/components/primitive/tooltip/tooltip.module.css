@@ -2,10 +2,15 @@
 .tooltip {
   display: none;
   position: fixed;
+  top: -9999px;
+  left: -9999px;
   z-index: var(--_z-index, 9999);
   border: none;
   margin: 0;
   padding: 0;
+  pointer-events: auto;
+  max-width: 95vw;
+  min-width: max-content;
 }
 
 /* Popover open state - position is set via inline styles by JavaScript */

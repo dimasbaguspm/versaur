@@ -1,25 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { HelpCircleIcon } from "@versaur/icons"
-import { Button, Text, Tooltip } from "@versaur/react/primitive"
+import { Tooltip } from "@versaur/react/primitive"
 
 const meta = {
   argTypes: {
     placement: {
       control: "select",
-      options: [
-        "top",
-        "top-start",
-        "top-end",
-        "bottom",
-        "bottom-start",
-        "bottom-end",
-        "left",
-        "left-start",
-        "left-end",
-        "right",
-        "right-start",
-        "right-end",
-      ],
+      options: ["top", "bottom", "left", "right"],
     },
     triggerType: {
       control: "select",
@@ -41,13 +27,16 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+/**
+ * Default Tooltip component with standard placement and hover trigger.
+ */
 export const Default: Story = {
   render: (args) => (
     <div style={{ padding: "2rem" }}>
       <Tooltip {...args} id="default-tooltip" placement="bottom">
         <Tooltip.Text>This is a helpful tooltip message</Tooltip.Text>
       </Tooltip>
-      <Button {...Tooltip.getTooltipTriggerProps({ id: "default-tooltip" })}>Hover me</Button>
+      <button {...Tooltip.getTooltipTriggerProps({ id: "default-tooltip" })}>Hover me</button>
     </div>
   ),
   args: {
@@ -56,27 +45,80 @@ export const Default: Story = {
   },
 }
 
-export const Top: Story = {
-  render: (args) => (
-    <div style={{ padding: "4rem 2rem 2rem" }}>
-      <Tooltip {...args} id="top-tooltip" placement="top">
-        <Tooltip.Text>Tooltip above the element</Tooltip.Text>
-      </Tooltip>
-      <Button {...Tooltip.getTooltipTriggerProps({ id: "top-tooltip" })}>Top Tooltip</Button>
-    </div>
-  ),
+/**
+ * Showcase all placement variants in a grid.
+ * Displays all 4 placement options (top, bottom, left, right)
+ */
+export const Placements: Story = {
+  render: (args) => {
+    const placements: Array<[string, "top" | "bottom" | "left" | "right"]> = [
+      ["Top", "top"],
+      ["Bottom", "bottom"],
+      ["Left", "left"],
+      ["Right", "right"],
+    ]
+
+    return (
+      <div style={{ padding: "4rem 2rem" }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gap: "4rem",
+            alignItems: "center",
+            justifyItems: "center",
+          }}
+        >
+          {placements.map(([label, placement]) => (
+            <div
+              key={placement}
+              style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}
+            >
+              <Tooltip {...args} id={`placement-${placement}`} placement={placement} gap={16}>
+                <Tooltip.Text>{label}</Tooltip.Text>
+              </Tooltip>
+              <button {...Tooltip.getTooltipTriggerProps({ id: `placement-${placement}` })}>{label}</button>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  },
   args: {
-    placement: "top",
+    triggerType: "hover",
   },
 }
 
-export const Bottom: Story = {
+/**
+ * Showcase all trigger type variants: hover, focus, and all.
+ * Demonstrates how tooltips are triggered based on user interactions.
+ */
+export const TriggerTypes: Story = {
   render: (args) => (
-    <div style={{ padding: "2rem" }}>
-      <Tooltip {...args} id="bottom-tooltip" placement="bottom">
-        <Tooltip.Text>Tooltip below the element</Tooltip.Text>
-      </Tooltip>
-      <Button {...Tooltip.getTooltipTriggerProps({ id: "bottom-tooltip" })}>Bottom Tooltip</Button>
+    <div style={{ display: "flex", flexDirection: "column", gap: "2rem", padding: "2rem" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Hover Trigger</div>
+        <Tooltip {...args} id="hover-tooltip" placement="bottom" triggerType="hover">
+          <Tooltip.Text>Shows on hover</Tooltip.Text>
+        </Tooltip>
+        <button {...Tooltip.getTooltipTriggerProps({ id: "hover-tooltip" })}>Hover me</button>
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Focus Trigger</div>
+        <Tooltip {...args} id="focus-tooltip" placement="bottom" triggerType="focus">
+          <Tooltip.Text>Shows on focus</Tooltip.Text>
+        </Tooltip>
+        <button {...Tooltip.getTooltipTriggerProps({ id: "focus-tooltip", triggerType: "focus" })}>Focus me</button>
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>All Trigger</div>
+        <Tooltip {...args} id="all-tooltip" placement="bottom" triggerType="all">
+          <Tooltip.Text>Shows on hover or focus</Tooltip.Text>
+        </Tooltip>
+        <button {...Tooltip.getTooltipTriggerProps({ id: "all-tooltip", triggerType: "all" })}>Hover or focus</button>
+      </div>
     </div>
   ),
   args: {
@@ -84,115 +126,23 @@ export const Bottom: Story = {
   },
 }
 
-export const Left: Story = {
-  render: (args) => (
-    <div style={{ padding: "2rem", marginLeft: "10rem" }}>
-      <Tooltip {...args} id="left-tooltip" placement="left">
-        <Tooltip.Text>Tooltip to the left</Tooltip.Text>
-      </Tooltip>
-      <Button {...Tooltip.getTooltipTriggerProps({ id: "left-tooltip" })}>Left Tooltip</Button>
-    </div>
-  ),
-  args: {
-    placement: "left",
-  },
-}
-
-export const Right: Story = {
-  render: (args) => (
-    <div style={{ padding: "2rem" }}>
-      <Tooltip {...args} id="right-tooltip" placement="right">
-        <Tooltip.Text>Tooltip to the right</Tooltip.Text>
-      </Tooltip>
-      <Button {...Tooltip.getTooltipTriggerProps({ id: "right-tooltip" })}>Right Tooltip</Button>
-    </div>
-  ),
-  args: {
-    placement: "right",
-  },
-}
-
-export const OnIcon: Story = {
-  render: (args) => (
-    <div style={{ padding: "2rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-      <Text>Information</Text>
-      <Tooltip {...args} id="icon-tooltip" placement="top">
-        <Tooltip.Text>Click for more details</Tooltip.Text>
-      </Tooltip>
-      <button
-        {...Tooltip.getTooltipTriggerProps({ id: "icon-tooltip" })}
-        style={{
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          padding: 0,
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <HelpCircleIcon width={20} height={20} />
-      </button>
-    </div>
-  ),
-  args: {
-    placement: "top",
-    triggerType: "hover",
-  },
-}
-
-export const LongText: Story = {
+/**
+ * Showcase tooltip with longer content that wraps to multiple lines.
+ */
+export const LongContent: Story = {
   render: (args) => (
     <div style={{ padding: "2rem" }}>
       <Tooltip {...args} id="long-tooltip" placement="bottom">
         <Tooltip.Text maxWidth="250px">
-          This is a longer tooltip message that might wrap to multiple lines. It provides more detailed information
-          about the element.
+          This is a longer tooltip message that spans multiple lines. It provides additional context and detailed
+          information about the element or action.
         </Tooltip.Text>
       </Tooltip>
-      <Button {...Tooltip.getTooltipTriggerProps({ id: "long-tooltip" })}>Hover for details</Button>
+      <button {...Tooltip.getTooltipTriggerProps({ id: "long-tooltip" })}>Hover for details</button>
     </div>
   ),
   args: {
     placement: "bottom",
-  },
-}
-
-export const FocusOnly: Story = {
-  render: (args) => (
-    <div style={{ padding: "2rem" }}>
-      <Tooltip {...args} id="focus-tooltip" placement="bottom" triggerType="focus">
-        <Tooltip.Text>Shows on focus only</Tooltip.Text>
-      </Tooltip>
-      <Button {...Tooltip.getTooltipTriggerProps({ id: "focus-tooltip", triggerType: "focus" })}>Focus me</Button>
-    </div>
-  ),
-  args: {
-    placement: "bottom",
-    triggerType: "focus",
-  },
-}
-
-export const HelpIcon: Story = {
-  render: (args) => (
-    <div style={{ padding: "2rem", display: "flex", gap: "1rem" }}>
-      <Text>Need help?</Text>
-      <Tooltip {...args} id="help-tooltip" placement="right">
-        <Tooltip.Text>Click here to get assistance or contact support</Tooltip.Text>
-      </Tooltip>
-      <button
-        {...Tooltip.getTooltipTriggerProps({ id: "help-tooltip" })}
-        style={{
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          padding: 0,
-        }}
-      >
-        <HelpCircleIcon width={24} height={24} />
-      </button>
-    </div>
-  ),
-  args: {
-    placement: "right",
+    triggerType: "hover",
   },
 }
