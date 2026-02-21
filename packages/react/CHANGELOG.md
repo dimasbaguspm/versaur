@@ -1,5 +1,11 @@
 # @versaur/react
 
+## 1.0.2
+
+### Patch Changes
+
+- e2b8e3e: typo
+
 ## 1.0.1
 
 ### Patch Changes
