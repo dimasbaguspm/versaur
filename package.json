@@ -13,7 +13,7 @@
     "start": "pnpm --filter docs start",
     "version": "changeset version",
     "release": "pnpm build:packages && changeset publish",
-    "publish-packages": "pnpm build:packages && pnpm publish -r --no-git-checks",
+    "publish-packages": "pnpm build:packages && pnpm publish -r",
     "typecheck": "pnpm -r --parallel typecheck",
     "lint": "oxlint .",
     "lint:fix": "oxlint . --fix",
