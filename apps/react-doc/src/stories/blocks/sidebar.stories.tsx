@@ -1,13 +1,21 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { HomeIcon, SettingsIcon, TrashIcon, UserIcon } from "@versaur/icons"
-import { Sidebar } from "@versaur/react/blocks"
-import { Button, Text } from "@versaur/react/primitive"
-import { useState } from "react"
+import {
+  ArchiveIcon,
+  CheckIcon,
+  ClipboardIcon,
+  CopyIcon,
+  DownloadIcon,
+  GridIcon,
+  HomeIcon,
+  MenuIcon,
+  SettingsIcon,
+  TrashIcon,
+  UserIcon,
+} from "@versaur/icons"
+import { AppLayout, Sidebar } from "@versaur/react/blocks"
+import { Avatar, ButtonIcon, Icon, Text } from "@versaur/react/primitive"
 
 const meta = {
-  args: {
-    isOpen: false,
-  },
   component: Sidebar,
   parameters: {
     layout: "fullscreen",
@@ -20,87 +28,231 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  render: (args) => {
-    const [isOpen, setIsOpen] = useState(true)
+  render: () => {
     return (
-      <div style={{ display: "flex", minHeight: "100vh" }}>
-        <Sidebar {...args} isOpen={isOpen} onOpenChange={setIsOpen}>
-          <Sidebar.Header>
-            <Text weight="bold" size="lg">
-              Menu
-            </Text>
-          </Sidebar.Header>
-          <Sidebar.Body>
-            <Sidebar.Item active icon={<HomeIcon width={20} height={20} />}>
-              Home
-            </Sidebar.Item>
-            <Sidebar.Item icon={<UserIcon width={20} height={20} />}>Profile</Sidebar.Item>
-            <Sidebar.Item icon={<SettingsIcon width={20} height={20} />}>Settings</Sidebar.Item>
-          </Sidebar.Body>
-          <Sidebar.Footer>
-            <Sidebar.Item icon={<TrashIcon width={20} height={20} />}>Delete</Sidebar.Item>
-          </Sidebar.Footer>
-        </Sidebar>
-        <div style={{ flex: 1, padding: "2rem" }}>
-          <Button onClick={() => setIsOpen(!isOpen)}>{isOpen ? "Close" : "Open"} Sidebar</Button>
-          <Text>Main content here</Text>
-        </div>
-      </div>
+      <AppLayout>
+        <AppLayout.Body>
+          <AppLayout.SideLeft>
+            <Sidebar>
+              <Sidebar.Header>
+                <Text weight="bold" size="sm">
+                  Versaur
+                </Text>
+              </Sidebar.Header>
+              <Sidebar.Body>
+                <Sidebar.Group label="Main" icon={<Icon as={GridIcon} size="sm" />}>
+                  <Sidebar.Item active icon={<Icon as={HomeIcon} />}>
+                    Dashboard
+                  </Sidebar.Item>
+                  <Sidebar.Item icon={<Icon as={UserIcon} />}>Users</Sidebar.Item>
+                </Sidebar.Group>
+                <Sidebar.Divider />
+                <Sidebar.Group label="Settings" icon={<Icon as={SettingsIcon} size="sm" />} defaultExpanded={false}>
+                  <Sidebar.Item icon={<Icon as={SettingsIcon} />}>Preferences</Sidebar.Item>
+                </Sidebar.Group>
+              </Sidebar.Body>
+              <Sidebar.Footer>
+                <Sidebar.Item icon={<Icon as={TrashIcon} />}>Delete account</Sidebar.Item>
+              </Sidebar.Footer>
+            </Sidebar>
+          </AppLayout.SideLeft>
+          <AppLayout.Main>
+            <div style={{ padding: "2rem" }}>
+              <Text size="lg" weight="bold">
+                Main Content Area
+              </Text>
+              <Text>
+                Groups can be expanded and collapsed by clicking the header. The Settings group starts collapsed.
+              </Text>
+            </div>
+          </AppLayout.Main>
+        </AppLayout.Body>
+      </AppLayout>
     )
   },
 }
 
-export const WithGroups: Story = {
-  render: (args) => {
-    const [isOpen, setIsOpen] = useState(true)
+export const WithActions: Story = {
+  render: () => {
     return (
-      <div style={{ display: "flex", minHeight: "100vh" }}>
-        <Sidebar {...args} isOpen={isOpen} onOpenChange={setIsOpen}>
-          <Sidebar.Header>
-            <Text weight="bold">Dashboard</Text>
-          </Sidebar.Header>
-          <Sidebar.Body>
-            <Sidebar.Group label="Main">
-              <Sidebar.Item active icon={<HomeIcon width={20} height={20} />}>
-                Dashboard
-              </Sidebar.Item>
-              <Sidebar.Item icon={<UserIcon width={20} height={20} />}>Users</Sidebar.Item>
-            </Sidebar.Group>
-            <Sidebar.Divider />
-            <Sidebar.Group label="Settings">
-              <Sidebar.Item icon={<SettingsIcon width={20} height={20} />}>Configuration</Sidebar.Item>
-              <Sidebar.Item>Preferences</Sidebar.Item>
-            </Sidebar.Group>
-          </Sidebar.Body>
-        </Sidebar>
-        <div style={{ flex: 1, padding: "2rem" }}>
-          <Text>Content area</Text>
-        </div>
-      </div>
+      <AppLayout>
+        <AppLayout.Body>
+          <AppLayout.SideLeft>
+            <Sidebar>
+              <Sidebar.Header>
+                <Text weight="bold" size="sm">
+                  Projects
+                </Text>
+              </Sidebar.Header>
+              <Sidebar.Body>
+                <Sidebar.Group label="Active" icon={<Icon as={GridIcon} size="sm" />}>
+                  <Sidebar.Item
+                    active
+                    icon={<Icon as={HomeIcon} />}
+                    action={<ButtonIcon as={TrashIcon} variant="ghost" size="small" aria-label="Delete app" />}
+                  >
+                    My App
+                  </Sidebar.Item>
+                  <Sidebar.Item
+                    icon={<Icon as={UserIcon} />}
+                    action={<ButtonIcon as={TrashIcon} variant="ghost" size="small" aria-label="Delete portal" />}
+                  >
+                    Team Portal
+                  </Sidebar.Item>
+                </Sidebar.Group>
+                <Sidebar.Divider />
+                <Sidebar.Group label="Archive" icon={<Icon as={ArchiveIcon} size="sm" />}>
+                  <Sidebar.Item
+                    icon={<Icon as={SettingsIcon} />}
+                    action={<ButtonIcon as={MenuIcon} variant="ghost" size="small" aria-label="Restore project" />}
+                  >
+                    Old Project
+                  </Sidebar.Item>
+                </Sidebar.Group>
+              </Sidebar.Body>
+            </Sidebar>
+          </AppLayout.SideLeft>
+          <AppLayout.Main>
+            <div style={{ padding: "2rem" }}>
+              <Text size="lg" weight="bold">
+                With Actions
+              </Text>
+              <Text>Items can have action icons on the right for additional functionality.</Text>
+            </div>
+          </AppLayout.Main>
+        </AppLayout.Body>
+      </AppLayout>
     )
   },
 }
 
-export const Collapsed: Story = {
-  render: (args) => {
-    const [isOpen, setIsOpen] = useState(false)
+export const Comprehensive: Story = {
+  render: () => {
     return (
-      <div style={{ display: "flex", minHeight: "100vh" }}>
-        <Sidebar {...args} isOpen={isOpen} onOpenChange={setIsOpen}>
-          <Sidebar.Header>
-            <Text weight="bold">App</Text>
-          </Sidebar.Header>
-          <Sidebar.Body>
-            <Sidebar.Item active icon={<HomeIcon width={20} height={20} />}>
-              Home
-            </Sidebar.Item>
-            <Sidebar.Item icon={<SettingsIcon width={20} height={20} />}>Settings</Sidebar.Item>
-          </Sidebar.Body>
-        </Sidebar>
-        <div style={{ flex: 1, padding: "2rem" }}>
-          <Button onClick={() => setIsOpen(!isOpen)}>Toggle Sidebar</Button>
-        </div>
-      </div>
+      <AppLayout>
+        <AppLayout.Body>
+          <AppLayout.SideLeft>
+            <Sidebar>
+              <Sidebar.Header>
+                <Text weight="bold" size="sm">
+                  File Manager
+                </Text>
+              </Sidebar.Header>
+              <Sidebar.Body>
+                <Sidebar.ItemList>
+                  <Sidebar.Item active icon={<Icon as={HomeIcon} />}>
+                    Home
+                  </Sidebar.Item>
+                  <Sidebar.Item icon={<Icon as={GridIcon} />}>Folders</Sidebar.Item>
+                  <Sidebar.Item icon={<Icon as={ClipboardIcon} />}>Files</Sidebar.Item>
+                  <Sidebar.Item icon={<Icon as={DownloadIcon} />}>Downloads</Sidebar.Item>
+                </Sidebar.ItemList>
+
+                <Sidebar.Divider />
+
+                <Sidebar.Group label="Workspace" icon={<Icon as={GridIcon} size="sm" />}>
+                  <Sidebar.Item
+                    icon={<Icon as={ClipboardIcon} />}
+                    action={<ButtonIcon as={MenuIcon} variant="ghost" size="small" aria-label="Duplicate" />}
+                  >
+                    Project Alpha
+                  </Sidebar.Item>
+                  <Sidebar.Item
+                    icon={<Icon as={ClipboardIcon} />}
+                    action={<ButtonIcon as={MenuIcon} variant="ghost" size="small" aria-label="Duplicate" />}
+                  >
+                    Project Beta
+                  </Sidebar.Item>
+                  <Sidebar.Item
+                    icon={<Icon as={ClipboardIcon} />}
+                    action={<ButtonIcon as={MenuIcon} variant="ghost" size="small" aria-label="Duplicate" />}
+                  >
+                    Design System
+                  </Sidebar.Item>
+                  <Sidebar.Item
+                    icon={<Icon as={ClipboardIcon} />}
+                    action={<ButtonIcon as={MenuIcon} variant="ghost" size="small" aria-label="Duplicate" />}
+                  >
+                    Documentation
+                  </Sidebar.Item>
+                </Sidebar.Group>
+
+                <Sidebar.Group label="Actions" icon={<Icon as={SettingsIcon} size="sm" />}>
+                  <Sidebar.Item
+                    icon={<Icon as={CheckIcon} />}
+                    action={<ButtonIcon as={MenuIcon} variant="ghost" size="small" aria-label="Create new" />}
+                  >
+                    Save
+                  </Sidebar.Item>
+                  <Sidebar.Item
+                    icon={<Icon as={CopyIcon} />}
+                    action={<ButtonIcon as={MenuIcon} variant="ghost" size="small" aria-label="Duplicate" />}
+                  >
+                    Duplicate
+                  </Sidebar.Item>
+                  <Sidebar.Item
+                    icon={<Icon as={DownloadIcon} />}
+                    action={<ButtonIcon as={MenuIcon} variant="ghost" size="small" aria-label="Export" />}
+                  >
+                    Export
+                  </Sidebar.Item>
+                </Sidebar.Group>
+
+                <Sidebar.Group label="Archive" icon={<Icon as={ArchiveIcon} size="sm" />}>
+                  <Sidebar.Item
+                    icon={<Icon as={ClipboardIcon} />}
+                    action={<ButtonIcon as={MenuIcon} variant="ghost" size="small" aria-label="Restore" />}
+                  >
+                    Old Backup v1
+                  </Sidebar.Item>
+                  <Sidebar.Item
+                    icon={<Icon as={ClipboardIcon} />}
+                    action={<ButtonIcon as={MenuIcon} variant="ghost" size="small" aria-label="Restore" />}
+                  >
+                    Old Backup v2
+                  </Sidebar.Item>
+                  <Sidebar.Item
+                    icon={<Icon as={ClipboardIcon} />}
+                    action={<ButtonIcon as={MenuIcon} variant="ghost" size="small" aria-label="Restore" />}
+                  >
+                    Old Backup v3
+                  </Sidebar.Item>
+                  <Sidebar.Item
+                    icon={<Icon as={ClipboardIcon} />}
+                    action={<ButtonIcon as={MenuIcon} variant="ghost" size="small" aria-label="Restore" />}
+                  >
+                    Old Backup v4
+                  </Sidebar.Item>
+                  <Sidebar.Item
+                    icon={<Icon as={ClipboardIcon} />}
+                    action={<ButtonIcon as={MenuIcon} variant="ghost" size="small" aria-label="Restore" />}
+                  >
+                    Old Backup v5
+                  </Sidebar.Item>
+                </Sidebar.Group>
+              </Sidebar.Body>
+              <Sidebar.Footer>
+                <Sidebar.Item
+                  action={<ButtonIcon as={MenuIcon} variant="ghost" size="small" aria-label="User options" />}
+                >
+                  <Avatar size="sm">JS</Avatar>
+                  Profile
+                </Sidebar.Item>
+              </Sidebar.Footer>
+            </Sidebar>
+          </AppLayout.SideLeft>
+          <AppLayout.Main>
+            <div style={{ padding: "2rem" }}>
+              <Text size="lg" weight="bold">
+                Comprehensive Sidebar
+              </Text>
+              <Text>
+                Multiple groups with many items showing realistic usage patterns with action buttons on items.
+              </Text>
+            </div>
+          </AppLayout.Main>
+        </AppLayout.Body>
+      </AppLayout>
     )
   },
 }

@@ -1,40 +1,60 @@
-import type { ElementType, HTMLAttributes, ReactNode } from "react"
+import type { ElementType, HTMLAttributes, ReactNode, ComponentPropsWithoutRef, RefAttributes } from "react"
+import type { ForwardRefExoticComponent } from "react"
 
-export interface SidebarRootProps extends Omit<HTMLAttributes<HTMLElement>, "children"> {
-  isOpen: boolean
-  onOpenChange?: (isOpen: boolean) => void
+export interface SidebarRootProps {
+  className?: string
   children?: ReactNode
 }
 
-export interface SidebarHeaderProps extends HTMLAttributes<HTMLDivElement> {
+export interface SidebarHeaderProps {
+  className?: string
   children?: ReactNode
 }
 
-export interface SidebarBodyProps extends HTMLAttributes<HTMLDivElement> {
+export interface SidebarBodyProps {
+  className?: string
   children?: ReactNode
 }
 
-export interface SidebarFooterProps extends HTMLAttributes<HTMLDivElement> {
+export interface SidebarFooterProps {
+  className?: string
   children?: ReactNode
 }
 
-export interface SidebarGroupProps extends HTMLAttributes<HTMLDivElement> {
+export interface SidebarGroupProps {
   label?: ReactNode
-  icon?: ReactNode
+  icon: ReactNode
+  defaultExpanded?: boolean
+  isExpanded?: boolean
+  onExpandedChange?: (expanded: boolean) => void
+  className?: string
   children?: ReactNode
 }
 
-export interface SidebarItemProps<T extends ElementType = "button"> extends Omit<
-  HTMLAttributes<HTMLElement>,
-  "as" | "ref"
-> {
+export interface SidebarItemListProps {
+  className?: string
+  children?: ReactNode
+}
+
+export type SidebarItemProps<T extends ElementType = "button"> = {
   as?: T
-  href?: string
   active?: boolean
   disabled?: boolean
   icon?: ReactNode
+  action?: ReactNode
+  className?: string
   children?: ReactNode
-  onClick?: (e: React.MouseEvent<HTMLElement>) => void
-}
+} & Omit<ComponentPropsWithoutRef<T>, "children">
 
 export interface SidebarDividerProps extends HTMLAttributes<HTMLDivElement> {}
+
+// Compound type for TypeScript namespace merging
+export interface SidebarType extends ForwardRefExoticComponent<SidebarRootProps & RefAttributes<HTMLElement>> {
+  Header: ForwardRefExoticComponent<SidebarHeaderProps & RefAttributes<HTMLDivElement>>
+  Body: ForwardRefExoticComponent<SidebarBodyProps & RefAttributes<HTMLDivElement>>
+  Footer: ForwardRefExoticComponent<SidebarFooterProps & RefAttributes<HTMLDivElement>>
+  Group: ForwardRefExoticComponent<SidebarGroupProps & RefAttributes<HTMLDivElement>>
+  Item: <T extends ElementType = "button">(props: SidebarItemProps<T> & RefAttributes<HTMLElement>) => JSX.Element
+  ItemList: ForwardRefExoticComponent<SidebarItemListProps & RefAttributes<HTMLDivElement>>
+  Divider: ForwardRefExoticComponent<SidebarDividerProps & RefAttributes<HTMLDivElement>>
+}

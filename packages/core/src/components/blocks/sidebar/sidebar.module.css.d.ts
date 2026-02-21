@@ -5,10 +5,15 @@ declare const styles: {
   readonly 'sidebar-divider': string;
   readonly 'sidebar-footer': string;
   readonly 'sidebar-group': string;
+  readonly 'sidebar-group-chevron': string;
+  readonly 'sidebar-group-content': string;
+  readonly 'sidebar-group-header': string;
   readonly 'sidebar-group-label': string;
   readonly 'sidebar-header': string;
   readonly 'sidebar-item': string;
+  readonly 'sidebar-item-action': string;
   readonly 'sidebar-item-icon': string;
+  readonly 'sidebar-item-list': string;
   readonly 'sidebar-item-text': string;
 };
 export default styles;

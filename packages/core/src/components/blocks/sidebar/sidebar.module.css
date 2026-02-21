@@ -1,151 +1,204 @@
-/* Base Sidebar Styles */
+/* Root */
 .sidebar {
-  /* Layout */
   display: flex;
   flex-direction: column;
-  height: 100%;
   overflow: hidden;
+  height: 100%;
+  flex-shrink: 0;
 
-  /* Sizing — private tokens */
+  /* tokens */
   --_width: var(--vers-comp-sidebar-width, 16rem);
-  --_width-collapsed: var(--vers-comp-sidebar-width-collapsed, 4.5rem);
-  --_bg: var(--vers-comp-sidebar-bg, var(--color-neutral-soft));
-  --_text-color: var(--vers-comp-sidebar-text-color, var(--color-ghost));
-  --_border-color: var(--vers-comp-sidebar-border-color, var(--color-neutral-hover));
-  --_transition-duration: var(--vers-comp-sidebar-transition-duration, var(--transition-base));
-  --_item-padding: var(--vers-comp-sidebar-item-padding, var(--spacing-3));
-  --_group-gap: var(--vers-comp-sidebar-group-gap, var(--spacing-3));
+  --_bg: var(--vers-comp-sidebar-bg, var(--color-background));
+  --_border-color: var(--vers-comp-sidebar-border-color, var(--color-border));
+  --_text-color: var(--vers-comp-sidebar-text-color, var(--color-text-primary));
   --_item-gap: var(--vers-comp-sidebar-item-gap, var(--spacing-2));
-  --_item-border-radius: var(--vers-comp-sidebar-item-border-radius, var(--radius-lg));
-  --_focus-bg: var(--vers-comp-sidebar-focus-bg, var(--color-neutral-light));
-  --_active-bg: var(--vers-comp-sidebar-active-bg, var(--color-primary-soft));
-  --_active-text: var(--vers-comp-sidebar-active-text, var(--color-primary));
-  --_disabled-opacity: var(--vers-comp-sidebar-disabled-opacity, 0.5);
+  --_item-px: var(--vers-comp-sidebar-item-px, var(--spacing-3));
+  --_item-height: var(--vers-comp-sidebar-item-height, 2.5rem);
+  --_item-radius: var(--vers-comp-sidebar-item-radius, var(--radius-md));
+  --_item-hover-bg: var(--vers-comp-sidebar-item-hover-bg, var(--color-neutral-light));
+  --_item-active-bg: var(--vers-comp-sidebar-item-active-bg, var(--color-primary-soft));
+  --_item-active-color: var(--vers-comp-sidebar-item-active-color, var(--color-primary));
+  --_transition-duration: var(--vers-comp-sidebar-transition-duration, var(--transition-base));
 
   width: var(--_width);
   background-color: var(--_bg);
   color: var(--_text-color);
   border-right: 1px solid var(--_border-color);
-  transition: width var(--_transition-duration) ease-in-out;
+  font-family: var(--font-sans);
 }
 
-/* Collapsed state */
-.sidebar[data-open="false"] {
-  width: var(--_width-collapsed);
-}
-
-/* ============================================
-   SIDEBAR SECTIONS
-   ============================================ */
-
+/* Header — flex row, sticky top */
 .sidebar-header {
   flex-shrink: 0;
-  padding: var(--_item-padding);
-  border-bottom: 1px solid var(--_border-color);
   display: flex;
-  flex-direction: column;
-  gap: var(--_group-gap);
+  align-items: center;
+  gap: var(--_item-gap);
+  padding: 0 var(--_item-px);
+  height: 3.5rem;
+  border-bottom: 1px solid var(--_border-color);
 }
 
+/* Body — scrollable, flex: 1 to fill space */
 .sidebar-body {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--spacing-2) var(--spacing-2);
   display: flex;
   flex-direction: column;
-  gap: var(--_group-gap);
-  padding: var(--_item-padding);
+  gap: var(--spacing-1);
+  min-height: 0;
 }
 
+/* Footer — sticky bottom */
 .sidebar-footer {
   flex-shrink: 0;
-  padding: var(--_item-padding);
+  padding: var(--spacing-2);
   border-top: 1px solid var(--_border-color);
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  gap: var(--_item-gap);
+  gap: var(--spacing-1);
 }
 
-/* ============================================
-   SIDEBAR GROUPS AND ITEMS
-   ============================================ */
-
+/* Group */
 .sidebar-group {
   display: flex;
   flex-direction: column;
-  gap: var(--_item-gap);
+  gap: var(--spacing-1);
 }
 
-.sidebar-group-label {
+.sidebar-group[data-expanded] {
+  background-color: var(--color-neutral-soft);
+  border-radius: var(--_item-radius);
+}
+
+/* Group header — clickable button for expand/collapse */
+.sidebar-group-header {
+  display: flex;
+  align-items: center;
+  gap: var(--_item-gap);
+  padding: 0 var(--_item-px);
+  height: var(--_item-height);
+  border-radius: var(--_item-radius);
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--color-ghost-light);
-  padding: 0 var(--_item-padding);
-  margin-bottom: var(--spacing-2);
+  color: var(--color-text-tertiary);
+  user-select: none;
 }
 
-/* When sidebar is collapsed, hide group labels */
-.sidebar[data-open="false"] .sidebar-group-label {
-  display: none;
+.sidebar-group-header:hover {
+  background-color: var(--_item-hover-bg);
 }
 
-/* Sidebar Item — base styles for both button and link */
+.sidebar-group-header:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+
+/* Group label */
+.sidebar-group-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Group chevron — rotates when collapsed */
+.sidebar-group-chevron {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform var(--_transition-duration) ease-out;
+}
+
+.sidebar-group:not([data-expanded]) .sidebar-group-chevron {
+  transform: rotate(-90deg);
+}
+
+/* Group content — CSS grid animation for smooth collapse */
+.sidebar-group-content {
+  display: grid;
+  grid-template-rows: 1fr;
+  overflow: hidden;
+  transition: grid-template-rows var(--_transition-duration) ease-out;
+}
+
+.sidebar-group:not([data-expanded]) .sidebar-group-content {
+  grid-template-rows: 0fr;
+}
+
+.sidebar-group-content > * {
+  min-height: 0;
+  overflow: hidden;
+}
+
+
+/* ItemList — Container for items not wrapped in a group */
+.sidebar-item-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-0);
+}
+
+/* Item */
 .sidebar-item {
   display: flex;
   align-items: center;
   gap: var(--_item-gap);
-  padding: var(--_item-padding);
-  border: none;
-  border-radius: var(--_item-border-radius);
-  background-color: transparent;
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
+  padding: 0 var(--_item-px);
+  height: var(--_item-height);
+  border-radius: var(--_item-radius);
+  width: 100%;
+  text-align: left;
   font-size: var(--font-size-sm);
-  font-family: var(--font-sans);
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-medium);
+  color: var(--_text-color);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
   user-select: none;
   transition-property: background-color, color;
   transition-duration: var(--_transition-duration);
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   outline: none;
-  position: relative;
 }
 
-/* Sidebar Item states */
-.sidebar-item[data-disabled=""] {
-  opacity: var(--_disabled-opacity);
+.sidebar-item:hover:not([data-disabled]):not([data-active]) {
+  background-color: var(--_item-hover-bg);
+}
+
+.sidebar-item[data-active] {
+  background-color: var(--_item-active-bg);
+  color: var(--_item-active-color);
+  font-weight: var(--font-weight-semibold);
+}
+
+.sidebar-item[data-disabled] {
+  opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
 }
 
-.sidebar-item[data-active=""] {
-  background-color: var(--_active-bg);
-  color: var(--_active-text);
-  font-weight: var(--font-weight-semibold);
-}
-
-.sidebar-item[data-focused=""] {
-  background-color: var(--_focus-bg);
+.sidebar-item:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: -2px;
 }
 
-.sidebar-item:hover:not([data-disabled=""]):not([data-active=""]) {
-  background-color: var(--_focus-bg);
-}
-
-/* Hide text when sidebar is collapsed */
-.sidebar[data-open="false"] .sidebar-item {
-  justify-content: center;
-  padding: var(--_item-padding);
-}
-
-.sidebar[data-open="false"] .sidebar-item-text {
-  display: none;
-}
-
+/* Item icon */
 .sidebar-item-icon {
   flex-shrink: 0;
   display: flex;
@@ -155,18 +208,42 @@
   height: 1.25rem;
 }
 
+/* Item text — hidden in collapsed sidebar */
 .sidebar-item-text {
   flex: 1;
-  min-width: 0;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-/* ============================================
-   DIVIDER
-   ============================================ */
+/* Item action — right-aligned action button/icon */
+.sidebar-item-action {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  padding-left: var(--spacing-2);
+  height: 100%;
+  max-height: var(--_item-height);
+}
 
+/* Remove right padding from items with actions */
+.sidebar-item[data-action] {
+  padding-right: var(--spacing-1);
+  align-items: center;
+}
+
+/* Divider */
 .sidebar-divider {
-  margin: var(--spacing-2) 0;
+  padding: var(--spacing-0) 0;
+}
+
+/* ACCESSIBILITY: Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  .sidebar-group-chevron,
+  .sidebar-group-content {
+    transition: none;
+  }
 }
