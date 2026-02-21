@@ -1,6 +1,6 @@
 # Versaur Design System
 
-Modern, framework-agnostic UI component library built with the data-attribute state machine pattern.
+Modern, framework-agnostic UI component library built with the data-attribute state pattern.
 
 ## Overview
 
