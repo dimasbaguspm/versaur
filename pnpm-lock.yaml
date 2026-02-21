@@ -130,6 +130,9 @@ importers:
 
   packages/react:
     dependencies:
+      '@versaur/core':
+        specifier: workspace:*
+        version: link:../core
       '@versaur/icons':
         specifier: workspace:*
         version: link:../icons
