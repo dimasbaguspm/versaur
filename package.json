@@ -24,13 +24,13 @@
     "changeset:add": "changeset add"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.1",
+    "@changesets/cli": "^2.29.8",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
     "oxfmt": "^0.33.0",
-    "oxlint": "^1.48.0",
-    "typescript": "^5.6.0",
-    "vite": "^6.0.0"
+    "oxlint": "^1.49.0",
+    "typescript": "^5.9.3",
+    "vite": "^6.4.1"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "oxlint"
