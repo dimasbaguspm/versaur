@@ -31,6 +31,15 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Get npm OIDC token
+        id: npm-token
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const token = await core.getIDToken('https://api.npmjs.org');
+            core.setSecret(token);
+            core.setOutput('token', token);
+
       - name: Create Release PR or Publish
         uses: changesets/action@v1
         with:
@@ -40,3 +49,4 @@ jobs:
           title: "chore(release): version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ steps.npm-token.outputs.token }}
