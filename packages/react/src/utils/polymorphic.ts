@@ -9,7 +9,7 @@ export function isStringComponent(component: unknown): component is keyof JSX.In
 
 /**
  * Type-safe way to compare polymorphic components
- * Handles both string and function component references
+ * Handles both string and function component references.
  */
 export function isComponentType<T extends keyof JSX.IntrinsicElements>(component: unknown, elementName: T): boolean {
   return component === elementName
