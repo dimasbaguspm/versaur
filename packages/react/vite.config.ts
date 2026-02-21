@@ -6,13 +6,22 @@ import dts from "vite-plugin-dts"
 
 import pkg from "./package.json"
 
-// Get external dependencies from peerDependencies + additional externals
 const external = [...Object.keys(pkg.peerDependencies || {}), "react/jsx-runtime"]
 
 export default defineConfig({
+  plugins: [
+    react(),
+    dts({
+      include: ["src"],
+      rollupTypes: true,
+      compilerOptions: { sourceMap: false },
+    }),
+  ],
   build: {
+    sourcemap: false,
     lib: {
       entry: {
+        tokens: resolve(__dirname, "src/tokens/index.ts"),
         primitive: resolve(__dirname, "src/components/primitive/index.ts"),
         forms: resolve(__dirname, "src/components/forms/index.ts"),
         blocks: resolve(__dirname, "src/components/blocks/index.ts"),
@@ -23,13 +32,16 @@ export default defineConfig({
     rollupOptions: {
       external,
       output: {
-        preserveModules: true,
-        preserveModulesRoot: "src",
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.names.some((name) => name.endsWith(".css"))) {
+            return "styles/versaur-react[extname]"
+          }
+          return "[name]-[hash][extname]"
+        },
       },
     },
   },
   resolve: {
     conditions: ["source"],
   },
-  plugins: [react(), dts({ entryRoot: "src/components" })],
 })

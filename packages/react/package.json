@@ -11,6 +11,10 @@
   ],
   "type": "module",
   "exports": {
+    "./tokens": {
+      "source": "./src/tokens/index.ts",
+      "import": "./dist/tokens.js"
+    },
     "./primitive": {
       "types": "./dist/primitive/index.d.ts",
       "source": "./src/components/primitive/index.ts",
