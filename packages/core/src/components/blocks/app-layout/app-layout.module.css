@@ -160,7 +160,6 @@
 /* REGION: Bottom */
 .app-layout-bottom {
   grid-area: bottom;
-  height: var(--_bottom-height);
   overflow-y: auto;
   overflow-x: hidden;
   border-top: 1px solid var(--vers-color-border, #e5e5e5);
