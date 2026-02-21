@@ -1,32 +1,19 @@
-/* Base AppLayout Styles */
+/* Base AppLayout — flex column container */
 .app-layout {
-  /* Layout */
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 
-  /* Component-specific custom properties */
-  --_height: var(--vers-comp-app-layout-height, 100%);
+  --_height: var(--vers-comp-app-layout-height, 100vh);
   --_min-height: var(--vers-comp-app-layout-min-height, auto);
   --_header-height: var(--vers-comp-app-layout-header-height, 3.5rem);
   --_bottom-height: var(--vers-comp-app-layout-bottom-height, 4rem);
   --_sidebar-width: var(--vers-comp-app-layout-sidebar-width, 15rem);
   --_main-max-width: var(--vers-comp-app-layout-main-max-width, 1200px);
-  --_gap: var(--vers-comp-app-layout-gap, 0);
   --_transition: all var(--vers-transition-base) ease-out;
 
-  /* Grid setup */
-  grid-template-areas:
-    "header   header     header      header      header"
-    "side-left main       main        main        side-right"
-    "bottom   bottom     bottom      bottom      bottom";
-  grid-template-columns:
-    var(--_sidebar-width) 1fr auto var(--_sidebar-width)
-    1px;
-  grid-template-rows: var(--_header-height) 1fr auto;
-  gap: var(--_gap);
   height: var(--_height);
   min-height: var(--_min-height);
-
-  /* Styling */
   background-color: var(--vers-color-background, #ffffff);
   color: var(--vers-color-text-primary);
   font-family: var(--vers-typography-body-font-family);
@@ -34,75 +21,76 @@
   line-height: var(--vers-typography-body-line-height);
 }
 
-/* ============================================
-   VARIANT: mobile - single column layout
-   ============================================ */
-.app-layout[data-variant="mobile"] {
-  grid-template-areas:
-    "header"
-    "main"
-    "bottom";
-  grid-template-columns: 1fr;
-}
-
-/* ============================================
-   VARIANT: split - two sidebars with main
-   ============================================ */
-.app-layout[data-variant="split"] {
-  grid-template-areas:
-    "header   header      header      header      header"
-    "side-left main       main        side-right  side-right"
-    "bottom   bottom      bottom      bottom      bottom";
-  grid-template-columns:
-    var(--_sidebar-width) 1fr auto var(--_sidebar-width)
-    1px;
-}
-
-/* ============================================
-   VARIANT: full - main content only
-   ============================================ */
-.app-layout[data-variant="full"] {
-  grid-template-areas:
-    "header"
-    "main"
-    "bottom";
-  grid-template-columns: 1fr;
-}
-
-/* ============================================
-   VARIANT: classic - left sidebar + main (default)
-   ============================================ */
-.app-layout[data-variant="classic"] {
-  grid-template-areas:
-    "header   header     header      header      header"
-    "side-left main       main        main        side-right"
-    "bottom   bottom     bottom      bottom      bottom";
-  grid-template-columns:
-    var(--_sidebar-width) 1fr auto var(--_sidebar-width)
-    1px;
-}
-
-/* ============================================
-   REGIONS: Header
-   ============================================ */
+/* Header — fixed-height flex item */
 .app-layout-header {
-  grid-area: header;
-  position: sticky;
-  top: 0;
+  flex-shrink: 0;
+  height: var(--_header-height);
   z-index: 10;
   border-bottom: 1px solid var(--vers-color-border, #e5e5e5);
   background-color: var(--vers-color-background, #ffffff);
   transition: var(--_transition);
 }
 
-/* ============================================
-   REGIONS: Main content - scrollable
-   ============================================ */
+/* Body — fills remaining space, hosts the inner grid */
+.app-layout-body {
+  flex: 1;
+  display: grid;
+  overflow: hidden;
+  min-height: 0;
+  transition: var(--_transition);
+
+  /* Default: classic (left sidebar + main) */
+  grid-template-areas:
+    "side-left main"
+    "bottom    bottom";
+  grid-template-columns: var(--_sidebar-width) 1fr;
+  grid-template-rows: 1fr auto;
+}
+
+/* VARIANT: classic */
+.app-layout[data-variant="classic"] .app-layout-body {
+  grid-template-areas:
+    "side-left main"
+    "bottom    bottom";
+  grid-template-columns: var(--_sidebar-width) 1fr;
+  grid-template-rows: 1fr auto;
+}
+
+/* VARIANT: split — both sidebars */
+.app-layout[data-variant="split"] .app-layout-body {
+  grid-template-areas:
+    "side-left main side-right"
+    "bottom    bottom  bottom";
+  grid-template-columns: var(--_sidebar-width) 1fr var(--_sidebar-width);
+  grid-template-rows: 1fr auto;
+}
+
+/* VARIANT: full — no sidebars */
+.app-layout[data-variant="full"] .app-layout-body {
+  grid-template-areas:
+    "main"
+    "bottom";
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+}
+
+/* VARIANT: mobile — single column, no sidebars */
+.app-layout[data-variant="mobile"] .app-layout-body {
+  grid-template-areas:
+    "main"
+    "bottom";
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+}
+
+
+/* REGION: Main */
 .app-layout-main {
   grid-area: main;
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
+  min-width: 0;
   transition: var(--_transition);
 }
 
@@ -133,24 +121,24 @@
 .app-layout-main[data-placement="centred"] {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding: 0 var(--vers-spacing-4, 1rem);
 }
 
 .app-layout-main[data-placement="centred"] > * {
   max-width: var(--_main-max-width);
+  margin-left: auto;
+  margin-right: auto;
   width: 100%;
-  padding: 0 var(--vers-spacing-4, 1rem);
+  min-width: 0;
 }
 
 @media (min-width: 768px) {
-  .app-layout-main[data-placement="centred"] > * {
+  .app-layout-main[data-placement="centred"] {
     padding: 0 var(--vers-spacing-6, 1.5rem);
   }
 }
 
-/* ============================================
-   REGIONS: Side left
-   ============================================ */
+/* REGION: Side left */
 .app-layout-side-left {
   grid-area: side-left;
   overflow-y: auto;
@@ -160,9 +148,7 @@
   transition: var(--_transition);
 }
 
-/* ============================================
-   REGIONS: Side right
-   ============================================ */
+/* REGION: Side right */
 .app-layout-side-right {
   grid-area: side-right;
   overflow-y: auto;
@@ -172,15 +158,10 @@
   transition: var(--_transition);
 }
 
-/* ============================================
-   REGIONS: Bottom navigation
-   ============================================ */
+/* REGION: Bottom */
 .app-layout-bottom {
   grid-area: bottom;
-  position: sticky;
-  bottom: 0;
-  z-index: 9;
-  height: var(--_bottom-height, 4rem);
+  height: var(--_bottom-height);
   overflow-y: auto;
   overflow-x: hidden;
   border-top: 1px solid var(--vers-color-border, #e5e5e5);
@@ -188,41 +169,30 @@
   transition: var(--_transition);
 }
 
-/* ============================================
-   VISIBILITY: Hide regions based on data-attributes
-   ============================================ */
-.app-layout[data-show-header="false"] .app-layout-header {
-  display: none;
-}
+/* VISIBILITY: Header and Bottom overrides */
+.app-layout[data-hide-header] .app-layout-header { display: none; }
+.app-layout[data-hide-bottom] .app-layout-bottom { display: none; }
 
-.app-layout[data-show-side-left="false"] .app-layout-side-left {
-  display: none;
-}
-
-.app-layout[data-show-side-right="false"] .app-layout-side-right {
-  display: none;
-}
-
-.app-layout[data-show-bottom="false"] .app-layout-bottom {
+/* Hide sidebars when not in the variant's grid area */
+.app-layout[data-variant="classic"] .app-layout-side-right,
+.app-layout[data-variant="full"] .app-layout-side-left,
+.app-layout[data-variant="full"] .app-layout-side-right,
+.app-layout[data-variant="mobile"] .app-layout-side-left,
+.app-layout[data-variant="mobile"] .app-layout-side-right {
   display: none;
 }
 
 
-/* ============================================
-   RESPONSIVE: Large screens (1280px+)
-   ============================================ */
+/* RESPONSIVE: Large screens */
 @media (min-width: 1280px) {
-  .app-layout {
-    --_sidebar-width: 16rem;
-  }
+  .app-layout { --_sidebar-width: 16rem; }
 }
 
-/* ============================================
-   ACCESSIBILITY: Reduced motion support
-   ============================================ */
+/* ACCESSIBILITY: Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .app-layout,
   .app-layout-header,
+  .app-layout-body,
   .app-layout-main,
   .app-layout-side-left,
   .app-layout-side-right,

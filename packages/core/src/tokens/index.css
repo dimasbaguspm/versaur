@@ -17,6 +17,13 @@
   padding: 0;
 }
 
+/* Set core html and body defaults */
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
 /* Set core body defaults */
 body {
   font-family: var(--font-sans);
