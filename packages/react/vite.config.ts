@@ -33,8 +33,8 @@ export default defineConfig({
       external,
       output: {
         assetFileNames: (assetInfo) => {
-          if (assetInfo.names.some((name) => name.endsWith(".css"))) {
-            return "styles/versaur-react[extname]"
+          if (assetInfo.names?.some((name) => name.endsWith(".css"))) {
+            return "versaur-react.css"
           }
           return "[name]-[hash][extname]"
         },
