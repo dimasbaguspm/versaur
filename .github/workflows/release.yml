@@ -11,6 +11,9 @@ jobs:
   release:
     name: Create Release PR or Publish
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -22,6 +25,7 @@ jobs:
         with:
           node-version-file: package.json
           cache: pnpm
+          registry-url: https://registry.npmjs.org/
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -35,4 +39,3 @@ jobs:
           title: "chore(release): version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
