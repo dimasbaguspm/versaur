@@ -42,6 +42,9 @@ export default defineConfig({
     },
   },
   resolve: {
+    alias: {
+      "@versaur/core/": resolve(__dirname, "../../packages/core/src/components/"),
+    },
     conditions: ["source"],
   },
 })
