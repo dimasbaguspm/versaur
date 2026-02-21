@@ -69,4 +69,9 @@ export interface TooltipStatic {
    * Get the required attributes for the trigger element
    */
   getTooltipTriggerProps(options: TooltipGetTriggerPropsOptions): Record<string, unknown>
+  /**
+   * Close a tooltip popover by id
+   * @example Tooltip.close({ id: "my-tooltip" })
+   */
+  close(options: { id: string }): void
 }

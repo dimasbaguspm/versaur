@@ -126,8 +126,39 @@ function getTooltipTriggerProps(options: TooltipGetTriggerPropsOptions): Record<
 }
 
 /**
+ * Close a tooltip popover by id
+ * @param options - Options with the tooltip id
+ *
+ * @example
+ * ```tsx
+ * Tooltip.close({ id: "my-tooltip" })
+ * ```
+ */
+function closeTooltip(options: { id: string }) {
+  const { id } = options
+  const tooltipEl = document.getElementById(id) as any
+
+  if (tooltipEl && tooltipEl.matches(":popover-open")) {
+    // Defer the close to allow click event to complete
+    requestAnimationFrame(() => {
+      // Find and blur the trigger element first
+      const triggerEl = document.querySelector(`[data-tooltip-trigger="${id}"]`) as HTMLElement
+      if (triggerEl && document.activeElement === triggerEl) {
+        triggerEl.blur()
+      }
+
+      // Hide the popover
+      if (tooltipEl.matches(":popover-open")) {
+        tooltipEl.hidePopover()
+      }
+    })
+  }
+}
+
+/**
  * Attach static methods to component
  */
 export const Tooltip = TooltipRoot as typeof TooltipRoot & TooltipStatic
 Tooltip.Text = TooltipText
 Tooltip.getTooltipTriggerProps = getTooltipTriggerProps
+Tooltip.close = closeTooltip

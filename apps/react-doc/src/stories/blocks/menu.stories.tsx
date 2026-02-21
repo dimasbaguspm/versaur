@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { Button } from "@versaur/react/primitive"
+import { ButtonIcon } from "@versaur/react/primitive"
+import { MenuIcon, SettingsIcon, FilterIcon } from "@versaur/icons"
 import { Menu } from "@versaur/react/blocks"
 import { useState } from "react"
 
@@ -38,20 +39,123 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
+/**
+ * Showcase menu with all four placement directions.
+ * Each placement is shown with an icon-only button trigger.
+ * Menu stays open on item click (default behavior).
+ */
+export const Placements: Story = {
   render: (args) => {
-    const [value, setValue] = useState<string | number | undefined>()
+    const placements: Array<[string, "top" | "bottom" | "left" | "right"]> = [
+      ["Top", "top"],
+      ["Bottom", "bottom"],
+      ["Left", "left"],
+      ["Right", "right"],
+    ]
+
     return (
-      <div style={{ padding: "2rem" }}>
-        <Button {...Menu.getTriggerProps({ id: "default-menu" })} variant="primary">
-          Open Menu
-        </Button>
-        <Menu {...args} id="default-menu" value={value} onChange={setValue}>
-          <Menu.Item value="option1">Option 1</Menu.Item>
-          <Menu.Item value="option2">Option 2</Menu.Item>
-          <Menu.Item value="option3">Option 3</Menu.Item>
-        </Menu>
-        {value && <p>Selected: {value}</p>}
+      <div
+        style={{
+          padding: "4rem 2rem",
+          display: "grid",
+          gridTemplateColumns: "repeat(2, 1fr)",
+          gap: "4rem",
+          alignItems: "center",
+          justifyItems: "center",
+        }}
+      >
+        {placements.map(([label, placement]) => {
+          const menuId = `menu-placement-${placement}`
+          const [value, setValue] = useState<string | number | undefined>()
+
+          return (
+            <div key={placement} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem" }}>
+              <div style={{ fontSize: "0.875rem", fontWeight: 500, color: "var(--color-text-secondary)" }}>
+                {label}
+              </div>
+              <ButtonIcon
+                {...Menu.getTriggerProps({ id: menuId })}
+                as={MenuIcon}
+                aria-label={`Open ${label} menu`}
+                variant="ghost"
+              />
+              <Menu {...args} id={menuId} placement={placement} value={value} onChange={setValue}>
+                <Menu.Item value="edit">Edit</Menu.Item>
+                <Menu.Item value="delete">Delete</Menu.Item>
+                <Menu.Item value="share">Share</Menu.Item>
+              </Menu>
+            </div>
+          )
+        })}
+      </div>
+    )
+  },
+}
+
+/**
+ * Showcase different menu item states: default, selected, disabled, and click behavior.
+ *
+ * Demonstrates:
+ * - Active/selected state (visual highlight with primary color)
+ * - Disabled state (reduced opacity, not clickable)
+ * - Controlled selection with onChange
+ * - Menu that stays open on click (default behavior)
+ * - Menu that closes on click (closeOnClick: true)
+ */
+export const ItemStates: Story = {
+  render: (args) => {
+    const [staysOpen, setStaysOpen] = useState<string | number>("settings")
+    const [closesOnClick, setClosesOnClick] = useState<string | number>("preferences")
+
+    return (
+      <div style={{ padding: "2rem", display: "flex", flexDirection: "column", gap: "3rem" }}>
+        {/* Menu that stays open on click */}
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem" }}>
+          <div style={{ fontSize: "0.875rem", color: "var(--color-text-secondary)", textAlign: "center" }}>
+            Menu stays open on click (default)
+          </div>
+          <ButtonIcon
+            {...Menu.getTriggerProps({ id: "stays-open-menu" })}
+            as={SettingsIcon}
+            aria-label="Open settings menu (stays open)"
+            variant="ghost"
+          />
+          <Menu {...args} id="stays-open-menu" value={staysOpen} onChange={setStaysOpen}>
+            <Menu.Item value="preferences">Preferences</Menu.Item>
+            <Menu.Item value="settings">Settings</Menu.Item>
+            <Menu.Item disabled>Advanced (Disabled)</Menu.Item>
+            <Menu.Item value="reset">Reset</Menu.Item>
+          </Menu>
+          {staysOpen && (
+            <p style={{ fontSize: "0.875rem" }}>
+              Selected: <strong>{staysOpen}</strong>
+            </p>
+          )}
+        </div>
+
+        {/* Menu that closes on click */}
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem" }}>
+          <div style={{ fontSize: "0.875rem", color: "var(--color-text-secondary)", textAlign: "center" }}>
+            Menu closes on click (closeOnClick: true)
+          </div>
+          <ButtonIcon
+            {...Menu.getTriggerProps({ id: "closes-on-click-menu" })}
+            as={SettingsIcon}
+            aria-label="Open settings menu (closes on click)"
+            variant="ghost"
+          />
+          <Menu {...args} id="closes-on-click-menu" value={closesOnClick} onChange={setClosesOnClick} closeOnClick>
+            <Menu.Item value="preferences">Preferences</Menu.Item>
+            <Menu.Item value="settings">Settings</Menu.Item>
+            <Menu.Item disabled>Advanced (Disabled)</Menu.Item>
+            <Menu.Item value="reset">Reset</Menu.Item>
+          </Menu>
+          {closesOnClick && (
+            <p style={{ fontSize: "0.875rem" }}>
+              Selected: <strong>{closesOnClick}</strong>
+            </p>
+          )}
+        </div>
       </div>
     )
   },
@@ -60,115 +164,48 @@ export const Default: Story = {
   },
 }
 
-export const BottomPlacement: Story = {
+/**
+ * Showcase menu with many items and height constraint.
+ *
+ * Demonstrates:
+ * - Menu list scrolling when content exceeds maxHeight
+ * - Useful for filtering or selection from large lists
+ * - closeOnClick: true for single selection use case
+ */
+export const WithConstraints: Story = {
   render: (args) => {
     const [value, setValue] = useState<string | number | undefined>()
-    return (
-      <div style={{ padding: "2rem" }}>
-        <Button {...Menu.getTriggerProps({ id: "bottom-menu" })} variant="secondary">
-          Menu
-        </Button>
-        <Menu {...args} id="bottom-menu" value={value} onChange={setValue}>
-          <Menu.Item value="edit">Edit</Menu.Item>
-          <Menu.Item value="delete">Delete</Menu.Item>
-          <Menu.Item value="share">Share</Menu.Item>
-        </Menu>
-      </div>
-    )
-  },
-  args: {
-    placement: "bottom",
-  },
-}
-
-export const TopPlacement: Story = {
-  render: (args) => {
-    const [value, setValue] = useState<string | number | undefined>()
-    return (
-      <div style={{ padding: "4rem 2rem 2rem" }}>
-        <Button {...Menu.getTriggerProps({ id: "top-menu" })} variant="ghost">
-          Options
-        </Button>
-        <Menu {...args} id="top-menu" value={value} onChange={setValue}>
-          <Menu.Item value="save">Save</Menu.Item>
-          <Menu.Item value="export">Export</Menu.Item>
-          <Menu.Item value="print">Print</Menu.Item>
-        </Menu>
-      </div>
-    )
-  },
-  args: {
-    placement: "top",
-  },
-}
-
-export const RightPlacement: Story = {
-  render: (args) => {
-    const [value, setValue] = useState<string | number | undefined>()
-    return (
-      <div style={{ padding: "2rem", marginLeft: "10rem" }}>
-        <Button {...Menu.getTriggerProps({ id: "right-menu" })} variant="primary">
-          Actions
-        </Button>
-        <Menu {...args} id="right-menu" value={value} onChange={setValue}>
-          <Menu.Item value="profile">Profile</Menu.Item>
-          <Menu.Item value="settings">Settings</Menu.Item>
-          <Menu.Item value="help">Help</Menu.Item>
-          <Menu.Item value="logout">Logout</Menu.Item>
-        </Menu>
-      </div>
-    )
-  },
-  args: {
-    placement: "right",
-  },
-}
-
-export const DisabledItems: Story = {
-  render: (args) => {
-    const [value, setValue] = useState<string | number | undefined>()
-    return (
-      <div style={{ padding: "2rem" }}>
-        <Button {...Menu.getTriggerProps({ id: "disabled-menu" })} variant="primary">
-          Menu
-        </Button>
-        <Menu {...args} id="disabled-menu" value={value} onChange={setValue}>
-          <Menu.Item value="active">Active Item</Menu.Item>
-          <Menu.Item disabled>Disabled Item</Menu.Item>
-          <Menu.Item value="another">Another Item</Menu.Item>
-        </Menu>
-      </div>
-    )
-  },
-  args: {
-    placement: "bottom",
-  },
-}
-
-export const ManyItems: Story = {
-  render: (args) => {
-    const [value, setValue] = useState<string | number | undefined>()
-    const items = Array.from({ length: 10 }, (_, i) => ({
-      value: `item-${i}`,
-      label: `Item ${i + 1}`,
+    const items = Array.from({ length: 12 }, (_, i) => ({
+      value: `filter-${i}`,
+      label: `Filter Option ${i + 1}`,
     }))
+
     return (
-      <div style={{ padding: "2rem" }}>
-        <Button {...Menu.getTriggerProps({ id: "many-items-menu" })} variant="primary">
-          Select
-        </Button>
-        <Menu {...args} id="many-items-menu" value={value} onChange={setValue}>
+      <div style={{ padding: "2rem", display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem" }}>
+        <div style={{ fontSize: "0.875rem", color: "var(--color-text-secondary)", textAlign: "center" }}>
+          Select an option - menu closes after selection
+          <br />
+          (Scroll inside menu to see all options)
+        </div>
+        <ButtonIcon
+          {...Menu.getTriggerProps({ id: "constraints-menu" })}
+          as={FilterIcon}
+          aria-label="Open filter menu"
+          variant="ghost"
+        />
+        <Menu {...args} id="constraints-menu" value={value} onChange={setValue} closeOnClick>
           {items.map((item) => (
             <Menu.Item key={item.value} value={item.value}>
               {item.label}
             </Menu.Item>
           ))}
         </Menu>
+        {value && <p style={{ fontSize: "0.875rem" }}>Selected: <strong>{value}</strong></p>}
       </div>
     )
   },
   args: {
     placement: "bottom",
-    maxHeight: 300,
+    maxHeight: 280,
   },
 }

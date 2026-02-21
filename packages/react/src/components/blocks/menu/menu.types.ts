@@ -6,12 +6,14 @@ export type MenuPlacement = "top" | "bottom" | "left" | "right"
  * Menu Context for managing selected value across items
  */
 export interface MenuContextValue {
+  /** Menu unique identifier (used for Tooltip.close) */
+  id?: string
   /** Currently selected item value */
   value?: string | number
+  /** Whether to close menu when item is clicked */
+  closeOnClick?: boolean
   /** Callback when an item is selected */
   onChange?: (value: string | number) => void
-  /** Close the menu programmatically */
-  close?: (options: { id: string }) => void
 }
 
 /**
@@ -77,10 +79,34 @@ export interface MenuProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChang
    * Callback when a menu item is selected
    */
   onChange?: (value: string | number) => void
+
+  /**
+   * Whether to close the menu when an item is clicked
+   * @default false
+   */
+  closeOnClick?: boolean
 }
 
 /**
  * Menu Item Props
+ *
+ * @description
+ * Represents an individual menu item that can be clicked to select a value.
+ * Items support active state (when their value matches Menu's controlled value),
+ * disabled state, and optional icons on both sides.
+ *
+ * When clicked:
+ * - If Menu has `onChange`, the item's value is passed to it
+ * - The item's `onClick` handler is also called
+ * - If Menu has `closeOnClick: true`, the menu popover will close
+ *
+ * @example
+ * ```tsx
+ * <Menu id="menu-1" value={selected} onChange={setSelected} closeOnClick>
+ *   <Menu.Item value="edit" leftIcon={<EditIcon />}>Edit</Menu.Item>
+ *   <Menu.Item value="delete" leftIcon={<TrashIcon />}>Delete</Menu.Item>
+ * </Menu>
+ * ```
  */
 export interface MenuItemProps extends Omit<HTMLAttributes<HTMLButtonElement>, "onChange"> {
   /**
@@ -111,7 +137,8 @@ export interface MenuItemProps extends Omit<HTMLAttributes<HTMLButtonElement>, "
 
   /**
    * Click handler for the item
-   * Fired in addition to Menu's onChange if using controlled mode
+   * Fired in addition to Menu's onChange if using controlled mode.
+   * If Menu has closeOnClick: true, this fires before the menu closes.
    */
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void
 }
@@ -126,13 +153,18 @@ export interface MenuStatic {
   Item: ForwardRefExoticComponent<MenuItemProps & RefAttributes<HTMLButtonElement>>
 
   /**
-   * Close a menu programmatically
-   * @example Menu.close({ id: "my-menu" })
-   */
-  close: (options: { id: string }) => void
-
-  /**
    * Get the required attributes for a trigger element
    */
   getTriggerProps(options: MenuGetTriggerPropsOptions): Record<string, unknown>
+
+  /**
+   * Close a menu popover by id
+   * Convenience method that delegates to Tooltip.close()
+   *
+   * @example
+   * ```tsx
+   * Menu.close({ id: "my-menu" })
+   * ```
+   */
+  close(options: { id: string }): void
 }
