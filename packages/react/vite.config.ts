@@ -43,8 +43,9 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@versaur/core": resolve(__dirname, "../../packages/core/src"),
-      "@versaur/icons": resolve(__dirname, "../../packages/icons/src"),
+      "@versaur/core/tokens": resolve(__dirname, "../../packages/core/src/tokens/index.css"),
+      "@versaur/core/": resolve(__dirname, "../../packages/core/src/components/"),
+      "@versaur/icons/": resolve(__dirname, "../../packages/icons/src/"),
     },
     conditions: ["source"],
   },
