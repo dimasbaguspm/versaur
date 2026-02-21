@@ -23,7 +23,9 @@
     "lint": "oxlint src",
     "lint:fix": "oxlint src --fix",
     "format": "oxfmt src --write",
-    "format:check": "oxfmt src --check"
+    "format:check": "oxfmt src --check",
+    "changeset": "changeset",
+    "changeset:add": "changeset add"
   },
   "devDependencies": {
     "@types/react": "^18.3.0",

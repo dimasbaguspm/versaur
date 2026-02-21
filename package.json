@@ -12,7 +12,6 @@
     "build:docs": "pnpm --filter react-doc build && pnpm --filter docs build",
     "start": "pnpm --filter docs start",
     "clean": "pnpm -r exec rm -rf dist node_modules .astro",
-    "changeset": "changeset",
     "version": "changeset version",
     "release": "pnpm build:packages && changeset publish",
     "typecheck": "pnpm -r --parallel typecheck",
@@ -20,7 +19,9 @@
     "lint:fix": "oxlint . --fix",
     "format": "oxfmt . --write",
     "format:check": "oxfmt . --check",
-    "prepare": "husky"
+    "prepare": "husky",
+    "changeset": "changeset",
+    "changeset:add": "changeset add"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
