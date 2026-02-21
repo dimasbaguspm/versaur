@@ -24,7 +24,6 @@
 /* Header — fixed-height flex item */
 .app-layout-header {
   flex-shrink: 0;
-  height: var(--_header-height);
   z-index: 10;
   border-bottom: 1px solid var(--vers-color-border, #e5e5e5);
   background-color: var(--vers-color-background, #ffffff);

@@ -2,6 +2,8 @@
 // Source: top-bar.module.css
 
 export interface TopBarDataAttrs {
+  active?: boolean;
+  disabled?: boolean;
 };
 
 export namespace TopBar {

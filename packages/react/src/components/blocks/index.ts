@@ -70,6 +70,8 @@ export type {
   TopBarLeadingProps,
   TopBarCentredProps,
   TopBarTrailingProps,
+  TopBarItemProps,
+  TopBarItemListProps,
   TopBarComponent,
 } from "./top-bar"
 

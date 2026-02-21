@@ -1,4 +1,4 @@
-import type { ForwardRefExoticComponent, HTMLAttributes, ReactNode, RefAttributes } from "react"
+import type { ComponentPropsWithoutRef, ElementType, ForwardRefExoticComponent, HTMLAttributes, ReactNode, RefAttributes } from "react"
 
 /**
  * TopBar root component props
@@ -30,6 +30,25 @@ export interface TopBarTrailingProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 /**
+ * TopBar.Item - Polymorphic navigation item (button or link)
+ */
+export type TopBarItemProps<T extends ElementType = "button"> = {
+  as?: T
+  active?: boolean
+  disabled?: boolean
+  icon?: ReactNode
+  className?: string
+  children?: ReactNode
+} & Omit<ComponentPropsWithoutRef<T>, "children">
+
+/**
+ * TopBar.ListItem - Horizontal flex container for navigation items
+ */
+export interface TopBarItemListProps extends HTMLAttributes<HTMLDivElement> {
+  children?: ReactNode
+}
+
+/**
  * Component types for compound interface
  */
 type TopBarLeadingComponent = ForwardRefExoticComponent<TopBarLeadingProps & RefAttributes<HTMLDivElement>>
@@ -43,6 +62,8 @@ export interface TopBarComponent {
   Leading: TopBarLeadingComponent
   Centred: TopBarCentredComponent
   Trailing: TopBarTrailingComponent
+  Item: <T extends ElementType = "button">(props: TopBarItemProps<T> & RefAttributes<HTMLElement>) => JSX.Element
+  ListItem: ForwardRefExoticComponent<TopBarItemListProps & RefAttributes<HTMLDivElement>>
 }
 
 // Forward ref types for each sub-component

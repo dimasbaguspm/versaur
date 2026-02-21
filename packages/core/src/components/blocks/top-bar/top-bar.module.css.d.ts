@@ -2,7 +2,10 @@
 declare const styles: {
   readonly 'top-bar': string;
   readonly 'top-bar-centred': string;
+  readonly 'top-bar-item': string;
+  readonly 'top-bar-item-icon': string;
   readonly 'top-bar-leading': string;
+  readonly 'top-bar-list-item': string;
   readonly 'top-bar-trailing': string;
 };
 export default styles;
