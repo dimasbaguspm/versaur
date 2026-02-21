@@ -5,8 +5,6 @@ on:
     branches:
       - main
 
-concurrency: ${{ github.workflow }}-${{ github.ref }}
-
 jobs:
   release:
     name: Create Version PR or Publish
@@ -31,31 +29,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-
-      - name: Debug npm authentication
-        run: |
-          echo "=== npm version ==="
-          npm --version
-          echo ""
-          echo "=== npm registry ==="
-          npm config get registry
-          echo ""
-          echo "=== npm auth token check ==="
-          if [ -z "$NPM_TOKEN" ]; then
-            echo "❌ NPM_TOKEN not set"
-          else
-            echo "✓ NPM_TOKEN is set"
-          fi
-          echo ""
-          echo "=== npm whoami ==="
-          npm whoami || echo "npm whoami failed"
-          echo ""
-          echo "=== .npmrc content (masked) ==="
-          if [ -f ~/.npmrc ]; then
-            cat ~/.npmrc | sed 's/_authToken=.*/[MASKED]/g'
-          else
-            echo "No .npmrc found"
-          fi
 
       - name: Create Version PR or Publish
         uses: changesets/action@v1
