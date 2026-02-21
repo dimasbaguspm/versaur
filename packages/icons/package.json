@@ -2,6 +2,10 @@
   "name": "@versaur/icons",
   "version": "1.0.0",
   "description": "SVG icon library for Versaur Design System",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dimasbaguspm/versaur.git"
+  },
   "files": [
     "dist",
     "assets"
@@ -15,6 +19,10 @@
       "source": "./src/index.ts",
       "import": "./dist/index.js"
     }
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   },
   "scripts": {
     "build": "vite build",

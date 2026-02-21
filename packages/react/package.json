@@ -2,6 +2,10 @@
   "name": "@versaur/react",
   "version": "1.0.0",
   "description": "React components for Versaur Design System",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dimasbaguspm/versaur.git"
+  },
   "files": [
     "dist"
   ],
@@ -29,7 +33,8 @@
     }
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "scripts": {
     "build": "vite build",
