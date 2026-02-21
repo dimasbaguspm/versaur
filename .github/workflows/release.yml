@@ -34,9 +34,8 @@ jobs:
         uses: changesets/action@v1
         with:
           version: pnpm run version
-          publish: pnpm build:packages && pnpm publish -r --no-git-checks
+          publish: pnpm publish-packages
           commit: "chore(release): version packages"
           title: "chore(release): version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_CONFIG_PROVENANCE: true
