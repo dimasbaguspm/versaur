@@ -43,7 +43,12 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@versaur/core/": resolve(__dirname, "../../packages/core/src/components/"),
+      "@versaur/core/primitive": resolve(__dirname, "../../packages/core/src/components/primitive/index.ts"),
+      "@versaur/core/forms": resolve(__dirname, "../../packages/core/src/components/forms/index.ts"),
+      "@versaur/core/blocks": resolve(__dirname, "../../packages/core/src/components/blocks/index.ts"),
+      "@versaur/core/utils": resolve(__dirname, "../../packages/core/src/components/utils/index.ts"),
+      "@versaur/core/tokens": resolve(__dirname, "../../packages/core/src/tokens/index.css"),
+      "@versaur/icons": resolve(__dirname, "../../packages/icons/src"),
     },
     conditions: ["source"],
   },
