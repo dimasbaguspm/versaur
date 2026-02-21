@@ -1,5 +1,11 @@
 # @versaur/react
 
+## 1.0.1
+
+### Patch Changes
+
+- 439549f: bundle token @versaur/core into @versaur/react
+
 ## 1.0.0
 
 ### Major Changes
