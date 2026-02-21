@@ -5,7 +5,7 @@
 
 .label {
   /* Typography */
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-sm);
   font-weight: 500;
   line-height: 1.5;
   color: var(--color-text);

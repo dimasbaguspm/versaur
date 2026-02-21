@@ -56,7 +56,7 @@
 
 /* Focus state */
 .wrapper:has(.input:focus) {
-  border-color: var(--vers-comp-input-focus-ring-color, var(--color-primary));
+  border-color: var(--vers-comp-input-focus-ring-color, var(--color-primary-light));
 }
 
 /* Invalid state (error) */

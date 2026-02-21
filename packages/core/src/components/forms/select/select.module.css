@@ -30,7 +30,7 @@
   --_arrow-color: var(--vers-comp-select-arrow-color, var(--color-text-muted));
 
   /* Focus ring */
-  --_focus-ring-color: var(--vers-comp-select-focus-ring-color, var(--color-primary));
+  --_focus-ring-color: var(--vers-comp-select-focus-ring-color, var(--color-primary-light));
 
   /* Layout */
   width: 100%;
@@ -65,7 +65,7 @@
 }
 
 /* Focus visible state */
-.select:focus-visible {
+.select:focus {
   border-color: var(--_focus-ring-color);
 }
 

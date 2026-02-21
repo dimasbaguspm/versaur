@@ -52,7 +52,7 @@
 
   /* Focus ring */
   --_focus-ring-width: var(--focus-ring-width);
-  --_focus-ring-color: var(--color-border-focus);
+  --_focus-ring-color: var(--color-primary-light);
 
   /* Layout */
   display: inline-flex;

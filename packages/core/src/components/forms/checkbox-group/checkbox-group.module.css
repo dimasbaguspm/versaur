@@ -40,7 +40,7 @@
 
   /* Focus ring */
   --_focus-ring-width: var(--vers-comp-checkbox-focus-ring-width, var(--focus-ring-width));
-  --_focus-ring-color: var(--vers-comp-checkbox-focus-ring-color, var(--color-primary));
+  --_focus-ring-color: var(--vers-comp-checkbox-focus-ring-color, var(--color-primary-light));
 
   /* Layout */
   display: inline-flex;

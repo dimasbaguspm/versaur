@@ -29,7 +29,7 @@
   /* Focus ring */
   --_focus-ring-width: var(--vers-comp-textarea-focus-ring-width, 1px);
   --_focus-ring-offset: var(--vers-comp-textarea-focus-ring-offset, 0);
-  --_focus-ring-color: var(--vers-comp-textarea-focus-ring-color, var(--color-primary));
+  --_focus-ring-color: var(--vers-comp-textarea-focus-ring-color, var(--color-primary-light));
 
   /* Layout */
   width: 100%;
