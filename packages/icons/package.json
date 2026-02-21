@@ -1,6 +1,6 @@
 {
   "name": "@versaur/icons",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "SVG icon library for Versaur Design System",
   "files": [
     "dist",
