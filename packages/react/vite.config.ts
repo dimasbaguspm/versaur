@@ -6,8 +6,6 @@ import dts from "vite-plugin-dts"
 
 import pkg from "./package.json"
 
-const external = [...Object.keys(pkg.peerDependencies || {}), "react/jsx-runtime"]
-
 export default defineConfig({
   plugins: [
     react(),
@@ -30,7 +28,16 @@ export default defineConfig({
       formats: ["es"],
     },
     rollupOptions: {
-      external,
+      external: (id: string) => {
+        const deps = Object.keys(pkg.peerDependencies || {})
+
+        if (deps.includes(id)) return true
+        for (const dep of deps) {
+          if (id.startsWith(`${dep}/`)) return true
+        }
+
+        return false
+      },
       output: {
         assetFileNames: (assetInfo) => {
           if (assetInfo.names?.some((name) => name.endsWith(".css"))) {
