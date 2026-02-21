@@ -1,7 +1,12 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@3.1.2/schema.json",
-  "changelog": "@changesets/cli/changelog",
-  "commit": false,
+  "changelog": [
+    "@changesets/changelog-git",
+    {
+      "repo": "dimasbaguspm/versaur"
+    }
+  ],
+  "commit": true,
   "fixed": [],
   "linked": [],
   "access": "public",
