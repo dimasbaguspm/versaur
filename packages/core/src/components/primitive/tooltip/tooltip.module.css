@@ -11,6 +11,42 @@
   pointer-events: auto;
   max-width: 95vw;
   min-width: max-content;
+  --_gap: var(--vers-comp-tooltip-gap, 8px);
+}
+
+/* CSS Anchor Positioning — progressive enhancement (Chrome 125+, Edge 125+) */
+@supports (anchor-name: --test) {
+  .tooltip[data-placement="top"] {
+    top: auto;
+    bottom: anchor(top);
+    left: anchor(center);
+    translate: -50% 0;
+    margin-bottom: var(--_gap);
+  }
+
+  .tooltip[data-placement="bottom"] {
+    top: anchor(bottom);
+    bottom: auto;
+    left: anchor(center);
+    translate: -50% 0;
+    margin-top: var(--_gap);
+  }
+
+  .tooltip[data-placement="left"] {
+    top: anchor(center);
+    right: anchor(left);
+    left: auto;
+    translate: 0 -50%;
+    margin-right: var(--_gap);
+  }
+
+  .tooltip[data-placement="right"] {
+    top: anchor(center);
+    left: anchor(right);
+    right: auto;
+    translate: 0 -50%;
+    margin-left: var(--_gap);
+  }
 }
 
 /* Popover open state - position is set via inline styles by JavaScript */

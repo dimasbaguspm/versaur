@@ -134,5 +134,5 @@ export interface MenuStatic {
   /**
    * Get the required attributes for a trigger element
    */
-  getTriggerProps(options: MenuGetTriggerPropsOptions): Record<string, string>
+  getTriggerProps(options: MenuGetTriggerPropsOptions): Record<string, unknown>
 }

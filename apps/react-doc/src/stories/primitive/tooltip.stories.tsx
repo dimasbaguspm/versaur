@@ -33,10 +33,10 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: (args) => (
     <div style={{ padding: "2rem" }}>
-      <Tooltip {...args} id="default-tooltip" placement="bottom">
+      <Tooltip {...args} id="story-default-tooltip" placement="bottom">
         <Tooltip.Text>This is a helpful tooltip message</Tooltip.Text>
       </Tooltip>
-      <button {...Tooltip.getTooltipTriggerProps({ id: "default-tooltip" })}>Hover me</button>
+      <button {...Tooltip.getTooltipTriggerProps({ id: "story-default-tooltip" })}>Hover me</button>
     </div>
   ),
   args: {
@@ -74,10 +74,10 @@ export const Placements: Story = {
               key={placement}
               style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}
             >
-              <Tooltip {...args} id={`placement-${placement}`} placement={placement} gap={16}>
+              <Tooltip {...args} id={`story-placement-${placement}`} placement={placement} gap={16}>
                 <Tooltip.Text>{label}</Tooltip.Text>
               </Tooltip>
-              <button {...Tooltip.getTooltipTriggerProps({ id: `placement-${placement}` })}>{label}</button>
+              <button {...Tooltip.getTooltipTriggerProps({ id: `story-placement-${placement}` })}>{label}</button>
             </div>
           ))}
         </div>
@@ -98,26 +98,26 @@ export const TriggerTypes: Story = {
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem", padding: "2rem" }}>
       <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
         <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Hover Trigger</div>
-        <Tooltip {...args} id="hover-tooltip" placement="bottom" triggerType="hover">
+        <Tooltip {...args} id="story-hover-tooltip" placement="bottom" triggerType="hover">
           <Tooltip.Text>Shows on hover</Tooltip.Text>
         </Tooltip>
-        <button {...Tooltip.getTooltipTriggerProps({ id: "hover-tooltip" })}>Hover me</button>
+        <button {...Tooltip.getTooltipTriggerProps({ id: "story-hover-tooltip" })}>Hover me</button>
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
         <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Focus Trigger</div>
-        <Tooltip {...args} id="focus-tooltip" placement="bottom" triggerType="focus">
+        <Tooltip {...args} id="story-focus-tooltip" placement="bottom" triggerType="focus">
           <Tooltip.Text>Shows on focus</Tooltip.Text>
         </Tooltip>
-        <button {...Tooltip.getTooltipTriggerProps({ id: "focus-tooltip", triggerType: "focus" })}>Focus me</button>
+        <button {...Tooltip.getTooltipTriggerProps({ id: "story-focus-tooltip", triggerType: "focus" })}>Focus me</button>
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
         <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>All Trigger</div>
-        <Tooltip {...args} id="all-tooltip" placement="bottom" triggerType="all">
+        <Tooltip {...args} id="story-all-tooltip" placement="bottom" triggerType="all">
           <Tooltip.Text>Shows on hover or focus</Tooltip.Text>
         </Tooltip>
-        <button {...Tooltip.getTooltipTriggerProps({ id: "all-tooltip", triggerType: "all" })}>Hover or focus</button>
+        <button {...Tooltip.getTooltipTriggerProps({ id: "story-all-tooltip", triggerType: "all" })}>Hover or focus</button>
       </div>
     </div>
   ),
@@ -132,13 +132,13 @@ export const TriggerTypes: Story = {
 export const LongContent: Story = {
   render: (args) => (
     <div style={{ padding: "2rem" }}>
-      <Tooltip {...args} id="long-tooltip" placement="bottom">
+      <Tooltip {...args} id="story-long-tooltip" placement="bottom">
         <Tooltip.Text maxWidth="250px">
           This is a longer tooltip message that spans multiple lines. It provides additional context and detailed
           information about the element or action.
         </Tooltip.Text>
       </Tooltip>
-      <button {...Tooltip.getTooltipTriggerProps({ id: "long-tooltip" })}>Hover for details</button>
+      <button {...Tooltip.getTooltipTriggerProps({ id: "story-long-tooltip" })}>Hover for details</button>
     </div>
   ),
   args: {

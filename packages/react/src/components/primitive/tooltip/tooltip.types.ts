@@ -68,5 +68,5 @@ export interface TooltipStatic {
   /**
    * Get the required attributes for the trigger element
    */
-  getTooltipTriggerProps(options: TooltipGetTriggerPropsOptions): Record<string, string>
+  getTooltipTriggerProps(options: TooltipGetTriggerPropsOptions): Record<string, unknown>
 }

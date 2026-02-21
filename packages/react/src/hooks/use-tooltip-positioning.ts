@@ -10,12 +10,6 @@ interface UseTooltipPositioningOptions {
   placement: Placement
   gap: number
   triggerType: TriggerType
-  calculatePosition: (
-    trigger: HTMLElement | null,
-    tooltip: HTMLElement | null,
-    placement: Placement,
-    gap: number,
-  ) => void
 }
 
 /**
@@ -27,7 +21,6 @@ export function useTooltipPositioning({
   placement,
   gap,
   triggerType,
-  calculatePosition,
 }: UseTooltipPositioningOptions) {
   useEffect(() => {
     const tooltipEl = tooltipRef.current
@@ -70,7 +63,7 @@ export function useTooltipPositioning({
     let hideTimeoutId: ReturnType<typeof setTimeout> | null = null
 
     /**
-     * Show tooltip with proper positioning
+     * Show tooltip with proper positioning via CSS Anchor Positioning
      */
     const showTooltip = () => {
       // Cancel any pending hide
@@ -80,8 +73,6 @@ export function useTooltipPositioning({
       }
 
       if (!tooltipEl.matches(":popover-open")) {
-        // Calculate position synchronously before showing to prevent flicker
-        calculatePosition(triggerEl, tooltipEl, placement, gap)
         tooltipEl.showPopover()
       }
     }
@@ -157,42 +148,6 @@ export function useTooltipPositioning({
       }
     }
 
-    // Debounced scroll/resize handler with reduced delay for better responsiveness
-    let resizeTimeoutId: ReturnType<typeof setTimeout> | null = null
-    let lastTriggerRect: DOMRect | null = null
-
-    const handleResize = () => {
-      // Quick bail if tooltip is closed
-      if (!tooltipEl.matches(":popover-open")) {
-        return
-      }
-
-      // Clear existing timeout
-      if (resizeTimeoutId) {
-        clearTimeout(resizeTimeoutId)
-      }
-
-      // Use shorter debounce (50ms) for better responsiveness in docs view
-      resizeTimeoutId = setTimeout(() => {
-        if (tooltipEl.matches(":popover-open")) {
-          const triggerRect = triggerEl.getBoundingClientRect()
-
-          // Only recalculate if trigger position or size actually changed
-          if (
-            !lastTriggerRect ||
-            lastTriggerRect.top !== triggerRect.top ||
-            lastTriggerRect.left !== triggerRect.left ||
-            lastTriggerRect.width !== triggerRect.width ||
-            lastTriggerRect.height !== triggerRect.height
-          ) {
-            lastTriggerRect = triggerRect
-            calculatePosition(triggerEl, tooltipEl, placement, gap)
-          }
-        }
-        resizeTimeoutId = null
-      }, 50)
-    }
-
     // Attach event listeners to trigger
     triggerEl.addEventListener("mouseenter", handleMouseEnter)
     triggerEl.addEventListener("mouseleave", handleMouseLeave)
@@ -204,17 +159,10 @@ export function useTooltipPositioning({
     tooltipEl.addEventListener("mouseenter", handleTooltipMouseEnter)
     tooltipEl.addEventListener("mouseleave", handleTooltipMouseLeave)
 
-    // Attach window listeners for resize/scroll with debouncing
-    window.addEventListener("resize", handleResize)
-    window.addEventListener("scroll", handleResize, true)
-
     return () => {
       // Clear any pending timeouts
       if (hideTimeoutId) {
         clearTimeout(hideTimeoutId)
-      }
-      if (resizeTimeoutId) {
-        clearTimeout(resizeTimeoutId)
       }
 
       // Remove event listeners from trigger
@@ -227,10 +175,6 @@ export function useTooltipPositioning({
       // Remove event listeners from tooltip
       tooltipEl.removeEventListener("mouseenter", handleTooltipMouseEnter)
       tooltipEl.removeEventListener("mouseleave", handleTooltipMouseLeave)
-
-      // Remove window listeners
-      window.removeEventListener("resize", handleResize)
-      window.removeEventListener("scroll", handleResize, true)
     }
-  }, [id, placement, gap, triggerType, calculatePosition])
+  }, [id, placement, gap, triggerType])
 }

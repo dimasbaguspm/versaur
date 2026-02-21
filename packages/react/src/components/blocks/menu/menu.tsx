@@ -95,7 +95,7 @@ MenuRoot.displayName = "Menu"
 /**
  * Get required attributes for a trigger element
  */
-function getTriggerProps(options: MenuGetTriggerPropsOptions): Record<string, string> {
+function getTriggerProps(options: MenuGetTriggerPropsOptions): Record<string, unknown> {
   return Tooltip.getTooltipTriggerProps({
     id: options.id,
     triggerType: "focus",
