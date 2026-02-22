@@ -3,6 +3,7 @@
 
 export interface RadioDataAttrs {
   disabled?: boolean;
+  invalid?: boolean;
 };
 
 export namespace Radio {

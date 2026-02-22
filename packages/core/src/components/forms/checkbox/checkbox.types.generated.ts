@@ -3,6 +3,7 @@
 
 export interface CheckboxDataAttrs {
   disabled?: boolean;
+  invalid?: boolean;
   required?: boolean;
 };
 

@@ -1,0 +1,107 @@
+.item {
+  /* Private tokens - component-scoped */
+  --_border-color: var(--vers-comp-accordion-border-color, var(--color-border));
+  --_trigger-bg: var(--vers-comp-accordion-trigger-bg, var(--color-background));
+  --_content-px: var(--vers-comp-accordion-content-px, var(--spacing-3));
+  --_content-py: var(--vers-comp-accordion-content-py, var(--spacing-3));
+  --_header-px: var(--vers-comp-accordion-header-px, var(--spacing-3));
+  --_header-py: var(--vers-comp-accordion-header-py, var(--spacing-2));
+  --_transition-duration: var(--vers-comp-accordion-transition-duration, 200ms);
+
+  /* Native details element styling */
+  display: flex;
+  flex-direction: column;
+  border-radius: 0;
+}
+
+.item:not(.group > .item) {
+  border-bottom: 1px solid var(--_border-color);
+}
+
+/* Remove native summary marker */
+.trigger {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-2);
+  background-color: var(--_trigger-bg);
+  padding: var(--_header-py) var(--_header-px);
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-semibold);
+  color: var(--color-text-primary);
+}
+
+.trigger::-webkit-details-marker {
+  display: none;
+}
+
+.trigger:focus-visible {
+  outline: 1px solid var(--color-primary-focus);
+  outline-offset: -1px;
+}
+
+/* Content area */
+.content {
+  padding: var(--_content-py) var(--_content-px);
+  background-color: var(--color-background);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+}
+
+/* Summary content areas */
+.label {
+  /* Private token for line clamping */
+  --_clamp: var(--vers-comp-accordion-label-clamp, 2);
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--_clamp);
+  line-clamp: var(--_clamp);
+  overflow: hidden;
+  flex: 1;
+  text-overflow: ellipsis;
+}
+
+.right {
+  /* Right-aligned content section */
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Chevron icon */
+.chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform var(--_transition-duration) ease-out;
+}
+
+.item[data-open] .chevron {
+  transform: rotate(180deg);
+}
+
+/* Open animation */
+@keyframes accordionOpen {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.item[data-open] .content {
+  animation: accordionOpen var(--_transition-duration) ease-out;
+}

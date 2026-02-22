@@ -1,3 +1,6 @@
+export { Accordion } from "./accordion"
+export type { AccordionRootProps, AccordionSummaryProps } from "./accordion"
+
 export { AvatarGroup } from "./avatar-group"
 export type {
   AvatarGroupProps,
