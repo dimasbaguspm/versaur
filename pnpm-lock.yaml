@@ -35,6 +35,9 @@ importers:
 
   apps/react-doc:
     dependencies:
+      '@versaur/core':
+        specifier: workspace:*
+        version: link:../../packages/core
       '@versaur/icons':
         specifier: workspace:*
         version: link:../../packages/icons
@@ -130,6 +133,9 @@ importers:
 
   packages/react:
     dependencies:
+      '@versaur/core':
+        specifier: workspace:*
+        version: link:../core
       '@versaur/icons':
         specifier: workspace:*
         version: link:../icons

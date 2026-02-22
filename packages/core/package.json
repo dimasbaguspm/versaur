@@ -11,9 +11,9 @@
   ],
   "type": "module",
   "exports": {
-    "./tokens": {
+    "./tokens.css": {
       "source": "./src/tokens/index.css",
-      "default": "./dist/tokens/index.css"
+      "import": "./dist/tokens/index.css"
     },
     "./primitive": {
       "types": "./dist/primitive/index.d.ts",

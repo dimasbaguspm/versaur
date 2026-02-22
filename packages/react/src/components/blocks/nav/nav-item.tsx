@@ -1,11 +1,9 @@
-"use client"
-
 import { navStyles } from "@versaur/core/blocks"
 import type { ElementType } from "react"
 import { forwardRef, useContext } from "react"
 
-import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
+import { cx } from "../../../utils/cx"
 import { Icon } from "../../primitive/icon"
 import { NavContext } from "./nav"
 import type { NavItemProps } from "./nav.types"

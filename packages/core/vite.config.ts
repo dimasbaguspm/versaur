@@ -15,32 +15,24 @@ export default defineConfig({
       },
       formats: ["es"],
     },
-    cssCodeSplit: true,
     rollupOptions: {
-      external: ["react", "react/jsx-runtime"],
       output: {
         preserveModules: true,
         preserveModulesRoot: "src",
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.name?.endsWith(".css")) {
-            // Strip .module from CSS filenames so downstream consumers
-            // don't re-process them as CSS modules
-            return assetInfo.name.replace(".module.css", ".css")
-          }
-          return "assets/[name]-[hash][extname]"
-        },
       },
     },
+    cssCodeSplit: true,
   },
   css: {
     modules: {
-      generateScopedName: "versaur-[name]-[local]",
+      generateScopedName: "versaur-[hash]",
     },
   },
   plugins: [
     dts({
       entryRoot: "src/components",
       copyDtsFiles: true,
+      tsconfigPath: resolve(__dirname, "tsconfig.json"),
     }),
     {
       name: "copy-tokens",
@@ -51,13 +43,9 @@ export default defineConfig({
         // Create dist/tokens directory
         mkdirSync(distTokens, { recursive: true })
 
-        // Copy all CSS files from src/tokens to dist/tokens
         const files = ["index.css", "colors.css", "spacing.css", "typography.css", "effects.css"]
         files.forEach((file) => {
-          copyFileSync(
-            resolve(srcTokens, file),
-            resolve(distTokens, file)
-          )
+          copyFileSync(resolve(srcTokens, file), resolve(distTokens, file))
         })
       },
     },

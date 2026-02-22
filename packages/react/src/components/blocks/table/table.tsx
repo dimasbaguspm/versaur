@@ -1,12 +1,10 @@
-"use client"
-
-import { checkboxStyles } from "@versaur/core/forms"
 import { tableStyles } from "@versaur/core/blocks"
+import { checkboxStyles } from "@versaur/core/forms"
 import { ChevronDownIcon, ChevronUpIcon, MenuIcon } from "@versaur/icons"
 import { forwardRef } from "react"
 
-import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs.js"
+import { cx } from "../../../utils/cx"
 import { ButtonIcon } from "../../primitive/button-icon"
 import type {
   TableActionProps,
@@ -165,41 +163,43 @@ TableCheckbox.displayName = "Table.Checkbox"
 /**
  * TableDoubleLine - Built-in cell with title and subtitle
  */
-const TableDoubleLine = forwardRef<HTMLDivElement, TableDoubleLineProps>(({ title, subtitle, size = "md", className }, ref) => {
-  const fontSizeMap = {
-    title: {
-      sm: "0.875rem",
-      md: "0.9375rem",
-      lg: "1rem",
-    },
-    subtitle: {
-      sm: "0.75rem",
-      md: "0.8125rem",
-      lg: "0.875rem",
-    },
-  }
+const TableDoubleLine = forwardRef<HTMLDivElement, TableDoubleLineProps>(
+  ({ title, subtitle, size = "md", className }, ref) => {
+    const fontSizeMap = {
+      title: {
+        sm: "0.875rem",
+        md: "0.9375rem",
+        lg: "1rem",
+      },
+      subtitle: {
+        sm: "0.75rem",
+        md: "0.8125rem",
+        lg: "0.875rem",
+      },
+    }
 
-  return (
-    <div ref={ref} className={cx(tableStyles["table-cell"], className)} data-table-cell-variant="double-line">
-      <div
-        style={{
-          fontWeight: 600,
-          fontSize: fontSizeMap.title[size],
-        }}
-      >
-        {title}
+    return (
+      <div ref={ref} className={cx(tableStyles["table-cell"], className)} data-table-cell-variant="double-line">
+        <div
+          style={{
+            fontWeight: 600,
+            fontSize: fontSizeMap.title[size],
+          }}
+        >
+          {title}
+        </div>
+        <div
+          style={{
+            fontSize: fontSizeMap.subtitle[size],
+            color: "#6b7280",
+          }}
+        >
+          {subtitle}
+        </div>
       </div>
-      <div
-        style={{
-          fontSize: fontSizeMap.subtitle[size],
-          color: "#6b7280",
-        }}
-      >
-        {subtitle}
-      </div>
-    </div>
-  )
-})
+    )
+  },
+)
 
 TableDoubleLine.displayName = "Table.DoubleLine"
 
@@ -231,20 +231,22 @@ TableAction.displayName = "Table.Action"
  * Table - Compound component with CSS Grid column management
  * Replaces TableRootProps and TableWrapperProps patterns
  */
-const TableComponent = forwardRef<HTMLDivElement, TableWrapperProps>(({ columns, children, className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cx(tableStyles.table, className)}
-    style={
-      {
-        "--table-grid-columns": columns,
-      } as React.CSSProperties
-    }
-    {...props}
-  >
-    <table>{children}</table>
-  </div>
-))
+const TableComponent = forwardRef<HTMLDivElement, TableWrapperProps>(
+  ({ columns, children, className, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cx(tableStyles.table, className)}
+      style={
+        {
+          "--table-grid-columns": columns,
+        } as React.CSSProperties
+      }
+      {...props}
+    >
+      <table>{children}</table>
+    </div>
+  ),
+)
 
 TableComponent.displayName = "Table"
 

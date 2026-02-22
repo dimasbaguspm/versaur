@@ -1,5 +1,3 @@
-"use client"
-
 import { topBarStyles } from "@versaur/core/blocks"
 import { forwardRef, type ElementType } from "react"
 
@@ -118,4 +116,4 @@ const TopBarCompound = Object.assign(TopBar, {
   Trailing: TopBarTrailing,
 }) as React.ForwardRefExoticComponent<TopBarProps & React.RefAttributes<HTMLElement>> & TopBarComponent
 
-export { TopBarCompound as TopBar, TopBarLeading, TopBarCentred, TopBarTrailing, TopBarItem, TopBarListItem }
+export { TopBarCompound as TopBar, TopBarCentred, TopBarItem, TopBarLeading, TopBarListItem, TopBarTrailing }

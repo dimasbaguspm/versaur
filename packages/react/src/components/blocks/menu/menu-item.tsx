@@ -1,5 +1,3 @@
-"use client"
-
 import { menuStyles } from "@versaur/core/blocks"
 import { forwardRef, useContext } from "react"
 

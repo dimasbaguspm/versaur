@@ -1,5 +1,3 @@
-"use client"
-
 import { tooltipStyles } from "@versaur/core/primitive"
 import type { CSSProperties } from "react"
 import { forwardRef, useRef } from "react"

@@ -1,5 +1,5 @@
 import type { Preview } from "@storybook/react";
-import "@versaur/react/style";
+import "@versaur/core/tokens.css";
 
 const preview: Preview = {
   parameters: {

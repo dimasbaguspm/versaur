@@ -11,7 +11,6 @@
   ],
   "type": "module",
   "exports": {
-    "./style": "./dist/versaur-react.css",
     "./primitive": {
       "types": "./dist/primitive/index.d.ts",
       "source": "./src/components/primitive/index.ts",
@@ -58,6 +57,7 @@
     "vite-plugin-dts": "^4.5.4"
   },
   "peerDependencies": {
+    "@versaur/core": "workspace:*",
     "@versaur/icons": "workspace:*",
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0"

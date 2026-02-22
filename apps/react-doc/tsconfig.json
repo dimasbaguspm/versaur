@@ -4,10 +4,7 @@
     "outDir": "./dist",
     "jsx": "react-jsx",
     "baseUrl": ".",
-    "customConditions": ["source"],
-    "paths": {
-      "@versaur/core/*": ["../../packages/core/src/components/*"]
-    }
+    "customConditions": ["source"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

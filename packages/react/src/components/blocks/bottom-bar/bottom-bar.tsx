@@ -1,11 +1,9 @@
-"use client"
-
 import { bottomBarStyles } from "@versaur/core/blocks"
 import type { ReactNode } from "react"
 import { forwardRef } from "react"
 
-import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
+import { cx } from "../../../utils/cx"
 import { isComponentType } from "../../../utils/polymorphic"
 
 /**
@@ -41,7 +39,10 @@ BottomBarRoot.displayName = "BottomBar"
  * BottomBar.Item - Polymorphic navigation item (button or link)
  */
 const BottomBarItem = forwardRef<HTMLElement, BottomBarItemProps>(
-  ({ as: Component = "button", href, active = false, disabled = false, icon, children, onClick, className, ...props }, ref) => {
+  (
+    { as: Component = "button", href, active = false, disabled = false, icon, children, onClick, className, ...props },
+    ref,
+  ) => {
     const isLink = isComponentType(Component, "a")
 
     const dataAttrs = useDataAttrs({
@@ -97,4 +98,4 @@ const BottomBar = Object.assign(BottomBarRoot, {
   Item: BottomBarItem,
 }) as BottomBarComponent
 
-export { BottomBar, BottomBarRoot, BottomBarItem }
+export { BottomBar, BottomBarItem, BottomBarRoot }

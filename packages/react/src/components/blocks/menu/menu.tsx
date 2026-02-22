@@ -1,8 +1,6 @@
-"use client"
-
 import { menuStyles } from "@versaur/core/blocks"
-import { createContext, forwardRef } from "react"
 import type { CSSProperties } from "react"
+import { createContext, forwardRef } from "react"
 
 import { Tooltip } from "../../primitive/tooltip"
 import type { MenuContextValue, MenuGetTriggerPropsOptions, MenuProps, MenuStatic } from "./menu.types"

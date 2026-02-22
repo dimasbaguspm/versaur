@@ -1,8 +1,6 @@
-"use client"
-
-import { ChevronDownIcon } from "@versaur/icons"
 import { sidebarStyles } from "@versaur/core/blocks"
-import { forwardRef, type ElementType, useState } from "react"
+import { ChevronDownIcon } from "@versaur/icons"
+import { forwardRef, useState, type ElementType } from "react"
 
 import { cx } from "../../../utils/cx"
 import { Hr } from "../../primitive/hr"
@@ -66,15 +64,7 @@ SidebarFooter.displayName = "Sidebar.Footer"
  */
 const SidebarGroup = forwardRef<HTMLDivElement, SidebarGroupProps>(
   (
-    {
-      label,
-      icon,
-      defaultExpanded = true,
-      isExpanded: controlledExpanded,
-      onExpandedChange,
-      children,
-      className,
-    },
+    { label, icon, defaultExpanded = true, isExpanded: controlledExpanded, onExpandedChange, children, className },
     ref,
   ) => {
     const [internal, setInternal] = useState(defaultExpanded)
@@ -92,18 +82,10 @@ const SidebarGroup = forwardRef<HTMLDivElement, SidebarGroupProps>(
         className={cx(sidebarStyles["sidebar-group"], className)}
         data-expanded={expanded ? "" : undefined}
       >
-        <button
-          className={sidebarStyles["sidebar-group-header"]}
-          onClick={toggle}
-          aria-expanded={expanded}
-        >
+        <button className={sidebarStyles["sidebar-group-header"]} onClick={toggle} aria-expanded={expanded}>
           {icon && <span>{icon}</span>}
           <span className={sidebarStyles["sidebar-group-label"]}>{label}</span>
-          <Icon
-            as={ChevronDownIcon}
-            className={sidebarStyles["sidebar-group-chevron"]}
-            size="sm"
-          />
+          <Icon as={ChevronDownIcon} className={sidebarStyles["sidebar-group-chevron"]} size="sm" />
         </button>
         <div className={sidebarStyles["sidebar-group-content"]}>
           <div>{children}</div>
@@ -173,4 +155,14 @@ const Sidebar = Object.assign(SidebarRoot, {
   ItemList: SidebarItemList,
 }) as SidebarType
 
-export { Sidebar, SidebarBody, SidebarDivider, SidebarFooter, SidebarGroup, SidebarHeader, SidebarItem, SidebarItemList, SidebarRoot }
+export {
+  Sidebar,
+  SidebarBody,
+  SidebarDivider,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarHeader,
+  SidebarItem,
+  SidebarItemList,
+  SidebarRoot,
+}

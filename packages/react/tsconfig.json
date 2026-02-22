@@ -3,10 +3,8 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "outDir": "./dist",
-    "baseUrl": ".",
-    "paths": {
-      "@versaur/core/*": ["../core/src/components/*"]
-    }
+    "rootDir": "./src",
+    "baseUrl": "."
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]

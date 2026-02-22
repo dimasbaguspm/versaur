@@ -19,7 +19,6 @@ export default defineConfig({
     sourcemap: false,
     lib: {
       entry: {
-        tokens: resolve(__dirname, "src/tokens/index.ts"),
         primitive: resolve(__dirname, "src/components/primitive/index.ts"),
         forms: resolve(__dirname, "src/components/forms/index.ts"),
         blocks: resolve(__dirname, "src/components/blocks/index.ts"),
@@ -49,9 +48,6 @@ export default defineConfig({
     },
   },
   resolve: {
-    alias: {
-      "@versaur/core": resolve(__dirname, "../core/src/components"),
-    },
     conditions: ["source"],
   },
 })
