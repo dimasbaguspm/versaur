@@ -1,5 +1,12 @@
 # @versaur/react
 
+## 1.0.5
+
+### Patch Changes
+
+- dca21f2: another trigger test
+- 87b9f93: trigger test
+
 ## 1.0.4
 
 ### Patch Changes
