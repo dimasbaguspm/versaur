@@ -2,20 +2,12 @@
 // Source: radio-group.module.css
 
 export type RadioGroupDirection = 'row';
-export type RadioGroupSize = 'large' | 'small';
-export type RadioGroupVariant = 'filled' | 'outline';
 
 export interface RadioGroupDataAttrs {
   direction?: RadioGroupDirection;
-  size?: RadioGroupSize;
-  variant?: RadioGroupVariant;
-  disabled?: boolean;
-  invalid?: boolean;
 };
 
 export namespace RadioGroup {
   export type Direction = RadioGroupDirection;
-  export type Size = RadioGroupSize;
-  export type Variant = RadioGroupVariant;
   export type DataAttrs = RadioGroupDataAttrs;
 }

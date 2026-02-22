@@ -1,4 +1,3 @@
-import type { RadioGroup as RadioGroupCore } from "@versaur/core/forms"
 import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from "react"
 
 export interface RadioGroupRootProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
@@ -16,18 +15,6 @@ export interface RadioGroupRootProps extends Omit<HTMLAttributes<HTMLDivElement>
    * Name attribute for all radio inputs
    */
   name?: string
-
-  /**
-   * Visual variant
-   * @default "outline"
-   */
-  variant?: RadioGroupCore.Variant
-
-  /**
-   * Size variant
-   * @default "medium"
-   */
-  size?: RadioGroupCore.Size
 
   /**
    * Label for the radio group

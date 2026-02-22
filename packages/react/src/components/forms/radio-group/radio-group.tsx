@@ -1,6 +1,7 @@
 import { radioGroupStyles } from "@versaur/core/forms"
 import { createContext, forwardRef, useContext, useId } from "react"
 
+import { Radio } from "../radio"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { cx } from "../../../utils/cx"
 import { ErrorText } from "../error-text"
@@ -55,8 +56,6 @@ const RadioGroupRoot = forwardRef<HTMLDivElement, RadioGroupRootProps>(
       value,
       onChange,
       name,
-      variant = "outline",
-      size = "medium",
       label,
       helper,
       error,
@@ -83,9 +82,6 @@ const RadioGroupRoot = forwardRef<HTMLDivElement, RadioGroupRootProps>(
 
     const dataAttrs = useDataAttrs({
       disabled,
-      invalid: Boolean(error),
-      size: size === "medium" ? undefined : size,
-      variant: size === "medium" ? variant : undefined,
     })
 
     return (
@@ -120,7 +116,7 @@ RadioGroupRoot.displayName = "RadioGroup"
 /**
  * RadioGroup.Option Component
  *
- * Individual radio option within a RadioGroup
+ * Individual radio option within a RadioGroup using the Radio component
  *
  * @example
  * ```tsx
@@ -128,7 +124,7 @@ RadioGroupRoot.displayName = "RadioGroup"
  * ```
  */
 const RadioGroupOption = forwardRef<HTMLInputElement, RadioGroupOptionProps>(
-  ({ value, children, disabled: optionDisabled, className, ...rest }, ref) => {
+  ({ value, children, disabled: optionDisabled, ...rest }, ref) => {
     const context = useRadioGroupContext()
     const isChecked = context.value === value
     const isDisabled = context.disabled || optionDisabled
@@ -140,21 +136,17 @@ const RadioGroupOption = forwardRef<HTMLInputElement, RadioGroupOptionProps>(
     }
 
     return (
-      <label className={cx(radioGroupStyles.option, className)}>
-        <input
-          ref={ref}
-          type="radio"
-          name={context.name}
-          value={value}
-          checked={isChecked}
-          disabled={isDisabled}
-          onChange={handleChange}
-          className={radioGroupStyles.input}
-          {...rest}
-        />
-        <span className={radioGroupStyles.indicator} />
-        {children && <span className={radioGroupStyles.optionLabel}>{children}</span>}
-      </label>
+      <Radio
+        ref={ref}
+        name={context.name}
+        value={value}
+        checked={isChecked}
+        disabled={isDisabled}
+        onChange={handleChange}
+        {...rest}
+      >
+        {children}
+      </Radio>
     )
   },
 )
