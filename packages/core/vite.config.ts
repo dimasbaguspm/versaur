@@ -15,13 +15,7 @@ export default defineConfig({
       },
       formats: ["es"],
     },
-    rollupOptions: {
-      output: {
-        preserveModules: true,
-        preserveModulesRoot: "src",
-      },
-    },
-    cssCodeSplit: true,
+    cssCodeSplit: false,
   },
   css: {
     modules: {
@@ -29,6 +23,15 @@ export default defineConfig({
     },
   },
   plugins: [
+    {
+      name: "inject-tokens",
+      transform(code, id) {
+        // Inject tokens import at the top of every component CSS module
+        if (id.includes("components/") && id.endsWith(".module.css")) {
+          return `@import "./tokens/index.css";\n${code}`
+        }
+      },
+    },
     dts({
       entryRoot: "src/components",
       copyDtsFiles: true,

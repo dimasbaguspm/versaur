@@ -13,7 +13,7 @@
   "exports": {
     "./tokens.css": {
       "source": "./src/tokens/index.css",
-      "import": "./dist/tokens/index.css"
+      "import": "./dist/core.css"
     },
     "./primitive": {
       "types": "./dist/primitive/index.d.ts",
