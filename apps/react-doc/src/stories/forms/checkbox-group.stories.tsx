@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { CheckboxGroup } from "@versaur/react/forms"
+import { Text } from "@versaur/react/primitive"
 import { useState } from "react"
 
 const meta = {
@@ -7,12 +8,6 @@ const meta = {
     direction: {
       control: "select",
       options: ["row", "column"],
-    },
-    disabled: {
-      control: "boolean",
-    },
-    required: {
-      control: "boolean",
     },
   },
   args: {
@@ -31,76 +26,16 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 /**
- * Default checkbox group with basic vertical layout.
+ * Default checkbox group with label and helper text.
  */
 export const Default: Story = {
   render: (args) => {
     const [value, setValue] = useState<string[]>([])
     return (
-      <CheckboxGroup {...args} value={value} onChange={setValue}>
-        <CheckboxGroup.Option value="option1">Option 1</CheckboxGroup.Option>
-        <CheckboxGroup.Option value="option2">Option 2</CheckboxGroup.Option>
-        <CheckboxGroup.Option value="option3">Option 3</CheckboxGroup.Option>
-      </CheckboxGroup>
-    )
-  },
-}
-
-/**
- * Checkbox group with a label.
- */
-export const WithLabel: Story = {
-  render: (args) => {
-    const [value, setValue] = useState<string[]>([])
-    return (
-      <CheckboxGroup {...args} value={value} onChange={setValue} label="Features">
+      <CheckboxGroup {...args} value={value} onChange={setValue} label="Features" helper="Select all that apply">
         <CheckboxGroup.Option value="analytics">Analytics</CheckboxGroup.Option>
         <CheckboxGroup.Option value="reporting">Reporting</CheckboxGroup.Option>
         <CheckboxGroup.Option value="export">Export</CheckboxGroup.Option>
-      </CheckboxGroup>
-    )
-  },
-}
-
-/**
- * Checkbox group with helper text for additional guidance.
- */
-export const WithHelper: Story = {
-  render: (args) => {
-    const [value, setValue] = useState<string[]>([])
-    return (
-      <CheckboxGroup
-        {...args}
-        value={value}
-        onChange={setValue}
-        label="Permissions"
-        helper="Select all permissions that apply"
-      >
-        <CheckboxGroup.Option value="read">Read</CheckboxGroup.Option>
-        <CheckboxGroup.Option value="write">Write</CheckboxGroup.Option>
-        <CheckboxGroup.Option value="delete">Delete</CheckboxGroup.Option>
-        <CheckboxGroup.Option value="admin">Admin</CheckboxGroup.Option>
-      </CheckboxGroup>
-    )
-  },
-}
-
-/**
- * Checkbox group with error state and validation message.
- */
-export const WithError: Story = {
-  render: (args) => {
-    const [value, setValue] = useState<string[]>([])
-    return (
-      <CheckboxGroup
-        {...args}
-        value={value}
-        onChange={setValue}
-        label="Required fields"
-        error="At least one option must be selected"
-      >
-        <CheckboxGroup.Option value="agree">I agree to terms</CheckboxGroup.Option>
-        <CheckboxGroup.Option value="privacy">I agree to privacy policy</CheckboxGroup.Option>
       </CheckboxGroup>
     )
   },
@@ -113,7 +48,9 @@ export const Direction: Story = {
   render: (args) => (
     <div style={{ display: "flex", gap: "3rem", alignItems: "flex-start", flexWrap: "wrap" }}>
       <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Row</div>
+        <Text size="sm" weight="medium">
+          Row
+        </Text>
         {(() => {
           const [value, setValue] = useState<string[]>([])
           return (
@@ -126,7 +63,9 @@ export const Direction: Story = {
         })()}
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Column</div>
+        <Text size="sm" weight="medium">
+          Column
+        </Text>
         {(() => {
           const [value, setValue] = useState<string[]>([])
           return (
@@ -149,7 +88,6 @@ export const States: Story = {
   render: (args) => (
     <div style={{ display: "flex", gap: "3rem", alignItems: "flex-start", flexWrap: "wrap" }}>
       <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Disabled</div>
         {(() => {
           const [value] = useState<string[]>(["option1"])
           return (
@@ -161,7 +99,6 @@ export const States: Story = {
         })()}
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Required</div>
         {(() => {
           const [value, setValue] = useState<string[]>([])
           return (
@@ -177,17 +114,25 @@ export const States: Story = {
 }
 
 /**
- * Checkbox group with pre-selected options.
+ * Practical example with error validation message.
  */
-export const PreSelected: Story = {
+export const WithError: Story = {
   render: (args) => {
-    const [value, setValue] = useState<string[]>(["nodejs", "python"])
+    const [value, setValue] = useState<string[]>([])
+    const hasError = value.length === 0
     return (
-      <CheckboxGroup {...args} value={value} onChange={setValue} label="Languages">
-        <CheckboxGroup.Option value="javascript">JavaScript</CheckboxGroup.Option>
-        <CheckboxGroup.Option value="typescript">TypeScript</CheckboxGroup.Option>
-        <CheckboxGroup.Option value="python">Python</CheckboxGroup.Option>
-        <CheckboxGroup.Option value="nodejs">Node.js</CheckboxGroup.Option>
+      <CheckboxGroup
+        {...args}
+        value={value}
+        onChange={setValue}
+        label="Permissions"
+        helper="Select permissions that apply to this role"
+        error={hasError ? "At least one permission must be selected" : undefined}
+      >
+        <CheckboxGroup.Option value="read">Read</CheckboxGroup.Option>
+        <CheckboxGroup.Option value="write">Write</CheckboxGroup.Option>
+        <CheckboxGroup.Option value="delete">Delete</CheckboxGroup.Option>
+        <CheckboxGroup.Option value="admin">Admin</CheckboxGroup.Option>
       </CheckboxGroup>
     )
   },

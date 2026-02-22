@@ -60,11 +60,6 @@ export interface CheckboxGroupOptionProps extends Omit<InputHTMLAttributes<HTMLI
   children?: ReactNode
 
   /**
-   * Required indicator for this specific option
-   */
-  required?: boolean
-
-  /**
    * Disabled state for this specific option
    */
   disabled?: boolean

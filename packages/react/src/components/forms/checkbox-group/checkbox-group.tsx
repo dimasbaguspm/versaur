@@ -1,6 +1,7 @@
 import { checkboxGroupStyles } from "@versaur/core/forms"
 import { createContext, forwardRef, useContext, useId } from "react"
 
+import { Checkbox } from "../checkbox"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { cx } from "../../../utils/cx"
 import { ErrorText } from "../error-text"
@@ -80,7 +81,6 @@ const CheckboxGroupRoot = forwardRef<HTMLDivElement, CheckboxGroupRootProps>(
 
     const dataAttrs = useDataAttrs({
       disabled,
-      invalid: Boolean(error),
     })
 
     return (
@@ -115,17 +115,15 @@ CheckboxGroupRoot.displayName = "CheckboxGroup"
 /**
  * CheckboxGroup.Option Component
  *
- * Individual checkbox option within a CheckboxGroup
- * Each option can have its own required indicator
+ * Individual checkbox option within a CheckboxGroup using the Checkbox component
  *
  * @example
  * ```tsx
- * <CheckboxGroup.Option value="analytics" required>Advanced Analytics</CheckboxGroup.Option>
+ * <CheckboxGroup.Option value="analytics">Advanced Analytics</CheckboxGroup.Option>
  * ```
  */
 const CheckboxGroupOption = forwardRef<HTMLInputElement, CheckboxGroupOptionProps>(
-  ({ value, children, disabled: optionDisabled, required: optionRequired = false, className, ...rest }, ref) => {
-    const generatedId = useId()
+  ({ value, children, disabled: optionDisabled, ...rest }, ref) => {
     const context = useCheckboxGroupContext()
     const isChecked = context.value.includes(value)
     const isDisabled = context.disabled || optionDisabled
@@ -137,34 +135,18 @@ const CheckboxGroupOption = forwardRef<HTMLInputElement, CheckboxGroupOptionProp
       }
     }
 
-    const dataAttrs = useDataAttrs({
-      disabled: isDisabled,
-      required: optionRequired,
-    })
-
     return (
-      <label className={cx(checkboxGroupStyles.option, className)} {...dataAttrs}>
-        <input
-          ref={ref}
-          type="checkbox"
-          name={context.name}
-          value={value}
-          checked={isChecked}
-          disabled={isDisabled}
-          required={optionRequired}
-          onChange={handleChange}
-          className={checkboxGroupStyles.input}
-          aria-required={optionRequired || undefined}
-          {...rest}
-          id={generatedId}
-        />
-        <span className={checkboxGroupStyles.indicator} />
-        {children && (
-          <Label required={optionRequired} disabled={isDisabled} htmlFor={generatedId}>
-            {children}
-          </Label>
-        )}
-      </label>
+      <Checkbox
+        ref={ref}
+        name={context.name}
+        value={value}
+        checked={isChecked}
+        disabled={isDisabled}
+        onChange={handleChange}
+        {...rest}
+      >
+        {children}
+      </Checkbox>
     )
   },
 )

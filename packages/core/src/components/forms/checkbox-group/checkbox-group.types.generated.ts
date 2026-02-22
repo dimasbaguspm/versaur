@@ -5,8 +5,6 @@ export type CheckboxGroupDirection = 'row';
 
 export interface CheckboxGroupDataAttrs {
   direction?: CheckboxGroupDirection;
-  disabled?: boolean;
-  invalid?: boolean;
 };
 
 export namespace CheckboxGroup {
