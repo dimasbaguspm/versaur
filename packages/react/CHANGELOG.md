@@ -1,5 +1,11 @@
 # @versaur/react
 
+## 1.0.3
+
+### Patch Changes
+
+- 2b49318: include @versaur/core as part of @versaur/react by default
+
 ## 1.0.2
 
 ### Patch Changes
