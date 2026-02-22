@@ -44,16 +44,15 @@ jobs:
       - name: Prepare deployment
         run: cp -r apps/react-doc/storybook-static deploy/
 
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ env.VPS_PRIVATE_KEY }}
+
       - name: Deploy
         run: |
           mkdir -p ~/.ssh
           ssh-keyscan -p ${{ env.VPS_PORT }} ${{ env.VPS_HOST }} >> ~/.ssh/known_hosts
-
-          # Setup rsync excludes
-          EXCLUDES=(
-            --exclude=".git/"
-            --exclude="node_modules/"
-          )
 
           echo "--- Syncing deployment files to Homelab ---"
           rsync -avz --delete \
