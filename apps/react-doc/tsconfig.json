@@ -2,10 +2,12 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./dist",
-    "rootDir": "./src",
     "jsx": "react-jsx",
     "baseUrl": ".",
-    "customConditions": ["source"]
+    "customConditions": ["source"],
+    "paths": {
+      "@versaur/core/*": ["../../packages/core/src/components/*"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

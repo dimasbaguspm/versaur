@@ -1,4 +1,5 @@
-import react from "@vitejs/plugin-react"
+import { resolve } from "path"
+
 import { defineConfig } from "vite"
 import svgr from "vite-plugin-svgr"
 
@@ -8,8 +9,11 @@ export default defineConfig({
       generateScopedName: "versaur-[name]-[local]",
     },
   },
-  plugins: [svgr(), react()],
+  plugins: [svgr()],
   resolve: {
+    alias: {
+      "@versaur/core": resolve(__dirname, "../../packages/core/src/components"),
+    },
     conditions: ["source"],
   },
 })

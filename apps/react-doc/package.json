@@ -13,7 +13,6 @@
     "format:check": "oxfmt src --check"
   },
   "dependencies": {
-    "@versaur/core": "workspace:*",
     "@versaur/icons": "workspace:*",
     "@versaur/react": "workspace:*",
     "react": "^19.2.4",
