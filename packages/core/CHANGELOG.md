@@ -1,5 +1,11 @@
 # @versaur/core
 
+## 0.0.3
+
+### Patch Changes
+
+- 661bada: inject css token in core.css
+
 ## 0.0.2
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @versaur/react
 
+## 1.0.7
+
+### Patch Changes
+
+- Updated dependencies [661bada]
+  - @versaur/core@0.0.3
+
 ## 1.0.6
 
 ### Patch Changes
