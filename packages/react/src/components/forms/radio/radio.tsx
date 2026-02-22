@@ -21,12 +21,9 @@ import type { RadioProps } from "./radio.types"
  * ```
  */
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  ({ variant = "outline", size = "medium", invalid = false, disabled = false, children, className, ...rest }, ref) => {
+  ({ disabled = false, children, className, ...rest }, ref) => {
     const dataAttrs = useDataAttrs({
       disabled,
-      invalid,
-      size,
-      variant,
     })
 
     return (
@@ -36,7 +33,6 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           type="radio"
           className={radioStyles.input}
           disabled={disabled}
-          aria-invalid={invalid || undefined}
           {...rest}
         />
         <span className={radioStyles.indicator} />

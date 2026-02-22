@@ -6,29 +6,30 @@
 /* Radio wrapper (label element) */
 .radio {
   /* Sizing */
-  --_size: var(--vers-comp-radio-size, 1.25rem);
-  --_gap: var(--vers-comp-radio-gap, var(--spacing-2));
-  --_font-size: var(--vers-comp-radio-font-size, var(--font-size-base));
+  --_size: 1.25rem;
+  --_gap: var(--spacing-2);
 
   /* Colors */
-  --_border: var(--vers-comp-radio-border, var(--color-border));
-  --_bg: var(--vers-comp-radio-bg, transparent);
-  --_checked-bg: var(--vers-comp-radio-checked-bg, var(--color-primary));
-  --_checked-border: var(--vers-comp-radio-checked-border, var(--color-primary));
-  --_indicator-color: var(--vers-comp-radio-indicator-color, var(--color-white));
+  --_border: var(--color-border);
+  --_bg: transparent;
+  --_checked-bg: var(--color-white);
+  --_checked-border: var(--color-primary);
+  --_indicator-color: var(--color-primary);
 
   /* Focus ring */
-  --_focus-ring-width: var(--vers-comp-radio-focus-ring-width, var(--focus-ring-width));
-  --_focus-ring-color: var(--vers-comp-radio-focus-ring-color, var(--color-primary-light));
+  --_focus-ring-color: var(--color-primary-focus);
+
+  /* Typography - match Label component */
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
 
   /* Layout */
   display: inline-flex;
   align-items: center;
   gap: var(--_gap);
   cursor: pointer;
-  font-size: var(--_font-size);
-  line-height: 1.5;
-  color: var(--color-text);
   user-select: none;
 }
 
@@ -73,52 +74,7 @@
 
 /* Focus state */
 .input:focus-visible + .indicator {
-  outline: none;
-  box-shadow: 0 0 0 var(--_focus-ring-width) var(--_focus-ring-color);
-}
-
-/* Hover state */
-.radio:hover .indicator:not([data-disabled]) {
-  border-color: var(--color-border-hover);
-}
-
-/* Size variants */
-.radio[data-size="small"] {
-  --_size: 1rem;
-  --_gap: var(--spacing-1-5);
-  --_font-size: var(--font-size-sm);
-}
-
-.radio[data-size="large"] {
-  --_size: 1.5rem;
-  --_gap: var(--spacing-3);
-  --_font-size: var(--font-size-lg);
-}
-
-/* Variant: outline (default) */
-.radio[data-variant="outline"] {
-  --_border: var(--color-border);
-  --_bg: transparent;
-  --_checked-bg: var(--color-primary);
-  --_checked-border: var(--color-primary);
-  --_focus-ring-color: var(--color-border-focus);
-}
-
-/* Variant: filled */
-.radio[data-variant="filled"] {
-  --_border: var(--color-surface);
-  --_bg: var(--color-surface);
-  --_checked-bg: var(--color-primary);
-  --_checked-border: var(--color-primary);
-  --_focus-ring-color: var(--color-border-focus);
-}
-
-/* Invalid state */
-.radio[data-invalid] .indicator {
-  --_border: var(--color-danger);
-  --_checked-border: var(--color-danger);
-  --_checked-bg: var(--color-danger);
-  --_focus-ring-color: var(--color-danger);
+  border-color: var(--_focus-ring-color);
 }
 
 /* Disabled state */
