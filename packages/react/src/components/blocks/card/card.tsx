@@ -1,8 +1,8 @@
 import { cardStyles } from "@versaur/core/blocks"
 import { forwardRef } from "react"
 
-import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
+import { cx } from "../../../utils/cx"
 import type { CardBodyProps, CardButtonProps, CardFooterProps, CardHeaderProps, CardRootProps } from "./card.types"
 
 /**
@@ -50,42 +50,48 @@ CardRoot.displayName = "Card"
  * Card Header - Flexible layout container for top section
  * Supports alignment and spacing controls
  */
-export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(({ justify, gap, children, className, ...rest }, ref) => {
-  const dataAttrs = useDataAttrs({ gap, justify })
-  return (
-    <div ref={ref} className={cx(cardStyles.header, className)} {...dataAttrs} {...rest}>
-      {children}
-    </div>
-  )
-})
+export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
+  ({ justify, gap, children, className, ...rest }, ref) => {
+    const dataAttrs = useDataAttrs({ gap, justify })
+    return (
+      <div ref={ref} className={cx(cardStyles.header, className)} {...dataAttrs} {...rest}>
+        {children}
+      </div>
+    )
+  },
+)
 CardHeader.displayName = "Card.Header"
 
 /**
  * Card Body - Flexible column layout container for main content
  * Supports alignment and spacing controls
  */
-export const CardBody = forwardRef<HTMLDivElement, CardBodyProps>(({ align, gap, children, className, ...rest }, ref) => {
-  const dataAttrs = useDataAttrs({ align, gap })
-  return (
-    <div ref={ref} className={cx(cardStyles.body, className)} {...dataAttrs} {...rest}>
-      {children}
-    </div>
-  )
-})
+export const CardBody = forwardRef<HTMLDivElement, CardBodyProps>(
+  ({ align, gap, children, className, ...rest }, ref) => {
+    const dataAttrs = useDataAttrs({ align, gap })
+    return (
+      <div ref={ref} className={cx(cardStyles.body, className)} {...dataAttrs} {...rest}>
+        {children}
+      </div>
+    )
+  },
+)
 CardBody.displayName = "Card.Body"
 
 /**
  * Card Footer - Flexible layout container for bottom section
  * Supports alignment and spacing controls
  */
-export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(({ justify, gap, children, className, ...rest }, ref) => {
-  const dataAttrs = useDataAttrs({ gap, justify })
-  return (
-    <div ref={ref} className={cx(cardStyles.footer, className)} {...dataAttrs} {...rest}>
-      {children}
-    </div>
-  )
-})
+export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(
+  ({ justify, gap, children, className, ...rest }, ref) => {
+    const dataAttrs = useDataAttrs({ gap, justify })
+    return (
+      <div ref={ref} className={cx(cardStyles.footer, className)} {...dataAttrs} {...rest}>
+        {children}
+      </div>
+    )
+  },
+)
 CardFooter.displayName = "Card.Footer"
 
 /**

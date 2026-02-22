@@ -16,4 +16,3 @@ export { Badge }
 // Backward-compat flat type exports
 export type { BadgeProps }
 export type { BadgeVariant, BadgeSize, BadgeShape } from "@versaur/core/primitive"
-

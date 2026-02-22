@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { ButtonIcon } from "@versaur/react/primitive"
 import { MenuIcon, SettingsIcon, FilterIcon } from "@versaur/icons"
 import { Menu } from "@versaur/react/blocks"
+import { ButtonIcon } from "@versaur/react/primitive"
 import { useState } from "react"
 
 const meta = {
@@ -69,10 +69,11 @@ export const Placements: Story = {
           const [value, setValue] = useState<string | number | undefined>()
 
           return (
-            <div key={placement} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem" }}>
-              <div style={{ fontSize: "0.875rem", fontWeight: 500, color: "var(--color-text-secondary)" }}>
-                {label}
-              </div>
+            <div
+              key={placement}
+              style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem" }}
+            >
+              <div style={{ fontSize: "0.875rem", fontWeight: 500, color: "var(--color-text-secondary)" }}>{label}</div>
               <ButtonIcon
                 {...Menu.getTriggerProps({ id: menuId })}
                 as={MenuIcon}
@@ -200,7 +201,11 @@ export const WithConstraints: Story = {
             </Menu.Item>
           ))}
         </Menu>
-        {value && <p style={{ fontSize: "0.875rem" }}>Selected: <strong>{value}</strong></p>}
+        {value && (
+          <p style={{ fontSize: "0.875rem" }}>
+            Selected: <strong>{value}</strong>
+          </p>
+        )}
       </div>
     )
   },

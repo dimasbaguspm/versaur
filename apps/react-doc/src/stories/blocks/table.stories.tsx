@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { Badge, Button } from "@versaur/react/primitive"
 import { Table } from "@versaur/react/blocks"
+import { Badge, Button } from "@versaur/react/primitive"
 import { useState } from "react"
 
 const meta = {

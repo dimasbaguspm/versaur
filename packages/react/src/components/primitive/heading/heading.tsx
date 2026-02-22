@@ -1,8 +1,8 @@
 import { headingStyles } from "@versaur/core/primitive"
 import { forwardRef } from "react"
 
-import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
+import { cx } from "../../../utils/cx"
 import type { HeadingProps } from "./heading.types"
 
 export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(

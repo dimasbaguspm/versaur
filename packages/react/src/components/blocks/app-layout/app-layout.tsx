@@ -1,21 +1,18 @@
 import { appLayoutStyles } from "@versaur/core/blocks"
 import { forwardRef } from "react"
 
-import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
-import type { AppLayoutMainProps, AppLayoutRegionProps, AppLayoutRootProps, AppLayoutBodyProps, AppLayoutType } from "./app-layout.types"
+import { cx } from "../../../utils/cx"
+import type {
+  AppLayoutMainProps,
+  AppLayoutRegionProps,
+  AppLayoutRootProps,
+  AppLayoutBodyProps,
+  AppLayoutType,
+} from "./app-layout.types"
 
 const AppLayoutRoot = forwardRef<HTMLDivElement, AppLayoutRootProps>(
-  (
-    {
-      variant = "classic",
-      hideHeader,
-      hideBottom,
-      className,
-      children,
-    },
-    ref,
-  ) => {
+  ({ variant = "classic", hideHeader, hideBottom, className, children }, ref) => {
     const attrs = useDataAttrs({
       "hide-header": hideHeader,
       "hide-bottom": hideBottom,
@@ -32,13 +29,11 @@ const AppLayoutRoot = forwardRef<HTMLDivElement, AppLayoutRootProps>(
 
 AppLayoutRoot.displayName = "AppLayout"
 
-const AppLayoutBody = forwardRef<HTMLDivElement, AppLayoutBodyProps>(
-  ({ className, children }, ref) => (
-    <div ref={ref} className={cx(appLayoutStyles["app-layout-body"], className)}>
-      {children}
-    </div>
-  ),
-)
+const AppLayoutBody = forwardRef<HTMLDivElement, AppLayoutBodyProps>(({ className, children }, ref) => (
+  <div ref={ref} className={cx(appLayoutStyles["app-layout-body"], className)}>
+    {children}
+  </div>
+))
 
 AppLayoutBody.displayName = "AppLayout.Body"
 

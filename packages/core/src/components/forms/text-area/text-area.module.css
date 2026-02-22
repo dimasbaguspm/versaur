@@ -96,14 +96,10 @@
    Calculation: each row is 1.5rem (1.5 line-height × 16px base font)
    Plus vertical padding on both sides */
 .textarea[data-min-rows] {
-  min-height: calc(
-    var(--_min-rows-count, 3) * 1.5rem + (var(--_py) * 2)
-  );
+  min-height: calc(var(--_min-rows-count, 3) * 1.5rem + (var(--_py) * 2));
 }
 
 .textarea[data-max-rows] {
-  max-height: calc(
-    var(--_max-rows-count, 5) * 1.5rem + (var(--_py) * 2)
-  );
+  max-height: calc(var(--_max-rows-count, 5) * 1.5rem + (var(--_py) * 2));
   overflow-y: auto;
 }

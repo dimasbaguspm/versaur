@@ -1,8 +1,8 @@
 import { textStyles } from "@versaur/core/primitive"
 import { forwardRef } from "react"
 
-import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
+import { cx } from "../../../utils/cx"
 import type { TextProps } from "./text.types"
 
 export const Text = forwardRef<HTMLElement, TextProps>(

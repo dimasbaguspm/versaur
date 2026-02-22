@@ -54,10 +54,22 @@
 
 /* Border style variants */
 .card[data-border="all-rounded"] {
-  --_border-top: var(--vers-comp-card-border-all-rounded, var(--_border-width) var(--_border-style, solid) var(--_border-color));
-  --_border-bottom: var(--vers-comp-card-border-all-rounded, var(--_border-width) var(--_border-style, solid) var(--_border-color));
-  --_border-left: var(--vers-comp-card-border-all-rounded, var(--_border-width) var(--_border-style, solid) var(--_border-color));
-  --_border-right: var(--vers-comp-card-border-all-rounded, var(--_border-width) var(--_border-style, solid) var(--_border-color));
+  --_border-top: var(
+    --vers-comp-card-border-all-rounded,
+    var(--_border-width) var(--_border-style, solid) var(--_border-color)
+  );
+  --_border-bottom: var(
+    --vers-comp-card-border-all-rounded,
+    var(--_border-width) var(--_border-style, solid) var(--_border-color)
+  );
+  --_border-left: var(
+    --vers-comp-card-border-all-rounded,
+    var(--_border-width) var(--_border-style, solid) var(--_border-color)
+  );
+  --_border-right: var(
+    --vers-comp-card-border-all-rounded,
+    var(--_border-width) var(--_border-style, solid) var(--_border-color)
+  );
   border-radius: var(--_border-radius);
 }
 

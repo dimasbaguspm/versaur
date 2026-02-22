@@ -18,4 +18,3 @@ export { Avatar }
 // Backward-compat flat type exports
 export type { AvatarProps, AvatarImageProps }
 export type { AvatarVariant, AvatarSize, AvatarShape } from "@versaur/core/primitive"
-

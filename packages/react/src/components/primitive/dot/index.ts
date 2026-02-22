@@ -15,4 +15,3 @@ export { Dot }
 // Backward-compat flat type exports
 export type { DotProps }
 export type { DotVariant, DotSize } from "@versaur/core/primitive"
-

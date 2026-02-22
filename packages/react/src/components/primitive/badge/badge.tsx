@@ -2,8 +2,8 @@ import type { Badge as BadgeCore } from "@versaur/core/primitive"
 import { badgeStyles } from "@versaur/core/primitive"
 import { forwardRef } from "react"
 
-import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
+import { cx } from "../../../utils/cx"
 import type { BadgeProps } from "./badge.types"
 
 /**

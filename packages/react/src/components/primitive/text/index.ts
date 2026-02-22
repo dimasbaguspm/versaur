@@ -19,4 +19,3 @@ export { Text }
 // Flat type exports
 export type { TextProps }
 export type { TextAs, TextSize, TextWeight, TextIntent, TextCase, TextTransform } from "@versaur/core/primitive"
-

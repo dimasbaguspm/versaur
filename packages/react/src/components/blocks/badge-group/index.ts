@@ -17,4 +17,3 @@ export { BadgeGroup }
 // Backward-compat flat type exports
 export type { BadgeGroupProps }
 export type { BadgeGroupGap, BadgeGroupDirection, BadgeGroupAlign, BadgeGroupWrap } from "@versaur/core/blocks"
-

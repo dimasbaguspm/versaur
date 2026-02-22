@@ -12,15 +12,35 @@
 }
 
 /* SIZE VARIANTS — inherit = base default (1em), no rule needed */
-.icon[data-size="xs"] { --_size: var(--vers-comp-icon-xs-size, 0.75rem); }
-.icon[data-size="sm"] { --_size: var(--vers-comp-icon-sm-size, 1rem); }
-.icon[data-size="md"] { --_size: var(--vers-comp-icon-md-size, 1.25rem); }
-.icon[data-size="lg"] { --_size: var(--vers-comp-icon-lg-size, 1.5rem); }
-.icon[data-size="xl"] { --_size: var(--vers-comp-icon-xl-size, 2rem); }
+.icon[data-size="xs"] {
+  --_size: var(--vers-comp-icon-xs-size, 0.75rem);
+}
+.icon[data-size="sm"] {
+  --_size: var(--vers-comp-icon-sm-size, 1rem);
+}
+.icon[data-size="md"] {
+  --_size: var(--vers-comp-icon-md-size, 1.25rem);
+}
+.icon[data-size="lg"] {
+  --_size: var(--vers-comp-icon-lg-size, 1.5rem);
+}
+.icon[data-size="xl"] {
+  --_size: var(--vers-comp-icon-xl-size, 2rem);
+}
 
 /* INTENT VARIANTS — inherit = base default (currentColor), no rule needed */
-.icon[data-intent="primary"]   { --_color: var(--vers-comp-icon-primary-color, var(--color-primary)); }
-.icon[data-intent="secondary"] { --_color: var(--vers-comp-icon-secondary-color, var(--color-secondary)); }
-.icon[data-intent="danger"]    { --_color: var(--vers-comp-icon-danger-color, var(--color-danger)); }
-.icon[data-intent="outline"]   { --_color: var(--vers-comp-icon-outline-color, var(--color-border)); }
-.icon[data-intent="ghost"]     { --_color: var(--vers-comp-icon-ghost-color, var(--color-text-secondary)); }
+.icon[data-intent="primary"] {
+  --_color: var(--vers-comp-icon-primary-color, var(--color-primary));
+}
+.icon[data-intent="secondary"] {
+  --_color: var(--vers-comp-icon-secondary-color, var(--color-secondary));
+}
+.icon[data-intent="danger"] {
+  --_color: var(--vers-comp-icon-danger-color, var(--color-danger));
+}
+.icon[data-intent="outline"] {
+  --_color: var(--vers-comp-icon-outline-color, var(--color-border));
+}
+.icon[data-intent="ghost"] {
+  --_color: var(--vers-comp-icon-ghost-color, var(--color-text-secondary));
+}

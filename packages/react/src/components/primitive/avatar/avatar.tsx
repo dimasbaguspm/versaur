@@ -2,8 +2,8 @@ import { avatarStyles } from "@versaur/core/primitive"
 import { UserIcon } from "@versaur/icons"
 import { forwardRef, useState } from "react"
 
-import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
+import { cx } from "../../../utils/cx"
 import { Icon } from "../icon"
 import type { AvatarImageProps, AvatarProps } from "./avatar.types"
 

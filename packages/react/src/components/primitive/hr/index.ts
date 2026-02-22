@@ -17,4 +17,3 @@ export { Hr }
 // Backward-compat flat type exports
 export type { HrProps }
 export type { HrOrientation, HrVariant, HrSize, HrSpacing } from "@versaur/core/primitive"
-

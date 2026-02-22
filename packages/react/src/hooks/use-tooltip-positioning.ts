@@ -15,13 +15,7 @@ interface UseTooltipPositioningOptions {
 /**
  * Hook to manage tooltip positioning and trigger interactions
  */
-export function useTooltipPositioning({
-  id,
-  tooltipRef,
-  placement,
-  gap,
-  triggerType,
-}: UseTooltipPositioningOptions) {
+export function useTooltipPositioning({ id, tooltipRef, placement, gap, triggerType }: UseTooltipPositioningOptions) {
   useEffect(() => {
     const tooltipEl = tooltipRef.current
     if (!tooltipEl || !id) {
@@ -43,7 +37,11 @@ export function useTooltipPositioning({
       while (ancestor && !triggerEl) {
         triggerEl = ancestor.querySelector(`[data-tooltip-trigger="${id}"]`)
         // Stop searching if we've found it or reached a natural boundary
-        if (triggerEl || ancestor.classList.contains("sbdocs-story") || ancestor.classList.contains("docblock-storylet")) {
+        if (
+          triggerEl ||
+          ancestor.classList.contains("sbdocs-story") ||
+          ancestor.classList.contains("docblock-storylet")
+        ) {
           break
         }
         ancestor = ancestor.parentElement

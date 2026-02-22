@@ -1,8 +1,8 @@
 import { iconStyles } from "@versaur/core/primitive"
 import React from "react"
 
-import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
+import { cx } from "../../../utils/cx"
 import type { IconProps } from "./icon.types"
 
 export const Icon = React.forwardRef<SVGSVGElement, IconProps>(function Icon(

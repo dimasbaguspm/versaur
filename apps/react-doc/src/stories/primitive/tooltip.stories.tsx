@@ -109,7 +109,9 @@ export const TriggerTypes: Story = {
         <Tooltip {...args} id="story-focus-tooltip" placement="bottom" triggerType="focus">
           <Tooltip.Text>Shows on focus</Tooltip.Text>
         </Tooltip>
-        <button {...Tooltip.getTooltipTriggerProps({ id: "story-focus-tooltip", triggerType: "focus" })}>Focus me</button>
+        <button {...Tooltip.getTooltipTriggerProps({ id: "story-focus-tooltip", triggerType: "focus" })}>
+          Focus me
+        </button>
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
@@ -117,7 +119,9 @@ export const TriggerTypes: Story = {
         <Tooltip {...args} id="story-all-tooltip" placement="bottom" triggerType="all">
           <Tooltip.Text>Shows on hover or focus</Tooltip.Text>
         </Tooltip>
-        <button {...Tooltip.getTooltipTriggerProps({ id: "story-all-tooltip", triggerType: "all" })}>Hover or focus</button>
+        <button {...Tooltip.getTooltipTriggerProps({ id: "story-all-tooltip", triggerType: "all" })}>
+          Hover or focus
+        </button>
       </div>
     </div>
   ),

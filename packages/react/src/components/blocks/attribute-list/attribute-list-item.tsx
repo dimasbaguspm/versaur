@@ -1,7 +1,7 @@
 import { forwardRef } from "react"
 
-import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
+import { cx } from "../../../utils/cx"
 import { useAttributeListContext } from "./attribute-list"
 import type { AttributeListItemProps } from "./attribute-list.types"
 

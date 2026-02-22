@@ -1,6 +1,7 @@
 import type { Drawer as DrawerCore } from "@versaur/core/blocks"
-import type { OverlayHeaderProps } from "../../utils/overlay-parts/overlay-parts.types"
 import type { DialogHTMLAttributes, ReactNode } from "react"
+
+import type { OverlayHeaderProps } from "../../utils/overlay-parts/overlay-parts.types"
 
 export interface DrawerRootProps extends Omit<DialogHTMLAttributes<HTMLDialogElement>, "onClose"> {
   /**

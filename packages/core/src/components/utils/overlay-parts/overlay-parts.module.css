@@ -81,7 +81,7 @@
   grid-area: headerContentRest;
 }
 
-.header[data-action] .headerContent > :nth-child(n+2) {
+.header[data-action] .headerContent > :nth-child(n + 2) {
   display: flex;
   flex-direction: row;
   gap: var(--spacing-2);

@@ -49,6 +49,7 @@ apps/react-doc/
 ### Main configuration (`.storybook/main.ts`)
 
 Configures:
+
 - Story file patterns (`../src/**/*.stories.@(js|jsx|mjs|ts|tsx)`)
 - Addons (essentials, interactions, links, etc.)
 - Framework (react-vite)
@@ -57,6 +58,7 @@ Configures:
 ### Preview configuration (`.storybook/preview.ts`)
 
 Configures:
+
 - Global CSS imports (design tokens from `@versaur/core/tokens`)
 - Global decorators
 - Default parameters (layout, controls)
@@ -65,7 +67,7 @@ Configures:
 The tokens CSS is imported at the top to make all Versaur CSS custom properties available globally:
 
 ```ts
-import "@versaur/core/tokens";
+import "@versaur/core/tokens"
 ```
 
 ## Component categories

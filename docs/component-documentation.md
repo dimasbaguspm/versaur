@@ -22,34 +22,34 @@ apps/react-doc/src/stories/
 ### Basic story structure
 
 ```tsx
-import type { Meta, StoryObj } from '@storybook/react'
-import { Button } from '@versaur/react/primitive'
+import type { Meta, StoryObj } from "@storybook/react"
+import { Button } from "@versaur/react/primitive"
 
 const meta = {
-  title: 'Primitive/Button',
+  title: "Primitive/Button",
   component: Button,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: 'select',
-      options: ['primary', 'secondary', 'danger', 'ghost', 'outline'],
-      description: 'Visual variant of the button',
+      control: "select",
+      options: ["primary", "secondary", "danger", "ghost", "outline"],
+      description: "Visual variant of the button",
     },
     size: {
-      control: 'select',
-      options: ['small', 'medium', 'large'],
-      description: 'Size of the button',
+      control: "select",
+      options: ["small", "medium", "large"],
+      description: "Size of the button",
     },
     loading: {
-      control: 'boolean',
-      description: 'Whether the button is in a loading state',
+      control: "boolean",
+      description: "Whether the button is in a loading state",
     },
     disabled: {
-      control: 'boolean',
-      description: 'Whether the button is disabled',
+      control: "boolean",
+      description: "Whether the button is disabled",
     },
   },
 } satisfies Meta<typeof Button>
@@ -59,15 +59,15 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    variant: 'primary',
-    children: 'Primary Button',
+    variant: "primary",
+    children: "Primary Button",
   },
 }
 
 export const Secondary: Story = {
   args: {
-    variant: 'secondary',
-    children: 'Secondary Button',
+    variant: "secondary",
+    children: "Secondary Button",
   },
 }
 ```
@@ -76,12 +76,12 @@ export const Secondary: Story = {
 
 Stories are organized by component category in the Storybook sidebar:
 
-| Category    | Title Prefix       | Example Components                  |
-| ----------- | ------------------ | ----------------------------------- |
-| Primitive   | `Primitive/`       | Button, Badge, Text, Heading        |
-| Forms       | `Forms/`           | TextInput, Select, Checkbox, Radio  |
-| Blocks      | `Blocks/`          | Card, Modal, Dialog, Sidebar        |
-| Utils       | `Utils/`           | Loader, Icon, Tooltip               |
+| Category  | Title Prefix | Example Components                 |
+| --------- | ------------ | ---------------------------------- |
+| Primitive | `Primitive/` | Button, Badge, Text, Heading       |
+| Forms     | `Forms/`     | TextInput, Select, Checkbox, Radio |
+| Blocks    | `Blocks/`    | Card, Modal, Dialog, Sidebar       |
+| Utils     | `Utils/`     | Loader, Icon, Tooltip              |
 
 ## Adding documentation for a new component
 

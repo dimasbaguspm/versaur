@@ -1,4 +1,5 @@
 import type { Icon as CoreIcon } from "@versaur/core/primitive"
+
 import { Icon } from "./icon"
 import type { IconProps } from "./icon.types"
 

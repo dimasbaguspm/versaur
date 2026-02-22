@@ -126,11 +126,22 @@ export const WithIcons: Story = {
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
         <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Right Icon</div>
-        <TextInput {...args} label="Email" type="email" placeholder="Enter email" rightIcon={<MailIcon width={20} height={20} />} />
+        <TextInput
+          {...args}
+          label="Email"
+          type="email"
+          placeholder="Enter email"
+          rightIcon={<MailIcon width={20} height={20} />}
+        />
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
         <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Both Icons</div>
-        <TextInput {...args} placeholder="With icons on both sides" leftIcon={<MailIcon width={20} height={20} />} rightIcon={<SearchIcon width={20} height={20} />} />
+        <TextInput
+          {...args}
+          placeholder="With icons on both sides"
+          leftIcon={<MailIcon width={20} height={20} />}
+          rightIcon={<SearchIcon width={20} height={20} />}
+        />
       </div>
     </div>
   ),

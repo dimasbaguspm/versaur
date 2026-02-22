@@ -26,7 +26,13 @@ import type { NoResultsProps } from "./no-results.types"
  */
 export const NoResults = forwardRef<HTMLElement, NoResultsProps>(
   ({ icon: IconComponent, title, subtitle, action, className, ...props }, ref) => (
-    <section ref={ref} className={cx(noResultsStyles["no-results"], className)} role="status" aria-label={title} {...props}>
+    <section
+      ref={ref}
+      className={cx(noResultsStyles["no-results"], className)}
+      role="status"
+      aria-label={title}
+      {...props}
+    >
       <header className={noResultsStyles["no-results-header"]}>
         <div className={noResultsStyles["no-results-icon"]}>
           <Icon as={IconComponent} color="inherit" aria-hidden="true" />

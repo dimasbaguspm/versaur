@@ -17,4 +17,3 @@ export { ButtonGroup }
 // Backward-compat flat type exports
 export type { ButtonGroupProps }
 export type { ButtonGroupGap, ButtonGroupDirection, ButtonGroupAlign, ButtonGroupWrap } from "@versaur/core/blocks"
-

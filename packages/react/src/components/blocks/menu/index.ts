@@ -20,4 +20,3 @@ export { Menu }
 
 // Backward-compat flat type exports
 export type { MenuProps, MenuItemProps, MenuPlacement } from "./menu.types"
-

@@ -5,8 +5,8 @@ import { createContext, forwardRef, useContext } from "react"
 
 import { cx } from "../../../utils/cx"
 import { ButtonIcon } from "../../primitive/button-icon"
-import { Dialog } from "../dialog"
 import { OverlayBody, OverlayFooter, OverlayHeader, OverlayTitle } from "../../utils/overlay-parts/overlay-parts"
+import { Dialog } from "../dialog"
 import type { BottomSheetCloseButtonProps, BottomSheetRootProps } from "./bottom-sheet.types"
 
 interface BottomSheetContextType {
@@ -26,7 +26,13 @@ const useBottomSheetContext = () => {
 const BottomSheetRoot = forwardRef<HTMLDialogElement, BottomSheetRootProps>(
   ({ open, onOpenChange, children, className, ...props }, ref) => (
     <BottomSheetContext.Provider value={{ onClose: () => onOpenChange?.(false) }}>
-      <Dialog ref={ref} isOpen={open} onOpenChange={onOpenChange} className={cx(bottomSheetStyles.bottomSheet, className)} {...props}>
+      <Dialog
+        ref={ref}
+        isOpen={open}
+        onOpenChange={onOpenChange}
+        className={cx(bottomSheetStyles.bottomSheet, className)}
+        {...props}
+      >
         <div className={overlayPartsStyles.content}>{children}</div>
       </Dialog>
     </BottomSheetContext.Provider>

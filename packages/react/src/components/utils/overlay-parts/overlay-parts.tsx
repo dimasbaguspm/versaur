@@ -4,11 +4,13 @@ import { forwardRef } from "react"
 import { cx } from "../../../utils/cx"
 import type { OverlayBodyProps, OverlayFooterProps, OverlayHeaderProps, OverlayTitleProps } from "./overlay-parts.types"
 
-export const OverlayHeader = forwardRef<HTMLDivElement, OverlayHeaderProps>(({ children, className, ...props }, ref) => (
-  <div ref={ref} className={cx(overlayPartsStyles.header, className)} {...props}>
-    {children}
-  </div>
-))
+export const OverlayHeader = forwardRef<HTMLDivElement, OverlayHeaderProps>(
+  ({ children, className, ...props }, ref) => (
+    <div ref={ref} className={cx(overlayPartsStyles.header, className)} {...props}>
+      {children}
+    </div>
+  ),
+)
 OverlayHeader.displayName = "OverlayHeader"
 
 export const OverlayTitle = forwardRef<HTMLHeadingElement, OverlayTitleProps>(
@@ -27,9 +29,11 @@ export const OverlayBody = forwardRef<HTMLDivElement, OverlayBodyProps>(({ child
 ))
 OverlayBody.displayName = "OverlayBody"
 
-export const OverlayFooter = forwardRef<HTMLDivElement, OverlayFooterProps>(({ children, className, ...props }, ref) => (
-  <div ref={ref} className={cx(overlayPartsStyles.footer, className)} {...props}>
-    {children}
-  </div>
-))
+export const OverlayFooter = forwardRef<HTMLDivElement, OverlayFooterProps>(
+  ({ children, className, ...props }, ref) => (
+    <div ref={ref} className={cx(overlayPartsStyles.footer, className)} {...props}>
+      {children}
+    </div>
+  ),
+)
 OverlayFooter.displayName = "OverlayFooter"

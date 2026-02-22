@@ -2,8 +2,8 @@ import { loaderStyles } from "@versaur/core/primitive"
 import { LoaderIcon } from "@versaur/icons"
 import { forwardRef } from "react"
 
-import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
+import { cx } from "../../../utils/cx"
 import { Icon } from "../icon"
 import type { LoaderProps } from "./loader.types"
 

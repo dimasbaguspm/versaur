@@ -1,10 +1,9 @@
 import { labelStyles } from "@versaur/core/forms"
 import { forwardRef } from "react"
 
+import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { cx } from "../../../utils/cx"
 import type { LabelProps } from "./label.types"
-
-import { useDataAttrs } from "../../../hooks/use-data-attrs"
 
 /**
  * Label component for form fields

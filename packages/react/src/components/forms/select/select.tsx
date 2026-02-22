@@ -2,8 +2,8 @@ import { selectStyles } from "@versaur/core/forms"
 import type { ForwardRefExoticComponent, RefAttributes } from "react"
 import { forwardRef, useId } from "react"
 
-import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
+import { cx } from "../../../utils/cx"
 import { ErrorText } from "../error-text"
 import { HelperText } from "../helper-text"
 import { Label } from "../label"
@@ -41,7 +41,18 @@ SelectOptionGroup.displayName = "Select.OptionGroup"
  */
 const SelectComponent = forwardRef<HTMLSelectElement, SelectProps>(
   (
-    { label, helper, error, required = false, disabled = false, placeholder, children, id: providedId, className, ...rest },
+    {
+      label,
+      helper,
+      error,
+      required = false,
+      disabled = false,
+      placeholder,
+      children,
+      id: providedId,
+      className,
+      ...rest
+    },
     ref,
   ) => {
     // Generate unique IDs for accessibility

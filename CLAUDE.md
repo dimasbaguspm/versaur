@@ -67,6 +67,7 @@ className={cx(baseStyles.button, userClassName)}
 ```
 
 **Pattern in all React components:**
+
 1. Import `cx`: `import { cx } from "../../../utils/cx"`
 2. Destructure `className`: `({ variant, disabled, className, ...rest })`
 3. Apply to element: `className={cx(componentStyles.base, className)}`
@@ -76,7 +77,9 @@ This ensures user-supplied styles are preserved and don't silently overwrite com
 ## Block Component Behaviors
 
 ### Dialog - Scroll Prevention
+
 The Dialog component automatically prevents parent document scrolling when open to maintain focus:
+
 - When dialog opens: Sets `document.documentElement.style.overflow = "hidden"`
 - When dialog closes: Restores previous overflow behavior
 - Cleanup on unmount ensures styles are cleaned up if component unmounts
@@ -154,15 +157,15 @@ This includes all color, spacing, typography, and effects tokens. In apps, impor
 
 ## Key files
 
-| File                                                       | Purpose                                              |
-| ---------------------------------------------------------- | ---------------------------------------------------- |
-| `packages/core/vite.config.ts`                             | CSS module scoping config (`versaur-[name]-[local]`) |
-| `packages/core/src/tokens/`                                | Design tokens (CSS custom properties)                |
-| `packages/react/src/utils/cx.ts`                           | Class name merging utility (filters + joins)         |
-| `packages/react/src/hooks/use-data-attrs.ts`               | Core hook: props to data-attributes                  |
-| `packages/react/src/components/primitive/button/button.tsx`| Reference component implementation                   |
-| `packages/icons/src/index.ts`                              | Icon library registry and exports                    |
-| `apps/react-doc/src/stories/*.stories.tsx`                 | Storybook component documentation                    |
-| `packages/tooling/src/generate-types.ts`                   | PostCSS type extraction entry point                  |
-| `packages/tooling/src/css-parser.ts`                       | CSS data-attribute selector parser                   |
-| `packages/tooling/src/codegen.ts`                          | TypeScript codegen from parsed CSS                   |
+| File                                                        | Purpose                                              |
+| ----------------------------------------------------------- | ---------------------------------------------------- |
+| `packages/core/vite.config.ts`                              | CSS module scoping config (`versaur-[name]-[local]`) |
+| `packages/core/src/tokens/`                                 | Design tokens (CSS custom properties)                |
+| `packages/react/src/utils/cx.ts`                            | Class name merging utility (filters + joins)         |
+| `packages/react/src/hooks/use-data-attrs.ts`                | Core hook: props to data-attributes                  |
+| `packages/react/src/components/primitive/button/button.tsx` | Reference component implementation                   |
+| `packages/icons/src/index.ts`                               | Icon library registry and exports                    |
+| `apps/react-doc/src/stories/*.stories.tsx`                  | Storybook component documentation                    |
+| `packages/tooling/src/generate-types.ts`                    | PostCSS type extraction entry point                  |
+| `packages/tooling/src/css-parser.ts`                        | CSS data-attribute selector parser                   |
+| `packages/tooling/src/codegen.ts`                           | TypeScript codegen from parsed CSS                   |

@@ -18,5 +18,11 @@ export { Heading }
 
 // Flat type exports
 export type { HeadingProps }
-export type { HeadingAs, HeadingSize, HeadingWeight, HeadingIntent, HeadingCase, HeadingTransform } from "@versaur/core/primitive"
-
+export type {
+  HeadingAs,
+  HeadingSize,
+  HeadingWeight,
+  HeadingIntent,
+  HeadingCase,
+  HeadingTransform,
+} from "@versaur/core/primitive"

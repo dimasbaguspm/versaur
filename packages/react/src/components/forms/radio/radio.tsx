@@ -1,8 +1,8 @@
 import { radioStyles } from "@versaur/core/forms"
 import { forwardRef } from "react"
 
-import { cx } from "../../../utils/cx"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
+import { cx } from "../../../utils/cx"
 import type { RadioProps } from "./radio.types"
 
 /**

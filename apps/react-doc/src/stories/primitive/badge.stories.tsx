@@ -14,14 +14,7 @@ const meta = {
     },
     variant: {
       control: "select",
-      options: [
-        "primary",
-        "secondary",
-        "danger",
-        "success",
-        "warning",
-        "info",
-      ],
+      options: ["primary", "secondary", "danger", "success", "warning", "info"],
     },
   },
   component: Badge,
