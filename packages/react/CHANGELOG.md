@@ -1,5 +1,15 @@
 # @versaur/react
 
+## 1.0.6
+
+### Patch Changes
+
+- a3e9355: packageupdate imports and remove unused files
+- d20555c: code format
+- Updated dependencies [a3e9355]
+- Updated dependencies [d20555c]
+  - @versaur/core@0.0.2
+
 ## 1.0.5
 
 ### Patch Changes
