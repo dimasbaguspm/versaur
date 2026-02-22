@@ -39,7 +39,7 @@ jobs:
         run: pnpm build:packages
 
       - name: Publish to NPM and create git tags
-        run: changeset publish
+        run: pnpm changeset publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
