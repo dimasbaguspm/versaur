@@ -8,6 +8,7 @@ dist
 build
 .next
 out
+deploy/storybook-static
 
 # Development
 .DS_Store

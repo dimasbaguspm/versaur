@@ -12,6 +12,12 @@ jobs:
   ci:
     name: CI
     runs-on: ubuntu-latest
+    env:
+      VPS_PORT: ${{ secrets.VPS_PORT }}
+      VPS_HOST: ${{ secrets.VPS_HOST }}
+      VPS_USER: ${{ secrets.VPS_USER }}
+      VPS_PRIVATE_KEY: ${{ secrets.VPS_PRIVATE_KEY }}
+      VPS_DIR: ${{ secrets.VPS_DIR }}
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -34,3 +40,30 @@ jobs:
 
       - name: Build docs
         run: pnpm build:docs
+
+      - name: Prepare deployment
+        run: cp -r apps/react-doc/storybook-static deploy/
+
+      - name: Deploy
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p ${{ env.VPS_PORT }} ${{ env.VPS_HOST }} >> ~/.ssh/known_hosts
+
+          # Setup rsync excludes
+          EXCLUDES=(
+            --exclude=".git/"
+            --exclude="node_modules/"
+          )
+
+          echo "--- Syncing deployment files to Homelab ---"
+          rsync -avz --delete \
+            -e "ssh -p ${{ env.VPS_PORT }}" \
+            ./deploy/ ${{ env.VPS_USER }}@${{ env.VPS_HOST }}:${{ env.VPS_DIR }}/
+
+          echo "--- Rebuilding Containers ---"
+          ssh -p ${{ env.VPS_PORT }} ${{ env.VPS_USER }}@${{ env.VPS_HOST }} << EOF
+            cd ${{ env.VPS_DIR }}
+            docker compose down
+            docker compose up -d --build
+            docker image prune -f
+          EOF

@@ -169,3 +169,43 @@ This includes all color, spacing, typography, and effects tokens. In apps, impor
 | `packages/tooling/src/generate-types.ts`                    | PostCSS type extraction entry point                  |
 | `packages/tooling/src/css-parser.ts`                        | CSS data-attribute selector parser                   |
 | `packages/tooling/src/codegen.ts`                           | TypeScript codegen from parsed CSS                   |
+
+## Deployment
+
+Storybook documentation is automatically deployed to a homelab VPS on every push to `main`.
+
+### Deployment Structure
+
+- **`deploy/` directory**: Self-contained deployment unit
+  - `Dockerfile`: Multi-stage Go build (compiles HTTP server + bundles Storybook files)
+  - `docker-compose.yml`: Orchestrates container on VPS
+  - `main.go`: Simple HTTP server with SPA fallback (serves static files)
+  - `storybook-static/`: Built Storybook output (created by CI, not in git)
+  - `README.md`: Detailed deployment documentation
+
+### CI/CD Pipeline
+
+**Automated on push to `main`:**
+
+1. Build packages and Storybook: `pnpm build:packages && pnpm build:docs`
+2. Prepare deployment: Copy `apps/react-doc/storybook-static` → `deploy/storybook-static`
+3. Sync to VPS: `rsync` only `deploy/` directory (optimized: no source code, node_modules, etc.)
+4. Rebuild containers: SSH to VPS, run `docker compose up -d --build`
+
+**Configuration:**
+- VPS credentials: Stored in GitHub secrets (`VPS_HOST`, `VPS_PORT`, `VPS_USER`, `VPS_PRIVATE_KEY`, `VPS_DIR`)
+- Workflow file: `.github/workflows/ci.yml`
+- Deploy documentation: `deploy/README.md`
+
+### Local Testing
+
+Test the deployment setup locally:
+
+```sh
+# Build and run deployment container
+docker compose -f deploy/docker-compose.yml up --build
+
+# Visit http://localhost:7999
+```
+
+Requires `deploy/storybook-static/` to exist (run `pnpm build:docs && cp -r apps/react-doc/storybook-static deploy/` first).
