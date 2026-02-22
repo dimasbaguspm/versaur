@@ -111,4 +111,14 @@ export interface ChipInputOptionProps extends Omit<ButtonHTMLAttributes<HTMLButt
    * Disabled state for this specific chip
    */
   disabled?: boolean
+
+  /**
+   * Icon to display on the left side of the chip
+   */
+  iconLeft?: ReactNode
+
+  /**
+   * Icon to display on the right side of the chip
+   */
+  iconRight?: ReactNode
 }

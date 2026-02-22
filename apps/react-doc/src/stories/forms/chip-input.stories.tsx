@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { ChipInput } from "@versaur/react/forms"
+import { Icon } from "@versaur/react/primitive"
+import { CheckIcon, HomeIcon, SettingsIcon, StarIcon } from "@versaur/icons"
 import { useState } from "react"
 
 const meta = {
@@ -151,4 +153,37 @@ export const WithError: Story = {
       </div>
     </div>
   ),
+}
+
+/**
+ * Chip input with icons (left and right positions).
+ */
+export const WithIcons: Story = {
+  render: () => {
+    const [value, setValue] = useState<string[]>([])
+    return (
+      <div style={{ width: "100%", maxWidth: "500px" }}>
+        <ChipInput
+          multiple
+          value={value}
+          onChange={setValue}
+          label="Select features"
+          helper="Choose with icons"
+        >
+          <ChipInput.Option value="star" iconLeft={<Icon as={StarIcon} />}>
+            Featured
+          </ChipInput.Option>
+          <ChipInput.Option value="check" iconLeft={<Icon as={CheckIcon} />}>
+            Verified
+          </ChipInput.Option>
+          <ChipInput.Option value="settings" iconRight={<Icon as={SettingsIcon} />}>
+            Settings
+          </ChipInput.Option>
+          <ChipInput.Option value="home" iconLeft={<Icon as={HomeIcon} />} iconRight={<Icon as={CheckIcon} />}>
+            Home
+          </ChipInput.Option>
+        </ChipInput>
+      </div>
+    )
+  },
 }

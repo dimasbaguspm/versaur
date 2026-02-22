@@ -151,15 +151,23 @@ ChipInputRoot.displayName = "ChipInput"
  * - Single mode: clicking replaces the selection
  * - Multiple mode: clicking toggles inclusion in the array
  *
- * @example
+ * @example Single text
  * ```tsx
  * <ChipInput.Option value="small">Small</ChipInput.Option>
  * ```
+ *
+ * @example With icons
+ * ```tsx
+ * <ChipInput.Option value="react" iconLeft={<ReactIcon />}>
+ *   React
+ * </ChipInput.Option>
+ * ```
  */
 const ChipInputOption = forwardRef<HTMLButtonElement, ChipInputOptionProps>(
-  ({ value, children, disabled: optionDisabled, ...rest }, ref) => {
+  ({ value, children, disabled: optionDisabled, iconLeft, iconRight, ...rest }, ref) => {
     const context = useChipInputContext()
     const isDisabled = context.disabled || optionDisabled
+    const hasIcon = Boolean(iconLeft || iconRight)
 
     // Determine if this option is selected based on single or multiple mode
     let isSelected = false
@@ -186,6 +194,7 @@ const ChipInputOption = forwardRef<HTMLButtonElement, ChipInputOptionProps>(
     const dataAttrs = useDataAttrs({
       disabled: isDisabled,
       selected: isSelected,
+      ...(hasIcon && { "has-icon": true }),
     })
 
     return (
@@ -199,7 +208,9 @@ const ChipInputOption = forwardRef<HTMLButtonElement, ChipInputOptionProps>(
         {...dataAttrs}
         {...rest}
       >
+        {iconLeft}
         {children}
+        {iconRight}
       </button>
     )
   },

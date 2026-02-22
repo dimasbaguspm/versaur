@@ -8,6 +8,7 @@ export interface ChipInputDataAttrs {
   gap?: ChipInputGap;
   wrap?: ChipInputWrap;
   disabled?: boolean;
+  hasIcon?: boolean;
   invalid?: boolean;
   selected?: boolean;
 };

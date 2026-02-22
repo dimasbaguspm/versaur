@@ -44,15 +44,15 @@
   --_px: var(--vers-comp-chip-padding-x, var(--spacing-3));
   --_font-size: var(--vers-comp-chip-font-size, var(--font-size-sm));
   --_gap: var(--vers-comp-chip-gap, var(--spacing-1-5));
+  --_icon-gap: var(--vers-comp-chip-icon-gap, var(--spacing-2));
 
   /* Colors — private tokens default to outline variant */
   --_bg: var(--vers-comp-chip-bg, transparent);
   --_border: var(--vers-comp-chip-border, var(--color-border));
   --_text: var(--vers-comp-chip-text, var(--color-text));
 
-  /* Focus ring */
-  --_focus-ring-width: var(--vers-comp-chip-focus-ring-width, var(--focus-ring-width));
-  --_focus-ring-color: var(--vers-comp-chip-focus-ring-color, var(--color-primary-light));
+  /* Focus color */
+  --_focus-border-color: var(--vers-comp-chip-focus-border-color, var(--color-primary-focus));
 
   /* Layout */
   display: inline-flex;
@@ -62,14 +62,15 @@
   padding: 0 var(--_px);
   gap: var(--_gap);
 
-  /* Typography */
+  /* Typography — match Radio component */
   font-family: var(--font-sans);
   font-size: var(--_font-size);
   font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
   white-space: nowrap;
   color: var(--_text);
 
-  /* Visual */
+  /* Visual — match TextInput border style */
   background-color: var(--_bg);
   border: 1px solid var(--_border);
   border-radius: var(--radius-full);
@@ -86,9 +87,9 @@
   --_bg: var(--color-surface-hover);
 }
 
-/* Focus state */
+/* Focus state — border-based, matching Radio component */
 .option:focus-visible {
-  box-shadow: 0 0 0 var(--_focus-ring-width) var(--_focus-ring-color);
+  border-color: var(--_focus-border-color);
 }
 
 /* Selected state */
@@ -106,7 +107,7 @@
 /* Invalid state on field */
 .field[data-invalid] .option {
   --_border: var(--color-danger);
-  --_focus-ring-color: var(--color-danger);
+  --_focus-border-color: var(--color-danger);
 }
 
 .field[data-invalid] .option[data-selected] {
@@ -119,4 +120,9 @@
 .option[data-disabled] {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* Icon-text gap adjustment — reduces visual gap when icons are present */
+.option[data-has-icon] {
+  --_gap: var(--_icon-gap);
 }
