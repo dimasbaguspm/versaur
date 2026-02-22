@@ -6,6 +6,7 @@
   --color-primary-active: #a04d38;
   --color-primary-bold: #8f4230;
   --color-primary-soft: #fff8f6;
+  --color-primary-focus: #d99785;
 
   /* Secondary Color - Sage */
   --color-secondary: #5f9a7e;
@@ -14,6 +15,7 @@
   --color-secondary-active: #3d7057;
   --color-secondary-bold: #336050;
   --color-secondary-soft: #f6fffa;
+  --color-secondary-focus: #99b8a8;
 
   /* Outline/Tertiary Color - Mist */
   --color-outline: #84a5c0;
@@ -22,6 +24,7 @@
   --color-outline-active: #5a7fa0;
   --color-outline-bold: #5a7a99;
   --color-outline-soft: #f5faff;
+  --color-outline-focus: #b1c5d8;
 
   /* Danger Color - Red */
   --color-danger: #cc2f3e;
@@ -30,6 +33,7 @@
   --color-danger-active: #9e222d;
   --color-danger-bold: #8a1f2b;
   --color-danger-soft: #fff5f6;
+  --color-danger-focus: #e67f8d;
 
   /* Ghost/Neutral Color - Slate */
   --color-ghost: #3d405b;
@@ -38,6 +42,7 @@
   --color-ghost-active: #33354d;
   --color-ghost-bold: #23243a;
   --color-ghost-soft: #e3e4ea;
+  --color-ghost-focus: #8f92b8;
 
   /* Neutral Color - Light Gray */
   --color-neutral: #e9ecef;
@@ -46,6 +51,7 @@
   --color-neutral-active: #cfd4d9;
   --color-neutral-bold: #b0b3b8;
   --color-neutral-soft: #f8f9fa;
+  --color-neutral-focus: #f1f3f6;
 
   /* Success Color */
   --color-success: #4d9466;
@@ -54,6 +60,7 @@
   --color-success-active: #336b48;
   --color-success-bold: #2a5c3e;
   --color-success-soft: #f4fff9;
+  --color-success-focus: #93b8a5;
 
   /* Warning Color */
   --color-warning: #c47738;
@@ -62,6 +69,7 @@
   --color-warning-active: #985b28;
   --color-warning-bold: #854f22;
   --color-warning-soft: #fff1e4;
+  --color-warning-focus: #daa573;
 
   /* Info Color - Blue */
   --color-info: #6b8fad;
@@ -70,6 +78,7 @@
   --color-info-active: #4a6a8a;
   --color-info-bold: #3c5a7a;
   --color-info-soft: #f0f8ff;
+  --color-info-focus: #a7c1d1;
 
   /* Neutral Colors - White, Black, Gray */
   --color-white: #ffffff;
