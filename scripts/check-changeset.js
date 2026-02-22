@@ -16,7 +16,7 @@
 import { execSync } from "child_process"
 import { readdirSync } from "fs"
 
-const PUBLIC_PACKAGES = ["@versaur/react", "@versaur/icons"]
+const PUBLIC_PACKAGES = ["@versaur/react", "@versaur/icons", "@versaur/core"]
 
 // Get all staged files
 let stagedFiles
