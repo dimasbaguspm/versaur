@@ -6,28 +6,30 @@
 /* Checkbox wrapper (label element) */
 .checkbox {
   /* Sizing */
-  --_size: var(--vers-comp-checkbox-size, 1.25rem);
-  --_gap: var(--vers-comp-checkbox-gap, var(--spacing-2));
-  --_font-size: var(--vers-comp-checkbox-font-size, var(--font-size-base));
+  --_size: 1.25rem;
+  --_gap: var(--spacing-2);
 
   /* Colors */
-  --_border: var(--vers-comp-checkbox-border, var(--color-border));
-  --_bg: var(--vers-comp-checkbox-bg, transparent);
-  --_checked-bg: var(--vers-comp-checkbox-checked-bg, var(--color-primary));
-  --_checked-border: var(--vers-comp-checkbox-checked-border, var(--color-primary));
-  --_checkmark-color: var(--vers-comp-checkbox-checkmark-color, var(--color-white));
+  --_border: var(--color-border);
+  --_bg: transparent;
+  --_checked-bg: var(--color-primary);
+  --_checked-border: var(--color-primary);
+  --_checkmark-color: var(--color-white);
 
   /* Focus ring */
-  --_focus-ring-color: var(--vers-comp-checkbox-focus-ring-color, var(--color-primary-light));
+  --_focus-ring-color: var(--color-primary-focus);
+
+  /* Typography - match Radio component */
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
 
   /* Layout */
   display: inline-flex;
   align-items: center;
   gap: var(--_gap);
   cursor: pointer;
-  font-size: var(--_font-size);
-  line-height: 1.5;
-  color: var(--color-text);
   user-select: none;
 }
 
@@ -64,7 +66,7 @@
   height: 70%;
   border: solid var(--_checkmark-color);
   border-width: 0 2px 2px 0;
-  transform: rotate(45deg) translateY(-10%);
+  transform: rotate(45deg) translate(-10%, -15%);
 }
 
 .input:checked + .indicator {
@@ -90,23 +92,7 @@
 
 /* Focus state */
 .input:focus-visible + .indicator {
-  outline: none;
   border-color: var(--_focus-ring-color);
-}
-
-/* Invalid state */
-.checkbox[data-invalid] .indicator {
-  border-color: var(--color-danger);
-}
-
-.checkbox[data-invalid] .input:checked + .indicator {
-  background-color: var(--color-danger);
-  border-color: var(--color-danger);
-}
-
-.checkbox[data-invalid] .input:indeterminate + .indicator {
-  background-color: var(--color-danger);
-  border-color: var(--color-danger);
 }
 
 /* Disabled state */
@@ -122,12 +108,6 @@
 /* Label text */
 .label {
   flex: 1;
-  /* Typography */
-  font-size: var(--font-size-base);
-  font-weight: 500;
-  line-height: 1.5;
-  color: var(--color-text);
-  cursor: inherit;
 }
 
 /* Required indicator (red asterisk) */

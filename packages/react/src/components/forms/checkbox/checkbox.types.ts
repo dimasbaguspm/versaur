@@ -7,11 +7,6 @@ export interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement
   children?: ReactNode
 
   /**
-   * Invalid/error state
-   */
-  invalid?: boolean
-
-  /**
    * Required field indicator
    */
   required?: boolean

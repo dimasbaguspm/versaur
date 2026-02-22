@@ -19,10 +19,9 @@ import type { CheckboxProps } from "./checkbox.types"
  * ```
  */
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ invalid = false, disabled = false, required = false, children, className, ...rest }, ref) => {
+  ({ disabled = false, required = false, children, className, ...rest }, ref) => {
     const dataAttrs = useDataAttrs({
       disabled,
-      invalid,
       required,
     })
 
@@ -34,7 +33,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           className={checkboxStyles.input}
           disabled={disabled}
           required={required}
-          aria-invalid={invalid || undefined}
           aria-required={required || undefined}
           {...rest}
         />
