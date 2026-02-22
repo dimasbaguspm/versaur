@@ -17,9 +17,6 @@
   --_py: var(--vers-comp-textarea-padding-y, var(--spacing-2));
   --_font-size: var(--vers-comp-textarea-font-size, var(--font-size-base));
 
-  /* Border radius */
-  --_radius: var(--vers-comp-textarea-radius, var(--radius-md));
-
   /* Colors — three-layer token pattern, defaults to outline */
   --_bg: var(--vers-comp-textarea-bg, transparent);
   --_border: var(--vers-comp-textarea-border, var(--color-border));
@@ -29,7 +26,7 @@
   /* Focus ring */
   --_focus-ring-width: var(--vers-comp-textarea-focus-ring-width, 1px);
   --_focus-ring-offset: var(--vers-comp-textarea-focus-ring-offset, 0);
-  --_focus-ring-color: var(--vers-comp-textarea-focus-ring-color, var(--color-primary-light));
+  --_focus-ring-color: var(--vers-comp-textarea-focus-ring-color, var(--color-primary-focus));
 
   /* Layout */
   width: 100%;
@@ -44,7 +41,6 @@
   /* Visual */
   background-color: var(--_bg);
   border: 1px solid var(--_border);
-  border-radius: var(--_radius);
 
   /* Interaction */
   outline: none;
