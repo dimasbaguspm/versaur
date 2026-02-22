@@ -25,8 +25,5 @@ export type { RadioGroupRootProps, RadioGroupOptionProps } from "./radio-group"
 export { CheckboxGroup } from "./checkbox-group"
 export type { CheckboxGroupRootProps, CheckboxGroupOptionProps } from "./checkbox-group"
 
-export { ChipSingleInput } from "./chip-single-input"
-export type { ChipSingleInputRootProps, ChipSingleInputOptionProps } from "./chip-single-input"
-
-export { ChipMultipleInput } from "./chip-multiple-input"
-export type { ChipMultipleInputRootProps, ChipMultipleInputOptionProps } from "./chip-multiple-input"
+export { ChipInput } from "./chip-input"
+export type { ChipInputRootProps, ChipInputOptionProps } from "./chip-input"

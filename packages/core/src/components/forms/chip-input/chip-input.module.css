@@ -1,6 +1,6 @@
 /*
- * ChipMultipleInput component
- * Multi-selection chip input (checkbox alternative with custom UI)
+ * ChipInput component
+ * Unified chip input (single or multiple selection via discriminated union)
  */
 
 /* Field wrapper (contains label, options container, helper/error) */
@@ -39,20 +39,20 @@
 
 /* Individual chip option button */
 .option {
-  /* Sizing — locked to medium */
-  --_height: 2rem;
-  --_px: var(--spacing-3);
-  --_font-size: var(--font-size-sm);
-  --_gap: var(--spacing-1-5);
+  /* Sizing — private tokens default to medium */
+  --_height: var(--vers-comp-chip-height, 2rem);
+  --_px: var(--vers-comp-chip-padding-x, var(--spacing-3));
+  --_font-size: var(--vers-comp-chip-font-size, var(--font-size-sm));
+  --_gap: var(--vers-comp-chip-gap, var(--spacing-1-5));
 
-  /* Colors — locked to outline variant */
-  --_bg: transparent;
-  --_border: var(--color-border);
-  --_text: var(--color-text);
+  /* Colors — private tokens default to outline variant */
+  --_bg: var(--vers-comp-chip-bg, transparent);
+  --_border: var(--vers-comp-chip-border, var(--color-border));
+  --_text: var(--vers-comp-chip-text, var(--color-text));
 
   /* Focus ring */
-  --_focus-ring-width: var(--focus-ring-width);
-  --_focus-ring-color: var(--color-primary-light);
+  --_focus-ring-width: var(--vers-comp-chip-focus-ring-width, var(--focus-ring-width));
+  --_focus-ring-color: var(--vers-comp-chip-focus-ring-color, var(--color-primary-light));
 
   /* Layout */
   display: inline-flex;
@@ -95,12 +95,24 @@
 .option[data-selected] {
   --_bg: var(--color-primary);
   --_border: var(--color-primary);
-  --_text: #ffffff;
+  --_text: var(--color-white);
 }
 
 .option[data-selected]:hover:not([data-disabled]) {
   --_bg: var(--color-primary-hover);
   --_border: var(--color-primary-hover);
+}
+
+/* Invalid state on field */
+.field[data-invalid] .option {
+  --_border: var(--color-danger);
+  --_focus-ring-color: var(--color-danger);
+}
+
+.field[data-invalid] .option[data-selected] {
+  --_bg: var(--color-danger);
+  --_border: var(--color-danger);
+  --_text: #ffffff;
 }
 
 /* Disabled state */
