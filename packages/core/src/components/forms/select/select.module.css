@@ -20,9 +20,6 @@
   --_arrow-size: var(--vers-comp-select-arrow-size, 1.25rem);
   --_arrow-gap: var(--vers-comp-select-arrow-gap, var(--spacing-2));
 
-  /* Border radius */
-  --_radius: var(--vers-comp-select-radius, var(--radius-md));
-
   /* Colors — three-layer token pattern, defaults to outline */
   --_bg: var(--vers-comp-select-bg, transparent);
   --_border: var(--vers-comp-select-border, var(--color-border));
@@ -30,7 +27,7 @@
   --_arrow-color: var(--vers-comp-select-arrow-color, var(--color-text-muted));
 
   /* Focus ring */
-  --_focus-ring-color: var(--vers-comp-select-focus-ring-color, var(--color-primary-light));
+  --_focus-ring-color: var(--vers-comp-select-focus-ring-color, var(--color-primary-focus));
 
   /* Layout */
   width: 100%;
@@ -47,7 +44,6 @@
   /* Visual */
   background-color: var(--_bg);
   border: 1px solid var(--_border);
-  border-radius: var(--_radius);
 
   /* Custom dropdown arrow */
   appearance: none;
