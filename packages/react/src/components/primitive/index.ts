@@ -22,6 +22,9 @@ export type { LoaderProps } from "./loader"
 export { Badge } from "./badge"
 export type { BadgeProps, BadgeVariant, BadgeSize, BadgeShape } from "./badge"
 
+export { Banner } from "./banner"
+export type { BannerProps, BannerVariant } from "./banner"
+
 export { Dot } from "./dot"
 export type { DotProps, DotVariant, DotSize } from "./dot"
 

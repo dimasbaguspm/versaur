@@ -1,0 +1,82 @@
+/* Base Banner Styles */
+.banner {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  width: 100%;
+
+  /* Typography */
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+
+  /* Padding & Border */
+  padding: var(--spacing-3);
+  border-radius: var(--radius-sm);
+  border-left: 4px solid transparent;
+
+  /* Sizing — private tokens */
+  --_bg: var(--vers-comp-banner-bg, var(--color-primary-soft));
+  --_border-color: var(--vers-comp-banner-border-color, var(--color-primary));
+  --_text-color: var(--vers-comp-banner-text-color, var(--color-text-primary));
+  --_icon-color: var(--vers-comp-banner-icon-color, var(--color-primary));
+
+  background-color: var(--_bg);
+  border-left-color: var(--_border-color);
+  color: var(--_text-color);
+}
+
+/* Icon styling */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--_icon-color);
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Content area */
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--spacing-1);
+}
+
+/* Close button - ButtonIcon wrapper */
+.close {
+  flex-shrink: 0;
+  color: var(--_icon-color);
+}
+
+/* ============================================
+   VARIANT STYLES — danger, warning, info
+   ============================================ */
+
+.banner[data-variant="danger"] {
+  --_bg: var(--color-danger-soft);
+  --_border-color: var(--color-danger);
+  --_icon-color: var(--color-danger);
+}
+
+.banner[data-variant="warning"] {
+  --_bg: var(--color-warning-soft);
+  --_border-color: var(--color-warning);
+  --_icon-color: var(--color-warning);
+}
+
+.banner[data-variant="info"] {
+  --_bg: var(--color-info-soft);
+  --_border-color: var(--color-info);
+  --_icon-color: var(--color-info);
+}
