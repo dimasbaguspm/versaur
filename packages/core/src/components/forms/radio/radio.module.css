@@ -50,7 +50,7 @@
   justify-content: center;
   width: var(--_size);
   height: var(--_size);
-  border: 2px solid var(--_border);
+  border: 1px solid var(--_border);
   border-radius: 50%;
   background-color: var(--_bg);
   flex-shrink: 0;
@@ -75,6 +75,11 @@
 /* Focus state */
 .input:focus-visible + .indicator {
   border-color: var(--_focus-ring-color);
+}
+
+/* Invalid state */
+.radio[data-invalid] .indicator {
+  border-color: var(--color-danger);
 }
 
 /* Disabled state */
