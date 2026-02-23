@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
+import { useId } from "react"
 
 import { Tooltip } from "../index"
 
@@ -32,14 +33,17 @@ type Story = StoryObj<typeof meta>
  * Default Tooltip component with auto-placement that detects best direction based on viewport space.
  */
 export const Default: Story = {
-  render: (args) => (
-    <div style={{ padding: "2rem" }}>
-      <Tooltip {...args} id="story-default-tooltip">
-        <Tooltip.Text>This is a helpful tooltip message</Tooltip.Text>
-      </Tooltip>
-      <button {...Tooltip.getTooltipTriggerProps({ id: "story-default-tooltip" })}>Hover me</button>
-    </div>
-  ),
+  render: (args) => {
+    const id = useId()
+    return (
+      <div style={{ padding: "2rem" }}>
+        <Tooltip {...args} id={id}>
+          <Tooltip.Text>This is a helpful tooltip message</Tooltip.Text>
+        </Tooltip>
+        <button {...Tooltip.getTooltipTriggerProps({ id })}>Hover me</button>
+      </div>
+    )
+  },
   args: {
     triggerType: "hover",
   },
