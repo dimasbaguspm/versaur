@@ -2,12 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react"
 import { AppLayout } from "../index"
 
 const meta = {
-  argTypes: {
-    variant: {
-      control: "select",
-      options: ["classic", "full", "mobile", "split"],
-    },
-  },
   component: AppLayout,
   parameters: {
     layout: "fullscreen",
@@ -19,10 +13,10 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Classic: Story = {
-  render: (args) => (
+export const Default: Story = {
+  render: () => (
     <div style={{ height: "500px", border: "1px solid #ddd" }}>
-      <AppLayout {...args} variant="classic">
+      <AppLayout>
         <AppLayout.Header>
           <div
             style={{
@@ -51,48 +45,12 @@ export const Classic: Story = {
       </AppLayout>
     </div>
   ),
-  args: {
-    variant: "classic",
-  },
 }
 
-export const FullWidth: Story = {
-  render: (args) => (
+export const WithRightSidebar: Story = {
+  render: () => (
     <div style={{ height: "500px", border: "1px solid #ddd" }}>
-      <AppLayout {...args} variant="full">
-        <AppLayout.Header>
-          <div
-            style={{
-              padding: "0 1.5rem",
-              display: "flex",
-              alignItems: "center",
-              height: "100%",
-              backgroundColor: "#f0f0f0",
-            }}
-          >
-            Header
-          </div>
-        </AppLayout.Header>
-
-        <AppLayout.Body>
-          <AppLayout.Main>
-            <div style={{ height: "200vh", padding: "2rem", backgroundColor: "#ffffff" }}>
-              Main Content (Full Width - Scrollable - 200vh)
-            </div>
-          </AppLayout.Main>
-        </AppLayout.Body>
-      </AppLayout>
-    </div>
-  ),
-  args: {
-    variant: "full",
-  },
-}
-
-export const Split: Story = {
-  render: (args) => (
-    <div style={{ height: "500px", border: "1px solid #ddd" }}>
-      <AppLayout {...args} variant="split">
+      <AppLayout>
         <AppLayout.Header>
           <div
             style={{
@@ -125,62 +83,12 @@ export const Split: Story = {
       </AppLayout>
     </div>
   ),
-  args: {
-    variant: "split",
-  },
 }
 
-export const Mobile: Story = {
-  render: (args) => (
-    <div style={{ height: "500px", maxWidth: "400px", border: "1px solid #ddd" }}>
-      <AppLayout {...args} variant="mobile">
-        <AppLayout.Header>
-          <div
-            style={{
-              padding: "0 1rem",
-              display: "flex",
-              alignItems: "center",
-              height: "100%",
-              backgroundColor: "#f0f0f0",
-            }}
-          >
-            Header
-          </div>
-        </AppLayout.Header>
-
-        <AppLayout.Body>
-          <AppLayout.Main>
-            <div style={{ height: "200vh", padding: "1rem", backgroundColor: "#ffffff" }}>
-              Main Content (Scrollable - 200vh)
-            </div>
-          </AppLayout.Main>
-
-          <AppLayout.Bottom>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-around",
-                padding: "0.5rem",
-                backgroundColor: "#e8e8e8",
-                height: "100%",
-              }}
-            >
-              Bottom Navigation
-            </div>
-          </AppLayout.Bottom>
-        </AppLayout.Body>
-      </AppLayout>
-    </div>
-  ),
-  args: {
-    variant: "mobile",
-  },
-}
-
-export const Centered: Story = {
-  render: (args) => (
+export const WithFooter: Story = {
+  render: () => (
     <div style={{ height: "500px", border: "1px solid #ddd" }}>
-      <AppLayout {...args} variant="full">
+      <AppLayout>
         <AppLayout.Header>
           <div
             style={{
@@ -196,7 +104,50 @@ export const Centered: Story = {
         </AppLayout.Header>
 
         <AppLayout.Body>
-          <AppLayout.Main placement="centred">
+          <AppLayout.Main>
+            <div style={{ height: "200vh", padding: "2rem", backgroundColor: "#ffffff" }}>
+              Main Content (Scrollable - 200vh)
+            </div>
+          </AppLayout.Main>
+        </AppLayout.Body>
+
+        <AppLayout.Footer>
+          <div
+            style={{
+              padding: "1rem",
+              backgroundColor: "#e8e8e8",
+              textAlign: "center",
+              fontSize: "0.875rem",
+            }}
+          >
+            Footer - Stays at bottom of viewport
+          </div>
+        </AppLayout.Footer>
+      </AppLayout>
+    </div>
+  ),
+}
+
+export const Centered: Story = {
+  render: () => (
+    <div style={{ height: "500px", border: "1px solid #ddd" }}>
+      <AppLayout>
+        <AppLayout.Header>
+          <div
+            style={{
+              padding: "0 1.5rem",
+              display: "flex",
+              alignItems: "center",
+              height: "100%",
+              backgroundColor: "#f0f0f0",
+            }}
+          >
+            Header
+          </div>
+        </AppLayout.Header>
+
+        <AppLayout.Body centered>
+          <AppLayout.Main>
             <div style={{ backgroundColor: "#ffeeee", padding: "2rem", minHeight: "400vh" }}>
               <h2>Centered Content</h2>
               <p>
@@ -216,9 +167,9 @@ export const FullPageViewport: Story = {
   parameters: {
     layout: "fullscreen",
   },
-  render: (args) => (
+  render: () => (
     <div style={{ "--vers-comp-app-layout-min-height": "100vh" } as React.CSSProperties}>
-      <AppLayout {...args} variant="classic">
+      <AppLayout>
         <AppLayout.Header>
           <div
             style={{
@@ -260,24 +211,21 @@ export const FullPageViewport: Story = {
               </p>
             </div>
           </AppLayout.Main>
-
-          <AppLayout.Bottom>
-            <div
-              style={{
-                padding: "1rem",
-                backgroundColor: "#e8e8e8",
-                textAlign: "center",
-                fontSize: "0.875rem",
-              }}
-            >
-              Footer - Stays at bottom of viewport
-            </div>
-          </AppLayout.Bottom>
         </AppLayout.Body>
+
+        <AppLayout.Footer>
+          <div
+            style={{
+              padding: "1rem",
+              backgroundColor: "#e8e8e8",
+              textAlign: "center",
+              fontSize: "0.875rem",
+            }}
+          >
+            Footer - Stays at bottom of viewport
+          </div>
+        </AppLayout.Footer>
       </AppLayout>
     </div>
   ),
-  args: {
-    variant: "classic",
-  },
 }

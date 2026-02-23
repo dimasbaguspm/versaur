@@ -2,7 +2,7 @@
 declare const styles: {
   readonly 'app-layout': string;
   readonly 'app-layout-body': string;
-  readonly 'app-layout-bottom': string;
+  readonly 'app-layout-footer': string;
   readonly 'app-layout-header': string;
   readonly 'app-layout-main': string;
   readonly 'app-layout-side-left': string;

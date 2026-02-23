@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: () => (
     <div style={{ height: "400px", display: "flex", flexDirection: "column" }}>
-      <AppLayout variant="full">
+      <AppLayout>
         <AppLayout.Header>
           <TopBar>
             <TopBar.Leading>
@@ -40,8 +40,8 @@ export const Default: Story = {
             </TopBar.Trailing>
           </TopBar>
         </AppLayout.Header>
-        <AppLayout.Body>
-          <AppLayout.Main placement="centred">
+        <AppLayout.Body centered>
+          <AppLayout.Main>
             <div style={{ padding: "2rem" }}>
               <Text size="lg" weight="bold">
                 Main Content

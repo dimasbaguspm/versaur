@@ -7,10 +7,8 @@
   --_height: var(--vers-comp-app-layout-height, 100vh);
   --_min-height: var(--vers-comp-app-layout-min-height, auto);
   --_header-height: var(--vers-comp-app-layout-header-height, 3.5rem);
-  --_bottom-height: var(--vers-comp-app-layout-bottom-height, 4rem);
-  --_sidebar-width: var(--vers-comp-app-layout-sidebar-width, 15rem);
+  --_footer-height: var(--vers-comp-app-layout-footer-height, 4rem);
   --_main-max-width: var(--vers-comp-app-layout-main-max-width, 1200px);
-  --_transition: all var(--vers-transition-base) ease-out;
 
   /* Use dynamic viewport height on mobile to account for address bar */
   height: 100dvh;
@@ -28,69 +26,45 @@
   z-index: 10;
   border-bottom: 1px solid var(--vers-color-border, #e5e5e5);
   background-color: var(--vers-color-background, #ffffff);
-  transition: var(--_transition);
 }
 
-/* Body — fills remaining space, hosts the inner grid */
+/* Body — flex row, fills remaining space, contains sidebars and main */
 .app-layout-body {
   flex: 1;
-  display: grid;
+  display: flex;
+  flex-direction: row;
   overflow: hidden;
   min-height: 0;
-  transition: var(--_transition);
-
-  /* Default: classic (left sidebar + main) */
-  grid-template-areas:
-    "side-left main"
-    "bottom    bottom";
-  grid-template-columns: var(--_sidebar-width) 1fr;
-  grid-template-rows: 1fr auto;
 }
 
-/* VARIANT: classic */
-.app-layout[data-variant="classic"] .app-layout-body {
-  grid-template-areas:
-    "side-left main"
-    "bottom    bottom";
-  grid-template-columns: var(--_sidebar-width) 1fr;
-  grid-template-rows: 1fr auto;
+/* Body[centered] — constrains main content to max-width and centers it */
+.app-layout-body[data-centered] .app-layout-main {
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--vers-spacing-4, 1rem);
 }
 
-/* VARIANT: split — both sidebars */
-.app-layout[data-variant="split"] .app-layout-body {
-  grid-template-areas:
-    "side-left main side-right"
-    "bottom    bottom  bottom";
-  grid-template-columns: var(--_sidebar-width) 1fr var(--_sidebar-width);
-  grid-template-rows: 1fr auto;
+.app-layout-body[data-centered] .app-layout-main > * {
+  max-width: var(--_main-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  min-width: 0;
 }
 
-/* VARIANT: full — no sidebars */
-.app-layout[data-variant="full"] .app-layout-body {
-  grid-template-areas:
-    "main"
-    "bottom";
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr auto;
-}
-
-/* VARIANT: mobile — single column, no sidebars */
-.app-layout[data-variant="mobile"] .app-layout-body {
-  grid-template-areas:
-    "main"
-    "bottom";
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr auto;
+@media (min-width: 768px) {
+  .app-layout-body[data-centered] .app-layout-main {
+    padding: 0 var(--vers-spacing-6, 1.5rem);
+  }
 }
 
 /* REGION: Main */
 .app-layout-main {
-  grid-area: main;
+  flex: 1 1 auto;
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
   min-width: 0;
-  transition: var(--_transition);
 }
 
 /* Custom scrollbar for main content */
@@ -112,94 +86,29 @@
   background: var(--vers-color-text-tertiary, #999);
 }
 
-/* ============================================
-   PLACEMENT: full-width vs centred
-   ============================================ */
-
-/* Centred: Constrain width and center children horizontally */
-.app-layout-main[data-placement="centred"] {
-  display: flex;
-  flex-direction: column;
-  padding: 0 var(--vers-spacing-4, 1rem);
-}
-
-.app-layout-main[data-placement="centred"] > * {
-  max-width: var(--_main-max-width);
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  min-width: 0;
-}
-
-@media (min-width: 768px) {
-  .app-layout-main[data-placement="centred"] {
-    padding: 0 var(--vers-spacing-6, 1.5rem);
-  }
-}
-
 /* REGION: Side left */
 .app-layout-side-left {
-  grid-area: side-left;
+  flex: 0 0 auto;
   overflow-y: auto;
   overflow-x: hidden;
   border-right: 1px solid var(--vers-color-border, #e5e5e5);
   background-color: var(--vers-color-background-secondary, #f9f9f9);
-  transition: var(--_transition);
 }
 
 /* REGION: Side right */
 .app-layout-side-right {
-  grid-area: side-right;
+  flex: 0 0 auto;
   overflow-y: auto;
   overflow-x: hidden;
   border-left: 1px solid var(--vers-color-border, #e5e5e5);
   background-color: var(--vers-color-background-secondary, #f9f9f9);
-  transition: var(--_transition);
 }
 
-/* REGION: Bottom */
-.app-layout-bottom {
-  grid-area: bottom;
+/* REGION: Footer */
+.app-layout-footer {
+  flex-shrink: 0;
   overflow-y: auto;
   overflow-x: hidden;
   border-top: 1px solid var(--vers-color-border, #e5e5e5);
   background-color: var(--vers-color-background, #ffffff);
-  transition: var(--_transition);
-}
-
-/* VISIBILITY: Header and Bottom overrides */
-.app-layout[data-hide-header] .app-layout-header {
-  display: none;
-}
-.app-layout[data-hide-bottom] .app-layout-bottom {
-  display: none;
-}
-
-/* Hide sidebars when not in the variant's grid area */
-.app-layout[data-variant="classic"] .app-layout-side-right,
-.app-layout[data-variant="full"] .app-layout-side-left,
-.app-layout[data-variant="full"] .app-layout-side-right,
-.app-layout[data-variant="mobile"] .app-layout-side-left,
-.app-layout[data-variant="mobile"] .app-layout-side-right {
-  display: none;
-}
-
-/* RESPONSIVE: Large screens */
-@media (min-width: 1280px) {
-  .app-layout {
-    --_sidebar-width: 16rem;
-  }
-}
-
-/* ACCESSIBILITY: Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .app-layout,
-  .app-layout-header,
-  .app-layout-body,
-  .app-layout-main,
-  .app-layout-side-left,
-  .app-layout-side-right,
-  .app-layout-bottom {
-    transition: none;
-  }
 }
