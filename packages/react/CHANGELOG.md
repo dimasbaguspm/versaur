@@ -1,5 +1,23 @@
 # @versaur/react
 
+## 1.0.10
+
+### Patch Changes
+
+- ed13c23: feat(features): implement Features component with styles and types
+- b10e139: feat(tooltip): implement auto-placement logic for better positioning
+- 32846d4: update AppLayout core file
+- 5dd8918: feat(form-group): implement FormGroup component with styles and types
+- a7f9895: feat(attribute-list): implement layout variants and update item props
+- 4271ea4: refactor: migrate component stories into appropriate directory
+- Updated dependencies [b358954]
+- Updated dependencies [ed13c23]
+- Updated dependencies [32846d4]
+- Updated dependencies [5dd8918]
+- Updated dependencies [e1cf23a]
+- Updated dependencies [a7f9895]
+  - @versaur/core@0.0.6
+
 ## 1.0.9
 
 ### Patch Changes
