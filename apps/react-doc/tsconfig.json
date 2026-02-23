@@ -6,6 +6,5 @@
     "baseUrl": ".",
     "customConditions": ["source"]
   },
-  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }
