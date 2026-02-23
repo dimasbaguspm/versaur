@@ -6,7 +6,7 @@
   padding: 0;
 
   /* Component tokens → private tokens */
-  --_color: var(--vers-comp-hr-color, var(--color-border));
+  --_color: var(--vers-comp-hr-color, var(--color-text-tertiary));
   --_style: var(--vers-comp-hr-style, solid);
   --_width: var(--vers-comp-hr-width, 1px);
   --_spacing: var(--vers-comp-hr-spacing, var(--spacing-4));
