@@ -98,6 +98,9 @@ export type { BottomBarRootProps, BottomBarItemProps } from "./bottom-bar"
 export { AppLayout } from "./app-layout"
 export type { AppLayoutRootProps, AppLayoutRegionProps } from "./app-layout"
 
+export { FormGroup } from "./form-group"
+export type { FormGroupProps, FormGroupFieldProps, FormGroupSeparatorProps } from "./form-group"
+
 export { Dialog } from "./dialog"
 export type { DialogRootProps } from "./dialog"
 
