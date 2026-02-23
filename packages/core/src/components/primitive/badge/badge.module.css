@@ -7,7 +7,7 @@
 
   /* Typography */
   font-family: var(--font-sans);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-medium);
   text-decoration: none;
   white-space: nowrap;
 
@@ -52,6 +52,7 @@
   flex-shrink: 0;
   width: 1em;
   height: 1em;
+  font-size: var(--_font-size);
   color: currentColor;
 }
 
