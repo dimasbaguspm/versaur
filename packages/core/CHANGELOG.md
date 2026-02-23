@@ -1,5 +1,14 @@
 # @versaur/core
 
+## 0.0.5
+
+### Patch Changes
+
+- e4928c9: update Drawer component to support top and bottom placements
+- 6256e9c: add button to Stacked accordion example and adjust padding in accordion styles
+- c18d8d5: style: update invalid state styles to use focus color for better accessibility
+- 52de028: update AppLayout to use dynamic viewport height on mobile for better layout adjustment
+
 ## 0.0.4
 
 ### Patch Changes

@@ -1,5 +1,15 @@
 # @versaur/react
 
+## 1.0.9
+
+### Patch Changes
+
+- Updated dependencies [e4928c9]
+- Updated dependencies [6256e9c]
+- Updated dependencies [c18d8d5]
+- Updated dependencies [52de028]
+  - @versaur/core@0.0.5
+
 ## 1.0.8
 
 ### Patch Changes
