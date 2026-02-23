@@ -1,5 +1,16 @@
 # @versaur/core
 
+## 0.0.6
+
+### Patch Changes
+
+- b358954: style(hr): update hr color variable to use new tertiary color
+- ed13c23: feat(features): implement Features component with styles and types
+- 32846d4: update AppLayout core file
+- 5dd8918: feat(form-group): implement FormGroup component with styles and types
+- e1cf23a: style(badge): update font-weight to medium and set font-size for icons
+- a7f9895: feat(attribute-list): implement layout variants and update item props
+
 ## 0.0.5
 
 ### Patch Changes
