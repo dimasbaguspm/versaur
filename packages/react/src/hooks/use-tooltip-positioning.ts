@@ -7,7 +7,7 @@ type Placement = "top" | "bottom" | "left" | "right"
 interface UseTooltipPositioningOptions {
   id: string
   tooltipRef: MutableRefObject<HTMLElement | null>
-  placement: Placement
+  placement?: Placement
   gap: number
   triggerType: TriggerType
 }
@@ -61,6 +61,31 @@ export function useTooltipPositioning({ id, tooltipRef, placement, gap, triggerT
     let hideTimeoutId: ReturnType<typeof setTimeout> | null = null
 
     /**
+     * Compute the best placement based on available viewport space.
+     * Prefers "bottom" if it has sufficient space (100px+), otherwise picks direction with most space.
+     */
+    const computePlacement = (): Placement => {
+      const rect = triggerEl.getBoundingClientRect()
+      const vw = window.innerWidth
+      const vh = window.innerHeight
+      const SUITABLE_SPACE = 100 // Minimum space for tooltip to be comfortable
+
+      const space = {
+        top: rect.top,
+        bottom: vh - rect.bottom,
+        left: rect.left,
+        right: vw - rect.right,
+      }
+
+      if (space.bottom >= SUITABLE_SPACE) {
+        return "bottom"
+      }
+
+      // Otherwise pick direction with most available space
+      return (Object.entries(space) as [Placement, number][]).reduce((best, cur) => (cur[1] > best[1] ? cur : best))[0]
+    }
+
+    /**
      * Show tooltip with proper positioning via CSS Anchor Positioning
      */
     const showTooltip = () => {
@@ -69,6 +94,10 @@ export function useTooltipPositioning({ id, tooltipRef, placement, gap, triggerT
         clearTimeout(hideTimeoutId)
         hideTimeoutId = null
       }
+
+      // Set placement: use explicit placement if provided, otherwise compute auto
+      const finalPlacement = placement || computePlacement()
+      tooltipEl.dataset.placement = finalPlacement
 
       if (!tooltipEl.matches(":popover-open")) {
         tooltipEl.showPopover()
@@ -174,5 +203,5 @@ export function useTooltipPositioning({ id, tooltipRef, placement, gap, triggerT
       tooltipEl.removeEventListener("mouseenter", handleTooltipMouseEnter)
       tooltipEl.removeEventListener("mouseleave", handleTooltipMouseLeave)
     }
-  }, [id, placement, gap, triggerType])
+  }, [id, gap, triggerType])
 }

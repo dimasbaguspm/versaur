@@ -11,10 +11,6 @@ export interface TooltipGetTriggerPropsOptions {
    * Gap between tooltip and trigger in pixels
    */
   gap?: number
-  /**
-   * Trigger type for determining popoverTarget behavior
-   */
-  triggerType?: "focus" | "hover" | "all"
   [key: string]: any
 }
 
@@ -28,7 +24,7 @@ export interface TooltipProps extends HTMLAttributes<HTMLDivElement> {
    */
   children: ReactNode
   /**
-   * Placement relative to the trigger
+   * Placement relative to the trigger. Defaults to "auto" which detects best placement based on viewport space.
    */
   placement?: TooltipPlacement
   /**

@@ -1,11 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react"
+
 import { Tooltip } from "../index"
 
 const meta = {
   argTypes: {
     placement: {
       control: "select",
-      options: ["top", "bottom", "left", "right"],
+      options: [undefined, "top", "bottom", "left", "right"],
     },
     triggerType: {
       control: "select",
@@ -28,30 +29,61 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 /**
- * Default Tooltip component with standard placement and hover trigger.
+ * Default Tooltip component with auto-placement that detects best direction based on viewport space.
  */
 export const Default: Story = {
   render: (args) => (
     <div style={{ padding: "2rem" }}>
-      <Tooltip {...args} id="story-default-tooltip" placement="bottom">
+      <Tooltip {...args} id="story-default-tooltip">
         <Tooltip.Text>This is a helpful tooltip message</Tooltip.Text>
       </Tooltip>
       <button {...Tooltip.getTooltipTriggerProps({ id: "story-default-tooltip" })}>Hover me</button>
     </div>
   ),
   args: {
-    placement: "bottom",
     triggerType: "hover",
   },
 }
 
 /**
+ * Auto-placement in action: position the button in different corners to see the tooltip
+ * automatically adjust its placement based on available viewport space.
+ */
+export const AutoPlacement: Story = {
+  render: (args) => (
+    <div
+      style={{
+        padding: "2rem",
+        minHeight: "400px",
+        display: "flex",
+        alignItems: "flex-start",
+        justifyContent: "flex-start",
+      }}
+    >
+      <div style={{ position: "relative" }}>
+        <Tooltip {...args} id="story-auto-tooltip">
+          <Tooltip.Text>This tooltip automatically positions itself in the direction with most space</Tooltip.Text>
+        </Tooltip>
+        <button {...Tooltip.getTooltipTriggerProps({ id: "story-auto-tooltip" })}>Hover me</button>
+      </div>
+    </div>
+  ),
+  args: {
+    triggerType: "hover",
+  },
+  parameters: {
+    layout: "fullscreen",
+  },
+}
+
+/**
  * Showcase all placement variants in a grid.
- * Displays all 4 placement options (top, bottom, left, right)
+ * Displays all placement options: auto (default), top, bottom, left, right
  */
 export const Placements: Story = {
   render: (args) => {
-    const placements: Array<[string, "top" | "bottom" | "left" | "right"]> = [
+    const placements: Array<[string, "top" | "bottom" | "left" | "right" | undefined]> = [
+      ["Auto", undefined],
       ["Top", "top"],
       ["Bottom", "bottom"],
       ["Left", "left"],
@@ -106,22 +138,18 @@ export const TriggerTypes: Story = {
 
       <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
         <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Focus Trigger</div>
-        <Tooltip {...args} id="story-focus-tooltip" placement="bottom" triggerType="focus">
+        <Tooltip {...args} id="story-focus-tooltip" triggerType="focus">
           <Tooltip.Text>Shows on focus</Tooltip.Text>
         </Tooltip>
-        <button {...Tooltip.getTooltipTriggerProps({ id: "story-focus-tooltip", triggerType: "focus" })}>
-          Focus me
-        </button>
+        <button {...Tooltip.getTooltipTriggerProps({ id: "story-focus-tooltip" })}>Focus me</button>
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
         <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>All Trigger</div>
-        <Tooltip {...args} id="story-all-tooltip" placement="bottom" triggerType="all">
+        <Tooltip {...args} id="story-all-tooltip" triggerType="all">
           <Tooltip.Text>Shows on hover or focus</Tooltip.Text>
         </Tooltip>
-        <button {...Tooltip.getTooltipTriggerProps({ id: "story-all-tooltip", triggerType: "all" })}>
-          Hover or focus
-        </button>
+        <button {...Tooltip.getTooltipTriggerProps({ id: "story-all-tooltip" })}>Hover or focus</button>
       </div>
     </div>
   ),
@@ -136,7 +164,7 @@ export const TriggerTypes: Story = {
 export const LongContent: Story = {
   render: (args) => (
     <div style={{ padding: "2rem" }}>
-      <Tooltip {...args} id="story-long-tooltip" placement="bottom">
+      <Tooltip {...args} id="story-long-tooltip">
         <Tooltip.Text maxWidth="250px">
           This is a longer tooltip message that spans multiple lines. It provides additional context and detailed
           information about the element or action.

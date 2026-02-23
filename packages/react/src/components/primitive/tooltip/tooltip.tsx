@@ -43,7 +43,7 @@ const DEFAULT_GAP = 8
  * ```
  */
 const TooltipRoot = forwardRef<HTMLDivElement, TooltipProps>(
-  ({ id, children, placement = "top", gap = DEFAULT_GAP, triggerType = "all", style, className, ...props }, ref) => {
+  ({ id, children, placement, gap = DEFAULT_GAP, triggerType = "all", style, className, ...props }, ref) => {
     const tooltipRef = useRef<HTMLDivElement | null>(null)
     const dataAttrs = useDataAttrs({
       placement,
