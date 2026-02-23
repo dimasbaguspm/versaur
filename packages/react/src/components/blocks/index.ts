@@ -101,6 +101,9 @@ export type { AppLayoutRootProps, AppLayoutRegionProps } from "./app-layout"
 export { FormGroup } from "./form-group"
 export type { FormGroupProps, FormGroupFieldProps, FormGroupSeparatorProps } from "./form-group"
 
+export { Features } from "./features"
+export type { FeaturesProps, FeaturesItemProps, FeaturesDirection } from "./features"
+
 export { Dialog } from "./dialog"
 export type { DialogRootProps } from "./dialog"
 

@@ -1,0 +1,37 @@
+/* Root */
+.features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Direction: column (default) */
+.features[data-direction="column"] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--vers-comp-features-gap, var(--spacing-2));
+}
+
+/* Direction: row */
+.features[data-direction="row"] {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--vers-comp-features-gap, var(--spacing-3));
+}
+
+/* Item */
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--vers-comp-features-item-gap, var(--spacing-1));
+}
+
+/* Icon wrapper */
+.icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--vers-comp-features-icon-color, var(--color-text-secondary));
+}
