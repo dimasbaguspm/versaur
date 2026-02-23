@@ -47,6 +47,7 @@
     "changeset:add": "changeset add"
   },
   "devDependencies": {
+    "@storybook/react": "^8.6.17",
     "@types/react": "^18.3.28",
     "@types/react-dom": "^18.3.7",
     "@vitejs/plugin-react": "^4.7.0",

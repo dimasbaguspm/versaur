@@ -11,7 +11,7 @@ const config: StorybookConfig = {
     autodocs: "tag",
   },
   framework: "@storybook/react-vite",
-  stories: ["../src/**/*.stories.ts", "../src/**/*.stories.tsx"],
+  stories: ["../../../packages/react/src/**/*.stories.@(ts|tsx)"],
 };
 
 export default config;
