@@ -63,6 +63,7 @@ export const Stacked: Story = {
     <div style={{ width: "400px", display: "flex", flexDirection: "column", gap: 0 }}>
       <Accordion summary={<Accordion.Summary>First Accordion</Accordion.Summary>}>
         <Text>Content for the first accordion item. Click to expand or collapse.</Text>
+        <Button>Test</Button>
       </Accordion>
       <Accordion summary={<Accordion.Summary>Second Accordion</Accordion.Summary>}>
         <Text>Content for the second accordion item. Each accordion manages its own state independently.</Text>

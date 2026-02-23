@@ -15,6 +15,7 @@
 }
 
 .item:not(.group > .item) {
+  padding-bottom: var(--spacing-3);
   border-bottom: 1px solid var(--_border-color);
 }
 
