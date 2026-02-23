@@ -7,15 +7,6 @@
   max-width: none;
   max-height: none;
 
-  /* Positioning */
-  top: 0;
-  bottom: 0;
-  height: 100vh;
-
-  /* Sizing */
-  --_width: var(--vers-comp-drawer-width, 400px);
-  width: var(--_width);
-
   /* Styling */
   --_bg: var(--vers-comp-drawer-bg, var(--color-background));
   --_shadow: var(--vers-comp-drawer-shadow, var(--shadow-xl));
@@ -38,15 +29,47 @@
 
 /* Placement variants */
 .drawer[data-placement="left"] {
+  top: 0;
+  bottom: 0;
   left: 0;
   right: auto;
+  height: 100vh;
+  --_width: var(--vers-comp-drawer-width, 400px);
+  width: var(--_width);
   animation: slideInLeft 300ms ease-out;
 }
 
 .drawer[data-placement="right"] {
+  top: 0;
+  bottom: 0;
   right: 0;
   left: auto;
+  height: 100vh;
+  --_width: var(--vers-comp-drawer-width, 400px);
+  width: var(--_width);
   animation: slideInRight 300ms ease-out;
+}
+
+.drawer[data-placement="top"] {
+  top: 0;
+  bottom: auto;
+  left: 0;
+  right: 0;
+  width: 100%;
+  --_height: var(--vers-comp-drawer-height, 50vh);
+  height: var(--_height);
+  animation: slideInTop 300ms ease-out;
+}
+
+.drawer[data-placement="bottom"] {
+  bottom: 0;
+  top: auto;
+  left: 0;
+  right: 0;
+  width: 100%;
+  --_height: var(--vers-comp-drawer-height, 50vh);
+  height: var(--_height);
+  animation: slideInBottom 300ms ease-out;
 }
 
 /* Slide animations */
@@ -65,6 +88,24 @@
   }
   to {
     transform: translateX(0);
+  }
+}
+
+@keyframes slideInTop {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInBottom {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
   }
 }
 

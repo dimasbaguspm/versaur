@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
+import { DrawerPlacement } from "@versaur/core/blocks"
 import { BadgeGroup, ButtonGroup, Drawer, Tabs } from "@versaur/react/blocks"
 import { Badge, Button, Heading, Text } from "@versaur/react/primitive"
 import { useState } from "react"
@@ -7,7 +8,7 @@ const meta = {
   argTypes: {
     placement: {
       control: "select",
-      options: ["left", "right"],
+      options: ["left", "right", "top", "bottom"],
     },
   },
   args: {
@@ -26,76 +27,48 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 /**
- * Drawer positioned on the right side of the viewport.
- * Demonstrates basic drawer usage with title, close button, content, and footer actions.
+ * Demonstrates all drawer placements: Left, Right, Top, and Bottom.
+ * Click each button to see the drawer slide in from the respective direction.
  */
-export const RightPlacement: Story = {
+export const Placement: Story = {
   render: (args) => {
-    const [isOpen, setIsOpen] = useState(false)
-    return (
-      <>
-        <Button onClick={() => setIsOpen(true)} style={{ margin: "2rem" }}>
-          Open Drawer (Right)
-        </Button>
-        <Drawer {...args} open={isOpen} onOpenChange={setIsOpen} placement="right">
-          <Drawer.Header action={<Drawer.CloseButton onClick={() => setIsOpen(false)} />}>
-            <Heading as="h4">Product Info</Heading>
-          </Drawer.Header>
-          <Drawer.Body>
-            <Text>Home</Text>
-            <Text>About</Text>
-            <Text>Services</Text>
-            <Text>Contact</Text>
-          </Drawer.Body>
-          <Drawer.Footer>
-            <ButtonGroup fluid>
-              <Button variant="primary" onClick={() => setIsOpen(false)}>
-                Save
-              </Button>
-              <Button variant="ghost" onClick={() => setIsOpen(false)}>
-                Cancel
-              </Button>
-            </ButtonGroup>
-          </Drawer.Footer>
-        </Drawer>
-      </>
-    )
-  },
-}
+    const [openPlacement, setOpenPlacement] = useState<DrawerPlacement | null>(null)
 
-/**
- * Drawer positioned on the left side of the viewport.
- * Shows drawer from the opposite direction with identical structure to RightPlacement.
- */
-export const LeftPlacement: Story = {
-  render: (args) => {
-    const [isOpen, setIsOpen] = useState(false)
+    const DrawerContent = ({ placement }: { placement: DrawerPlacement }) => (
+      <Drawer
+        {...args}
+        open={openPlacement === placement}
+        onOpenChange={(open) => setOpenPlacement(open ? placement : null)}
+        placement={placement}
+      >
+        <Drawer.Header action={<Drawer.CloseButton onClick={() => setOpenPlacement(null)} />}>
+          <Heading as="h4">{placement.charAt(0).toUpperCase() + placement.slice(1)} Drawer</Heading>
+        </Drawer.Header>
+        <Drawer.Body>
+          <Text>This drawer is positioned on the {placement} side of the viewport.</Text>
+        </Drawer.Body>
+        <Drawer.Footer>
+          <ButtonGroup fluid>
+            <Button variant="primary" onClick={() => setOpenPlacement(null)}>
+              Close
+            </Button>
+          </ButtonGroup>
+        </Drawer.Footer>
+      </Drawer>
+    )
+
     return (
-      <>
-        <Button onClick={() => setIsOpen(true)} style={{ margin: "2rem" }}>
-          Open Drawer (Left)
-        </Button>
-        <Drawer {...args} open={isOpen} onOpenChange={setIsOpen} placement="left">
-          <Drawer.Header action={<Drawer.CloseButton onClick={() => setIsOpen(false)} />}>
-            <Heading as="h4">Product Info</Heading>
-          </Drawer.Header>
-          <Drawer.Body>
-            <Text>Item 1</Text>
-            <Text>Item 2</Text>
-            <Text>Item 3</Text>
-          </Drawer.Body>
-          <Drawer.Footer>
-            <ButtonGroup fluid>
-              <Button variant="primary" onClick={() => setIsOpen(false)}>
-                Confirm
-              </Button>
-              <Button variant="ghost" onClick={() => setIsOpen(false)}>
-                Cancel
-              </Button>
-            </ButtonGroup>
-          </Drawer.Footer>
-        </Drawer>
-      </>
+      <div style={{ padding: "2rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+        <Button onClick={() => setOpenPlacement("left")}>Open Left</Button>
+        <Button onClick={() => setOpenPlacement("right")}>Open Right</Button>
+        <Button onClick={() => setOpenPlacement("top")}>Open Top</Button>
+        <Button onClick={() => setOpenPlacement("bottom")}>Open Bottom</Button>
+
+        <DrawerContent placement="left" />
+        <DrawerContent placement="right" />
+        <DrawerContent placement="top" />
+        <DrawerContent placement="bottom" />
+      </div>
     )
   },
 }
