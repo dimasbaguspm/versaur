@@ -79,7 +79,7 @@
 
 /* Invalid state */
 .radio[data-invalid] .indicator {
-  border-color: var(--color-danger);
+  border-color: var(--color-danger-focus);
 }
 
 /* Disabled state */

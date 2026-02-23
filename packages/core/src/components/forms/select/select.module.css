@@ -67,8 +67,8 @@
 
 /* Invalid state (error) */
 .select[data-invalid] {
-  --_border: var(--color-danger);
-  --_focus-ring-color: var(--color-danger);
+  --_border: var(--color-danger-focus);
+  --_focus-ring-color: var(--color-danger-focus);
 }
 
 /* Disabled state */

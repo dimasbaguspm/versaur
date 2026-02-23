@@ -97,7 +97,7 @@
 
 /* Invalid state */
 .checkbox[data-invalid] .indicator {
-  border-color: var(--color-danger);
+  border-color: var(--color-danger-focus);
 }
 
 /* Disabled state */
@@ -118,7 +118,7 @@
 /* Required indicator (red asterisk) */
 .label[data-required]::after {
   content: " *";
-  color: var(--color-danger);
+  color: var(--color-danger-focus);
   margin-left: 0.125rem;
 }
 

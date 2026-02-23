@@ -7,7 +7,7 @@
   /* Typography */
   font-size: var(--font-size-sm);
   line-height: 1.5;
-  color: var(--color-text-muted);
+  color: var(--color-text-secondary);
 
   /* Spacing */
   display: block;

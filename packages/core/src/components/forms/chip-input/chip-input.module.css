@@ -106,7 +106,7 @@
 
 /* Invalid state on field */
 .field[data-invalid] .option {
-  --_border: var(--color-danger);
+  --_border: var(--color-danger-focus);
   --_focus-border-color: var(--color-danger);
 }
 
