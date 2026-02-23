@@ -12,7 +12,8 @@
   --_main-max-width: var(--vers-comp-app-layout-main-max-width, 1200px);
   --_transition: all var(--vers-transition-base) ease-out;
 
-  height: var(--_height);
+  /* Use dynamic viewport height on mobile to account for address bar */
+  height: 100dvh;
   min-height: var(--_min-height);
   background-color: var(--vers-color-background, #ffffff);
   color: var(--vers-color-text-primary);
