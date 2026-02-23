@@ -132,10 +132,8 @@ packages/core/src/components/<category>/<name>/
 packages/react/src/components/<category>/<name>/
   <name>.tsx              — React component (forwardRef, useDataAttrs)
   <name>.types.ts         — Props interface (imports types from @versaur/core)
+  <name>.stories.tsx      — Storybook stories for component documentation (colocated)
   index.ts                — Re-exports + namespace declaration merging
-
-apps/react-doc/src/stories/
-  <name>.stories.tsx      — Storybook stories for component documentation
 ```
 
 ## Importing design tokens
@@ -153,7 +151,7 @@ This includes all color, spacing, typography, and effects tokens. In apps, impor
 1. **Core**: Create `packages/core/src/components/<category>/<name>/<name>.module.css` with data-attribute selectors. Add an `index.ts`. Export from `packages/core/src/components/<category>/index.ts`.
 2. **Generate types**: Run `pnpm generate:types` — this creates the `.types.generated.ts` and `.module.css.d.ts` files automatically.
 3. **React wrapper**: Create the component in `packages/react/src/components/<category>/<name>/` following the button pattern — types file (importing from `@versaur/core/<category>`), component using `useDataAttrs`, and index with namespace merging. Export from `packages/react/src/components/<category>/index.ts`.
-4. **Storybook**: Add a story file at `apps/react-doc/src/stories/<name>.stories.tsx` with component documentation and examples.
+4. **Storybook**: Add a story file at `packages/react/src/components/<category>/<name>/<name>.stories.tsx` (colocated with the component) with component documentation and examples. Use relative imports for same-category imports (e.g., `from "../index"`), and relative paths for cross-category imports (e.g., `from "../../primitive/index"`).
 
 ## Key files
 
@@ -164,8 +162,8 @@ This includes all color, spacing, typography, and effects tokens. In apps, impor
 | `packages/react/src/utils/cx.ts`                            | Class name merging utility (filters + joins)         |
 | `packages/react/src/hooks/use-data-attrs.ts`                | Core hook: props to data-attributes                  |
 | `packages/react/src/components/primitive/button/button.tsx` | Reference component implementation                   |
+| `packages/react/src/components/primitive/button/button.stories.tsx` | Storybook stories (colocated with component)      |
 | `packages/icons/src/index.ts`                               | Icon library registry and exports                    |
-| `apps/react-doc/src/stories/*.stories.tsx`                  | Storybook component documentation                    |
 | `packages/tooling/src/generate-types.ts`                    | PostCSS type extraction entry point                  |
 | `packages/tooling/src/css-parser.ts`                        | CSS data-attribute selector parser                   |
 | `packages/tooling/src/codegen.ts`                           | TypeScript codegen from parsed CSS                   |

@@ -35,6 +35,7 @@ packages/react/src/
     │   └── <name>/                   # One directory per component
     │       ├── <name>.tsx            # Component implementation
     │       ├── <name>.types.ts       # Props interface
+    │       ├── <name>.stories.tsx    # Storybook stories (colocated)
     │       └── index.ts              # Barrel + namespace merging
     ├── forms/                        # Form controls
     ├── blocks/                       # Composite components
@@ -252,9 +253,10 @@ ARIA attributes are **not** handled by `useDataAttrs`. Set them directly on the 
 
 ## 8. Storybook documentation
 
-Component documentation is handled via Storybook stories in `apps/react-doc/src/stories/<name>.stories.tsx`. Each story file:
+Component documentation is handled via Storybook stories colocated with components: `packages/react/src/components/<category>/<name>/<name>.stories.tsx`. Each story file:
 
-- Imports the component from `@versaur/react/<category>`
+- Imports the component using relative paths: `from "../index"` for same-category imports, `from "../../<other-category>/index"` for cross-category imports
+- Imports icons and Storybook types from absolute paths: `@versaur/icons`, `@storybook/react`
 - Defines a story metadata object with title, component, and argTypes
 - Exports story variants demonstrating different states
 - Provides interactive controls for real-time prop manipulation
@@ -342,12 +344,15 @@ export type { BadgeProps, BadgeVariant, BadgeSize } from "./badge"
 
 ### Storybook
 
-- [ ] Create `apps/react-doc/src/stories/<name>.stories.tsx` with story metadata and variants
+- [ ] Create `packages/react/src/components/<category>/<name>/<name>.stories.tsx` with story metadata and variants
+- [ ] Use relative imports for same-category components: `from "../index"`
+- [ ] Use relative imports for cross-category components: `from "../../<other-category>/index"`
 
 ### Verify
 
 - [ ] `pnpm generate:types` completes without errors
 - [ ] `pnpm build:packages` builds cleanly
+- [ ] `pnpm build:docs` builds Storybook cleanly
 - [ ] `pnpm dev` — new component story appears in Storybook
 
 ## 11. Code style rules

@@ -4,18 +4,30 @@ How component documentation is structured in Versaur using Storybook.
 
 ## Overview
 
-Components are documented using **Storybook** in `apps/react-doc`. Each component has a corresponding `.stories.tsx` file that provides interactive examples and documentation.
+Components are documented using **Storybook** in `apps/react-doc`. Each component has a corresponding `.stories.tsx` file **colocated with the component** that provides interactive examples and documentation.
 
 ## Storybook stories structure
 
-Stories live in `apps/react-doc/src/stories/` and follow the `<name>.stories.tsx` naming convention:
+Stories are colocated with components in `packages/react/src/components/<category>/<name>/` and follow the `<name>.stories.tsx` naming convention:
 
 ```
-apps/react-doc/src/stories/
-├── button.stories.tsx
-├── badge.stories.tsx
-├── avatar.stories.tsx
-├── card.stories.tsx
+packages/react/src/components/
+├── primitive/
+│   ├── button/
+│   │   ├── button.tsx
+│   │   ├── button.types.ts
+│   │   └── button.stories.tsx
+│   ├── badge/
+│   │   ├── badge.tsx
+│   │   ├── badge.types.ts
+│   │   └── badge.stories.tsx
+│   └── ...
+├── blocks/
+│   ├── card/
+│   │   ├── card.tsx
+│   │   ├── card.types.ts
+│   │   └── card.stories.tsx
+│   └── ...
 └── ...
 ```
 
@@ -23,7 +35,7 @@ apps/react-doc/src/stories/
 
 ```tsx
 import type { Meta, StoryObj } from "@storybook/react"
-import { Button } from "@versaur/react/primitive"
+import { Button } from "../index"
 
 const meta = {
   title: "Primitive/Button",
@@ -85,12 +97,13 @@ Stories are organized by component category in the Storybook sidebar:
 
 ## Adding documentation for a new component
 
-1. Create `apps/react-doc/src/stories/<name>.stories.tsx`
-2. Import the component from `@versaur/react/<category>`
-3. Define the story metadata with appropriate category prefix
-4. Add multiple story variations to demonstrate different states
-5. Configure `argTypes` for interactive controls
-6. Use `tags: ['autodocs']` to generate automatic API documentation
+1. Create `packages/react/src/components/<category>/<name>/<name>.stories.tsx`
+2. Import the component using a relative import: `from "../index"` (or from sibling categories like `from "../../<other-category>/index"`)
+3. Import icons and Storybook types from absolute paths: `@versaur/icons`, `@storybook/react`
+4. Define the story metadata with appropriate category prefix
+5. Add multiple story variations to demonstrate different states
+6. Configure `argTypes` for interactive controls
+7. Use `tags: ['autodocs']` to generate automatic API documentation
 
 ## Storybook features
 
