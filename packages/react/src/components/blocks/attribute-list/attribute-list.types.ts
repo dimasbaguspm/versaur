@@ -3,10 +3,22 @@ import type { HTMLAttributes, ReactNode } from "react"
 
 export interface AttributeListProps extends HTMLAttributes<HTMLDListElement> {
   /**
-   * Number of columns for the grid layout
-   * @default '3'
+   * Layout mode: stacked (default) or tabular
+   * @default 'stacked'
    */
-  columns?: AttributeList.Columns
+  layout?: AttributeList.Layout
+
+  /**
+   * CSS grid-template-columns: e.g. "1fr 1fr 1fr", "200px 1fr"
+   * @default 'repeat(3, 1fr)'
+   */
+  columns?: string
+
+  /**
+   * Gap between items: number (in px) or CSS string value
+   * @default spacing-3 (12px)
+   */
+  gap?: number | string
 
   /**
    * AttributeList.Item components
@@ -21,16 +33,9 @@ export interface AttributeListItemProps extends HTMLAttributes<HTMLDivElement> {
   title: string
 
   /**
-   * Number of columns to span in the grid (1-6, auto-clamped to columns count)
-   * @default '1'
+   * CSS grid-column: e.g. "span 3", "1 / 4"
    */
-  columnSpan?: AttributeList.ColumnSpan
-
-  /**
-   * Number of lines to display before truncating with ellipsis (1-5)
-   * @default '2'
-   */
-  contentLineClamp?: AttributeList.ContentLineClamp
+  area?: string
 
   /**
    * The value content (can be text, links, badges, etc.)

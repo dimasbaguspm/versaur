@@ -1,8 +1,6 @@
 import { forwardRef } from "react"
 
-import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { cx } from "../../../utils/cx"
-import { useAttributeListContext } from "./attribute-list"
 import type { AttributeListItemProps } from "./attribute-list.types"
 
 /**
@@ -10,22 +8,23 @@ import type { AttributeListItemProps } from "./attribute-list.types"
  *
  * @example
  * ```tsx
- * <AttributeList.Item columnSpan="2" title="Email">
+ * <AttributeList.Item area="span 2" title="Email">
  *   john.doe@example.com
  * </AttributeList.Item>
  * ```
  */
 export const AttributeListItem = forwardRef<HTMLDivElement, AttributeListItemProps>(
-  ({ title, columnSpan = "1", contentLineClamp = "2", children, className }, ref) => {
-    useAttributeListContext()
-
-    const dataAttrs = useDataAttrs({
-      "column-span": columnSpan,
-      "content-line-clamp": contentLineClamp,
-    })
-
+  ({ title, area, children, className, style, ...rest }, ref) => {
     return (
-      <div ref={ref} className={cx(className)} {...dataAttrs}>
+      <div
+        ref={ref}
+        className={cx(className)}
+        style={{
+          "--_area": area,
+          ...style,
+        } as React.CSSProperties}
+        {...rest}
+      >
         <dt>{title}</dt>
         <dd>{children}</dd>
       </div>

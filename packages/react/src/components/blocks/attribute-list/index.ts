@@ -7,9 +7,7 @@ import type { AttributeListItemProps, AttributeListProps } from "./attribute-lis
 
 // Extend AttributeList namespace
 export namespace AttributeList {
-  export type Columns = AttributeListCore.Columns
-  export type ColumnSpan = AttributeListCore.ColumnSpan
-  export type ContentLineClamp = AttributeListCore.ContentLineClamp
+  export type Layout = AttributeListCore.Layout
   export type Props = AttributeListProps
   export type ItemProps = AttributeListItemProps
 }
