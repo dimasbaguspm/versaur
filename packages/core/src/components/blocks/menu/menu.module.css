@@ -3,28 +3,28 @@
 /* Menu list container - scrollable */
 .menu-list {
   /* tokens */
-  --_min-width: var(--vers-comp-menu-min-width, 160px);
   --_max-width: var(--vers-comp-menu-max-width, 320px);
   --_max-height: var(--vers-comp-menu-max-height, 400px);
   --_bg: var(--vers-comp-menu-bg, var(--color-background));
   --_border-color: var(--vers-comp-menu-border-color, var(--color-border));
+  --_shadow: var(--vers-comp-menu-shadow, var(--shadow-lg));
   --_item-gap: var(--vers-comp-menu-item-gap, var(--spacing-2));
-  --_item-px: var(--vers-comp-menu-item-px, var(--spacing-3));
-  --_item-py: var(--vers-comp-menu-item-py, var(--spacing-1));
+  --_item-px: var(--vers-comp-menu-item-px, var(--spacing-2));
+  --_item-py: var(--vers-comp-menu-item-py, var(--spacing-2));
   --_item-radius: var(--vers-comp-menu-item-radius, var(--radius-md));
-  --_item-hover-bg: var(--vers-comp-menu-item-hover-bg, var(--color-neutral-light));
+  --_item-hover-bg: var(--vers-comp-menu-item-hover-bg, var(--color-surface));
   --_item-active-bg: var(--vers-comp-menu-item-active-bg, var(--color-primary-soft));
   --_item-active-color: var(--vers-comp-menu-item-active-color, var(--color-primary));
   --_transition-duration: var(--vers-comp-menu-transition-duration, var(--transition-base));
 
-  min-width: var(--_min-width);
   max-width: var(--_max-width);
   max-height: var(--_max-height);
   overflow-y: auto;
-  padding: var(--_item-py) 0;
+  padding: var(--spacing-2);
   background-color: var(--_bg);
   border: 1px solid var(--_border-color);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--_shadow);
   display: flex;
   flex-direction: column;
   gap: var(--spacing-0);
@@ -71,7 +71,7 @@
 }
 
 .menu-item:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-primary-focus);
   outline-offset: -2px;
 }
 

@@ -42,7 +42,7 @@ export interface MenuProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChang
 
   /**
    * Placement relative to trigger button
-   * @default "bottom"
+   * @default "undefined" (auto placement by Tooltip)
    */
   placement?: MenuPlacement
 
@@ -51,12 +51,6 @@ export interface MenuProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChang
    * @default 400
    */
   maxHeight?: number
-
-  /**
-   * Minimum width of the menu list in pixels
-   * @default 160
-   */
-  minWidth?: number
 
   /**
    * Maximum width of the menu list in pixels

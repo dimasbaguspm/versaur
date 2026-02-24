@@ -45,9 +45,8 @@ const MenuRoot = forwardRef<HTMLDivElement, MenuProps>(
   (
     {
       id,
-      placement = "bottom",
+      placement,
       maxHeight = 400,
-      minWidth = 160,
       maxWidth = 320,
       gap = 8,
       value,
@@ -75,7 +74,6 @@ const MenuRoot = forwardRef<HTMLDivElement, MenuProps>(
                 {
                   "--_max-height": `${maxHeight}px`,
                   "--_max-width": `${maxWidth}px`,
-                  "--_min-width": `${minWidth}px`,
                 } as CSSProperties
               }
             >

@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { MenuIcon, SettingsIcon, FilterIcon } from "@versaur/icons"
-import { Menu } from "../index"
-import { ButtonIcon } from "../../primitive/index"
+import { FilterIcon, MenuIcon, SettingsIcon } from "@versaur/icons"
 import { useState } from "react"
+
+import { ButtonIcon } from "../../primitive/index"
+import { Menu } from "../index"
 
 const meta = {
   argTypes: {
@@ -160,9 +161,6 @@ export const ItemStates: Story = {
       </div>
     )
   },
-  args: {
-    placement: "bottom",
-  },
 }
 
 /**
@@ -210,7 +208,6 @@ export const WithConstraints: Story = {
     )
   },
   args: {
-    placement: "bottom",
     maxHeight: 280,
   },
 }

@@ -5,8 +5,8 @@ import { forwardRef, useRef } from "react"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { combineRefs } from "../../../utils/combine-refs"
 import { cx } from "../../../utils/cx"
-import { useTooltipPositioning } from "./use-tooltip-positioning"
 import type { TooltipGetTriggerPropsOptions, TooltipProps, TooltipStatic, TooltipTextProps } from "./tooltip.types"
+import { useTooltipPositioning } from "./use-tooltip-positioning"
 
 const DEFAULT_GAP = 8
 
