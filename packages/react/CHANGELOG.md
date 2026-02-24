@@ -1,5 +1,15 @@
 # @versaur/react
 
+## 1.0.13
+
+### Patch Changes
+
+- caf7c92: feat(tooltip): implement persisted trigger type and enhance positioning logic
+- 7077e03: refactor(menu): update menu styles and props for improved layout
+- Updated dependencies [7077e03]
+- Updated dependencies [aa3b302]
+  - @versaur/core@0.0.9
+
 ## 1.0.12
 
 ### Patch Changes
