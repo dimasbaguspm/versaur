@@ -20,6 +20,7 @@ export interface TextProps extends HTMLAttributes<HTMLElement> {
 
   /**
    * Text color intent
+   * @default 'default'
    */
   intent?: Text.Intent
 

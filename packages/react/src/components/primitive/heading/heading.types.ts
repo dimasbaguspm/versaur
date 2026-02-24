@@ -20,6 +20,7 @@ export interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
 
   /**
    * Text color intent
+   * @default 'default'
    */
   intent?: Heading.Intent
 

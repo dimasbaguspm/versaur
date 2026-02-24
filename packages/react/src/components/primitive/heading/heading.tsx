@@ -6,7 +6,7 @@ import { cx } from "../../../utils/cx"
 import type { HeadingProps } from "./heading.types"
 
 export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
-  ({ as = "h2", size, weight, intent, case: caseVal, transform, children, className, ...rest }, ref) => {
+  ({ as = "h2", size, weight, intent = "default", case: caseVal, transform, children, className, ...rest }, ref) => {
     const Tag = as
     const dataAttrs = useDataAttrs({
       as,
