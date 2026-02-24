@@ -7,10 +7,6 @@ export interface TooltipGetTriggerPropsOptions {
    * Unique identifier matching the Tooltip's id
    */
   id: string
-  /**
-   * Gap between tooltip and trigger in pixels
-   */
-  gap?: number
   [key: string]: any
 }
 
@@ -32,9 +28,11 @@ export interface TooltipProps extends HTMLAttributes<HTMLDivElement> {
    */
   gap?: number
   /**
-   * When to show tooltip: "focus", "hover", or "all"
+   * Tooltip interaction type:
+   * - "hover" (default): Show on hover, hide on hover away (100ms grace period)
+   * - "persisted": Show on click, persists until user clicks outside or presses Escape
    */
-  triggerType?: "focus" | "hover" | "all"
+  type?: "hover" | "persisted"
 }
 
 export interface TooltipTextProps extends HTMLAttributes<HTMLDivElement> {

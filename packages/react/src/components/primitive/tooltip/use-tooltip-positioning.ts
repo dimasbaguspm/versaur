@@ -1,48 +1,38 @@
 import type { MutableRefObject } from "react"
 import { useEffect, useRef } from "react"
 
-import { computeTooltipPlacement } from "../utils/compute-tooltip-placement"
+import { computeTooltipPlacement, findTooltipTrigger } from "./helpers"
 
-type TriggerType = "focus" | "hover" | "all"
-type Placement = "top" | "bottom" | "left" | "right"
+type TooltipPlacement = "top" | "bottom" | "left" | "right"
+type TooltipType = "hover" | "persisted"
 
 interface UseTooltipPositioningOptions {
   id: string
   tooltipRef: MutableRefObject<HTMLElement | null>
-  placement?: Placement
-  triggerType: TriggerType
+  placement?: TooltipPlacement
+  type: TooltipType
 }
 
 /**
- * Find the trigger element for a tooltip by ID, scoped to a bounded DOM walk.
- * Stops at document.body to prevent searching too far up the tree.
- */
-function findTooltipTrigger(tooltipEl: HTMLElement, id: string): HTMLElement | null {
-  let ancestor: HTMLElement | null = tooltipEl.parentElement
-  while (ancestor) {
-    const trigger = ancestor.querySelector<HTMLElement>(`[data-tooltip-trigger="${id}"]`)
-    if (trigger) return trigger
-    if (ancestor === document.body) break
-    ancestor = ancestor.parentElement
-  }
-  return null
-}
-
-/**
- * Core tooltip state management - shared by hover and focus handlers.
+ * Core tooltip state management - shared by hover and persisted handlers.
  * Handles positioning, showing/hiding, and grace period logic.
  */
-function createTooltipController(tooltipEl: HTMLElement, triggerEl: HTMLElement, placement?: Placement) {
+function createTooltipController(tooltipEl: HTMLElement, triggerEl: HTMLElement, placement?: TooltipPlacement) {
   let hideTimeoutId: ReturnType<typeof setTimeout> | null = null
 
   /**
    * Compute placement based on tooltip's actual rendered size.
-   * Wait for next frame to ensure content is rendered.
+   * Wait for next frame to ensure content is rendered and measured.
    */
-  const computePlacementWhenReady = (): Promise<Placement> => {
+  const computePlacementWhenReady = (): Promise<TooltipPlacement> => {
     return new Promise((resolve) => {
       requestAnimationFrame(() => {
-        const finalPlacement = placement || computeTooltipPlacement(triggerEl.getBoundingClientRect())
+        // Get tooltip's actual size for smarter edge detection
+        const tooltipRect = tooltipEl.getBoundingClientRect()
+        const tooltipSize = { width: tooltipRect.width, height: tooltipRect.height }
+
+        const finalPlacement =
+          placement || computeTooltipPlacement(triggerEl.getBoundingClientRect(), tooltipSize)
         resolve(finalPlacement)
       })
     })
@@ -101,18 +91,19 @@ function createTooltipController(tooltipEl: HTMLElement, triggerEl: HTMLElement,
 }
 
 /**
- * Hook to manage tooltip positioning and trigger interactions.
+ * Internal hook to manage tooltip positioning and trigger interactions.
  *
- * Separated into hover and focus handlers for clarity:
- * - useTooltipHoverHandler: mouseenter/mouseleave on trigger + tooltip (grace period)
- * - useTooltipFocusHandler: focus/blur on trigger (immediate)
- * - Core shared: showTooltip/hideTooltip, DOM discovery, placement computation
+ * Separated into hover and persisted handlers:
+ * - Hover: mouseenter/mouseleave on trigger + tooltip (grace period)
+ * - Persisted: focus/blur on trigger (immediate) + click-to-dismiss
+ *
+ * Not exported - for internal tooltip component use only.
  */
 export function useTooltipPositioning({
   id,
   tooltipRef,
   placement,
-  triggerType,
+  type,
 }: UseTooltipPositioningOptions) {
   const controllerRef = useRef<ReturnType<typeof createTooltipController> | null>(null)
   const triggerRef = useRef<HTMLElement | null>(null)
@@ -140,7 +131,7 @@ export function useTooltipPositioning({
 
   // Hover handler
   useEffect(() => {
-    if (triggerType !== "hover" && triggerType !== "all") return
+    if (type !== "hover") return
     if (!controllerRef.current || !triggerRef.current) return
 
     const trigger = triggerRef.current
@@ -176,30 +167,56 @@ export function useTooltipPositioning({
       tooltipEl.removeEventListener("mouseenter", handleTooltipMouseEnter)
       tooltipEl.removeEventListener("mouseleave", handleTooltipMouseLeave)
     }
-  }, [triggerType, tooltipRef])
+  }, [type, tooltipRef])
 
-  // Focus handler
+  // Persisted handler (click-to-show, stays open until click outside or Escape)
   useEffect(() => {
-    if (triggerType !== "focus" && triggerType !== "all") return
+    if (type !== "persisted") return
     if (!controllerRef.current || !triggerRef.current) return
 
     const trigger = triggerRef.current
     const controller = controllerRef.current
+    const tooltipEl = tooltipRef.current
 
-    const handleFocus = () => {
-      controller.showTooltip()
+    if (!tooltipEl) return
+
+    // Handle click on trigger to toggle tooltip
+    const handleTriggerClick = (event: MouseEvent) => {
+      event.stopPropagation()
+      if (tooltipEl.matches(":popover-open")) {
+        controller.hideTooltip(false)
+      } else {
+        controller.showTooltip()
+      }
     }
 
-    const handleBlur = () => {
-      controller.hideTooltip(false) // immediate hide
+    // Handle click outside trigger and tooltip to close
+    const handleDocumentClick = (event: MouseEvent) => {
+      const target = event.target as Node
+      if (
+        tooltipEl.matches(":popover-open") &&
+        !trigger.contains(target) &&
+        !tooltipEl.contains(target)
+      ) {
+        controller.hideTooltip(false)
+      }
     }
 
-    trigger.addEventListener("focus", handleFocus)
-    trigger.addEventListener("blur", handleBlur)
+    // Handle escape key to close tooltip
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && tooltipEl.matches(":popover-open")) {
+        controller.hideTooltip(false)
+      }
+    }
+
+    trigger.addEventListener("click", handleTriggerClick)
+    document.addEventListener("click", handleDocumentClick)
+    document.addEventListener("keydown", handleEscape)
 
     return () => {
-      trigger.removeEventListener("focus", handleFocus)
-      trigger.removeEventListener("blur", handleBlur)
+      trigger.removeEventListener("click", handleTriggerClick)
+      document.removeEventListener("click", handleDocumentClick)
+      document.removeEventListener("keydown", handleEscape)
     }
-  }, [triggerType])
+  }, [type, tooltipRef])
 }

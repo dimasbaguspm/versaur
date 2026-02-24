@@ -68,7 +68,7 @@ const MenuRoot = forwardRef<HTMLDivElement, MenuProps>(
     return (
       <div ref={ref} {...props}>
         <MenuContext.Provider value={contextValue}>
-          <Tooltip id={id} placement={placement} gap={gap} triggerType="focus">
+          <Tooltip id={id} placement={placement} gap={gap} type="persisted">
             <div
               className={menuStyles["menu-list"]}
               style={

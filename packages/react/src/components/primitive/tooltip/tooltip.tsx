@@ -3,9 +3,9 @@ import type { CSSProperties } from "react"
 import { forwardRef, useRef } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
-import { useTooltipPositioning } from "../../../hooks/use-tooltip-positioning"
 import { combineRefs } from "../../../utils/combine-refs"
 import { cx } from "../../../utils/cx"
+import { useTooltipPositioning } from "./use-tooltip-positioning"
 import type { TooltipGetTriggerPropsOptions, TooltipProps, TooltipStatic, TooltipTextProps } from "./tooltip.types"
 
 const DEFAULT_GAP = 8
@@ -43,18 +43,17 @@ const DEFAULT_GAP = 8
  * ```
  */
 const TooltipRoot = forwardRef<HTMLDivElement, TooltipProps>(
-  ({ id, children, placement, gap = DEFAULT_GAP, triggerType = "all", style, className, ...props }, ref) => {
+  ({ id, children, placement, gap = DEFAULT_GAP, type = "hover", style, className, ...props }, ref) => {
     const tooltipRef = useRef<HTMLDivElement | null>(null)
     const dataAttrs = useDataAttrs({
       placement,
     })
 
     useTooltipPositioning({
-      gap,
       id,
       placement,
       tooltipRef,
-      triggerType,
+      type,
     })
 
     return (
@@ -103,24 +102,16 @@ const TooltipText = forwardRef<HTMLDivElement, TooltipTextProps>(
 TooltipText.displayName = "Tooltip.Text"
 
 /**
- * Get required attributes for the trigger element
+ * Get required attributes for the trigger element.
+ * JavaScript event handlers manage all popover open/close operations.
  */
 function getTooltipTriggerProps(options: TooltipGetTriggerPropsOptions): Record<string, unknown> {
-  const { id, triggerType = "all", ...rest } = options
-  // Always add data-tooltip-trigger for finding the trigger in the hook
-  const result: Record<string, unknown> = {
+  const { id, ...rest } = options
+  return {
     "data-tooltip-trigger": id,
     style: { anchorName: `--tooltip-${id}` },
     ...Object.fromEntries(Object.entries(rest).map(([k, v]) => [k, String(v)])),
   }
-
-  // Only use popoverTarget for non-focus trigger types (hover and all)
-  // For focus triggers, JavaScript event handlers manage the popover
-  if (triggerType !== "focus") {
-    result.popoverTarget = id
-  }
-
-  return result
 }
 
 /**

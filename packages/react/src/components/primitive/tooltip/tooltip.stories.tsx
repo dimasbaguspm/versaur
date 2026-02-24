@@ -9,9 +9,9 @@ const meta = {
       control: "select",
       options: [undefined, "top", "bottom", "left", "right"],
     },
-    triggerType: {
+    type: {
       control: "select",
-      options: ["hover", "focus", "all"],
+      options: ["hover", "persisted"],
     },
   },
   args: {
@@ -45,7 +45,7 @@ export const Default: Story = {
     )
   },
   args: {
-    triggerType: "hover",
+    type: "hover",
   },
 }
 
@@ -73,7 +73,7 @@ export const AutoPlacement: Story = {
     </div>
   ),
   args: {
-    triggerType: "hover",
+    type: "hover",
   },
   parameters: {
     layout: "fullscreen",
@@ -121,12 +121,12 @@ export const Placements: Story = {
     )
   },
   args: {
-    triggerType: "hover",
+    type: "hover",
   },
 }
 
 /**
- * Showcase all trigger type variants: hover, focus, and all.
+ * Showcase all trigger type variants: hover and persisted.
  * Demonstrates how tooltips are triggered based on user interactions.
  */
 export const TriggerTypes: Story = {
@@ -134,26 +134,18 @@ export const TriggerTypes: Story = {
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem", padding: "2rem" }}>
       <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
         <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Hover Trigger</div>
-        <Tooltip {...args} id="story-hover-tooltip" placement="bottom" triggerType="hover">
-          <Tooltip.Text>Shows on hover</Tooltip.Text>
+        <Tooltip {...args} id="story-hover-tooltip" placement="bottom" type="hover">
+          <Tooltip.Text>Shows on hover, hides on hover away</Tooltip.Text>
         </Tooltip>
         <button {...Tooltip.getTooltipTriggerProps({ id: "story-hover-tooltip" })}>Hover me</button>
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Focus Trigger</div>
-        <Tooltip {...args} id="story-focus-tooltip" triggerType="focus">
-          <Tooltip.Text>Shows on focus</Tooltip.Text>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Persisted Trigger</div>
+        <Tooltip {...args} id="story-persisted-tooltip" type="persisted">
+          <Tooltip.Text>Shows on click, persists until you click outside or press Escape</Tooltip.Text>
         </Tooltip>
-        <button {...Tooltip.getTooltipTriggerProps({ id: "story-focus-tooltip" })}>Focus me</button>
-      </div>
-
-      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>All Trigger</div>
-        <Tooltip {...args} id="story-all-tooltip" triggerType="all">
-          <Tooltip.Text>Shows on hover or focus</Tooltip.Text>
-        </Tooltip>
-        <button {...Tooltip.getTooltipTriggerProps({ id: "story-all-tooltip" })}>Hover or focus</button>
+        <button {...Tooltip.getTooltipTriggerProps({ id: "story-persisted-tooltip" })}>Click me</button>
       </div>
     </div>
   ),
@@ -179,6 +171,6 @@ export const LongContent: Story = {
   ),
   args: {
     placement: "bottom",
-    triggerType: "hover",
+    type: "hover",
   },
 }
