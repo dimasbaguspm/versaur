@@ -1,5 +1,16 @@
 # @versaur/core
 
+## 0.0.10
+
+### Patch Changes
+
+- 222c50b: refactor(nav): remove Nav component
+- aaba055: fix(heading, text): set default intent prop to 'default'
+- 0c04e6c: feat(combobox-input): add ComboboxInput component
+- 4c6493f: feat(breakpoints): add responsive breakpoints and related hooks/components
+- fbec4d2: feat(drawer): mobile fullwidth support
+- 4ceb118: chore: trigger oxfmt formatter
+
 ## 0.0.9
 
 ### Patch Changes
