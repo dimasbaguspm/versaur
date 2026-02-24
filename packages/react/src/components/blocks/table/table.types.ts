@@ -27,13 +27,17 @@ export type TableWrapperProps = HTMLAttributes<HTMLDivElement> & {
 }
 
 /**
- * Table.Toolbar - generic slot for action controls with optional render function
+ * Table.Toolbar - generic slot for action controls with optional render functions
  */
 export interface TableToolbarProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
   /**
-   * Render function receives selected row IDs Set, or regular children
+   * Render function for left-aligned content (receives selected row IDs Set)
    */
-  children?: ReactNode | ((selectedIds: Set<string | number>) => ReactNode)
+  leftContent?: ReactNode | ((selectedIds: Set<string | number>) => ReactNode)
+  /**
+   * Render function for right-aligned content (receives selected row IDs Set)
+   */
+  rightContent?: ReactNode | ((selectedIds: Set<string | number>) => ReactNode)
 }
 
 /**
@@ -78,24 +82,52 @@ export type TableColProps = HTMLAttributes<any> & {
 /**
  * Table.Checkbox - built-in checkbox for row selection
  */
-export interface TableCheckboxProps {
-  /**
-   * Unique row identifier
-   */
-  rowId: string | number
-  /**
-   * Whether checkbox is checked (optional - managed by Table context)
-   */
-  checked?: boolean
-  /**
-   * Indeterminate state (e.g., for parent checkbox)
-   */
-  indeterminate?: boolean
-  /**
-   * Callback when checkbox state changes (optional - managed by Table context)
-   */
-  onChange?: (checked: boolean) => void
-}
+export type TableCheckboxProps =
+  | {
+      /**
+       * Whether this is the select-all checkbox in the header
+       */
+      isMain: true
+      /**
+       * Unique row identifier (not needed for main checkbox)
+       */
+      rowId?: never
+      /**
+       * Whether checkbox is checked (optional - managed by Table context)
+       */
+      checked?: boolean
+      /**
+       * Indeterminate state (e.g., for select-all checkbox)
+       */
+      indeterminate?: boolean
+      /**
+       * Callback when checkbox state changes (optional - managed by Table context)
+       */
+      onChange?: (checked: boolean) => void
+    }
+  | {
+      /**
+       * Whether this is the select-all checkbox in the header
+       * @default false
+       */
+      isMain?: false
+      /**
+       * Unique row identifier
+       */
+      rowId: string | number
+      /**
+       * Whether checkbox is checked (optional - managed by Table context)
+       */
+      checked?: boolean
+      /**
+       * Indeterminate state (e.g., for select-all checkbox)
+       */
+      indeterminate?: boolean
+      /**
+       * Callback when checkbox state changes (optional - managed by Table context)
+       */
+      onChange?: (checked: boolean) => void
+    }
 
 /**
  * Table.DoubleLine - built-in cell with title and subtitle

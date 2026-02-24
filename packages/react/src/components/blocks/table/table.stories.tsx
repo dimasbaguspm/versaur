@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { MenuIcon } from "@versaur/icons"
 
-import { Button } from "../../primitive/index"
+import { Text } from "../../primitive/text/text"
 import { Table } from "../index"
 
 const meta = {
@@ -67,20 +67,17 @@ export const Complete: Story = {
 
     return (
       <Table columns="40px 2fr 1fr 1fr 1fr 100px">
-        <Table.Toolbar>
-          {(selectedIds) =>
-            selectedIds.size > 0 ? (
-              <Button size="small" variant="secondary">
-                Delete Selected ({selectedIds.size})
-              </Button>
-            ) : (
-              <Button size="small">Add Item</Button>
-            )
-          }
-        </Table.Toolbar>
+        <Table.Toolbar
+          leftContent={(selectedIds) => (
+            <Text size="xs">{selectedIds.size > 0 ? `${selectedIds.size} selected` : "No selection"}</Text>
+          )}
+          rightContent={(selectedIds) => (
+            <Text size="xs">{selectedIds.size > 0 ? `${selectedIds.size} selected` : "No selection"}</Text>
+          )}
+        />
         <Table.Header>
           <Table.Col as="th" variant="checkbox">
-            <Table.Checkbox rowId="select-all" />
+            <Table.Checkbox isMain />
           </Table.Col>
           <Table.Col as="th">Product</Table.Col>
           <Table.Col as="th">Category</Table.Col>
@@ -94,7 +91,12 @@ export const Complete: Story = {
               <Table.Col as="td" variant="checkbox">
                 <Table.Checkbox rowId={rowId} />
               </Table.Col>
-              <Table.DoubleLine as="td" title={`Premium Widget ${rowId}`} subtitle={`SKU: PWG-2024-00${rowId}`} size="md" />
+              <Table.DoubleLine
+                as="td"
+                title={`Premium Widget ${rowId}`}
+                subtitle={`SKU: PWG-2024-00${rowId}`}
+                size="md"
+              />
               <Table.Col as="td">Electronics</Table.Col>
               <Table.Col as="td" variant="numeric">
                 $199.99

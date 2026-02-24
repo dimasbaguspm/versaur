@@ -35,6 +35,9 @@
 .toolbar {
   grid-column: 1 / -1;
   padding: var(--_cell-py) 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header,

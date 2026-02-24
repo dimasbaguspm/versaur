@@ -44,19 +44,23 @@ function useTableProvider() {
 }
 
 /**
- * TableToolbar - renders toolbar content with optional render function receiving selected row IDs
+ * TableToolbar - renders toolbar content with optional render functions for left and right slots
  */
-const TableToolbar = forwardRef<HTMLDivElement, TableToolbarProps>(({ children, className, ...props }, ref) => {
-  const context = useTableProvider()
+const TableToolbar = forwardRef<HTMLDivElement, TableToolbarProps>(
+  ({ leftContent, rightContent, className, ...props }, ref) => {
+    const context = useTableProvider()
 
-  const renderChildren = typeof children === "function" ? children(context.selectedRows) : children
+    const renderLeftContent = typeof leftContent === "function" ? leftContent(context.selectedRows) : leftContent
+    const renderRightContent = typeof rightContent === "function" ? rightContent(context.selectedRows) : rightContent
 
-  return (
-    <div ref={ref} className={cx(tableStyles.toolbar, className)} {...props}>
-      {renderChildren}
-    </div>
-  )
-})
+    return (
+      <div ref={ref} className={cx(tableStyles.toolbar, className)} {...props}>
+        <div>{renderLeftContent}</div>
+        <div>{renderRightContent}</div>
+      </div>
+    )
+  },
+)
 
 TableToolbar.displayName = "Table.Toolbar"
 
@@ -128,23 +132,22 @@ TableCol.displayName = "Table.Col"
  * TableCheckbox - Built-in checkbox for row selection
  */
 const TableCheckbox = forwardRef<HTMLInputElement, TableCheckboxProps>(
-  ({ rowId, checked, indeterminate, onChange }, ref) => {
+  ({ rowId, isMain = false, checked, indeterminate, onChange }, ref) => {
     const context = useTableProvider()
-    const isSelectAll = rowId === "select-all"
-    const isSelected = isSelectAll
+    const isSelected = isMain
       ? context.selectedRows.size === context.allRowIds.size && context.allRowIds.size > 0
-      : context.selectedRows.has(rowId)
+      : rowId !== undefined && context.selectedRows.has(rowId)
 
-    // Register row ID if not select-all checkbox
-    if (!isSelectAll && rowId) {
+    // Register row ID if not main checkbox
+    if (!isMain && rowId !== undefined) {
       context.registerRowId(rowId)
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (isSelectAll) {
+      if (isMain) {
         // Select all: use context.onSelectAll with all available row IDs
         context.onSelectAll(Array.from(context.allRowIds), e.target.checked)
-      } else {
+      } else if (rowId !== undefined) {
         // Individual row: use context.onSelectionChange
         context.onSelectionChange(rowId, e.target.checked)
       }
@@ -152,9 +155,9 @@ const TableCheckbox = forwardRef<HTMLInputElement, TableCheckboxProps>(
       onChange?.(e.target.checked)
     }
 
-    // For select-all, calculate indeterminate state
+    // For main checkbox, calculate indeterminate state
     const computedIndeterminate =
-      isSelectAll && context.selectedRows.size > 0 && context.selectedRows.size < context.allRowIds.size
+      isMain && context.selectedRows.size > 0 && context.selectedRows.size < context.allRowIds.size
 
     return (
       <label className={checkboxStyles.checkbox}>
@@ -173,7 +176,7 @@ const TableCheckbox = forwardRef<HTMLInputElement, TableCheckboxProps>(
           className={checkboxStyles.input}
           checked={checked !== undefined ? checked : isSelected}
           onChange={handleChange}
-          aria-label={isSelectAll ? "Select all rows" : `Select row ${rowId}`}
+          aria-label={isMain ? "Select all rows" : `Select row ${rowId}`}
         />
         <span className={checkboxStyles.indicator} />
       </label>
