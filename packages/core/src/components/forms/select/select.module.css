@@ -13,9 +13,9 @@
 /* Base select styles */
 .select {
   /* Sizing — three-layer token pattern, defaults to medium/outline */
-  --_height: var(--vers-comp-select-height, 2.5rem);
+  --_height: var(--vers-comp-select-height, 2.35rem);
   --_px: var(--vers-comp-select-padding-x, var(--spacing-3));
-  --_py: var(--vers-comp-select-padding-y, 0);
+  --_py: var(--vers-comp-select-padding-y, var(--spacing-1));
   --_font-size: var(--vers-comp-select-font-size, var(--font-size-base));
   --_arrow-size: var(--vers-comp-select-arrow-size, 1.25rem);
   --_arrow-gap: var(--vers-comp-select-arrow-gap, var(--spacing-2));

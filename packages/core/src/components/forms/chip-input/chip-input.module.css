@@ -40,7 +40,7 @@
 /* Individual chip option button */
 .option {
   /* Sizing — private tokens default to medium */
-  --_height: var(--vers-comp-chip-height, 2rem);
+  --_height: var(--vers-comp-chip-height, 1.75rem);
   --_px: var(--vers-comp-chip-padding-x, var(--spacing-3));
   --_font-size: var(--vers-comp-chip-font-size, var(--font-size-sm));
   --_gap: var(--vers-comp-chip-gap, var(--spacing-1-5));

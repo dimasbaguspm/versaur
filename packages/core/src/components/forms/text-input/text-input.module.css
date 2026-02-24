@@ -21,7 +21,7 @@
   background-color: var(--vers-comp-input-bg, transparent);
 
   /* Sizing — three-layer token pattern, defaults to medium */
-  --_height: var(--vers-comp-input-height, 2rem);
+  --_height: var(--vers-comp-input-height, 1.75rem);
   --_px: var(--vers-comp-input-padding-x, var(--spacing-2));
   --_py: var(--vers-comp-input-padding-y, 0);
   --_font-size: var(--vers-comp-input-font-size, var(--font-size-base));
