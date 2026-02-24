@@ -5,8 +5,9 @@
 
 .error {
   /* Typography */
-  font-size: var(--font-size-sm);
-  line-height: 1.5;
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-medium);
+  font-weight: var(--font-weight-normal);
   color: var(--color-danger);
 
   /* Spacing */

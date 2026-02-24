@@ -6,8 +6,8 @@
 .label {
   /* Typography */
   font-size: var(--font-size-sm);
-  font-weight: 500;
-  line-height: 1.5;
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-medium);
   color: var(--color-text);
 
   /* Spacing */
