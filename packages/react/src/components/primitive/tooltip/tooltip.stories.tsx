@@ -134,7 +134,7 @@ export const TriggerTypes: Story = {
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem", padding: "2rem" }}>
       <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
         <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Hover Trigger</div>
-        <Tooltip {...args} id="story-hover-tooltip" placement="bottom" type="hover">
+        <Tooltip {...args} id="story-hover-tooltip" type="hover">
           <Tooltip.Text>Shows on hover, hides on hover away</Tooltip.Text>
         </Tooltip>
         <button {...Tooltip.getTooltipTriggerProps({ id: "story-hover-tooltip" })}>Hover me</button>
@@ -149,9 +149,6 @@ export const TriggerTypes: Story = {
       </div>
     </div>
   ),
-  args: {
-    placement: "bottom",
-  },
 }
 
 /**
@@ -170,7 +167,6 @@ export const LongContent: Story = {
     </div>
   ),
   args: {
-    placement: "bottom",
     type: "hover",
   },
 }

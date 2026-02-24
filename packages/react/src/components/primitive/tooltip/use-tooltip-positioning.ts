@@ -22,10 +22,15 @@ function createTooltipController(tooltipEl: HTMLElement, triggerEl: HTMLElement,
 
   /**
    * Compute placement based on tooltip's actual rendered size.
-   * Wait for next frame to ensure content is rendered and measured.
+   * Must be called after popover is shown so getBoundingClientRect returns real dimensions.
    */
   const computePlacementWhenReady = (): Promise<TooltipPlacement> => {
     return new Promise((resolve) => {
+      // Show first so getBoundingClientRect returns real dimensions
+      if (!tooltipEl.matches(":popover-open")) {
+        tooltipEl.showPopover()
+      }
+
       requestAnimationFrame(() => {
         // Get tooltip's actual size for smarter edge detection
         const tooltipRect = tooltipEl.getBoundingClientRect()
@@ -43,13 +48,9 @@ function createTooltipController(tooltipEl: HTMLElement, triggerEl: HTMLElement,
   const showTooltip = async () => {
     cancelHide()
 
-    // Compute placement after tooltip is shown (so content is rendered and measured)
+    // Compute placement after getting real dimensions (popover is opened in computePlacementWhenReady)
     const finalPlacement = await computePlacementWhenReady()
     tooltipEl.dataset.placement = finalPlacement
-
-    if (!tooltipEl.matches(":popover-open")) {
-      tooltipEl.showPopover()
-    }
   }
 
   /**
