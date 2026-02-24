@@ -1,5 +1,15 @@
 # @versaur/react
 
+## 1.0.11
+
+### Patch Changes
+
+- b3e10b4: style(chip-input, select, text-input): adjust component height and padding for consistency
+- bee150f: feat(table): enhance table component
+- Updated dependencies [b3e10b4]
+- Updated dependencies [bee150f]
+  - @versaur/core@0.0.7
+
 ## 1.0.10
 
 ### Patch Changes
