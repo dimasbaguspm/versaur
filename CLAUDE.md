@@ -136,6 +136,53 @@ packages/react/src/components/<category>/<name>/
   index.ts                — Re-exports + namespace declaration merging
 ```
 
+## Responsive Breakpoints
+
+Breakpoints are defined in both CSS and TypeScript as a single source of truth:
+
+**CSS tokens** (`packages/core/src/tokens/breakpoint.css`):
+```css
+--breakpoint-mobile: 640px;
+--breakpoint-tablet: 1024px;
+--breakpoint-desktop: 1280px;
+```
+
+**TypeScript constants** (`packages/core/src/components/utils/breakpoint.ts`):
+```typescript
+import { BREAKPOINTS, getBreakpointPx, getBreakpointCssVar } from "@versaur/core/utils"
+
+BREAKPOINTS.mobile   // 640
+BREAKPOINTS.tablet   // 1024
+BREAKPOINTS.desktop  // 1280
+
+getBreakpointPx('mobile')      // "640px" (for JS)
+getBreakpointCssVar('tablet')  // "var(--breakpoint-tablet)" (for CSS)
+```
+
+**React hooks** (from `@versaur/react/utils`):
+
+*Exclusive ranges (single breakpoint each):*
+- `useMobileBreakpoint()` — Returns true if viewport < 640px
+- `useTabletBreakpoint()` — Returns true if viewport 640px to < 1024px (tablet only)
+- `useDesktopBreakpoint()` — Returns true if viewport >= 1024px
+
+*Combined ranges (multiple breakpoints):*
+- `useMobileOrTabletBreakpoint()` — Returns true if viewport < 1024px (mobile + tablet)
+- `useTabletOrDesktopBreakpoint()` — Returns true if viewport >= 640px (tablet + desktop)
+
+**React components** (from `@versaur/react/utils`):
+
+*Exclusive:*
+- `<MobileBreakpoint>` — Render children only on mobile (< 640px)
+- `<TabletBreakpoint>` — Render children only on tablet (640px to < 1024px)
+- `<DesktopBreakpoint>` — Render children only on desktop (>= 1024px)
+
+*Combined:*
+- `<MobileOrTabletBreakpoint>` — Render children on mobile and tablet (< 1024px)
+- `<TabletOrDesktopBreakpoint>` — Render children on tablet and desktop (>= 640px)
+
+Internal: `useMatchMedia(mediaQuery: string)` hook handles all media query logic but is not exported.
+
 ## Importing design tokens
 
 Design tokens (CSS custom properties) are available via:
@@ -144,7 +191,7 @@ Design tokens (CSS custom properties) are available via:
 import "@versaur/core/tokens"
 ```
 
-This includes all color, spacing, typography, and effects tokens. In apps, import this once in your root/entry file. In Storybook, it's imported in `.storybook/preview.ts`.
+This includes all color, spacing, typography, effects, and responsive breakpoint tokens. In apps, import this once in your root/entry file. In Storybook, it's imported in `.storybook/preview.ts`.
 
 ## Adding a new component
 
