@@ -36,7 +36,7 @@
   height: 100vh;
   --_width: var(--vers-comp-drawer-width, 400px);
   width: var(--_width);
-  animation: slideInLeft 300ms ease-out;
+  animation: slideInLeft 150ms ease-out;
 }
 
 .drawer[data-placement="right"] {
@@ -47,7 +47,7 @@
   height: 100vh;
   --_width: var(--vers-comp-drawer-width, 400px);
   width: var(--_width);
-  animation: slideInRight 300ms ease-out;
+  animation: slideInRight 150ms ease-out;
 }
 
 .drawer[data-placement="top"] {
@@ -127,13 +127,14 @@
   }
 }
 
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .drawer {
-    animation: none !important;
-  }
 
-  .drawer::backdrop {
-    animation: none !important;
+@media screen and (max-width: 639px) {
+  .drawer[data-placement="left"],
+  .drawer[data-placement="right"] {
+    width: 100%;
+    right: auto;
+    left: 0;
+    animation: fadeIn 50ms ease-out;
   }
 }
+

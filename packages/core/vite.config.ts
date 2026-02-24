@@ -46,7 +46,7 @@ export default defineConfig({
         // Create dist/tokens directory
         mkdirSync(distTokens, { recursive: true })
 
-        const files = ["index.css", "colors.css", "spacing.css", "typography.css", "effects.css"]
+        const files = ["index.css", "breakpoint.css", "colors.css", "spacing.css", "typography.css", "effects.css"]
         files.forEach((file) => {
           copyFileSync(resolve(srcTokens, file), resolve(distTokens, file))
         })
