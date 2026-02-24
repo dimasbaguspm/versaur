@@ -1,6 +1,6 @@
 {
   "name": "@versaur/core",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Framework-agnostic CSS core for Versaur Design System",
   "repository": {
     "type": "git",
