@@ -1,5 +1,13 @@
 # @versaur/react
 
+## 1.0.12
+
+### Patch Changes
+
+- 4cc4938: feat(table): enhance Table.Toolbar with left and right content slots
+- Updated dependencies [4cc4938]
+  - @versaur/core@0.0.8
+
 ## 1.0.11
 
 ### Patch Changes

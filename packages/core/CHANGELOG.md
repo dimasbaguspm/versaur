@@ -1,5 +1,11 @@
 # @versaur/core
 
+## 0.0.8
+
+### Patch Changes
+
+- 4cc4938: feat(table): enhance Table.Toolbar with left and right content slots
+
 ## 0.0.7
 
 ### Patch Changes
