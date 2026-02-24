@@ -1,5 +1,12 @@
 # @versaur/core
 
+## 0.0.9
+
+### Patch Changes
+
+- 7077e03: refactor(menu): update menu styles and props for improved layout
+- aa3b302: style(accordion, error-text, helper-text, label): adjust typography settings for consistency
+
 ## 0.0.8
 
 ### Patch Changes
