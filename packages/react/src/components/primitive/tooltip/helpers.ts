@@ -33,12 +33,14 @@ export function findTooltipTrigger(tooltipEl: HTMLElement, id: string): HTMLElem
  * @param triggerRect - DOMRect of the trigger element
  * @param tooltipSize - Tooltip dimensions for accurate edge detection
  * @param suitableSpace - Minimum space threshold for "bottom" placement (default: 100px)
+ * @param allowedPlacements - Restrict to specific placements (e.g. ["top", "bottom"])
  * @returns The best placement direction
  */
 export function computeTooltipPlacement(
   triggerRect: DOMRect,
   tooltipSize?: { width: number; height: number },
   suitableSpace = SUITABLE_SPACE,
+  allowedPlacements?: TooltipPlacement[],
 ): TooltipPlacement {
   const vw = window.innerWidth
   const vh = window.innerHeight
@@ -94,8 +96,13 @@ export function computeTooltipPlacement(
       ],
     ]
 
+    // Filter by allowed placements if specified
+    const placementsToConsider = allowedPlacements
+      ? placements.filter(([dir]) => allowedPlacements.includes(dir))
+      : placements
+
     // Prioritize placements that fit completely within safe area
-    const fittingPlacements = placements.filter(([_, __, fits]) => fits)
+    const fittingPlacements = placementsToConsider.filter(([_, __, fits]) => fits)
     if (fittingPlacements.length > 0) {
       // Prefer bottom among fitting placements; otherwise pick most space
       const bottomFit = fittingPlacements.find(([dir]) => dir === "bottom")
@@ -103,10 +110,13 @@ export function computeTooltipPlacement(
       return fittingPlacements.reduce((best, cur) => (cur[1] > best[1] ? cur : best))[0]
     }
 
-    // No placement fits fully — fallback to most space
-    return (Object.entries(space) as [TooltipPlacement, number][]).reduce((best, cur) =>
-      cur[1] > best[1] ? cur : best,
-    )[0]
+    // No placement fits fully — fallback to most space among allowed placements
+    const spaceToConsider = allowedPlacements
+      ? (Object.entries(space) as [TooltipPlacement, number][]).filter(([dir]) =>
+          allowedPlacements.includes(dir),
+        )
+      : (Object.entries(space) as [TooltipPlacement, number][])
+    return spaceToConsider.reduce((best, cur) => (cur[1] > best[1] ? cur : best))[0]
   }
 
   // Without dimensions (legacy fallback): prefer bottom if sufficient space

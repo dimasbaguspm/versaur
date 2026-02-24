@@ -27,3 +27,13 @@ export type { CheckboxGroupRootProps, CheckboxGroupOptionProps } from "./checkbo
 
 export { ChipInput } from "./chip-input"
 export type { ChipInputRootProps, ChipInputOptionProps } from "./chip-input"
+
+export { ComboboxInput } from "./combobox-input"
+export type {
+  ComboboxInputRootProps,
+  ComboboxInputButtonProps,
+  ComboboxInputListboxProps,
+  ComboboxInputOptionProps,
+  ComboboxInputSelectionChipsProps,
+  ComboboxInputVariant,
+} from "./combobox-input"

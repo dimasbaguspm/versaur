@@ -1,0 +1,344 @@
+/*
+ * ComboboxInput component
+ * Multi-select input with floating popover listbox (Popover API + CSS Anchor) or bottom drawer
+ */
+
+/* Field wrapper (contains label, root, helper/error) */
+.field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: var(--spacing-2);
+}
+
+/* Root container (button + listbox + chips) */
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: var(--vers-comp-combobox-root-gap, var(--spacing-3));
+}
+
+/* Button/trigger styling (visually matches TextInput wrapper) */
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.25rem;
+  border: 1px solid var(--vers-comp-combobox-border, var(--color-border));
+  background-color: var(--vers-comp-combobox-bg, transparent);
+  cursor: pointer;
+
+  /* Sizing — matches TextInput tokens */
+  --_height: var(--vers-comp-combobox-height, 1.75rem);
+  --_px: var(--vers-comp-combobox-padding-x, var(--spacing-2));
+  --_py: var(--vers-comp-combobox-padding-y, 0);
+  --_font-size: var(--vers-comp-combobox-font-size, var(--font-size-base));
+  --_icon-size: var(--vers-comp-combobox-icon-size, 1rem);
+  --_icon-gap: var(--vers-comp-combobox-icon-gap, var(--spacing-2));
+
+  /* Anchor positioning for popover */
+  anchor-name: attr(data-anchor-name);
+}
+
+/* Button content (text display area) */
+.button-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: var(--_height);
+  padding: var(--_py) var(--_px);
+  font-family: var(--font-sans);
+  font-size: var(--_font-size);
+  line-height: 1.5;
+  color: var(--vers-comp-combobox-text, var(--color-text));
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.button-content[data-placeholder] {
+  color: var(--vers-comp-combobox-placeholder, var(--color-text-muted));
+}
+
+/* Button states */
+.button[data-open] {
+  border-color: var(--vers-comp-combobox-focus-color, var(--color-primary-focus));
+}
+
+.button[data-invalid] {
+  border-color: var(--color-danger-focus);
+}
+
+.button[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Left and right icons */
+.left-icon,
+.right-icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--_icon-size);
+  height: var(--_icon-size);
+  pointer-events: none;
+  color: var(--color-text-muted);
+}
+
+.left-icon {
+  left: var(--_px);
+}
+
+.right-icon {
+  right: var(--_px);
+}
+
+/* Adjust content padding when icons present */
+.button[data-has-left-icon] > .button-content {
+  margin-left: calc(var(--_icon-size) + var(--_icon-gap));
+}
+
+.button[data-has-right-icon] > .button-content {
+  margin-right: calc(var(--_icon-size) + var(--_icon-gap));
+}
+
+/* Chevron animation */
+.right-icon[data-chevron] {
+  transition: transform 0.2s ease-out;
+}
+
+.button[data-open] .right-icon[data-chevron] {
+  transform: rotate(180deg);
+}
+
+/* Listbox (Popover variant) */
+.listbox {
+  display: none;
+  position: fixed;
+  top: -9999px;
+  left: -9999px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-radius: var(--vers-comp-combobox-listbox-radius, var(--radius-md));
+  background-color: var(--vers-comp-combobox-listbox-bg, var(--color-background));
+  border: 1px solid var(--vers-comp-combobox-listbox-border, var(--color-border));
+  box-shadow: var(--vers-comp-combobox-listbox-shadow, var(--shadow-md));
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 50;
+
+  /* Popover API */
+  &:popover-open {
+    display: block;
+  }
+
+  /* CSS Anchor Positioning */
+  @supports (anchor-name: --test) {
+    position-anchor: attr(data-position-anchor);
+    bottom: anchor(top);
+    left: anchor(left);
+    width: anchor-size(width);
+    margin-top: 0;
+
+    &[data-placement="bottom"] {
+      top: anchor(bottom);
+      bottom: auto;
+      margin-top: var(--vers-comp-combobox-listbox-gap, var(--spacing-1));
+    }
+
+    &[data-placement="top"] {
+      bottom: anchor(top);
+      top: auto;
+      margin-bottom: var(--vers-comp-combobox-listbox-gap, var(--spacing-1));
+    }
+  }
+}
+
+/* Container for listbox content (inner scrollable area) */
+.listbox-inner {
+  padding: var(--vers-comp-combobox-listbox-padding, var(--spacing-2));
+}
+
+/* Individual option item - matching Menu component styling */
+.option {
+  /* tokens */
+  --_item-px: var(--vers-comp-combobox-option-px, var(--spacing-2));
+  --_item-py: var(--vers-comp-combobox-option-py, var(--spacing-2));
+  --_item-radius: var(--vers-comp-combobox-option-radius, var(--radius-md));
+  --_item-hover-bg: var(--vers-comp-combobox-option-hover-bg, var(--color-surface-hover));
+  --_item-selected-bg: var(--vers-comp-combobox-option-selected-bg, var(--color-primary-light));
+  --_item-selected-color: var(--vers-comp-combobox-option-selected-color, var(--color-primary));
+  --_transition-duration: var(--vers-comp-combobox-option-transition, var(--transition-base));
+
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--_item-py) var(--_item-px);
+  background: none;
+  border: none;
+  border-radius: var(--_item-radius);
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  color: var(--vers-comp-combobox-option-text, var(--color-text));
+  gap: var(--spacing-2);
+  transition-property: background-color;
+  transition-duration: var(--_transition-duration);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  outline: none;
+
+  &:hover:not([data-disabled]) {
+    background-color: var(--_item-hover-bg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary-focus);
+    outline-offset: -2px;
+  }
+
+  &[data-selected] {
+    background-color: var(--_item-selected-bg);
+    color: var(--_item-selected-color);
+    font-weight: var(--font-weight-medium);
+  }
+
+  &[data-disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+/* Check icon in option (visible when selected) */
+.option-check {
+  display: none;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.option[data-selected] .option-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Selection chips row */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--vers-comp-combobox-chips-gap, var(--spacing-2));
+  width: 100%;
+}
+
+/* Individual chip */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: var(--vers-comp-combobox-chip-padding, var(--spacing-1) var(--spacing-2));
+  background-color: var(--vers-comp-combobox-chip-bg, var(--color-surface-secondary));
+  border-radius: var(--vers-comp-combobox-chip-radius, var(--radius-full));
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+  color: var(--vers-comp-combobox-chip-text, var(--color-text));
+
+  &[data-disabled] {
+    opacity: 0.5;
+  }
+}
+
+/* Chip remove button */
+.chip-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 1rem;
+  height: 1rem;
+  color: inherit;
+  transition: opacity 0.15s ease-out;
+  flex-shrink: 0;
+
+  &:hover:not(:disabled) {
+    opacity: 0.7;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+/* Drawer variant input field */
+.drawer-input-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.25rem;
+  border: 1px solid var(--vers-comp-combobox-border, var(--color-border));
+  background-color: var(--vers-comp-combobox-bg, transparent);
+  border-radius: var(--radius-md);
+
+  --_height: var(--vers-comp-combobox-height, 1.75rem);
+  --_px: var(--vers-comp-combobox-padding-x, var(--spacing-2));
+  --_py: var(--vers-comp-combobox-padding-y, 0);
+  --_font-size: var(--vers-comp-combobox-font-size, var(--font-size-base));
+}
+
+.drawer-input {
+  flex: 1;
+  height: var(--_height);
+  padding: var(--_py) var(--_px);
+  font-family: var(--font-sans);
+  font-size: var(--_font-size);
+  line-height: 1.5;
+  color: var(--vers-comp-combobox-text, var(--color-text));
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.drawer-input::placeholder {
+  color: var(--vers-comp-combobox-placeholder, var(--color-text-muted));
+  opacity: 1;
+}
+
+.drawer-input-wrapper:has(.drawer-input:focus) {
+  border-color: var(--vers-comp-combobox-focus-color, var(--color-primary-focus));
+}
+
+/* Drawer variant listbox - for bottom/right drawer UI */
+.drawer-listbox {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--vers-comp-combobox-option-gap, var(--spacing-1));
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Drawer container - flex layout for search input + listbox */
+.drawer-container {
+  padding: var(--vers-comp-combobox-drawer-padding, var(--spacing-3));
+  display: flex;
+  flex-direction: column;
+  gap: var(--vers-comp-combobox-drawer-gap, var(--spacing-3));
+  height: 100%;
+}
