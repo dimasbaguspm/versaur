@@ -44,15 +44,16 @@ export type {
 export { Table } from "./table"
 export type {
   TableWrapperProps,
+  TableToolbarProps,
   TableHeaderProps,
   TableBodyProps,
   TableFooterProps,
   TableRowProps,
-  TableHeaderCellProps,
-  TableBodyCellProps,
+  TableColProps,
   TableCheckboxProps,
   TableDoubleLineProps,
   TableActionProps,
+  TableActionItemProps,
 } from "./table"
 
 export { ButtonGroup } from "./button-group"

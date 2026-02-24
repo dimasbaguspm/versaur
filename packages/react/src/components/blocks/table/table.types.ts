@@ -1,59 +1,82 @@
 import type { TableCellVariant } from "@versaur/core/blocks"
-import type { HTMLAttributes, ReactNode, TableHTMLAttributes, TdHTMLAttributes, ThHTMLAttributes } from "react"
+import type { HTMLAttributes, ReactNode } from "react"
+
+import { IconProps } from "../../primitive"
 
 /**
- * Table wrapper props with CSS Grid column definition
+ * Selection state data passed to toolbar render function
+ */
+export interface TableSelectionData {
+  selected: Set<string | number>
+  allSelected: boolean
+  someSelected: boolean
+}
+
+/**
+ * Table root wrapper with CSS Grid column definition
  */
 export type TableWrapperProps = HTMLAttributes<HTMLDivElement> & {
   /**
-   * CSS Grid template columns string (e.g., "2fr 1fr 1fr min-content")
+   * CSS Grid template columns string (e.g., "repeat(3, 1fr)", "2fr 1fr 1fr")
    */
-  columns: string
+  columns?: string
   /**
-   * Set of selected row IDs for row-level selection state (controlled)
+   * Callback fired when row selection changes
    */
-  selectedRows?: Set<string | number>
-}
-
-export type TableRootProps = TableHTMLAttributes<HTMLTableElement>
-
-export type TableHeaderProps = HTMLAttributes<HTMLTableSectionElement>
-
-export type TableBodyProps = HTMLAttributes<HTMLTableSectionElement>
-
-export type TableFooterProps = HTMLAttributes<HTMLTableSectionElement>
-
-export type TableRowProps = HTMLAttributes<HTMLTableRowElement>
-
-/**
- * Table header cell (renamed from TableHeadProps)
- * Supports sortable headers with controlled sort direction
- */
-export type TableHeaderCellProps = ThHTMLAttributes<HTMLTableCellElement> & {
-  /**
-   * Enable sortable header with visual indicator
-   */
-  sortable?: boolean
-  /**
-   * Current sort direction ('asc' | 'desc' | null for no sort, chevron always visible when sortable)
-   */
-  sortDirection?: "asc" | "desc" | null
-  /**
-   * Callback when user clicks sortable header
-   */
-  onSort?: (direction: "asc" | "desc" | null) => void
+  onSelectionChange?: (data: TableSelectionData) => void
 }
 
 /**
- * Table body cell (renamed from TableCellProps)
- * Default vertical centering for content
+ * Table.Toolbar - generic slot for action controls with optional render function
  */
-export type TableBodyCellProps = TdHTMLAttributes<HTMLTableCellElement> & {
+export interface TableToolbarProps extends Omit<HTMLAttributes<HTMLDivElement>, "children"> {
+  /**
+   * Render function receives selected row IDs Set, or regular children
+   */
+  children?: ReactNode | ((selectedIds: Set<string | number>) => ReactNode)
+}
+
+/**
+ * Table.Header - container for header columns
+ */
+export type TableHeaderProps = HTMLAttributes<HTMLDivElement>
+
+/**
+ * Table.Body - container for data rows
+ */
+export type TableBodyProps = HTMLAttributes<HTMLDivElement>
+
+/**
+ * Table.Footer - container for footer row(s)
+ */
+export type TableFooterProps = HTMLAttributes<HTMLDivElement>
+
+/**
+ * Table.Row - wrapper for cells
+ */
+export type TableRowProps = HTMLAttributes<HTMLDivElement>
+
+/**
+ * Table.Col - polymorphic cell with grid area support
+ */
+export type TableColProps = HTMLAttributes<any> & {
+  /**
+   * HTML element type: 'th' for headers, 'td' for data cells, 'div' for generic
+   * @default 'div'
+   */
+  as?: "th" | "td" | "div"
+  /**
+   * CSS grid area (e.g., "span 2", "1 / 3")
+   */
+  area?: string
+  /**
+   * Cell variant for styling
+   */
   variant?: TableCellVariant
 }
 
 /**
- * Built-in checkbox for row selection
+ * Table.Checkbox - built-in checkbox for row selection
  */
 export interface TableCheckboxProps {
   /**
@@ -61,7 +84,7 @@ export interface TableCheckboxProps {
    */
   rowId: string | number
   /**
-   * Whether checkbox is checked
+   * Whether checkbox is checked (optional - managed by Table context)
    */
   checked?: boolean
   /**
@@ -69,15 +92,20 @@ export interface TableCheckboxProps {
    */
   indeterminate?: boolean
   /**
-   * Callback when checkbox state changes
+   * Callback when checkbox state changes (optional - managed by Table context)
    */
-  onChange: (checked: boolean) => void
+  onChange?: (checked: boolean) => void
 }
 
 /**
- * Built-in double-line cell (title + subtitle)
+ * Table.DoubleLine - built-in cell with title and subtitle
  */
-export interface TableDoubleLineProps extends Omit<HTMLAttributes<HTMLDivElement>, "title" | "subtitle"> {
+export interface TableDoubleLineProps extends Omit<HTMLAttributes<any>, "title"> {
+  /**
+   * HTML element type: 'th' for headers, 'td' for data cells, 'div' for generic
+   * @default 'div'
+   */
+  as?: "th" | "td" | "div"
   /**
    * Main title (bold, primary color)
    */
@@ -94,46 +122,29 @@ export interface TableDoubleLineProps extends Omit<HTMLAttributes<HTMLDivElement
 }
 
 /**
- * Built-in action button for action column
+ * Table.Action - action trigger with Tooltip dropdown
  */
 export interface TableActionProps {
   /**
-   * Callback when button is clicked
+   * Icon element to render in the trigger button
    */
-  onClick?: () => void
+  icon: IconProps["as"]
   /**
-   * Disable the button
+   * Tooltip content: Table.ActionItem elements
+   */
+  children: ReactNode
+}
+
+/**
+ * Table.ActionItem - clickable menu item within Table.Action dropdown
+ */
+export interface TableActionItemProps extends HTMLAttributes<HTMLButtonElement> {
+  /**
+   * Callback when item is clicked
+   */
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
+  /**
+   * Disable the item
    */
   disabled?: boolean
 }
-
-export interface TableComponent {
-  Header: typeof TableHeader
-  Body: typeof TableBody
-  Footer: typeof TableFooter
-  Row: typeof TableRow
-  HeaderCell: typeof TableHeaderCell
-  BodyCell: typeof TableBodyCell
-  Checkbox: typeof TableCheckbox
-  DoubleLine: typeof TableDoubleLine
-  Action: typeof TableAction
-}
-
-// Component type exports for namespace declaration merging
-declare const TableHeader: React.ForwardRefExoticComponent<
-  TableHeaderProps & React.RefAttributes<HTMLTableSectionElement>
->
-declare const TableBody: React.ForwardRefExoticComponent<TableBodyProps & React.RefAttributes<HTMLTableSectionElement>>
-declare const TableFooter: React.ForwardRefExoticComponent<
-  TableFooterProps & React.RefAttributes<HTMLTableSectionElement>
->
-declare const TableRow: React.ForwardRefExoticComponent<TableRowProps & React.RefAttributes<HTMLTableRowElement>>
-declare const TableHeaderCell: React.ForwardRefExoticComponent<
-  TableHeaderCellProps & React.RefAttributes<HTMLTableCellElement>
->
-declare const TableBodyCell: React.ForwardRefExoticComponent<
-  TableBodyCellProps & React.RefAttributes<HTMLTableCellElement>
->
-declare const TableCheckbox: React.FC<TableCheckboxProps>
-declare const TableDoubleLine: React.FC<TableDoubleLineProps>
-declare const TableAction: React.FC<TableActionProps>

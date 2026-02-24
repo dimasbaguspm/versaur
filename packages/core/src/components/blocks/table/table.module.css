@@ -1,66 +1,75 @@
-/* Table Root - Wrapper div for overflow handling with Grid support */
+/* ============================================
+   TABLE ROOT - CSS GRID CONTAINER
+   ============================================ */
 .table {
-  position: relative;
-  width: 100%;
-  overflow-x: auto;
-  border-radius: 0.5rem;
-  background: transparent;
+  /* Three-layer tokens for customization */
+  --_border-color: var(--vers-comp-table-border-color, var(--color-border));
+  --_cell-px: var(--vers-comp-table-cell-padding-x, 1rem);
+  --_cell-py: var(--vers-comp-table-cell-padding-y, 0.25rem);
+  --_bg-row: var(--vers-comp-table-bg-row, transparent);
+  --_bg-row-alt: var(--vers-comp-table-bg-row-alt, transparent);
+  --_bg-row-hover: var(--vers-comp-table-bg-row-hover, var(--color-ghost-soft));
+  --_text: var(--vers-comp-table-text, var(--color-ghost));
+  --_header-bg: var(--vers-comp-table-header-bg, transparent);
+  --_header-border: var(--vers-comp-table-header-border, var(--color-border));
+  --_header-text: var(--vers-comp-table-header-text, var(--color-ghost));
+  --_header-font-weight: var(--vers-comp-table-header-font-weight, 600);
+  --_header-font-size: var(--vers-comp-table-header-font-size, 0.8125rem);
+  --_footer-bg: var(--vers-comp-table-footer-bg, transparent);
+  --_footer-border: var(--vers-comp-table-footer-border, var(--color-ghost-light));
+  --_footer-text: var(--vers-comp-table-footer-text, var(--color-ghost));
+  --_footer-font-weight: var(--vers-comp-table-footer-font-weight, 600);
 
-  /* CSS Grid column definition from parent */
-  --table-grid-columns: auto;
-}
-
-/* Semantic table element */
-.table table {
-  width: 100%;
   display: grid;
-  grid-template-columns: var(--table-grid-columns);
+  grid-template-columns: var(--_columns, auto);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
   font-size: 0.875rem;
   line-height: 1.6;
-  grid-auto-rows: min-content;
-
-  /* Private tokens for styling - using ghost variant */
-  --table-border-color: var(--vers-comp-table-border-color, var(--color-ghost-soft));
-  --table-cell-padding-x: var(--vers-comp-table-cell-padding-x, 1rem);
-  --table-cell-padding-y: var(--vers-comp-table-cell-padding-y, 0.75rem);
-  --table-bg-row: var(--vers-comp-table-bg-row, transparent);
-  --table-bg-row-alt: var(--vers-comp-table-bg-row-alt, transparent);
-  --table-bg-row-hover: var(--vers-comp-table-bg-row-hover, var(--color-ghost-soft));
-  --table-text-color: var(--vers-comp-table-text-color, var(--color-ghost));
-  --table-text-secondary: var(--vers-comp-table-text-secondary, var(--color-text-secondary));
-  --table-header-bg: var(--vers-comp-table-header-bg, transparent);
-  --table-header-border: var(--vers-comp-table-header-border, var(--color-ghost-light));
-  --table-header-text-color: var(--vers-comp-table-header-text-color, var(--color-ghost));
-  --table-header-font-weight: var(--vers-comp-table-header-font-weight, 600);
-  --table-header-font-size: var(--vers-comp-table-header-font-size, 0.8125rem);
-  --table-footer-bg: var(--vers-comp-table-footer-bg, transparent);
-  --table-footer-border: var(--vers-comp-table-footer-border, var(--color-ghost-light));
-  --table-footer-text-color: var(--vers-comp-table-footer-text-color, var(--color-ghost));
-  --table-footer-font-weight: var(--vers-comp-table-footer-font-weight, 600);
 }
 
 /* ============================================
-   TABLE HEADER SECTION
+   LAYOUT - DISPLAY:CONTENTS FOR FLATTENING
    ============================================ */
-.table-header {
+.toolbar {
+  grid-column: 1 / -1;
+  padding: var(--_cell-py) 0;
+}
+
+.header,
+.body,
+.footer,
+.row {
   display: contents;
 }
 
-.table-header tr {
-  display: contents;
+/* ============================================
+   CELLS - BASE
+   ============================================ */
+.col {
+  --_area: ;
+  grid-column: var(--_area, auto);
+  padding: var(--_cell-py) var(--_cell-px);
+  color: var(--_text);
+  display: flex;
+  align-items: center;
+  min-height: 2.5rem;
 }
 
-/* Table Header Cell (th) */
-.table-head {
-  padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
+/* ============================================
+   HEADER CELLS (th.col)
+   ============================================ */
+th.col {
+  padding: var(--_cell-py) var(--_cell-px);
   text-align: left;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  font-size: var(--table-header-font-size);
-  font-weight: var(--table-header-font-weight);
-  color: var(--table-header-text-color);
-  background-color: var(--table-header-bg);
-  border-bottom: 2px solid var(--table-header-border);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  background-color: var(--_header-bg);
+  border-bottom: 1px solid var(--_header-border);
   white-space: nowrap;
   position: sticky;
   top: 0;
@@ -68,154 +77,156 @@
   cursor: default;
 }
 
-.table-head[data-sortable="true"] {
-  cursor: pointer;
-  user-select: none;
-}
-
-.table-head[data-sortable="true"]:hover {
-  background-color: var(--color-ghost-soft);
-  color: var(--color-ghost);
-}
-
 /* ============================================
-   TABLE BODY SECTION
+   BODY CELLS (td.col)
    ============================================ */
-.table-body {
-  display: contents;
-}
-
-.table-body tr {
-  display: contents;
-}
-
-/* Body cells - apply grid-column to ensure proper wrapping */
-.table-body tr > * {
-  border-bottom: 1px solid var(--table-border-color);
+td.col {
+  border-bottom: 1px solid var(--_border-color);
   transition: background-color 0.15s ease;
-  background-color: var(--table-bg-row);
-  padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
-  color: var(--table-text-color);
+  background-color: var(--_bg-row);
   vertical-align: middle;
-  min-height: 2.5rem;
-}
-
-/* Alternating row colors - uses nth-child on cells to determine row */
-.table-body tr:nth-child(odd) > * {
-  background-color: var(--table-bg-row);
-  border-bottom-color: var(--table-border-color);
-}
-
-.table-body tr:nth-child(even) > * {
-  background-color: var(--table-bg-row-alt);
-  border-bottom-color: var(--table-border-color);
 }
 
 /* Row hover effect - only when row is clickable */
-.table-body tr[data-clickable="true"]:hover > * {
-  background-color: var(--table-bg-row-hover);
-}
-
-/* Checkbox border darkens on row hover when clickable */
-.table-body tr[data-clickable="true"]:hover [data-table-cell-variant="checkbox"] {
-  /* Checkbox input will receive darker border via native styling */
+.row[data-clickable="true"]:hover td.col {
+  background-color: var(--_bg-row-hover);
 }
 
 /* ============================================
-   TABLE FOOTER SECTION
+   FOOTER CELLS
    ============================================ */
-.table-footer {
-  display: contents;
-}
-
-.table-footer tr {
-  display: contents;
-}
-
-.table-footer tr > * {
-  padding: var(--table-cell-padding-y) var(--table-cell-padding-x);
-  border-top: 2px solid var(--table-footer-border);
-  font-weight: var(--table-footer-font-weight);
-  color: var(--table-footer-text-color);
-  background-color: var(--table-footer-bg);
+.footer .col {
+  padding: var(--_cell-py) var(--_cell-px);
+  border-bottom: none;
+  font-weight: var(--_footer-font-weight);
+  color: var(--_footer-text);
+  background-color: var(--_footer-bg);
 }
 
 /* ============================================
-   TABLE CELL - DEFAULT CENTERED
+   CELL VARIANTS
    ============================================ */
-.table-cell {
-  /* Default: content handles its own alignment */
-}
-
-/* ============================================
-   TABLE CELL VARIANTS
-   ============================================ */
-.table-cell[data-table-cell-variant="numeric"] {
-  /* Numeric content - right aligned with monospace */
+td.col[data-variant="numeric"] {
   text-align: right;
   font-variant-numeric: tabular-nums;
   font-family: var(--vers-comp-table-numeric-font-family, "Menlo", "Courier New", monospace);
   font-weight: 500;
 }
 
-.table-cell[data-table-cell-variant="highlight"] {
-  /* Highlighted/important content */
+td.col[data-variant="highlight"] {
   font-weight: 600;
   background-color: var(--vers-comp-table-cell-highlight-bg, var(--color-warning-soft));
   color: var(--vers-comp-table-cell-highlight-color, var(--color-warning-bold));
-  padding-left: calc(var(--table-cell-padding-x) - 2px);
-  padding-right: calc(var(--table-cell-padding-x) - 2px);
+  padding-left: calc(var(--_cell-px) - 2px);
+  padding-right: calc(var(--_cell-px) - 2px);
   border-left: 4px solid var(--vers-comp-table-cell-highlight-border, var(--color-warning));
 }
 
-/* Built-in column types */
-.table-cell[data-table-cell-variant="checkbox"] {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--table-cell-padding-y) calc(var(--table-cell-padding-x) / 2);
-  width: auto;
-  min-width: 3rem;
+td.col[data-variant="checkbox"],
+th.col[data-variant="checkbox"] {
+  padding: var(--_cell-py) calc(var(--_cell-px) / 2);
+  pointer-events: auto;
 }
 
-/* Checkbox input border darkens on row hover */
-.table-body tr[data-clickable="true"]:hover .table-cell[data-table-cell-variant="checkbox"] input {
-  border-color: var(--vers-comp-checkbox-border-hover, var(--color-ghost-active));
-}
-
-.table-cell[data-table-cell-variant="double-line"] {
-  display: flex;
+td.col[data-variant="double-line"] {
   flex-direction: column;
-  justify-content: center;
   gap: 0.25rem;
+  align-items: start;
 }
 
-.table-cell[data-table-cell-variant="action"] {
+.double-line-title {
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+}
+
+.double-line-title[data-size="sm"] {
+  font-size: var(--font-size-xs);
+}
+
+.double-line-title[data-size="lg"] {
+  font-size: var(--font-size-base);
+}
+
+.double-line-subtitle {
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-secondary);
+}
+
+.double-line-subtitle[data-size="sm"] {
+  font-size: 0.65rem;
+}
+
+.double-line-subtitle[data-size="lg"] {
+  font-size: var(--font-size-sm);
+}
+
+td.col[data-variant="action"] {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--table-cell-padding-y) calc(var(--table-cell-padding-x) / 2);
+  padding: var(--_cell-py) calc(var(--_cell-px) / 2);
+}
+
+/* ============================================
+   TABLE.ACTION - TRIGGER & DROPDOWN
+   ============================================ */
+.action {
+  position: relative;
+  display: inline-flex;
+}
+
+.action-trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: inherit;
+}
+
+.action-trigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.action-item {
+  display: block;
+  width: 100%;
+  padding: var(--_cell-py) var(--_cell-px);
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--_text);
+  transition: background-color 0.15s ease;
+}
+
+.action-item:hover {
+  background-color: var(--color-ghost-soft);
+}
+
+.action-item:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 /* ============================================
    RESPONSIVE ADJUSTMENTS
    ============================================ */
 @media (max-width: 768px) {
-  .table {
-    border-radius: 0;
-  }
-
-  .table table {
-    font-size: 0.8125rem;
-  }
-
-  .table-head,
-  .table-cell {
-    padding: calc(var(--table-cell-padding-y) * 0.75) calc(var(--table-cell-padding-x) * 0.75);
+  .col {
+    padding: calc(var(--_cell-py) * 0.75) calc(var(--_cell-px) * 0.75);
     font-size: 0.75rem;
   }
 
-  .table-head {
-    font-size: 0.75rem;
+  th.col {
+    font-size: calc(var(--_header-font-size) * 0.9375);
   }
 }

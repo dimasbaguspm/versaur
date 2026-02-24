@@ -1,286 +1,360 @@
 import { tableStyles } from "@versaur/core/blocks"
 import { checkboxStyles } from "@versaur/core/forms"
-import { ChevronDownIcon, ChevronUpIcon, MenuIcon } from "@versaur/icons"
-import { forwardRef } from "react"
+import { createContext, forwardRef, useContext, useId, useRef, useState } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs.js"
 import { cx } from "../../../utils/cx"
-import { ButtonIcon } from "../../primitive/button-icon"
+import { ButtonIcon } from "../../primitive/button-icon/button-icon.js"
+import { Menu } from "../menu"
 import type {
   TableActionProps,
-  TableBodyCellProps,
   TableBodyProps,
   TableCheckboxProps,
+  TableColProps,
   TableDoubleLineProps,
   TableFooterProps,
-  TableHeaderCellProps,
   TableHeaderProps,
   TableRowProps,
+  TableToolbarProps,
   TableWrapperProps,
 } from "./table.types.js"
 
 /**
- * TableHeader - thead wrapper
+ * Table Context for internal state management
  */
-const TableHeader = forwardRef<HTMLTableSectionElement, TableHeaderProps>(({ className, ...props }, ref) => (
-  <thead ref={ref} className={cx(tableStyles["table-header"], className)} {...props} />
+interface TableContextValue {
+  selectedRows: Set<string | number>
+  allRowIds: Set<string | number>
+  onSelectionChange: (rowId: string | number, checked: boolean) => void
+  onSelectAll: (allRowIds: (string | number)[], checked: boolean) => void
+  registerRowId: (rowId: string | number) => void
+}
+
+const TableContext = createContext<TableContextValue | undefined>(undefined)
+
+/**
+ * Internal hook to access table context within Table component
+ */
+function useTableProvider() {
+  const context = useContext(TableContext)
+  if (!context) {
+    throw new Error("useTableProvider must be used within a Table component")
+  }
+  return context
+}
+
+/**
+ * TableToolbar - renders toolbar content with optional render function receiving selected row IDs
+ */
+const TableToolbar = forwardRef<HTMLDivElement, TableToolbarProps>(({ children, className, ...props }, ref) => {
+  const context = useTableProvider()
+
+  const renderChildren = typeof children === "function" ? children(context.selectedRows) : children
+
+  return (
+    <div ref={ref} className={cx(tableStyles.toolbar, className)} {...props}>
+      {renderChildren}
+    </div>
+  )
+})
+
+TableToolbar.displayName = "Table.Toolbar"
+
+/**
+ * TableHeader - container for header columns
+ */
+const TableHeader = forwardRef<HTMLDivElement, TableHeaderProps>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cx(tableStyles.header, className)} {...props} />
 ))
 
 TableHeader.displayName = "Table.Header"
 
 /**
- * TableBody - tbody wrapper
+ * TableBody - container for data rows
  */
-const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(({ className, ...props }, ref) => (
-  <tbody ref={ref} className={cx(tableStyles["table-body"], className)} {...props} />
+const TableBody = forwardRef<HTMLDivElement, TableBodyProps>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cx(tableStyles.body, className)} {...props} />
 ))
 
 TableBody.displayName = "Table.Body"
 
 /**
- * TableFooter - tfoot wrapper
+ * TableFooter - container for footer row(s)
  */
-const TableFooter = forwardRef<HTMLTableSectionElement, TableFooterProps>(({ className, ...props }, ref) => (
-  <tfoot ref={ref} className={cx(tableStyles["table-footer"], className)} {...props} />
+const TableFooter = forwardRef<HTMLDivElement, TableFooterProps>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cx(tableStyles.footer, className)} {...props} />
 ))
 
 TableFooter.displayName = "Table.Footer"
 
 /**
- * TableRow - tr wrapper with click-to-select support
+ * TableRow - wrapper for cells
  */
-const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(({ onClick, className, ...props }, ref) => (
-  <tr ref={ref} className={cx(className)} data-clickable={onClick ? "true" : undefined} onClick={onClick} {...props} />
+const TableRow = forwardRef<HTMLDivElement, TableRowProps>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cx(tableStyles.row, className)} {...props} />
 ))
 
 TableRow.displayName = "Table.Row"
 
 /**
- * TableHeaderCell - th wrapper with sortable support (renamed from TableHead)
+ * TableCol - polymorphic cell with grid area support
  */
-const TableHeaderCell = forwardRef<HTMLTableCellElement, TableHeaderCellProps>(
-  ({ sortable, sortDirection, onSort, children, className, ...props }, ref) => {
-    const handleClick = () => {
-      if (!sortable || !onSort) {
-        return
-      }
-
-      // Cycle through: null → asc → desc → null
-      let newDirection: "asc" | "desc" | null = "asc"
-      if (sortDirection === "asc") {
-        newDirection = "desc"
-      } else if (sortDirection === "desc") {
-        newDirection = null
-      }
-
-      onSort(newDirection)
-    }
-
+const TableCol = forwardRef<any, TableColProps>(
+  ({ as: Element = "div", area, variant, className, style, ...props }, ref) => {
     const dataAttrs = useDataAttrs({
-      sortable: sortable ? "true" : undefined,
+      variant,
     })
 
     return (
-      <th
+      <Element
         ref={ref}
-        className={cx(tableStyles["table-head"], className)}
-        onClick={sortable ? handleClick : undefined}
+        className={cx(tableStyles.col, className)}
+        style={
+          {
+            "--_area": area,
+            ...style,
+          } as React.CSSProperties
+        }
         {...dataAttrs}
         {...props}
-      >
-        <div
-          style={{
-            alignItems: "center",
-            display: "flex",
-            gap: "0.5rem",
-            justifyContent: "flex-start",
-          }}
-        >
-          {children}
-          {sortable && (
-            <>
-              {sortDirection === "asc" && <ChevronUpIcon style={{ flexShrink: 0, height: "1em", width: "1em" }} />}
-              {sortDirection === "desc" && <ChevronDownIcon style={{ flexShrink: 0, height: "1em", width: "1em" }} />}
-              {!sortDirection && (
-                <ChevronDownIcon
-                  style={{
-                    flexShrink: 0,
-                    height: "1em",
-                    opacity: 0.5,
-                    width: "1em",
-                  }}
-                />
-              )}
-            </>
-          )}
-        </div>
-      </th>
+      />
     )
   },
 )
 
-TableHeaderCell.displayName = "Table.HeaderCell"
+TableCol.displayName = "Table.Col"
 
 /**
- * TableBodyCell - td wrapper (renamed from TableCell)
- */
-const TableBodyCell = forwardRef<HTMLTableCellElement, TableBodyCellProps>(({ variant, className, ...props }, ref) => (
-  <td ref={ref} className={cx(tableStyles["table-cell"], className)} data-table-cell-variant={variant} {...props} />
-))
-
-TableBodyCell.displayName = "Table.BodyCell"
-
-/**
- * TableCheckbox - Built-in checkbox for row-level selection
+ * TableCheckbox - Built-in checkbox for row selection
  */
 const TableCheckbox = forwardRef<HTMLInputElement, TableCheckboxProps>(
-  ({ rowId, checked, indeterminate, onChange }, ref) => (
-    <label className={checkboxStyles.checkbox}>
-      <input
-        ref={(el) => {
-          if (el) {
-            el.indeterminate = indeterminate || false
-            if (typeof ref === "function") {
-              ref(el)
-            } else if (ref) {
-              ref.current = el
+  ({ rowId, checked, indeterminate, onChange }, ref) => {
+    const context = useTableProvider()
+    const isSelectAll = rowId === "select-all"
+    const isSelected = isSelectAll
+      ? context.selectedRows.size === context.allRowIds.size && context.allRowIds.size > 0
+      : context.selectedRows.has(rowId)
+
+    // Register row ID if not select-all checkbox
+    if (!isSelectAll && rowId) {
+      context.registerRowId(rowId)
+    }
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (isSelectAll) {
+        // Select all: use context.onSelectAll with all available row IDs
+        context.onSelectAll(Array.from(context.allRowIds), e.target.checked)
+      } else {
+        // Individual row: use context.onSelectionChange
+        context.onSelectionChange(rowId, e.target.checked)
+      }
+      // Also call onChange if provided for backward compatibility
+      onChange?.(e.target.checked)
+    }
+
+    // For select-all, calculate indeterminate state
+    const computedIndeterminate =
+      isSelectAll && context.selectedRows.size > 0 && context.selectedRows.size < context.allRowIds.size
+
+    return (
+      <label className={checkboxStyles.checkbox}>
+        <input
+          ref={(el) => {
+            if (el) {
+              el.indeterminate = computedIndeterminate || indeterminate || false
+              if (typeof ref === "function") {
+                ref(el)
+              } else if (ref) {
+                ref.current = el
+              }
             }
-          }
-        }}
-        type="checkbox"
-        className={checkboxStyles.input}
-        checked={checked || false}
-        onChange={(e) => onChange(e.target.checked)}
-        aria-label={`Select row ${rowId}`}
-      />
-      <span className={checkboxStyles.indicator} />
-    </label>
-  ),
+          }}
+          type="checkbox"
+          className={checkboxStyles.input}
+          checked={checked !== undefined ? checked : isSelected}
+          onChange={handleChange}
+          aria-label={isSelectAll ? "Select all rows" : `Select row ${rowId}`}
+        />
+        <span className={checkboxStyles.indicator} />
+      </label>
+    )
+  },
 )
 
 TableCheckbox.displayName = "Table.Checkbox"
 
 /**
- * TableDoubleLine - Built-in cell with title and subtitle
+ * TableDoubleLine - Built-in cell with title and subtitle using typography tokens
  */
-const TableDoubleLine = forwardRef<HTMLDivElement, TableDoubleLineProps>(
-  ({ title, subtitle, size = "md", className }, ref) => {
-    const fontSizeMap = {
-      title: {
-        sm: "0.875rem",
-        md: "0.9375rem",
-        lg: "1rem",
-      },
-      subtitle: {
-        sm: "0.75rem",
-        md: "0.8125rem",
-        lg: "0.875rem",
-      },
-    }
-
-    return (
-      <div ref={ref} className={cx(tableStyles["table-cell"], className)} data-table-cell-variant="double-line">
-        <div
-          style={{
-            fontWeight: 600,
-            fontSize: fontSizeMap.title[size],
-          }}
-        >
-          {title}
-        </div>
-        <div
-          style={{
-            fontSize: fontSizeMap.subtitle[size],
-            color: "#6b7280",
-          }}
-        >
-          {subtitle}
-        </div>
+const TableDoubleLine = forwardRef<any, TableDoubleLineProps>(
+  ({ as: Element = "div", title, subtitle, size = "md", className, ...props }, ref) => (
+    <Element ref={ref} className={cx(tableStyles.col, className)} data-variant="double-line" {...props}>
+      <div className={tableStyles["double-line-title"]} data-size={size}>
+        {title}
       </div>
-    )
-  },
+      <div className={tableStyles["double-line-subtitle"]} data-size={size}>
+        {subtitle}
+      </div>
+    </Element>
+  ),
 )
 
 TableDoubleLine.displayName = "Table.DoubleLine"
 
 /**
- * TableAction - Built-in button for action column using ButtonIcon
+ * TableActionItem - Menu-based action item (uses Menu.Item internally)
  */
-const TableAction = forwardRef<HTMLButtonElement, TableActionProps>(({ onClick, disabled }, ref) => {
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation()
-    onClick?.()
-  }
+const TableActionItem = Menu.Item
+
+TableActionItem.displayName = "Table.ActionItem"
+
+/**
+ * TableAction - Action trigger using Menu dropdown with action items
+ */
+const TableAction = forwardRef<HTMLDivElement, TableActionProps>(({ icon, children }, ref) => {
+  const id = useId()
+  const triggerProps = Menu.getTriggerProps({ id })
 
   return (
-    <ButtonIcon
-      ref={ref}
-      as={MenuIcon}
-      onClick={handleClick}
-      disabled={disabled}
-      variant="ghost"
-      size="medium"
-      aria-label="Action button"
-    />
+    <div ref={ref} className={cx(tableStyles.action)}>
+      <ButtonIcon
+        {...triggerProps}
+        as={icon}
+        variant="ghost"
+        className={cx(tableStyles["action-trigger"])}
+        aria-label="Actions"
+        onClick={(e) => {
+          e.stopPropagation()
+        }}
+        size="small"
+      />
+      <Menu id={id} placement="bottom" closeOnClick>
+        {children}
+      </Menu>
+    </div>
   )
 })
 
 TableAction.displayName = "Table.Action"
 
 /**
- * Table - Compound component with CSS Grid column management
- * Replaces TableRootProps and TableWrapperProps patterns
+ * Selection data passed to render functions
  */
-const TableComponent = forwardRef<HTMLDivElement, TableWrapperProps>(
-  ({ columns, children, className, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cx(tableStyles.table, className)}
-      style={
-        {
-          "--table-grid-columns": columns,
-        } as React.CSSProperties
-      }
-      {...props}
-    >
-      <table>{children}</table>
-    </div>
-  ),
-)
+export interface TableSelectionData {
+  selected: Set<string | number>
+  allSelected: boolean
+  someSelected: boolean
+}
+
+/**
+ * Table - Grid-based table component with internal row selection state
+ */
+const TableComponent = forwardRef<
+  HTMLDivElement,
+  TableWrapperProps & {
+    /**
+     * Callback fired when row selection changes
+     */
+    onSelectionChange?: (data: TableSelectionData) => void
+  }
+>(({ columns, children, className, style, onSelectionChange, ...props }, ref) => {
+  const [selectedRows, setSelectedRows] = useState<Set<string | number>>(new Set())
+  const allRowIdsRef = useRef(new Set<string | number>())
+
+  const handleSelectRow = (rowId: string | number, checked: boolean) => {
+    const newSelected = new Set(selectedRows)
+    if (checked) {
+      newSelected.add(rowId)
+    } else {
+      newSelected.delete(rowId)
+    }
+    setSelectedRows(newSelected)
+
+    onSelectionChange?.({
+      selected: newSelected,
+      allSelected: newSelected.size === allRowIdsRef.current.size && allRowIdsRef.current.size > 0,
+      someSelected: newSelected.size > 0,
+    })
+  }
+
+  const handleSelectAll = (rowIds: (string | number)[], checked: boolean) => {
+    const newSelected = checked ? new Set<string | number>(rowIds) : new Set<string | number>()
+    setSelectedRows(newSelected)
+
+    onSelectionChange?.({
+      selected: newSelected,
+      allSelected: checked,
+      someSelected: checked,
+    })
+  }
+
+  const registerRowId = (rowId: string | number) => {
+    allRowIdsRef.current.add(rowId)
+  }
+
+  const contextValue: TableContextValue = {
+    selectedRows,
+    allRowIds: allRowIdsRef.current,
+    onSelectionChange: handleSelectRow,
+    onSelectAll: handleSelectAll,
+    registerRowId,
+  }
+
+  return (
+    <TableContext.Provider value={contextValue}>
+      <div
+        ref={ref}
+        className={cx(tableStyles.table, className)}
+        style={
+          {
+            "--_columns": columns,
+            ...style,
+          } as React.CSSProperties
+        }
+        {...props}
+      >
+        {children}
+      </div>
+    </TableContext.Provider>
+  )
+})
 
 TableComponent.displayName = "Table"
 
 const Table = Object.assign(TableComponent, {
-  Action: TableAction,
+  Toolbar: TableToolbar,
+  Header: TableHeader,
   Body: TableBody,
-  BodyCell: TableBodyCell,
+  Footer: TableFooter,
+  Row: TableRow,
+  Col: TableCol,
   Checkbox: TableCheckbox,
   DoubleLine: TableDoubleLine,
-  Footer: TableFooter,
-  Header: TableHeader,
-  HeaderCell: TableHeaderCell,
-  Row: TableRow,
+  Action: TableAction,
+  ActionItem: TableActionItem,
 }) as React.ForwardRefExoticComponent<TableWrapperProps & React.RefAttributes<HTMLDivElement>> & {
+  Toolbar: typeof TableToolbar
   Header: typeof TableHeader
   Body: typeof TableBody
   Footer: typeof TableFooter
   Row: typeof TableRow
-  HeaderCell: typeof TableHeaderCell
-  BodyCell: typeof TableBodyCell
+  Col: typeof TableCol
   Checkbox: typeof TableCheckbox
   DoubleLine: typeof TableDoubleLine
   Action: typeof TableAction
+  ActionItem: typeof TableActionItem
 }
 
 export {
   Table,
   TableAction,
+  TableActionItem,
   TableBody,
-  TableBodyCell,
   TableCheckbox,
+  TableCol,
   TableDoubleLine,
   TableFooter,
   TableHeader,
-  TableHeaderCell,
   TableRow,
+  TableToolbar,
 }
