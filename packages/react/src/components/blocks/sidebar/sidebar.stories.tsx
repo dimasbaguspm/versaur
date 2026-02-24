@@ -12,8 +12,9 @@ import {
   TrashIcon,
   UserIcon,
 } from "@versaur/icons"
-import { AppLayout, Sidebar } from "../index"
+
 import { Avatar, ButtonIcon, Icon, Text } from "../../primitive/index"
+import { AppLayout, Sidebar } from "../index"
 
 const meta = {
   component: Sidebar,

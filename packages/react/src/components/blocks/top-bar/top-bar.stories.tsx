@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { AppLayout, TopBar } from "../index"
+
 import { Button, Text } from "../../primitive/index"
+import { AppLayout, TopBar } from "../index"
 
 const meta = {
   component: TopBar,

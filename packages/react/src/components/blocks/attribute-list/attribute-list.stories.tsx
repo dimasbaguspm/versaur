@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { AttributeList } from "../index"
+
 import { Badge } from "../../primitive/index"
+import { AttributeList } from "../index"
 
 const meta = {
   argTypes: {
@@ -32,15 +33,9 @@ export const Default: Story = {
             Active
           </Badge>
         </AttributeList.Item>
-        <AttributeList.Item title="Email">
-          john@example.com
-        </AttributeList.Item>
-        <AttributeList.Item title="Phone">
-          +1 (555) 123-4567
-        </AttributeList.Item>
-        <AttributeList.Item title="Location">
-          San Francisco
-        </AttributeList.Item>
+        <AttributeList.Item title="Email">john@example.com</AttributeList.Item>
+        <AttributeList.Item title="Phone">+1 (555) 123-4567</AttributeList.Item>
+        <AttributeList.Item title="Location">San Francisco</AttributeList.Item>
       </AttributeList>
     </div>
   ),
@@ -129,21 +124,11 @@ export const Tabular: Story = {
   render: (args) => (
     <div style={{ width: "100%", maxWidth: "600px" }}>
       <AttributeList {...args} layout="tabular" columns="1fr">
-        <AttributeList.Item title="Full Name">
-          Margaret Ellen Johnson
-        </AttributeList.Item>
-        <AttributeList.Item title="Email">
-          margaret@company.com
-        </AttributeList.Item>
-        <AttributeList.Item title="Title">
-          Senior Designer
-        </AttributeList.Item>
-        <AttributeList.Item title="Department">
-          Creative Services
-        </AttributeList.Item>
-        <AttributeList.Item title="Years of Experience">
-          12+
-        </AttributeList.Item>
+        <AttributeList.Item title="Full Name">Margaret Ellen Johnson</AttributeList.Item>
+        <AttributeList.Item title="Email">margaret@company.com</AttributeList.Item>
+        <AttributeList.Item title="Title">Senior Designer</AttributeList.Item>
+        <AttributeList.Item title="Department">Creative Services</AttributeList.Item>
+        <AttributeList.Item title="Years of Experience">12+</AttributeList.Item>
       </AttributeList>
     </div>
   ),

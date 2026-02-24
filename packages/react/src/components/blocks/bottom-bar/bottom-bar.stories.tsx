@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { BellIcon, HomeIcon, SearchIcon, SettingsIcon, UserIcon } from "@versaur/icons"
-import { AppLayout, BottomBar } from "../index"
+
 import { Icon, Text } from "../../primitive/index"
+import { AppLayout, BottomBar } from "../index"
 
 const meta = {
   component: BottomBar,

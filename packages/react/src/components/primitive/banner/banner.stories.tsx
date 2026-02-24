@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { AlertCircleIcon, AlertTriangleIcon, HelpCircleIcon } from "@versaur/icons"
-import { Banner, Icon } from "../index"
 import { useState } from "react"
+
+import { Banner, Icon } from "../index"
 
 const meta = {
   component: Banner,

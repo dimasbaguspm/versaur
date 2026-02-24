@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { RadioGroup } from "../index"
 import { useState } from "react"
+
+import { RadioGroup } from "../index"
 
 const meta = {
   argTypes: {
@@ -98,14 +99,7 @@ export const RowDirection: Story = {
   render: (args) => {
     const [value, setValue] = useState<string>("")
     return (
-      <RadioGroup
-        {...args}
-        value={value}
-        onChange={setValue}
-        name="horizontal"
-        direction="row"
-        label="Alignment"
-      >
+      <RadioGroup {...args} value={value} onChange={setValue} name="horizontal" direction="row" label="Alignment">
         <RadioGroup.Option value="left">Left</RadioGroup.Option>
         <RadioGroup.Option value="center">Center</RadioGroup.Option>
         <RadioGroup.Option value="right">Right</RadioGroup.Option>

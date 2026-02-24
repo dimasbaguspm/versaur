@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { CheckboxGroup } from "../index"
-import { Text } from "../../primitive/index"
 import { useState } from "react"
+
+import { Text } from "../../primitive/index"
+import { CheckboxGroup } from "../index"
 
 const meta = {
   argTypes: {

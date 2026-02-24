@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { ChipInput } from "../index"
-import { Icon } from "../../primitive/index"
 import { CheckIcon, HomeIcon, SettingsIcon, StarIcon } from "@versaur/icons"
 import { useState } from "react"
+
+import { Icon } from "../../primitive/index"
+import { ChipInput } from "../index"
 
 const meta = {
   args: {
@@ -163,13 +164,7 @@ export const WithIcons: Story = {
     const [value, setValue] = useState<string[]>([])
     return (
       <div style={{ width: "100%", maxWidth: "500px" }}>
-        <ChipInput
-          multiple
-          value={value}
-          onChange={setValue}
-          label="Select features"
-          helper="Choose with icons"
-        >
+        <ChipInput multiple value={value} onChange={setValue} label="Select features" helper="Choose with icons">
           <ChipInput.Option value="star" iconLeft={<Icon as={StarIcon} />}>
             Featured
           </ChipInput.Option>

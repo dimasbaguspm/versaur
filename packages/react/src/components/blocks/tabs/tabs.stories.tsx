@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { Tabs } from "../index"
 import { useState } from "react"
+
+import { Tabs } from "../index"
 
 const meta = {
   args: {

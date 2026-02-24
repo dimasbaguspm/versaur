@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { BadgeGroup } from "../index"
+
 import { Badge } from "../../primitive/index"
+import { BadgeGroup } from "../index"
 
 const meta = {
   argTypes: {

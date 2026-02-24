@@ -3,38 +3,29 @@ import { forwardRef } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { cx } from "../../../utils/cx"
-import type {
-  AppLayoutRegionProps,
-  AppLayoutRootProps,
-  AppLayoutBodyProps,
-  AppLayoutType,
-} from "./app-layout.types"
+import type { AppLayoutRegionProps, AppLayoutRootProps, AppLayoutBodyProps, AppLayoutType } from "./app-layout.types"
 
-const AppLayoutRoot = forwardRef<HTMLDivElement, AppLayoutRootProps>(
-  ({ className, children }, ref) => {
-    return (
-      <div ref={ref} className={cx(appLayoutStyles["app-layout"], className)}>
-        {children}
-      </div>
-    )
-  },
-)
+const AppLayoutRoot = forwardRef<HTMLDivElement, AppLayoutRootProps>(({ className, children }, ref) => {
+  return (
+    <div ref={ref} className={cx(appLayoutStyles["app-layout"], className)}>
+      {children}
+    </div>
+  )
+})
 
 AppLayoutRoot.displayName = "AppLayout"
 
-const AppLayoutBody = forwardRef<HTMLDivElement, AppLayoutBodyProps>(
-  ({ centered, className, children }, ref) => {
-    const attrs = useDataAttrs({
-      centered,
-    })
+const AppLayoutBody = forwardRef<HTMLDivElement, AppLayoutBodyProps>(({ centered, className, children }, ref) => {
+  const attrs = useDataAttrs({
+    centered,
+  })
 
-    return (
-      <div ref={ref} className={cx(appLayoutStyles["app-layout-body"], className)} {...attrs}>
-        {children}
-      </div>
-    )
-  },
-)
+  return (
+    <div ref={ref} className={cx(appLayoutStyles["app-layout-body"], className)} {...attrs}>
+      {children}
+    </div>
+  )
+})
 
 AppLayoutBody.displayName = "AppLayout.Body"
 

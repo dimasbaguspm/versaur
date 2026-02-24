@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { SearchIcon } from "@versaur/icons"
-import { NoResults } from "../index"
+
 import { Button } from "../../primitive/index"
+import { NoResults } from "../index"
 
 const meta = {
   component: NoResults,

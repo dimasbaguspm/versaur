@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { AvatarGroup } from "../index"
+
 import { Avatar } from "../../primitive/index"
+import { AvatarGroup } from "../index"
 
 const meta = {
   argTypes: {

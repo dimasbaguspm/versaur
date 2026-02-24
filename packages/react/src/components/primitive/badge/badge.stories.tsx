@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { AlertCircleIcon, CheckIcon } from "@versaur/icons"
+
 import { Badge, Icon } from "../index"
 
 const meta = {

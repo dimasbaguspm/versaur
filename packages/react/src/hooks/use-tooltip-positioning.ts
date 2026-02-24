@@ -108,12 +108,7 @@ function createTooltipController(tooltipEl: HTMLElement, triggerEl: HTMLElement,
  * - useTooltipFocusHandler: focus/blur on trigger (immediate)
  * - Core shared: showTooltip/hideTooltip, DOM discovery, placement computation
  */
-export function useTooltipPositioning({
-  id,
-  tooltipRef,
-  placement,
-  triggerType,
-}: UseTooltipPositioningOptions) {
+export function useTooltipPositioning({ id, tooltipRef, placement, triggerType }: UseTooltipPositioningOptions) {
   const controllerRef = useRef<ReturnType<typeof createTooltipController> | null>(null)
   const triggerRef = useRef<HTMLElement | null>(null)
 

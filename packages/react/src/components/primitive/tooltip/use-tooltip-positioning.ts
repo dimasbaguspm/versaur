@@ -31,8 +31,7 @@ function createTooltipController(tooltipEl: HTMLElement, triggerEl: HTMLElement,
         const tooltipRect = tooltipEl.getBoundingClientRect()
         const tooltipSize = { width: tooltipRect.width, height: tooltipRect.height }
 
-        const finalPlacement =
-          placement || computeTooltipPlacement(triggerEl.getBoundingClientRect(), tooltipSize)
+        const finalPlacement = placement || computeTooltipPlacement(triggerEl.getBoundingClientRect(), tooltipSize)
         resolve(finalPlacement)
       })
     })
@@ -99,12 +98,7 @@ function createTooltipController(tooltipEl: HTMLElement, triggerEl: HTMLElement,
  *
  * Not exported - for internal tooltip component use only.
  */
-export function useTooltipPositioning({
-  id,
-  tooltipRef,
-  placement,
-  type,
-}: UseTooltipPositioningOptions) {
+export function useTooltipPositioning({ id, tooltipRef, placement, type }: UseTooltipPositioningOptions) {
   const controllerRef = useRef<ReturnType<typeof createTooltipController> | null>(null)
   const triggerRef = useRef<HTMLElement | null>(null)
 
@@ -193,11 +187,7 @@ export function useTooltipPositioning({
     // Handle click outside trigger and tooltip to close
     const handleDocumentClick = (event: MouseEvent) => {
       const target = event.target as Node
-      if (
-        tooltipEl.matches(":popover-open") &&
-        !trigger.contains(target) &&
-        !tooltipEl.contains(target)
-      ) {
+      if (tooltipEl.matches(":popover-open") && !trigger.contains(target) && !tooltipEl.contains(target)) {
         controller.hideTooltip(false)
       }
     }

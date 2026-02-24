@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { DrawerPlacement } from "@versaur/core/blocks"
-import { BadgeGroup, ButtonGroup, Drawer, Tabs } from "../index"
-import { Badge, Button, Heading, Text } from "../../primitive/index"
 import { useState } from "react"
+
+import { Badge, Button, Heading, Text } from "../../primitive/index"
+import { BadgeGroup, ButtonGroup, Drawer, Tabs } from "../index"
 
 const meta = {
   argTypes: {

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { CheckIcon, ChevronRightIcon } from "@versaur/icons"
+
 import { Button, Icon } from "../index"
 
 const meta = {

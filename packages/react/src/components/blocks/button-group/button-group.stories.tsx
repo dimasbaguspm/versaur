@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { ButtonGroup } from "../index"
+
 import { Button } from "../../primitive/index"
+import { ButtonGroup } from "../index"
 
 const meta = {
   argTypes: {

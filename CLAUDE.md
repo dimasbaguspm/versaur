@@ -155,18 +155,18 @@ This includes all color, spacing, typography, and effects tokens. In apps, impor
 
 ## Key files
 
-| File                                                        | Purpose                                              |
-| ----------------------------------------------------------- | ---------------------------------------------------- |
-| `packages/core/vite.config.ts`                              | CSS module scoping config (`versaur-[name]-[local]`) |
-| `packages/core/src/tokens/`                                 | Design tokens (CSS custom properties)                |
-| `packages/react/src/utils/cx.ts`                            | Class name merging utility (filters + joins)         |
-| `packages/react/src/hooks/use-data-attrs.ts`                | Core hook: props to data-attributes                  |
-| `packages/react/src/components/primitive/button/button.tsx` | Reference component implementation                   |
-| `packages/react/src/components/primitive/button/button.stories.tsx` | Storybook stories (colocated with component)      |
-| `packages/icons/src/index.ts`                               | Icon library registry and exports                    |
-| `packages/tooling/src/generate-types.ts`                    | PostCSS type extraction entry point                  |
-| `packages/tooling/src/css-parser.ts`                        | CSS data-attribute selector parser                   |
-| `packages/tooling/src/codegen.ts`                           | TypeScript codegen from parsed CSS                   |
+| File                                                                | Purpose                                              |
+| ------------------------------------------------------------------- | ---------------------------------------------------- |
+| `packages/core/vite.config.ts`                                      | CSS module scoping config (`versaur-[name]-[local]`) |
+| `packages/core/src/tokens/`                                         | Design tokens (CSS custom properties)                |
+| `packages/react/src/utils/cx.ts`                                    | Class name merging utility (filters + joins)         |
+| `packages/react/src/hooks/use-data-attrs.ts`                        | Core hook: props to data-attributes                  |
+| `packages/react/src/components/primitive/button/button.tsx`         | Reference component implementation                   |
+| `packages/react/src/components/primitive/button/button.stories.tsx` | Storybook stories (colocated with component)         |
+| `packages/icons/src/index.ts`                                       | Icon library registry and exports                    |
+| `packages/tooling/src/generate-types.ts`                            | PostCSS type extraction entry point                  |
+| `packages/tooling/src/css-parser.ts`                                | CSS data-attribute selector parser                   |
+| `packages/tooling/src/codegen.ts`                                   | TypeScript codegen from parsed CSS                   |
 
 ## Deployment
 
@@ -191,6 +191,7 @@ Storybook documentation is automatically deployed to a homelab VPS on every push
 4. Rebuild containers: SSH to VPS, run `docker compose up -d --build`
 
 **Configuration:**
+
 - VPS credentials: Stored in GitHub secrets (`VPS_HOST`, `VPS_PORT`, `VPS_USER`, `VPS_PRIVATE_KEY`, `VPS_DIR`)
 - Workflow file: `.github/workflows/ci.yml`
 - Deploy documentation: `deploy/README.md`

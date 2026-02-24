@@ -1,20 +1,13 @@
 import { featuresStyles } from "@versaur/core/blocks"
 import { forwardRef, useId } from "react"
+
 import { cx } from "../../../utils/cx"
 import { Tooltip } from "../../primitive/tooltip"
 import type { FeaturesItemProps, FeaturesProps } from "./features.types"
 
-function FeaturesRoot(
-  { direction = "column", children, className, ...rest }: FeaturesProps,
-  ref: any,
-) {
+function FeaturesRoot({ direction = "column", children, className, ...rest }: FeaturesProps, ref: any) {
   return (
-    <ul
-      ref={ref}
-      className={cx(featuresStyles.features, className)}
-      data-direction={direction}
-      {...rest}
-    >
+    <ul ref={ref} className={cx(featuresStyles.features, className)} data-direction={direction} {...rest}>
       {children}
     </ul>
   )
@@ -30,13 +23,7 @@ export const FeaturesItem = forwardRef<HTMLLIElement, FeaturesItemProps>(
     const triggerProps = ariaLabel ? Tooltip.getTooltipTriggerProps({ id: tooltipId }) : {}
 
     return (
-      <li
-        ref={ref}
-        aria-label={ariaLabel}
-        className={cx(featuresStyles.item, className)}
-        {...triggerProps}
-        {...rest}
-      >
+      <li ref={ref} aria-label={ariaLabel} className={cx(featuresStyles.item, className)} {...triggerProps} {...rest}>
         {icon && <span className={featuresStyles.icon}>{icon}</span>}
         {children}
         {ariaLabel && (

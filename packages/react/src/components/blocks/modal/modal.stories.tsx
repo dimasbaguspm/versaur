@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { ButtonGroup, Modal } from "../index"
-import { Button, Text } from "../../primitive/index"
 import { useState } from "react"
+
+import { Button, Text } from "../../primitive/index"
+import { ButtonGroup, Modal } from "../index"
 
 const meta = {
   component: Modal,

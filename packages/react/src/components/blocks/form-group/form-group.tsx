@@ -1,5 +1,6 @@
 import { formGroupStyles } from "@versaur/core/blocks"
 import { forwardRef } from "react"
+
 import { cx } from "../../../utils/cx"
 import type { FormGroupFieldProps, FormGroupProps, FormGroupSeparatorProps } from "./form-group.types"
 
@@ -18,18 +19,17 @@ import type { FormGroupFieldProps, FormGroupProps, FormGroupSeparatorProps } fro
  * </FormGroup>
  * ```
  */
-function FormGroupRoot(
-  { columns = "1fr", children, className, style, ...rest }: FormGroupProps,
-  ref: any,
-) {
+function FormGroupRoot({ columns = "1fr", children, className, style, ...rest }: FormGroupProps, ref: any) {
   return (
     <form
       ref={ref}
       className={cx(formGroupStyles["form-group"], className)}
-      style={{
-        "--_columns": columns,
-        ...style,
-      } as React.CSSProperties}
+      style={
+        {
+          "--_columns": columns,
+          ...style,
+        } as React.CSSProperties
+      }
       {...rest}
     >
       {children}
@@ -49,10 +49,12 @@ export const FormGroupField = forwardRef<HTMLDivElement, FormGroupFieldProps>(
       <div
         ref={ref}
         className={cx(formGroupStyles["field"], className)}
-        style={{
-          "--_area": area,
-          ...style,
-        } as React.CSSProperties}
+        style={
+          {
+            "--_area": area,
+            ...style,
+          } as React.CSSProperties
+        }
         {...rest}
       >
         {children}
@@ -66,17 +68,9 @@ FormGroupField.displayName = "FormGroup.Field"
 /**
  * FormGroup.Separator - A full-width horizontal separator
  */
-export const FormGroupSeparator = forwardRef<HTMLHRElement, FormGroupSeparatorProps>(
-  ({ className, ...rest }, ref) => {
-    return (
-      <hr
-        ref={ref}
-        className={cx(formGroupStyles["separator"], className)}
-        {...rest}
-      />
-    )
-  },
-)
+export const FormGroupSeparator = forwardRef<HTMLHRElement, FormGroupSeparatorProps>(({ className, ...rest }, ref) => {
+  return <hr ref={ref} className={cx(formGroupStyles["separator"], className)} {...rest} />
+})
 
 FormGroupSeparator.displayName = "FormGroup.Separator"
 

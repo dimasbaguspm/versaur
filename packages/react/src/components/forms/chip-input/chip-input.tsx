@@ -114,13 +114,15 @@ const ChipInputRoot = forwardRef<HTMLDivElement, ChipInputRootProps>(
         )}
 
         <ChipInputContext.Provider
-          value={{
-            disabled,
-            multiple,
-            name,
-            onChange: handleChange,
-            value,
-          } as ChipInputContextType}
+          value={
+            {
+              disabled,
+              multiple,
+              name,
+              onChange: handleChange,
+              value,
+            } as ChipInputContextType
+          }
         >
           <div
             className={chipInputStyles.options}

@@ -1,12 +1,12 @@
 import { radioGroupStyles } from "@versaur/core/forms"
 import { createContext, forwardRef, useContext, useId } from "react"
 
-import { Radio } from "../radio"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { cx } from "../../../utils/cx"
 import { ErrorText } from "../error-text"
 import { HelperText } from "../helper-text"
 import { Label } from "../label"
+import { Radio } from "../radio"
 import type { RadioGroupOptionProps, RadioGroupRootProps } from "./radio-group.types"
 
 /**

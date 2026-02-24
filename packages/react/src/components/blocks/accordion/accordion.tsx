@@ -117,7 +117,11 @@ export const AccordionSummary = forwardRef<HTMLElement, AccordionSummaryProps>(
         <span className={accordionStyles.label} style={{ "--_clamp": clamp } as React.CSSProperties}>
           {children}
         </span>
-        {right && <span ref={rightRef} className={accordionStyles.right}>{right}</span>}
+        {right && (
+          <span ref={rightRef} className={accordionStyles.right}>
+            {right}
+          </span>
+        )}
         <span className={accordionStyles.chevron}>
           <ChevronDownIcon width={20} height={20} />
         </span>

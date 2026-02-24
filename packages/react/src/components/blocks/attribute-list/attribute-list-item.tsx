@@ -19,10 +19,12 @@ export const AttributeListItem = forwardRef<HTMLDivElement, AttributeListItemPro
       <div
         ref={ref}
         className={cx(className)}
-        style={{
-          "--_area": area,
-          ...style,
-        } as React.CSSProperties}
+        style={
+          {
+            "--_area": area,
+            ...style,
+          } as React.CSSProperties
+        }
         {...rest}
       >
         <dt>{title}</dt>

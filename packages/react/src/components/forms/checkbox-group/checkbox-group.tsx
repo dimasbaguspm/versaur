@@ -1,9 +1,9 @@
 import { checkboxGroupStyles } from "@versaur/core/forms"
 import { createContext, forwardRef, useContext, useId } from "react"
 
-import { Checkbox } from "../checkbox"
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { cx } from "../../../utils/cx"
+import { Checkbox } from "../checkbox"
 import { ErrorText } from "../error-text"
 import { HelperText } from "../helper-text"
 import { Label } from "../label"

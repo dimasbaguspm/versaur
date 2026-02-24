@@ -34,11 +34,13 @@ export const AttributeList = forwardRef<HTMLDListElement, AttributeListProps>(
         ref={ref}
         className={cx(attributeListStyles["attribute-list"], className)}
         {...dataAttrs}
-        style={{
-          "--_columns": columns,
-          ...(gap !== undefined && { "--_gap": typeof gap === "number" ? `${gap}px` : gap }),
-          ...style,
-        } as React.CSSProperties}
+        style={
+          {
+            "--_columns": columns,
+            ...(gap !== undefined && { "--_gap": typeof gap === "number" ? `${gap}px` : gap }),
+            ...style,
+          } as React.CSSProperties
+        }
         {...rest}
       >
         {children}

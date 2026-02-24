@@ -28,13 +28,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
 
     return (
       <label className={cx(radioStyles.radio, className)} {...dataAttrs}>
-        <input
-          ref={ref}
-          type="radio"
-          className={radioStyles.input}
-          disabled={disabled}
-          {...rest}
-        />
+        <input ref={ref} type="radio" className={radioStyles.input} disabled={disabled} {...rest} />
         <span className={radioStyles.indicator} />
         {children && <span className={radioStyles.label}>{children}</span>}
       </label>

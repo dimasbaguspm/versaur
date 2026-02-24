@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { Accordion } from "../index"
-import { Button, Text } from "../../primitive/index"
 import { useState } from "react"
+
+import { Button, Text } from "../../primitive/index"
+import { Accordion } from "../index"
 
 const meta = {
   component: Accordion,

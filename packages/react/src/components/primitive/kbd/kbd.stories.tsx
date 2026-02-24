@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
+
 import { Kbd } from "../index"
 
 const meta = {

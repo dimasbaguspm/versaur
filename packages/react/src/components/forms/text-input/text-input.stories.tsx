@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { MailIcon, SearchIcon } from "@versaur/icons"
+
 import { TextInput } from "../index"
 
 const meta = {

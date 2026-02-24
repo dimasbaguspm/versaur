@@ -94,9 +94,7 @@ export function computeTooltipPlacement(
     // Prioritize placements that fit completely within safe area
     const fittingPlacements = placements.filter(([_, __, fits]) => fits)
     if (fittingPlacements.length > 0) {
-      return fittingPlacements.reduce((best, current) =>
-        current[1] > best[1] ? current : best,
-      )[0]
+      return fittingPlacements.reduce((best, current) => (current[1] > best[1] ? current : best))[0]
     }
   }
 
