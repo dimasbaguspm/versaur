@@ -1,5 +1,12 @@
 # @versaur/core
 
+## 0.0.7
+
+### Patch Changes
+
+- b3e10b4: style(chip-input, select, text-input): adjust component height and padding for consistency
+- bee150f: feat(table): enhance table component
+
 ## 0.0.6
 
 ### Patch Changes
