@@ -2,12 +2,15 @@
 // Source: tabs.module.css
 
 export type TabsState = 'active' | 'disabled';
+export type TabsIconConfig = 'both' | 'left' | 'right';
 
 export interface TabsDataAttrs {
   state?: TabsState;
+  iconConfig?: TabsIconConfig;
 };
 
 export namespace Tabs {
   export type State = TabsState;
+  export type IconConfig = TabsIconConfig;
   export type DataAttrs = TabsDataAttrs;
 }

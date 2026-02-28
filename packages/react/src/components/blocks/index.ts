@@ -113,3 +113,6 @@ export type { ModalCloseButtonProps, ModalRootProps } from "./modal"
 
 export { BottomSheet } from "./bottom-sheet"
 export type { BottomSheetCloseButtonProps, BottomSheetRootProps } from "./bottom-sheet"
+
+export { PageHeader } from "./page-header"
+export type { PageHeaderComponent, PageHeaderRootProps, PageHeaderSubtitleProps, PageHeaderTitleProps } from "./page-header"
