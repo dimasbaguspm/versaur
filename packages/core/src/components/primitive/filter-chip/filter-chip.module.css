@@ -4,9 +4,11 @@
   --_font-size: var(--vers-comp-filter-chip-font-size, var(--font-size-sm));
   --_gap: var(--vers-comp-filter-chip-gap, var(--spacing-1));
   --_max-width: var(--vers-comp-filter-chip-max-width, 12rem);
-  --_bg: var(--vers-comp-filter-chip-bg, var(--color-outline-soft));
-  --_text: var(--vers-comp-filter-chip-text, var(--color-outline-bold));
-  --_focus-ring-color: var(--vers-comp-filter-chip-focus-ring-color, var(--color-outline));
+  --_bg: var(--vers-comp-filter-chip-bg, var(--color-background));
+  --_text: var(--vers-comp-filter-chip-text, var(--color-ghost));
+  --_border: var(--vers-comp-filter-chip-border, var(--color-border));
+  --_icon-color: var(--vers-comp-filter-chip-icon-color, var(--color-text-muted));
+  --_focus-ring-color: var(--vers-comp-filter-chip-focus-ring-color, var(--color-primary));
 
   display: inline-flex;
   align-items: center;
@@ -15,25 +17,21 @@
   gap: var(--_gap);
   border-radius: var(--radius-full);
   background-color: var(--_bg);
-  border: none;
+  border: 1px solid var(--_border);
   color: var(--_text);
   font-size: var(--_font-size);
   font-weight: var(--font-weight-medium);
   cursor: pointer;
   white-space: nowrap;
-  transition: background-color var(--transition-base), color var(--transition-base);
+  transition: background-color var(--transition-base), color var(--transition-base), border-color var(--transition-base);
   max-width: fit-content;
 }
 
-/* Hover: lighten background */
-.chip:hover:not([data-disabled]) {
-  --_bg: var(--color-outline-light);
-}
-
-/* Active: filled background, white text */
+/* Active: filled with primary background and text */
 .chip:active:not([data-disabled]) {
-  --_bg: var(--color-outline);
+  --_bg: var(--color-primary);
   --_text: #ffffff;
+  --_border: var(--color-primary);
 }
 
 /* Focus ring matching chip color */
@@ -54,4 +52,13 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   max-width: var(--_max-width);
+}
+
+/* Icon styling */
+.chip svg {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  color: var(--_icon-color);
 }
