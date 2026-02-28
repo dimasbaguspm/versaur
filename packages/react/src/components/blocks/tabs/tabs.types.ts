@@ -29,6 +29,16 @@ export interface TabsItemProps extends Omit<React.HTMLAttributes<HTMLDivElement>
   disabled?: boolean
 
   /**
+   * Icon element to display on the left side
+   */
+  leftIcon?: ReactNode
+
+  /**
+   * Icon element to display on the right side
+   */
+  rightIcon?: ReactNode
+
+  /**
    * The content of the item
    */
   children: ReactNode

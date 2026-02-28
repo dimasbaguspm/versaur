@@ -67,11 +67,13 @@
 
   /* Sizing */
   --_trigger-height: var(--vers-comp-tabs-trigger-height, 2.5rem);
-  --_trigger-px: var(--vers-comp-tabs-trigger-padding-x, var(--spacing-3));
-  --_trigger-py: var(--vers-comp-tabs-trigger-padding-y, var(--spacing-2));
-
+  --_trigger-px: var(--vers-comp-tabs-trigger-padding-x, var(--spacing-2));
+  --_trigger-py: var(--vers-comp-tabs-trigger-padding-y, var(--spacing-1));
+  --_trigger-icon-size: var(--vers-comp-tabs-trigger-icon-size, 1.25rem);
+  --_trigger-gap: var(--vers-comp-tabs-trigger-gap, var(--spacing-2));
   height: var(--_trigger-height);
   padding: var(--_trigger-py) var(--_trigger-px);
+  gap: var(--_trigger-gap);
 
   /* Colors */
   --_trigger-color: var(--vers-comp-tabs-trigger-color, var(--color-text-secondary));
@@ -81,6 +83,7 @@
   color: var(--_trigger-color);
   background-color: var(--_trigger-bg);
   border: 1px solid var(--_trigger-border-color);
+  border-radius: var(--radius-lg);
 
   /* Cursor */
   cursor: pointer;
@@ -98,7 +101,7 @@
 /* Hover state */
 .trigger:hover {
   --_trigger-color: var(--vers-comp-tabs-trigger-hover-color, var(--color-text));
-  --_trigger-bg: var(--vers-comp-tabs-trigger-hover-bg, var(--color-bg-secondary));
+  --_trigger-bg: var(--vers-comp-tabs-trigger-hover-bg, var(--color-surface));
 }
 
 /* ============================================
@@ -129,11 +132,30 @@
    FOCUS RING (Accessibility)
    ============================================ */
 .trigger:focus-visible {
-  --_focus-ring-width: var(--vers-comp-tabs-trigger-focus-ring-width, var(--focus-ring-width));
-  --_focus-ring-offset: var(--vers-comp-tabs-trigger-focus-ring-offset, var(--focus-ring-offset));
-  --_focus-ring-color: var(--vers-comp-tabs-trigger-focus-ring-color, var(--focus-ring-color));
+  --_focus-ring-width: var(--vers-comp-tabs-trigger-focus-ring-width, 2px);
+  --_focus-ring-offset: var(--vers-comp-tabs-trigger-focus-ring-offset, -2px);
+  --_focus-ring-color: var(--vers-comp-tabs-trigger-focus-ring-color, var(--color-primary));
 
   outline: var(--_focus-ring-width) solid var(--_focus-ring-color);
+  outline-offset: var(--_focus-ring-offset);
+}
+
+/* ============================================
+   ICON CONFIGURATIONS
+   ============================================ */
+.trigger[data-icon-config="left"],
+.trigger[data-icon-config="right"],
+.trigger[data-icon-config="both"] {
+  min-width: var(--_trigger-height);
+  padding: 0;
+}
+
+.trigger svg {
+  display: inline-block;
+  flex-shrink: 0;
+  width: var(--_trigger-icon-size);
+  height: var(--_trigger-icon-size);
+  color: currentColor;
 }
 
 /* ============================================

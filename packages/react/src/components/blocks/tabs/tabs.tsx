@@ -125,7 +125,7 @@ TabsRoot.displayName = "Tabs"
  * ```
  */
 const TabsItem = forwardRef<HTMLButtonElement, TabsItemProps>(
-  ({ value, disabled = false, children, className }, ref) => {
+  ({ value, disabled = false, leftIcon, rightIcon, children, className }, ref) => {
     const { activeValue, onChange, registerTrigger } = useTabsContext()
 
     const isActive = activeValue === value
@@ -137,6 +137,25 @@ const TabsItem = forwardRef<HTMLButtonElement, TabsItemProps>(
       state = "active"
     } else {
       state = "default"
+    }
+
+    const hasLeftIcon = Boolean(leftIcon)
+    const hasRightIcon = Boolean(rightIcon)
+    const hasText = Boolean(children)
+
+    let iconConfig: string | undefined
+    if (hasLeftIcon && hasRightIcon && hasText) {
+      iconConfig = "both-text"
+    } else if (hasLeftIcon && hasText) {
+      iconConfig = "left-text"
+    } else if (hasRightIcon && hasText) {
+      iconConfig = "right-text"
+    } else if (hasLeftIcon && hasRightIcon) {
+      iconConfig = "both"
+    } else if (hasLeftIcon) {
+      iconConfig = "left"
+    } else if (hasRightIcon) {
+      iconConfig = "right"
     }
 
     const handleClick = () => {
@@ -155,10 +174,13 @@ const TabsItem = forwardRef<HTMLButtonElement, TabsItemProps>(
           aria-selected={isActive}
           aria-controls={`tabs-panel-${value}`}
           data-state={state}
+          {...(iconConfig && { "data-icon-config": iconConfig })}
           disabled={disabled}
           onClick={handleClick}
         >
+          {leftIcon}
           {children}
+          {rightIcon}
         </button>
       </li>
     )

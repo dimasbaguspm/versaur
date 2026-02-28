@@ -1,3 +1,4 @@
+import { Icon } from "../../primitive"
 import { Tabs } from "./tabs"
 import type { TabsItemProps, TabsPanelAttributes, TabsProps } from "./tabs.types"
 
@@ -10,7 +11,5 @@ declare namespace Tabs {
   export type PanelAttributes = TabsPanelAttributes
 }
 
-export { Tabs }
+export { Icon, Tabs }
 export type { TabsProps, TabsItemProps, TabsPanelAttributes }
-
-// Preview exports
