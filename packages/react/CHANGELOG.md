@@ -1,5 +1,20 @@
 # @versaur/react
 
+## 1.0.15
+
+### Patch Changes
+
+- 27ee6e1: refactor(tabs): small clean up and support icon
+- 7b37f01: feat(page-header): add PageHeader component with styles and types
+- 8e85ed4: feat(combobox-input): enhance styles and add focus/hover states
+- 27157ab: feat(filter-chip): add FilterChip component with styles and types
+- Updated dependencies [27ee6e1]
+- Updated dependencies [7b37f01]
+- Updated dependencies [8e85ed4]
+- Updated dependencies [27157ab]
+- Updated dependencies [f7dbd55]
+  - @versaur/core@0.0.11
+
 ## 1.0.14
 
 ### Patch Changes
