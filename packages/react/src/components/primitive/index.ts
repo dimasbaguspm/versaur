@@ -28,6 +28,9 @@ export type { BannerProps, BannerVariant } from "./banner"
 export { Dot } from "./dot"
 export type { DotProps, DotVariant, DotSize } from "./dot"
 
+export { FilterChip } from "./filter-chip"
+export type { FilterChipProps } from "./filter-chip"
+
 export { Kbd } from "./kbd"
 
 export { Tooltip } from "./tooltip"
