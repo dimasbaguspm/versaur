@@ -5,6 +5,7 @@ export type ComboboxInputPlacement = 'bottom' | 'top';
 
 export interface ComboboxInputDataAttrs {
   placement?: ComboboxInputPlacement;
+  active?: boolean;
   chevron?: boolean;
   disabled?: boolean;
   hasLeftIcon?: boolean;
@@ -12,7 +13,6 @@ export interface ComboboxInputDataAttrs {
   invalid?: boolean;
   open?: boolean;
   placeholder?: boolean;
-  selected?: boolean;
 };
 
 export namespace ComboboxInput {

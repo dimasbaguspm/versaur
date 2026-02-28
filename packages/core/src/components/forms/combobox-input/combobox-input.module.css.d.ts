@@ -2,8 +2,6 @@
 declare const styles: {
   readonly button: string;
   readonly 'button-content': string;
-  readonly chip: string;
-  readonly 'chip-remove': string;
   readonly chips: string;
   readonly 'drawer-container': string;
   readonly 'drawer-input': string;

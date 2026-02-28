@@ -29,6 +29,8 @@
   border: 1px solid var(--vers-comp-combobox-border, var(--color-border));
   background-color: var(--vers-comp-combobox-bg, transparent);
   cursor: pointer;
+  outline: none;
+  transition: border-color var(--transition-base), background-color var(--transition-base);
 
   /* Sizing — matches TextInput tokens */
   --_height: var(--vers-comp-combobox-height, 1.75rem);
@@ -37,6 +39,8 @@
   --_font-size: var(--vers-comp-combobox-font-size, var(--font-size-base));
   --_icon-size: var(--vers-comp-combobox-icon-size, 1rem);
   --_icon-gap: var(--vers-comp-combobox-icon-gap, var(--spacing-2));
+  --_focus-ring-color: var(--vers-comp-combobox-focus-ring-color, var(--color-primary-focus));
+  --_hover-bg: var(--vers-comp-combobox-hover-bg, transparent);
 
   /* Anchor positioning for popover */
   anchor-name: attr(data-anchor-name);
@@ -63,15 +67,33 @@
   color: var(--vers-comp-combobox-placeholder, var(--color-text-muted));
 }
 
-/* Button states */
+/* Hover state */
+.button:hover:not([data-disabled]) {
+  background-color: var(--_hover-bg);
+}
+
+/* Focus-visible state - keyboard navigation */
+.button:focus-visible {
+  outline: 2px solid var(--_focus-ring-color);
+  outline-offset: -2px;
+}
+
+/* Active state - while clicking */
+.button:active:not([data-disabled]) {
+  border-color: var(--vers-comp-combobox-active-color, var(--color-primary-focus));
+}
+
+/* Open state - listbox is visible */
 .button[data-open] {
   border-color: var(--vers-comp-combobox-focus-color, var(--color-primary-focus));
 }
 
+/* Invalid state - error */
 .button[data-invalid] {
   border-color: var(--color-danger-focus);
 }
 
+/* Disabled state */
 .button[data-disabled] {
   opacity: 0.5;
   cursor: not-allowed;
@@ -166,56 +188,64 @@
   padding: var(--vers-comp-combobox-listbox-padding, var(--spacing-2));
 }
 
-/* Individual option item - matching Menu component styling */
+/* Individual option item - matching text-input and menu component styling */
 .option {
   /* tokens */
-  --_item-px: var(--vers-comp-combobox-option-px, var(--spacing-2));
-  --_item-py: var(--vers-comp-combobox-option-py, var(--spacing-2));
-  --_item-radius: var(--vers-comp-combobox-option-radius, var(--radius-md));
-  --_item-hover-bg: var(--vers-comp-combobox-option-hover-bg, var(--color-surface-hover));
-  --_item-selected-bg: var(--vers-comp-combobox-option-selected-bg, var(--color-primary-light));
-  --_item-selected-color: var(--vers-comp-combobox-option-selected-color, var(--color-primary));
+  --_px: var(--vers-comp-combobox-option-px, var(--spacing-2));
+  --_py: var(--vers-comp-combobox-option-py, var(--spacing-2));
+  --_radius: var(--vers-comp-combobox-option-radius, var(--radius-md));
+  --_bg: var(--vers-comp-combobox-option-bg, transparent);
+  --_hover-bg: var(--vers-comp-combobox-option-hover-bg, var(--color-surface));
+  --_active-bg: var(--vers-comp-combobox-option-active-bg, var(--color-surface-hover));
+  --_focus-ring-color: var(--vers-comp-combobox-option-focus-ring-color, var(--color-primary-focus));
   --_transition-duration: var(--vers-comp-combobox-option-transition, var(--transition-base));
 
   display: flex;
   align-items: center;
   width: 100%;
-  padding: var(--_item-py) var(--_item-px);
-  background: none;
-  border: none;
-  border-radius: var(--_item-radius);
-  cursor: pointer;
-  text-align: left;
-  font-family: var(--font-sans);
-  font-size: var(--font-size-base);
-  line-height: 1.5;
-  color: var(--vers-comp-combobox-option-text, var(--color-text));
+  padding: var(--_py) var(--_px);
   gap: var(--spacing-2);
-  transition-property: background-color;
+  border-radius: var(--_radius);
+  background-color: var(--_bg);
+  border: none;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  user-select: none;
+  transition-property: background-color, color;
   transition-duration: var(--_transition-duration);
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  user-select: none;
   outline: none;
+}
 
-  &:hover:not([data-disabled]) {
-    background-color: var(--_item-hover-bg);
-  }
+/* Hover state */
+.option:hover:not([data-disabled]) {
+  background-color: var(--_hover-bg);
+}
 
-  &:focus-visible {
-    outline: 2px solid var(--color-primary-focus);
-    outline-offset: -2px;
-  }
+/* Active state (while clicking) */
+.option:active:not([data-disabled]) {
+  background-color: var(--_active-bg);
+}
 
-  &[data-selected] {
-    background-color: var(--_item-selected-bg);
-    color: var(--_item-selected-color);
-    font-weight: var(--font-weight-medium);
-  }
+/* Focus-visible state - matches text-input focus ring pattern */
+.option:focus-visible {
+  outline: 2px solid var(--_focus-ring-color);
+  outline-offset: -2px;
+}
 
-  &[data-disabled] {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
+/* Selected option (in context) - text color only, no background */
+.option[data-active] {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Disabled option */
+.option[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 /* Check icon in option (visible when selected) */
@@ -227,60 +257,14 @@
   color: inherit;
 }
 
-.option[data-selected] .option-check {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+/* Check icon remains hidden for active options - text color indicates selection */
 
-/* Selection chips row */
+/* Selection chips row - FilterChip component handles individual chip styling */
 .chips {
   display: flex;
   flex-wrap: wrap;
   gap: var(--vers-comp-combobox-chips-gap, var(--spacing-2));
   width: 100%;
-}
-
-/* Individual chip */
-.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-1);
-  padding: var(--vers-comp-combobox-chip-padding, var(--spacing-1) var(--spacing-2));
-  background-color: var(--vers-comp-combobox-chip-bg, var(--color-surface-secondary));
-  border-radius: var(--vers-comp-combobox-chip-radius, var(--radius-full));
-  font-size: var(--font-size-sm);
-  line-height: 1.4;
-  color: var(--vers-comp-combobox-chip-text, var(--color-text));
-
-  &[data-disabled] {
-    opacity: 0.5;
-  }
-}
-
-/* Chip remove button */
-.chip-remove {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  width: 1rem;
-  height: 1rem;
-  color: inherit;
-  transition: opacity 0.15s ease-out;
-  flex-shrink: 0;
-
-  &:hover:not(:disabled) {
-    opacity: 0.7;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
 }
 
 /* Drawer variant input field */
@@ -292,7 +276,7 @@
   padding: 0.25rem;
   border: 1px solid var(--vers-comp-combobox-border, var(--color-border));
   background-color: var(--vers-comp-combobox-bg, transparent);
-  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-2);
 
   --_height: var(--vers-comp-combobox-height, 1.75rem);
   --_px: var(--vers-comp-combobox-padding-x, var(--spacing-2));

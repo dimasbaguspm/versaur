@@ -1,10 +1,11 @@
 import { comboboxInputStyles } from "@versaur/core/forms"
-import { CheckIcon, ChevronDownIcon, XIcon } from "@versaur/icons"
+import { CheckIcon, ChevronDownIcon } from "@versaur/icons"
 import type { CSSProperties } from "react"
 import { forwardRef, useEffect, useId, useState } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { cx } from "../../../utils/cx"
+import { FilterChip } from "../../primitive/filter-chip"
 import { ErrorText } from "../error-text"
 import { HelperText } from "../helper-text"
 import { Label } from "../label"
@@ -43,6 +44,7 @@ const ComboboxInputRoot = forwardRef<HTMLDivElement, ComboboxInputRootProps>(
   ) => {
     const generatedId = useId()
     const groupId = rest.id || generatedId
+    const buttonId = `${groupId}-button`
     const helperId = helper ? `${groupId}-helper` : undefined
     const errorId = error ? `${groupId}-error` : undefined
     const describedBy = [helperId, errorId].filter(Boolean).join(" ")
@@ -81,7 +83,7 @@ const ComboboxInputRoot = forwardRef<HTMLDivElement, ComboboxInputRootProps>(
     return (
       <div ref={ref} className={cx(comboboxInputStyles.field, className)} {...dataAttrs} {...rest}>
         {label && (
-          <Label required={required} disabled={disabled}>
+          <Label required={required} disabled={disabled} htmlFor={buttonId}>
             {label}
           </Label>
         )}
@@ -95,6 +97,7 @@ const ComboboxInputRoot = forwardRef<HTMLDivElement, ComboboxInputRootProps>(
             closeListbox,
             variant,
             anchorName,
+            buttonId,
             optionRegistry,
             registerOption,
             unregisterOption,
@@ -109,7 +112,7 @@ const ComboboxInputRoot = forwardRef<HTMLDivElement, ComboboxInputRootProps>(
         </ComboboxInputContext.Provider>
 
         {error && <ErrorText id={errorId}>{error}</ErrorText>}
-        {!error && helper && <HelperText id={helperId}>{helper}</HelperText>}
+        {!error && helper && internalValue.length === 0 && <HelperText id={helperId}>{helper}</HelperText>}
       </div>
     )
   },
@@ -141,6 +144,7 @@ const ComboboxInputButton = forwardRef<HTMLButtonElement, ComboboxInputButtonPro
     return (
       <button
         ref={ref}
+        id={ctx.buttonId}
         type="button"
         className={cx(comboboxInputStyles.button, className)}
         onClick={() => !ctx.disabled && ctx.toggleOpen()}
@@ -206,7 +210,7 @@ const ComboboxInputOption = forwardRef<HTMLLIElement, ComboboxInputOptionProps>(
       }
     }
 
-    const optionDataAttrs = useDataAttrs({ selected: isSelected, disabled: isDisabled })
+    const optionDataAttrs = useDataAttrs({ active: isSelected, disabled: isDisabled })
 
     // Hide option if search query doesn't match
     if (!matchesSearch) {
@@ -237,7 +241,7 @@ const ComboboxInputOption = forwardRef<HTMLLIElement, ComboboxInputOptionProps>(
 ComboboxInputOption.displayName = "ComboboxInput.Option"
 
 /**
- * ComboboxInput.SelectionChips - Removable chip display
+ * ComboboxInput.SelectionChips - Removable chip display using FilterChip
  */
 const ComboboxInputSelectionChips = forwardRef<HTMLDivElement, ComboboxInputSelectionChipsProps>(
   ({ className, ...rest }, ref) => {
@@ -254,18 +258,13 @@ const ComboboxInputSelectionChips = forwardRef<HTMLDivElement, ComboboxInputSele
         {ctx.value.map((val) => {
           const label = ctx.optionRegistry.get(val) ?? val
           return (
-            <div key={val} className={comboboxInputStyles.chip} {...useDataAttrs({ disabled: ctx.disabled })}>
-              <span>{label}</span>
-              <button
-                type="button"
-                className={comboboxInputStyles["chip-remove"]}
-                onClick={() => handleRemoveChip(val)}
-                disabled={ctx.disabled}
-                aria-label={`Remove ${label}`}
-              >
-                <XIcon width="1em" height="1em" />
-              </button>
-            </div>
+            <FilterChip
+              key={val}
+              disabled={ctx.disabled}
+              onClick={() => handleRemoveChip(val)}
+            >
+              {label}
+            </FilterChip>
           )
         })}
       </div>

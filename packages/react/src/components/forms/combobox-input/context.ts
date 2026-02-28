@@ -11,6 +11,7 @@ export interface ComboboxInputContextType {
   closeListbox: () => void
   variant: "popup" | "drawer"
   anchorName: string
+  buttonId: string
   optionRegistry: Map<string, string>
   registerOption: (value: string, label: string) => void
   unregisterOption: (value: string) => void
