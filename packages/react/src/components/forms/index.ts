@@ -7,6 +7,15 @@ export { ErrorText } from "./error-text"
 export { TextInput } from "./text-input"
 export type { TextInputProps } from "./text-input"
 
+export { SearchInput } from "./search-input"
+export type { SearchInputProps } from "./search-input"
+
+export { EmailInput } from "./email-input"
+export type { EmailInputProps } from "./email-input"
+
+export { PasswordInput } from "./password-input"
+export type { PasswordInputProps } from "./password-input"
+
 export { TextArea } from "./text-area"
 export type { TextAreaProps } from "./text-area"
 
