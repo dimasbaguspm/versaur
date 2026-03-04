@@ -1,5 +1,21 @@
 # @versaur/react
 
+## 1.0.16
+
+### Patch Changes
+
+- 56620b5: feat(currency-input): add CurrencyInput
+- 17446ef: feat(text-input): add SearchInput, EmailInput, PasswordInput
+- f5566b3: feat(tooltip): add focus trigger type and enhance tooltip functionality
+- 56620b5: feat(currency-input): add CurrencyInput
+- d081b3d: feat(tooltip): enhance placement options and update styles for tooltips
+- 7b59018: feat(selectable-input): add SelectableInput component with styles, types, and stories
+- Updated dependencies [56620b5]
+- Updated dependencies [56620b5]
+- Updated dependencies [d081b3d]
+- Updated dependencies [7b59018]
+  - @versaur/core@0.0.12
+
 ## 1.0.15
 
 ### Patch Changes

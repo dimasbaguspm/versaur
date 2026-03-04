@@ -1,5 +1,14 @@
 # @versaur/core
 
+## 0.0.12
+
+### Patch Changes
+
+- 56620b5: feat(currency-input): add CurrencyInput
+- 56620b5: feat(currency-input): add CurrencyInput
+- d081b3d: feat(tooltip): enhance placement options and update styles for tooltips
+- 7b59018: feat(selectable-input): add SelectableInput component with styles, types, and stories
+
 ## 0.0.11
 
 ### Patch Changes
