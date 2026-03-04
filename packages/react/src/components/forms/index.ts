@@ -37,3 +37,6 @@ export type {
   ComboboxInputSelectionChipsProps,
   ComboboxInputVariant,
 } from "./combobox-input"
+
+export { SelectableInput } from "./selectable-input"
+export type { SelectableInputRootProps, SelectableInputOptionProps } from "./selectable-input"

@@ -1,0 +1,134 @@
+/*
+ * SelectableInput component
+ * Form component combining ChipInput's controlled state model with Checkbox's visual indicator
+ */
+
+/* Field wrapper (vertical flex container for options) */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  width: 100%;
+}
+
+/* Option wrapper (label with flex layout) */
+.option {
+  /* Colors — private tokens */
+  --_bg: var(--vers-comp-selectable-input-bg, transparent);
+  --_indicator-border: var(--vers-comp-selectable-input-indicator-border, var(--color-border));
+  --_indicator-bg: var(--vers-comp-selectable-input-indicator-bg, transparent);
+
+  /* Focus ring */
+  --_focus-ring-color: var(--vers-comp-selectable-input-focus-ring-color, var(--color-primary-focus));
+
+  /* Layout — flex row with padding, no border */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3);
+  background-color: var(--_bg);
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+}
+
+/* Placement variants for checkbox alignment */
+.option[data-placement="top"] {
+  align-items: flex-start;
+}
+
+.option[data-placement="center"] {
+  align-items: center;
+}
+
+.option[data-placement="bottom"] {
+  align-items: flex-end;
+}
+
+/* Hover state */
+.option:hover:not([data-disabled]):not([data-selected]) {
+  --_bg: var(--color-surface-hover);
+}
+
+/* Selected state — primary indicator styling only */
+.option[data-selected] {
+  --_indicator-border: var(--color-primary);
+  --_indicator-bg: var(--color-primary);
+}
+
+/* Focus state */
+.option:focus-visible {
+  outline: 2px solid var(--_focus-ring-color);
+  outline-offset: -2px;
+}
+
+/* Invalid state on field */
+.field[data-invalid] .option {
+  --_focus-ring-color: var(--color-danger);
+}
+
+.field[data-invalid] .option[data-selected] {
+  --_indicator-border: var(--color-danger);
+  --_indicator-bg: var(--color-danger);
+}
+
+/* Disabled state */
+.option[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Hidden native checkbox input */
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+/* Custom indicator (checkbox square) */
+.indicator {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid var(--_indicator-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--_indicator-bg);
+  flex-shrink: 0;
+  margin: 0;
+}
+
+/* Checked state - checkmark */
+.input:checked + .indicator::after {
+  content: "";
+  position: absolute;
+  width: 40%;
+  height: 70%;
+  border: solid var(--color-white);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) translate(-10%, -15%);
+}
+
+.input:checked + .indicator {
+  border-color: var(--_indicator-border);
+  background-color: var(--_indicator-bg);
+}
+
+/* Focus state */
+.input:focus-visible + .indicator {
+  border-color: var(--_focus-ring-color);
+  outline: 2px solid var(--_focus-ring-color);
+  outline-offset: 2px;
+}
+
+/* Content area (custom slot for ReactNode children) */
+.content {
+  flex: 1;
+  min-width: 0;
+}
