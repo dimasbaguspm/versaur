@@ -1,4 +1,6 @@
-type TooltipPlacement = "top" | "bottom" | "left" | "right"
+import type { Tooltip } from "@versaur/core/primitive"
+
+type TooltipPlacement = Tooltip.Placement
 
 const SUITABLE_SPACE = 100
 const SAFE_MARGIN = 16 // Minimum margin from viewport edges

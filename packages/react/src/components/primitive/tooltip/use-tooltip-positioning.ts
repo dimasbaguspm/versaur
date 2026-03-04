@@ -1,9 +1,10 @@
 import type { MutableRefObject } from "react"
 import { useEffect, useRef } from "react"
+import type { Tooltip } from "@versaur/core/primitive"
 
 import { computeTooltipPlacement, findTooltipTrigger } from "./helpers"
 
-type TooltipPlacement = "top" | "bottom" | "left" | "right"
+type TooltipPlacement = Tooltip.Placement
 type TooltipType = "hover" | "persisted"
 
 interface UseTooltipPositioningOptions {

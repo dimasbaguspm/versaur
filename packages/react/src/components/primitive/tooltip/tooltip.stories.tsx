@@ -7,7 +7,7 @@ const meta = {
   argTypes: {
     placement: {
       control: "select",
-      options: [undefined, "top", "bottom", "left", "right"],
+      options: [undefined, "top", "top-start", "top-end", "bottom", "bottom-start", "bottom-end", "left", "right"],
     },
     type: {
       control: "select",
@@ -82,14 +82,23 @@ export const AutoPlacement: Story = {
 
 /**
  * Showcase all placement variants in a grid.
- * Displays all placement options: auto (default), top, bottom, left, right
+ * Displays all placement options: auto (default), top, top-start, top-end, bottom, bottom-start, bottom-end, left, right
  */
 export const Placements: Story = {
   render: (args) => {
-    const placements: Array<[string, "top" | "bottom" | "left" | "right" | undefined]> = [
+    const placements: Array<
+      [
+        string,
+        "top" | "top-start" | "top-end" | "bottom" | "bottom-start" | "bottom-end" | "left" | "right" | undefined,
+      ]
+    > = [
       ["Auto", undefined],
       ["Top", "top"],
+      ["Top Start", "top-start"],
+      ["Top End", "top-end"],
       ["Bottom", "bottom"],
+      ["Bottom Start", "bottom-start"],
+      ["Bottom End", "bottom-end"],
       ["Left", "left"],
       ["Right", "right"],
     ]
@@ -99,7 +108,7 @@ export const Placements: Story = {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
+            gridTemplateColumns: "repeat(3, 1fr)",
             gap: "4rem",
             alignItems: "center",
             justifyItems: "center",
@@ -111,7 +120,7 @@ export const Placements: Story = {
               style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}
             >
               <Tooltip {...args} id={`story-placement-${placement}`} placement={placement} gap={16}>
-                <Tooltip.Text>{label}</Tooltip.Text>
+                <Tooltip.Text>{label} Example</Tooltip.Text>
               </Tooltip>
               <button {...Tooltip.getTooltipTriggerProps({ id: `story-placement-${placement}` })}>{label}</button>
             </div>

@@ -1,6 +1,7 @@
 import type { HTMLAttributes, ReactNode } from "react"
+import type { Tooltip } from "@versaur/core/primitive"
 
-export type TooltipPlacement = "top" | "bottom" | "left" | "right"
+export type TooltipPlacement = Tooltip.Placement
 
 export interface TooltipGetTriggerPropsOptions {
   /**

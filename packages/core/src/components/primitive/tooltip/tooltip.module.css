@@ -16,6 +16,7 @@
 
 /* CSS Anchor Positioning — progressive enhancement (Chrome 125+, Edge 125+) */
 @supports (anchor-name: --test) {
+  /* Top placements */
   .tooltip[data-placement="top"] {
     top: auto;
     bottom: anchor(top);
@@ -24,6 +25,24 @@
     margin-bottom: var(--_gap);
   }
 
+  .tooltip[data-placement="top-start"] {
+    top: auto;
+    bottom: anchor(top);
+    left: anchor(start);
+    translate: 0 0;
+    margin-bottom: var(--_gap);
+  }
+
+  .tooltip[data-placement="top-end"] {
+    top: auto;
+    bottom: anchor(top);
+    right: anchor(end);
+    left: auto;
+    translate: 0 0;
+    margin-bottom: var(--_gap);
+  }
+
+  /* Bottom placements */
   .tooltip[data-placement="bottom"] {
     top: anchor(bottom);
     bottom: auto;
@@ -32,6 +51,24 @@
     margin-top: var(--_gap);
   }
 
+  .tooltip[data-placement="bottom-start"] {
+    top: anchor(bottom);
+    bottom: auto;
+    left: anchor(start);
+    translate: 0 0;
+    margin-top: var(--_gap);
+  }
+
+  .tooltip[data-placement="bottom-end"] {
+    top: anchor(bottom);
+    bottom: auto;
+    right: anchor(end);
+    left: auto;
+    translate: 0 0;
+    margin-top: var(--_gap);
+  }
+
+  /* Left and right placements */
   .tooltip[data-placement="left"] {
     top: anchor(center);
     right: anchor(left);
