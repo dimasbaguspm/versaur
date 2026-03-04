@@ -1,0 +1,113 @@
+/*
+ * CurrencyInput component
+ * Combined currency selector and amount input in a single bordered field
+ */
+
+/* Field wrapper (contains label, input wrapper, helper/error) */
+.field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Input wrapper (contains currency select and amount input) */
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.25rem;
+  border: 1px solid var(--vers-comp-currency-input-border, var(--color-border));
+  background-color: var(--vers-comp-currency-input-bg, transparent);
+  gap: 0;
+
+  /* Sizing — three-layer token pattern, defaults to medium */
+  --_height: var(--vers-comp-currency-input-height, 1.75rem);
+  --_px: var(--vers-comp-currency-input-padding-x, var(--spacing-2));
+  --_py: var(--vers-comp-currency-input-padding-y, 0);
+  --_font-size: var(--vers-comp-currency-input-font-size, var(--font-size-base));
+}
+
+/* Currency select */
+.currency-select {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  height: var(--_height);
+  padding: var(--_py) var(--_px);
+  flex-shrink: 0;
+  max-width: 70px;
+  overflow: hidden;
+
+  /* Typography */
+  font-family: var(--font-sans);
+  font-size: var(--_font-size);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--vers-comp-currency-input-currency-text, var(--color-text));
+  text-overflow: ellipsis;
+
+  /* Visual */
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.currency-select:disabled {
+  cursor: not-allowed;
+}
+
+/* Divider between select and input */
+.divider {
+  width: 1px;
+  height: calc(var(--_height) * 0.8);
+  background-color: var(--vers-comp-currency-input-border, var(--color-border));
+  flex-shrink: 0;
+  margin: auto 0 auto var(--_px);
+}
+
+/* Amount input */
+.amount-input {
+  /* Layout */
+  flex: 1;
+  height: var(--_height);
+  padding: var(--_py) var(--_px);
+
+  /* Typography */
+  font-family: var(--font-sans);
+  font-size: var(--_font-size);
+  line-height: 1.5;
+  color: var(--vers-comp-currency-input-text, var(--color-text));
+
+  /* Visual */
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.amount-input::placeholder {
+  color: var(--vers-comp-currency-input-placeholder, var(--color-text-muted));
+  opacity: 1;
+}
+
+/* Focus state */
+.wrapper[data-focused] {
+  border-color: var(--vers-comp-currency-input-focus-color, var(--color-primary-focus));
+}
+
+/* Invalid state (error) */
+.wrapper[data-invalid] {
+  border-color: var(--color-danger-focus);
+}
+
+/* Disabled state */
+.wrapper[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Read-only state */
+.wrapper[data-read-only] {
+  opacity: 0.7;
+}

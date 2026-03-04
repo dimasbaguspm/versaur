@@ -40,3 +40,6 @@ export type {
 
 export { SelectableInput } from "./selectable-input"
 export type { SelectableInputRootProps, SelectableInputOptionProps } from "./selectable-input"
+
+export { CurrencyInput } from "./currency-input"
+export type { CurrencyInputProps, CurrencyOption } from "./currency-input"
