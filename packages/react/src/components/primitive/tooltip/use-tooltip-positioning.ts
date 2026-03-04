@@ -1,11 +1,11 @@
+import type { Tooltip } from "@versaur/core/primitive"
 import type { MutableRefObject } from "react"
 import { useEffect, useRef } from "react"
-import type { Tooltip } from "@versaur/core/primitive"
 
 import { computeTooltipPlacement, findTooltipTrigger } from "./helpers"
 
 type TooltipPlacement = Tooltip.Placement
-type TooltipType = "hover" | "persisted"
+type TooltipType = "hover" | "persisted" | "focus"
 
 interface UseTooltipPositioningOptions {
   id: string
@@ -209,6 +209,47 @@ export function useTooltipPositioning({ id, tooltipRef, placement, type }: UseTo
       trigger.removeEventListener("click", handleTriggerClick)
       document.removeEventListener("click", handleDocumentClick)
       document.removeEventListener("keydown", handleEscape)
+    }
+  }, [type, tooltipRef])
+
+  // Focus handler (keyboard navigation only)
+  useEffect(() => {
+    if (type !== "focus") return
+    if (!controllerRef.current || !triggerRef.current) return
+
+    const trigger = triggerRef.current
+    const controller = controllerRef.current
+
+    let isKeyboardNavigation = false
+
+    const handleDocumentKeyDown = (event: KeyboardEvent) => {
+      const navigationKeys = ["Tab", "Enter", " ", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]
+      if (navigationKeys.includes(event.key)) {
+        isKeyboardNavigation = true
+      }
+    }
+
+    // Show tooltip immediately when focus is received from keyboard navigation
+    const handleFocus = () => {
+      if (isKeyboardNavigation) {
+        controller.showTooltip()
+        isKeyboardNavigation = false
+      }
+    }
+
+    const handleBlur = () => {
+      controller.hideTooltip(false)
+      isKeyboardNavigation = false
+    }
+
+    document.addEventListener("keydown", handleDocumentKeyDown)
+    trigger.addEventListener("focus", handleFocus)
+    trigger.addEventListener("blur", handleBlur)
+
+    return () => {
+      document.removeEventListener("keydown", handleDocumentKeyDown)
+      trigger.removeEventListener("focus", handleFocus)
+      trigger.removeEventListener("blur", handleBlur)
     }
   }, [type, tooltipRef])
 }

@@ -11,7 +11,7 @@ const meta = {
     },
     type: {
       control: "select",
-      options: ["hover", "persisted"],
+      options: ["hover", "persisted", "focus"],
     },
   },
   args: {
@@ -135,7 +135,7 @@ export const Placements: Story = {
 }
 
 /**
- * Showcase all trigger type variants: hover and persisted.
+ * Showcase all trigger type variants: hover, persisted, and focus.
  * Demonstrates how tooltips are triggered based on user interactions.
  */
 export const TriggerTypes: Story = {
@@ -155,6 +155,14 @@ export const TriggerTypes: Story = {
           <Tooltip.Text>Shows on click, persists until you click outside or press Escape</Tooltip.Text>
         </Tooltip>
         <button {...Tooltip.getTooltipTriggerProps({ id: "story-persisted-tooltip" })}>Click me</button>
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ fontSize: "0.875rem", fontWeight: 500 }}>Focus Trigger (Tab key)</div>
+        <Tooltip {...args} id="story-focus-tooltip" type="focus">
+          <Tooltip.Text>Shows on focus (Tab key), hides on blur</Tooltip.Text>
+        </Tooltip>
+        <button {...Tooltip.getTooltipTriggerProps({ id: "story-focus-tooltip" })}>Tab to focus me</button>
       </div>
     </div>
   ),

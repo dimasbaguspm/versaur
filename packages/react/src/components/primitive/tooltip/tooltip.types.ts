@@ -30,10 +30,11 @@ export interface TooltipProps extends HTMLAttributes<HTMLDivElement> {
   gap?: number
   /**
    * Tooltip interaction type:
-   * - "hover" (default): Show on hover, hide on hover away (100ms grace period)
+   * - "hover" (default): Show on mouse hover, hide on hover away (100ms grace period)
    * - "persisted": Show on click, persists until user clicks outside or presses Escape
+   * - "focus": Show on focus (Tab key), hide on blur
    */
-  type?: "hover" | "persisted"
+  type?: "hover" | "persisted" | "focus"
 }
 
 export interface TooltipTextProps extends HTMLAttributes<HTMLDivElement> {
