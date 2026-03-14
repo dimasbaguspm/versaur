@@ -34,6 +34,11 @@
       "types": "./dist/utils/index.d.ts",
       "source": "./src/components/utils/index.ts",
       "import": "./dist/utils.js"
+    },
+    "./utilities": {
+      "types": "./dist/utilities/index.d.ts",
+      "source": "./src/components/utilities/index.ts",
+      "import": "./dist/utilities.js"
     }
   },
   "publishConfig": {

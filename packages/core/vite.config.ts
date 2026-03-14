@@ -12,6 +12,7 @@ export default defineConfig({
         forms: resolve(__dirname, "src/components/forms/index.ts"),
         blocks: resolve(__dirname, "src/components/blocks/index.ts"),
         utils: resolve(__dirname, "src/components/utils/index.ts"),
+        utilities: resolve(__dirname, "src/components/utilities/index.ts"),
       },
       formats: ["es"],
     },
