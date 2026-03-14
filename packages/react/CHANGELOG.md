@@ -1,5 +1,12 @@
 # @versaur/react
 
+## 1.0.17
+
+### Patch Changes
+
+- Updated dependencies [e19b37b]
+  - @versaur/core@0.0.13
+
 ## 1.0.16
 
 ### Patch Changes

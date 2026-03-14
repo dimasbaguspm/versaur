@@ -1,5 +1,11 @@
 # @versaur/core
 
+## 0.0.13
+
+### Patch Changes
+
+- e19b37b: feat: utilities class name support
+
 ## 0.0.12
 
 ### Patch Changes
