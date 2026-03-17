@@ -1,5 +1,13 @@
 # @versaur/react
 
+## 1.0.18
+
+### Patch Changes
+
+- b2e20ac: refactor: combobox enhancement
+- Updated dependencies [b2e20ac]
+  - @versaur/core@0.0.14
+
 ## 1.0.17
 
 ### Patch Changes
