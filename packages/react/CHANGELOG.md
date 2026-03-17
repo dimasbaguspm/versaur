@@ -1,5 +1,17 @@
 # @versaur/react
 
+## 1.0.20
+
+### Patch Changes
+
+- 43b94ca: feat: expose hooks utility for versaur/react
+- 8d14460: style: amend page header padding
+- 6258aef: feat: introduce page content component
+- Updated dependencies [8d14460]
+- Updated dependencies [c61526f]
+- Updated dependencies [6258aef]
+  - @versaur/core@0.0.15
+
 ## 1.0.19
 
 ### Patch Changes

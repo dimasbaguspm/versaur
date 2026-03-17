@@ -1,5 +1,13 @@
 # @versaur/core
 
+## 0.0.15
+
+### Patch Changes
+
+- 8d14460: style: amend page header padding
+- c61526f: chore: reduce doubled border for sidebar
+- 6258aef: feat: introduce page content component
+
 ## 0.0.14
 
 ### Patch Changes
