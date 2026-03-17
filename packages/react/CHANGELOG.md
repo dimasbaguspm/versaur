@@ -1,5 +1,14 @@
 # @versaur/react
 
+## 1.0.21
+
+### Patch Changes
+
+- Updated dependencies [8b0b8e9]
+- Updated dependencies [2291c49]
+  - @versaur/icons@1.0.1
+  - @versaur/core@0.0.16
+
 ## 1.0.20
 
 ### Patch Changes
