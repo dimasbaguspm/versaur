@@ -1,6 +1,6 @@
 .header {
-  --_padding-y: var(--vers-comp-page-header-padding-y, var(--spacing-6));
-  --_padding-x: var(--vers-comp-page-header-padding-x, var(--spacing-6));
+  --_padding-y: var(--vers-comp-page-header-padding-y, var(--spacing-4));
+  --_padding-x: var(--vers-comp-page-header-padding-x, var(--spacing-4));
   --_row-gap: var(--vers-comp-page-header-row-gap, var(--spacing-1));
   --_col-gap: var(--vers-comp-page-header-col-gap, var(--spacing-4));
 
@@ -23,7 +23,6 @@
   align-items: center;
   gap: var(--vers-comp-page-header-title-gap, var(--spacing-3));
 }
-
 
 .title-inner {
   display: flex;
