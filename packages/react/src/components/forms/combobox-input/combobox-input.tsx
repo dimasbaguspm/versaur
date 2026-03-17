@@ -1,7 +1,7 @@
 import { comboboxInputStyles } from "@versaur/core/forms"
 import { CheckIcon, ChevronDownIcon } from "@versaur/icons"
 import type { CSSProperties } from "react"
-import { forwardRef, useEffect, useId, useMemo, useState } from "react"
+import { forwardRef, useEffect, useId, useMemo } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { cx } from "../../../utils/cx"
@@ -9,17 +9,17 @@ import { FilterChip } from "../../primitive/filter-chip"
 import { ErrorText } from "../error-text"
 import { HelperText } from "../helper-text"
 import { Label } from "../label"
-import { ComboboxInputDrawer } from "./combobox-input-drawer"
-import { ComboboxInputListbox } from "./combobox-input-listbox"
 import type {
   ComboboxInputButtonProps,
-  ComboboxInputListboxSearchProps,
+  ComboboxInputContainerProps,
+  ComboboxInputSearchProps,
   ComboboxInputOptionProps,
   ComboboxInputRootProps,
   ComboboxInputSelectionChipsProps,
 } from "./combobox-input.types"
 import { ComboboxInputContext, useComboboxInputContext } from "./context"
-import { useComboboxInputState } from "./hooks"
+import { useComboboxInputState, useComboboxInputPlacement } from "./hooks"
+import { Drawer } from "../../blocks/drawer"
 
 /**
  * ComboboxInput Root Component
@@ -73,8 +73,6 @@ const ComboboxInputRoot = forwardRef<HTMLDivElement, ComboboxInputRootProps>(
       unregisterOption,
     } = useComboboxInputState(normalizedValue)
 
-    const [searchQuery, setSearchQuery] = useState("")
-
     useEffect(() => {
       setInternalValue(normalizedValue)
     }, [normalizedValue, setInternalValue])
@@ -118,8 +116,6 @@ const ComboboxInputRoot = forwardRef<HTMLDivElement, ComboboxInputRootProps>(
             unregisterOption,
             disabled,
             multiple,
-            searchQuery,
-            setSearchQuery,
           }}
         >
           <div className={comboboxInputStyles.root} aria-describedby={describedBy || undefined}>
@@ -206,14 +202,8 @@ const ComboboxInputOption = forwardRef<HTMLLIElement, ComboboxInputOptionProps>(
     const isDisabled = ctx.disabled || _disabled
     const isSelected = ctx.value.includes(value)
 
-    // Get label for filtering and display
+    // Get label for display
     const label = typeof children === "string" ? children : String(value)
-
-    // Filter based on search query
-    const matchesSearch =
-      !ctx.searchQuery ||
-      label.toLowerCase().includes(ctx.searchQuery.toLowerCase()) ||
-      value.toLowerCase().includes(ctx.searchQuery.toLowerCase())
 
     useEffect(() => {
       ctx.registerOption(value, label)
@@ -232,18 +222,13 @@ const ComboboxInputOption = forwardRef<HTMLLIElement, ComboboxInputOptionProps>(
     }
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLLIElement>) => {
-      if (e.key === "Enter" || e.key === " ") {
+      if (e.key === " ") {
         e.preventDefault()
         handleClick()
       }
     }
 
     const optionDataAttrs = useDataAttrs({ active: isSelected, disabled: isDisabled })
-
-    // Hide option if search query doesn't match
-    if (!matchesSearch) {
-      return null
-    }
 
     return (
       <li
@@ -299,19 +284,11 @@ const ComboboxInputSelectionChips = forwardRef<HTMLDivElement, ComboboxInputSele
 ComboboxInputSelectionChips.displayName = "ComboboxInput.SelectionChips"
 
 /**
- * ComboboxInput.ListboxSearch - Controlled search input for filtering options
- * Integrates with context's searchQuery management for real-time option filtering
+ * ComboboxInput.Search - Controlled search input for filtering options
+ * Consumer owns filtering logic - this is a pure pass-through controlled input
  */
-const ComboboxInputListboxSearch = forwardRef<HTMLInputElement, ComboboxInputListboxSearchProps>(
+const ComboboxInputSearch = forwardRef<HTMLInputElement, ComboboxInputSearchProps>(
   ({ name, value, onChange, placeholder = "Search options...", ...rest }, ref) => {
-    const ctx = useComboboxInputContext()
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      // Call both the consumer's handler and update context for internal filtering
-      onChange(e)
-      ctx.setSearchQuery?.(e.currentTarget.value)
-    }
-
     return (
       <input
         ref={ref}
@@ -320,7 +297,7 @@ const ComboboxInputListboxSearch = forwardRef<HTMLInputElement, ComboboxInputLis
         className={comboboxInputStyles["drawer-input"]}
         placeholder={placeholder}
         value={value}
-        onChange={handleChange}
+        onChange={onChange}
         aria-label="Search options"
         {...rest}
       />
@@ -328,13 +305,73 @@ const ComboboxInputListboxSearch = forwardRef<HTMLInputElement, ComboboxInputLis
   },
 )
 
-ComboboxInputListboxSearch.displayName = "ComboboxInput.ListboxSearch"
+ComboboxInputSearch.displayName = "ComboboxInput.Search"
+
+/**
+ * ComboboxInput.Container - Renders arbitrary content with integrated search and variant handling
+ * Replaces Listbox for non-list content like "No results", "Start typing", custom components
+ */
+const ComboboxInputContainer = ({ search, children, variant = "list" }: ComboboxInputContainerProps) => {
+  const ctx = useComboboxInputContext()
+  const { internalRef, placement } = useComboboxInputPlacement(ctx.isOpen, ctx.variant)
+
+  const handleToggle = (e: Event) => {
+    const el = e.target as HTMLElement
+    if (el && !el.matches(":popover-open")) {
+      ctx.closeListbox()
+    }
+  }
+
+  // Drawer variant - uses Drawer component internally
+  if (ctx.variant === "drawer" || variant === "drawer") {
+    return (
+      <Drawer open={ctx.isOpen} onOpenChange={(open: boolean) => !open && ctx.closeListbox()} placement="right">
+        <Drawer.Body>
+          <div className={comboboxInputStyles["drawer-container"]}>
+            {search && <div className={comboboxInputStyles["drawer-input-wrapper"]}>{search}</div>}
+            {children}
+          </div>
+        </Drawer.Body>
+      </Drawer>
+    )
+  }
+
+  // Plain wrapper variant - no popover/drawer styling, but still renders search
+  if (variant === "none") {
+    return (
+      <>
+        {search && <div className={comboboxInputStyles["drawer-input-wrapper"]}>{search}</div>}
+        {children}
+      </>
+    )
+  }
+
+  // List variant - popover with optional search
+  const divProps = {
+    ref: internalRef as React.Ref<HTMLDivElement>,
+    className: comboboxInputStyles.listbox,
+    popover: "auto" as any,
+    "data-placement": placement,
+    style: { positionAnchor: ctx.anchorName } as CSSProperties,
+    onToggle: handleToggle,
+  }
+
+  return (
+    <div {...divProps}>
+      {search && <div className={comboboxInputStyles["listbox-search"]}>
+        <div className={comboboxInputStyles["drawer-input-wrapper"]}>{search}</div>
+      </div>}
+      {children}
+    </div>
+  )
+}
+
+ComboboxInputContainer.displayName = "ComboboxInput.Container"
 
 export const ComboboxInput = Object.assign(ComboboxInputRoot, {
   Button: ComboboxInputButton,
-  Listbox: ComboboxInputListbox,
-  Drawer: ComboboxInputDrawer,
   Option: ComboboxInputOption,
   SelectionChips: ComboboxInputSelectionChips,
-  ListboxSearch: ComboboxInputListboxSearch,
+  Search: ComboboxInputSearch,
+  Container: ComboboxInputContainer,
 })

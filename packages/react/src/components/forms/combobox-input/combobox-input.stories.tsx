@@ -26,11 +26,29 @@ type Story = StoryObj<typeof meta>
 /**
  * Default popup variant using Popover API + CSS Anchor Positioning.
  * Click the button to open the listbox, select options, and see them as removable chips below.
+ * Demonstrates client-side filtering - consumer controls which options render based on search.
  */
 export const Default: Story = {
   render: () => {
     const [value, setValue] = useState<string[]>([])
     const [search, setSearch] = useState("")
+
+    const allOptions = [
+      { value: "apple", label: "Apple" },
+      { value: "banana", label: "Banana" },
+      { value: "cherry", label: "Cherry" },
+      { value: "date", label: "Date" },
+      { value: "elderberry", label: "Elderberry" },
+    ]
+
+    // Consumer owns filtering logic
+    const filteredOptions = allOptions.filter(
+      (opt) =>
+        !search ||
+        opt.label.toLowerCase().includes(search.toLowerCase()) ||
+        opt.value.toLowerCase().includes(search.toLowerCase())
+    )
+
     return (
       <ComboboxInput
         multiple
@@ -41,21 +59,21 @@ export const Default: Story = {
         helper="Click the button to open the list"
       >
         <ComboboxInput.Button iconLeft={<Icon as={SearchIcon} />} />
-        <ComboboxInput.Listbox
+        <ComboboxInput.Container
           search={
-            <ComboboxInput.ListboxSearch
+            <ComboboxInput.Search
               name="search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
           }
         >
-          <ComboboxInput.Option value="apple">Apple</ComboboxInput.Option>
-          <ComboboxInput.Option value="banana">Banana</ComboboxInput.Option>
-          <ComboboxInput.Option value="cherry">Cherry</ComboboxInput.Option>
-          <ComboboxInput.Option value="date">Date</ComboboxInput.Option>
-          <ComboboxInput.Option value="elderberry">Elderberry</ComboboxInput.Option>
-        </ComboboxInput.Listbox>
+          {filteredOptions.map((opt) => (
+            <ComboboxInput.Option key={opt.value} value={opt.value}>
+              {opt.label}
+            </ComboboxInput.Option>
+          ))}
+        </ComboboxInput.Container>
         <ComboboxInput.SelectionChips />
       </ComboboxInput>
     )
@@ -81,9 +99,10 @@ export const DrawerVariant: Story = {
         helper="Opens as a right drawer on click"
       >
         <ComboboxInput.Button iconLeft={<Icon as={SearchIcon} />} />
-        <ComboboxInput.Drawer
+        <ComboboxInput.Container
+          variant="drawer"
           search={
-            <ComboboxInput.ListboxSearch
+            <ComboboxInput.Search
               name="search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
@@ -95,7 +114,7 @@ export const DrawerVariant: Story = {
           <ComboboxInput.Option value="angular">Angular</ComboboxInput.Option>
           <ComboboxInput.Option value="svelte">Svelte</ComboboxInput.Option>
           <ComboboxInput.Option value="nextjs">Next.js</ComboboxInput.Option>
-        </ComboboxInput.Drawer>
+        </ComboboxInput.Container>
         <ComboboxInput.SelectionChips />
       </ComboboxInput>
     )
@@ -119,9 +138,9 @@ export const Disabled: Story = {
         disabled
       >
         <ComboboxInput.Button />
-        <ComboboxInput.Listbox
+        <ComboboxInput.Container
           search={
-            <ComboboxInput.ListboxSearch
+            <ComboboxInput.Search
               name="search"
               value={search}
               onChange={() => {}}
@@ -131,7 +150,7 @@ export const Disabled: Story = {
           <ComboboxInput.Option value="apple">Apple</ComboboxInput.Option>
           <ComboboxInput.Option value="banana">Banana</ComboboxInput.Option>
           <ComboboxInput.Option value="cherry">Cherry</ComboboxInput.Option>
-        </ComboboxInput.Listbox>
+        </ComboboxInput.Container>
         <ComboboxInput.SelectionChips />
       </ComboboxInput>
     )
@@ -141,11 +160,28 @@ export const Disabled: Story = {
 /**
  * Controlled example with external state management.
  * Demonstrates syncing value between parent and component, including a "Clear all" button.
+ * Shows client-side filtering - consumer controls which options render.
  */
 export const Controlled: Story = {
   render: () => {
     const [value, setValue] = useState<string[]>(["design"])
     const [search, setSearch] = useState("")
+
+    const allOptions = [
+      { value: "design", label: "Design" },
+      { value: "development", label: "Development" },
+      { value: "marketing", label: "Marketing" },
+      { value: "sales", label: "Sales" },
+      { value: "hr", label: "Human Resources" },
+    ]
+
+    // Consumer owns filtering logic
+    const filteredOptions = allOptions.filter(
+      (opt) =>
+        !search ||
+        opt.label.toLowerCase().includes(search.toLowerCase()) ||
+        opt.value.toLowerCase().includes(search.toLowerCase())
+    )
 
     return (
       <>
@@ -158,21 +194,21 @@ export const Controlled: Story = {
           helper="Multiple selections allowed"
         >
           <ComboboxInput.Button />
-          <ComboboxInput.Listbox
+          <ComboboxInput.Container
             search={
-              <ComboboxInput.ListboxSearch
+              <ComboboxInput.Search
                 name="search"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
             }
           >
-            <ComboboxInput.Option value="design">Design</ComboboxInput.Option>
-            <ComboboxInput.Option value="development">Development</ComboboxInput.Option>
-            <ComboboxInput.Option value="marketing">Marketing</ComboboxInput.Option>
-            <ComboboxInput.Option value="sales">Sales</ComboboxInput.Option>
-            <ComboboxInput.Option value="hr">Human Resources</ComboboxInput.Option>
-          </ComboboxInput.Listbox>
+            {filteredOptions.map((opt) => (
+              <ComboboxInput.Option key={opt.value} value={opt.value}>
+                {opt.label}
+              </ComboboxInput.Option>
+            ))}
+          </ComboboxInput.Container>
           <ComboboxInput.SelectionChips />
         </ComboboxInput>
 
@@ -205,9 +241,9 @@ export const WithError: Story = {
         required
       >
         <ComboboxInput.Button />
-        <ComboboxInput.Listbox
+        <ComboboxInput.Container
           search={
-            <ComboboxInput.ListboxSearch
+            <ComboboxInput.Search
               name="search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
@@ -217,7 +253,7 @@ export const WithError: Story = {
           <ComboboxInput.Option value="option1">Option 1</ComboboxInput.Option>
           <ComboboxInput.Option value="option2">Option 2</ComboboxInput.Option>
           <ComboboxInput.Option value="option3">Option 3</ComboboxInput.Option>
-        </ComboboxInput.Listbox>
+        </ComboboxInput.Container>
         <ComboboxInput.SelectionChips />
       </ComboboxInput>
     )
@@ -227,11 +263,26 @@ export const WithError: Story = {
 /**
  * Single-select mode - only one option can be selected at a time.
  * Listbox auto-closes after selection, no chips displayed, button shows selected label.
+ * Demonstrates client-side filtering.
  */
 export const SingleSelect: Story = {
   render: () => {
     const [value, setValue] = useState<string | null>(null)
     const [search, setSearch] = useState("")
+
+    const allOptions = [
+      { value: "react", label: "React" },
+      { value: "vue", label: "Vue" },
+      { value: "angular", label: "Angular" },
+      { value: "svelte", label: "Svelte" },
+    ]
+
+    const filteredOptions = allOptions.filter(
+      (opt) =>
+        !search ||
+        opt.label.toLowerCase().includes(search.toLowerCase()) ||
+        opt.value.toLowerCase().includes(search.toLowerCase())
+    )
 
     return (
       <ComboboxInput
@@ -243,20 +294,77 @@ export const SingleSelect: Story = {
         helper="Single selection only"
       >
         <ComboboxInput.Button iconLeft={<Icon as={SearchIcon} />} />
-        <ComboboxInput.Listbox
+        <ComboboxInput.Container
           search={
-            <ComboboxInput.ListboxSearch
+            <ComboboxInput.Search
               name="search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
           }
         >
-          <ComboboxInput.Option value="react">React</ComboboxInput.Option>
-          <ComboboxInput.Option value="vue">Vue</ComboboxInput.Option>
-          <ComboboxInput.Option value="angular">Angular</ComboboxInput.Option>
-          <ComboboxInput.Option value="svelte">Svelte</ComboboxInput.Option>
-        </ComboboxInput.Listbox>
+          {filteredOptions.map((opt) => (
+            <ComboboxInput.Option key={opt.value} value={opt.value}>
+              {opt.label}
+            </ComboboxInput.Option>
+          ))}
+        </ComboboxInput.Container>
+      </ComboboxInput>
+    )
+  },
+}
+
+/**
+ * Demonstrates Container component for arbitrary content.
+ * Shows "Start typing" prompt and "No results" message via Container with integrated search.
+ */
+export const WithContainer: Story = {
+  render: () => {
+    const [value, setValue] = useState<string[]>([])
+    const [search, setSearch] = useState("")
+
+    const allOptions = [
+      { value: "apple", label: "Apple" },
+      { value: "apricot", label: "Apricot" },
+      { value: "banana", label: "Banana" },
+      { value: "blueberry", label: "Blueberry" },
+    ]
+
+    const filteredOptions = allOptions.filter(
+      (opt) =>
+        opt.label.toLowerCase().includes(search.toLowerCase()) ||
+        opt.value.toLowerCase().includes(search.toLowerCase())
+    )
+
+    const searchInput = (
+      <ComboboxInput.Search
+        name="search"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+    )
+
+    return (
+      <ComboboxInput multiple value={value} onChange={setValue} label="Fruit selection" placeholder="Pick fruits...">
+        <ComboboxInput.Button />
+        <ComboboxInput.Container search={searchInput} variant="list">
+          {search.length === 0 ? (
+            <div style={{ padding: "1rem", textAlign: "center", color: "#666" }}>
+              Start typing to search fruits…
+            </div>
+          ) : filteredOptions.length > 0 ? (
+            filteredOptions.map((opt) => (
+              <ComboboxInput.Option key={opt.value} value={opt.value}>
+                {opt.label}
+              </ComboboxInput.Option>
+            ))
+          ) : (
+            <div style={{ padding: "1rem", textAlign: "center", color: "#999" }}>
+              No fruits match "{search}"
+            </div>
+          )}
+        </ComboboxInput.Container>
+        <ComboboxInput.SelectionChips />
       </ComboboxInput>
     )
   },

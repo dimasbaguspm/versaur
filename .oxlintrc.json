@@ -9,7 +9,7 @@
     "no-debugger": "warn",
     "max-params": ["warn", { "max": 4 }],
     "max-lines": ["warn", { "max": 400 }],
-    "no-nested-ternary": "error", // simplify ternaries
+    "no-nested-ternary": "off", // nested ternaries ok in JSX conditionals
     "prefer-template": "error", // use template literals
     "no-lonely-if": "warn", // combine nested if
     "guard-for-in": "warn", // check own properties before iterating

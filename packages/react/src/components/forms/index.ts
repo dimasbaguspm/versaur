@@ -41,9 +41,10 @@ export { ComboboxInput } from "./combobox-input"
 export type {
   ComboboxInputRootProps,
   ComboboxInputButtonProps,
-  ComboboxInputListboxProps,
+  ComboboxInputSearchProps,
   ComboboxInputOptionProps,
   ComboboxInputSelectionChipsProps,
+  ComboboxInputContainerProps,
   ComboboxInputVariant,
 } from "./combobox-input"
 

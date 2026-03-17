@@ -8,7 +8,7 @@ import { computeTooltipPlacement } from "../../../primitive/tooltip/helpers"
  */
 export function useComboboxInputPlacement(isOpen: boolean, variant: "popup" | "drawer") {
   const [placement, setPlacement] = useState<"top" | "bottom">("bottom")
-  const internalRef = useRef<HTMLUListElement | null>(null)
+  const internalRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
     if (variant !== "popup") return

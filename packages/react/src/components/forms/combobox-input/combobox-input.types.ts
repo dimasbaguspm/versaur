@@ -116,9 +116,9 @@ export interface ComboboxInputButtonProps extends Omit<ButtonHTMLAttributes<HTML
 }
 
 /**
- * Props for ComboboxInput.ListboxSearch subcomponent
+ * Props for ComboboxInput.Search subcomponent
  */
-export interface ComboboxInputListboxSearchProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
+export interface ComboboxInputSearchProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
   /**
    * Search input name attribute
    */
@@ -176,4 +176,26 @@ export interface ComboboxInputSelectionChipsProps extends HTMLAttributes<HTMLDiv
    * Container for chip elements (renders null if empty)
    */
   children?: ReactNode
+}
+
+/**
+ * Props for ComboboxInput.Container subcomponent
+ */
+export interface ComboboxInputContainerProps {
+  /**
+   * Search input element (optional)
+   */
+  search?: ReactNode
+  /**
+   * Display variant - controls how container is rendered
+   * "list": popup with optional search
+   * "drawer": drawer variant with optional search
+   * "none": plain container without wrapper styling
+   * @default "list"
+   */
+  variant?: "list" | "drawer" | "none"
+  /**
+   * Arbitrary content to render in the container
+   */
+  children?: React.ReactNode
 }

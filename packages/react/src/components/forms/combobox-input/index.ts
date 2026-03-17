@@ -2,10 +2,10 @@ export { ComboboxInput } from "./combobox-input"
 export type {
   ComboboxInputRootProps,
   ComboboxInputButtonProps,
-  ComboboxInputListboxProps,
-  ComboboxInputListboxSearchProps,
+  ComboboxInputSearchProps,
   ComboboxInputOptionProps,
   ComboboxInputSelectionChipsProps,
+  ComboboxInputContainerProps,
   ComboboxInputVariant,
 } from "./combobox-input.types"
 
