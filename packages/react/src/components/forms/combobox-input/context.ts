@@ -16,6 +16,7 @@ export interface ComboboxInputContextType {
   registerOption: (value: string, label: string) => void
   unregisterOption: (value: string) => void
   disabled?: boolean
+  multiple?: boolean
   searchQuery?: string
   setSearchQuery?: (query: string) => void
 }

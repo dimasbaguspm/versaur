@@ -183,6 +183,16 @@
   }
 }
 
+/* Sticky search wrapper inside popup listbox */
+.listbox-search {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: var(--vers-comp-combobox-listbox-bg, var(--color-background));
+  padding: var(--vers-comp-combobox-listbox-padding, var(--spacing-2));
+  padding-bottom: 0;
+}
+
 /* Container for listbox content (inner scrollable area) */
 .listbox-inner {
   padding: var(--vers-comp-combobox-listbox-padding, var(--spacing-2));

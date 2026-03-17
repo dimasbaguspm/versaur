@@ -1,7 +1,7 @@
 import { comboboxInputStyles } from "@versaur/core/forms"
 import { CheckIcon, ChevronDownIcon } from "@versaur/icons"
 import type { CSSProperties } from "react"
-import { forwardRef, useEffect, useId, useState } from "react"
+import { forwardRef, useEffect, useId, useMemo, useState } from "react"
 
 import { useDataAttrs } from "../../../hooks/use-data-attrs"
 import { cx } from "../../../utils/cx"
@@ -13,6 +13,7 @@ import { ComboboxInputDrawer } from "./combobox-input-drawer"
 import { ComboboxInputListbox } from "./combobox-input-listbox"
 import type {
   ComboboxInputButtonProps,
+  ComboboxInputListboxSearchProps,
   ComboboxInputOptionProps,
   ComboboxInputRootProps,
   ComboboxInputSelectionChipsProps,
@@ -36,6 +37,7 @@ const ComboboxInputRoot = forwardRef<HTMLDivElement, ComboboxInputRootProps>(
       helper,
       error,
       required = false,
+      multiple = false,
       children,
       className,
       ...rest
@@ -51,6 +53,15 @@ const ComboboxInputRoot = forwardRef<HTMLDivElement, ComboboxInputRootProps>(
 
     const anchorName = `--combobox-anchor-${groupId.replace(/[^a-z0-9-]/gi, "")}`
 
+    // Normalize external value to internal string[] representation
+    // Use useMemo to prevent infinite loop from new array refs on every render
+    const normalizedValue = useMemo(() => {
+      if (multiple) {
+        return Array.isArray(value) ? (value as string[]) : []
+      }
+      return value === null ? [] : [value as string]
+    }, [value, multiple])
+
     const {
       internalValue,
       setInternalValue,
@@ -60,18 +71,22 @@ const ComboboxInputRoot = forwardRef<HTMLDivElement, ComboboxInputRootProps>(
       optionRegistry,
       registerOption,
       unregisterOption,
-    } = useComboboxInputState(value)
+    } = useComboboxInputState(normalizedValue)
 
     const [searchQuery, setSearchQuery] = useState("")
 
     useEffect(() => {
-      setInternalValue(value)
-    }, [value, setInternalValue])
+      setInternalValue(normalizedValue)
+    }, [normalizedValue, setInternalValue])
 
     const handleChange = (newValue: string[]) => {
       if (!disabled) {
         setInternalValue(newValue)
-        onChange(newValue)
+        if (multiple) {
+          ;(onChange as (v: string[]) => void)(newValue)
+        } else {
+          ;(onChange as (v: string | null) => void)(newValue[0] ?? null)
+        }
       }
     }
 
@@ -102,6 +117,7 @@ const ComboboxInputRoot = forwardRef<HTMLDivElement, ComboboxInputRootProps>(
             registerOption,
             unregisterOption,
             disabled,
+            multiple,
             searchQuery,
             setSearchQuery,
           }}
@@ -139,7 +155,14 @@ const ComboboxInputButton = forwardRef<HTMLButtonElement, ComboboxInputButtonPro
       anchorName: ctx.anchorName,
     } as CSSProperties
 
-    const displayText = children || (isEmpty ? "Select" : `${ctx.value.length} selected`)
+    const displayText =
+      children ||
+      // oxlint-disable-next-line no-nested-ternary
+      (isEmpty
+        ? "Select"
+        : ctx.multiple
+          ? `${ctx.value.length} selected`
+          : (ctx.optionRegistry.get(ctx.value[0]) ?? ctx.value[0]))
 
     return (
       <button
@@ -199,8 +222,13 @@ const ComboboxInputOption = forwardRef<HTMLLIElement, ComboboxInputOptionProps>(
 
     const handleClick = () => {
       if (isDisabled) return
-      const newValue = isSelected ? ctx.value.filter((v) => v !== value) : [...ctx.value, value]
-      ctx.onChange(newValue)
+      if (ctx.multiple) {
+        const newValue = isSelected ? ctx.value.filter((v) => v !== value) : [...ctx.value, value]
+        ctx.onChange(newValue)
+      } else {
+        ctx.onChange(isSelected ? [] : [value])
+        ctx.closeListbox()
+      }
     }
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLLIElement>) => {
@@ -258,11 +286,7 @@ const ComboboxInputSelectionChips = forwardRef<HTMLDivElement, ComboboxInputSele
         {ctx.value.map((val) => {
           const label = ctx.optionRegistry.get(val) ?? val
           return (
-            <FilterChip
-              key={val}
-              disabled={ctx.disabled}
-              onClick={() => handleRemoveChip(val)}
-            >
+            <FilterChip key={val} disabled={ctx.disabled} onClick={() => handleRemoveChip(val)}>
               {label}
             </FilterChip>
           )
@@ -274,10 +298,43 @@ const ComboboxInputSelectionChips = forwardRef<HTMLDivElement, ComboboxInputSele
 
 ComboboxInputSelectionChips.displayName = "ComboboxInput.SelectionChips"
 
+/**
+ * ComboboxInput.ListboxSearch - Controlled search input for filtering options
+ * Integrates with context's searchQuery management for real-time option filtering
+ */
+const ComboboxInputListboxSearch = forwardRef<HTMLInputElement, ComboboxInputListboxSearchProps>(
+  ({ name, value, onChange, placeholder = "Search options...", ...rest }, ref) => {
+    const ctx = useComboboxInputContext()
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      // Call both the consumer's handler and update context for internal filtering
+      onChange(e)
+      ctx.setSearchQuery?.(e.currentTarget.value)
+    }
+
+    return (
+      <input
+        ref={ref}
+        type="text"
+        name={name}
+        className={comboboxInputStyles["drawer-input"]}
+        placeholder={placeholder}
+        value={value}
+        onChange={handleChange}
+        aria-label="Search options"
+        {...rest}
+      />
+    )
+  },
+)
+
+ComboboxInputListboxSearch.displayName = "ComboboxInput.ListboxSearch"
+
 export const ComboboxInput = Object.assign(ComboboxInputRoot, {
   Button: ComboboxInputButton,
   Listbox: ComboboxInputListbox,
   Drawer: ComboboxInputDrawer,
   Option: ComboboxInputOption,
   SelectionChips: ComboboxInputSelectionChips,
+  ListboxSearch: ComboboxInputListboxSearch,
 })

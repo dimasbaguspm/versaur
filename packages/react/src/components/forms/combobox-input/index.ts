@@ -3,6 +3,7 @@ export type {
   ComboboxInputRootProps,
   ComboboxInputButtonProps,
   ComboboxInputListboxProps,
+  ComboboxInputListboxSearchProps,
   ComboboxInputOptionProps,
   ComboboxInputSelectionChipsProps,
   ComboboxInputVariant,

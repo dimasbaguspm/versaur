@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react"
+import type { ButtonHTMLAttributes, HTMLAttributes, InputHTMLAttributes, ReactNode } from "react"
 
 /**
  * ComboboxInput variant: 'popup' uses Popover API + CSS Anchor Positioning, 'drawer' uses Drawer component
@@ -6,19 +6,9 @@ import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react"
 export type ComboboxInputVariant = "popup" | "drawer"
 
 /**
- * Root props for ComboboxInput
+ * Root props base (shared between single and multi-select)
  */
-export interface ComboboxInputRootProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
-  /**
-   * Selected values (array)
-   */
-  value: string[]
-
-  /**
-   * Change handler for selected values
-   */
-  onChange: (value: string[]) => void
-
+type ComboboxInputRootPropsBase = Omit<HTMLAttributes<HTMLDivElement>, "onChange"> & {
   /**
    * Display variant
    * @default "popup"
@@ -73,6 +63,39 @@ export interface ComboboxInputRootProps extends Omit<HTMLAttributes<HTMLDivEleme
 }
 
 /**
+ * Root props for ComboboxInput - discriminated union for single and multi-select
+ */
+export type ComboboxInputRootProps =
+  | (ComboboxInputRootPropsBase & {
+      /**
+       * Multi-select mode
+       */
+      multiple: true
+      /**
+       * Selected values (array) for multi-select
+       */
+      value: string[]
+      /**
+       * Change handler for multi-select
+       */
+      onChange: (value: string[]) => void
+    })
+  | (ComboboxInputRootPropsBase & {
+      /**
+       * Single-select mode (default)
+       */
+      multiple?: false
+      /**
+       * Selected value (string or null) for single-select
+       */
+      value: string | null
+      /**
+       * Change handler for single-select
+       */
+      onChange: (value: string | null) => void
+    })
+
+/**
  * Props for ComboboxInput.Button subcomponent
  */
 export interface ComboboxInputButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "type"> {
@@ -93,9 +116,31 @@ export interface ComboboxInputButtonProps extends Omit<ButtonHTMLAttributes<HTML
 }
 
 /**
+ * Props for ComboboxInput.ListboxSearch subcomponent
+ */
+export interface ComboboxInputListboxSearchProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
+  /**
+   * Search input name attribute
+   */
+  name: string
+  /**
+   * Current search value
+   */
+  value: string
+  /**
+   * Change handler for search value
+   */
+  onChange: React.ChangeEventHandler<HTMLInputElement>
+}
+
+/**
  * Props for ComboboxInput.Listbox subcomponent
  */
 export interface ComboboxInputListboxProps extends Omit<HTMLAttributes<HTMLUListElement>, "role"> {
+  /**
+   * Search input element (required, typically ComboboxInput.ListboxSearch)
+   */
+  search: ReactNode
   /**
    * List items (Option elements)
    */

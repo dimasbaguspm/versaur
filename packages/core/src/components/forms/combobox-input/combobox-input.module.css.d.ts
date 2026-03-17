@@ -11,6 +11,7 @@ declare const styles: {
   readonly 'left-icon': string;
   readonly listbox: string;
   readonly 'listbox-inner': string;
+  readonly 'listbox-search': string;
   readonly option: string;
   readonly 'option-check': string;
   readonly 'right-icon': string;

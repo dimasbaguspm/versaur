@@ -11,10 +11,9 @@ import type { ComboboxInputListboxProps } from "./combobox-input.types"
 /**
  * ComboboxInput.Listbox - Popup variant (Popover API + CSS Anchor)
  * Renders options as a floating popover with smart placement
- * Includes search input for filtering options in real-time
  */
 export const ComboboxInputListbox = forwardRef<HTMLUListElement, ComboboxInputListboxProps>(
-  ({ children, className, ...rest }, ref) => {
+  ({ search, children, className, ...rest }, ref) => {
     const ctx = useComboboxInputContext()
     const { internalRef, placement } = useComboboxInputPlacement(ctx.isOpen, ctx.variant)
 
@@ -51,20 +50,10 @@ export const ComboboxInputListbox = forwardRef<HTMLUListElement, ComboboxInputLi
         } as CSSProperties}
         {...rest}
       >
-        <div className={comboboxInputStyles["listbox-inner"]}>
-          {/* Search input - consistent with drawer variant */}
-          <div className={comboboxInputStyles["drawer-input-wrapper"]}>
-            <input
-              type="text"
-              className={comboboxInputStyles["drawer-input"]}
-              placeholder="Search options..."
-              value={ctx.searchQuery || ""}
-              onChange={(e) => ctx.setSearchQuery?.(e.currentTarget.value)}
-              aria-label="Search options"
-            />
-          </div>
-          {children}
+        <div className={comboboxInputStyles["listbox-search"]}>
+          <div className={comboboxInputStyles["drawer-input-wrapper"]}>{search}</div>
         </div>
+        <div className={comboboxInputStyles["listbox-inner"]}>{children}</div>
       </ul>
     )
   },
