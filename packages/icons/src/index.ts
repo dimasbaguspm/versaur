@@ -15,7 +15,6 @@ import BellOffIcon from "../assets/bell-off.svg?react"
 import BellIcon from "../assets/bell.svg?react"
 import Briefcase2Icon from "../assets/briefcase-2.svg?react"
 import BriefcaseIcon from "../assets/briefcase.svg?react"
-import Building2Icon from "../assets/building-2.svg?react"
 // Business & Operations
 import BuildingIcon from "../assets/building.svg?react"
 import CalendarCheckIcon from "../assets/calendar-check.svg?react"
@@ -28,7 +27,6 @@ import ChevronLeftIcon from "../assets/chevron-left.svg?react"
 import ChevronRightIcon from "../assets/chevron-right.svg?react"
 import ChevronUpIcon from "../assets/chevron-up.svg?react"
 import ClipboardIcon from "../assets/clipboard.svg?react"
-import ClockAlertIcon from "../assets/clock-alert.svg?react"
 import ClockIcon from "../assets/clock.svg?react"
 import Columns2Icon from "../assets/columns-2.svg?react"
 import Columns3Icon from "../assets/columns-3.svg?react"
@@ -43,12 +41,14 @@ import DownloadIcon from "../assets/download.svg?react"
 import FileCodeIcon from "../assets/file-code.svg?react"
 import FilterIcon from "../assets/filter.svg?react"
 import FrownIcon from "../assets/frown.svg?react"
-import FunnelIcon from "../assets/funnel.svg?react"
+import SendIcon from "../assets/send.svg?react"
 import GaugeCircleIcon from "../assets/gauge-circle.svg?react"
 import GaugeIcon from "../assets/gauge.svg?react"
 import GlobeIcon from "../assets/globe.svg?react"
 import GridIcon from "../assets/grid-2x2.svg?react"
 import Grid3x3Icon from "../assets/grid-3x3.svg?react"
+// Location
+import HamburgerMenuIcon from "../assets/hamburger-menu.svg?react"
 // Utilities
 import HelpCircleIcon from "../assets/help-circle.svg?react"
 import HomeIcon from "../assets/home.svg?react"
@@ -67,9 +67,7 @@ import LockIcon from "../assets/lock.svg?react"
 import MailOpenIcon from "../assets/mail-open.svg?react"
 import MailIcon from "../assets/mail.svg?react"
 import MapPinCheckIcon from "../assets/map-pin-check.svg?react"
-// Location
 import MapPinIcon from "../assets/map-pin.svg?react"
-import MenuOpenIcon from "../assets/menu-open.svg?react"
 import MenuIcon from "../assets/menu.svg?react"
 import MessageCircleIcon from "../assets/message-circle.svg?react"
 import MessageSquareIcon from "../assets/message-square.svg?react"
@@ -100,6 +98,7 @@ import UnlockIcon from "../assets/unlock.svg?react"
 import UploadCloudIcon from "../assets/upload-cloud.svg?react"
 import UploadIcon from "../assets/upload.svg?react"
 import UserIcon from "../assets/user.svg?react"
+import VerticalMenuIcon from "../assets/vertical-menu.svg?react"
 import WalletIcon from "../assets/wallet.svg?react"
 import XCircleIcon from "../assets/x-circle.svg?react"
 import XIcon from "../assets/x.svg?react"
@@ -177,10 +176,15 @@ export const icons: Record<string, IconMetadata> = {
     name: "Menu",
     tags: ["navigation", "menu", "hamburger", "dashboard"],
   },
-  "menu-open": {
-    component: MenuOpenIcon,
-    name: "MenuOpen",
-    tags: ["navigation", "menu", "dashboard"],
+  "hamburger-menu": {
+    component: HamburgerMenuIcon,
+    name: "HamburgerMenu",
+    tags: ["navigation", "menu", "hamburger", "dashboard"],
+  },
+  "vertical-menu": {
+    component: VerticalMenuIcon,
+    name: "VerticalMenu",
+    tags: ["navigation", "menu", "vertical", "dashboard"],
   },
   settings: {
     component: SettingsIcon,
@@ -306,11 +310,6 @@ export const icons: Record<string, IconMetadata> = {
     name: "Building",
     tags: ["company", "organization", "saas", "business"],
   },
-  "building-2": {
-    component: Building2Icon,
-    name: "Building2",
-    tags: ["company", "organization", "saas", "business"],
-  },
   briefcase: {
     component: BriefcaseIcon,
     name: "Briefcase",
@@ -415,11 +414,6 @@ export const icons: Record<string, IconMetadata> = {
     name: "Clock",
     tags: ["time", "duration", "scheduling"],
   },
-  "clock-alert": {
-    component: ClockAlertIcon,
-    name: "ClockAlert",
-    tags: ["time", "alert", "warning"],
-  },
 
   // Location
   "map-pin": {
@@ -454,10 +448,10 @@ export const icons: Record<string, IconMetadata> = {
     name: "Data",
     tags: ["data", "structure", "analytics"],
   },
-  funnel: {
-    component: FunnelIcon,
-    name: "Funnel",
-    tags: ["filter", "analytics", "data"],
+  send: {
+    component: SendIcon,
+    name: "Send",
+    tags: ["send", "submit", "message", "action"],
   },
   filter: {
     component: FilterIcon,
@@ -625,7 +619,6 @@ export {
   BellOffIcon,
   Briefcase2Icon,
   BriefcaseIcon,
-  Building2Icon,
   // Business & Operations
   BuildingIcon,
   CalendarCheckIcon,
@@ -638,7 +631,6 @@ export {
   ChevronRightIcon,
   ChevronUpIcon,
   ClipboardIcon,
-  ClockAlertIcon,
   ClockIcon,
   Columns2Icon,
   Columns3Icon,
@@ -653,12 +645,13 @@ export {
   FileCodeIcon,
   FilterIcon,
   FrownIcon,
-  FunnelIcon,
+  SendIcon,
   GaugeCircleIcon,
   GaugeIcon,
   GlobeIcon,
   Grid3x3Icon,
   GridIcon,
+  HamburgerMenuIcon,
   // Utilities
   HelpCircleIcon,
   HomeIcon,
@@ -680,7 +673,6 @@ export {
   // Location
   MapPinIcon,
   MenuIcon,
-  MenuOpenIcon,
   MessageCircleIcon,
   MessageSquareIcon,
   MinusIcon,
@@ -710,6 +702,7 @@ export {
   UploadCloudIcon,
   UploadIcon,
   UserIcon,
+  VerticalMenuIcon,
   WalletIcon,
   XCircleIcon,
   XIcon,
