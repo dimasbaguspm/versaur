@@ -91,7 +91,6 @@
   flex: 0 0 auto;
   overflow-y: auto;
   overflow-x: hidden;
-  border-right: 1px solid var(--vers-color-border, #e5e5e5);
   background-color: var(--vers-color-background-secondary, #f9f9f9);
 }
 
@@ -100,7 +99,6 @@
   flex: 0 0 auto;
   overflow-y: auto;
   overflow-x: hidden;
-  border-left: 1px solid var(--vers-color-border, #e5e5e5);
   background-color: var(--vers-color-background-secondary, #f9f9f9);
 }
 
