@@ -1,5 +1,11 @@
 # @versaur/core
 
+## 0.0.14
+
+### Patch Changes
+
+- b2e20ac: refactor: combobox enhancement
+
 ## 0.0.13
 
 ### Patch Changes
