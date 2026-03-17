@@ -1,0 +1,9 @@
+.content {
+  --_padding-y: var(--vers-comp-page-content-padding-y, var(--spacing-4));
+  --_padding-x: var(--vers-comp-page-content-padding-x, var(--spacing-4));
+
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--_padding-x) (--_padding-y) var(--_padding-x);
+  width: 100%;
+}
