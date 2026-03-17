@@ -1,5 +1,11 @@
 # @versaur/core
 
+## 0.0.16
+
+### Patch Changes
+
+- 2291c49: fix: wrong css syntax on PageContent
+
 ## 0.0.15
 
 ### Patch Changes
